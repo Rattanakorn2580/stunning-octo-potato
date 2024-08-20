@@ -4,5 +4,5 @@ local win = Flux:Window("OPL Hub", "Test Script", Color3.fromRGB(255, 110, 48), 
 -- TAP AUTO FARM
 local tab = win:Tab("Auto Farm", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Dupe", "Working", function()
-Flux:Notification("duping", "Alright")
+    workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 end)
