@@ -6,6 +6,9 @@ local tab = win:Tab("Auto Farm", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Auto Farm", "Auto Farm Mob", function()
     Flux:Notification("Coming Soon", "Alright")
 end)
+tab:Button("Auto Haki", "Auto Farm Haki", function()
+    Flux:Notification("Coming Soon!!!", "Alright")
+    end)
 
 -- TAB TP ISLAND
 local tab = win:Tab("TP island", "http://www.roblox.com/asset/?id=6023426915")
@@ -89,6 +92,9 @@ tab:Button("Dupe", "Working", function()
     end)
 tab:Button("Claim Sam", "Claim Compass", function()
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+    end)
+tab:Button("Auto Find", "Auto Find Compass", function()
+    Flux:Notification("Coming Soon!!!", "Alright")
     end)
     
 -- TAB SEVER
