@@ -15,11 +15,42 @@ Section:NewToggle("Auto Click", "auto click", function(state)
     end
 end)
 
-Section:NewToggle("Auto Equid", "auto equid item", function(state)
+Section:NewToggle("Auto Equip", "auto equip item", function(state)
     if state then
-        print("Toggle On")
+        equip.Name = "equip"
+        equip.Parent = Auto Euip
+        equip.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+        equip.Position = UDim2.new(0.191557452, 0, 0.488476455, 0)
+        equip.Size = UDim2.new(0, 254, 0, 50)
+        equip.Text = "Equip Weights"
+        equip.TextColor3 = Color3.fromRGB(0, 0, 0)
+        equip.TextScaled = true
+        equip.TextSize = 14.000
+        equip.TextWrapped = true
+        equip.MouseButton1Click:connect(function()
+            equip.Visible = false
+            unequip.Visible = true
+            _G.equip = true
+while _G.equip do
+        wait()
+for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+    if v.Name == weapon.Text then
+        v.Parent = game.Players.LocalPlayer.Character
     else
-        print("Toggle Off")
+        unequip.Name = "unequip"
+        unequip.Parent = Auto Equip
+        unequip.BackgroundColor3 = Color3.fromRGB(0, 0, 255)
+        unequip.Position = UDim2.new(0.189320415, 0, 0.487013519, 0)
+        unequip.Size = UDim2.new(0, 254, 0, 50)
+        unequip.Text = "Stop Equiping"
+        unequip.TextColor3 = Color3.fromRGB(0, 0, 0)
+        unequip.TextScaled = true
+        unequip.TextSize = 14.000
+        unequip.TextWrapped = true
+        unequip.MouseButton1Click:connect(function()
+            equip.Visible = true
+            unequip.Visible = false
+            _G.equip = false
     end
 end)
 
