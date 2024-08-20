@@ -7,11 +7,13 @@ local Window = Library.CreateLib("OPL Hub", "DarkTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
-Section:NewToggle("Auto Click", "autoclick", function(state)
+Section:NewToggle("Auto Click", "auto click", function(state)
     if state then
-            print("Click")
-        else
-            print("Click")
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 -- TP
 
