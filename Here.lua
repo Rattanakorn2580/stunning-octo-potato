@@ -85,9 +85,3 @@ tab:Button("Rejoin", "Re Server", function()
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
     end)
-
--- TAB ANOTHER
-local tab = win:Tab("another", "http://www.roblox.com/asset/?id=6023426915")
-tab:Button("Coming Soon", "???", function()
-    Flux:Notification("Coming Soon", "Alright")
-end)
