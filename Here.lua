@@ -103,3 +103,7 @@ end)
 Section:NewButton("Esp", "esp text name player", function()
     print("Clicked")
 end)
+-- KEY CLOSE
+local cas = game:GetService("ContextActionService")
+cas:BindAction("action-name", function(_, state) 
+        print("blank") end, false, Enum.KeyCode.F)
