@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+⁹local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local Window = Library.CreateLib("OPL Hub", "DarkTheme")
 
@@ -8,6 +8,14 @@ local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto Click", "auto click", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+Section:NewToggle("Auto Equid", "auto equid item", function(state)
     if state then
         print("Toggle On")
     else
