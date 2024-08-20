@@ -2,7 +2,7 @@ local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scr
 local win = Flux:Window("OPL Hub", "Test Script", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
 -- TAP AUTO FARM
-local tab = win:Tab("AutoFarm")
+local tab = win:Tab("Auto Farm")
 
 -- TAP AUTO HAKI
 local tab = win:Tab("Auto Haki")
