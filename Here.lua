@@ -1,18 +1,21 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
-local Window = Library.CreateLib("Here Hub", "DarkTheme")
+local Window = Library.CreateLib("OPL Hub", "DarkTheme")
+
+--UI AUTO FARM
 
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
+
+--AUTO FARM
 
 Section:NewToggle("Auto Click", "auto click", function(state)
     if state then
         VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
     else
-        VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1) 
-            wait(Library.flags.Interval) end end })
+        VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
     end
-end)
+end})
 
 -- TP
 
