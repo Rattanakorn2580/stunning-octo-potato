@@ -1,5 +1,10 @@
-local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")() 
-local win = Flux:Window("NAHEE", "One pice Legendary", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("OPL Hub", "DarkTheme")
 
--- UI Tab 1
-local Tap = win:Tap("Tap 1,")
+--KeyBind
+local UserInputService = game:GetService("UserInputService") 
+local TweenService = game:GetService("TweenService") 
+local RunService = game:GetService("RunService") 
+local LocalPlayer = game:GetService("Players").LocalPlayer 
+local Mouse = LocalPlayer:GetMouse() 
+local CloseBind = Enum.KeyCode.RightControl
