@@ -1,10 +1,9 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-
-local Window = Library.CreateLib("OPL Hub", "DarkTheme")
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")() 
+local win = Flux:Window("PREVIEW", "Baseplate", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
 --UI AUTO FARM
 
-local Tab = Window:NewTab("Auto Farm")
+local tab = Window:Tab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto Click", "auto click", function(state)
