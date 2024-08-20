@@ -37,3 +37,19 @@ end)
 Section:NewButton("Kizma island", "tp to krizma island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
+
+Section:NewButton("Sword island", "tp to sword island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
+
+Section:NewButton("Forest island", "tp to forest island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
+
+Section:NewButton("snow island", "tp to snow island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
+
+Section:NewButton("Mountain island", "tp to mountain island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
