@@ -9,29 +9,9 @@ local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto Click", "autoclick", function(state)
     if state then
-            Window:AddBind({
-    text = 'Toggle',
-    callback = function()
-        -- Toggle
-        Enabled = not Enabled
-        -- Click Position
-        if Enabled then
-        -- Update Mouse Pos
-            X, Y = Mouse.X, Mouse.Y + 10
-        -- AutoClick
-        while Enabled do
-            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
-            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
-        end
-    end})
-
-Section:NewToggle("Auto Equid", "autoequiditem", function(state)
-    if state then
-        print("Toggle On")
-    else
-        print("Toggle Off")
-    end
-end)
+            print
+        else
+            print
 
 -- TP
 
@@ -107,4 +87,8 @@ Section:NewToggle("Behind Player", "goto behind players", function(state)
     else
         print("Toggle Off")
     end
+end)
+
+            Section:NewButton("ESP", "ESP name player", function()
+        print()
 end)
