@@ -60,3 +60,9 @@ tab:Button("Dupe", "Working", function()
 tab:Button("Claim Compass", "Claim 10 Compass", function()
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
     end)
+
+-- TAB SEVER
+tab:Button("Rejoin", "Re Server", function()
+game.Players.LocalPlayer:Kick()
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+    end)
