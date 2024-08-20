@@ -3,18 +3,30 @@ local win = Flux:Window("OPL Hub", "Test Script", Color3.fromRGB(255, 110, 48), 
 
 -- TAP AUTO FARM
 local tab = win:Tab("Auto Farm")
+tab:Button("Auto Farm", "not Working", function()
+    print("")
+end)
 
 -- TAP AUTO HAKI
-local tab = win:Tab("Auto Haki")
+local tab = win:Tab("Haki Farm")
+tab:Button("Auto Haki", "not Working", function()
+    print("")
+end)
 
 -- TAP TP ISLAND
-local tab = win:Tab("Tp island")
+local tab = win:Tab("TP island")
+tab:Button("Kai Island", "Tp to Kai Island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
 
 -- TAP PLAYER
 local tab = win:Tab("Player")
-tab:Button("Dupe", "Working", function()
-    workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+tab:Button("View Player", "not Working", function()
+    print("")
 end)
 
 -- TAP SAM
-local tab = win:Tab("Auto Sam")
+local tab = win:Tab("Sam Question")
+tab:Button("Auto Sam", "Not Working", function()
+    print("")
+end)
