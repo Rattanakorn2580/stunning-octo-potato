@@ -70,6 +70,12 @@ tab:Button("Boss Island", "Tp to Boss Island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
     end)
 
+-- PLAYER
+local tab = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+tab:Toggle("View Plaher", "Camera on Player", function()
+tab:Dropdown("search",
+
+            
 -- TAB SAM
 local tab = win:Tab("Sam Question", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Dupe", "Working", function()
