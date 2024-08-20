@@ -2,10 +2,22 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 
 local Window = Library.CreateLib("Here Hub", "DarkTheme")
 
-local Tab = Window:NewTab("Island TP")
-local Section = Tab:NewSection("Tp island")
+local Tab = Window:NewTab("Auto Farm")
+local Section = Tab:NewSection("Auto Farm")
+
+Section:NewToggle("Auto Click", "auto click", function(state)
+    if state then
+        VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
+    else
+        VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1) 
+            wait(Library.flags.Interval) end end })
+    end
+end)
 
 -- TP
+
+local Tab = Window:NewTab("Island TP")
+local Section = Tab:NewSection("Tp island")
 
 Section:NewButton("KaiIsland", "tp to kaiisland", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
