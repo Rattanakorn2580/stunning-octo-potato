@@ -15,10 +15,3 @@ end)
 tab:Button("Take Compass", "accept 10 Compass", function()
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
 end)
-
--- TAP ALT
-local tab = win:Tab("Alt", "http://www.roblox.com/asset/?id=6023426915")
-tab:Button("Rejoin", "Working", function()
-game.Players.LocalPlayer:Kick()
-game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
-end)
