@@ -7,7 +7,7 @@ tab:Button("Kai Island", "Tp to Kai Island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
-tab:Button("Dupe", "Working", function()
+tab:Button("Cave Island", "Tp to Cave Island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1066, 282.5, 1624.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
 
