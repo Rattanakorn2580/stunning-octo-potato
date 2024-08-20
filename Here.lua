@@ -3,15 +3,18 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("OPL Hub", "DarkTheme")
 
 --UI AUTO FARM
-
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
---AUTO FARM
-local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Auto Farm")
+Section:NewToggle("Auto Click", "autoclick", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
-Section:NewToggle("Auto Click", "ToggleInfo", function(state)
+Section:NewToggle("Auto Equid", "autoequiditem", function(state)
     if state then
         print("Toggle On")
     else
@@ -69,4 +72,21 @@ end)
 
 Section:NewButton("Mountain island", "tp to mountain island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
+
+--PLAYERS
+Section:NewToggle("View Player", "view player", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+Section:NewToggle("Behind Player", "goto behind players", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
 end)
