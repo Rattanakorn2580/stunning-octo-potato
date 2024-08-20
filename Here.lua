@@ -43,7 +43,7 @@ tab:Button("Crescent Island", "Tp to Crescent Island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3198, 352.5, 1680, 0, 0, 1, 0, 1, -0, -1, 0, 0))
     end)
 tab:Button("Boss Island", "Tp to Boss Island", function()
-    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1066, 282.5, 1624.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
     end)
 
 -- TAB SAM
