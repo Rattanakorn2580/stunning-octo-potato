@@ -85,7 +85,7 @@ tab:Button("Dupe", "Working", function()
     workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
 tab:Toggle("Auto Sam", "Auto Claim Compass", function(t)
-    while wait() do
+    while wait(1) do
         workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
     end)
 -- TAB SEVER
