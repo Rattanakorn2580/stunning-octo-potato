@@ -19,7 +19,6 @@ end)
 -- TAP ALT
 local tab = win:Tab("Alt", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Rejoin", "Working", function()
-wait(1)
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
-            end)
+end)
