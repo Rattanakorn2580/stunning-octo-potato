@@ -119,8 +119,5 @@ Instance.new("TextLabel")
                 TextLabel.TextScaled = true 
                 TextLabel.TextSize = 14.000 
                 TextLabel.TextStrokeTransparency = 0.000 
-                TextLabel.TextWrapped = true 
-            end 
-        end 
-    end) 
-end
+                TextLabel.TextWrapped = true
+end)
