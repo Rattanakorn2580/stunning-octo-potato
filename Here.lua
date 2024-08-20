@@ -84,10 +84,10 @@ local tab = win:Tab("Sam Question", "http://www.roblox.com/asset/?id=6023426915"
 tab:Button("Dupe", "Working", function()
     workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
-tab:Toggle("Auto Sam", "Auto Claim Compass", function(t)
-    while wait(1) do
+tab:Toggle("Auto Sam", "Auto Claim Compass", function()
         workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
     end)
+    
 -- TAB SEVER
 local tab = win:Tab("Sever", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Rejoin", "Re Server", function()
