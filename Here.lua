@@ -9,9 +9,9 @@ local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto Click", "autoclick", function(state)
     if state then
-            print
+            print("Click")
         else
-            print
+            print("Click")
 
 -- TP
 
@@ -91,7 +91,7 @@ end)
 
 -- ESP
 
-            Section:NewButton("ESP", "ESP name player", function()
+Section:NewButton("ESP", "ESP name player", function()
         while wait() do 
             pcall(function() 
 for i,v in pairs(game.Players:GetChildren()) do 
@@ -118,8 +118,7 @@ Enum.ZIndexBehavior.Sibling
                 TextLabel.TextSize = 14.000 
                 TextLabel.TextStrokeTransparency = 0.000 
                 TextLabel.TextWrapped = true 
-                                    end 
-                                end 
-                            end) 
-                    end
-            end)
+            end 
+        end 
+    end) 
+end
