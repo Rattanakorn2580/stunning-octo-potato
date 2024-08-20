@@ -71,8 +71,10 @@ tab:Button("Boss Island", "Tp to Boss Island", function()
     end)
 
 -- PLAYER
-local tab = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=6023426915")
 tab:Toggle("View Plaher", "Camera on Player", function()
+    end)
+tab:Toggle("Kill behind", "Goto Behind Player", function()
     end)
 tab:Dropdown("Seach", {""}, function()
     end)
@@ -82,10 +84,10 @@ local tab = win:Tab("Sam Question", "http://www.roblox.com/asset/?id=6023426915"
 tab:Button("Dupe", "Working", function()
     workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
-tab:Button("Claim Compass", "Claim 10 Compass", function()
-    workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+tab:Toggle("Auto Sam", "Auto Claim Compass", function(t)
+    while wait() do
+        workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
     end)
-
 -- TAB SEVER
 local tab = win:Tab("Sever", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Rejoin", "Re Server", function()
