@@ -1,6 +1,6 @@
 _G.loop true;
 While _G.loop do wait()
-for i,v in pairs(game:GetService("Workspace").Morlds. Starterworld. Yen:GetDescendants()) 
+for i,v in pairs(game:GetService("Workspace").Worlds.Starterworld.Yen:GetDescendants()) 
 If v.Name "TouchInterest" then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame wait(-1) v.Parent.CFrame
 wait(.1)
