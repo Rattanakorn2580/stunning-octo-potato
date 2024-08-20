@@ -1,6 +1,12 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local win = Flux:Window("OPL Hub", "Test Script", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
+-- TAB AUTO FARM
+local tab = win:Tab("Auto Farm", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("Auto Farm", "Auto Farm Mob", function()
+    Flux:Notification("Coming Soon", "Alright")
+end)
+
 -- TAB TP ISLAND
 local tab = win:Tab("TP island", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Kai Island", "Tp to Kai Island", function()
@@ -78,4 +84,9 @@ local tab = win:Tab("Sever", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Rejoin", "Re Server", function()
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+    end)
+local tab = win:Tab("another", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("Coming Soon", "???", function()
+    Flux:Notification("Coming Soon", "Alright")
+end)
     end)
