@@ -38,6 +38,9 @@ Section:NewButton("Pirate island", "tp to pirate island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
+Section:NewButton("Windbill Island", "tp to windbill island", function()
+    game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
+end)
 Section:NewButton("Chiff island", "tp to chiff island", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
@@ -75,6 +78,9 @@ Section:NewButton("Mountain island", "tp to mountain island", function()
 end)
 
 --PLAYERS
+local Tab = Window:NewTab("Auto Farm")
+local Section = Tab:NewSection("Auto Farm")
+
 Section:NewToggle("View Player", "view player", function(state)
     if state then
         print("Toggle On")
