@@ -1,4 +1,4 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+9local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 
 local Window = Library.CreateLib("OPL Hub", "DarkTheme")
 
@@ -78,8 +78,8 @@ Section:NewButton("Mountain island", "tp to mountain island", function()
 end)
 
 --PLAYERS
-local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Auto Farm")
+local Tab = Window:NewTab("Player")
+local Section = Tab:NewSection("Player")
 
 Section:NewToggle("View Player", "view player", function(state)
     if state then
