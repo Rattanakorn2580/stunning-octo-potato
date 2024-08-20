@@ -9,11 +9,36 @@ local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto Click", "autoclick", function(state)
     if state then
-        print("Toggle On")
-    else
-        print("Toggle Off")
-    end
-end)
+            Window:AddBind({
+    text = 'Toggle',
+    callback = function()
+        -- Toggle
+        Enabled = not Enabled
+        -- "Enabled" Color
+        local NewColor = Color3.new(0, 1, 0)
+        if Enabled == false then
+            NewColor = Color3.new(1, 0, 0)
+        end
+        if NewColor ~= Last then
+            Last = NewColor
+            Enabled_1:SetColor(NewColor)
+        end
+        -- Click Position
+        if Enabled then
+            -- Update Mouse Pos
+            X, Y = Mouse.X, Mouse.Y + 10
+            -- Update Box
+            Box_1:SetValue()
+        else
+            X, Y = 0, 0
+            Box_1:SetValue()
+        end
+        -- AutoClick
+        while Enabled do
+            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, true, game, 1)
+            VirtualInputManager:SendMouseButtonEvent(X, Y, 0, false, game, 1)
+        end
+    end})
 
 Section:NewToggle("Auto Equid", "autoequiditem", function(state)
     if state then
