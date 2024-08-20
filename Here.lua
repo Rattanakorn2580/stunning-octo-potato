@@ -61,7 +61,8 @@ tab:Button("Claim Compass", "Claim 10 Compass", function()
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
     end)
 
--- TAB COMMOND
+-- TAB SEVER
+local tab = win:Tab("Sever", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Rejoin", "Re Server", function()
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
