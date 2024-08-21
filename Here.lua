@@ -96,9 +96,9 @@ Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-tab:Dropdown("Select Player", {""}, Plr, function(t)
-        PlayerTP = t
-    end)
+tab:Dropdown("Select Player!", "Click To Select", Plr, function(t)
+   PlayerTP = t
+end)
 
 tab:Button("Click to Tp", "Tp to Player", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
