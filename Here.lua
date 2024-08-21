@@ -25,8 +25,7 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
 tab:Dropdown("Select Weapon", {""}, Weaponlist, function(CurrentOption)
     Weapon = CurrentOption
     end)
-tab:Toggle("Auto Equip", "", function(a)
-    Auto Equiped = a
+tab:Toggle("Auto Equip", "", function()
 end)
        
 tab:Button("Auto Haki", "Auto Farm Haki", function()
