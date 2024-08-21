@@ -3,7 +3,7 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")                       
-Section:NewToggle("Auto Equip", " ", function("Fast Attack", _G.FastAttack, function(value)
+Section:NewToggle("Auto FastAttack", " ", function("Fast Attack", _G.FastAttack, function(value)
 _G.FastAttack = value
 end)
 
