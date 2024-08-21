@@ -17,8 +17,6 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
 
 tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
         Weapon = currentOption
-    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist,v.Name)
     end)
 tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
