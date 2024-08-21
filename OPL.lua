@@ -13,6 +13,7 @@ for i,v in
 pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
     table.insert(Weaponlist,v.Name) 
 end 
+
 Section:NewDropdown("select weapon", " ", Weaponlist, function(currentOption) 
         Weapon = currentOption 
     end)
