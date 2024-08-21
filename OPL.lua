@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("NOOB HUB", "DarkTheme", Enum.KeyCode.LeftControl)
+local Window = Library.CreateLib("Opl X", "DarkTheme", Enum.KeyCode.LeftControl)
 local CloseBind = Enum.KeyCode.RightControl
 
 -- AUTO FARM
@@ -112,6 +112,16 @@ Section:NewButton("Claim Compass","", function()
 end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+end)
+local Section = Tab:NewSection("Bring Compass")
+Section:NewToggle("Auto Frame Money", "Click To Frame", function(state)
+ _G.compass = state;
+while _G.compass do wait()
+for i,v in pairs(game:GetService("Workspace").CoinEvent.Coins:GetChildren()) do
+    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    wait(.1)
+end
+end
 end)
 
 -- PLAYER
