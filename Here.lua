@@ -92,10 +92,7 @@ tab:Toggle("Crescent Island", "Tp to Crescent Island", function()
 -- PLAYER
 local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=6023426915")
 tab:Toggle("View Plaher", "Camera on Player", function() 
-    Plr = {} 
-        for i,v in pairs(game:GetService("Players"):GetChildren()) do 
-            table.insert(Plr,v.Name) 
-    end 
+    end)
 tab:Dropdown("Select", {"Option 1","Option 2","Option 3"}, function(t) 
     PlayerTP = t 
     end)
