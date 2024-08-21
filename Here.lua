@@ -103,6 +103,26 @@ tab:Button("Rejoin", "Re Server", function()
 game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
     end)
-tab:Button("HopSever", "join other server.", function()
-    loadstring(game:HttpGet('https://pastebin.com/raw/wVi2vxcZ'))()
+tab:Button("HopSever", "join other sever", function()
+local HttpService = game:GetService("HttpService")
+
+local TeleportService = game:GetService("TeleportService")
+
+local PlaceId = 8569368381
+
+local Response = syn.request({
+
+    Url = string.format("https://games.roblox.com/v1/games/%s/servers/Public?sortOrder=Asc&limit=100", tostring(PlaceId)),
+
+    Method = "GET"
+
+})
+
+local GetRandomJobId = function()
+
+    local JSONDecode = HttpService:JSONDecode(Response.Body)
+    
+    return JSONDecode.data[math.random(1, table.getn(JSONDecode.data))].id
+end
+TeleportService:TeleportToPlaceInstance(PlaceId, GetRandomJobId())
     end)
