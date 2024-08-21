@@ -1,6 +1,9 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒนา !!", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
+local Weaponlist = {}
+local Weapon = nil
+
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
 end)
@@ -19,8 +22,7 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-tab:Dropdown("Select Weapon", {""}, Weaponlist, function(CurrentOption)
-    Weapon = CurrentOption
+tab:Dropdown("Select Weapon", {""}, Weaponlist, function()
     end)
 tab:Toggle("Auto Equip", "", function()
 end)
