@@ -17,6 +17,20 @@ Section:NewDropdown("select weapon", " ", Weaponlist, function(currentOption)
         Weapon = currentOption 
     end)
 
+Section:NewToggle("Auto Click", " ", function(a) 
+        AutoClicked = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoClicked then 
+pcall(function() 
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon)) 
+end) 
+end 
+end 
+end)
+
 Section:NewToggle("Auto Equip", " ", function(a) 
         AutoEquiped = a 
     end)
@@ -25,7 +39,7 @@ spawn(function()
 while wait() do 
 if AutoEquiped then 
 pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon)) 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end) 
 end 
 end 
