@@ -3,7 +3,7 @@ local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒ�
 
 -- TAB NEW UPDATE
 local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
-tab:Button("No New Update", "...", function()
+tab:Button("No Update", "...", function()
     end)
 
 -- TAB AUTO FARM
