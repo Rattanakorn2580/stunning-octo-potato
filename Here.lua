@@ -91,13 +91,14 @@ tab:Toggle("Crescent Island", "Tp to Crescent Island", function()
 
 -- PLAYER
 local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=6023426915")
-tab:Toggle("View Plaher", "Camera on Player", function() 
+tab:Toggle("View Plaher", "Camera on Player", function(t) 
+    Player = t
     end)
-tab:Dropdown("Select", {"Option 1","Option 2","Option 3"}, function(t) 
-    PlayerTP = t 
+tab:Toggle("Behind Player", "Goto Behind Player", function(t)
+        Player = t
     end)
-tab:Toggle("Kill behind", "Goto Behind Player", function()
-    end)
+tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, function(t)
+        Player = t
 
 tab:Button("ESP", "Text Name Player", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zV20f3Bk"))()
