@@ -2,7 +2,7 @@ local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scr
 local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒนา !!", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
 -- TAB NEW UPDATE
-local tab = win:Tab("NEW UPDATE", "http://www.roblox.com/asset/?id=6023426915")
+local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("No New Update", "...", function()
     end)
 
