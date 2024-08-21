@@ -14,25 +14,25 @@ end)
 tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
-local weaponlist = {}
-local weapon = nil
+local Weaponlist = {}
+local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
 end
 
-tab:Dropdown("Select Weapon", {""}, function(currentoption)
-        weapin = currentoption
+tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
+        Weapon = currentOption
     end)
-tab:Toggle("Auto Equip", "Auto Eqip weapon", function(a)
+tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
 end)
 
 spawn(function()
 while wait() do
-if Autoequiped then
+if AutoEquiped then
 pcall(functoin())
-game.Players.LocalPlayer.Charecter.Humanoid:EquipTools(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(weapon()
+game.Players.LocalPlayer.Charecter.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(weapon()
 end)
 end
 end)
