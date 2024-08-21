@@ -15,11 +15,9 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
-        Weapon = currentOption
+tab:Dropdown("Select Weapon", {""}, Weaponlist, function()
     end)
-tab:Toggle("Auto Equip", "", function(a)
-    Auto Equiped = a
+tab:Toggle("Auto Equip", "", function()
 end)
        
 tab:Button("Auto Haki", "Auto Farm Haki", function()
