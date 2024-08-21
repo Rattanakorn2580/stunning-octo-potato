@@ -1,6 +1,11 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local win = Flux:Window("OPL Hub", "Test Script", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
+-- TAB NEW UPDATE
+local tab = win:Tab("NEW UPDATE", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("increase ESP", "...", function()
+    end)
+
 -- TAB AUTO FARM
 local tab = win:Tab("Auto Farm", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Auto Farm", "Auto Farm Mob", function()
