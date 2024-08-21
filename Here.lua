@@ -5,7 +5,7 @@ local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒ�
 local tab = win:Tab("NEW UPDATE", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("increase ESP", "...", function()
     end)
-tab:Button("Add function Auto Click and Equip Coming Soon.", "...", function()
+tab:Button("Add New function Auto", "...", function()
     end)
 
 -- TAB AUTO FARM
