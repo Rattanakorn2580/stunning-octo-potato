@@ -112,16 +112,6 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 end)
-local Section = Tab:NewSection("Bring")
-Section:NewToggle("Bring Compass", "", function(state)
- _G.compass = state;
-while _G.compass do wait()
-for i,v in pairs(game:GetService("Workspace").CompassSever.Compass:GetChildren()) do
-    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    wait(.1)
-end
-end
-end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
