@@ -15,9 +15,6 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-local Weaponlist = {}
-local Weapon = nil
-
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
 end)
@@ -28,7 +25,6 @@ tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
 tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
 end)
-
 spawn(function()
 while wait() do
 if AutoEquiped then
