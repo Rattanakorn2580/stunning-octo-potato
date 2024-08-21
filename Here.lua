@@ -92,10 +92,14 @@ tab:Toggle("Crescent Island", "Tp to Crescent Island", function()
 -- PLAYER
 local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=6023426915")
 tab:Toggle("View Plaher", "Camera on Player", function(t) 
-    Player = t
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
     end)
 tab:Toggle("Behind Player", "Goto Behind Player", function(t)
-        Player = t
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
     end)
 tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, function(t)
         Player = t
