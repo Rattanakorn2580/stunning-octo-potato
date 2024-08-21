@@ -1,13 +1,6 @@
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒนา !!", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
-local weaponlist = {}
-local weapon = nil
-
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(weaponlist,v.Name)
-end)
-
 -- TAB NEW UPDATE
 local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("No Update", "...", function()
@@ -22,8 +15,7 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-tab:Dropdown("select weapon", {""}, weaponlist, function(t)
-    weapon = t
+tab:Dropdown("select weapon", {""}, weaponlist, function()
 end)
 tab:Toggle("Auto Equip", "", function()
 end)
