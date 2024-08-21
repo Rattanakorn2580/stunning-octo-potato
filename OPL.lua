@@ -116,7 +116,7 @@ local Section = Tab:NewSection("Bring")
 Section:NewToggle("Bring Compass", "", function(state)
  _G.compass = state;
 while _G.compass do wait()
-for i,v in pairs(game:GetService("Workspace").Compass.CompassServer:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").Compass.Handle:GetChildren()) do
     v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
     wait(.1)
 end
