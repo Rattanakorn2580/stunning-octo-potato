@@ -99,6 +99,7 @@ tab:Toggle("Behind Player", "Goto Behind Player", function(t)
     end)
 tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, function(t)
         Player = t
+    end)
 
 tab:Button("ESP", "Text Name Player", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zV20f3Bk"))()
