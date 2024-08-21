@@ -92,11 +92,11 @@ tab:Toggle("Crescent Island", "Tp to Crescent Island", function()
 
 -- PLAYER
 local tab = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-
 tab:Dropdown("Select Player!", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
@@ -109,9 +109,6 @@ _G.TPPlayer = t
 while _G.TPPlayer do wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end
-end)
-tab:Button("Refresh Dropdown","Refresh Dropdown", function()
-  drop:Refresh(Plr)
 end)
 
 tab:Button("ESP", "Text Name Player", function()
