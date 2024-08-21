@@ -86,8 +86,9 @@ local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=602342691
 tab:Toggle("View Plaher", "Camera on Player", function()
     end)
 tab:Toggle("Kill behind", "Goto Behind Player", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/OPL.lua"))()
     end)
-tab:Dropdown("Seach", {""}, function()
+tab:Textbox("Search", ("Search Player."), true function()
     end)
 
 tab:Button("ESP", "Text Name Player", function()
