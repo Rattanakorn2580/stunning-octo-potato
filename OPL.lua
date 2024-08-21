@@ -25,7 +25,7 @@ spawn(function()
 while wait() do 
 if AutoClicked then 
 pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon)) 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
 end) 
 end 
 end 
@@ -39,7 +39,7 @@ spawn(function()
 while wait() do 
 if AutoEquiped then 
 pcall(function() 
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
 end) 
 end 
 end 
