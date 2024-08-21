@@ -15,12 +15,10 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist,v.Name)
-end)
-
 tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
         Weapon = currentOption
+    for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
     end)
 tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
