@@ -3,6 +3,16 @@ local Window = Library.CreateLib("NOOB HUB", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm") 
+Section:NewToggle("Auto Click", " ", function(a) 
+        AutoEquiped = a 
+    end)
+
+while wait() do
+if AutoClick then
+pcall(function()
+game:GetService'VirtualUser':CaptureController()                                     
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end
 local Section = Tab:NewSection("Auto Equip") 
 local Weaponlist = {} 
 local Weapon = nil
