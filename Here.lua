@@ -88,7 +88,7 @@ tab:Toggle("View Plaher", "Camera on Player", function()
 tab:Toggle("Kill behind", "Goto Behind Player", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/OPL.lua"))()
     end)
-tab:Textbox("Search", ("Search Player."), true function()
+tab:Textbox("Search", ("Search Player.", true function()
     end)
 
 tab:Button("ESP", "Text Name Player", function()
