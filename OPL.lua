@@ -3,6 +3,52 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")                       
+Section:NewToggle("Auto Equip", " ", function("Fast Attack", _G.FastAttack, function(value)
+_G.FastAttack = value
+end)
+
+local themes = {
+Background = Color3.fromRGB(24, 24, 24),
+Glow = Color3.fromRGB(0, 0, 0),
+Accent = Color3.fromRGB(10, 10, 10),
+LightContrast = Color3.fromRGB(20, 20, 20),
+DarkContrast = Color3.fromRGB(14, 14, 14),  
+TextColor = Color3.fromRGB(255, 255, 255)
+}
+for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
+colors:addColorPicker(theme, color, function(color3)
+venyx:setTheme(theme, color3)
+end)
+end
+
+venyx:SelectPage(venyx.pages[1], true)
+
+spawn(function()
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            local Yoru = require(game:GetService("Players").LocalPlayer.PlayerScripts.YoruFramework)
+            local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.YoruFramework.CameraShaker)
+            Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
+            Yoru.activeController.timeToNextAttack = 0
+            Yoru.activeController.hitboxMagnitude = 10
+            Yoru.activeController.increment = 3
+        end
+    end)
+end) 
+end)
+
+spawn(function()
+   game:GetService("RunService").RenderStepped:Connect(function()
+    pcall(function()
+        if _G.FastAttack then
+            game:GetService'VirtualUser':CaptureController()
+            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+end
+end)
+end) 
+end)
+        
 local Section = Tab:NewSection("Auto Equip") 
 
 local Weaponlist = {} 
