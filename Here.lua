@@ -7,6 +7,7 @@ local Weapon = nil
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
 end)
+
 -- TAB NEW UPDATE
 local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("No Update", "...", function()
@@ -21,8 +22,8 @@ tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
 
-tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
-    Weapon = currentOption
+tab:Dropdown("Select Weapon", {""}, Weaponlist, function(CurrentOption)
+    Weapon = CurrentOption
     end)
 tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
