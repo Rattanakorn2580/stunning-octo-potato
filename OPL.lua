@@ -7,22 +7,6 @@ Section:NewToggle("Auto FastAttack", " ", function("Fast Attack", _G.FastAttack,
 _G.FastAttack = value
 end)
 
-local themes = {
-Background = Color3.fromRGB(24, 24, 24),
-Glow = Color3.fromRGB(0, 0, 0),
-Accent = Color3.fromRGB(10, 10, 10),
-LightContrast = Color3.fromRGB(20, 20, 20),
-DarkContrast = Color3.fromRGB(14, 14, 14),  
-TextColor = Color3.fromRGB(255, 255, 255)
-}
-for theme, color in pairs(themes) do -- all in one theme changer, i know, im cool
-colors:addColorPicker(theme, color, function(color3)
-venyx:setTheme(theme, color3)
-end)
-end
-
-venyx:SelectPage(venyx.pages[1], true)
-
 spawn(function()
    game:GetService("RunService").RenderStepped:Connect(function()
     pcall(function()
