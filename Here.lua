@@ -103,7 +103,8 @@ local tab = win:Tab("Sam Question", "http://www.roblox.com/asset/?id=6023426915"
 tab:Button("Dupe", "Working", function()
     workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
-tab:Button("Claim Sam", "Claim Compass", function()
+tab:Toggle("Claim Sam", "Claim Compass", function()
+while wait() do
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
         end)
 tab:Button("Auto Find", "Auto Find Compass", function()
