@@ -14,12 +14,13 @@ end)
 tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
+
 local Weaponlist = {}
 local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
-end
+end)
 
 tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
         Weapon = currentOption
@@ -33,8 +34,6 @@ while wait() do
 if AutoEquiped then
 pcall(functoin())
 game.Players.LocalPlayer.Charecter.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon()
-end)
-end
 end)
        
 tab:Button("Auto Haki", "Auto Farm Haki", function()
