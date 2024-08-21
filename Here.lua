@@ -91,9 +91,9 @@ tab:Button("Dupe", "Working", function()
     workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
 tab:Button("Claim Sam", "Claim Compass", function()
-        repeat
+repeat
     workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
-        until >1000
+    until >1000
 tab:Button("Auto Find", "Auto Find Compass", function()
     Flux:Notification("Coming Soon!!!", "Alright")
     end)
