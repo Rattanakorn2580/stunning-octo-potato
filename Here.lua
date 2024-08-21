@@ -6,7 +6,7 @@ local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name)
-end
+end)
 -- TAB NEW UPDATE
 local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("No Update", "...", function()
