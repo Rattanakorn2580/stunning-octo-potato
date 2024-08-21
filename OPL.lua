@@ -3,14 +3,15 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")                       
-Section:NewToggle("Auto FastAttack", " ", function(state)
-        AutoClicked = state
+Section:NewToggle("Auto FastAttack", " ", function(a)
+        AutoClicked = a
 end)
 
 spawn(function()
    game:GetService("RunService").RenderStepped:Connect(function()
     pcall(function()
-        if _G.FastAttack then
+while wait() do
+        if AutoClicked then
             game:GetService'VirtualUser':CaptureController()
             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end
