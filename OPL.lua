@@ -1,39 +1,11 @@
-Target = game.Players:GetFrontCharecter("l.Parent")
-
-game.Players.LocalPlayer.Character.Humanoid.Name = 1 
-local l = game.Players.LocalPlayer.Character["1"]:Clone() 
-
-l.Parent = game.Players.LocalPlayer.Character 
-l.Name = "Humanoid" 
-
-wait() 
-game.Players.LocalPlayer.Character["1"]:Destroy() 
-game.Workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character 
-game.Players.LocalPlayer.Character.Animate.Disabled = true 
-end)
-
-wait() 
-game.Players.LocalPlayer.Character.Animate.Disabled = false 
-game.Players.LocalPlayer.Character.Humanoid.DisplayDistanceType = "None" 
-end)
-
-for i,v in pairs(game:GetService'Players'.LocalPlayer.Backpack:GetChildren())do 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-end)
-
-wait() 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame 
-end)
-wait() 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Target].Character.HumanoidRootPart.CFrame 
-end)
-wait() 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-100000,1000000000000000000000,-100000)) 
-end)
-wait() 
-local prt=Instance.new("Model", workspace); 
-Instance.new("Part", prt).Name="Torso"; 
-Instance.new("Part", prt).Name="Head"; 
-Instance.new("Humanoid", prt).Name="Humanoid";)
-game.Players.LocalPlayer.Character=prt
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("NOOB HUB", "DarkTheme")
+local Tab = Window:NewTab("Player")
+local Section = Tab:NewSection("Select Player!")
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+local drop = Section:NewDropdown("Select Player!", "Click To Select", Plr, function(t)
+   PlayerTP = t
 end)
