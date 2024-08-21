@@ -4,6 +4,7 @@ local Window = Library.CreateLib("NOOB HUB", "DarkTheme")
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")                       
 local Section = Tab:NewSection("Auto Equip") 
+
 local Weaponlist = {} 
 local Weapon = nil
 
