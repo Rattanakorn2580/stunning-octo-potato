@@ -14,9 +14,30 @@ end)
 tab:Toggle("Auto Click", "Auto Clicker", function()
     Flux:Notification("Coming Soon..", "Alright")
     end)
-tab:Toggle("Auto Equip", "Auto Eqip weapon", function(t)
-Flux:Notification("Coming Soon", "Alright")
+local weaponlist = {}
+local weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+
+tab:Dropdown("Select Weapon", {""}, function(currentoption)
+        weapin = currentoption
+    end)
+tab:Toggle("Auto Equip", "Auto Eqip weapon", function(a)
+    Auto Equiped = a
 end)
+
+spawn(function()
+while wait() do
+if Autoequiped then
+pcall(functoin())
+game.Players.LocalPlayer.Charecter.Humanoid:EquipTools(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(weapon()
+end)
+end
+end)
+
+        
 tab:Button("Auto Haki", "Auto Farm Haki", function()
     Flux:Notification("Coming Soon!!!", "Alright")
     end)
