@@ -95,7 +95,7 @@ tab:Toggle("View Plaher", "Camera on Player", function(t)
     end)
 tab:Toggle("Behind Player", "Goto Behind Player", function(t) 
     end)
-tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, function(t)
+tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, true function(t)
     end)
 
 tab:Button("ESP", "Text Name Player", function()
