@@ -102,7 +102,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
     end)
 tab:Dropdown("Select", {"Plr 1","Plr 2","Plr 3"}, function(t)
-        Player = t
+        Plr = t
     end)
 
 tab:Button("ESP", "Text Name Player", function()
