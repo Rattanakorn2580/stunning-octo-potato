@@ -105,6 +105,12 @@ end)
 -- NPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Sam Quest")
+Section:NewButton("Claim Compass","", function()
+  workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+end)
+Section:NewButton("Dupe","", function()
+  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
@@ -128,4 +134,12 @@ end)
 
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
+end)
+
+-- SEVER
+local Tab = Window:NewTab("Sever")
+local Section = Tab:NewSection("Sever")
+Section:NewButton("Rejoin","", function()
+  game.Players.LocalPlayer:Kick()
+game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
