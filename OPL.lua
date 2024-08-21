@@ -7,6 +7,7 @@ Section:NewToggle("Auto Click", " ", function(q)
         AutoClicked = q
     end)
 
+spawn(function()
 while wait() do
 if AutoClicked then
 pcall(function()
