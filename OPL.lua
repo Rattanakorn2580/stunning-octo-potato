@@ -30,6 +30,10 @@ end
 end 
 end)
 
+Section:NewButton("Refresh","Refresh", function()
+  drop:Refresh(Weaponlist)
+end)
+
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
 local Section = Tab:NewSection("TP Island")
@@ -122,6 +126,6 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewButton("Refresh Dropdown","Refresh Dropdown", function()
+Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
 end)
