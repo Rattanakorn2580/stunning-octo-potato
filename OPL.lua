@@ -3,23 +3,8 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")                       
-Section:NewToggle("Auto FastAttack", " ", function("Fast Attack", _G.FastAttack, function(value)
-_G.FastAttack = value
-end)
-
-spawn(function()
-   game:GetService("RunService").RenderStepped:Connect(function()
-    pcall(function()
-        if _G.FastAttack then
-            local Yoru = require(game:GetService("Players").LocalPlayer.PlayerScripts.YoruFramework)
-            local Cemara = require(game:GetService("Players").LocalPlayer.PlayerScripts.YoruFramework.CameraShaker)
-            Cemara.CameraShakeInstance.CameraShakeState = {FadingIn = 3, FadingOut = 2, Sustained = 0, Inactive = 1}
-            Yoru.activeController.timeToNextAttack = 0
-            Yoru.activeController.hitboxMagnitude = 10
-            Yoru.activeController.increment = 3
-        end
-    end)
-end) 
+Section:NewToggle("Auto FastAttack", " ", function(state)
+        AutoClicked = state
 end)
 
 spawn(function()
