@@ -2,23 +2,7 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
-local Tab = Window:NewTab("Auto Farm")                       
-Section:NewToggle("Auto FastAttack", " ", function(a)
-        AutoClicked = a
-end)
-
-spawn(function()
-   game:GetService("RunService").RenderStepped:Connect(function()
-    pcall(function()
-while wait() do
-        if AutoClicked then
-            game:GetService'VirtualUser':CaptureController()
-            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-end
-end)
-end) 
-end)
-        
+local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Equip") 
 
 local Weaponlist = {} 
