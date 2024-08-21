@@ -25,12 +25,6 @@ tab:Dropdown("Select Weapon", {""}, Weaponlist, function(currentOption)
 tab:Toggle("Auto Equip", "", function(a)
     Auto Equiped = a
 end)
-spawn(function()
-while wait() do
-if AutoEquiped then
-pcall(functoin())
-game.Players.LocalPlayer.Charecter.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon()
-end)
        
 tab:Button("Auto Haki", "Auto Farm Haki", function()
     Flux:Notification("Coming Soon!!!", "Alright")
