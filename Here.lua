@@ -3,7 +3,7 @@ local win = Flux:Window("Here Hub", "!! อยู่ในช่วงพัฒ�
 
 -- TAB NEW UPDATE
 local tab = win:Tab("UPDATE", "http://www.roblox.com/asset/?id=6023426915")
-tab:Button("No Update", "...", function()
+tab:Button("UPDATE Function Player", "...", function()
     end)
 
 -- TAB AUTO FARM
@@ -91,14 +91,24 @@ tab:Toggle("Crescent Island", "Tp to Crescent Island", function()
     end)
 
 -- PLAYER
-local tab = win:Tab("Player Soon!!!", "http://www.roblox.com/asset/?id=6023426915")
-tab:Toggle("View Plaher", "Camera on Player", function()  
+local tab = win:Tab("Player", "http://www.roblox.com/asset/?id=6023426915")
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+tab:Dropdown("Select Player", {""}, Plr, function(t)
+        PlayerTP = t
     end)
+
 tab:Button("Click to Tp", "Tp to Player", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
     end)
-tab:Dropdown("Select Player", {""}, Playerlist, function()
-    end)
+tab:Toggle("Auto Tp", "", function(t)
+_G.TPPlayer = t
+while _G.TPPlayer do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end
+end)
 
 tab:Button("ESP", "Text Name Player", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/zV20f3Bk"))()
