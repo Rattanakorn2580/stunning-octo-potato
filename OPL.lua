@@ -30,6 +30,56 @@ end
 end 
 end)
 
+-- TP ISLAND
+local Tab = Window:NewTab("TP Island")                       
+local Section = Tab:NewSection("TP Island")
+
+Section:NewButton("Boss", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Crab", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Cave", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Windbill", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Gassy", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Krizma", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Flail", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Castle", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Pyramid", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Fishing", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("FishSell", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Mountain", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Snow Mountain", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Snow", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+Section:NewButton("Kai", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end)
+
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
