@@ -137,7 +137,6 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
-
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
@@ -162,7 +161,7 @@ Section:NewToggle("View Player", "Not Working", function()
 end)
 
 Section:NewToggle("Auto Respawn", "Not Working", function()
-    end)
+end)
 
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
@@ -170,7 +169,7 @@ end)
 
 Section:NewButton("ESP","", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
-    end)
+end)
 
 -- SEVER
 local Tab = Window:NewTab("Sever")
