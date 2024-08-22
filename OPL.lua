@@ -169,7 +169,6 @@ wait(1)
 chest2()
  
 end)
-end)
 
 Section:NewToggle("Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
