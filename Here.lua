@@ -4,6 +4,6 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 -- AUTO FIND
 local Tab = Window:NewTab("Auto Find")
 local Section = Tab:NewSection("Auto Find")
-Section:NewButton("Refresh Dropdown","Refresh Dropdown", function()
-  drop:Refresh(Plr)
-end)
+Section:NewToggle("Auto Equip", " ", function(a) 
+        AutoEquiped = a
+  end)
