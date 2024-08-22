@@ -133,6 +133,39 @@ end)
 end 
 end 
 end)
+local Section = Tab:NewSection("Bring")
+Section:NewToggle("Bring Devil Fruit", " ", function(a) 
+        AutoBringFruity = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBringFruity then 
+pcall(function()
+end) 
+end 
+end 
+end)
+Section:NewToggle("Bring Compass", " ", function(a) 
+        AutoBringCompass = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBringCompass then 
+pcall(function() 
+end) 
+end 
+end 
+end)
+local Section = Tab:NewSection("Drink")
+Drink = {}
+fot i,v in pairs(game:GetService("Merchant")GetChildren()) do
+    table.insert(Drink,v.Name)
+end
+local drop = Section:NewDropdown("Select Drink", "Click To Select", Drink, function(t)
+   Drink = t
+end)
 
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
@@ -158,19 +191,10 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewToggle("View Player", " ", function(t)
-_G.ViewPlayer = t
-local Players = game:GetService("Players") 
-local localPlayer = Players.LocalPlayer
-        if workspace.CurrentCamera and localPlayer.Character then 		
-local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid") 		
-        if humanoid then 			
-    workspace.CurrentCamera.CameraSubject = humanoid 		
-end 	
-end
+Section:NewToggle("View Player", "Not Working", function()
 end)
 
-Section:NewToggle("Auto Respawn", " ", function()
+Section:NewToggle("Auto Respawn", "Not Working", function()
     end)
 
 Section:NewButton("Refresh","", function()
