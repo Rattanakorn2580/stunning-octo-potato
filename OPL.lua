@@ -45,8 +45,12 @@ end
 end 
 end)
 
-Section:NewButton("Refresh","Refresh", function()
-  drop:Refresh(Weaponlist)
+local Section = Tab:NewSection("Auto Magma")
+Section:NewToggle("Auto Equip", " ", function(t) 
+_G.TpFarm = t
+while _G.TpFarm do wait()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-949, 213.5, 1655, 1, 0, 0, 0, 1, 0, 0, 0, 1))
+end
 end)
 
 -- TP ISLAND
