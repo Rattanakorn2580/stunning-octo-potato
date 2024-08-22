@@ -136,7 +136,7 @@ end)
 
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
-    end)
+	end)
 
 Section:NewToggle("Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
