@@ -173,6 +173,7 @@ for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui
 end)
 
 Section:NewButton("ESP","", function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
 end)
 
 Section:NewButton("Refresh","", function()
