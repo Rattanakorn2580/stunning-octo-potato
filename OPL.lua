@@ -177,7 +177,8 @@ end)
 Section:NewToggle("Auto Tp", "", function(t)
 _G.TPPlayer = t
 while _G.TPPlayer do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame * 
+CFrame.New(0,-5,0)
 end
 end)
 
