@@ -161,9 +161,6 @@ end)
 end 
 end 
 end)
-local Section = Tab:NewSection("Drink")
-local drop = Section:NewDropdown("Select Drink", "Click To Select", function()
-end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
