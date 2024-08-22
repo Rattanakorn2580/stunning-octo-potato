@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Opl X", "DarkTheme", Enum.KeyCode.F)
+local Window = Library.CreateLib("Opl X", "DarkTheme, Enum.KeyCode.F)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
