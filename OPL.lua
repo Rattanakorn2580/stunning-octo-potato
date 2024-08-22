@@ -45,8 +45,8 @@ end
 end 
 end)
 
-local Section = Tab:NewSection("Auto Magma")
-Section:NewToggle("Auto Equip", " ", function(t) 
+local Section = Tab:NewSection("Auto Farm")
+Section:NewToggle("Auto Magu Farm", " ", function(t) 
 _G.TpFarm = t
 while _G.TpFarm do wait()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-949, 213.5, 1655, 1, 0, 0, 0, 1, 0, 0, 0, 1))
@@ -177,8 +177,7 @@ end)
 Section:NewToggle("Auto Tp", "", function(t)
 _G.TPPlayer = t
 while _G.TPPlayer do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame * 
-CFrame.New(0,-5,0)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end
 end)
 
