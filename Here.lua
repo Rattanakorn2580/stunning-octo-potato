@@ -12,7 +12,7 @@ pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 end
 Section:NewToggle("Auto Farm", " ", function(t)
     _G.EnemiesHit = t
-    end
+    end)
         
 spawn(function()
 while _G.EnemieHit wait() do
