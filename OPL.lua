@@ -163,12 +163,13 @@ Section:NewToggle("Auto Respawn", " ", function(a)
     end)
 
 spawn(function() 
-while wait() do 
-if AutoRespawn then 
-pcall(function()
-end) 
-end 
-end 
+local plr = game.Players.LocalPlayer
+repeat task.wait()
+until plr.PlayerGui.Load.Frame.Visible
+if plr.PlayerGui.Load.Frame.Visible == true then
+for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+       v:Fire()
+   end
 end)
 
 Section:NewButton("ESP","", function()
