@@ -4,7 +4,7 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 -- AUTO FIND
 local Tab = Window:NewTab("Auto Find")
 local Section = Tab:NewSection("Auto Find")
-Section:NewButton("ESP","", function()
+Section:NewToggle("ESP","", function()
 local plr=game:GetService'Players'.LocalPlayer
 	local dftofind='Compass'
 	while true do
