@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Opl X", "DarkTheme, Enum.KeyCode.F)
+local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
@@ -175,7 +175,4 @@ local Section = Tab:NewSection("Sever")
 Section:NewButton("Rejoin","", function()
   game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
-end)
-Section:NewKeybind("Keybind F", "", Enum.KeyCode.F, function()
-        Enum.KeyCode.F
 end)
