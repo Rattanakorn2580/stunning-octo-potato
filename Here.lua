@@ -5,10 +5,9 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
+local EnemiesHit = nil
 for i,v in 
 pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-      v.HumanoidRootPart.Size = Vector3.new(35, 35, 35) 
-      v.HumanoidRootPart.Transparency = 0.5 
 end
 Section:NewToggle("Auto Farm", " ", function(t)
     _G.EnemiesHit = t
