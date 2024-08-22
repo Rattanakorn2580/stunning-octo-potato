@@ -5,6 +5,7 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 local Tab = Window:NewTab("Auto Find")
 local Section = Tab:NewSection("Auto Find")
 
+local Compass = nil
 for i,v in pairs (game:GetService("Workspace").Compass.Handle.Bit:GetDescendants()) 
 if v.Name "Compass" then
 
