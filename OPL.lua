@@ -133,6 +133,9 @@ end)
 end 
 end 
 end)
+Section:NewButton("Dupe","", function()
+  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+end)
 local Section = Tab:NewSection("Bring")
 Section:NewToggle("Bring Devil Fruit", " ", function(a) 
         AutoBringFruity = a 
@@ -142,7 +145,6 @@ spawn(function()
 while wait() do 
 if AutoBringFruity then 
 pcall(function()
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+")
 end) 
 end 
 end 
@@ -161,10 +163,6 @@ end
 end)
 local Section = Tab:NewSection("Drink")
 local drop = Section:NewDropdown("Select Drink", "Click To Select", function()
-end)
-
-Section:NewButton("Dupe","", function()
-  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 end)
 
 -- PLAYER
