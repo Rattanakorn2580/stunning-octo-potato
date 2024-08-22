@@ -10,7 +10,8 @@ Section:NewToggle("Auto Farm", " ", function(t)
 pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
       v.HumanoidRootPart.Size = Vector3.new(35, 35, 35) 
       v.HumanoidRootPart.Transparency = 0.5 
-
+        end
+        
 spawn(function()
 while _G.EnemieHit wait() do
 if EnemiesHit then
