@@ -158,9 +158,8 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewToggle("View Player", " ", function(a) 
-        Plr  = a
-    end)
+Section:NewToggle("View Player", " ", function(t)
+_G.ViewPlayer = t
 local Players = game:GetService("Players") 
 local localPlayer = Players.LocalPlayer
         if workspace.CurrentCamera and localPlayer.Character then 		
@@ -169,7 +168,7 @@ local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid")
     workspace.CurrentCamera.CameraSubject = humanoid 		
 end 	
 end
-end
+end)
 
 Section:NewToggle("Auto Respawn", " ", function()
     end)
