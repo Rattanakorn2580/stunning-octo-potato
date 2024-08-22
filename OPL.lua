@@ -158,6 +158,19 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
+Section:NewToggle("View Player", " ", function(a) 
+        Plr  = a
+    end)
+local Players = game:GetService("Players") 
+local localPlayer = Players.LocalPlayer -- unview is provided on devhub i believe local function unview() 	
+        if workspace.CurrentCamera and localPlayer.Character then 		
+local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid") 		
+        if humanoid then 			
+    workspace.CurrentCamera.CameraSubject = humanoid 		
+end 	
+end
+end
+
 Section:NewToggle("Auto Respawn", " ", function()
     end)
 
