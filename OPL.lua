@@ -133,34 +133,10 @@ end)
 end 
 end 
 end)
+
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
-end)
-local Section = Tab:NewSection("Bring")
-Section:NewToggle("Bring Devil Fruit", " ", function(a) 
-        AutoBringFruity = a 
     end)
-
-spawn(function() 
-while wait() do 
-if AutoBringFruity then 
-pcall(function()
-end) 
-end 
-end 
-end)
-Section:NewToggle("Bring Compass", " ", function(a) 
-        AutoBringCompass = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoBringCompass then 
-pcall(function() 
-end) 
-end 
-end 
-end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
