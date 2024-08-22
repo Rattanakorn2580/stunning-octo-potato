@@ -177,4 +177,5 @@ Section:NewButton("Rejoin","", function()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
 Section:NewKeybind("Keybind F", "", Enum.KeyCode.F, function()
+        Enum.KeyCode.F
 end)
