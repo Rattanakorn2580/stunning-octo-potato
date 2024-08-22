@@ -147,6 +147,22 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
+Section:NewToggle("Auto Respawn", " ", function(a) 
+        AutoRespawn = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoRespawn then 
+pcall(function()
+end) 
+end 
+end 
+end)
+
+Section:NewButton("ESP","", function()
+end)
+
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
 end)
