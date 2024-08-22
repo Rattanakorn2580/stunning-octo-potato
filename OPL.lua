@@ -120,9 +120,20 @@ end)
 -- NPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Sam Quest")
-Section:NewButton("Claim Compass","", function()
-  workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10")
+Section:NewToggle("Auto Claim10", " ", function(a) 
+        AutoClaim = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoClaim then 
+pcall(function() 
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+end) 
+end 
+end 
 end)
+
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 end)
