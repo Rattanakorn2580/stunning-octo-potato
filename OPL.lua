@@ -142,6 +142,7 @@ spawn(function()
 while wait() do 
 if AutoBringFruity then 
 pcall(function()
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+")
 end) 
 end 
 end 
@@ -159,12 +160,7 @@ end
 end 
 end)
 local Section = Tab:NewSection("Drink")
-Drink = {}
-fot i,v in pairs(game:GetService("Merchant")GetChildren()) do
-    table.insert(Drink,v.Name)
-end
-local drop = Section:NewDropdown("Select Drink", "Click To Select", Drink, function(t)
-   Drink = t
+local drop = Section:NewDropdown("Select Drink", "Click To Select", function()
 end)
 
 Section:NewButton("Dupe","", function()
