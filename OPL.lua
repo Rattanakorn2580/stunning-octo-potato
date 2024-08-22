@@ -185,17 +185,8 @@ end)
 Section:NewToggle("View Player", "Not Working", function()
 end)
 
-Section:NewToggle("Auto Respawn", "Not Working", function(t)
-        Plr = t
-local plr = game.Players.LocalPlayer
-repeat task.wait()
-until plr.PlayerGui.Load.Frame.Visible
-if plr.PlayerGui.Load.Frame.Visible == true then
-for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-       v:Fire()
-   end
-end)
-        
+Section:NewToggle("Auto Respawn", "Not Working", function()
+    end)
 
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
