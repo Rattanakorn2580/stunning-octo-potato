@@ -5,4 +5,8 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Player")
 Section:NewToggle("God Mode", " ", function()
-  end)
+    for i,v in 
+pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+      v.HumanoidRootPart.Size = Vector3.new(35, 35, 35) 
+      v.HumanoidRootPart.Transparency = 0.5 
+    end)
