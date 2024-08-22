@@ -158,28 +158,9 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-local plr = game.Players.LocalPlayer
-
-for i,v in 
-pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-       v:Fire()
-   end)
-
 Section:NewToggle("Auto Respawn", " ", function(a) 
         AutoRespawn = a 
     end)
-
-spawn(function() 
-while wait() do
-until plr.PlayerGui.Load.Frame.Visible
-if plr.PlayerGui.Load.Frame.Visible == true then
-pcall(function()
-game.Players.LocalPlayer
-end) 
-end 
-end 
-end)
-
 
 Section:NewButton("ESP","", function()
 loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
