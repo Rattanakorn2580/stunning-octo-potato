@@ -158,16 +158,15 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewToggle("Auto Respawn", " ", function(a) 
-        AutoRespawn = a 
+Section:NewToggle("Auto Respawn", " ", function()
     end)
-
-Section:NewButton("ESP","", function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
-end)
 
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
+end)
+
+Section:NewButton("ESP","", function()
+loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
 end)
 
 -- SEVER
