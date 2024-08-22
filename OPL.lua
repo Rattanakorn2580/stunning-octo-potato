@@ -137,6 +137,9 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
+
+Section:NewToggle("Bring Fruit", " ", function()
+end)
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
