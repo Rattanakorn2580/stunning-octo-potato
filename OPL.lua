@@ -162,7 +162,7 @@ Section:NewToggle("View Player", " ", function(a)
         Plr  = a
     end)
 local Players = game:GetService("Players") 
-local localPlayer = Players.LocalPlayer -- unview is provided on devhub i believe local function unview() 	
+local localPlayer = Players.LocalPlayer
         if workspace.CurrentCamera and localPlayer.Character then 		
 local humanoid = localPlayer.Character:FindFirstChildOfClass("Humanoid") 		
         if humanoid then 			
