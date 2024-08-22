@@ -4,6 +4,3 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 -- AUTO FIND
 local Tab = Window:NewTab("Auto Find")
 local Section = Tab:NewSection("Auto Find")
-
-Section:NewToggle("Auto Find", " ", function()
-    end)
