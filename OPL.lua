@@ -137,38 +137,6 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
     end)
-Section:NewButton("Tp Chest","", function()
-  function chest1()
-for i,v in pairs(game.Workspace:GetDescendants()) do
-    if v.Name == "ChestSpawner" then
-    for i,v in pairs(v:GetDescendants()) do
-    if v.Name == "TreasureChestPart" then
-    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    end
-end
-end
-end
-end
-function chest2()
-for i,v in pairs(game.Workspace:GetDescendants()) do
-    if v.Name == "Floor1" or v.Name == "Floor2" or v.Name == "Floor3" or v.Name == "Floor4" or v.Name == "Floor5" or v.Name == "Floor6" or v.Name == "Floor7" or v.Name == "Floor8" then
-    for i,v in pairs(v:GetDescendants()) do
-    if v.Name == "TreasureChest" then
-    for i,v in pairs(v:GetChildren()) do
-    if v.Name == "TreasureChestPart" then
-    v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-    end
-end
-end
-end
-end
-end
-end
-chest1() 
-wait(1)
-chest2()
- 
-end)
 
 Section:NewToggle("Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
