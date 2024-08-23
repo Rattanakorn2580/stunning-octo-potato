@@ -177,6 +177,7 @@ end)
 end 
 end 
 end)
+
 Section:NewToggle("Cider+", " ", function(a) 
         AutoBuy = a 
     end)
@@ -190,6 +191,7 @@ end)
 end 
 end 
 end)
+
 Section:NewToggle("Lemonade+", " ", function(a) 
         AutoBuy = a 
     end)
@@ -203,6 +205,7 @@ end)
 end 
 end 
 end)
+
 Section:NewToggle("Juice+", " ", function(a) 
         AutoBuy = a 
     end)
