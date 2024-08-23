@@ -57,6 +57,42 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-949, 213.5, 1655, 1, 0, 0
 end
 end)
 
+local Section = Tab:NewSection("Auto Sam")
+Section:NewToggle("Auto Claim10", " ", function(a) 
+        AutoClaim = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoClaim then 
+pcall(function() 
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+end) 
+end 
+end 
+end)
+Section:NewButton("Dupe","", function()
+  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+	end)
+Section:NewToggle("Bring Compass", " ", function()
+local plr=game:GetService'Players'.LocalPlayer 
+
+	local dftofind='Compass'
+	while true do 
+	local char=plr.Character or plr.CharacterAdded:Wait() 
+	local HRP=char:WaitForChild'HumanoidRootPart' 
+	for i,v in next, workspace:GetChildren() do 
+	local Handle=v:FindFirstChild'Handle' 
+	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
+	Handle.CFrame=HRP.CFrame 
+	end 
+	end 
+	wait(1) 
+	end 
+
+
+end)
+
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
 local Section = Tab:NewSection("TP Island")
@@ -127,42 +163,19 @@ end)
 
 -- NPC
 local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("Sam Quest")
-Section:NewToggle("Auto Claim10", " ", function(a) 
-        AutoClaim = a 
+local Section = Tab:NewSection("Auto Buy Drink")
+Section:NewToggle("Smoothie+", " ", function(a) 
+        AutoBuy = a 
     end)
 
 spawn(function() 
 while wait() do 
-if AutoClaim then 
+if AutoBuy then 
 pcall(function() 
-workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Smoothie+") 
 end) 
 end 
 end 
-end)
-
-Section:NewButton("Dupe","", function()
-  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
-	end)
-
-Section:NewToggle("Bring Compass", " ", function()
-local plr=game:GetService'Players'.LocalPlayer 
-
-	local dftofind='Compass'
-	while true do 
-	local char=plr.Character or plr.CharacterAdded:Wait() 
-	local HRP=char:WaitForChild'HumanoidRootPart' 
-	for i,v in next, workspace:GetChildren() do 
-	local Handle=v:FindFirstChild'Handle' 
-	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
-	Handle.CFrame=HRP.CFrame 
-	end 
-	end 
-	wait(1) 
-	end 
-
-
 end)
 
 -- PLAYER
