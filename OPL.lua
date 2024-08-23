@@ -161,6 +161,65 @@ Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
+-- NPC
+local Tab = Window:NewTab("NPC")
+local Section = Tab:NewSection("Auto Buy Drink")
+Section:NewToggle("Smoothie+", " ", function(a) 
+        AutoBuySmoothie = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuySmoothie then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Smoothie+") 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Cider+", " ", function(a) 
+        AutoBuyCider = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuyCider then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+") 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Lemonade+", " ", function(a) 
+        AutoBuyLemonade = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuyLemonade then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Lemonade+") 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Juice+", " ", function(a) 
+        AutoBuyJuice = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuyJuice then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Juice+") 
+end) 
+end 
+end 
+end)
+
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
