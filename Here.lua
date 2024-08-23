@@ -4,6 +4,7 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("Auto Farm","Refresh Dropdown", function()
+    end)
 _G.bringmob = true
 while _G.bringmob do wait()
     pcall(function()
@@ -24,9 +25,9 @@ if v.Name == "Lv9 Bandit" then
    if sethiddenproperty then
      sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 end
-end)
 end
 end
 end
 end
 end)
+end
