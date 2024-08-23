@@ -4,7 +4,8 @@ local Window = Library.CreateLib("Test X", "DarkTheme")
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
 
-Section:NewToggle("Bring Fruit", " ", function(t) 
+Section:NewToggle("Bring Fruit", " ", function(t)
+    end)
 while wait() do
     local t = {}
     local plr = game:service'Players'.LocalPlayer
@@ -104,4 +105,3 @@ while wait() do
         end)
     end
 end
-    end)
