@@ -224,9 +224,11 @@ local Section = Tab:NewSection("Sword Buy")
 Section:NewButton("Sword","", function()
   workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer()
 end)
+
 Section:NewButton("Flail","", function()
   workspace.Merchants.FlailMerchant.Clickable.Retum:FireServer()
 end)
+
 Section:NewButton("Krizma","", function()
   workspace.Merchants.KrizmaMerchant.Clickable.Retum:FireServer()
 end)
