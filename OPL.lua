@@ -87,7 +87,7 @@ local plr=game:GetService'Players'.LocalPlayer
 	Handle.CFrame=HRP.CFrame 
 	end 
 	end 
-	wait(0.1) 
+	wait(1) 
 	end 
 
 
