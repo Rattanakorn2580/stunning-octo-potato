@@ -87,7 +87,7 @@ local plr=game:GetService'Players'.LocalPlayer
 	Handle.CFrame=HRP.CFrame 
 	end 
 	end 
-	wait(1) 
+	wait(0.1) 
 	end 
 
 
@@ -165,7 +165,7 @@ end)
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Auto Buy Drink")
 Section:NewToggle("Smoothie+", " ", function(a) 
-        AutoBuy = a 
+        AutoBuySmoothie+ = a 
     end)
 
 spawn(function() 
@@ -179,7 +179,7 @@ end
 end)
 
 Section:NewToggle("Cider+", " ", function(a) 
-        AutoBuy = a 
+        AutoBuyCider+ = a 
     end)
 
 spawn(function() 
@@ -193,7 +193,7 @@ end
 end)
 
 Section:NewToggle("Lemonade+", " ", function(a) 
-        AutoBuy = a 
+        AutoBuyLemonade+ = a 
     end)
 
 spawn(function() 
@@ -207,7 +207,7 @@ end
 end)
 
 Section:NewToggle("Juice+", " ", function(a) 
-        AutoBuy = a 
+        AutoBuyJuice+ = a 
     end)
 
 spawn(function() 
@@ -218,6 +218,17 @@ workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Juice+")
 end) 
 end 
 end 
+end)
+
+local Section = Tab:NewSection("Sword Buy")
+Section:NewButton("Sword","", function()
+  workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer()
+end)
+Section:NewButton("Flail","", function()
+  workspace.Merchants.FlailMerchant.Clickable.Retum:FireServer()
+end)
+Section:NewButton("Krizma","", function()
+  workspace.Merchants.KrizmaMerchant.Clickable.Retum:FireServer()
 end)
 
 -- PLAYER
