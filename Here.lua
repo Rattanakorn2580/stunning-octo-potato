@@ -24,9 +24,9 @@ if v.Name == "Lv9 Bandit" then
    if sethiddenproperty then
      sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 end
-end
-end
-end
-end
 end)
+end
+end
+end
+end
 end)
