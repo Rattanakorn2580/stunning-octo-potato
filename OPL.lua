@@ -1,6 +1,10 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Opl X", "DarkTheme")
 
+-- UPDATE
+local Tab = Window:NewTab("Update")
+local Section = Tab:NewSection("เปลี่ยนเมนูใหม่ทั้งหมด")
+
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Equip") 
