@@ -1,22 +1,32 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Test X", "DarkTheme")
 
--- PLAYER
-local Tab = Window:NewTab("Player")
-local Section = Tab:NewSection("Select Player!")
-Plr = {}
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    table.insert(Plr,v.Name) 
+local Tab = Window:NewTab("Auto Farm")
+local Section = Tab:NewSection("Auto Farm")
+Section:NewButton("Auto Farm","Refresh Dropdown", function()
+_G.bringmob = true
+while _G.bringmob do wait()
+    pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+for x,y in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+if v.Name == "Lv9 Bandit" then
+    if y.Name == "Lv9 Bandit" then
+   v.HumanoidRootPart.CFrame = y.HumanoidRootPart.CFrame
+   v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+   y.HumanoidRootPart.Size = Vector3.new(60,60,60)
+   v.HumanoidRootPart.Transparency = 1
+   v.HumanoidRootPart.CanCollide = false
+   y.HumanoidRootPart.CanCollide = false
+   v.Humanoid.WalkSpeed = 0
+   y.Humanoid.WalkSpeed = 0
+   v.Humanoid.JumpPower = 0
+   y.Humanoid.JumpPower = 0
+   if sethiddenproperty then
+     sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
 end
-local drop = Section:NewDropdown("Select Player!", "Click To Select", Plr, function(t)
-   PlayerTP = t
-end)
-Section:NewButton("Click Tp", "", function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
-end)
-Section:NewToggle("Auto Tp", "", function(t)
-_G.ViewPlayer = t
-while _G.ViewPlayer do wait()
-game.Camera.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Camera.Players[PlayerView].Character.HumanoidRootPart.CFrame
 end
+end
+end
+end
+end)
 end)
