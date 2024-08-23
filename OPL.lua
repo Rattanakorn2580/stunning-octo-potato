@@ -240,12 +240,6 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewToggle("View Player", "Not Working", function()
-end)
-
-Section:NewToggle("Auto Respawn", "Not Working", function()
-end)
-
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
 end)
