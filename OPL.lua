@@ -165,7 +165,7 @@ end)
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Auto Buy Drink")
 Section:NewToggle("Smoothie+", " ", function(a) 
-        AutoBuySmoothie+ = a 
+        AutoBuySmoothie = a 
     end)
 
 spawn(function() 
@@ -179,7 +179,7 @@ end
 end)
 
 Section:NewToggle("Cider+", " ", function(a) 
-        AutoBuyCider+ = a 
+        AutoBuyCider = a 
     end)
 
 spawn(function() 
@@ -193,7 +193,7 @@ end
 end)
 
 Section:NewToggle("Lemonade+", " ", function(a) 
-        AutoBuyLemonade+ = a 
+        AutoBuyLemonade = a 
     end)
 
 spawn(function() 
@@ -207,7 +207,7 @@ end
 end)
 
 Section:NewToggle("Juice+", " ", function(a) 
-        AutoBuyJuice+ = a 
+        AutoBuyJuice = a 
     end)
 
 spawn(function() 
