@@ -170,7 +170,7 @@ Section:NewToggle("Smoothie+", " ", function(a)
 
 spawn(function() 
 while wait() do 
-if AutoBuy then 
+if AutoBuySmoothie then 
 pcall(function() 
 workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Smoothie+") 
 end) 
@@ -184,7 +184,7 @@ Section:NewToggle("Cider+", " ", function(a)
 
 spawn(function() 
 while wait() do 
-if AutoBuy then 
+if AutoBuyCider then 
 pcall(function() 
 workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+") 
 end) 
@@ -198,7 +198,7 @@ Section:NewToggle("Lemonade+", " ", function(a)
 
 spawn(function() 
 while wait() do 
-if AutoBuy then 
+if AutoBuyLemonade then 
 pcall(function() 
 workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Lemonade+") 
 end) 
@@ -212,7 +212,7 @@ Section:NewToggle("Juice+", " ", function(a)
 
 spawn(function() 
 while wait() do 
-if AutoBuy then 
+if AutoBuyJuice then 
 pcall(function() 
 workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Juice+") 
 end) 
