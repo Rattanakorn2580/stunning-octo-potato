@@ -3,8 +3,8 @@ local Window = Library.CreateLib("Winnable Hub", "DarkTheme")
 
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Felix | ComeBxck")
-Section:NewToggle("Auto-Farm", "", function(state)
-    _G.AutoFarm = state
+Section:NewToggle("Auto Farm", "", function(a)
+    _G.AutoFarm = a
     while _G.AutoFarm do wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Monster.Mon[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 end
