@@ -177,6 +177,45 @@ end)
 end 
 end 
 end)
+Section:NewToggle("Cider+", " ", function(a) 
+        AutoBuy = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuy then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+") 
+end) 
+end 
+end 
+end)
+Section:NewToggle("Lemonade+", " ", function(a) 
+        AutoBuy = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuy then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Lemonade+") 
+end) 
+end 
+end 
+end)
+Section:NewToggle("Juice+", " ", function(a) 
+        AutoBuy = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoBuy then 
+pcall(function() 
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Juice+") 
+end) 
+end 
+end 
+end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
