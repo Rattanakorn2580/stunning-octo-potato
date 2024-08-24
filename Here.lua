@@ -15,13 +15,13 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
 end
 end)
  
-Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+Section:NewDropdown("Please Select Monster", "", MOBS, function(currentOption)
     Select = currentOption
 end)
  
 Section:NewButton("Refresh", "", function()
-    table.clear(MONS)
-for i,v in pairs(game:GetService("Workspace").Enemies.Mon:GetChildren()) do
-    table.insert(MONS,v.Name)
+    table.clear(MOBS)
+for i,v in pairs(game:GetService("Workspace").Enemies.Mob:GetChildren()) do
+    table.insert(MOBS,v.Name)
 end
 end)
