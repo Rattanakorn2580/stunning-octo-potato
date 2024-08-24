@@ -4,14 +4,10 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
-Section:NewToggle("Auto Magma", " ", function(a) 
-        AutoMagma = a 
+Section:NewToggle("Auto Magma", " ", function()
     end)
 
-spawn(function()
 while wait() do
-if AutoMagma then
-pcall(function()
 local A_1 = 899012.68
 local A_2 = "MagmaPower1"
 local A_3 = "StopCharging"
@@ -20,5 +16,5 @@ local A_5 = game:GetService("Workspace").IslandCaver.Stones.Stone
 local A_6 = 100
 local Event = game:GetService("Workspace")["ICU_XxWhiteknightxX"].Powers.Magma.RemoteEvent
 Event:FireServer(A_1, A_2, A_3, A_4, A_5, A_6)
-                                        end)
+end
 
