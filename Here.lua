@@ -6,7 +6,7 @@ local Section = Tab:NewSection("Felix | ComeBxck")
 Section:NewToggle("Auto Farm", "", function(a)
     _G.AutoFarm = a
     while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Monster.Mon[Select].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Monster.Mon[Select].HumanoidRootPart.CFrame
 end
 end)
  
