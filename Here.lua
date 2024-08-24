@@ -5,13 +5,13 @@ local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Felix | ComeBxck")
 MONS = {}
  
-for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").Enemies.Mon:GetChildren()) do
     table.insert(MONS,v.Name)
 end
 Section:NewToggle("Auto Farm", "", function(a)
     _G.AutoFarm = a
     while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[Select].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.Mon[Select].HumanoidRootPart.CFrame
 end
 end)
  
@@ -21,7 +21,7 @@ end)
  
 Section:NewButton("Refresh", "", function()
     table.clear(MONS)
-for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace").Enemies.Mon:GetChildren()) do
     table.insert(MONS,v.Name)
 end
 end)
