@@ -3,15 +3,15 @@ local Window = Library.CreateLib("Winnable Hub", "DarkTheme")
 
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Felix | ComeBxck")
-MONS = {}
+MOBS = {}
  
-for i,v in pairs(game:GetService("Workspace").Enemies.Mon:GetChildren()) do
-    table.insert(MONS,v.Name)
+for i,v in pairs(game:GetService("Workspace").Enemies.Mob:GetChildren()) do
+    table.insert(MOBS,v.Name)
 end
 Section:NewToggle("Auto Farm", "", function(a)
     _G.AutoFarm = a
     while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.Mon[Select].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.Mob[Select].HumanoidRootPart.CFrame
 end
 end)
  
