@@ -11,7 +11,7 @@ end
 Section:NewToggle("Auto Farm", "", function(a)
     _G.AutoFarm = a
     while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.[Select].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[Select].HumanoidRootPart.CFrame
 end
 end)
  
