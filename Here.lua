@@ -14,11 +14,11 @@ end
 Section:NewToggle("Auto-Farm", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Select Monster"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * new.CFrame(0,0,5)= game:GetService("Workspace").Enemies["Select Monster"].HumanoidRootPart.CFrame
 end
 end)
 
-Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+Section:NewDropdown("Select Monster", "", MONS, function(currentOption)
     Select = currentOption
 end)
  
@@ -26,5 +26,5 @@ Section:NewButton("Refresh", "", function()
     table.clear(MONS)
 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
     table.insert(MONS,v.Name)
-end
+  end
 end)
