@@ -5,12 +5,6 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
 
-MONS = {}
- 
-for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-    table.insert(MONS,v.Name)
-end
- 
 Section:NewToggle("Auto-Farm", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait()
