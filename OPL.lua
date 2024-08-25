@@ -3,7 +3,7 @@ local Window = Library.CreateLib("Opl X", "BloodTheme")
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("เพิ่มออโต้ฟามเข้ามาใหม่ | ยังไม่สมบูรณ์")
+local Section = Tab:NewSection("แก้บัคออโต้ฟาม | ยังไม่สมบูรณ์")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
@@ -53,8 +53,6 @@ local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("List AutoFarm Mob","", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Here.lua"))()
 end)
-Section:NewToggle("Auto Farm", " ", function()
-	end)
 
 local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
