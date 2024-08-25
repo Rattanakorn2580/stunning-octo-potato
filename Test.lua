@@ -11,5 +11,4 @@ Section:NewToggle("Lv2 Angry Bob", "", function(v)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
 until v.Humanoid.Health <= 0 then
 end
-end)
-end                
+end)       
