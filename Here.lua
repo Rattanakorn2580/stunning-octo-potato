@@ -7,14 +7,14 @@ local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Lv2 Angry Bob", "", function(state)
     _G.AutoFarm = state
-    while _G.AutoFarm do wait()
+    while _G.AutoFarm do wait(2)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
 end
     end)
 
 Section:NewToggle("Lv1 Crab", "", function(state)
     _G.AutoFarm = state
-    while _G.AutoFarm do wait()
+    while _G.AutoFarm do wait(2)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame
 end
     end)
