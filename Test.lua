@@ -23,7 +23,7 @@ local Section = Tab:NewSection("Select Auto Mob Farm")
 
 -- auto farm
 local Main = Window:NewTab("Main")
-local MobFarmSection = NewSection("Mob Farm")
+local Section = NewSection("Mob Farm")
 
 local dropdown = Section:NewDropdown("Choose Mob", "Chooses the mob to autofarm", enemies, function(v)
     getgenv().enemies = v
