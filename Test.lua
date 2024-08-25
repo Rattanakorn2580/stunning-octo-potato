@@ -21,10 +21,58 @@ local Window = Library.CreateLib("List Mob", "BloodTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Select Auto Mob Farm")
 
-Section:NewToggle("Lv2 Angry Bob", "", function(state)
-    _G.AutoFarm = state
-    while _G.AutoFarm do wait(1)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = 
-game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(78.3136978, 225.999542, -249.492081, 0.584371388, 0, 0.811486363, 0, 1, 0, -0.811486363, 0, 0.584371388)
-end
-    end)
+-- auto farm
+local Main = Window:NewTab("Main")
+local MobFarmSection = Main:NewSection("Mob Farm")
+
+local mobdropdown = MobFarmSection:NewDropdown("Choose Mob", "Chooses the mob to autofarm", mobs, function(v)
+    getgenv().mob = v
+end)
+
+MobFarmSection:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs", function(v)
+    getgenv().autofarmmobs = v
+    while wait() do
+        if getgenv().autofarmmobs == false then return end 
+        if getgenv().mob == nil then 
+            game.StarterGui:SetCore("SendNotification", {
+                Title = "!! FAIL !!", 
+                Text = "Please choose your MOBS",
+                Icon = "",
+                Duration = 2.5
+            })
+            getgenv().autofarmmobs = false
+            return
+        end
+        local mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob)
+        if mob == nil then
+            game.StarterGui:SetCore("SendNotification", { 
+                Title = "Info!",
+                Text = "There is currently no spawned mobs of this type!\nJust wait until they spawn", 
+                Icon = "", 
+                Duration = 2.5
+            })
+            while wait() do 
+                wait() 
+                if getgenv().autofarmmobs == false then return end 
+                if game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) ~= nil then break; end
+            end 
+        else
+            local mob2 = mob
+            while wait() do
+                mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob)
+                if mob ~= mob2 then break; end
+                if getgenv().autofarmmobs == false then return end
+                if mob ~= nil then
+                    if mob:FindFirstChild("Humanoid") then
+                        if mob.Humanoid.Health == 0 then wait(0.1) mob:Destroy() break; end 
+                    end
+                    if mob:FindFirstChild("HumanoidRootPart") then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0,0,2) 
+                    end
+                end
+                wait() 
+            end
+        end
+    end
+end)
+
