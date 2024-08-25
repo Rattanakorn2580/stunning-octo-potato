@@ -2,9 +2,9 @@ local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Opl X", "BloodTheme")
 
 Section:NewToggle("Auto Find", "", function(state) 
-_G.Yen = state 
-while _G.Yen do wait() 
-for i,v in pairs(game:GetService("Workspace").Worlds.StarterWorld.Yen:GetDescendants()) do 
+_G.AutoFind = state 
+while _G.AutoFind do wait() 
+for i,v in pairs(game:GetService("Workspace").Compass:GetDescendants()) do 
 if v.Name == "TouchInterest" then 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame 
 end 
