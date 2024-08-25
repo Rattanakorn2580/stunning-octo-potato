@@ -1,7 +1,7 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Opl X", "BloodTheme")
 
-Section:NewToggle("Auto Yen", "", function(state) 
+Section:NewToggle("Auto Find", "", function(state) 
 _G.Yen = state 
 while _G.Yen do wait() 
 for i,v in pairs(game:GetService("Workspace").Worlds.StarterWorld.Yen:GetDescendants()) do 
