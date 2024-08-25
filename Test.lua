@@ -4,7 +4,7 @@ local Window = Library.CreateLib("Opl X", "BloodTheme")
 Section:NewToggle("Auto Yen", "", function(state) 
 _G.Yen = state 
 while _G.Yen do wait() 
-for i,v in pairs(game:GetService("Workspace").Worlds[Selcet].Yen:GetDescendants()) do 
+for i,v in pairs(game:GetService("Workspace").Worlds.StarterWorld.Yen:GetDescendants()) do 
 if v.Name == "TouchInterest" then 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame 
 end 
