@@ -4,7 +4,6 @@ local Window = Library.CreateLib("List Mob", "BloodTheme")
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Select Auto Mob Farm")
-
 Section:NewToggle("Lv2 Angry Bob", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(1)
