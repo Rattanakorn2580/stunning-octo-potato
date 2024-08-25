@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Opl X", "LightTheme")
+local Window = Library.CreateLib("List Mob", "LightTheme")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
