@@ -7,34 +7,7 @@ local Section = Tab:NewSection("Auto Farm")
 
 Section:NewToggle("Auto-Farm", "", function(state)
     _G.AutoFarm = state
-    end)
     while _G.AutoFarm do wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
 end
-
-        spawn(function()
-    while task.wait(.1) do
-        pcall(function()
-            if _G.AutoFarm then
-            checkMon()
-            if not game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-            end
-            end
-        end)
-    end
-end)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv9 Bandit"].HumanoidRootPart.CFrame
-            end
-
-    spawn(function()
-    while task.wait(.1) do
-        pcall(function()
-            if _G.Auto_Farm then
-            checkMon()
-            if not game:GetService("Workspace").Enemies:FindFirstChild(Mon) then
-            end
-            end
-        end)
-    end
-end)
-
+    end)
