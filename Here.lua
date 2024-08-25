@@ -101,52 +101,52 @@ Section:NewToggle("Lv17 Thug", "", function(state)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv17 Thug"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv4 Freddy", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv4 Freddy"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv24 Fred", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv24 Fred"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv28 Fredde", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv28 Fredde"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv28 Freyd", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv28 Freyd"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv32 Fredric", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv32 Fredric"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv34 Freddi", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv34 Freddi"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv28 Fiedrich", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv28 Friedrich"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv29 Frued", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv29 Frued"].HumanoidRootPart.CFrame
 end
     end)
 Section:NewToggle("Auto-Farm", "", function(state)
