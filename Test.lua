@@ -7,9 +7,7 @@ local Section = Tab:NewSection("Select Auto Mob Farm")
 
 Section:NewToggle("Auto Farm", "", function(state)
   _G.AutoFarm = state
-  end)
  while _G.AutoFarm do wait(1)
-  pcall(function()
   for i,v in pairs(game:GetService("Workspace").Enemies:Descendants()) do
   if v.Name == "Lv2 Angry Bob" then
   if Humanoid.Health >= 0 then
@@ -23,9 +21,7 @@ Section:NewToggle("Auto Farm", "", function(state)
 
 Section:NewToggle("Lv1 Crab", "", function(state)
   _G.AutoFarm = state
-    end)
  while _G.AutoFarm do wait(1)
-  pcall(function()
   for i,v in pairs(game:GetService("Workspace").Enemies:Descendants()) do
   if v.Name == "Lv1 Crab" then
   if Humanoid.Health >= 0 then
