@@ -4,8 +4,8 @@ local Window = Library.CreateLib("Opl X", "BloodTheme")
 Section:NewToggle("Auto Find", "", function(state) 
 _G.AutoFind = state 
 while _G.AutoFind do wait() 
-for i,v in pairs(game:GetService("Workspace").Compass:GetDescendants()) do 
-if v.Name == "TouchInterest" then 
+for i,v in pairs(game:GetService("Workspace").Compass.CompassSever:GetDescendants()) do 
+if v.Name == "Compass" then 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Parent.CFrame 
 end 
 end 
