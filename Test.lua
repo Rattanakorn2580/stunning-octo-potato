@@ -3,9 +3,8 @@ local Window = Library.CreateLib("List Mob", "BloodTheme")
 
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
-
-Section:NewToggle("Lv2 Angry Bob", "", function(state)
-    _G.AutoFarm = state
+Section:NewToggle("Lv2 Angry Bob", "", function(v)
+    _G.AutoFarm = v
     while _G.AutoFarm do wait(1)
             for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
         if v.Name = "Lv2 Angry Bob" then
