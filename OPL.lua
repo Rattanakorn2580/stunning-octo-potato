@@ -160,20 +160,7 @@ end)
 
 -- NPC
 local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("Auto Buy Drink")
-Drink = {}
-for i,v in pairs(game:GetService("Workspace").Merchants.BetterDrinkMercant:GetChildren()) do
-    table.insert(Drink,v.Name) 
-end
-local drop = Section:NewDropdown("Select Drink", "Select Drink", Drink, function(t)
-   BuyDrink = t
-end)
-Section:NewToggle("Auto BuyDrink", "", function(t)
-_G.BuyDrink = t
-while _G.BuyDrink do wait()
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
-end
-end)
+local Section = Tab:NewSection("BuySword")
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
