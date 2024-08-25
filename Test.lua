@@ -20,9 +20,171 @@ end)
 Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
     Select = currentOption
 end)
- 
-Section:NewButton("Refresh", "", function()
-    table.clear(MONS)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+ Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+SectSection:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+ end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
+Section:NewDropdown("Please Select Monster", "", MONS, function(currentOption)
+    Select = currentOption
+end)
 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
     table.insert(MONS,v.Name)
 end
