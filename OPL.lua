@@ -61,7 +61,7 @@ spawn(function()
 while wait(2.5) do
 if _G.AutoFarm then
 pcall(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv29 Frued"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.HumanoidRootPart.CFrame
 end)
 end
 end)
