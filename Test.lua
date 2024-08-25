@@ -5,6 +5,9 @@ local Window = Library.CreateLib("List Mob", "BloodTheme")
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Select Auto Mob Farm")
 
+if game:GetService("Players").LocalPlayer.Character.Services:FindFirstChild("Client") then
+    game:GetService("Players").LocalPlayer.Character.Services["Client"].Disabled = true
+end
 Section:NewToggle("Lv2 Angry Bob", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
