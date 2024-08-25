@@ -67,7 +67,7 @@ MobFarmSection:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs"
                         if mob.Humanoid.Health == 0 then wait(0.1) mob:Destroy() break; end 
                     end
                     if mob:FindFirstChild("HumanoidRootPart") then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0,0,2) 
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame 
                     end
                 end
                 wait() 
