@@ -1,9 +1,9 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
-local Window = Library.CreateLib("Opl X", "DarkTheme")
+local Window = Library.CreateLib("Opl X", "BloodTheme")
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("เปลี่ยนเมนูใหม่ทั้งหมด")
+local Section = Tab:NewSection("เพิ่มออโต้ฟามเข้ามาใหม่ | ยังไม่สมบูรณ์")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
@@ -50,12 +50,11 @@ end
 end)
 
 local Section = Tab:NewSection("Auto Farm")
-Section:NewToggle("Auto Magu Farm", " ", function(t) 
-_G.TpFarm = t
-while _G.TpFarm do wait()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-949, 213.5, 1655, 1, 0, 0, 0, 1, 0, 0, 0, 1))
-end
+Section:NewButton("List AutoFarm Mob","", function()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Here.lua"))()
 end)
+Section:NewToggle("Auto Farm", " ", function()
+    end)
 
 local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
