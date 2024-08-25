@@ -163,7 +163,7 @@ local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Auto Buy Drink")
 Drink = {}
 for i,v in pairs(game:GetService("Workspace").Merchant.BetterDrinkMercant:GetChildren()) do
-    table.insert(Plr,v.Name) 
+    table.insert(Drink,v.Name) 
 end
 local drop = Section:NewDropdown("Select Drink", "Select Drink", Drink, function(t)
    BuyDrink = t
