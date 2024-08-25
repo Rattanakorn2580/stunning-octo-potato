@@ -3,6 +3,7 @@ local Window = Library.CreateLib("List Mob", "BloodTheme")
 
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm")
+
 Section:NewToggle("Lv20 Gunslinger", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(1)
