@@ -53,18 +53,8 @@ local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("List AutoFarm Mob","", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Here.lua"))()
 end)
-Section:NewToggle("Auto Farm", " ", function(state)
-	_G.AutoFarm = state
-    end)
-
-spawn(function()
-while wait(2.5) do
-if _G.AutoFarm then
-pcall(function()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies.HumanoidRootPart.CFrame
-end)
-end
-end)
+Section:NewToggle("Auto Farm", " ", function()
+	end)
 
 local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
