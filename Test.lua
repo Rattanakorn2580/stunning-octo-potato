@@ -11,11 +11,11 @@ Section:NewToggle("Lv2 Angry Bob", "", function(state)
         if "Lv2 Angry Bob" then
         if v.Humanoid.Health >= 0 then
     repeat task.wait(1)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
 until _G.AutoFarm false or v.Humanoid.Health <= 0 then
-                    end
-                end
-            end
-        end
-    end)
+end
+end
+end
+end
+end)
                         
