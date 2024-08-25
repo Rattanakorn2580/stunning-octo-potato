@@ -12,4 +12,3 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
 until v.Humanoid.Health <= 0 then
 end
 end)
-end                
