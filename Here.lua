@@ -59,16 +59,16 @@ Section:NewToggle("Lv5 Crab", "", function(state)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv9 Bandit", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv9 Bandit"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv14 Bandit", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv15 Bandit"].HumanoidRootPart.CFrame
 end
     end)
 Section:NewToggle("Auto-Farm", "", function(state)
