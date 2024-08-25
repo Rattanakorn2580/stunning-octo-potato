@@ -76,3 +76,26 @@ MobFarmSection:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs"
     end
 end)
 
+-- UPDATE MOBS
+
+game:GetService("Workspace").Enemies.ChildAdded:Connect(function() 
+    for _,v2 in pairs(mobs) do table.remove(mobs, _) end
+    
+    for _,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+        insert = true 
+        for _,v2 in pairs(mobs) do if v2 == v.Name then insert = false end end
+        if insert then table.insert(mobs, v.Name) end 
+    end
+    mobdropdown:Refresh(mobs)
+end)
+
+game:GetService("Workspace").Enemies.ChildRemoved:Connect(function() 
+    for _,v2 in pairs(mobs) do table.remove(mobs, _) end 
+    
+    for _,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+        insert = true 
+        for _,v2 in pairs(mobs) do if v2 == v.Name then insert = false end end 
+        if insert then table.insert(mobs, v.Name) end 
+    end
+    mobdropdown:Refresh(mobs)
+end)
