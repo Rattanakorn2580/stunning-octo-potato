@@ -35,28 +35,28 @@ Section:NewToggle("Lv35 Angry Bobb", "", function(state)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv1 Crab", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv3 Crab", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv3 Crab"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv4 Crab", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame
 end
     end)
-Section:NewToggle("Auto-Farm", "", function(state)
+Section:NewToggle("Lv5 Crab", "", function(state)
     _G.AutoFarm = state
     while _G.AutoFarm do wait(2.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame
 end
     end)
 Section:NewToggle("Auto-Farm", "", function(state)
