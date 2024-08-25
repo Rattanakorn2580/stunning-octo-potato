@@ -161,60 +161,18 @@ end)
 -- NPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Auto Buy Drink")
-Section:NewToggle("Smoothie+", " ", function(a) 
-        AutoBuySmoothie = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoBuySmoothie then 
-pcall(function() 
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Smoothie+") 
-end) 
-end 
-end 
+Drink = {}
+for i,v in pairs(game:GetService("Workspace").Merchant.BetterDrinkMercant:GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+local drop = Section:NewDropdown("Select Drink", "Select Drink", Drink, function(t)
+   BuyDrink = t
 end)
-
-Section:NewToggle("Cider+", " ", function(a) 
-        AutoBuyCider = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoBuyCider then 
-pcall(function() 
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Cider+") 
-end) 
-end 
-end 
-end)
-
-Section:NewToggle("Lemonade+", " ", function(a) 
-        AutoBuyLemonade = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoBuyLemonade then 
-pcall(function() 
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Lemonade+") 
-end) 
-end 
-end 
-end)
-
-Section:NewToggle("Juice+", " ", function(a) 
-        AutoBuyJuice = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoBuyJuice then 
-pcall(function() 
-workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer("Juice+") 
-end) 
-end 
-end 
+Section:NewToggle("Auto Tp", "", function(t)
+_G.BuyDrink = t
+while _G.BuyDrink do wait()
+workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+end
 end)
 
 -- PLAYER
