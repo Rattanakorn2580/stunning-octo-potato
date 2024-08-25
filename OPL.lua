@@ -168,7 +168,7 @@ end
 local drop = Section:NewDropdown("Select Drink", "Select Drink", Drink, function(t)
    BuyDrink = t
 end)
-Section:NewToggle("Auto Tp", "", function(t)
+Section:NewToggle("Auto BuyDrink", "", function(t)
 _G.BuyDrink = t
 while _G.BuyDrink do wait()
 workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
