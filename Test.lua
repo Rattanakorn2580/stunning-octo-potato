@@ -1,4 +1,6 @@
--- ScreenGui
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Opl X", "DarkTheme")
+
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
@@ -18,13 +20,6 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
 end) 
-
-local Corner = Instance.new("UICorner") 
-Corner.Name = "Corner" 
-Corner.Parent = Toggle
-
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
