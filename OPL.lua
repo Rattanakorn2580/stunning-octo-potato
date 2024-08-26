@@ -181,8 +181,8 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:New Toggle("bring Players", "", function(t)
-G.BringPlr = t
+Section:NewToggle("bring Players", "", function(t)
+_G.BringPlr = t
 while _G.BringPlr do wait()
 pcall(function()
 for i,v in next, game:GetService("Players"):GetPlayers() do
