@@ -17,7 +17,7 @@ TextButton.BorderSizePixel = 4
 -- Text Code 
 TextButton.Font = Enum.Font.Code 
 -- Size 
-TextButton.Size = UDim2.new(0.2, 0, 0.1, 0) 
+TextButton.Size = UDim2.new(10, 0, 10, 0) 
 -- Posisition 
 TextButton.Position = UDim2.new(0, 0, 0.4, 0) 
 -- Function 
