@@ -20,11 +20,6 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function()
     Library:ToggleUI()
 end)
- 
-local Corner = Instance.new("UICorner")
-Corner.Name = "Corner"
-Corner.Parent = Toggle
-end
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
