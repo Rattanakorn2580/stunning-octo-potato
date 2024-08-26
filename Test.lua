@@ -38,8 +38,8 @@ end)
 UITextSizeConstraint.Parent = TextButton
 UITextSizeConstraint.MaxTextSize = 50
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Maikderninja/Maikderninja/main/Test.lua"))();
-local Window = Library.CreateLib("Example", "Sentinel")
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 local Tab = Window:NewTab("Example")
 local Section = Tab:NewSection("Example")
