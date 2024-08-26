@@ -181,6 +181,20 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
+Section:New Toggle("bring Players", ", function(v)
+G.BringPl = v
+while_G.BringPl do wait()
+pcall(function()
+for iv in next, game:GetService("Players"):GetPlayers() do
+if v. Name~ game:GetService("Players").LocalPlayer.Name then
+v.Character.HumanoidRootPart.CFrame =
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame CFrame.new(0,0,0)
+end
+end
+end)
+end
+end)
+
 Section:NewButton("Refresh","", function()
   drop:Refresh(Plr)
 end)
