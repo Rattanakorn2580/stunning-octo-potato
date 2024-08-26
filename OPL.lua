@@ -15,7 +15,7 @@ Toggle.Size = UDim2.new(0, 90, 0, 38)
 Toggle.Font = Enum.Font.SourceSans 
 Toggle.Text = "เปิด/ปิด เมนู" 
 Toggle.TextColor3 = Color3.fromRGB(248, 248, 248) 
-Toggle.TextSize = 28.000 
+Toggle.TextSize = 35.000 
 Toggle.Draggable = true 
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
