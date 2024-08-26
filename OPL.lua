@@ -68,6 +68,7 @@ end)
 end 
 end 
 end)
+
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 	end)
@@ -158,10 +159,6 @@ Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
--- NPC
-local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("BuySword")
-
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
@@ -172,9 +169,11 @@ end
 local drop = Section:NewDropdown("Select Player!", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
+
 Section:NewButton("Click To TP", "", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end)
+
 Section:NewToggle("Auto Tp", "", function(t)
 _G.TPPlayer = t
 while _G.TPPlayer do wait()
