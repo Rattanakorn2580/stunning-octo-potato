@@ -24,6 +24,7 @@ end)
 local Corner = Instance.new("UICorner")
 Corner.Name = "Corner"
 Corner.Parent = Toggle
+end
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
