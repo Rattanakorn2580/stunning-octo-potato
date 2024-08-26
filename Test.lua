@@ -43,6 +43,6 @@ local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
-Section1:NewKeybind("Toggle ui", "Toggle the ui yes", Enum.KeyCode.F6, function()
+Section1:NewButton("Toggle ui", "Toggle the ui yes", Enum.KeyCode.F6, function()
     Library:ToggleUI()
 end)
