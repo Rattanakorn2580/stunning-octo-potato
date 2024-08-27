@@ -3,7 +3,7 @@ spawn(function()
         pcall(function()
             if _G.Raids then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if v.ClassName == "Model" and v.Humanoid.Health > 0 then
+                    if v.ClassName == "Enemies" and v.Humanoid.Health > 0 then
                         v.Humanoid.Health = Die
                     end
                 end
