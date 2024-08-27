@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("แก้บัคออโต้ฟาม | ยังไม่สมบูรณ์")
+local Section = Tab:NewSection("เพิ่มมอนHITBOXเข้ามา | ยังไม่สมบูรณ์")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
@@ -69,10 +69,27 @@ end
 end 
 end)
 
+spawn(function()
+        while wait() do
+            pcall(function()
+                    if _G.HitMob then
+                        for i,v in 
+pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+      v.HumanoidRootPart.Size = Vector3.new(35, 35, 35) 
+      v.HumanoidRootPart.Transparency = 0.5 
+                        end
+                    end
+                end)
+            end
+        end)
+
 local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("List AutoFarm Mob","", function()
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Here.lua"))()
 end)
+Section:NewToggle("HitBox Mob", " ", function(t)
+	_G.HitMob = t
+	end)
 
 local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
