@@ -1,5 +1,19 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("List Mob", "BloodTheme")
+spawn(function()
+    while wait() do 
+        pcall(function()
+            if _G.Raids then
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
+                    if v.ClassName == "Model" and v.Humanoid.Health > 0 then
+                        v.Humanoid.Health = Die
+                    end
+                end
+            end
+        end)
+    end
+end)
+ 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() -- อันนี้เป็นUI
+local Window = Library.CreateLib("Power x Hub", "Synapse") -- อันนี้เป็นชื่อui
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
@@ -21,21 +35,8 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
--- AUTO FARM
-local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Select Auto Mob Farm")
-Section:NewToggle("Lv2 Angry Bob", "", function(state)
-    _G.AutoFarm = state
-    while _G.AutoFarm do wait(6.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
-if Enemies.Humanoid.Health = 0 then wait(1)
-        Enemies:Destroy() break; end
-    end)
-
-Section:NewToggle("Lv22 Angry Boby", "", function(state)
-    _G.AutoFarm = state
-    while _G.AutoFarm do wait(6.5)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame
-if Enemies.Humanoid.Health = 0 then wait(1)
-          Enemies:Destroy() break; end
-    end)
+local Tab = Window:NewTab("Main")-- อันนี้เป็นชื่อของTab
+local Section = Tab:NewSection("Rain") -- อันนีเป็นชื่อของSection 
+Section:NewToggle("Kill all", "", function(v) -- อันนี้เป็น NewToggle
+    _G.Raids = v --อันนี้เป็นตัวแปร
+end)
