@@ -41,7 +41,7 @@ spawn(function()
                         for i,v in 
 pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
       v.HumanoidRootPart.Size = Vector3.new(500, 500, 500) 
-      v.HumanoidRootPart.Transparency = 0.2
+      v.HumanoidRootPart.Transparency = 1
                         end
                     end
                 end)
