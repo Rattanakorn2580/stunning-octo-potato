@@ -34,9 +34,25 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
 end)
+spawn(function()
+        while wait() do
+            pcall(function()
+                    if _G.HitMob then
+                        for i,v in 
+pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+      v.HumanoidRootPart.Size = Vector3.new(35, 35, 35) 
+      v.HumanoidRootPart.Transparency = 0.5 
+                        end
+                    end
+                end)
+            end
+        end)
 
 local Tab = Window:NewTab("Main")-- อันนี้เป็นชื่อของTab
 local Section = Tab:NewSection("Rain") -- อันนีเป็นชื่อของSection 
 Section:NewToggle("Kill all", "", function(v) -- อันนี้เป็น NewToggle
     _G.Raids = v --อันนี้เป็นตัวแปร
 end)
+Section:NewToggle("Hitbox Mob", "", function(v)
+        _G.HitMob = v
+    end)
