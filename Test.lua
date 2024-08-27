@@ -2,7 +2,7 @@ spawn(function()
     while wait() do 
         pcall(function()
             if _G.Raids then
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
                     if v.ClassName == "Model" and v.Humanoid.Health > 0 then
                         v.Humanoid.Health = 0
                     end
