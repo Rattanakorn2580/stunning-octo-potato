@@ -302,4 +302,18 @@ Section:NewToggle("Lv29 Frued", "", function(state)
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv29 Frued"].HumanoidRootPart.CFrame
 end
     end)
-
+spawn(function()
+        if _G.AutoFarm then
+            while wait() do
+                pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+        if v.Name == Mon then
+            if v.Humanoid.Health == 0 then
+            v:Destroy()
+                    end
+                    end
+                    end
+                    end
+                    end)
+                end
+            end)
