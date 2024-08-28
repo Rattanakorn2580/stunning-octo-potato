@@ -50,7 +50,7 @@ pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 
 local Tab = Window:NewTab("Main")-- อันนี้เป็นชื่อของTab
 local Section = Tab:NewSection("Rain") -- อันนีเป็นชื่อของSection 
-Section:NewToggle("Kill all", "", function(v) -- อันนี้เป็น NewToggle
+Section:NewButton("Kill all", "", function(v) -- อันนี้เป็น NewToggle
     _G.Raids = v --อันนี้เป็นตัวแปร
 end)
 Section:NewToggle("Hitbox Mob", "", function(v)
