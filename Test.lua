@@ -40,7 +40,7 @@ spawn(function()
                     if _G.HitMob then
                         for i,v in 
 pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-      v.HumanoidRootPart.Size = Vector3.new(500, 500, 500) 
+      v.HumanoidRootPart.Size = Vector3.new(20, 20, 20) 
       v.HumanoidRootPart.Transparency = 1
                         end
                     end
