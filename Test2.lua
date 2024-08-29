@@ -25,7 +25,12 @@ if _G.FarmAll then
 while wait() do
 pcall(function()
 for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
-                    if v.Humanoid.Health >= 0                
+                    if v.Humanoid.Health >= 0
+              end
+            end
+          end)
+        end
+      end)
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Mob Farm")
