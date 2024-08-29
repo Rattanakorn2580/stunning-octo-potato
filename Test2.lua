@@ -34,10 +34,9 @@ for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildr
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Mob Farm")
-Section:NewToggle("Lv11 Boar", "", function(state)
+Section:NewToggle("Lv2 Angry Bob", "", function(state)
     _G.FarmAll = state
       while _G.FarmAll do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame
-        if v.Humanoid.Health >= 0 then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
     end
     end)
