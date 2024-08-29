@@ -21,12 +21,12 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 spawn(function()
-if _G.KillAuraBob then
+if _G.FarmAll then
 while wait() do
 pcall(function()
 for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
                     if v.Humanoid.Health >= 0                
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Select Auto Mob Farm")
+local Section = Tab:NewSection("Auto Mob Farm")
 
