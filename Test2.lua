@@ -69,10 +69,12 @@ end
 end)
 end
 end)      
-
+                
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Select Auto Mob Farm")
-Section:NewToggle("Farm All", "", function(state)
-    _G.FarmAll = state
-                            end)
+Section:NewButton(" kill Aura Bob","Refresh Dropdown", function()
+  for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
+                    if v.ClassName == "Model" and v.Humanoid.Health > 0 then
+			v.Humanoid.Health = 0
+end)
