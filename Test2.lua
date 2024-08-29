@@ -20,12 +20,13 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
 end)
-                
+spawn(function()
+if _G.KillAuraBob then
+while wait() do
+pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
+                    if v.Humanoid.Health >= 0                
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Select Auto Mob Farm")
-Section:NewButton(" kill Aura Bob","Refresh Dropdown", function()
-  for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
-                    if v.ClassName == "Model" and v.Humanoid.Health > 0 then
-			v.Humanoid.Health = 0
-end)
+
