@@ -19,6 +19,26 @@ end
 local Library = loadstring(game:HttpGet("https:/raw.githubusercontent.com/Attrixx/Scandia/main/KavoUiLib.lua"))() -- GETS THE UI LIBRARY
 local Window = Library.CreateLib("King Legacy Mob Farm", "Sentinel") -- CREATES THE WINDOW
 
+local ScreenGui = Instance.new("ScreenGui") 
+ScreenGui.Name = "ScreenGui" 
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
+ScreenGui.ResetOnSpawn = false 
+
+local Toggle = Instance.new("TextButton") 
+Toggle.Name = "Toggle" 
+Toggle.Parent = ScreenGui 
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0) 
+Toggle.Size = UDim2.new(0, 90, 0, 38) 
+Toggle.Font = Enum.Font.SourceSans 
+Toggle.Text = "เปิด/ปิด เมนู" 
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248) 
+Toggle.TextSize = 28.000 
+Toggle.Draggable = true 
+Toggle.MouseButton1Click:connect(function() 
+Library:ToggleUI() 
+end)
+
 -- MAIN
 local Main = Window:NewTab("Main") -- CREATES THE MAIN TAB
 local MobFarmSection = Main:NewSection("Mob Farm") -- CREATES THE MOB FARM SECTION
