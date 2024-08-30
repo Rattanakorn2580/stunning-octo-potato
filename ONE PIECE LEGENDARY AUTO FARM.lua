@@ -23,4 +23,4 @@ end)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Select Auto Mob Farm")
+local Section = Tab:NewSection("Select Mob Farm")
