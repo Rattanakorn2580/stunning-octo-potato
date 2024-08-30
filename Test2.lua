@@ -20,23 +20,13 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
 end)
-spawn(function()
-if _G.FarmAll then
-while wait() do
-pcall(function()
-for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
-                    if v.Humanoid.Health >= 0
-              end
-            end
-          end)
-        end
-      end)
--- AUTO FARM
+
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Auto Mob Farm")
+local Section = Tab:NewSection("Select Mob Farm")
+
 Section:NewToggle("Lv2 Angry Bob", "", function(state)
-    _G.FarmAll = state
-      while _G.FarmAll do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
-    end
+    _G.AutoFarm = state
+    while _G.AutoFarm do wait(6.5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob ,Lv1 Crab ,Lv4 Boar"].HumanoidRootPart.CFrame
+end
     end)
