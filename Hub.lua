@@ -43,7 +43,7 @@ while wait() do -- LOOP WHICH REPEATS UNTIL THE UNTIL IS TRUE / DONE
         else
             while wait() do
                 _G.AutoFarm = game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:FindFirstChild()
-                if _G.AutoFarm ~= mob2 then break; end
+                if _G.AutoFarm ~= then break; end
                 if G.AutoFarm == false then return end -- IF THE TOGGLE IS OFF THEN STOP THE LOOP
                 if _G.AutoFarm ~= nil then
                     if game:FindFirstChild("Humanoid") then
