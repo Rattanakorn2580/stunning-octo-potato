@@ -1,8 +1,3 @@
--- TELEPORT BYPASS
-if game:GetService("Players").LocalPlayer.Character.Services:FindFirstChild("Client") then
-    game:GetService("Players").LocalPlayer.Character.Services["Client"].Disabled = true
-end
-
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("List Mob", "BloodTheme")
 
@@ -33,6 +28,6 @@ end)
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Lv2 Angry Bob")
 while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * New.CFrame(0,0,5)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame(0,0,2)
 end
     end)
