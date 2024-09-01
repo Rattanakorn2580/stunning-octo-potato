@@ -9,12 +9,12 @@ Section:NewToggle("Lv2 Angry Bob", "", function(state)
     _G.AutoFarm = state
 while wait() do -- LOOP WHICH REPEATS UNTIL THE UNTIL IS TRUE / DONE
                 wait() -- WAIT SO WE DONT CRASH
-                if getgenv().autofarmmobs == false then return end -- IF THE TOGGLE IS OFF THEN STOP THE LOOP
+                if _G.AutoFarm == false then return end -- IF THE TOGGLE IS OFF THEN STOP THE LOOP
                 if game:GetService("Workspace").Enemies:FindFirstChild() ~= nil then break; end
             end -- IF THE MOB IS SPAWNED THEN GO ON WITH THE AUTOFARM
         else
             while wait() do
-                mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob)
+                _G.AutoFarm = game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:FindFirstChild()
                 if _G.AutoFarm ~= mob2 then break; end
                 if G.AutoFarm == false then return end -- IF THE TOGGLE IS OFF THEN STOP THE LOOP
                 if _G.AutoFarm ~= nil then
