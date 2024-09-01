@@ -26,8 +26,9 @@ end)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Lv2 Angry Bob")
+local Section = Tab:NewSection("AutoFarm")
+
 while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame(0,0,2)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
 end
     end)
