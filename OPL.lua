@@ -85,7 +85,7 @@ pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 
 local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("List AutoFarm Mob","", function()
-	loadstring(game:HttpGet("https://github.com/Rattanakorn2580/stunning-octo-potato/blob/main/ONE%20PIECE%20LEGENDARY%20AUTO%20FARM.lua"))()
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
 Section:NewToggle("HitBox Mob", " ", function(t)
 	_G.HitMob = t
