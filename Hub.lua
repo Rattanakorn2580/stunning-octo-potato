@@ -24,9 +24,17 @@ end)
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("AutoFarm")
-Section:NewToggle("Lv2 Angry Bob", " ", function(a)
+Section:NewToggle("Farm All", " ", function(a)
     _G.AutoFarm = a
 while _G.AutoFarm do wait()
+pcall(function()
+    for i,v in pairs(game:GetService("Workspace").Enemies:Descendants())
+if v.Humanoid.Health >= 0 then
+repeat task.wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
-end
+until _G.AutoFarm == false or v.Humanoid.Health <= 0 then
+    end
+    end
+    end)
+    end
     end)
