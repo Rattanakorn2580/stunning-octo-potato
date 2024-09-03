@@ -30,6 +30,6 @@ local Section = Tab:NewSection("AutoFarm")
 Section:NewToggle("Lv2 Angry Bob", " ", function(a)
     _G.AutoFarm = a
 while _G.AutoFarm do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
 end
     end)
