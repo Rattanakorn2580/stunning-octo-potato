@@ -28,7 +28,7 @@ Section:NewToggle("Farm All", " ", function(a)
     _G.AutoFarm = a
 while _G.AutoFarm do wait()
 pcall(function()
-    for i,v in pairs(game:GetService("Workspace").Enemies:Descendants())
+    for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
 if v.Humanoid.Health >= 0 then
 repeat task.wait()
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
