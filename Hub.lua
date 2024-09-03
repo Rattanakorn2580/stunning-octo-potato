@@ -26,7 +26,7 @@ local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("AutoFarm")
 Section:NewToggle("Farm All", " ", function(a)
     _G.AutoFarm = a
-while _G.AutoFarm do wait()
+while wait() do
 pcall(function()
     for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
 if v.Humanoid.Health >= 0 then
