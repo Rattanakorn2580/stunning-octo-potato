@@ -21,8 +21,6 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-for i,v in pairs(game:GetService("Workspace").Enemies:FindFirstChild()) do
-if v.Humanoid.Health <= 0 then
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("AutoFarm")
