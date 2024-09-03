@@ -21,20 +21,13 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
+for i,v in pairs(game:GetService("Workspace").Enemies:FindFirstChild()) do
+if v.Humanoid.Health <= 0 then
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("AutoFarm")
 Section:NewToggle("Farm All", " ", function(a)
     _G.AutoFarm = a
-while wait() do
-pcall(function()
-    for i,v in pairs(game:GetService("Workspace").Enemies:GetDescendants()) do
-if v.Humanoid.Health >= 0 then
-repeat task.wait()
+while _G.AutoFarm then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,5)
-until _G.AutoFarm == false or v.Humanoid.Health <= 0 then
-    end
-    end
-    end)
-    end
     end)
