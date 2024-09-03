@@ -1,9 +1,6 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("List Mob", "BloodTheme")
 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() -- อันนี้เป็นUI
-local Window = Library.CreateLib("Power x Hub", "Synapse") -- อันนี้เป็นชื่อui
-
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
