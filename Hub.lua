@@ -24,28 +24,72 @@ end)
 --BRINGMOB
 local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("Bring List Mob")
-Section:NewToggle("Lv2 Angry Bob", " ", function(a) 
-        _G.Bring = a
-        game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+Section:NewToggle("Bring", " ", function(t) 
+    Bring = t
 end)
 
-Section:NewToggle("Lv22 Angry Bobby", " ", function(a) 
-        _G.Bring = a
-        game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
 end)
 
-Section:NewToggle("Lv24 Angry Bobbi", " ", function(a) 
-        _G.Bring = a
-        game:GetService("Workspace").Enemies["Lv24 Angry Bobbi"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+Section:NewToggle("Bring", " ", function(t) 
+    Bring = t
 end)
 
-Section:NewToggle("Lv29 Angry Bobber", " ", function(a) 
-        _G.Bring = a
-        game:GetService("Workspace").Enemies["Lv29 Angry Bobber"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
 end)
 
-Section:NewToggle("Lv35 Angry Bobb", " ", function(a) 
-        _G.Bring = a
-        game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+Section:NewToggle("Lv24 Angry Bobbi", " ", function(t) 
+    Bring = t
 end)
 
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv24 Angry Bobbi"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Lv29 Angry Bobber", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv29 Angry Bobber"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Lv35 Angry bobb", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
