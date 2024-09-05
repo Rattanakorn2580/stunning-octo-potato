@@ -24,8 +24,29 @@ end)
 --BRINGMOB
 local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("Bring List Mob")
-Section:NewToggle("Bring Lv2 Angry Bob", " ", function(a) 
+Section:NewToggle("Lv2 Angry Bob", " ", function(a) 
         _G.Bring = a
+while _G.Bring do wait()
         game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+end)
+Section:NewToggle("Lv22 Angry Bobby", " ", function(a) 
+        _G.Bring = a
+while _G.Bring do wait()
+        game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+end)
+Section:NewToggle("Lv24 Angry Bobbi", " ", function(a) 
+        _G.Bring = a
+while _G.Bring do wait()
+        game:GetService("Workspace").Enemies["Lv24 Angry Bobbi"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+end)
+Section:NewToggle("Lv29 Angry Bobber", " ", function(a) 
+        _G.Bring = a
+while _G.Bring do wait()
+        game:GetService("Workspace").Enemies["Lv29 Angry Bobber"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+end)
+Section:NewToggle("Lv35 Angry Bobb", " ", function(a) 
+        _G.Bring = a
+while _G.Bring do wait()
+        game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
 end)
 
