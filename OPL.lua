@@ -241,10 +241,6 @@ end)
 --NPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("AutoBuyDrink")
-Drink = {}
-for i,v in pairs(game:GetService("Workspace").Merchants.DrinkBetterMerchan:GetChildren()) do
-    table.insert(Drink,v.Name) 
-end
 local drop = Section:NewDropdown("Select Drink", "Click To Select", Drink, function(t)
    DrinkBuy = t
 end)
