@@ -48,6 +48,14 @@ pairs(game:GetService("Workspace").Enemies:GetChildren()) do
             end
         end)
 
+local Drinklist = {} 
+local Drink = nil
+
+for i,v in 
+pairs(game:GetService("Workspace").Merchant.DrinkBetterMerchant:GetChildren()) do 
+    table.insert(Drinklist,v.Name) 
+end 
+
 local Tab = Window:NewTab("Main")-- อันนี้เป็นชื่อของTab
 local Section = Tab:NewSection("Rain") -- อันนีเป็นชื่อของSection 
 Section:NewToggle("Kill all", "", function(v) -- อันนี้เป็น NewToggle
@@ -86,14 +94,6 @@ end)
 Section:NewButton("Admin","", function()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
 end)
-
-local Drinklist = {} 
-local Drink = nil
-
-for i,v in 
-pairs(game:GetService("Workspace").Merchant.DrinkBetterMerchant:GetChildren()) do 
-    table.insert(Drinklist,v.Name) 
-end 
 
 Section:NewDropdown("List Drink", " ", Drinklist, function(currentOption) 
         Drink = currentOption 
