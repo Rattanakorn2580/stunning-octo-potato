@@ -22,6 +22,7 @@ Library:ToggleUI()
 end)
 
 --BRINGMOB
+local Window = Tab:NewWindow("Main")
 local Section = Tab:NewSection("Bring List")
 Section:NewToggle("Bring Lv2 Angry Bob", " ", function(a) 
         _G.Bring = a 
