@@ -72,10 +72,6 @@ end)
 --FARM
 local Tab = Window:NewTab("Farm")
 local Section = Tab:NewSection("FarmList")
-Section:NewButtoon("AutoFarm", " ", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
-	end)
-
 Section:NewButton("Bring List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
