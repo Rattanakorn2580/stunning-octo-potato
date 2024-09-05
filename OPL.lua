@@ -245,6 +245,19 @@ end)
 --MPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("NPC Buy")
+Section:NewToggle("Smoothie+", " ", function(a) 
+        AutoSmoothie = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoSmoothie then 
+pcall(function() 
+workspace.Merchants.DrinkBetterMerchant.Clickable.Retum:FireServer("Smoothie+") 
+end) 
+end 
+end 
+end)
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
