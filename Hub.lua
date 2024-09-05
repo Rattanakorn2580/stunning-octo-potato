@@ -20,3 +20,19 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
 end)
+
+--BRINGMOB
+local Section = Tab:NewSection("Bring List")
+Section:NewToggle("Bring Lv2 Angry Bob", " ", function(a) 
+        _G.Bring = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if _G.Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3) 
+end) 
+end 
+end 
+end)
