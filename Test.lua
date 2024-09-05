@@ -27,7 +27,7 @@ local Drinklist = {}
 local Drink = nil
 
 for i,v in 
-pairs(game:GetService("Workspace").Merchant.DrinkBetterMerchant:GetChildren()) do 
+pairs(game:GetService("Workspace").Merchants.BetterDrinkMerchant:GetChildren()) do 
     table.insert(Drinklist,v.Name) 
 end 
 Section:NewDropdown("List Drink", " ", Drinklist, function(currentOption) 
