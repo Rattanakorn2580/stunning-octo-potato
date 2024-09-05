@@ -86,3 +86,15 @@ end)
 Section:NewButton("Admin","", function()
   loadstring(game:HttpGet("https://raw.githubusercontent.com/fatesc/fates-admin/main/main.lua"))();
 end)
+
+local Drinklist = {} 
+local Drink = nil
+
+for i,v in 
+pairs(game:GetService("Workspace").Merchant.DrinkBetterMerchant:GetChildren()) do 
+    table.insert(Drinklist,v.Name) 
+end 
+
+Section:NewDropdown("List Drink", " ", Drinklist, function(currentOption) 
+        Drink = currentOption 
+    end)
