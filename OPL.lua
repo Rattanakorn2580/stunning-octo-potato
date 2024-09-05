@@ -27,51 +27,7 @@ local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Auto Equip") 
-
-local Weaponlist = {} 
-local Weapon = nil
-
-for i,v in 
-pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
-    table.insert(Weaponlist,v.Name) 
-end 
-
-Section:NewDropdown("select weapon", " ", Weaponlist, function(currentOption) 
-        Weapon = currentOption 
-    end)
-
-Section:NewToggle("Auto Click", " ", function(a) 
-        AutoClicked = a 
-    end)
-
-spawn(function()
-while wait() do 
-if AutoClicked then 
-pcall(function() 
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
-end) 
-end 
-end 
-end)
-
-Section:NewToggle("Auto Equip", " ", function(a) 
-        AutoEquiped = a 
-    end)
-
-spawn(function() 
-while wait() do 
-if AutoEquiped then 
-pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
-end) 
-end 
-end 
-end)
-
---FARM
-local Tab = Window:NewTab("Farm")
-local Section = Tab:NewSection("FarmList")
+local Section = Tab:NewSection("Auto Farm") 
 Section:NewButton("MobFarm List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
@@ -128,6 +84,46 @@ game:GetService("Workspace").Enemies["Lv24 Thug"].HumanoidRootPart.CFrame = game
 game:GetService("Workspace").Enemies["Lv30 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv40 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv8 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+end) 
+end 
+end 
+end)
+
+local Weaponlist = {} 
+local Weapon = nil
+
+for i,v in 
+pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
+    table.insert(Weaponlist,v.Name) 
+end 
+
+Section:NewDropdown("List Weapon", " ", Weaponlist, function(currentOption) 
+        Weapon = currentOption 
+    end)
+
+Section:NewToggle("Auto Click", " ", function(a) 
+        AutoClicked = a 
+    end)
+
+spawn(function()
+while wait() do 
+if AutoClicked then 
+pcall(function() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Auto Equip", " ", function(a) 
+        AutoEquiped = a 
+    end)
+
+spawn(function() 
+while wait() do 
+if AutoEquiped then 
+pcall(function() 
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
 end) 
 end 
 end 
