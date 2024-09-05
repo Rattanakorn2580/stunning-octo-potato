@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewTabSection("เอาhitboxออก เพิ่ม Bring mobเข้ามา")
+local Section = Tab:NewSection("เอาhitboxออก เพิ่ม Bring mobเข้ามา")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
@@ -70,9 +70,8 @@ end
 end)
 
 local Section = Tab:NewSection("Auto Farm")
-Section:NewToggle("BringMob List","", function(t)
-	_G.Bring = t
-	loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
+Section:NewToggle("BringMob List","", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
 
 local Section = Tab:NewSection("Auto Sam")
