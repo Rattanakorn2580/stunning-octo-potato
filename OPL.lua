@@ -73,7 +73,7 @@ end)
 local Tab = Window:NewTab("Farm")
 local Section = Tab:NewSection("FarmList")
 Section:NewButton("MobFarm List", " ", function()
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
 Section:NewToggle("Bring All", " ", function(t) 
     Bring = t
