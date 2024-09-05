@@ -256,13 +256,16 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Player
 end
 end)
 
-Section:NewButton("Refresh","", function()
-  drop:Refresh(Plr)
+Section:NewToggle("Bring Player", "", function(state)
+_G.BringPlr = state
+while _G.BringPlr do wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+end
 end)
 
-Section:NewButton("ESP","", function()
-loadstring(game:HttpGet("https://rawscripts.net/raw/Universal-Script-Esp-Universal-open-source-10455", true))()
-end)
+Section:NewButton("Refresh","", function()
+  drop:Refresh(Plr)
+	end)
 
 -- SEVER
 local Tab = Window:NewTab("Sever")
