@@ -69,8 +69,8 @@ end
 end 
 end)
 
-local Section = Tab:NewSection("Auto Farm")
-Section:NewButton("BringMob List","", function()
+local Section = Tab:NewSection("Farm")
+Section:NewButton("Bring List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
 
