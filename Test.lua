@@ -1,4 +1,4 @@
- local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() -- อันนี้เป็นUI
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() -- อันนี้เป็นUI
 local Window = Library.CreateLib("Power x Hub", "Synapse") -- อันนี้เป็นชื่อui
 
 local ScreenGui = Instance.new("ScreenGui") 
@@ -21,15 +21,15 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
+local Tab = Window:NewTab("NPC")
+local Section = Tab:NewSection("NCP DrinkBuyer")
 local Drinklist = {} 
 local Drink = nil
+
 for i,v in 
 pairs(game:GetService("Workspace").Merchant.DrinkBetterMerchant:GetChildren()) do 
     table.insert(Drinklist,v.Name) 
 end 
-
-local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("NCP DrinkBuyer")
 Section:NewDropdown("List Drink", " ", Drinklist, function(currentOption) 
         Drink = currentOption 
     end)
