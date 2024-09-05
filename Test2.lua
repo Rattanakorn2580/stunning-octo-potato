@@ -35,8 +35,19 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-local Tab = Window:NewTab("Main")-- อันนี้เป็นชื่อของTab
-local Section = Tab:NewSection("Farm") -- อันนีเป็นชื่อของSection 
-Section:NewToggle("Kill all", "", function(v) -- อันนี้เป็น NewToggle
-    _G.Raids = v --อันนี้เป็นตัวแปร
+local Tab = Window:NewTab("Main")
+local Section = Tab:NewSection("Bring Farm")
+Section:NewToggle("Bring All", "", function(t)
+	_G.Bring = t then
+game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-4)
+game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+game:GetService("Workspace").Enemies["Lv24 Angry Bobbi"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+game:GetService("Workspace").Enemies["Lv29 Angry Bobber"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
 end)
+
+local Tab = Window:NewTab("Kill Aura")
+local Section = Tab:Newsection("Kill Aura")
+Section:NewToggle("Kill Aura", function(v)
+	_G.Raids = v
+	end)
