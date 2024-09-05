@@ -241,9 +241,13 @@ end)
 --MPC
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("NPC Buy")
-Section:NewToggle("Smoothie+", " ", function(a) 
-        AutoSmoothie = a 
-    end)
+Drink = {}
+for i,v in pairs(game:GetService("Workspace").Merchants.DrinkBetterMerchan:GetChildren()) do
+    table.insert(Drink,v.Name) 
+end
+local drop = Section:NewDropdown("Select Drink", "Click To Select", Drink, function(t)
+   DrinkBuy = t
+end)
 
 spawn(function() 
 while wait() do 
