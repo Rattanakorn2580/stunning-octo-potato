@@ -69,7 +69,13 @@ end
 end 
 end)
 
-local Section = Tab:NewSection("BringFarm")
+--FARM
+local Tab = Window:NewTab("Farm")
+local Section = Tab:NewSection("AutoFarm")
+Section:NewButtoon("AutoFarm", " ", function(v)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
+	end)
+
 Section:NewButton("Bring List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
@@ -235,6 +241,10 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(6741.09521, 394.982117, -1
 Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
+
+--MPC
+local Tab = Window:NewTab("NPC")
+local Section = Tab:NewSection("NPC Buy")
 
 -- PLAYER
 local Tab = Window:NewTab("Player")
