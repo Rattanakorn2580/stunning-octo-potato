@@ -40,9 +40,21 @@ local Section = Tab:NewSection("Bring Farm")
 Section:NewToggle("Bring All", "", function(t)
 	_G.Bring = t then
 game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-4)
+	end)
+Section:NewToggle("Bring All", "", function(t)
+	_G.Bring = t then
 game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+			end)
+Section:NewToggle("Bring All", "", function(t)
+	_G.Bring = t then
 game:GetService("Workspace").Enemies["Lv24 Angry Bobbi"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+	end)
+Section:NewToggle("Bring All", "", function(t)
+	_G.Bring = t then
 game:GetService("Workspace").Enemies["Lv29 Angry Bobber"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
+	end)
+Section:NewToggle("Bring All", "", function(t)
+	_G.Bring = t then
 game:GetService("Workspace").Enemies["Lv35 Angry Bobb"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
 end)
 
