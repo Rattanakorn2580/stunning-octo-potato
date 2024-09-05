@@ -22,8 +22,8 @@ Library:ToggleUI()
 end)
 
 --BRINGMOB
-local Tab = Tab:NewWindow("Main")
-local Section = Tab:NewSection("Bring List")
+local Tab = Window:NewTab("ListMob")
+local Section = Tab:NewSection("Bring List Mob")
 Section:NewToggle("Bring Lv2 Angry Bob", " ", function(a) 
         _G.Bring = a
         game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
