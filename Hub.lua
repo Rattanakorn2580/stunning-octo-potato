@@ -97,3 +97,41 @@ end)
 end 
 end 
 end)
+
+Section:NewToggle("Thief", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv3 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Thug", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv3 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
