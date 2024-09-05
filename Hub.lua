@@ -78,3 +78,22 @@ end
 end 
 end)
 
+Section:NewToggle("Boar", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv4 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv12 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv14 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv15 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv16 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+end) 
+end 
+end 
+end)
