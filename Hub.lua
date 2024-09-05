@@ -25,12 +25,12 @@ end)
 local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("Bring List Mob")
 Section:NewToggle("Angry Bob", " ", function(t) 
-    Bring = t
+    Bring1 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring1 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -43,12 +43,12 @@ end
 end)
 
 Section:NewToggle("Crab", " ", function(t) 
-    Bring = t
+    Bring2 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring2 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 game:GetService("Workspace").Enemies["Lv3 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -62,12 +62,12 @@ end
 end)
 
 Section:NewToggle("Bandit", " ", function(t) 
-    Bring = t
+    Bring3 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring3 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv9 Bandit"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 game:GetService("Workspace").Enemies["Lv14 Bandit"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -79,12 +79,12 @@ end
 end)
 
 Section:NewToggle("Boar", " ", function(t) 
-    Bring = t
+    Bring4 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring4 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv4 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -99,12 +99,12 @@ end
 end)
 
 Section:NewToggle("Thief", " ", function(t) 
-    Bring = t
+    Bring5 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring5 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -119,12 +119,12 @@ end
 end)
 
 Section:NewToggle("Thug", " ", function(t) 
-    Bring = t
+    Bring6 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring6 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv12 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv15 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -143,12 +143,12 @@ end
 end)
 
 Section:NewToggle("Gunslinger", " ", function(t) 
-    Bring = t
+    Bring7 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring7 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv20 Gunslinger"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv24 Gunslinger"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -161,12 +161,12 @@ end
 end)
 
 Section:NewToggle("Vokun", " ", function(t) 
-    Bring = t
+    Bring8 = t
 end)
 
 spawn(function()
 while wait() do 
-if Bring then 
+if Bring8 then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv200 Vokun"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 end) 
