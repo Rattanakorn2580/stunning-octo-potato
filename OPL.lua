@@ -238,13 +238,6 @@ Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
---NPC
-local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("AutoBuyDrink")
-local drop = Section:NewDropdown("Select Drink", "Click To Select", Drink, function(t)
-   DrinkBuy = t
-end)
-
 -- PLAYER
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
