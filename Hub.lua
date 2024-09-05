@@ -106,18 +106,43 @@ spawn(function()
 while wait() do 
 if Bring then 
 pcall(function() 
-game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
-game:GetService("Workspace").Enemies["Lv3 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
-game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv20 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv32 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv32 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv32 Thief"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 end) 
 end 
 end 
 end)
 
 Section:NewToggle("Thug", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv12 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv15 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv17 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv17 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv22 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+game:GetService("Workspace").Enemies["Lv23 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv24 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv24 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv30 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv40 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+game:GetService("Workspace").Enemies["Lv8 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Gunslinger", " ", function(t) 
     Bring = t
 end)
 
