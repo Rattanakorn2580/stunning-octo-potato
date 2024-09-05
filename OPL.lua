@@ -259,7 +259,7 @@ end)
 Section:NewToggle("Bring Player", "", function(state)
 _G.BringPlr = state
 while _G.BringPlr do wait()
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
+game.Players[PlayerTP].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
 end
 end)
 
