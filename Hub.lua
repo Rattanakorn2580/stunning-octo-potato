@@ -38,7 +38,7 @@ end
 end 
 end)
 
-Section:NewToggle("Bring", " ", function(t) 
+Section:NewToggle("Lv22 Angry Bobby", " ", function(t) 
     Bring = t
 end)
 
@@ -150,6 +150,20 @@ end
 end 
 end)
 
+Section:NewToggle("Lv4 Crab", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+end) 
+end 
+end 
+end)
+
 Section:NewToggle("Lv5 Crab", " ", function(t) 
     Bring = t
 end)
@@ -159,20 +173,6 @@ while wait() do
 if Bring then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-end) 
-end 
-end 
-end)
-
-Section:NewToggle("Bring", " ", function(t) 
-    Bring = t
-end)
-
-spawn(function()
-while wait() do 
-if Bring then 
-pcall(function() 
-game:GetService("Workspace").Enemies["Lv22 Angry Bobby"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 end) 
 end 
 end 
