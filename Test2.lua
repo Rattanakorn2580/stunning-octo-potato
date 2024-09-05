@@ -24,7 +24,7 @@ end)
 --BRINGMOB
 local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("Bring List Mob")
-Section:NewToggle("Lv2 Angry Bob", " ", function(t) 
+Section:NewToggle("Bring All", " ", function(t) 
     Bring = t
 end)
 
@@ -44,12 +44,6 @@ game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.
 game:GetService("Workspace").Enemies["Lv4 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv5 Crab"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 game:GetService("Workspace").Enemies["Lv4 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv11 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv12 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv14 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv15 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
-game:GetService("Workspace").Enemies["Lv16 Boar"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
 game:GetService("Workspace").Enemies["Lv9 Bandit"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv14 Bandit"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv14 Bandit"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
