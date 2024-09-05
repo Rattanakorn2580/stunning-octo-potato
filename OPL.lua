@@ -238,7 +238,7 @@ Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
--- PLAYER
+
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Select Player!")
 Plr = {}
