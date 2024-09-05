@@ -159,3 +159,17 @@ end)
 end 
 end 
 end)
+
+Section:NewToggle("Vokun", " ", function(t) 
+    Bring = t
+end)
+
+spawn(function()
+while wait() do 
+if Bring then 
+pcall(function() 
+game:GetService("Workspace").Enemies["Lv200 Vokun"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
+end) 
+end 
+end 
+end)
