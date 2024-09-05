@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("เอาhitboxออก เพิ่ม Bring mobเข้ามา")
+local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
