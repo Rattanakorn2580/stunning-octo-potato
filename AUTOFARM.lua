@@ -29,10 +29,11 @@ Section:NewToggle("Lv2 Angry Bob", " ", function(t)
 end)
 
 spawn(function()
-while wait() do 
+repeat task.wait(.5)
 if AutoFarm then 
 pcall(function() 
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
+until v.Humanoid.Health == die then
 end) 
 end 
 end 
