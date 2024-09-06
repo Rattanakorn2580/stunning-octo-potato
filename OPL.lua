@@ -32,10 +32,9 @@ Section:NewButton("Taget List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
 
-Section:NewToggle("Bring Mob", " ", function(t) 
-        Bring = t
-
-    end)
+Section:NewButton("Taget Bring", " ", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
+end)
 
 
 local Weaponlist = {} 
