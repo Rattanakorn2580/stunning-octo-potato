@@ -30,7 +30,7 @@ pcall(function()
 if AutoFarm then
 for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
 if v.Humanoid.Health == 0 then 
-    v:Destroy() 
+    game:GetService("Workspace").Enemies:Destroy() 
 end 
 end 
 end
