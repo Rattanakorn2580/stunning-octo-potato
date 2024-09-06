@@ -144,10 +144,10 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
        end)
     end)
 
-Section:NewToggle("Lv4 Crab", " ", function(stato) 
+Section:NewToggle("Lv5 Crab", " ", function(stato) 
         _G.AutoFarmE = stato
         end)
-MONO = "Lv4 Crab"
+MONO = "Lv5 Crab"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
@@ -159,10 +159,10 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
        end)
     end)
 
-Section:NewToggle("Lv4 Crab", " ", function(statx) 
+Section:NewToggle("Lv9 Bandit", " ", function(statx) 
         _G.AutoFarmX = statx
         end)
-MONX = "Lv4 Crab"
+MONX = "Lv9 Bandit"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
@@ -174,16 +174,31 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
        end)
     end)
 
-Section:NewToggle("Lv5 Crab", " ", function(statu) 
+Section:NewToggle("Lv14 Bandit", " ", function(statu) 
         _G.AutoFarmU = statu
         end)
-MONU = "Lv5 Crab"
+MONU = "Lv14 Bandit"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
             if _G.AutoFarmU then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONU].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv15 Bandit", " ", function(statd) 
+        _G.AutoFarmD = statd
+        end)
+MONZ = "Lv15 Bandit"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmD then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONZ].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
             end
         end)
        end)
