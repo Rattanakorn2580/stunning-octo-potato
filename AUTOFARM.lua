@@ -24,8 +24,8 @@ end)
 --AUTOFARM
 local Tab = Window:NewTab(" ")
 local Section = Tab:NewSection("Select Mob")
-Section:NewToggle("Lv2 Angry Bob", " ", function(state) 
-        _G.AutoFarmLV = state
+Section:NewToggle("Lv2 Angry Bob", " ", function(statl) 
+        _G.AutoFarmL = statl
         end)
 MON = "Lv2 Angry Bob"
  
@@ -154,6 +154,36 @@ MONO = "Lv4 Crab"
         pcall(function()
             if _G.AutoFarmE then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONO].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv4 Crab", " ", function(statx) 
+        _G.AutoFarmX = statx
+        end)
+MONX = "Lv4 Crab"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmX then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONX].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv5 Crab", " ", function(statu) 
+        _G.AutoFarmU = statu
+        end)
+MONU = "Lv5 Crab"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmU then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONU].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
             end
         end)
        end)
