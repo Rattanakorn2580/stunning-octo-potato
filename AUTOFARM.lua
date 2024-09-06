@@ -21,8 +21,22 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
+--AUTOFARM
 local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("List MobFarm")
+spawn(function() 
+while task.wait(.1) do 
+pcall(function() 
+if AutoFarm then
+for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
+if v.Humanoid.Health == 0 then 
+    v:Destroy() 
+end 
+end 
+end
+end) 
+end 
+end)
 Section:NewToggle("Lv2 Angry Bob", " ", function(t) 
     AutoFarm = t
     end)
