@@ -33,7 +33,7 @@ while wait(1) do
 if AutoFatm then
 pcall(function()
 game.Players.LocalPlayer.Charecter.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumaniodRootPart.CFrame * CFrame.new(0,0,3)
-                    end
-                end)
+                    end)
+                end
         end
     end)
