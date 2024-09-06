@@ -40,9 +40,6 @@ end)
 end 
 end)
 
-if v.Hmanoid.Health == 0 then
-end
-
 Section:NewToggle("Lv1 Crab", " ", function(t) 
     AutoFarm = t
     end)
@@ -57,6 +54,3 @@ end
 end) 
 end 
 end)
-
-if v.Humaniod.Health == then
-end
