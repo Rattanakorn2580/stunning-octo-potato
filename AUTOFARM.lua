@@ -293,3 +293,153 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
         end)
        end)
     end)
+
+Section:NewToggle("Lv12 Thug", " ", function(statjk) 
+        _G.AutoFarmJK = statjk
+        end)
+MONJK = "Lv12 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmJK then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONJK].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv15 Thug", " ", function(stathd) 
+        _G.AutoFarmHD = stathd
+        end)
+MONHD = "Lv15 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmHD then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONHD].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv17 Thug", " ", function(statio) 
+        _G.AutoFarmIO = statio
+        end)
+MONIO = "Lv17 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmIO then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONIO].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv22 Thug", " ", function(statlk)
+        _G.AutoFarmLK = statlk
+        end)
+MONLK = "Lv22 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmLK then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONLK].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv23 Thug", " ", function(statot)
+        _G.AutoFarmOT = statot
+        end)
+MONOT = "Lv23 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmOT then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONOT].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv24 Thug", " ", function(statbk) 
+        _G.AutoFarmBK = statbk
+        end)
+MONBK = "Lv24 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmBK then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONBK].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv30 Thug", " ", function(statrv) 
+        _G.AutoFarmRV = statrv
+        end)
+MONRV = "Lv30 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmRV then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONRV].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv40 Thug", " ", function(statiq) 
+        _G.AutoFarmIQ = statiq
+        end)
+MONIQ = "Lv40 Thug"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmIQ then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONIQ].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv20 Thief", " ", function(statui) 
+        _G.AutoFarmUI = statui
+        end)
+MONUI = "Lv20 Thief"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmUI then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONUI].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Lv32 Thief", " ", function(statop) 
+        _G.AutoFarmOP = statop
+        end)
+MONOP = "Lv32 Thief"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmOP then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONOP].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
