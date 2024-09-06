@@ -25,9 +25,13 @@ end)
 local Tab = Window:NewTab("Update")
 local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
 
+--AUTO
+local Tab = Window:NewTab("Auto")
+local Section = Tab:NewSection("Auto function All")
+
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Auto Farm") 
+local Section = Tab:NewSection("AutoFarm Mob Taget") 
 Section:NewButton("Taget List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
