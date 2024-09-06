@@ -24,11 +24,16 @@ end)
 --AUTOFARM
 local Tab = Window:NewTab("Select Mob")
 local Section = Tab:NewSection("Select Mob")
-Section:NewToggle("Lv2 Angry Bob", " ", function(t) 
-    AutoFarm = t
-while AutoFarm wait() do
-if AutoFarm then
-game.Players.LocalPlayer.Charecter.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,2)
-            end
+Section:NewToggle("Lv2 Angry Bob", " ", function(a) 
+        AutoFarm = a 
     end)
 
+spawn(function() 
+while wait() do 
+if AutoFarm then 
+pcall(function() 
+game.Players.LocalPlayer.Charecter.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,2)
+end) 
+end 
+end 
+end)
