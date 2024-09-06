@@ -27,27 +27,27 @@ local Section = Tab:NewSection("Select Mob")
 Section:NewToggle("Lv2 Angry Bob", " ", function(state) 
         _G.AutoFarmLV = state ----true/false
         end)
-MONS = "Lv2 Angry Bob" --MonName
+MON = "Lv2 Angry Bob" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
             if _G.AutoFarmLV then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3) --Distace
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,3) --Distace
             end
         end)
        end)
     end)
 
-Section:NewToggle("Lv22 Angry Bobby", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+Section:NewToggle("Lv22 Angry Bobby", " ", function(s) 
+        _G.AutoFarmL = s ----true/false
         end)
 MOND = "Lv22 Angry Bobby" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmL then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MOND].HumanoidRootPart.CFrame * CFrame.new(0,0,3) --Distace
             end
         end)
