@@ -24,16 +24,17 @@ end)
 --AUTOFARM
 local Tab = Window:NewTab("Taget List")
 local Section = Tab:NewSection("Select Mob")
-Section:NewToggle("Lv2 Angry Bob", " ", function(a) 
-        AutoFarm = a 
+Section:NewToggle("Lv2 Angry Bob", " ", function(state) 
+        _G.AutoFarmLV = state ----true/false
+        end)
+MON = "Lv2 Angry Bob" --MonName
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmLV then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
+            end
+        end)
+       end)
     end)
-
-spawn(function() 
-while wait() do 
-if AutoFarm then 
-pcall(function() 
-game.Players.LocalPlayer.Charecter.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,2)
-end) 
-end 
-end 
-end)
