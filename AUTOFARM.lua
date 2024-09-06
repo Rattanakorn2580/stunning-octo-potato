@@ -34,10 +34,29 @@ while task.wait(.1) do
 pcall(function() 
 if AutoFarm then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-if v.Humanoid.Health == 0 then
 end
 end
 end) 
 end 
 end)
+
+if v.Hmanoid.Health == 0 then
+end
+
+Section:NewToggle("Lv1 Crab", " ", function(t) 
+    AutoFarm = t
+    end)
+
+spawn(function() 
+while task.wait(.1) do 
+pcall(function()
+if AutoFarm then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+end
+end
+end) 
+end 
+end)
+
+if v.Humaniod.Health == then
+end
