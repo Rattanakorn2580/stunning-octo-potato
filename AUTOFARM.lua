@@ -26,14 +26,22 @@ local Tab = Window:NewTab("ListMob")
 local Section = Tab:NewSection("List MobFarm")
 Section:NewToggle("Lv2 Angry Bob", " ", function(t) 
     AutoFarm = t
-end)
+while AutoFarm wait() do
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+    end)
 
 spawn(function()
-while wait() do
-if AutoFarm then 
-pcall(function() 
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-end) 
-end 
-end 
+    while task.wait(.1) do
+        pcall(function()
+            if AutoFarm then
+            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+        if v.Name == Enemies then
+            if v.Humanoid.Health == 0 then
+            v:Destroy()
+            end
+            end
+            end
+            end
+        end)
+    end
 end)
