@@ -53,3 +53,18 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
         end)
        end)
     end)
+
+Section:NewToggle("Lv24 Angry Bobbi", " ", function(statr) 
+        _G.AutoFarmLV = statr
+        end)
+MONS = "Lv24 Angry Bobbi"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmL then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
