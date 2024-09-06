@@ -36,7 +36,7 @@ Section:NewToggle("Bring All", " ", function(t)
 end)
 
 spawn(function()
-while wait() do 
+game:GetService("RunService").RenderStepped:Connect(function() 
 if Bring then 
 pcall(function() 
 game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
@@ -84,9 +84,9 @@ game:GetService("Workspace").Enemies["Lv24 Thug"].HumanoidRootPart.CFrame = game
 game:GetService("Workspace").Enemies["Lv30 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv40 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5) 
 game:GetService("Workspace").Enemies["Lv8 Thug"].HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-5)
-end) 
-end 
-end 
+end
+end)
+end)
 end)
 
 local Weaponlist = {} 
