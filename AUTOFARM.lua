@@ -40,14 +40,14 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv22 Angry Bobby", " ", function(stats) 
-        _G.AutoFarmV = stats
+        _G.AutoFarmS = stats
         end)
 MONS = "Lv22 Angry Bobby"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmV then
+            if _G.AutoFarmS then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
             end
         end)
