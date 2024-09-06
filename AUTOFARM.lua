@@ -55,7 +55,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv24 Angry Bobbi", " ", function(statr) 
-        _G.AutoFarmLV = statr
+        _G.AutoFarmL = statr
         end)
 MONS = "Lv24 Angry Bobbi"
  
