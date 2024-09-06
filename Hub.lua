@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("List BringMob", "BloodTheme")
+local Window = Library.CreateLib(" ", "LightTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
@@ -22,8 +22,8 @@ Library:ToggleUI()
 end)
 
 --BRINGMOB
-local Tab = Window:NewTab("ListMob")
-local Section = Tab:NewSection("Bring List Mob")
+local Tab = Window:NewTab(" ")
+local Section = Tab:NewSection("Bring List")
 Section:NewToggle("Angry Bob", " ", function(t) 
     Bring1 = t
 end)
