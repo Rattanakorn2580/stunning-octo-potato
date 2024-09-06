@@ -22,14 +22,20 @@ Library:ToggleUI()
 end)
 
 local Tab = Window:NewTab("NPC")
-local Section = Tab:NewSection("NCP DrinkBuyer")
-local Drinklist = {} 
-local Drink = nil
-
-for i,v in 
-pairs(game:GetService("Workspace").Merchants.BetterDrinkMerchant.Clickble.Retum:GetChildren()) do 
-    table.insert(Drinklist,v.Name) 
-end 
-Section:NewDropdown("List Drink", " ", Drinklist, function(currentOption) 
-        Drink = currentOption 
+local Section = Tab:NewSection("Farm")
+Section:NewToggle("Farm", " ", function(true)
+    _G.AutoFarm == true
     end)
+spawn(function()
+while _G.AutoFarm do wait()
+pcall(function()
+for i,v in pairs(game:GetService("Workspace").Enemies:Descendants()) do
+    if v.Name == "Lv2 Angry Bob"
+    v.Humanoid.Health >= 0 then
+repeat task.wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+until _G.AutoFarm == false or v.Humanoid.Health <= 0
+                        end
+                    end)
+                end
+        end)
