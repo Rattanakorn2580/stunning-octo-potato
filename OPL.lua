@@ -31,9 +31,6 @@ local Section = Tab:NewSection("Auto Farm")
 Section:NewButton("Taget List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
-Section:NewToggle("Bring All", " ", function(t) 
-    Bring = t
-end)
 
 local Weaponlist = {} 
 local Weapon = nil
