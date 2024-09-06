@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("List BringMob", "BloodTheme")
+local Window = Library.CreateLib("Select Mob", "LightTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
@@ -22,7 +22,7 @@ Library:ToggleUI()
 end)
 
 --AUTOFARM
-local Tab = Window:NewTab("Select Mob")
+local Tab = Window:NewTab("Taget List")
 local Section = Tab:NewSection("Select Mob")
 Section:NewToggle("Lv2 Angry Bob", " ", function(a) 
         AutoFarm = a 
