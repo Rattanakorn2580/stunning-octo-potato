@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Opl X", "DarkTheme")
+local Window = Library.CreateLib("OPLMIUM HUB", "DarkTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
@@ -28,7 +28,7 @@ local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Auto Farm") 
-Section:NewButton("MobFarm List", " ", function()
+Section:NewButton("Taget List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
 Section:NewToggle("Bring All", " ", function(t) 
@@ -97,7 +97,7 @@ pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist,v.Name) 
 end 
 
-Section:NewDropdown("List Weapon", " ", Weaponlist, function(currentOption) 
+Section:NewDropdown("Taget Weapon", " ", Weaponlist, function(currentOption) 
         Weapon = currentOption 
     end)
 
@@ -241,7 +241,7 @@ Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-local drop = Section:NewDropdown("Select Player!", "Click To Select", Plr, function(t)
+local drop = Section:NewDropdown("Taget Player", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
 
