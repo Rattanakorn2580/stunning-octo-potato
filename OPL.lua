@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Opl X", "BloodTheme")
+local Window = Library.CreateLib("Opl X", "DarkTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
