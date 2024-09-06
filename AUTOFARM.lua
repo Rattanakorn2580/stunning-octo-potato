@@ -27,13 +27,13 @@ local Section = Tab:NewSection("Select Mob")
 Section:NewToggle("Lv2 Angry Bob", " ", function(state) 
         _G.AutoFarmLV = state
         end)
-MON = "Lv2 Angry Bob"
+MONS = "Lv2 Angry Bob"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
             if _G.AutoFarmLV then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
             end
         end)
        end)
@@ -42,13 +42,13 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
 Section:NewToggle("Lv22 Angry Bobby", " ", function(stats) 
         _G.AutoFarmV = stats
         end)
-MOND = "Lv22 Angry Bobby"
+MONS = "Lv22 Angry Bobby"
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
             if _G.AutoFarmV then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MOND].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
             end
         end)
        end)
@@ -84,3 +84,17 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
        end)
     end)
 
+Section:NewToggle("Lv35 Angry Bobb", " ", function(statp) 
+        _G.AutoFarmBB = statp
+        end)
+MONS = "Lv35 Angry Bobb"
+ 
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.AutoFarmBB then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONS].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+            end
+        end)
+       end)
+    end)
