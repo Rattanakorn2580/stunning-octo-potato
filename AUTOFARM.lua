@@ -29,8 +29,7 @@ while task.wait(.1) do
 pcall(function() 
 if AutoFarm then
 for i,v in pairs(game:GetService("Workspace").Enemies["Lv2 Angry Bob"]:GetChildren()) do
-if v.Humanoid.Health == 0 then 
-    game:GetService("Workspace").Enemies:Destroy() 
+if v.Humanoid.Health == 0 then
 end 
 end 
 end
