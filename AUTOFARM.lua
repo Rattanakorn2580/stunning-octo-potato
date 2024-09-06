@@ -25,14 +25,14 @@ end)
 local Tab = Window:NewTab("Taget List")
 local Section = Tab:NewSection("Select Mob")
 Section:NewToggle("Lv2 Angry Bob", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+        _G.AutoFarmLV2 = state ----true/false
         end)
 MON = "Lv2 Angry Bob" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmLV2 then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
             end
         end)
@@ -40,14 +40,14 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv22 Angry Bobby", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+        _G.AutoFarmLV22 = state ----true/false
         end)
 MON = "Lv22 Angry Bobby" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmLV22 then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
             end
         end)
@@ -55,14 +55,14 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv24 Angry Bobbi", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+        _G.AutoFarmLV24 = state ----true/false
         end)
 MON = "Lv24 Angry Bobbi" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmLV24 then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
             end
         end)
@@ -70,14 +70,14 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv29 Angry Bobber", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+        _G.AutoFarmLV29 = state ----true/false
         end)
 MON = "Lv29 Angry Bobber" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmLV29 then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
             end
         end)
@@ -85,14 +85,14 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Wo
     end)
 
 Section:NewToggle("Lv35 Angry Bobb", " ", function(state) 
-        _G.AutoFarmLV = state ----true/false
+        _G.AutoFarmLV35 = state ----true/false
         end)
 MON = "Lv35 Angry Bobb" --MonName
  
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
-            if _G.AutoFarmLV then
+            if _G.AutoFarmLV35 then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MON].HumanoidRootPart.CFrame * CFrame.new(0,0,5) --Distace
             end
         end)
