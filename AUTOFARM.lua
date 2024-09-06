@@ -28,28 +28,12 @@ Section:NewToggle("Lv2 Angry Bob", " ", function(t)
     AutoFarm = t
     end)
 
-spawn(function() 
-while wait(.8) do 
-pcall(function() 
-if AutoFarm then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-end
-end
-end) 
-end 
-end)
-
-Section:NewToggle("Lv1 Crab", " ", function(t) 
-    AutoFarm = t
-    end)
-
-spawn(function() 
-while wait(.8) do 
+spawn(function()
+while wait(1)
 pcall(function()
 if AutoFarm then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv1 Crab"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
-end
-end
-end) 
-end 
+game.Players.LocalPlayer.Charecter.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies["Lv2 Angry Bob"].HumanoidRootPart.CFrame * CFrame.new(0,0,3)
+                end
+            end)
+    end
 end)
