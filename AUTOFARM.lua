@@ -22,8 +22,8 @@ Library:ToggleUI()
 end)
 
 --AUTOFARM
-local Tab = Window:NewTab("ListMob")
-local Section = Tab:NewSection("List MobFarm")
+local Tab = Window:NewTab("Select Mob")
+local Section = Tab:NewSection("Select Mob")
 Section:NewToggle("Lv2 Angry Bob", " ", function(t) 
     AutoFarm = t
     end)
