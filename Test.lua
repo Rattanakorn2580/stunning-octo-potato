@@ -18,32 +18,22 @@ end
 -- CREDIT Kavo Libary 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
 local Window = Library.CreateLib("King legency", "GrapeTheme") 
+
 -- auto farm 
 local Main = Window:NewTab("Main") 
 local Section = Main:NewSection("Mob Farm") 
 local dropdown = Section:NewDropdown("Choose Mob", "Chooses the mob to autofarm", mobs, function(v) 
     getgenv().mob = v 
-  end) 
+  end)
+
 Section:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs", function(v) 
     getgenv().autofarmmobs = v 
     while wait() do 
       if getgenv().autofarmmobs == false then return end 
       if getgenv().mob == nil then
-game.StarterGui:SetCore("SendNotification", { 
-            Title = "!! FAIL !!", 
-            Text = "Please choose your MOBS", 
-            Icon = "", 
-            Duration = 2.5 
-          }) 
         getgenv().autofarmmobs = false return end 
       local mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) 
-      if mob == nil then 
-        game.StarterGui:SetCore("SendNotification", { 
-            Title = "Info!", 
-            Text = "There is currently no spawned mobs of this type!\nJust wait until they spawn", 
-            Icon = "", 
-            Duration = 2.5 
-          }) 
+      if mob == nil then
         while wait() do 
           wait() 
           if getgenv().autofarmmobs == false then return end 
@@ -65,3 +55,4 @@ game.StarterGui:SetCore("SendNotification", {
       end 
     end 
   end)
+
