@@ -1,21 +1,67 @@
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/ExolutionProject/Scripts/main/ExolutionPremiumHub.lua", true))()
+- BYPASS TP 
+if game:GetService("Players").LocalPlayer.Character.Services:FindFirstChild("Client") then 
+  game:GetService("Players").LocalPlayer.Character.Services["Client"].Disabled = true 
+end 
+local mobs = {} getgenv().mob = nil 
 
-local ScreenGui = Instance.new("ScreenGui") 
-ScreenGui.Name = "ScreenGui" 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
-ScreenGui.ResetOnSpawn = false 
+-- MOBS 
+for _,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+  insert = true for _,v2 in pairs(mobs) do 
+    if v2 == v.Name then insert = false 
+    end 
+  end 
+  if insert then 
+    table.insert(mobs, v.Name) 
+  end 
+end 
 
-local Toggle = Instance.new("TextButton") 
-Toggle.Name = "Toggle" 
-Toggle.Parent = ScreenGui 
-Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
-Toggle.Position = UDim2.new(0, 0, 0.454706937, 0) 
-Toggle.Size = UDim2.new(0, 90, 0, 38) 
-Toggle.Font = Enum.behind.SourceSans 
-Toggle.Text = "เปิด/ปิด ฟาม" 
-Toggle.TextColor3 = Color3.fromRGB(248, 248, 248) 
-Toggle.TextSize = 23.000 
-Toggle.Draggable = true 
-Toggle.MouseButton1Click:connect(function() 
-Library:ToggleUI() 
-end)
+-- CREDIT Kavo Libary 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
+local Window = Library.CreateLib("King legency", "GrapeTheme") 
+-- auto farm 
+local Main = Window:NewTab("Main") 
+local Section = Main:NewSection("Mob Farm") 
+local dropdown = Section:NewDropdown("Choose Mob", "Chooses the mob to autofarm", mobs, function(v) 
+    getgenv().mob = v 
+  end) 
+Section:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs", function(v) 
+    getgenv().autofarmmobs = v 
+    while wait() do 
+      if getgenv().autofarmmobs == false then return end 
+      if getgenv().mob == nil then
+game.StarterGui:SetCore("SendNotification", { 
+            Title = "!! FAIL !!", 
+            Text = "Please choose your MOBS", 
+            Icon = "", 
+            Duration = 2.5 
+          }) 
+        getgenv().autofarmmobs = false return end 
+      local mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) 
+      if mob == nil then 
+        game.StarterGui:SetCore("SendNotification", { 
+            Title = "Info!", 
+            Text = "There is currently no spawned mobs of this type!\nJust wait until they spawn", 
+            Icon = "", 
+            Duration = 2.5 
+          }) 
+        while wait() do 
+          wait() 
+          if getgenv().autofarmmobs == false then return end 
+          if game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) ~= nil then break; end end 
+      else 
+        local mob2 = mob 
+        while wait() do 
+          mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) 
+          if mob ~= mob2 then break; end 
+          if getgenv().autofarmmobs == false then return end 
+          if mob ~= nil then if mob:FindFirstChild("Humanoid") then 
+          if mob.Humanoid.Health == 0 then wait(0.1) mob:Destroy() break; end end 
+          if mob:FindFirstChild("HumanoidRootPart") then 
+              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0,0,2) 
+            end 
+          end 
+          wait() 
+        end 
+      end 
+    end 
+  end)
