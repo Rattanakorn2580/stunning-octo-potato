@@ -20,8 +20,8 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("King legency", "GrapeTheme") 
 
 -- auto farm 
-local Main = Window:NewTab("Main") 
-local Section = Main:NewSection("Mob Farm") 
+local Tab = Window:NewTab("Main") 
+local Section = Tab:NewSection("Mob Farm") 
 local dropdown = Section:NewDropdown("Choose Mob", "Chooses the mob to autofarm", mobs, function(v) 
     getgenv().mob = v 
   end)
