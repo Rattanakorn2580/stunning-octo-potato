@@ -53,6 +53,13 @@ Section:NewDropdown("Taget Weapon", " ", Weaponlist, function(currentOption)
         Weapon = currentOption 
     end)
 
+Section:NewButton("Refresh", "", function() 
+table.clear(Weapon) 
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
+table.insert(Weapon,v.Name) 
+end 
+end)
+
 Section:NewToggle("Auto Click", " ", function(a) 
         AutoClicked = a 
     end)
