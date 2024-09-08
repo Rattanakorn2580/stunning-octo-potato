@@ -46,6 +46,12 @@ local plr=game:GetService'Players'.LocalPlayer
 
 
 end)
+Section:NewButton("TP Chest", "", function()
+ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
+wait(1)
+ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
+wait(1)
+	end)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
