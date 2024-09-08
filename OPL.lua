@@ -222,9 +222,12 @@ game.Players[PlayerTP].Character.HumanoidRootPart.CFrame = game.Players.LocalPla
 end
 end)
 
-Section:NewButton("Refresh","", function()
-  drop:Refresh(Plr)
-	end)
+Section:NewButton("Refresh", "", function() 
+table.clear(Plr) 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do 
+table.insert(Plr,v.Name) 
+end 
+end)
 
 -- SEVER
 local Tab = Window:NewTab("Sever")
