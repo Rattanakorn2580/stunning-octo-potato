@@ -120,18 +120,6 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(88.5, 297.100006, -916, 0,
 wait(.2)
 	end)
 
-Section:NewToggle("Auto Packages", "", function(pk)
-_G.TPPk = pk
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-132.806, 215.5, -670.598022, 0.573598742, 0, 0.81913656, 0, 1, 0, -0.81913656, 0, 0.573598742))
-wait(.5)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2.325, 218.500168, -410.068237, -0.707134247, 0, -0.707079291, 0, 1, 0, 0.707079291, 0, -0.707134247))
-wait(.5)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2055.5, 215.600021, -387.5, -1, 0, 0, 0, 1, 0, 0, 0, -1))
-wait(.5)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(113.335197, 277.835052, 4953, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247))
-wait(.5)
-	end)
-
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
 local Section = Tab:NewSection("Mob Farm") 
