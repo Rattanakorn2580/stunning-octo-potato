@@ -122,8 +122,6 @@ wait(.2)
 
 Section:NewToggle("Auto Packages", "", function(pk)
 _G.TPPk = pk
-if _G.TPPk then
-while _G.TPPk wait() do
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-132.806, 215.5, -670.598022, 0.573598742, 0, 0.81913656, 0, 1, 0, -0.81913656, 0, 0.573598742))
 wait(.5)
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2.325, 218.500168, -410.068237, -0.707134247, 0, -0.707079291, 0, 1, 0, 0.707079291, 0, -0.707134247))
