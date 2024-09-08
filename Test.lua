@@ -41,6 +41,10 @@ end
 end 
 end)
 
+Section:NewToggle("Auto Equip", " ", function(a) 
+        AutoTP = a 
+    end)
+
 spawn(function()
 while wait() do 
 if AutoTP then 
@@ -50,6 +54,3 @@ end)
 end 
 end 
 end)
-Section:NewToggle("Auto Equip", " ", function(a) 
-        AutoTP = a 
-    end)
