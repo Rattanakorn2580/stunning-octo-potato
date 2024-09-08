@@ -26,9 +26,9 @@ local Tab = Window:NewTab("Update")
 local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
 
 --AUTO
-local Tab = Window:NewTab("Auto")
-local Section = Tab:NewSection("Auto function All")
-Section:NewToggle("Bring Compass", " ", function()
+local Tab = Window:NewTab("Autos")
+local Section = Tab:NewSection("Auto function")
+Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Compass'
