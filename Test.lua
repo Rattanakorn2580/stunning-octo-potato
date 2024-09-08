@@ -45,7 +45,7 @@ spawn(function()
 while wait() do 
 if AutoTP then 
 pcall(function() 
-
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
 end) 
 end 
 end 
