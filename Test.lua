@@ -21,36 +21,23 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-spawn(function() 
-while wait() do 
-if AutoTP then 
-pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
-end) 
-end 
-end 
-end)
-
-spawn(function()
-while wait() do 
-if AutoTP then 
-pcall(function() 
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
-end) 
-end 
-end 
-end)
-
 Section:NewToggle("Auto Equip", " ", function(a) 
-        AutoTP = a 
+        AutoFarm = a 
     end)
 
 spawn(function()
-while wait() do 
-if AutoTP then 
-pcall(function() 
-workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
-end) 
-end 
-end 
+    while task.wait(.1) do
+        pcall(function()
+            if _G.AutoFarm then
+            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+        if v.Name == "Lv2 Angry Bob" then
+            
+        if v.Humanoid.Health == 0 then
+            v:Destroy()
+            end
+            end
+            end
+            end
+        end)
+    end
 end)
