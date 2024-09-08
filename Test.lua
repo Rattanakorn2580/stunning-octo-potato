@@ -1,58 +1,55 @@
-- BYPASS TP 
-if game:GetService("Players").LocalPlayer.Character.Services:FindFirstChild("Client") then 
-  game:GetService("Players").LocalPlayer.Character.Services["Client"].Disabled = true 
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("OPLMIUM HUB", "DarkTheme")
+
+local ScreenGui = Instance.new("ScreenGui") 
+ScreenGui.Name = "ScreenGui" 
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
+ScreenGui.ResetOnSpawn = false 
+
+local Toggle = Instance.new("TextButton") 
+Toggle.Name = "Toggle" 
+Toggle.Parent = ScreenGui 
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0) 
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0) 
+Toggle.Size = UDim2.new(0, 90, 0, 38) 
+Toggle.Font = Enum.Font.SourceSans 
+Toggle.Text = "Turn/Off" 
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248) 
+Toggle.TextSize = 28.000 
+Toggle.Draggable = true 
+Toggle.MouseButton1Click:connect(function() 
+Library:ToggleUI() 
+end)
+
+spawn(function() 
+while wait() do 
+if AutoTP then 
+pcall(function() 
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+end) 
 end 
-local mobs = {} getgenv().mob = nil 
-
--- MOBS 
-for _,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-  insert = true for _,v2 in pairs(mobs) do 
-    if v2 == v.Name then insert = false 
-    end 
-  end 
-  if insert then 
-    table.insert(mobs, v.Name) 
-  end 
 end 
+end)
 
--- CREDIT Kavo Libary 
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))() 
-local Window = Library.CreateLib("King legency", "GrapeTheme") 
+spawn(function()
+while wait() do 
+if AutoTP then 
+pcall(function() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end) 
+end 
+end 
+end)
 
--- auto farm 
-local Tab = Window:NewTab("Main") 
-local Section = Tab:NewSection("Mob Farm") 
-local dropdown = Section:NewDropdown("Choose Mob", "Chooses the mob to autofarm", mobs, function(v) 
-    getgenv().mob = v 
-  end)
+spawn(function()
+while wait() do 
+if AutoTP then 
+pcall(function() 
 
-Section:NewToggle("Start Mob Farm", "Toggles the autofarming of the mobs", function(v) 
-    getgenv().autofarmmobs = v 
-    while wait() do 
-      if getgenv().autofarmmobs == false then return end 
-      if getgenv().mob == nil then
-        getgenv().autofarmmobs = false return end 
-      local mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) 
-      if mob == nil then
-        while wait() do 
-          wait() 
-          if getgenv().autofarmmobs == false then return end 
-          if game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) ~= nil then break; end end 
-      else 
-        local mob2 = mob 
-        while wait() do 
-          mob = game:GetService("Workspace").Enemies:FindFirstChild(getgenv().mob) 
-          if mob ~= mob2 then break; end 
-          if getgenv().autofarmmobs == false then return end 
-          if mob ~= nil then if mob:FindFirstChild("Humanoid") then 
-          if mob.Humanoid.Health == 0 then wait(0.1) mob:Destroy() break; end end 
-          if mob:FindFirstChild("HumanoidRootPart") then 
-              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = mob.HumanoidRootPart.CFrame * CFrame.new(0,0,2) 
-            end 
-          end 
-          wait() 
-        end 
-      end 
-    end 
-  end)
-
+end) 
+end 
+end 
+end)
+Section:NewToggle("Auto Equip", " ", function(a) 
+        AutoTP = a 
+    end)
