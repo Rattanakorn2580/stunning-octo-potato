@@ -25,6 +25,7 @@ Section:NewToggle("Auto Equip", " ", function(a)
         AutoFarm = a 
     end)
 MONL = "Lv2 Angry Bob"
+
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
