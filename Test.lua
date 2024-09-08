@@ -24,19 +24,17 @@ end)
 Section:NewToggle("Auto Equip", " ", function(a) 
         AutoFarm = a 
     end)
-
+MONL = "Lv2 Angry Bob"
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
             if _G.AutoFarm then
             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-        if MONL == "Lv2 Angry Bob" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONL].HumanoidRootPart.CFrame * CFrame.new(0,0,3)   
-        if v.Humanoid.Health == 0 then
+        if v.Humanoid.Health = 0 then
             v:Destroy()
             end
             end
-            end
         end)
-    end
+    end)
 end)
