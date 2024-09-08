@@ -28,10 +28,28 @@ local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม
 --AUTO
 local Tab = Window:NewTab("Auto")
 local Section = Tab:NewSection("Auto function All")
+Section:NewToggle("Bring Compass", " ", function()
+local plr=game:GetService'Players'.LocalPlayer 
+
+	local dftofind='Compass'
+	while true do 
+	local char=plr.Character or plr.CharacterAdded:Wait() 
+	local HRP=char:WaitForChild'HumanoidRootPart' 
+	for i,v in next, workspace:GetChildren() do 
+	local Handle=v:FindFirstChild'Handle' 
+	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
+	Handle.CFrame=HRP.CFrame 
+	end 
+	end 
+	wait(1) 
+	end 
+
+
+end)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("AutoFarm Mob Taget") 
+local Section = Tab:NewSection("Mob Farm") 
 Section:NewButton("Taget List", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
@@ -106,24 +124,6 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 	end)
-Section:NewToggle("Bring Compass", " ", function()
-local plr=game:GetService'Players'.LocalPlayer 
-
-	local dftofind='Compass'
-	while true do 
-	local char=plr.Character or plr.CharacterAdded:Wait() 
-	local HRP=char:WaitForChild'HumanoidRootPart' 
-	for i,v in next, workspace:GetChildren() do 
-	local Handle=v:FindFirstChild'Handle' 
-	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
-	Handle.CFrame=HRP.CFrame 
-	end 
-	end 
-	wait(1) 
-	end 
-
-
-end)
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
@@ -195,12 +195,12 @@ end)
 
 
 local Tab = Window:NewTab("Player")
-local Section = Tab:NewSection("Select Player!")
+local Section = Tab:NewSection("Players")
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-local drop = Section:NewDropdown("Taget Player", "Click To Select", Plr, function(t)
+local drop = Section:NewDropdown("Player List", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
 
