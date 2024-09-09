@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("OPLMIUM HUB", "DarkTheme")
+local Window = Library.CreateLib("[OPLxMIUM HUB]", "DarkTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
+local Section = Tab:NewSection("อัพ 'safezone' ")
 
 --AUTO
 local Tab = Window:NewTab("Autos")
