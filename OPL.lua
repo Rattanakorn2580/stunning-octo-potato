@@ -213,7 +213,7 @@ Section:NewButton("Dupe","", function()
 	end)
 
 local Tab = Window:NewTab("Auto Stats")
-local Section = Tab:NewSection("Auto Stats")
+local Section = Tab:NewSection("Fruit Farm")
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
