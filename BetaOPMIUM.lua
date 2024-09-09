@@ -30,8 +30,8 @@ local Section = Tab:NewSection("อยู่ในช่วงพัฒนาน
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
 
-Section:NewToggle("Auto Package", "Click To Frame", function(state) 
-_G.AutoPack = state
+Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
+_G.AutoPack = ap
 while _G.AutoPack do wait()
       if _G.AutoPack then
         workspace.Merchants.QuestFishMerchant.Clickable.Retum:FireServer()
@@ -208,13 +208,6 @@ Section:NewDropdown("Taget Weapon", " ", Weaponlist, function(currentOption)
         Weapon = currentOption 
     end)
 
-Section:NewButton("Refresh", "", function() 
-table.clear(Weapon) 
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
-table.insert(Weapon,v.Name) 
-end 
-end)
-
 Section:NewToggle("Auto Click", " ", function(a) 
         AutoClicked = a 
     end)
@@ -389,21 +382,17 @@ game.Players[PlayerTP].Character.HumanoidRootPart.CFrame = game.Players.LocalPla
 end
 end)
 
-Section:NewButton("Refresh", "", function() 
-table.clear(Plr) 
-for i,v in pairs(game:GetService("Players"):GetChildren()) do 
-table.insert(Plr,v.Name) 
-end 
-end)
-
 -- SEVER
-local Tab = Window:NewTab("Sever")
-local Section = Tab:NewSection("Sever")
+local Tab = Window:NewTab("Misc")
+local Section = Tab:NewSection("[Misc]")
 Section:NewButton("Rejoin","", function()
   game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
 
+Section:NewButton("RemoteSpy","", function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
+	end)
 Section:NewButton("Noclip","", function()
   local Noclip = nil
 local Clip = nil
