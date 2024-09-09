@@ -355,8 +355,11 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45000, 5000, 0, 0,
        end)
     end)
 
-Section:NewToggle("Tp Safezone", " ", function(se)
+Section:NewToggle("Auto Tp Safezone", " ", function(se)
 	_G.e = se
+	end)
+Section:NewButton("TP Safezone", "", function()
+ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45003, 5000, 0, 0, -1, 0, 1, 0, 1, 0, 0))
 	end)
 
 local Section = Tab:NewSection("Players")
