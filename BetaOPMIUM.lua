@@ -237,7 +237,7 @@ end
 end)
 
 local Section = Tab:NewSection("Auto Fishing")
-Section:NewToggle("Auto Claim10", " ", function(fs)
+Section:NewToggle("Auto Fishing", " ", function(fs)
         Fishing = fs
     end)
 
