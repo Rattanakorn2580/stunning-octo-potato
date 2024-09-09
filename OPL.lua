@@ -285,13 +285,12 @@ end)
 
 
 local Tab = Window:NewTab("Player")
-local Section = Tab:NewSection("SafeZone")
-Section:NewToggle("Auto Bring Compass", " ", function(safe)
+local Section = Tab:NewSection("Players")
+Section:NewToggle("Safezone", " ", function(safe)
 	_G.e = safe
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/SafeZone.lua))()
 	end)
 
-local Section = Tab:NewSection("Players")
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
