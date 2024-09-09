@@ -28,6 +28,22 @@ local Section = Tab:NewSection("อัพ 'safezone' ")
 --AUTO
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
+
+spawn(function()
+while wait() do 
+if AutoPack then 
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+end) 
+end 
+end 
+end)
+
+Section:NewToggle("Auto Click", " ", function(pk)
+        AutoPack = pk
+    end)
+
 Section:NewToggle("Auto Mission Expert", " ", function(m)
         AutoAdd = m
     end)
@@ -36,7 +52,7 @@ spawn(function()
 while wait() do 
 if AutoAdd then 
 pcall(function() 
-workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer() 
+workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
 end) 
 end 
 end 
