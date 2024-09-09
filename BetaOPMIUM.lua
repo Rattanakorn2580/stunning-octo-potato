@@ -246,10 +246,16 @@ while wait() do
 if Fishing then 
 pcall(function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-4000.639404296875, 215.99998474121094, -2187.36767578125))
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Wood Rod"))
+wait(.1)
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Study Rod"))
+wait(.1)
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Super Rod"))
 wait(.1)
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait(33)
+wait(35)
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+wait(36)
 end) 
 end 
 end 
