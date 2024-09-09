@@ -353,14 +353,15 @@ end
 noclip() -- to toggle noclip() and clip()
 end)
 
-Section:NewToggle("Auto tp Safezone", " ", function(se)
+Section:NewToggle("Auto tp Safezone", " ", function(se) 
+_G.e = se
+	end)
+
 local NovoBloco = Instance.new("Part", workspace) 
 local ts = game:GetService("TweenService") 
 NovoBloco.Anchored = true 
 NovoBloco.CanCollide = true 
-NovoBloco.Size = Vector3.new(250.246, 0.771, 250.852) 
-_G.e = se
-	end)
+NovoBloco.Size = Vector3.new(250.246, 0.771, 250.852)
 
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
