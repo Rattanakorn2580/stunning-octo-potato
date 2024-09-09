@@ -21,21 +21,21 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-Section:NewToggle("Auto Equip", " ", function(a) 
-        AutoFarm = a 
-    end)
-MONL = "Lv2 Angry Bob"
+Section:NewToggle("Auto Bring Compass", " ", function()
+local plr=game:GetService'Players'.LocalPlayer 
 
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        pcall(function()
-            if _G.AutoFarm then
-            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[MONL].HumanoidRootPart.CFrame * CFrame.new(0,0,3)   
-        if v.Humanoid.Health = 0 then
-            v:Destroy()
-            end
-            end
-        end)
-    end)
+	local dftofind='Compass'
+	while true do 
+	local char=plr.Character or plr.CharacterAdded:Wait() 
+	local HRP=char:WaitForChild'HumanoidRootPart' 
+	for i,v in next, workspace:GetChildren() do 
+	local Poser=v:FindFirstChild'Poser' 
+	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
+	HRP.CFrame=Poser.CFrame 
+	end 
+	end 
+	wait(1) 
+	end 
+
+
 end)
