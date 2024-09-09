@@ -28,7 +28,7 @@ local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม
 --AUTO
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
-Section:NewToggle("Auto Challenge", " ", function(m)
+Section:NewToggle("Auto Mission Expert", " ", function(m)
         AutoAdd = m
     end)
 
