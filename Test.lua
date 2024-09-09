@@ -28,9 +28,9 @@ local plr=game:GetService'Players'.LocalPlayer
 	while true do 
 	local char=plr.Character or plr.CharacterAdded:Wait() 
 	local HRP=char:WaitForChild'HumanoidRootPart' 
-	for i,v in next, workspace:GetChildren() do 
+	for i,v in next, Players.LocalPlayer.Backpack:GetChildren() do 
 	local Poser=v:FindFirstChild'Poser' 
-	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
+	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Poser then 
 	HRP.CFrame=Poser.CFrame 
 	end 
 	end 
