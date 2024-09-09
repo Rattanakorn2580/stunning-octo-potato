@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("อัพ New!! 'Auto Bring Fruity, Auto Fishing' ")
+local Section = Tab:NewSection("อัพ New!! 'Auto Bring Fruits, Auto Fishing' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
@@ -282,7 +282,7 @@ Section:NewButton("Dupe","", function()
 
 local Tab = Window:NewTab("Auto Stats")
 local Section = Tab:NewSection("Fruit Farm")
-Section:NewToggle("Auto Bring Fruity", "", function(ft)
+Section:NewToggle("Auto Bring Fruits", "", function(ft)
 	_G.Fruity = ft
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Fruity.lua"))()
 		end)
