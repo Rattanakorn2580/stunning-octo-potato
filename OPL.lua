@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("อัพ 'safezone' ")
+local Section = Tab:NewSection("อัพ New!! 'safezone,auto Package' ")
 
 --AUTO
 local Tab = Window:NewTab("Autos")
