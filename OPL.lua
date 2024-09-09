@@ -29,6 +29,10 @@ local Section = Tab:NewSection("อัพ 'safezone' ")
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
 
+Section:NewToggle("Auto Click", " ", function(pk)
+        AutoPack = pk
+    end)
+
 spawn(function()
 while wait() do 
 if AutoPack then 
@@ -39,10 +43,6 @@ end)
 end 
 end 
 end)
-
-Section:NewToggle("Auto Click", " ", function(pk)
-        AutoPack = pk
-    end)
 
 Section:NewToggle("Auto Mission Expert", " ", function(m)
         AutoAdd = m
