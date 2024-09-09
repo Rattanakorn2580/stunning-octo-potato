@@ -353,13 +353,13 @@ end
 noclip() -- to toggle noclip() and clip()
 end)
 
-Section:NewButton("Auto tp Safezone", " ", function()
 local NovoBloco = Instance.new("Part", workspace) 
 local ts = game:GetService("TweenService") 
 NovoBloco.Anchored = true 
-NovoBloco.CanCollide = true
-NovoBloco.Size = Vector3.new(250.246, 0.771, 250.852)
-_G.e = true
+NovoBloco.CanCollide = true 
+NovoBloco.Size = Vector3.new(250.246, 0.771, 250.852) 
+_G.e = se
+
     spawn(function()
        game:GetService("RunService").RenderStepped:Connect(function()
         pcall(function()
@@ -367,10 +367,14 @@ _G.e = true
 ts:Create(NovoBloco, TweenInfo.new(0.2), 
 		{CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -3.5, 0)}):Play() 
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4500.5, 10000, 4500, 0, 0, -1, 0, 1, 0, 1, 0, 0))
-            end)
+            end
         end)
        end)
     end)
+
+Section:NewToggle("Auto tp Safezone", " ", function(se)
+	_G.e = se
+	end)
 			
 Section:NewButton("BoostFPS","BoostFPS", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/8YZ2cc6V"))()
