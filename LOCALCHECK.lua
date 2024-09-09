@@ -4,5 +4,6 @@ if Pl == 8569358381 then
 else
         game.Players.LocalPlayer:Kick("Script Not Support")
         wait(1)
-	    game:GetService("TeleportService"):Teleport(game.Pl, game:GetService("Players").LocalPlayer)
+	    game:GetService("TeleportService"):Teleport(game.Pl, 
+		game:GetService("Players").LocalPlayer)
 end
