@@ -17,9 +17,6 @@ local plr=game:GetService'Players'.LocalPlayer
 	wait(1) 
 	end 
 
-
-end
-
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Green Apple'
@@ -36,9 +33,6 @@ if _G.Fruity then
 	end 
 	wait(1) 
 	end 
-
-
-end
 
 local plr=game:GetService'Players'.LocalPlayer 
 
@@ -57,9 +51,6 @@ if _G.Fruity then
 	wait(1) 
 	end 
 
-
-end
-
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Banana'
@@ -77,12 +68,9 @@ end
 	wait(1) 
 	end 
 
-
-end
-
 local plr=game:GetService'Players'.LocalPlayer 
 
-	local dftofind='Apple'
+	local dftofind='Cantaloupe'
 	while _G.Fruity do wait()
 if _G.Fruity then
 	local char=plr.Character or plr.CharacterAdded:Wait() 
@@ -96,9 +84,6 @@ end
 	end 
 	wait(1) 
 	end 
-
-
-end
 
 local plr=game:GetService'Players'.LocalPlayer 
 
@@ -115,7 +100,21 @@ end
 	end 
 	end 
 	wait(1) 
-	end 
+	end
 
+local plr=game:GetService'Players'.LocalPlayer 
 
+	local dftofind='Melon'
+	while _G.Fruity do wait()
+if _G.Fruity then
+	local char=plr.Character or plr.CharacterAdded:Wait() 
+	local HRP=char:WaitForChild'HumanoidRootPart' 
+	for i,v in next, workspace:GetChildren() do 
+	local Handle=v:FindFirstChild'Handle' 
+	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
+	Handle.CFrame=HRP.CFrame
 end
+	end 
+	end 
+	wait(1) 
+	end
