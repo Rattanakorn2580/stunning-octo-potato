@@ -229,8 +229,26 @@ Section:NewToggle("Auto Equip", " ", function(a)
 spawn(function() 
 while wait() do 
 if AutoEquiped then 
-pcall(function() 
+pcall(function() 						
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+end) 
+end 
+end 
+end)
+
+local Section = Tab:NewSection("Auto Fishing")
+Section:NewToggle("Auto Claim10", " ", function(fs)
+        Fishing = fs
+    end)
+
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function()
+if Fishing then 
+pcall(function()
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-4000.639404296875, 215.99998474121094, -2187.36767578125))
+wait()
+game:GetService("Players").LocalPlayer:FindFirstChild["Wood Rod"].Click:FireServer())
+wait(35)
 end) 
 end 
 end 
