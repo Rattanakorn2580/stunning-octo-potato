@@ -257,7 +257,7 @@ Section:NewButton("Dupe","", function()
 
 local Tab = Window:NewTab("Auto Stats")
 local Section = Tab:NewSection("Fruit Farm")
-Section:NewToggle("Boss", "", function(ft)
+Section:NewToggle("Auto Bring Fruity", "", function(ft)
 	_G.Fruity = ft
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Fruity.lua"))()
 		end)
