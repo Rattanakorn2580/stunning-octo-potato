@@ -3,7 +3,8 @@ _G.Fruity = ft
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Apple'
-	while _G.Fruity do 
+	while _G.Fruity do wait()
+	if _G.Fruity then
 	local char=plr.Character or plr.CharacterAdded:Wait() 
 	local HRP=char:WaitForChild'HumanoidRootPart' 
 	for i,v in next, workspace:GetChildren() do 
@@ -14,6 +15,3 @@ local plr=game:GetService'Players'.LocalPlayer
 	end 
 	wait(1) 
 	end 
-
-
-end
