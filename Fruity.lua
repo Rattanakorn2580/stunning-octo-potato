@@ -12,6 +12,5 @@ local plr=game:GetService'Players'.LocalPlayer
 	if v:IsA'Tool' and string.find(v.Name:lower(), dftofind:lower()) and Handle then 
 	Handle.CFrame=HRP.CFrame 
 	end 
-	end 
-	wait(1) 
+	end
 	end 
