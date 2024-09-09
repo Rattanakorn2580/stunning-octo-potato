@@ -353,6 +353,20 @@ end
 noclip() -- to toggle noclip() and clip()
 end)
 
+Section:NewToggle("Auto tp Safezone", " ", function(se
+        _G.e = se
+    end)
+
+spawn(function()
+while wait() do 
+if AutoClicked then 
+pcall(function() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end) 
+end 
+end 
+end)
+
 Section:NewButton("BoostFPS","BoostFPS", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/8YZ2cc6V"))()
 end)
