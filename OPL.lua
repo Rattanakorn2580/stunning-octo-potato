@@ -29,18 +29,15 @@ local Section = Tab:NewSection("อัพ 'safezone' ")
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
 
-Section:NewToggle("Auto Package", " ", function(pk)
-        AutoPack = pk
-    end)
-
-spawn(function()
-while wait() do 
-if AutoPack then 
-pcall(function()
+Section:NewToggle("Auto Package", "Click To Frame", function(state) 
+_G.AutoPack = state
+while _G.AutoPack do wait()
+      if _G.AutoPack then
+        workspace.Merchants.QuestFishMerchant.Clickable.Retum:FireServer()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-end) 
-end 
-end 
+end
+end
 end)
 
 Section:NewToggle("Auto Mission Expert", " ", function(m)
