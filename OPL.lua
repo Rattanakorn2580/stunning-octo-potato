@@ -37,7 +37,6 @@ spawn(function()
 while wait() do 
 if AutoPack then 
 pcall(function()
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Package))
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end) 
 end 
