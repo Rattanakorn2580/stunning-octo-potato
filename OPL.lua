@@ -285,6 +285,11 @@ end)
 
 
 local Tab = Window:NewTab("Player")
+local Section = Tab:NewSection("SafeZone")
+Section:NewToggle("Auto Bring Compass", " ", function(safe)
+	_G.e = safe
+	end)
+
 local Section = Tab:NewSection("Players")
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
