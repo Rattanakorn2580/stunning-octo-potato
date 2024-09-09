@@ -17,8 +17,6 @@ local plr=game:GetService'Players'.LocalPlayer
 	wait(1) 
 	end 
 
-local plr=game:GetService'Players'.LocalPlayer 
-
 	local dftofind='Green Apple'
 	while _G.Fruity do wait()
 if _G.Fruity then
@@ -34,8 +32,6 @@ if _G.Fruity then
 	wait(1) 
 	end 
 
-local plr=game:GetService'Players'.LocalPlayer 
-
 	local dftofind='Coconut'
 	while _G.Fruity do wait()
 if _G.Fruity then
@@ -49,9 +45,7 @@ if _G.Fruity then
 	end 
 	end 
 	wait(1) 
-	end 
-
-local plr=game:GetService'Players'.LocalPlayer 
+	end  
 
 	local dftofind='Banana'
 	while _G.Fruity do wait()
@@ -66,9 +60,7 @@ end
 	end 
 	end 
 	wait(1) 
-	end 
-
-local plr=game:GetService'Players'.LocalPlayer 
+	end  
 
 	local dftofind='Cantaloupe'
 	while _G.Fruity do wait()
@@ -83,9 +75,7 @@ end
 	end 
 	end 
 	wait(1) 
-	end 
-
-local plr=game:GetService'Players'.LocalPlayer 
+	end  
 
 	local dftofind='Pumpkin'
 	while _G.Fruity do wait()
@@ -100,9 +90,7 @@ end
 	end 
 	end 
 	wait(1) 
-	end
-
-local plr=game:GetService'Players'.LocalPlayer 
+	end 
 
 	local dftofind='Melon'
 	while _G.Fruity do wait()
