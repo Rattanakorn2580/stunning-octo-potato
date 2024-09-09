@@ -41,6 +41,7 @@ end)
 end 
 end 
 end)
+
 Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
@@ -210,6 +211,9 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 	end)
+
+local Tab = Window:NewTab("Auto Stats")
+local Section = Tab:NewSection("Auto Stats")
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
