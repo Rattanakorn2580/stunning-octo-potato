@@ -38,7 +38,7 @@ copy.Text = "Copy"
 copy.TextColor3 = Color3.fromRGB(255, 255, 255)
 copy.TextSize = 20.000
 
-pos.Name = "CFrame"
+pos.Name = "pos"
 pos.Parent = Frame
 pos.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
 pos.BorderSizePixel = 0
