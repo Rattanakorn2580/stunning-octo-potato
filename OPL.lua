@@ -28,6 +28,19 @@ local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม
 --AUTO
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
+Section:NewToggle("Auto Challenge", " ", function(m)
+        AutoAdd = m
+    end)
+
+spawn(function()
+while wait() do 
+if AutoAdd then 
+pcall(function() 
+workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer() 
+end) 
+end 
+end 
+end)
 Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
