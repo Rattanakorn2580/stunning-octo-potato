@@ -288,6 +288,7 @@ local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("SafeZone")
 Section:NewToggle("Auto Bring Compass", " ", function(safe)
 	_G.e = safe
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/SafeZone.lua))()
 	end)
 
 local Section = Tab:NewSection("Players")
