@@ -335,6 +335,30 @@ end)
 
 
 local Tab = Window:NewTab("Player")
+local Section = Tab:NewSection("Safe Zone")
+local NovoBloco = Instance.new("Part", workspace) 
+local ts = game:GetService("TweenService") 
+NovoBloco.Anchored = true 
+NovoBloco.CanCollide = true 
+NovoBloco.Size = Vector3.new(200.246, 0.771, 200.852) 
+_G.e = se
+
+    spawn(function()
+       game:GetService("RunService").RenderStepped:Connect(function()
+        pcall(function()
+            if _G.e then
+ts:Create(NovoBloco, TweenInfo.new(0.2), 
+		{CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -3.5, 0)}):Play() 
+game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45000, 5000, 0, 0, -1, 0, 1, 0, 1, 0, 0))
+            end
+        end)
+       end)
+    end)
+
+Section:NewToggle("Tp Safezone", " ", function(se)
+	_G.e = se
+	end)
+
 local Section = Tab:NewSection("Players")
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -402,29 +426,6 @@ function clip()
 end
 noclip() -- to toggle noclip() and clip()
 end)
-
-local NovoBloco = Instance.new("Part", workspace) 
-local ts = game:GetService("TweenService") 
-NovoBloco.Anchored = true 
-NovoBloco.CanCollide = true 
-NovoBloco.Size = Vector3.new(200.246, 0.771, 200.852) 
-_G.e = se
-
-    spawn(function()
-       game:GetService("RunService").RenderStepped:Connect(function()
-        pcall(function()
-            if _G.e then
-ts:Create(NovoBloco, TweenInfo.new(0.2), 
-		{CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -3.5, 0)}):Play() 
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45000, 5000, 0, 0, -1, 0, 1, 0, 1, 0, 0))
-            end
-        end)
-       end)
-    end)
-
-Section:NewToggle("Tp Safezone", " ", function(se)
-	_G.e = se
-	end)
 			
 Section:NewButton("BoostFPS","BoostFPS", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/8YZ2cc6V"))()
