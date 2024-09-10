@@ -253,9 +253,11 @@ wait(.1)
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Super Rod"))
 wait(.1)
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait(34)
+wait()
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait(35)
+wait(33)
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+wait()
 end) 
 end 
 end 
