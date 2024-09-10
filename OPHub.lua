@@ -5517,7 +5517,7 @@ end)
 
 
 spawn(function() -- find compass
-    while wait(1) do
+    while wait(.5) do
         pcall(function()
             if _G.Compass then
                 game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
