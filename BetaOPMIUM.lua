@@ -94,6 +94,8 @@ end)
 
 Section:NewToggle("Auto Bring Df", " ", function(df)
 _G.Bringft = df
+	end)
+
 spawn(function()--Bring DF
     while wait() do
         if _G.Bringft then
@@ -105,8 +107,7 @@ spawn(function()--Bring DF
                 end
             end)
         end
-    end
- end)
+    end)
 		
 Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
@@ -281,8 +282,11 @@ local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
         AutoClaim = a 
     end)
+
 Section:NewToggle("Auto Bring Compass", " ", function(cp)
 _G.Compass = cp
+		end)
+
 spawn(function() -- find compass
     while wait(.5) do
         pcall(function()
