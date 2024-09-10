@@ -4500,7 +4500,7 @@ end)
 
 page5_5:Button("Masamune",function()
     local A_1 = "Masamune"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateSwords
     Event:FireServer(A_1)
    
 end)
