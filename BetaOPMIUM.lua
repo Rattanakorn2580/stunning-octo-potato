@@ -312,7 +312,6 @@ Section:NewToggle("Auto Mixer", " ", function(mix)
         _G.automixer = mix
     end)
 
-game:GetService("Players").LocalPlayer:WaitForChild("Click"):FireServer(unpack(args))
 spawn(function() -- auto mixer
     while wait() do
         pcall(function()
@@ -333,14 +332,6 @@ spawn(function() -- auto drink mixer
     while wait() do
         pcall(function()
             if _G.automixer then
-                wait(1)
-                local args = {
-                    [1] = "Claim",
-                    [2] = "Challenge13"
-                }
-                game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].ChallengesRemote:FireServer(unpack(args))
-
-                wait(1)
                 for a, h in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                     if h:IsA("Tool") and string.find(h.Name, "Juice") or string.find(h.Name, "Milk") or
                     string.find(h.Name, "Cider") or string.find(h.Name, "Lemonade") or
@@ -354,6 +345,7 @@ spawn(function() -- auto drink mixer
         end)
     end
 end)
+
 spawn(function()--autofruit
     while wait() do
         pcall(function()
@@ -373,6 +365,7 @@ spawn(function()--autofruit
         end)
     end
 end)
+
 spawn(function()--autofruit
     while wait() do
     pcall(function()
