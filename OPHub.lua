@@ -4498,8 +4498,8 @@ page5_5:Button("Seastone Cestus (500 Melee)",function()
    
 end)
 
-page5_5:Button("Aqua Staff",function()
-    local A_1 = "Aqua Staff"
+page5_5:Button("Masamune",function()
+    local A_1 = "Masamune"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)
    
