@@ -92,6 +92,22 @@ end
 end 
 end)
 
+Section:NewToggle("Auto Bring Df", " ", function(df)
+_G.Bringft = df
+spawn(function()--Bring DF
+    while wait() do
+        if _G.Bringft then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end)
+		
 Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
