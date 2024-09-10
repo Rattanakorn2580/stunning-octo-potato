@@ -376,6 +376,28 @@ Section:NewButton("Kai", "", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
+--AutoSkill
+local Tab = Window:NewTab("Skill")
+local Section = Tab:NewSection("Auto Skill")
+Section:NewToggle("Skill z", " ", function(z)
+        SkillZ = z
+    end)
+
+Section:NewToggle("Skill x", " ", function(x) 
+        SkillX = x 
+    end)
+
+Section:NewToggle("Skill c", " ", function(c) 
+        SkillC = c
+    end)
+
+Section:NewToggle("Skill v", " ", function(v) 
+        SkillV = v
+    end)
+
+Section:NewToggle("Skill b", " ", function(b) 
+        SkillB = b
+    end)
 
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Safe Zone")
