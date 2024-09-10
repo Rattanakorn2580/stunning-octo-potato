@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("อัพ New!! 'Auto Bring Fruits, Auto Fishing' ")
+local Section = Tab:NewSection("อัพ New!! 'Auto Find Compass!!' แบบเร็ว ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
@@ -380,27 +380,78 @@ end)
 local Tab = Window:NewTab("Skill")
 local Section = Tab:NewSection("Auto Skill")
 Section:NewToggle("Skill z", " ", function(z)
-        SkillZ = z
+        _G.SkillZ = z
     end)
+
+spawn(function()--auto skills
+    while wait() do
+        if _G.SkillZ then
+            pcall(function()
+                Skill("Z")
+            end)
+        end
+    end
+end)
 
 Section:NewToggle("Skill x", " ", function(x) 
-        SkillX = x 
+        _G.SkillX = x 
     end)
+
+spawn(function()--auto skills
+    while wait() do
+        if _G.SkillX then
+            pcall(function()
+                Skill("X")
+            end)
+        end
+    end
+end)
+
 
 Section:NewToggle("Skill c", " ", function(c) 
-        SkillC = c
+        _G.SkillC = c
     end)
+
+spawn(function()--auto skills
+    while wait() do
+        if _G.SkillC then
+            pcall(function()
+                Skill("C")
+            end)
+        end
+    end
+end)
 
 Section:NewToggle("Skill v", " ", function(v) 
-        SkillV = v
+        _G.SkillV = v
     end)
+
+spawn(function()--auto skills
+    while wait() do
+        if _G.SkillV then
+            pcall(function()
+                Skill("V")
+            end)
+        end
+    end
+end)
 
 Section:NewToggle("Skill b", " ", function(b) 
-        SkillB = b
+        _G.SkillB = b
     end)
 
+spawn(function()--auto skills
+    while wait() do
+        if _G.SkillB then
+            pcall(function()
+                Skill("B")
+            end)
+        end
+    end
+end)
+
 local Section = Tab:NewSection("Spam Skill [100%]")
-Section:NewToggle("Skill 100%", " ", function(on) 
+Section:NewToggle(" ", " ", function(on) 
         SkillON = on
     end)
 
