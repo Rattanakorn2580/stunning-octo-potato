@@ -92,10 +92,6 @@ end
 end 
 end)
 
-Section:NewToggle("Auto Bring Df", " ", function(df)
-_G.Bringft = df
-	end)
-
 spawn(function()--Bring DF
     while wait() do
         if _G.Bringft then
@@ -108,6 +104,10 @@ spawn(function()--Bring DF
             end)
         end
     end)
+
+Section:NewToggle("Auto Bring Df", " ", function(df)
+_G.Bringft = df
+	end)
 		
 Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
@@ -282,6 +282,20 @@ local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
         AutoClaim = a 
     end)
+				
+spawn(function() 
+while wait() do 
+if AutoClaim then 
+pcall(function() 
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+end) 
+end 
+end 
+end)
+
+Section:NewButton("Dupe","", function()
+  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
+	end)
 
 Section:NewToggle("Auto Bring Compass", " ", function(cp)
 _G.Compass = cp
@@ -303,21 +317,7 @@ spawn(function() -- find compass
         end)
     end
 end)
-				
-spawn(function() 
-while wait() do 
-if AutoClaim then 
-pcall(function() 
-workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
-end) 
-end 
-end 
-end)
-
-Section:NewButton("Dupe","", function()
-  workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
-	end)
-
+	
 local Tab = Window:NewTab("Auto Stats")
 local Section = Tab:NewSection("Fruit Farm")
 Section:NewToggle("Auto Bring Fruits", "", function(ft)
