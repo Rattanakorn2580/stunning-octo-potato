@@ -279,7 +279,28 @@ end)
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 	end)
-	
+
+Section:NewToggle("Auto Find Compass", " ", function(cp)
+_G.Compass = cp
+		end)
+
+spawn(function() -- find compass
+    while wait(.2) do
+        pcall(function()
+            if _G.Compass then
+                game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Compass") and not game.Players.LocalPlayer.Character:FindFirstChild("Compass") then
+                    game.Players.LocalPlayer.Backpack:FindFirstChild("Compass").Parent = game.Players.LocalPlayer.Character
+                elseif game.Players.LocalPlayer.Character:FindFirstChild("Compass") then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(game.Players.LocalPlayer.Character:FindFirstChild("Compass").Poser.Value)
+                    game:GetService 'VirtualUser':CaptureController()
+                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                end
+            end
+        end)
+    end
+end)
+
 local Tab = Window:NewTab("Auto Stats")
 local Section = Tab:NewSection("Fruit Farm")
 Section:NewToggle("Auto Bring Fruits", "", function(ft)
