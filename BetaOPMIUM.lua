@@ -236,30 +236,80 @@ end
 end 
 end)
 
-local Section = Tab:NewSection("Auto Fishing")
-Section:NewToggle("Auto Fishing", " ", function(fs)
-        Fishing = fs
+local Section = Tab:NewSection("Max Charge Skill [100%]")
+Section:NewToggle("Max Charge Skill", " ", function(ar)
+        _G.auto100rate = ar
     end)
 
-spawn(function() 
-while wait() do
-if Fishing then 
-pcall(function()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-4000.639404296875, 215.99998474121094, -2187.36767578125))
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Wood Rod"))
-wait(.1)
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Study Rod"))
-wait(.1)
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Super Rod"))
-wait(.1)
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait()
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait(33)
-end) 
-end 
-end 
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
 end)
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+            args[6] = 100
+            return aaxc(self, unpack(args))
+        end
+    end
+    return aaxc(self, ...)
+end)
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
 
 local Section = Tab:NewSection("Auto Sam")
 Section:NewToggle("Auto Claim10", " ", function(a) 
