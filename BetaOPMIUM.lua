@@ -399,6 +399,11 @@ Section:NewToggle("Skill b", " ", function(b)
         SkillB = b
     end)
 
+local Section = Tab:NewSection("Spam Skill [100%]")
+Section:NewToggle("Skill 100%", " ", function(on) 
+        SkillON = on
+    end)
+
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Safe Zone")
 local NovoBloco = Instance.new("Part", workspace) 
