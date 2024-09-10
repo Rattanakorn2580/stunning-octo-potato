@@ -3831,7 +3831,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 
 
 --script
-local Window = create:Win(" เปิด / ปิด : [ F6 ] ")
+local Window = create:Win("ToggleUI: [ F6 ] ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 --create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
@@ -4498,9 +4498,9 @@ page5_5:Button("Seastone Cestus (500 Melee)",function()
    
 end)
 
-page5_5:Button("Masamune",function()
-    local A_1 = "Masamune"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateSword
+page5_5:Button("Aqua Staff",function()
+    local A_1 = "Aqua Staff"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)
    
 end)
@@ -5517,7 +5517,7 @@ end)
 
 
 spawn(function() -- find compass
-    while wait(.5) do
+    while wait(1) do
         pcall(function()
             if _G.Compass then
                 game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer()
@@ -5932,9 +5932,15 @@ spawn(function() -- autofarm cannon
                     if string.find(v.Name, "Angry ") 
                     or string.find(v.Name, "Bandit") 
                     or string.find(v.Name, "Thief")
-                    or string.find(v.Name, "Freddy") 
+                    or string.find(v.Name, "Crab") 
+                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, "Freddy")  
+                    or string.find(v.Name, " ") 
                     or string.find(v.Name, "Thug") 
-                    or string.find(v.Name, "Gunslinger") 
+                    or string.find(v.Name, "Gunslinger")
+                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, " ") 
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
@@ -5948,6 +5954,38 @@ spawn(function() -- autofarm cannon
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function() -- autofarm
+    while wait(0) do
+        pcall(function()
+            if _G.autofarm then
+                for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and(plr.Character.HumanoidRootPart.Position - game:GetService("Workspace").CustomizeModel.SpawnAreaStuffK.HBase.Position).Magnitude > 1000 then
+                        pcall(function()
+                            repeat
+                                wait()
+                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                                if v.Name == " " then
+                                    repeat wait(0)
+                                        v:Destroy()
+                                    until _G.autofarm == false
+                                end
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 0, 3)
+                                v.Humanoid.JumpPower = 5
+                                --v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+                            until not _G.autofarm or v.Humanoid.Health == 0
+                        end)
                     end
                 end
             end
