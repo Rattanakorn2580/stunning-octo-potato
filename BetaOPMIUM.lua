@@ -256,8 +256,6 @@ game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 wait()
 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 wait(33)
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait()
 end) 
 end 
 end 
