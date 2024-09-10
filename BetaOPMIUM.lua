@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("อัพ New!! 'Auto Find Compass!!' แบบเร็ว ")
+local Section = Tab:NewSection("New!! 'Auto Find Compass, Max Charge Skill' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
@@ -353,11 +353,6 @@ end)
 
 local Tab = Window:NewTab("Auto Stats")
 local Section = Tab:NewSection("Fruit Farm")
-Section:NewToggle("Auto Bring Fruits", "", function(ft)
-	_G.Fruity = ft
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Fruity.lua"))()
-		end)
-
 Section:NewToggle("Auto Mixer", " ", function(mix)
         _G.automixer = mix
     end)
