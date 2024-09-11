@@ -351,8 +351,7 @@ spawn(function() -- find compass
     end
 end)
 
-local Tab = Window:NewTab("Auto Stats")
-local Section = Tab:NewSection("Fruit Farm")
+local Section = Tab:NewSection("Auto Farm Stats")
 Section:NewToggle("Auto Mixer", " ", function(mix)
         _G.automixer = mix
     end)
@@ -542,6 +541,10 @@ spawn(function()--autofruit
         end)
     end
 end)
+
+--Autos DF Farming
+local Tab = Window:NewTab("Auto Df Fruits Farm ")
+local Section = Tab:NewSection("Autos DfFruits Farming")
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
