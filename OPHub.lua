@@ -34,11 +34,6 @@ local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextButton = Instance.new("TextButton")
 
-local ScreenGui = Instance.new("ScreenGui") 
-ScreenGui.Name = "ScreenGui" 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
-ScreenGui.ResetOnSpawn = false 
-
 local Toggle = Instance.new("TextButton") 
 Toggle.Name = "Toggle" 
 Toggle.Parent = ScreenGui 
