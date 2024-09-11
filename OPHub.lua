@@ -194,7 +194,8 @@ Toggle.TextSize = 28.000
 Toggle.Draggable = true 
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI()
-	
+		end)
+
     MakeDraggable(ClickFrame,MainSceen)
     tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 550, 0, 474)}):Play()
 	
@@ -215,7 +216,6 @@ Library:ToggleUI()
             end
         end)
     end)
-end)
 
     local NameReal = Instance.new("TextLabel")
 
