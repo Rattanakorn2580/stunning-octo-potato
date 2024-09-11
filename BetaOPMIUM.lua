@@ -23,30 +23,11 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("New!! 'Auto Respawn, View Player' ")
+local Section = Tab:NewSection("New!! 'NONE' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
 local Tab = Window:NewTab("Autos")
-local Section = Tab:NewSection("Auto Respawn")
-Section:NewToggle("Auto Respawn", " ", function(rp)
-_G.autorespawn = rp
-end)
-
-spawn(function()--autorespawn
-    while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
-    end
-end)
-
 local Section = Tab:NewSection("Auto function")
 
 Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
