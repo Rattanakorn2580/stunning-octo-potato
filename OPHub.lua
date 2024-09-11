@@ -182,7 +182,7 @@ function create:Win(text)
     local library = {toggledui = false;}
     game:GetService("UserInputService").InputBegan:Connect(function(input)
         pcall(function()
-            if input.KeyCode == Enum.KeyCode.Tab then
+            if input.KeyCode == Enum.KeyCode.F6 then
                 if library.toggledui == false then
                     library.toggledui = true
                     tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
