@@ -176,9 +176,6 @@ function create:Win(text)
     ClickFrame.ClipsDescendants = true
     ClickFrame.BackgroundTransparency = 1
 
-    MakeDraggable(ClickFrame,MainSceen)
-    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 550, 0, 474)}):Play()
-
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
@@ -196,8 +193,10 @@ Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
 Toggle.TextSize = 28.000 
 Toggle.Draggable = true 
 Toggle.MouseButton1Click:connect(function() 
-Library:ToggleUI() 
-                   end)
+Library:ToggleUI()
+	
+    MakeDraggable(ClickFrame,MainSceen)
+    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 550, 0, 474)}):Play()
 	
     local library = {toggledui = false;}
     game:GetService("UserInputService").InputBegan:Connect(function(input)
@@ -216,6 +215,7 @@ Library:ToggleUI()
             end
         end)
     end)
+end)
 
     local NameReal = Instance.new("TextLabel")
 
