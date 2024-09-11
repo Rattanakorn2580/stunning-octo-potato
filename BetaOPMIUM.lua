@@ -543,8 +543,8 @@ spawn(function()--autofruit
 end)
 
 --Autos DF Farming
-local Tab = Window:NewTab("Auto Df Fruits Farm ")
-local Section = Tab:NewSection("Autos DfFruits Farming")
+local Tab = Window:NewTab("Auto Df Farm")
+local Section = Tab:NewSection("[ Autos Df Fruits Farming ]")
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
