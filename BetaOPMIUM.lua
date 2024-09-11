@@ -23,12 +23,12 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("New!! 'Auto Find Compass, Max Charge Skill' ")
+local Section = Tab:NewSection("New!! 'Auto Respawn, View Player' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
 local Tab = Window:NewTab("Autos")
-local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
+local Section = Tab:NewSection("Auto Respawn")
 Section:NewToggle("Auto Respawn", " ", function(rp)
 _G.autorespawn = rp
 end)
@@ -37,7 +37,7 @@ spawn(function()--autorespawn
     while wait() do
         if _G.autorespawn then
             pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible then
                     for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
                         v.Function()
                     end
@@ -671,7 +671,6 @@ Section:NewButton("Click To TP", "", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end)
 
-Section:NewToggle("View Player", "", function()
 Sp = viewplr
     local plr1 = game.Players.LocalPlayer.Character.Humanoid
     local plr2 = game.Players:FindFirstChild(PlayerTP)
@@ -681,7 +680,11 @@ Sp = viewplr
     if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
         game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
     end
-end)
+end
+
+Section:NewToggle("View Player", "", function(Sp)
+	viewplr = Sp
+	end)
 
 Section:NewToggle("Bring Player", "", function(state)
 _G.BringPlr = state
