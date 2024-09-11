@@ -28,6 +28,25 @@ local Section = Tab:NewSection("อยู่ในช่วงพัฒนาน
 
 --AUTO
 local Tab = Window:NewTab("Autos")
+local Section = Tab:NewSection("อัพเมนูใหม่เพิ่ม")
+Section:NewToggle("Auto Respawn", " ", function(rp)
+_G.autorespawn = rp
+end)
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end)
+
 local Section = Tab:NewSection("Auto function")
 
 Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
