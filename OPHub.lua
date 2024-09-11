@@ -179,20 +179,6 @@ function create:Win(text)
     MakeDraggable(ClickFrame,MainSceen)
     tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 550, 0, 474)}):Play()
 
-    local library = {toggledui = false;}
-    game:GetService("UserInputService").InputBegan:Connect(function(input)
-        pcall(function()
-            if input.KeyCode == Enum.KeyCode.F6 then
-                if library.toggledui == false then
-                    library.toggledui = true
-                    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
-                    wait(.3)
-                    Reduisceen.Enabled = false
-                else
-                    library.toggledui = false
-                    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 534, 0, 474)}):Play()
-                    Reduisceen.Enabled = true
-
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
 ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui") 
@@ -212,6 +198,20 @@ Toggle.Draggable = true
 Toggle.MouseButton1Click:connect(function() 
 Library:ToggleUI() 
                    end)
+	
+    local library = {toggledui = false;}
+    game:GetService("UserInputService").InputBegan:Connect(function(input)
+        pcall(function()
+            if input.KeyCode == Enum.KeyCode.F6 then
+                if library.toggledui == false then
+                    library.toggledui = true
+                    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
+                    wait(.3)
+                    Reduisceen.Enabled = false
+                else
+                    library.toggledui = false
+                    tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back),{Size = UDim2.new(0, 534, 0, 474)}):Play()
+                    Reduisceen.Enabled = true
                 end
             end
         end)
