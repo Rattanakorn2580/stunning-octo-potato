@@ -1,1 +1,2 @@
-This Script is use to Map " ONE PIECE: LEGENDARY & OPL: ANACHY "
+This Script Suport
+Map " ONE PIECE: LEGENDARY & OPL: ANACHY "
