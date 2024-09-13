@@ -186,12 +186,13 @@ wait(.2)
 
 -- AUTO FARM
 local Tab = Window:NewTab("Auto Farm")
-local Section = Tab:NewSection("Mob Farm") 
-Section:NewButton("Taget List", " ", function()
+local Section = Tab:NewSection("[ Mob Farm ]") 
+Section:NewButton("[ Auto Farm All ]", " ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/AUTOFARM.lua"))()
 end)
 
-Section:NewButton("Taget Bring", " ", function()
+Section:NewToggle("[ Bring All ]", " ", function(bring)
+_G.BringAll = bring
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
 end)
 
