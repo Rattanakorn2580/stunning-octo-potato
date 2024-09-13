@@ -1,6 +1,6 @@
 _G.BringAll = bring
 
-spawn(function() -- autofarm cannon
+spawn(function()
     while wait(0) do
         pcall(function()
             if _G.BringAll then
@@ -37,13 +37,13 @@ spawn(function() -- autofarm cannon
                     or string.find(v.Name, "Bandit") 
                     or string.find(v.Name, "Thief")
                     or string.find(v.Name, "Crab") 
-                    or string.find(v.Name, "Buster") 
-                    or string.find(v.Name, "Vokun ") 
+                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, " ") 
                     or string.find(v.Name, "Freddy")  
                     or string.find(v.Name, " ") 
                     or string.find(v.Name, "Thug") 
                     or string.find(v.Name, "Gunslinger")
-                    or string.find(v.Name, "Gunner") 
+                    or string.find(v.Name, " ") 
                     or string.find(v.Name, " ") 
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
