@@ -23,14 +23,14 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("New!! ' ปรับ Auto Farm ' ")
+local Section = Tab:NewSection("New!! ' ปรับ เมนูใหม่ ' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto function")
 
-Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
+Section:NewToggle("[ Auto Package ]", "Click To Frame", function(ap) 
 _G.AutoPack = ap
 while _G.AutoPack do wait()
       if _G.AutoPack then
@@ -78,7 +78,7 @@ end
 end
 end)
 
-Section:NewToggle("Auto Mission Expert", " ", function(m)
+Section:NewToggle("[ Auto Mission Expert ]", " ", function(m)
         AutoAdd = m
     end)
 
@@ -91,8 +91,25 @@ end)
 end 
 end 
 end)
-		
-Section:NewToggle("Auto Bring Compass", " ", function()
+
+Section:NewToggle("[ Bring Df ]", " ", function(bringdf)
+_G.BringFruit = bringdf
+end)
+spawn(function()--Bring DF
+    while wait() do
+        if _G.BringFruit then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end)
+
+Section:NewToggle("[ Auto Bring Compass ]", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Compass'
@@ -111,7 +128,7 @@ local plr=game:GetService'Players'.LocalPlayer
 
 end)
 
-Section:NewButton("TP Chest", "", function()
+Section:NewButton("[ TP Chest ]", "Tp to Chest All", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2001.57654, 231.100006, 574.679382, -0.316045165, 0, 0.948744476, 0, 1, 0, -0.948744476, 0, -0.316045165))
 wait(.2)
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1861.69946, 215.300018, 838.104797, -0.707134247, 0, 0.707079291, 0, 1, 0, -0.707079291, 0, -0.707134247))
@@ -191,7 +208,7 @@ Section:NewToggle("[ Bring All ]", " ", function(bring)
 	_G.BringAll = bring
 end)
 
-spawn(function() -- autofarm cannon
+spawn(function()
     while wait(0) do
         pcall(function()
             if _G.BringAll then
@@ -255,12 +272,6 @@ spawn(function() -- autofarm cannon
         end)
     end
 end)
-
-Section:NewToggle("[ Auto Farm All ]", " ", function(autofarm)
-_G.AutoFarmAll = autofarm
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/main/Hub.lua"))()
-end)
-
 
 local Weaponlist = {} 
 local Weapon = nil
@@ -616,72 +627,77 @@ local Section = Tab:NewSection("[ Autos Df Fruits Farming ]")
 local Tab = Window:NewTab("TP Island")                       
 local Section = Tab:NewSection("TP Island")
 
-Section:NewButton("Boss", "", function()
+Section:NewButton("Boss", " Tp to Boss Island ", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
     end)
-Section:NewButton("Crab", "", function()
+Section:NewButton("Crab", " Tp to Crab Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6.5, 202, -240.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Cave", "", function()
+Section:NewButton("Cave", " Tp to Cave Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(77, 202, -975, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Windbill", "", function()
+Section:NewButton("Windbill", " Tp to Windbill Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(92.5, 220.5, -31, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Sam", "", function()
+Section:NewButton("Pirate", " Tp to Pirate Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1281.5, 214.5, -1352.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Gassy", "", function()
+Section:NewButton("Gassy", " Tp to Grassy Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(723.5, 238.100006, 1205.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Bar", "", function()
+Section:NewButton("Bar", " Tp to Bar Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1491.40002, 259.798401, 2170.90015, 0, 0, 1, 0, 1, -0, -1, 0, 0))
     end)
-Section:NewButton("Krizma", "", function()
+Section:NewButton("Krizma", " Tp to Krizma Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1066, 282.5, 1624.5, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Flail", "", function()
+Section:NewButton("Flail", " Tp to Flail Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1110.40015, 216.498383, 3367.90015, -1, 0, 0, 0, 1, 0, 0, 0, -1))
     end)
-Section:NewButton("Castle", "", function()
+Section:NewButton("Castle", " Tp to Castle Island ", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1000.40002, 223.500046, -3338.09985, 0, 0, 1, 0, 1, -0, -1, 0, 0))
     end)
-Section:NewButton("Pyramid", "", function()
+Section:NewButton("Pyramid", " Tp to Pyramid Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(114.335197, 277.835052, 4950.93066, 0.707134247, -0, -0.707079291, 0, 1, -0, 0.707079291, 0, 0.707134247))
     end)
-Section:NewButton("Fishing", "", function()
+Section:NewButton("Fishing", " Tp to Fishing Island ", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1700.47021, 215.498383, -325.746338, -0.258864403, 0, 0.965913713, 0, 1, 0, -0.965913713, 0, -0.258864403))
     end)
-Section:NewButton("FishSell", "", function()
+Section:NewButton("FishSell", " Tp to FishSell Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1982.74561, 217.998383, 564.403625, 0.965929627, 0, 0.258804798, 0, 1, 0, -0.258804798, 0, 0.965929627))
     end)
-Section:NewButton("Chiff", "", function()
+Section:NewButton("Chiff", " Tp to Chiff Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4603, 203, 4913, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Mountain", "", function()
+Section:NewButton("Mountain", " Tp to Mountain Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2054, 487, -608.5, 0, 0, -1, 0, 1, 0, 1, 0, 0))
     end)
-Section:NewButton("Forest", "", function()
+Section:NewButton("Forest", " Tp to Forest Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6033, 398.5, -7, 0, -1, 0, 1, 0, -0, 0, 0, 1))
     end)
-Section:NewButton("Crescent", "", function()
+Section:NewButton("Crescent", " Tp to Crescent Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3198, 352.5, 1680, 0, 0, 1, 0, 1, -0, -1, 0, 0))
     end)
-Section:NewButton("Purple", "", function()
+Section:NewButton("Purple", " Tp to Purple Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-5078.5, 354.5, -7788, 1, 0, 0, 0, 1, 0, 0, 0, 1))
     end)
-Section:NewButton("Snow", "", function()
+Section:NewButton("Snow", " Tp to Snow Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1895.75, 221, 3299.25, 0, 0, 1, 0, 1, -0, -1, 0, 0))
     end)
-Section:NewButton("Snow Mountain", "", function()
+Section:NewButton("Snow Mountain", " Tp to SnowMountain Island ", function()
 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(6741.09521, 394.982117, -1716.47095, 0.603998184, -0.0751705617, 0.793432772, 0.219797119, 0.972645164, -0.0751705617, -0.766077936, 0.219797119, 0.603998184))
     end)
-Section:NewButton("Kai", "", function()
+Section:NewButton("Kai", " Tp to Kai Island ", function()
     game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))
 end)
 
+local Tab = Window:NewTab("Skill")
+local Section = Tab:NewSection("[ Auto Skill ]")
+
+local Section = Tab:NewSection("[ Auto Spam Skill ]")
+
 local Tab = Window:NewTab("Player")
-local Section = Tab:NewSection("Safe Zone")
+local Section = Tab:NewSection("[ Safe Zone ]")
 local NovoBloco = Instance.new("Part", workspace) 
 local ts = game:GetService("TweenService") 
 NovoBloco.Anchored = true 
@@ -701,10 +717,10 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45000, 5000, 0, 0,
        end)
     end)
 
-Section:NewToggle("Auto Tp Safezone", " ", function(se)
+Section:NewToggle("[ Auto Tp Safezone ]", " Click this 'Tp SafeZone will working' ", function(se)
 	_G.e = se
 	end)
-Section:NewButton("TP Safezone", "", function()
+Section:NewButton("TP Safezone", " Tp to SafeZone", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45003, 5000, 0, 0, -1, 0, 1, 0, 1, 0, 0))
 	end)
 
@@ -713,15 +729,15 @@ Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-local drop = Section:NewDropdown("Player List", "Click To Select", Plr, function(t)
+local drop = Section:NewDropdown("[ Player List ]", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
 
-Section:NewButton("Click To TP", "", function()
+Section:NewButton("[ Click To TP ]", " Tp to Player ", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end)
 
-Section:NewToggle("View Player", "", function(viewplr)
+Section:NewToggle("[ View Player ]", "View Player", function(viewplr)
    Sp = viewplr
     local plr1 = game.Players.LocalPlayer.Character.Humanoid
     local plr2 = game.Players:FindFirstChild(PlayerTP)
@@ -733,7 +749,7 @@ Section:NewToggle("View Player", "", function(viewplr)
     end
 end)
 
-Section:NewToggle("Bring Player", "", function(state)
+Section:NewToggle("[ Bring Player ]", " Bring Player to you", function(state)
 _G.BringPlr = state
 while _G.BringPlr do wait()
 game.Players[PlayerTP].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
@@ -743,40 +759,15 @@ end)
 -- SEVER
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("[Misc]")
-Section:NewButton("Rejoin","", function()
+Section:NewButton("[ Rejoin ]"," Rejoin Sever ", function()
   game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
 
-Section:NewButton("RemoteSpy","", function()
+Section:NewButton("[ RemoteSpy ]"," Remote Spy Mobile ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
 	end)
-Section:NewButton("Noclip","", function()
-  local Noclip = nil
-local Clip = nil
-
-function noclip()
-	Clip = false
-	local function Nocl()
-		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
-			for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-				if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
-					v.CanCollide = false
-				end
-			end
-		end
-		wait(0.21) -- basic optimization
-	end
-	Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
-end
-
-function clip()
-	if Noclip then Noclip:Disconnect() end
-	Clip = true
-end
-noclip() -- to toggle noclip() and clip()
-end)
 			
-Section:NewButton("BoostFPS","BoostFPS", function()
+Section:NewButton("[ BoostFPS ]"," BoostFPS ", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/8YZ2cc6V"))()
 end)
