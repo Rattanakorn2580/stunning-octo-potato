@@ -1,2 +1,3 @@
-This Script Suport
+This Script Support
+
 Map " ONE PIECE: LEGENDARY & OPL: ANACHY "
