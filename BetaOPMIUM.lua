@@ -23,7 +23,7 @@ end)
 
 -- UPDATE
 local Tab = Window:NewTab("Update")
-local Section = Tab:NewSection("New!! 'NONE' ")
+local Section = Tab:NewSection("New!! ' ปรับ Auto Farm ' ")
 local Section = Tab:NewSection("อยู่ในช่วงพัฒนานะจ้ะ")
 
 --AUTO
