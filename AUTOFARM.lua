@@ -1,9 +1,9 @@
 _G.BringAll = bring
 
 spawn(function() -- autofarm cannon
-    while _G.BringAll do wait(0)
+    while wait(0) do
         pcall(function()
-            if _G.BringAll or _G.BringAll then
+            if _G.BringAll then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, " Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
