@@ -28,9 +28,9 @@ local Section = Tab:NewSection("อยู่ในช่วงพัฒนาน
 
 --AUTO
 local Tab = Window:NewTab("Autos")
-local Section = Tab:NewSection("Auto function")
+local Section = Tab:NewSection("[ Auto function ]")
 
-Section:NewToggle("[ Auto Package ]", "Click To Frame", function(ap) 
+Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
 _G.AutoPack = ap
 while _G.AutoPack do wait()
       if _G.AutoPack then
@@ -78,7 +78,7 @@ end
 end
 end)
 
-Section:NewToggle("[ Auto Mission Expert ]", " ", function(m)
+Section:NewToggle("Auto Mission Expert", " ", function(m)
         AutoAdd = m
     end)
 
@@ -92,7 +92,7 @@ end
 end 
 end)
 
-Section:NewToggle("[ Bring Df ]", " ", function(bringdf)
+Section:NewToggle("Bring Df", " ", function(bringdf)
 _G.BringFruit = bringdf
 end)
 spawn(function()--Bring DF
@@ -109,7 +109,7 @@ spawn(function()--Bring DF
     end
  end)
 
-Section:NewToggle("[ Auto Bring Compass ]", " ", function()
+Section:NewToggle("Auto Bring Compass", " ", function()
 local plr=game:GetService'Players'.LocalPlayer 
 
 	local dftofind='Compass'
@@ -128,7 +128,7 @@ local plr=game:GetService'Players'.LocalPlayer
 
 end)
 
-Section:NewButton("[ TP Chest ]", "Tp to Chest All", function()
+Section:NewButton("TP Chest", "Tp to Chest All", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2001.57654, 231.100006, 574.679382, -0.316045165, 0, 0.948744476, 0, 1, 0, -0.948744476, 0, -0.316045165))
 wait(.2)
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1861.69946, 215.300018, 838.104797, -0.707134247, 0, 0.707079291, 0, 1, 0, -0.707079291, 0, -0.707134247))
@@ -388,7 +388,7 @@ local remotes = {}
           return azc(self,...)
     end)
 
-local Section = Tab:NewSection("Auto Sam")
+local Section = Tab:NewSection("[ Auto Sam ]")
 Section:NewToggle("Auto Claim10", " ", function(a) 
         AutoClaim = a 
     end)
@@ -428,7 +428,7 @@ spawn(function() -- find compass
     end
 end)
 
-local Section = Tab:NewSection("Auto Farm Stats")
+local Section = Tab:NewSection("[ Auto Farm Stats ]")
 Section:NewToggle("Auto Mixer", " ", function(mix)
         _G.automixer = mix
     end)
@@ -625,7 +625,7 @@ local Section = Tab:NewSection("[ Autos Df Fruits Farming ]")
 
 -- TP ISLAND
 local Tab = Window:NewTab("TP Island")                       
-local Section = Tab:NewSection("TP Island")
+local Section = Tab:NewSection("[ TP Island ]")
 
 Section:NewButton("Boss", " Tp to Boss Island ", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))
@@ -694,7 +694,7 @@ end)
 local Tab = Window:NewTab("Skill")
 local Section = Tab:NewSection("[ Auto Skill ]")
 
-local Section = Tab:NewSection("[ Auto Spam Skill ]")
+local Section = Tab:NewSection("[ Auto Spam Skill 🔒 ]")
 
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("[ Safe Zone ]")
@@ -717,27 +717,27 @@ game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45000, 5000, 0, 0,
        end)
     end)
 
-Section:NewToggle("[ Auto Tp Safezone ]", " Click this 'Tp SafeZone will working' ", function(se)
+Section:NewToggle("Auto Tp Safezone", " Click this 'Tp SafeZone will working' ", function(se)
 	_G.e = se
 	end)
 Section:NewButton("TP Safezone", " Tp to SafeZone", function()
  game.Players.LocalPlayer.Character:MoveTo(Vector3.new(5000.5, 45003, 5000, 0, 0, -1, 0, 1, 0, 1, 0, 0))
 	end)
 
-local Section = Tab:NewSection("Players")
+local Section = Tab:NewSection("[ Players ]")
 Plr = {}
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name) 
 end
-local drop = Section:NewDropdown("[ Player List ]", "Click To Select", Plr, function(t)
+local drop = Section:NewDropdown("Player List", "Click To Select", Plr, function(t)
    PlayerTP = t
 end)
 
-Section:NewButton("[ Click To TP ]", " Tp to Player ", function()
+Section:NewButton("Click To TP", " Tp to Player ", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[PlayerTP].Character.HumanoidRootPart.CFrame
 end)
 
-Section:NewToggle("[ View Player ]", "View Player", function(viewplr)
+Section:NewToggle("View Player", "View Player", function(viewplr)
    Sp = viewplr
     local plr1 = game.Players.LocalPlayer.Character.Humanoid
     local plr2 = game.Players:FindFirstChild(PlayerTP)
@@ -749,7 +749,7 @@ Section:NewToggle("[ View Player ]", "View Player", function(viewplr)
     end
 end)
 
-Section:NewToggle("[ Bring Player ]", " Bring Player to you", function(state)
+Section:NewToggle("Bring Player", " Bring Player to you", function(state)
 _G.BringPlr = state
 while _G.BringPlr do wait()
 game.Players[PlayerTP].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
@@ -758,16 +758,16 @@ end)
 
 -- SEVER
 local Tab = Window:NewTab("Misc")
-local Section = Tab:NewSection("[Misc]")
-Section:NewButton("[ Rejoin ]"," Rejoin Sever ", function()
+local Section = Tab:NewSection("[ Other ]")
+Section:NewButton("Rejoin"," Rejoin Sever ", function()
   game.Players.LocalPlayer:Kick()
 game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
 
-Section:NewButton("[ RemoteSpy ]"," Remote Spy Mobile ", function()
+Section:NewButton("RemoteSpy"," Remote Spy Mobile ", function()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
 	end)
 			
-Section:NewButton("[ BoostFPS ]"," BoostFPS ", function()
+Section:NewButton("BoostFPS"," BoostFPS ", function()
 loadstring(game:HttpGet("https://pastebin.com/raw/8YZ2cc6V"))()
 end)
