@@ -425,6 +425,21 @@ spawn(function() -- fish farm
     end
 end)
 
+local Section = Tab:NewSection("[ Auto Quest Sam ]")
+Section:NewToggle("Auto Claim10", " ", function(Clm)
+        AutoClaim = Clm 
+    end)
+				
+spawn(function() 
+while wait() do 
+if AutoClaim then 
+pcall(function() 
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+end) 
+end 
+end 
+end)
+
 Section:NewButton("Dupe","", function()
   workspace:WaitForChild("UserData"):WaitForChild("User_"..game.Players.LocalPlayer.UserId):WaitForChild("UpdateClothing_Extras"):FireServer("A","\255",31)
 	end)
@@ -789,21 +804,6 @@ local remotes = {}
         end
           return azc(self,...)
     end)
-
-local Section = Tab:NewSection("[ Auto Sam ]")
-Section:NewToggle("Auto Claim10", " ", function(a) 
-        AutoClaim = a 
-    end)
-				
-spawn(function() 
-while wait() do 
-if AutoClaim then 
-pcall(function() 
-workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
-end) 
-end 
-end 
-end)
 
 local Section = Tab:NewSection("[ Auto Spam Skill 🔒 ]")
 
