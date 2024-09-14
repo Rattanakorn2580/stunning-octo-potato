@@ -30,54 +30,114 @@ local Section = Tab:NewSection("อยู่ในช่วงพัฒนาน
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("[ Auto function ]")
 
-Section:NewToggle("Auto Package", "Click To Frame", function(ap) 
-_G.AutoPack = ap
-while _G.AutoPack do wait()
-      if _G.AutoPack then
-        workspace.Merchants.QuestFishMerchant.Clickable.Retum:FireServer()
-wait(.5)
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-wait(.1)
-game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-wait()
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1306.5208740234375, 217.9999542236328, -1353.1082763671875))
-wait(.2)
- game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1281.2869873046875, 218.199951171875, -1370.6693115234375))
-wait(.2)
- game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1489.942626953125, 260.38623046875, 2170.9462890625))
-wait(.2)
- game.Players.LocalPlayer.Character:MoveTo(Vector3.new(998.5682373046875, 223.9999542236328, -3338.46728515625))
-wait(.2)
- game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1067.3900146484375, 360.9999084472656, 1664.3414306640625))
-wait(.2)
- game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1109.985595703125, 216.99998474121094, 3369.404296875))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(113.17005920410156, 277.9999084472656, 4952.20849609375))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1702.6612548828125, 215.9999542236328, -324.8488464355469))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1983.1905517578125, 217.9999542236328, 562.5492553710938))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(907.1943359375, 269.9999084472656, 1219.1839599609375))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(622.53271484375, 215.9999542236328, 1217.61962890625))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1252.408935546875, 217.41062927246094, -1175.2938232421875))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1.477496862411499, 215.9999542236328, -412.4173278808594))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-132.97918701171875, 215.9999542236328, -671.41650390625))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2055.6240234375, 215.9999542236328, -387.2252502441406))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1523.36669921875, 260.3719177246094, 2165.560791015625))
-wait(.2)
-game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1550.79248046875, 263.898681640625, 2132.965087890625))
-wait(.2)
-end
-end
+Section:NewToggle("Auto Package", " Auto Package", function(pack)
+_G.autopackage = pack
 end)
+spawn(function()--auto package
+    while wait() do
+        pcall(function()
+         if _G.autopackage then
+            wait(0.6)
+                game.workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+            wait(0.001)
+             local playernameuser = game.Players.LocalPlayer.Name
+            if  game.Players.LocalPlayer.Backpack:FindFirstChild("Package") or game.Players.LocalPlayer.Character:FindFirstChild("Package") or game.workspace.playernameuser:FindFirstChild("Package") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.AffinityMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat1Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat2Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants:GetChildren()[16].HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat3Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat4Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.DrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.BetterDrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.ExpertiseMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SniperMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1549, 264, 2136)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SwordMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.KrizmaMerch.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FishMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FlailMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FriendMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.HeavyWeaponsMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.EmoteMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2610, 254, 1114)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1982, 218, 567)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+            end
+        end
+        end)
+    end
+end)
 Section:NewToggle("Auto Mission Expert", " ", function(m)
         AutoAdd = m
     end)
@@ -313,94 +373,56 @@ end
 end 
 end)
 
-local Section = Tab:NewSection("Max Charge Skill [100%]")
-Section:NewToggle("Max Charge Skill", " ", function(ar)
-        _G.auto100rate = ar
-    end)
+local Section = Tab:NewSection("[ Auto Fishing ]")
+Section:NewToggle("Auto Fishing", "Fishing", function(fishing)
+_G.autofish = fishing
+end)
 
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
-
-
-setreadonly(mta, false)
-
-mta.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local arguments = args
-    local a = {}
-    for i = 1, #arguments - 1 do
-        a[i] = arguments[i]
-    end
-    local method = getnamecallmethod() 
-
-    if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
-            if args[1] then
-                return nil
+spawn(function() -- fish farm
+    while wait(0) do
+        pcall(function()
+            if _G.autofish then
+                wait(0.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-19784, 218, 4675)
+                wait(0.5)
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if string.find(v.Name, "Rod") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                            end
+                        end
+                    end
+                end
+                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if string.find(x.Name, "Rod") then
+                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:FindFirstChild("Bobber") then
+                                        if v.Bobber.Effect.Enabled == true then
+                                            wait(0.6)
+                                            local args = {
+                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                            }
+                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        end
+                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
+                                        wait(0.6)
+                                        local args = {
+                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                        }
+                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end       
             end
-        end
+        end)
     end
-    
-    return namecall(self, ...)    
-end)
-
-local attackremote = {}    
-
-local a
-a=hookmetamethod(game,"__namecall",function(self,...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-            attackremote[self.Name] = args[1]
-            return a(self,unpack(args))
-        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-            attackremote[self.Name] = ""
-        end
-    end
-      return a(self,...)
-end)
-
-aaxc = hookmetamethod(game, "__namecall", function(self, ...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
-            args[6] = 100
-            return aaxc(self, unpack(args))
-        end
-    end
-    return aaxc(self, ...)
-end)
-
-local remotes = {}
-    local azc
-    azc=hookmetamethod(game,"__namecall",function(self,...)
-        local args = {...}
-        local method = getnamecallmethod()
-        if method == "FireServer" or method == "InvokeServer" then
-            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
-                remotes[self.Name] = args[1]
-                return azc(self,unpack(args))
-            end
-        end
-          return azc(self,...)
-    end)
-
-local Section = Tab:NewSection("[ Auto Sam ]")
-Section:NewToggle("Auto Claim10", " ", function(a) 
-        AutoClaim = a 
-    end)
-				
-spawn(function() 
-while wait() do 
-if AutoClaim then 
-pcall(function() 
-workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
-end) 
-end 
-end 
 end)
 
 Section:NewButton("Dupe","", function()
@@ -693,6 +715,95 @@ end)
 
 local Tab = Window:NewTab("Skill")
 local Section = Tab:NewSection("[ Auto Skill ]")
+local Section = Tab:NewSection("Max Charge Skill [100%]")
+Section:NewToggle("Max Charge Skill", " ", function(ar)
+        _G.auto100rate = ar
+    end)
+
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+            args[6] = 100
+            return aaxc(self, unpack(args))
+        end
+    end
+    return aaxc(self, ...)
+end)
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+
+local Section = Tab:NewSection("[ Auto Sam ]")
+Section:NewToggle("Auto Claim10", " ", function(a) 
+        AutoClaim = a 
+    end)
+				
+spawn(function() 
+while wait() do 
+if AutoClaim then 
+pcall(function() 
+workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10") 
+end) 
+end 
+end 
+end)
 
 local Section = Tab:NewSection("[ Auto Spam Skill 🔒 ]")
 
