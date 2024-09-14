@@ -426,8 +426,8 @@ spawn(function() -- fish farm
 end)
 
 local Section = Tab:NewSection("[ Auto Quest Sam ]")
-Section:NewToggle("Auto Claim10", " ", function(Clm)
-        AutoClaim = Clm 
+Section:NewToggle("Auto Claim10", " ", function(clm)
+        AutoClaim = clm 
     end)
 				
 spawn(function() 
