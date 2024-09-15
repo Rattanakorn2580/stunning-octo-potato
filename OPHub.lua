@@ -3831,7 +3831,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 
 
 --script
-local Window = create:Win("     Race Hub   ToggleUI: [ F6 ] ")
+local Window = create:Win("     Rac Hub   ToggleUI: [ F6 ] ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 --create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
@@ -3885,11 +3885,13 @@ end)]]
 
 
 
-page1:Label(" ┇ This Is Why Game Dead ┇ ")
+page1:Label(" ┇ Max Charge Skill [ 100% ] ┇ ")
 
 page1:Toggle("Max Charge Skill", false,function(auto100socool)
     _G.auto100rate = auto100socool
 end)
+
+page1:Label(" ┇ Spam Yoru Attack ┇ ")
 
 page1:TextBox("Yoru Hits",". . .",function(stmavc)
     _G.yoruhit = stmavc
@@ -3933,7 +3935,7 @@ end)
 page2:Toggle("Haki Farm(Slow)", false, function(asdfghjzx123avc)
     _G.autohaki = asdfghjzx123avc
 end)
-page2:Label(" ┇ More Farm ┇ ")
+page2:Label(" ┇ DF Farm ┇ ")
 
 page2:Toggle("Light Farm", false,function(daxcli)
     _G.lightfarm = daxcli
@@ -4377,7 +4379,7 @@ page4_5:Toggle("HitBox Player", false,function(axzaxzbr)
     _G.HitBoxPlayer = axzaxzbr
 end)
 
-page4_5:Label(" ┇ All Player ┇ ")
+page4_5:Label(" ┇ Players ┇ ")
 
 page4_5:Toggle("Bring All Player", false,function(axzaxzbrc)
     _G.BringAllPlayer = axzaxzbrc
