@@ -3885,7 +3885,7 @@ end)]]
 
 
 
-page1:Label(" ┇ Max Charge Skill [ 100% ] ┇ ")
+page1:Label(" ┇ Max Charge Skill ┇ ")
 
 page1:Toggle("Max Charge Skill", false,function(auto100socool)
     _G.auto100rate = auto100socool
@@ -3919,6 +3919,8 @@ end)
 page2:Toggle("Cannon Kill Player", false,function(daxccc)
     _G.autocannonplr = daxccc
 end)
+
+page2:Label(" ┇  Auto System  ┇ ")
 
 page2:Toggle("Auto Fishing", false,function(daxc)
     _G.autofish = daxc
@@ -4491,7 +4493,7 @@ end)
 
 
 --
-page5_5:Label(" ┇ Other ┇ ")
+page5_5:Label(" ┇ Misc ┇ ")
 
 page5_5:Button("Seastone Cestus (500 Melee)",function()
     local A_1 = "Seastone Cestus"
@@ -4507,13 +4509,9 @@ page5_5:Button("Aqua Staff",function()
    
 end)
 
-page5_5:Button("Infnite Jump",function()
-    local infjump = true
-    game:GetService("UserInputService").JumpRequest:connect(function()
-       if infjump then
-           game.Players.LocalPlayer.Character:FindFirstChildOfClass("Humanoid"):ChangeState("Jumping")
-       end
-    end)
+page5_5:Button("Remote Spy Moblie",function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/REDzHUB/RS/main/SimpleSpyMobile"))()
+
 end)
 
 page5_5:Button("Unlock Emotes (Not Save)",function()
@@ -4535,7 +4533,7 @@ page5_5:Button("Unlock Emotes (Not Save)",function()
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
 end)
 
-page5_5:Button("Noclip Cam (On/Off)",function()
+page5_5:Button("NoClip Cam (On/Off)",function()
     local Players = game:GetService("Players")
    
     local LocalPlayer = Players.LocalPlayer
