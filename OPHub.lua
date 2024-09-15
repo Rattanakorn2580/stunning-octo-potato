@@ -4516,7 +4516,6 @@ game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.Jo
 end)
 
 page5_5:Button("Hop Server",function()
-		--Server Hop Script cr.Magma Hub Src
           local PlaceID = game.PlaceId
           local AllIDs = {}
           local foundAnything = ""
