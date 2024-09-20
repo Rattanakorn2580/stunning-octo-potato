@@ -168,7 +168,7 @@ local Section = Tab1:AddSection({
     Name = "function Farm" }) 
 
 Tab1:AddToggle({ 	
-        Name = "Auto Farm Mob [ All ]", 	
+        Name = "Bring Mob [ All ]", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
