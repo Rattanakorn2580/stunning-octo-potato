@@ -205,7 +205,7 @@ aaxc = hookmetamethod(game, "__namecall", function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
     if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
             args[6] = 100
             return aaxc(self, unpack(args))
         end
