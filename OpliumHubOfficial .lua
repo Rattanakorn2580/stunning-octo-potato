@@ -162,14 +162,14 @@ local Section = TabLand:AddSection({
 TabLand:AddButton({ 	
                 Name = "SafeZone Sky", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1000000, 1000000))	
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "SafeZone Sea", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-5000, 5000))	
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))	
                 end 
 })
 
