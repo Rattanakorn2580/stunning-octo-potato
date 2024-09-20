@@ -233,12 +233,12 @@ end
 end 
 end);
 
-Tab:AddToggle({ 	
+TabAuto:AddToggle({ 	
         Name = "Auto Bring Df", 	
         Default = false, 	
         Callback = function(ADF) 		
             BringDF = ADF	
-        end })      
+        end })
 
 spawn(function()
     while wait() do
