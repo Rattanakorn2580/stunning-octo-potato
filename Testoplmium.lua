@@ -10,16 +10,12 @@ local Tab = Window:MakeTab({ 	Name = "Auto Farm",
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
 
---[[ 
-workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34) 
-game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
-]]-- 
-
 local Section = Tab:AddSection({ 	
-    Name = "No Save Data" }) 
+    Name = "function Farm" }) 
 
 Tab:AddToggle({ 	
-        Name = "Bring Mob [All]", 	Callback = function()
-            
-})
-      
+        Name = "Bring Mob [All]", 	
+        Default = false, 	
+        Callback = function(BMS) 		
+            BringMobs = BMS
+        end })      
