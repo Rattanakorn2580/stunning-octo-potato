@@ -482,6 +482,76 @@ TabLand:AddButton({
 })
 
 TabLand:AddButton({ 	
+                Name = "Pyramid", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(118, 309, 4946))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Merlin Fish", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1668, 216, -353))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "FishSell", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1993, 217, 576))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Vokun's land", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4571, 217, 5095))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Mountain", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4571, 217, 5095))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Forest", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6033, 401, -7))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Crescent", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3198, 356, 1680))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Purple", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-5164, 522, -7802))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Snowy", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1895, 224, 3299))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Snowy Mountain", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(6741, 397, -1716))	
+                end 
+})
+
+TabLand:AddButton({ 	
                 Name = "Altar", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)	
