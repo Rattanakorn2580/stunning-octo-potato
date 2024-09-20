@@ -1,3 +1,5 @@
+local plr = Players.LocalPlayer
+
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
     SafeZoneUnderSea.Size = Vector3.new(200,3,200)
