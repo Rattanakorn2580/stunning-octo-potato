@@ -237,7 +237,7 @@ spawn(function()
             end
         end)
     end
-end);
+end);      
 
 local Section = Tab1:AddSection({
 	Name = "Auto Quest Sam"
@@ -306,6 +306,34 @@ spawn(function()
     end
 end);
 
+local TabYoru = Window:MakeTab({ 	
+        Name = "Yoru Spam Hits", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+TabYoru:AddTextbox({ 	
+		Name = "Hits Yoru", 	
+		Default = "1", 	
+		TextDisappear = true, 	
+		Callback = function(YH) 		
+			YoruHit = YH
+		end	 
+})
+
+TabDk:AddButton({ 	Name = "Click Enable", 	
+                Callback = function() if not YoruHit or not string.match(YoruHit, "%d+") or tonumber(string.match(YoruHit, "%d+")) < 0 then return end; 
+                        for _ = 1, tonumber(string.match(YoruHit, "%d+")) do 
+                game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
+                        end 	
+                end })
+
+TabYoru:AddToggle({ 	
+        Name = "Spam Hit Yoru", 	
+        Default = false, 	
+        Callback = function(SpY) 		
+            SpamYoru = SpY	
+        end })
+
 Tab1:AddToggle({
 	Name = "Auto Drop Compass",
 	Default = false,
@@ -356,6 +384,7 @@ TabDk:AddButton({ 	Name = "Buy Drink",
                 game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
                         end 	
                 end })
+
 TabDk:AddToggle({ 	Name = "Auto Drink", 	
                 Default = false, 	
                 Callback = function(ADK) 		
