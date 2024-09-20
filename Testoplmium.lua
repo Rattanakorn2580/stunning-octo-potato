@@ -15,7 +15,7 @@ local Tab1 = Window:MakeTab({ 	Name = "Auto Farm",
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
 
-local Section = Tab:AddSection({ 	
+local Section = Tab1:AddSection({ 	
     Name = "function Farm" }) 
 
 Tab1:AddToggle({ 	
