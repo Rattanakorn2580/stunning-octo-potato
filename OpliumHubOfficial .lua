@@ -1,6 +1,3 @@
-local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Period Test", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
     SafeZoneUnderSea.Size = Vector3.new(200,3,200)
@@ -12,6 +9,9 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
+
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "Period Test", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
@@ -162,14 +162,16 @@ local Section = TabLand:AddSection({
 TabLand:AddButton({ 	
                 Name = "SafeZone Sky", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))	
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "SafeZone Sea", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))	
+                game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)	
                 end 
 })
 
@@ -179,14 +181,14 @@ local Section = TabLand:AddSection({
 TabLand:AddButton({ 	
                 Name = "Kaizu", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Pursaur Boss", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)	
                 end 
 })
 
@@ -200,189 +202,203 @@ TabLand:AddButton({
 TabLand:AddButton({ 	
                 Name = "Cave", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-280, 217, -831)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Cliff", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(4598, 217, 4964)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Windmill", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-7, 224, -91)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Bar", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Krizma", 	
+                Callback = function()
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1109, 341, 1645)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Pirate", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1283, 218, -1348)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Green", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-2727, 253, 1041)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Trees", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(1068, 217, 3351)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Pyramid", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(118, 216, 4773)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Package", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1668, 217, -300)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Snowy", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1896, 222, 3385)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Snowy Mountain", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Mountain", 	
+                Callback = function()
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(2052, 488, -701)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Marine Ford", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-3164, 296, -3780)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Sand Castle", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(1020, 224, -3277)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Forest", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-5781, 216, 114)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Evil", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-5169, 523, -7803)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Crescent", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(3193, 357, 1670)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Islans", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-4319, 245, 5252)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Town", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 218, 755)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Rocky", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-37, 229, 2149)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Palm", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(766, 216, -1374)
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Sand", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-2747, 216, -942)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Sand 2", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(162, 216, -2265)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Small", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(1237, 240, -244)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Tiny", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1235, 223, 623)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Super Tiny", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(-4007, 216, -2190)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Grass", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)	
                 end 
 })
 
 TabLand:AddButton({ 	
                 Name = "Altar", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                plr.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)	
                 end 
 })
 
