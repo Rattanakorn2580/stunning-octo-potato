@@ -101,6 +101,7 @@ TabDrink:AddDropdown({ 	Name = "Select Drink",
                 Callback = function(Dr) 		
                         SelectDrink = Dr	
                 end })
+
 TabDrink:AddTextbox({ 	Name = "Amount Drink",
                 Default = "1", 	
                 TextDisappear = true, 	
