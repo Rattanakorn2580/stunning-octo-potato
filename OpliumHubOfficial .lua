@@ -1,5 +1,3 @@
-local plr = game.Plaers.LocalPlayer
-
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
     SafeZoneUnderSea.Size = Vector3.new(200,3,200)
@@ -190,7 +188,7 @@ TabLand:AddButton({
 TabLand:AddButton({ 	
                 Name = "Pursaur Boss", 	
                 Callback = function()
-                 plr.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+		plr.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
                 end 
 })
 
