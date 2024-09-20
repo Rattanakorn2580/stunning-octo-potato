@@ -156,9 +156,245 @@ local TabLand = Window:MakeTab({
         Name = "TP Islands", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
+local Section = TabLand:AddSection({ 	
+    Name = "Safe Zone" })
 
 TabLand:AddButton({ 	
-                Name = "Purseur Boss", 	
+                Name = "SafeZone Sky", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1000000, 1000000))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "SafeZone Sea", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-5000, 5000))	
+                end 
+})
+
+local Section = TabLand:AddSection({ 	
+    Name = "Teleport to Island" }) 
+
+TabLand:AddButton({ 	
+                Name = "Pursuer Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
                 end 
