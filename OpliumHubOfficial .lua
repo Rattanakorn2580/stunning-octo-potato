@@ -242,18 +242,18 @@ local remotes = {}
     end);
 
 local TabSV = Window:MakeTab({
-	Name = "Rejoin Sever",
+	Name = "Sever",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabSV:AddSection({
-	Name = "Rejoin Sever"
+	Name = "Rejoin"
 })
 
 TabSV:AddButton({
-	Name = "Rejoin",
+	Name = "Rejoin Server",
 	Callback = function()
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
   	end    
