@@ -225,7 +225,7 @@ local function LoadCfg(Config)
 				end    
 			end)
 		else
-			warn("Orion Library Config Loader - Could not find ", a ,b)
+			warn("Orion Config Loader - Could not find ", a ,b)
 		end
 	end)
 end
