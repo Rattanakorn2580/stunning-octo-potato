@@ -119,6 +119,7 @@ TabDrink:AddToggle({ 	Name = "Auto Loot Drink",
                 Callback = function(ADD) 		
                 AutoLootDeink = ADD 	
                 end }) 
+
 spawn(function() 
 while wait() do 
 pcall(function() if not AutoLootDeink then return end; 
