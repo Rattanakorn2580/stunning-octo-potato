@@ -17,8 +17,8 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListOfSword"] = {"Katana", "Flail", "Krizma"}
-List.DevConfig["ListOfSniper"] = {"Star"}
+List.DevConfig["ListOfSword"] = {}
+List.DevConfig["ListOfSniper"] = {}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
