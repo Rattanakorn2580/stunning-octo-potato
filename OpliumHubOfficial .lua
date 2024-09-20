@@ -23,6 +23,16 @@ local Tab = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
+local Section = Tab1:AddSection({ 	
+    Name = "function Auto [ All ]" }) 
+
+Tab:AddToggle({ 	
+        Name = "Auto Package", 	
+        Default = false, 	
+        Callback = function(AP) 		
+            AutoPackage = AP	
+        end })      
+
 local Tab1 = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
