@@ -61,7 +61,7 @@ spawn(function() -- fish farm
         pcall(function()
             if AutoFish then
                 wait(0.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-19784, 218, 4675)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
                 wait(0.5)
                 for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                     if string.find(v.Name, "Rod") then
