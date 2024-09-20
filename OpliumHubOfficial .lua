@@ -168,7 +168,7 @@ local Section = Tab1:AddSection({
     Name = "function Farm" }) 
 
 Tab1:AddToggle({ 	
-        Name = "Bring Mob [ All ]", 	
+        Name = "Auto Farm Mob [ All ]", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
@@ -223,7 +223,7 @@ spawn(function()
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,3)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
