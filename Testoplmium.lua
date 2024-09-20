@@ -7,7 +7,7 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListPlayer"] = {"Plr, v.Name"}
+List.DevConfig["ListPlayer"] = table.insert{"Plr, v.Name"}
 end
 
 local Tab = Window:MakeTab({ 	
