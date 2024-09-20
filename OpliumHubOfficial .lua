@@ -148,7 +148,7 @@ local TabLand = Window:MakeTab({
 
 TabLand:AddDropdown({ 	Name = "Select Island", 	
                 Default = "", 	
-                Options = Cache.DevConfig["TpListIsland"], 	
+                Options = List.DevConfig["TpListIsland"], 	
                 Callback = function(SL) 		
                         SelectIsland = SL	
                 end })
