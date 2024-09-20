@@ -145,6 +145,14 @@ local TabLand = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
+TabLand:AddButton({ 	Name = "Pursaur Boss", 	
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end })
+
+TabLand:AddButton({ 	Name = "Kaizu", 	
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))	
+                end })
+
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
         Icon = "rbxassetid://4483345998", 	
