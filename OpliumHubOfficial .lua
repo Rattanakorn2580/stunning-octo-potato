@@ -50,7 +50,7 @@ local Section = TabAuto:AddSection({
     Name = "function Auto [ All ]" }) 
 
 TabAuto:AddToggle({ 	
-        Name = "Auto Sam Quest", 	
+        Name = "Auto Fishing", 	
         Default = false, 	
         Callback = function(AF) 		
             AutoFish = AF 	
@@ -61,7 +61,7 @@ spawn(function() -- fish farm
         pcall(function()
             if AutoFish then
                 wait(0.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4000, 215, -2187)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-19784, 218, 4675)
                 wait(0.5)
                 for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                     if string.find(v.Name, "Rod") then
@@ -215,6 +215,13 @@ spawn(function()
         end)
     end
 end);
+
+TabAuto:AddToggle({ 	
+        Name = "Auto Claim Mission", 	
+        Default = false, 	
+        Callback = function(AM) 		
+            AutoMission = AM	
+        end })      
 
 TabAuto:AddToggle({ Name = "Auto Unbox", 	
 		Default = false, 	
