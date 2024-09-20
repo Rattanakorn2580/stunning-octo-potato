@@ -1,10 +1,11 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "OPLMIUM HUB TEST", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
-local Cache = { DevConfig = {} }; 
-Cache.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
-Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
-Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
+local List = { DevConfig = {} }; 
+List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
+List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
+List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
+List.DevConfig["ListPlayer"] = {}
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -94,7 +95,12 @@ local Tab2 = Window:MakeTab({
         Name = "Players", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
-
+TabDrink:AddDropdown({ 	Name = "Select Drink", 	
+                Default = "", 	
+                Options = List.DevConfig["ListPlayer"], 	
+                Callback = function(Plr) 		
+                        SelectDrink = Plr	
+                end })
 local Tab3 = Window:MakeTab({ 	
         Name = "TP Islands", 	
         Icon = "rbxassetid://4483345998", 	
