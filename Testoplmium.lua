@@ -1,11 +1,14 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "OPLMIUM HUB TEST", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+end
+
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListPlayer"] = {""}
+List.DevConfig["ListPlayer"] = {"Plr, v.Name"}
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -95,7 +98,7 @@ local TabPlr = Window:MakeTab({
         Name = "Players", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
-TabPlr:AddDropdown({ 	Name = "Select Drink", 	
+TabPlr:AddDropdown({ 	Name = "Select Player", 	
                 Default = "", 	
                 Options = List.DevConfig["ListPlayer"], 	
                 Callback = function(Plr) 		
