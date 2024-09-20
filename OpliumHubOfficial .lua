@@ -17,6 +17,8 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
+List.DevConfig["ListOfSword"] = {"Katana", "Flail", "Krizma"}
+List.DevConfig["ListOfSniper"] = {"Star"}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -376,6 +378,36 @@ game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
                 end) 
         end 
 end);
+
+TabDk:AddDropdown({ 	Name = "Select Sword", 	
+                Default = "", 	
+                Options = Cache.DevConfig["ListOfSword"], 	
+                Callback = function(SS) 		
+                        SelectSword = SS
+                end })
+
+TabLand:AddButton({ 	
+                Name = "Buy Sword", 	
+                Callback = function()
+workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer(SelectSword))	
+                end 
+})
+
+TabDrink:AddDropdown({ 	Name = "Select Gun", 	
+                Default = "", 	
+                Options = Cache.DevConfig["ListOfSniper"], 	
+                Callback = function(SP) 		
+                        SelectSniper = SP	
+                end })
+
+TabLand:AddButton({ 	
+                Name = "Buy Gun", 	
+                Callback = function()
+workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer(unpack(args))	
+                end 
+})
+
+
 
 local TabLand = Window:MakeTab({ 	
         Name = "TP Islands", 	
