@@ -89,3 +89,15 @@ spawn(function()
         end)
     end
 end);
+
+local Tab2 = Window:MakeTab({ 	
+        Name = "Players", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Tab3 = Window:MakeTab({ 	
+        Name = "TP Islands", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+
