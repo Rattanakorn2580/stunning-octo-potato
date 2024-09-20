@@ -292,6 +292,9 @@ TabLand:AddButton({
                 end 
 })
 
+local Section = TabLand:AddSection({ 	
+    Name = "Teleport Island" }) 
+
 TabLand:AddButton({ 	
                 Name = "Altar", 	
                 Callback = function()
