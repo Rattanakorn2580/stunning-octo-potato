@@ -306,7 +306,7 @@ spawn(function()
     end
 end);
 
-Tab:AddToggle({
+Tab1:AddToggle({
 	Name = "Auto Drop Compass",
 	Default = false,
 	Callback = function(ADD)
