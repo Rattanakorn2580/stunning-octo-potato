@@ -6,7 +6,7 @@ Cache.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 
-local Tab = Window:MakeTab({ 	Name = "Dupe", 	
+local Tab = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
 
@@ -16,13 +16,10 @@ game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:
 ]]-- 
 
 local Section = Tab:AddSection({ 	
-    Name = "Dupe Compass" }) 
+    Name = "No Save Data" }) 
 
-Tab:AddButton({ 	
-        Name = "No Save Data", 	Callback = function()
-            workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
-        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
-
-  	end    
+Tab:AddToggle({ 	
+        Name = "Bring Mob [All]", 	Callback = function()
+            
 })
       
