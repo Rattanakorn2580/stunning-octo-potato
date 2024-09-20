@@ -1,4 +1,4 @@
-local plr = Players.LocalPlayer
+local plr = game.Players.LocalPlayer
 
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
