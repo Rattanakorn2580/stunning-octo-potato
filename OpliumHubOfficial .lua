@@ -145,15 +145,19 @@ local TabLand = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-TabLand:AddButton({ 	Name = "Pursaur Boss", 	
+TabLand:AddButton({ 	
+                Name = "Pursaur Boss", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
-                end })
+                end 
+})
 
-TabLand:AddButton({ 	Name = "Kaizu", 
+TabLand:AddButton({ 	
+                Name = "Kaizu", 
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))	
-                end })
+                end 
+})
 
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
@@ -236,3 +240,21 @@ local remotes = {}
         end
           return azc(self,...)
     end);
+
+local TabSV = Window:MakeTab({
+	Name = "Rejoin Sever",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabSV:AddSection({
+	Name = "Rejoin Sever"
+})
+
+TabSV:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+  	end    
+})
