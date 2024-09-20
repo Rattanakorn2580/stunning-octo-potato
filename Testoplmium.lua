@@ -94,17 +94,17 @@ spawn(function()
     end
 end);
 
-local Tab2 = Window:MakeTab({ 	
+local TabPlr = Window:MakeTab({ 	
         Name = "Players", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
-TabDrink:AddDropdown({ 	Name = "Select Drink", 	
+TabPlr:AddDropdown({ 	Name = "Select Drink", 	
                 Default = "", 	
                 Options = List.DevConfig["ListPlayer"], 	
                 Callback = function(Plr) 		
                         SelectPlayer = Plr	
                 end })
-local Tab3 = Window:MakeTab({ 	
+local TabLand = Window:MakeTab({ 	
         Name = "TP Islands", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
