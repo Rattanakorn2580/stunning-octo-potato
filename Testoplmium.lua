@@ -20,5 +20,9 @@ local Section = Tab:AddSection({
 
 Tab:AddButton({ 	
         Name = "No Save Data", 	Callback = function()
-            
+            workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
+
+  	end    
+})
       
