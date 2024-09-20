@@ -18,20 +18,20 @@ List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"};
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 
-local Tab = Window:MakeTab({ 	
+local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-local Section = Tab:AddSection({ 	
+local Section = TabAuto:AddSection({ 	
     Name = "function Auto [ All ]" }) 
 
-Tab:AddToggle({ 	
+TabAuto:AddToggle({ 	
         Name = "Auto Package", 	
         Default = false, 	
         Callback = function(AP) 		
             AutoPackage = AP	
-        end })      
+        end })
 
 spawn(function()
     while wait() do
@@ -137,23 +137,6 @@ spawn(function()
         end
         end)
     end
-end);
-
-Tab:AddToggle({ 	
-        Name = "Auto Claim Mission", 	
-        Default = false, 	
-        Callback = function(ACM) 		
-            AutoMission = ACM 	
-        end })  
-
-spawn(function()
-while wait() do 
-if AutoMission then 
-pcall(function() 
-workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
-end) 
-end 
-end 
 end);
 
 local Tab1 = Window:MakeTab({ 	Name = "Auto Farm", 	
