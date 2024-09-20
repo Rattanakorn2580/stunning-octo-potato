@@ -1,11 +1,22 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "Period Test", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
+local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
+    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
+    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
+    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
+    SafeZoneUnderSea.Anchored = true
+
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["TpListIsland"] = {"Cave Island", "Kaizu Island", "Sand Island", "Sam Island", "Club Island", "Gunslingers Island", "Merlin Island", "Snow Island", "Orange House Island", "Desert Castle", "Pyramid Island", "Red House Island", "3 House Island", "Pursuer Island", "Vokun Island",};
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -146,12 +157,12 @@ local TabLand = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-TabLand:AddDropdown({ 	Name = "Select Island", 	
-                Default = "", 	
-                Options = List.DevConfig["TpListIsland"], 	
-                Callback = function(SL) 		
-                        SelectIsland = SL	
-                end })
+TabLand:AddButton({ 	
+                Name = "Purseur Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
+                end 
+})
 
 
 local TabSk = Window:MakeTab({ 	
