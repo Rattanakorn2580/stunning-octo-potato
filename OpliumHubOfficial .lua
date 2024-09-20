@@ -5,6 +5,7 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
+List.DevConfig["TpListIsland"] = {"Cave Island", "Kaizu Island", "Sand Island", "Sam Island", "Club Island", "Gunslingers Island", "Merlin Island", "Snow Island", "Orange House Island", "Desert Castle", "Pyramid Island", "Red House Island", "3 House Island", "Pursuer Island", "Vokun Island",};
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -145,19 +146,13 @@ local TabLand = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-TabLand:AddButton({ 	
-                Name = "Pursaur Boss", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4890.38916, 411.091553, -7178.46777, 0, 1, -0, -1, 0, 0, 0, 0, 1))	
-                end 
-})
+TabLand:AddDropdown({ 	Name = "Select Island", 	
+                Default = "", 	
+                Options = Cache.DevConfig["TpListIsland"], 	
+                Callback = function(SL) 		
+                        SelectIsland = SL	
+                end })
 
-TabLand:AddButton({ 	
-                Name = "Kaizu", 
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1240.9720458984375, 412.9999084472656, 11083.3154296875))	
-                end 
-})
 
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
