@@ -18,5 +18,7 @@ game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:
 local Section = Tab:AddSection({ 	
     Name = "Dupe Compass" }) 
 
-Tab:AddButton({ 	Name = "No Save Data", 	Callback = function()
+Tab:AddButton({ 	
+        Name = "No Save Data", 	Callback = function()
+            
       
