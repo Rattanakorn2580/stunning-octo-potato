@@ -90,12 +90,15 @@ spawn(function()
     end
 end);
 
-local TabDrink = Window:MakeTab({ 	
+local Tab2 = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-TabDrink:AddDropdown({ 	Name = "Select Drink", 	
+local Section = Tab2:AddSection({ 	
+    Name = "Drink Buy" }) 
+
+Tab2:AddDropdown({ 	Name = "Select Drink", 	
                 Default = "", 	
                 Options = List.DevConfig["ListOfDrink"], 	
                 Callback = function(Dr) 		
@@ -103,7 +106,7 @@ TabDrink:AddDropdown({ 	Name = "Select Drink",
                 end })
 
 
-TabDrink:AddTextbox({ 	Name = "Amount Drink",
+Tab2:AddTextbox({ 	Name = "Amount Drink",
                 Default = "1", 	
                 TextDisappear = true, 	
                 Callback = function(AD) 		
