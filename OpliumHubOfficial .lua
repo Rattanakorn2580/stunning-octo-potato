@@ -354,6 +354,17 @@ spawn(function()
     end
 end);      
 
+local Section = Tab1:AddSection({ 	
+    Name = "Farm Fruity"
+}) 
+
+Tab:AddToggle({ 	
+        Name = "Auto Stats", 	
+        Default = false, 	
+        Callback = function(AST) 		
+            AutoStats = AST	
+        end })      
+
 local Section = Tab1:AddSection({
 	Name = "Auto Quest Sam"
 })
