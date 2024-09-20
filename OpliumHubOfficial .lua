@@ -223,6 +223,37 @@ TabAuto:AddToggle({
             AutoMission = AM	
         end })      
 
+spawn(function()
+while wait() do 
+if AutoMission then 
+pcall(function() 
+workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
+end) 
+end 
+end 
+end);
+
+Tab:AddToggle({ 	
+        Name = "Auto Bring Df", 	
+        Default = false, 	
+        Callback = function(ADF) 		
+            BringDF = ADF	
+        end })      
+
+spawn(function()
+    while wait() do
+        if BringDF then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end);
+
 TabAuto:AddToggle({ Name = "Auto Unbox", 	
 		Default = false, 	
 		Callback = function(AUB) 		
