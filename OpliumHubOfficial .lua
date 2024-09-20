@@ -412,6 +412,27 @@ TabLand:AddButton({
 })
 
 TabLand:AddButton({ 	
+                Name = "Bar", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1477, 279, 2126))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Crab", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6, 215, -240))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Cave", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-222, 216, -843))	
+                end 
+})
+
+TabLand:AddButton({ 	
                 Name = "Kaizu", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1575, 219, 9939))	
