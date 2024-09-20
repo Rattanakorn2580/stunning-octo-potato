@@ -18,8 +18,8 @@ local Tab1 = Window:MakeTab({ 	Name = "Auto Farm",
 local Section = Tab:AddSection({ 	
     Name = "function Farm" }) 
 
-Tab:AddToggle({ 	
-        Name = "Bring Mob [All]", 	
+Tab1:AddToggle({ 	
+        Name = "Bring Mob [ All ]", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
