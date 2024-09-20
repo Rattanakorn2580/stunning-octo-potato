@@ -190,7 +190,7 @@ TabLand:AddButton({
 TabLand:AddButton({ 	
                 Name = "Pursaur Boss", 	
                 Callback = function()
-                plr.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)	
+                plr.Character:Moveto(Vector3.new(4847, 570, -7143)	
                 end 
 })
 
