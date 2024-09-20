@@ -113,6 +113,33 @@ Tab2:AddTextbox({ 	Name = "Amount Drink",
                         AmountDrink = AD	
                 end })
 
+Tab2:AddButton({ 	Name = "Buy Drink", 	
+                Callback = function() if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end; 
+                        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do 
+                game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
+                        end 	
+                end })
+Tab2:AddToggle({ 	Name = "Auto Drink", 	
+                Default = false, 	
+                Callback = function(ADK) 		
+                        AutoDrink = ADK 	
+                end }) 
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not AutoDrink then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find(List.DevConfig["ListOfDrink"], Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+        Value.Parent = game.Players.LocalPlayer.Character; 
+        Value:Activate(); 
+                        end 
+                        end
+                end) 
+        end 
+end);
+
 local TabLand = Window:MakeTab({ 	
         Name = "TP Islands", 	
         Icon = "rbxassetid://4483345998", 	
