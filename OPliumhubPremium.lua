@@ -4,7 +4,7 @@ local Player = game.Players.LocalPlayer
 
 -- Test Main Window
 local MainWindow = OrionLib:MakeWindow({
-    Name = "Key System",
+    Name = "Protect Key by OPlium",
     HidePremium = false,
     SaveConfig = true,
     IntroEnabled = false
@@ -18,7 +18,7 @@ OrionLib:MakeNotification({
 })
 
 -- Test Global Variables
-_G.Key = "KEY_7090wert5759ops123"
+_G.Key = "Key-70905759"
 _G.KeyInput = ""
 
 local function LoadTestHub()
