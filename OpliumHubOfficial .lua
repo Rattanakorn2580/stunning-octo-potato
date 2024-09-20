@@ -896,8 +896,8 @@ TabSk:AddToggle({
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillZ then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,game) -- Press Z key.
 					end
@@ -913,8 +913,8 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,ga
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillX then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.X,false,game) -- Press X key.
 					end
@@ -926,13 +926,13 @@ TabSk:AddToggle({
         Name = "Auto Skill C", 	
         Default = false, 	
         Callback = function(ASC) 		
-            AutoSkillZ = ASC 	
+            AutoSkillC = ASC 	
         end })      
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillC then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.C,false,game) -- Press C key.
 					end
@@ -949,8 +949,8 @@ TabSk:AddToggle({
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillV then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.V,false,game) -- Press V key.
 					end
@@ -967,8 +967,8 @@ TabSk:AddToggle({
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillB then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.B,false,game) -- Press B key.
 					end
@@ -985,8 +985,8 @@ TabSk:AddToggle({
 
 
 spawn(function()
-pcall(function()
 while wait() do
+pcall(function()
 if AutoSkillN then
 game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,game) -- Press N key.
 					end
@@ -995,7 +995,9 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,ga
 		end);
 
 local Section = TabSk:AddSection({ 	
-    Name = "Max Charge Skill" }) 
+    Name = "Max Charge Skill" 
+}) 
+
 TabSk:AddToggle({ 	
         Name = "Max Charge Skill", 	
         Default = false, 	
