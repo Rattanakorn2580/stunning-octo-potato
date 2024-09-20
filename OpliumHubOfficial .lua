@@ -101,6 +101,35 @@ TabDrink:AddDropdown({ 	Name = "Select Drink",
                 Callback = function(Dr) 		
                         SelectDrink = Dr	
                 end })
+TabDrink:AddTextbox({ 	Name = "Amount Drink",
+                Default = "1", 	TextDisappear = true, 	
+                Callback = function(AD) 		
+                        AmountDrink = AD	
+                end })
+
+TabDrink:AddButton({ 	Name = "Buy Drink", 	
+                Callback = function() if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end; 
+                        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do 
+                                game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
+                        end 	
+                end })
+
+TabDrink:AddToggle({ 	Name = "Auto Loot Drink", 	
+                Default = false, 	
+                Callback = function(ADD) 		
+                AutoLootDeink = ADD 	
+                end }) 
+spawn(function() 
+while wait() do 
+pcall(function() if not AutoLootDeink then return end; 
+                for _, Item in pairs(game.Workspace:GetChildren()) do 
+                if table.find(Cache.DevConfig["ListOfDrink"], Item.Name) and Item:FindFirstChild("Handle") then 
+                Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position); 
+                                                end 
+                                        end 
+                                end) 
+                end 
+        end);
 
 local TabLand = Window:MakeTab({ 	
         Name = "TP Islands", 	
