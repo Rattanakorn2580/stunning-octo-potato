@@ -6,6 +6,11 @@ Cache.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 
+local Tab = Window:MakeTab({ 	
+        Name = "Autos", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
 local Tab = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
