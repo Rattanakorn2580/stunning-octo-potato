@@ -433,6 +433,48 @@ TabLand:AddButton({
 })
 
 TabLand:AddButton({ 	
+                Name = "Winxmill", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(28, 223, -90))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Sam", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1281, 217, -1352))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Grassy", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(723, 240, 1205))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Sand Castle", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1018, 223, -3338))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Krizma", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1074, 361, 1695))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Flail", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1097, 216, 3361))	
+                end 
+})
+
+TabLand:AddButton({ 	
                 Name = "Kaizu", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1575, 219, 9939))	
