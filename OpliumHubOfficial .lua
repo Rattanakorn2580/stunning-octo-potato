@@ -90,15 +90,15 @@ spawn(function()
     end
 end);
 
-local Tab2 = Window:MakeTab({ 	
+local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-local Section = Tab2:AddSection({ 	
+local Section = TabDk:AddSection({ 	
     Name = "Drink Buy" }) 
 
-Tab2:AddDropdown({ 	Name = "Select Drink", 	
+TabDk:AddDropdown({ 	Name = "Select Drink", 	
                 Default = "", 	
                 Options = List.DevConfig["ListOfDrink"], 	
                 Callback = function(Dr) 		
@@ -106,20 +106,20 @@ Tab2:AddDropdown({ 	Name = "Select Drink",
                 end })
 
 
-Tab2:AddTextbox({ 	Name = "Amount Drink",
+TabDk:AddTextbox({ 	Name = "Amount Drink",
                 Default = "1", 	
                 TextDisappear = true, 	
                 Callback = function(AD) 		
                         AmountDrink = AD	
                 end })
 
-Tab2:AddButton({ 	Name = "Buy Drink", 	
+TabDk:AddButton({ 	Name = "Buy Drink", 	
                 Callback = function() if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end; 
                         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do 
                 game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
                         end 	
                 end })
-Tab2:AddToggle({ 	Name = "Auto Drink", 	
+TabDk:AddToggle({ 	Name = "Auto Drink", 	
                 Default = false, 	
                 Callback = function(ADK) 		
                         AutoDrink = ADK 	
@@ -145,4 +145,14 @@ local TabLand = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
+local TabSk = Window:MakeTab({ 	
+        Name = "Skill", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
 
+TabSk:AddToggle({ 	
+        Name = "Max Charge Skill", 	
+        Default = false, 	
+        Callback = function(SM) 		
+            skillmax = SM
+        end })     
