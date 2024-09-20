@@ -139,6 +139,27 @@ spawn(function()
     end
 end);
 
+TabAuto:AddToggle({ Name = "Auto Unbox", 	
+		Default = false, 	
+		Callback = function(AUB) 		
+			AutoUnboxBoxXX = AUB 	
+		end }) 
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not AutoUnboxBoxXX then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find(List.DevConfig["ListOfBox"], Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end);
+
 local Tab1 = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
