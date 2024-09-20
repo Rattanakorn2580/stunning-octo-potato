@@ -23,7 +23,7 @@ local Tab = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-local Section = Tab1:AddSection({ 	
+local Section = Tab:AddSection({ 	
     Name = "function Auto [ All ]" }) 
 
 Tab:AddToggle({ 	
@@ -33,7 +33,7 @@ Tab:AddToggle({
             AutoPackage = AP	
         end })      
 
-spawn(function()--auto package
+spawn(function()
     while wait() do
         pcall(function()
          if AutoPackage then
@@ -143,12 +143,12 @@ Tab:AddToggle({
         Name = "Auto Claim Mission", 	
         Default = false, 	
         Callback = function(ACM) 		
-            AutoClaimMission = ACM 	
+            AutoMission = ACM 	
         end })  
 
 spawn(function()
 while wait() do 
-if AutoClaimMission then 
+if AutoMission then 
 pcall(function() 
 workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
 end) 
