@@ -239,6 +239,94 @@ spawn(function()
     end
 end);
 
+local Section = Tab1:AddSection({
+	Name = "Auto Quest Sam"
+})
+
+Tab1:AddButton({
+	Name = "Dupe",
+	Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
+
+  	end    
+})
+
+Tab1:AddToggle({
+	Name = "Auto Claim Sam Quest",
+	Default = false,
+	Callback = function(ASQ)
+		AutoSamQuestXX = ASQ
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoSamQuestXX then return end;
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+        end)
+    end
+end);
+
+Tab1:AddTextbox({
+	Name = "Time To Compass",
+	Default = "0.5",
+	TextDisappear = true,
+	Callback = function(TTCP)
+		TimeCompasssss = TTCP
+	end	  
+})
+
+Tab1:AddToggle({
+	Name = "Auto Find Compass",
+	Default = false,
+	Callback = function(ASQ)
+		AutoCompassQuestXX = ASQ
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoCompassQuestXX then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(TimeCompasssss);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
+    end
+end);
+
+Tab:AddToggle({
+	Name = "Auto Drop Compass",
+	Default = false,
+	Callback = function(ADD)
+		DropCompass = ADD
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not DropCompass then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Value.Parent = game.Players.LocalPlayer.Character;
+                Value.Parent = game.Workspace;
+            end
+        end)
+    end
+end);
+
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
