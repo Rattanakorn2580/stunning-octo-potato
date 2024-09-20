@@ -5,7 +5,10 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListPlayer"] = {}
+List.DevConfig["ListPlayer"] = { Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end }
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -99,7 +102,7 @@ TabDrink:AddDropdown({ 	Name = "Select Drink",
                 Default = "", 	
                 Options = List.DevConfig["ListPlayer"], 	
                 Callback = function(Plr) 		
-                        SelectDrink = Plr	
+                        SelectPlayer = Plr	
                 end })
 local Tab3 = Window:MakeTab({ 	
         Name = "TP Islands", 	
