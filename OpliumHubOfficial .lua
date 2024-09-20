@@ -306,34 +306,6 @@ spawn(function()
     end
 end);
 
-local TabYoru = Window:MakeTab({ 	
-        Name = "Yoru Spam Hits", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-TabYoru:AddTextbox({ 	
-		Name = "Hits Yoru", 	
-		Default = "1", 	
-		TextDisappear = true, 	
-		Callback = function(YH) 		
-			YoruHit = YH
-		end	 
-})
-
-TabDk:AddButton({ 	Name = "Click Enable", 	
-                Callback = function() if not YoruHit or not string.match(YoruHit, "%d+") or tonumber(string.match(YoruHit, "%d+")) < 0 then return end; 
-                        for _ = 1, tonumber(string.match(YoruHit, "%d+")) do 
-                game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink) 
-                        end 	
-                end })
-
-TabYoru:AddToggle({ 	
-        Name = "Spam Hit Yoru", 	
-        Default = false, 	
-        Callback = function(SpY) 		
-            SpamYoru = SpY	
-        end })
-
 Tab1:AddToggle({
 	Name = "Auto Drop Compass",
 	Default = false,
@@ -354,6 +326,62 @@ spawn(function()
         end)
     end
 end);
+
+local Section = Tab1:AddSection({ 	
+    Name = "Yoru Spaming" 
+	}) 
+
+local TabYoru = Window:MakeTab({ 	
+        Name = "Yoru Spam Hits", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+TabYoru:AddTextbox({ 	
+		Name = "Hits Yoru", 	
+		Default = "1", 	
+		TextDisappear = true, 	
+		Callback = function(YH) 		
+			YoruHit = YH
+		end	 
+})
+
+TabDk:AddButton({ 	Name = "Click Enable", 	
+                Callback = function() if not YoruHit or not string.match(YoruHit, "%d+") or tonumber(string.match(YoruHit, "%d+")) < 0 then return end; 
+                        for _ = 1, tonumber(string.match(YoruHit, "%d+")) do 
+                 if game.Players.LocalPlayer.Character:FindFirstChild("Yoru") and tonumber(serializeTable(attackremote)) ~= nil and tonumber(serializeTable(attackremote)) ~= "" then
+                    repeat wait(0.3)
+                        for i = 1, YoruHit do
+                            local args = {
+                                [1] = tonumber(serializeTable(attackremote))
+                            }
+                            
+                            game:GetService("Players").LocalPlayer.Character.Yoru.RequestAnimation:FireServer(unpack(args))
+                        end
+                    until SpamYoru == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0 
+                end
+		end
+                end
+	        end
+                end 
+})
+
+TabYoru:AddToggle({ 	
+        Name = "Spam Hit Yoru", 	
+        Default = false, 	
+        Callback = function(SpY) 		
+            SpamYoru = SpY	
+        end })
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if SpamYoru then
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+	end
+	end)
+    end
+end)
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
