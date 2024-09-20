@@ -23,7 +23,7 @@ Tab:AddToggle({
 spawn(function()
     while wait(0) do
         pcall(function()
-            if _G.BringAll then
+            if BringMobs then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, " Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
