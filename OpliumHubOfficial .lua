@@ -905,12 +905,12 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,ga
 			end
 		end);
 
+TabSk:AddToggle({ 	
         Name = "Auto Skill X", 	
         Default = false, 	
         Callback = function(ASX) 		
             AutoSkillX = ASX	
-        end })      
-
+        end })         
 
 spawn(function()
 while wait() do
