@@ -2,13 +2,13 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "OPLMIUM HUB TEST", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
-end
 
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 List.DevConfig["ListPlayer"] = {"Plr, v.Name"}
+end
 
 local Tab = Window:MakeTab({ 	
         Name = "Autos", 	
