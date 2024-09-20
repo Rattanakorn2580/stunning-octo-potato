@@ -645,7 +645,7 @@ local TabDF = Window:MakeTab({
         PremiumOnly = false })
 
 local Section = TabDF:AddSection({ 	
-    Name = "DF Auto Farm 🔒 ( For Premium )" }) 
+    Name = "DF Auto Farm ( For Premium )" }) 
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
