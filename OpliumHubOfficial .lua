@@ -405,6 +405,20 @@ local Section = TabLand:AddSection({
     Name = "Teleport Island" }) 
 
 TabLand:AddButton({ 	
+                Name = "Pursuer Boss", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4858, 608, -7284))	
+                end 
+})
+
+TabLand:AddButton({ 	
+                Name = "Kaizu", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1575, 219, 9939))	
+                end 
+})
+
+TabLand:AddButton({ 	
                 Name = "Altar", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)	
