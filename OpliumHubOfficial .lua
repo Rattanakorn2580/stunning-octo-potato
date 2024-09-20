@@ -639,6 +639,14 @@ spawn(function()
     end
 end);
 
+local TabDF = Window:MakeTab({ 	
+        Name = "DF Farm", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Section = TabDF:AddSection({ 	
+    Name = "DF Auto Farm 🔒 ( For Premium )" }) 
+
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
@@ -876,6 +884,118 @@ local TabSk = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
+local Section = TabSk:AddSection({ 	
+    Name = "Auto Skill" }) 
+
+TabSk:AddToggle({ 	
+        Name = "Auto Skill Z", 	
+        Default = false, 	
+        Callback = function(ASZ) 		
+            AutoSkillZ = ASZ 	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillZ then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Z,false,game) -- Press Z key.
+					end
+				end)
+			end
+		end);
+
+        Name = "Auto Skill X", 	
+        Default = false, 	
+        Callback = function(ASX) 		
+            AutoSkillX = ASX	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillX then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.X,false,game) -- Press X key.
+					end
+				end)
+			end
+		end);
+
+TabSk:AddToggle({ 	
+        Name = "Auto Skill C", 	
+        Default = false, 	
+        Callback = function(ASC) 		
+            AutoSkillZ = ASC 	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillC then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.C,false,game) -- Press C key.
+					end
+				end)
+			end
+		end);
+
+TabSk:AddToggle({ 	
+        Name = "Auto Skill V", 	
+        Default = false, 	
+        Callback = function(ASV) 		
+            AutoSkillV = ASV 	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillV then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.V,false,game) -- Press V key.
+					end
+				end)
+			end
+		end);
+
+TabSk:AddToggle({ 	
+        Name = "Auto Skill B", 	
+        Default = false, 	
+        Callback = function(ASB) 		
+            AutoSkillB = ASB 	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillB then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.B,false,game) -- Press B key.
+					end
+				end)
+			end
+		end);
+
+TabSk:AddToggle({ 	
+        Name = "Auto Skill N", 	
+        Default = false, 	
+        Callback = function(ASN) 		
+            AutoSkillN = ASN	
+        end })      
+
+
+spawn(function()
+pcall(function()
+while wait() do
+if AutoSkillN then
+game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,game) -- Press N key.
+					end
+				end)
+			end
+		end);
+
+local Section = TabSk:AddSection({ 	
+    Name = "Max Charge Skill" }) 
 TabSk:AddToggle({ 	
         Name = "Max Charge Skill", 	
         Default = false, 	
