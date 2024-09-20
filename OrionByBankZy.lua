@@ -412,7 +412,7 @@ function OrionLib:MakeNotification(NotificationConfig)
 			MakeElement("Padding", 12, 12, 12, 12),
 			SetProps(MakeElement("Image", NotificationConfig.Image), {
 				Size = UDim2.new(0, 20, 0, 20),
-				ImageColor3 = Color3.fromRGB(27, 42, 53),
+				ImageColor3 = Color3.fromRGB(240, 240, 240),
 				Name = "Icon"
 			}),
 			SetProps(MakeElement("Label", NotificationConfig.Name, 15), {
@@ -427,7 +427,7 @@ function OrionLib:MakeNotification(NotificationConfig)
 				Font = Enum.Font.GothamSemibold,
 				Name = "Content",
 				AutomaticSize = Enum.AutomaticSize.Y,
-				TextColor3 = Color3.fromRGB(27, 42, 53),
+				TextColor3 = Color3.fromRGB(200, 200, 200),
 				TextWrapped = true
 			})
 		})
