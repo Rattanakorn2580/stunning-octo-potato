@@ -21,8 +21,6 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-local Section = Tab:NewSection("[ Autos ]")
-
 local Weaponlist = {} 
 local Weapon = nil
 
@@ -30,7 +28,7 @@ for i,v in
 pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do 
     table.insert(Weaponlist,v.Name) 
 end 
-
+local Section = Tab:NewSection("Autos")
 Section:NewDropdown("Taget Weapon", " ", Weaponlist, function(currentOption) 
         Weapon = currentOption 
     end)
