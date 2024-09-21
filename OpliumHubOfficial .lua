@@ -683,54 +683,29 @@ spawn(function()
     end
 end);
 
-local TabDF = Window:MakeTab({ 	
-        Name = "DF Farm", 	
+local TabPlayer = Window:MakeTab({ 	
+        Name = "Player", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-local Section = TabDF:AddSection({ 	
-    Name = "DF Auto Farm ( For Premium )" }) 
+local Section = TabPlayer:AddSection({ 	
+    Name = "PvP" }) 
 
-TabDF:AddToggle({ 	
-        Name = "Auto Farm Quake", 	
-        Default = false, 	
-        Callback = function(AFQ) 		
-            AutoFarmQ = AFQ	
-        end })      
+TabPlayer:AddTextbox({ 	
+		Name = "Type Name To Select Player", 	
+		Default = "1", 	
+		TextDisappear = true, 	
+		Callback = function(SPr) 		
+		SelectPlayer = SPr	
+		end	 
+	})      
 
-spawn(function() -- auto farm quake
-    while wait(0) do
-        pcall(function()
-            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
-                    if AutoFarmQuake then
-                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
-                            wait(5)
-                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
-                                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
-                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
-                                repeat 
-                                wait(0.3)
-                                    local args = {
-                                        [1] = VTC,
-                                        [2] = "QuakePower4",
-                                        [3] = "StopCharging",
-                                        [4] = v.HumanoidRootPart,
-                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
-                                        [6] = 100,
-                                        [7] = v.HumanoidRootPart.Position
-                                    }
-                            
-                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end);
+TabPlayer:AddButton({ 	
+                Name = "Click to Tp Player", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character.HumanoidRoitPart.CFrame = game.Player[SelectPlayer]Charater.HumanoidRootPart.CFrame*CFrame.new(0,0,2)	
+                end 
+})
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
