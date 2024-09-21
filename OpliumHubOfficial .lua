@@ -40,7 +40,7 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListOfPlayer"] = {""}
+List.DevConfig["ListOfPlayer"] = {"ICU_XxWhiteknightxX", "T3T_XxBankKungxX", "Jugle_pleyer", "boat_z13"}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -901,6 +901,24 @@ TabPlayer:AddButton({
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame	
                 end 
 })
+
+TabPlayer:AddToggle({ 	
+        Name = "View Player", 	
+        Default = false, 	
+        Callback = function(PV) 		
+            ViewPlr = VP	
+        end })      
+
+Sp = viewplr
+    local plr1 = game.Players.LocalPlayer.Character.Humanoid
+    local plr2 = game.Players:FindFirstChild(SelectPlayer)
+    repeat wait(0)
+        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+    until Sp == false or plr2.Character.Humanoid.Health == 0
+    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+    end
+end);
 
 TabPlayer:AddToggle({ 	
         Name = "Bring Player", 	
