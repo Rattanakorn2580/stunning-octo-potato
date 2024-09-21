@@ -21,7 +21,7 @@ Toggle.MouseButton1Click:connect(function()
 Library:ToggleUI() 
 end)
 
-local Section = TabNew:Section("[ Autos ]")
+local Section = Tab:NewSection("[ Autos ]")
 
 local Weaponlist = {} 
 local Weapon = nil
