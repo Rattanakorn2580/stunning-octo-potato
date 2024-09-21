@@ -682,6 +682,63 @@ spawn(function()
     end
 end);
 
+local TabPlr = Window:MakeTab({ 	
+        Name = "Players", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Section = TabPlr:AddSection({ 	
+    Name = "Player" }) 
+
+TabPlr:AddTextbox({ 	
+		Name = "Type Name Player", 	
+		Default = "Select", 	
+		TextDisappear = true, 	
+		Callback = function(AD) 		
+		SelectPlayer = AD 	
+		end	 
+	})
+
+  TabPlr:AddButton({ 	
+                Name = "Tp to Player", 	
+                Callback = function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame	
+                end 
+})
+		TabPlr:AddToggle({ 	
+        Name = "Bring Player", 	
+        Default = false, 	
+        Callback = function(BRP) 		
+            Bringplr = BRP
+        end })      
+ 		
+		spawn(function()
+    while wait() do
+        if Bringplr then
+            pcall(function()
+                game.Players:FindFirstChild(SelectPlayer).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+            end)
+        end
+    end
+end);
+	
+TabPlr:AddToggle({ 	
+        Name = "Behind Player", 	
+        Default = false, 	
+        Callback = function(BPlr) 		
+            Behindplr = BPlr	
+        end })      
+
+		spawn(function() 	
+		while wait() do
+		pcall(function()	
+		if Behindplr then
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
+		end
+		end)	
+		end 	
+		end);
+
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
