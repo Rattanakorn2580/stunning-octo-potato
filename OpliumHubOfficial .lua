@@ -42,6 +42,49 @@ List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 List.DevConfig["ListOfPlayer"] = {"T3T_XxBankKungxX"}
 
+local TabHaki = Window:MakeTab({ 	
+        Name = "Haki Train", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Section = TabHaki:AddSection({ 	
+    Name = "Auto Farm Haki" }) 
+
+TabHaki:AddToggle({ 	
+        Name = "Auto Haki", 	
+        Default = false, 	
+        Callback = function(AHK) 		
+            AutoHaki = AHK
+        end })      
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if AutoHaki then
+                for i = 1, 2 do
+                    local args = {
+                        [1] = "On",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                    task.wait(0.1)
+                    local args = {
+                        [1] = "Off",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                    task.wait(0.1)
+                    local args = {
+                        [1] = "Off",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                end
+            end
+        end)
+    end
+end);
+
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
         Icon = "rbxassetid://4483345998", 	
