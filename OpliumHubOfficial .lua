@@ -1150,3 +1150,20 @@ TabSV:AddButton({
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
   	end    
 })
+
+local TabMisc = Window:MakeTab({ 	
+        Name = "Misc", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Section = TabMisc:AddSection({ 	
+    Name = "Other" }) 
+
+TabMisc:AddButton({ 	
+                Name = "Seastone Cestus( 500 Melee )", 	
+                Callback = function()
+                local A_1 = "Seastone Cestus"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    Event:FireServer(A_1)	
+                end 
+})
