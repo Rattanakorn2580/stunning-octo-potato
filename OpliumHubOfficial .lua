@@ -905,8 +905,8 @@ TabPlayer:AddButton({
 TabPlayer:AddToggle({ 	
         Name = "View Player", 	
         Default = false, 	
-        Callback = function(PV) 		
-            ViewPlr = VP	
+        Callback = function(viewplr) 		
+            Sp = viewplr	
         end })      
 
 Sp = viewplr
