@@ -682,14 +682,6 @@ spawn(function()
     end
 end);
 
-local TabPlr = Window:MakeTab({ 	
-        Name = "Player", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-local Section = TabPlr:AddSection({ 	
-    Name = "PvP" }) 
-
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
         Icon = "rbxassetid://4483345998", 	
