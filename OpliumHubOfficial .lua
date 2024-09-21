@@ -37,53 +37,10 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ratt
 local Window = OrionLib:MakeWindow({Name = "OPlium Hub | Beta", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local List = { DevConfig = {} }; 
-List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
+List.DevConfig["ListOfBox"] = {"Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 List.DevConfig["ListOfPlayer"] = {"T3T_XxBankKungxX"}
-
-local TabHaki = Window:MakeTab({ 	
-        Name = "Haki Train", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-local Section = TabHaki:AddSection({ 	
-    Name = "Auto Farm Haki" }) 
-
-TabHaki:AddToggle({ 	
-        Name = "Auto Haki", 	
-        Default = false, 	
-        Callback = function(AHK) 		
-            AutoHaki = AHK
-        end })      
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if AutoHaki then
-                for i = 1, 2 do
-                    local args = {
-                        [1] = "On",
-                        [2] = 528
-                    }
-                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
-                    task.wait(0.1)
-                    local args = {
-                        [1] = "Off",
-                        [2] = 528
-                    }
-                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
-                    task.wait(0.1)
-                    local args = {
-                        [1] = "Off",
-                        [2] = 528
-                    }
-                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
-                end
-            end
-        end)
-    end
-end);
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -317,6 +274,49 @@ end
 end 
 end) 
 end 
+end);
+
+local TabHaki = Window:MakeTab({ 	
+        Name = "Haki Train", 	
+        Icon = "rbxassetid://4483345998", 	
+        PremiumOnly = false })
+
+local Section = TabHaki:AddSection({ 	
+    Name = "Auto Farm Haki" }) 
+
+TabHaki:AddToggle({ 	
+        Name = "Auto Haki", 	
+        Default = false, 	
+        Callback = function(AHK) 		
+            AutoHaki = AHK
+        end })      
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if AutoHaki then
+                for i = 1, 2 do
+                    local args = {
+                        [1] = "On",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                    task.wait(0.1)
+                    local args = {
+                        [1] = "Off",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                    task.wait(0.1)
+                    local args = {
+                        [1] = "Off",
+                        [2] = 528
+                    }
+                    workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+                end
+            end
+        end)
+    end
 end);
 
 local TabFarm = Window:MakeTab({ 	Name = "Auto Farm", 	
@@ -690,6 +690,47 @@ local TabDF = Window:MakeTab({
 
 local Section = TabDF:AddSection({ 	
     Name = "DF Auto Farm ( For Premium )" }) 
+
+TabDF:AddToggle({ 	
+        Name = "Auto Farm Quake", 	
+        Default = false, 	
+        Callback = function(AFQ) 		
+            AutoFarmQ = AFQ	
+        end })      
+
+spawn(function() -- auto farm quake
+    while wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                    if AutoFarmQuake then
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
+                            wait(5)
+                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                                repeat 
+                                wait(0.3)
+                                    local args = {
+                                        [1] = VTC,
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.HumanoidRootPart,
+                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
+                                        [6] = 100,
+                                        [7] = v.HumanoidRootPart.Position
+                                    }
+                            
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
