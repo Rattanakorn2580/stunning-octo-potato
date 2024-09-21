@@ -40,7 +40,7 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListOfPlayer"] = {"ICU_XxWhiteknightxX", "Jugle_pleyer"}
+List.DevConfig["ListOfPlayer"] = {""}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -1035,7 +1035,7 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,ga
 		end);
 
 local Section = TabSk:AddSection({ 	
-    Name = "Max Charge Skill" 
+    Name = "Max Charge Skill ( For Premium )" 
 }) 
 
 TabSk:AddToggle({ 	
