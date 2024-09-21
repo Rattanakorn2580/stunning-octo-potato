@@ -880,46 +880,6 @@ TabLand:AddButton({
                 end 
 })
 
-local TabPlayer = Window:MakeTab({ 	
-        Name = "Player", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-local Section = TabPlayer:AddSection({ 	
-    Name = "PvP" }) 
-
-TabPlayer:AddDropdown({ 	
-		Name = "Select Player", 	
-                Default = "", 	
-                Options = List.DevConfig["ListOfPlayer"], 	
-                Callback = function(SP) 		
-                        SelectPlayer = SP	
-                end })
-
-TabPlayer:AddButton({ 	
-                Name = "Click to Tp", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame	
-                end 
-})
-
-TabPlayer:AddToggle({ 	
-        Name = "Bring Player", 	
-        Default = false, 	
-        Callback = function(BP) 		
-            BringPlr = BP	
-        end })      
-
-spawn(function()
-while wait() do
-pcall(function()
-if BringPlr then
-game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-4)
-					end
-				end)
-			end
-		end);
-
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
         Icon = "rbxassetid://4483345998", 	
