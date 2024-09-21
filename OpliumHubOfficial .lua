@@ -682,22 +682,13 @@ spawn(function()
     end
 end);
 
-local TabPlayer = Window:MakeTab({ 	
+local TabPlr = Window:MakeTab({ 	
         Name = "Player", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-local Section = TabPlayer:AddSection({ 	
+local Section = TabPlr:AddSection({ 	
     Name = "PvP" }) 
-
-TabPlayer:AddTextbox({ 	
-		Name = "Type Name To Select Player", 	
-		Default = "1", 	
-		TextDisappear = true, 	
-		Callback = function(SPr) 		
-		SelectPlayer = SPr	
-		end	 
-	})      
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
