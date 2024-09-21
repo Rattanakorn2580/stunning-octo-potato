@@ -284,7 +284,7 @@ local Section = TabHaki:AddSection({
     Name = "Auto Farm Haki" }) 
 
 TabHaki:AddToggle({ 	
-        Name = "Auto Haki", 	
+        Name = "Auto Haki( Slow )", 	
         Default = false, 	
         Callback = function(AHK) 		
             AutoHaki = AHK
@@ -712,11 +712,11 @@ TabPlr:AddTextbox({
             Bringplr = BRP
         end })      
  		
-		spawn(function()
+spawn(function()
     while wait() do
         if Bringplr then
             pcall(function()
-                game.Players:FindFirstChild(SelectPlayer).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                game.Players(SelectPlayer).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
             end)
         end
     end
@@ -1188,7 +1188,7 @@ TabSV:AddButton({
 local Section = TabSV:AddSection({ 	
     Name = "Weapon" }) 
 
-TabOT:AddButton({ 	
+TabSV:AddButton({ 	
                 Name = "Seastone Cestus( 500 Melee )", 	
                 Callback = function()
                 local A_1 = "Seastone Cestus"
