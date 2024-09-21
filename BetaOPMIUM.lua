@@ -1,5 +1,4 @@
 -- TurtleSpy V1.5.3, credits to Intrer#0421
-
 local colorSettings =
 {
     ["Main"] = {
