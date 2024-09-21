@@ -325,6 +325,32 @@ local TabFarm = Window:MakeTab({ 	Name = "Auto Farm",
 local Section = TabFarm:AddSection({ 	
     Name = "function Farm" }) 
 
+TabFarm:AddTextbox({ 	
+		Name = "Type Name Mons", 	
+		Default = "Select", 	
+		TextDisappear = true, 	
+		Callback = function(SMS) 		
+		AutoFarmS = SMS	
+		end	 
+	})
+
+TabFarm:AddToggle({ 	
+        Name = "Auto Farm", 	
+        Default = false, 	
+        Callback = function(AFM) 		
+            AutoFarmM = AFM	
+        end })      
+
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function()
+pcall(function() 
+if AutoFarmM then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[AutoFarmS].HumanoidRootPart.CFrame * CFrame.new(0,0,3) 
+end 
+end) 
+end) 
+end)
+
 TabFarm:AddToggle({ 	
         Name = "Bring Mob [ All ]", 	
         Default = false, 	
@@ -396,6 +422,53 @@ spawn(function()
         end)
     end
 end);      
+
+local Section = TabFarm:AddSection({ 	
+    Name = "Weapon" }) 
+
+TabFarm:AddTextbox({ 	
+		Name = "Type Name Weapon", 	
+		Default = "Select", 	
+		TextDisappear = true, 	
+		Callback = function(SW) 		
+		SWeapon = SW	
+		end	 
+	})
+
+TabFarm:AddToggle({ 	
+        Name = "Auto Click", 	
+        Default = false, 	
+        Callback = function(ACK) 		
+            AutoCK = ACK	
+        end })
+
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function() 
+pcall(function() 
+if AutoCK then 
+game:GetService'VirtualUser':CaptureController() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end 
+end) 
+end) 
+end)
+
+TabFarm:AddToggle({ 	
+        Name = "Auto Sam Quest", 	
+        Default = false, 	
+        Callback = function(AEQ) 		
+            AutoEquip = AEQ	
+        end })      
+
+spawn(function() 
+while wait() do 
+if AutoEquiped then 
+pcall(function() 
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon)) 
+end) 
+end 
+end 
+end);
 
 local Section = TabFarm:AddSection({ 	
     Name = "Farm Fruity"
