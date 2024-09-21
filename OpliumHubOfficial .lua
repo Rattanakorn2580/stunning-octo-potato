@@ -888,7 +888,8 @@ local TabPlayer = Window:MakeTab({
 local Section = TabPlayer:AddSection({ 	
     Name = "PvP" }) 
 
-TabPlayer:AddDropdown({ 	Name = "Select Player", 	
+TabPlayer:AddDropdown({ 	
+		Name = "Select Player", 	
                 Default = "", 	
                 Options = List.DevConfig["ListOfPlayer"], 	
                 Callback = function(SP) 		
