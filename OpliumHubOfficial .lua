@@ -454,7 +454,7 @@ end)
 end)
 
 TabFarm:AddToggle({ 	
-        Name = "Auto Sam Quest", 	
+        Name = "Auto Equip", 	
         Default = false, 	
         Callback = function(AEQ) 		
             AutoEquip = AEQ	
