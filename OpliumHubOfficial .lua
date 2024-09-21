@@ -40,7 +40,7 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListOfPlayer"] = {"T3T_XxBankKungxX", "Jugle_pleyer"}
+List.DevConfig["ListOfPlayer"] = {"T3T_XxBankKungxX", "Jugle_pleyer", "boat_z13"}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -901,6 +901,23 @@ TabPlayer:AddButton({
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame	
                 end 
 })
+
+TabPlayer:AddToggle({ 	
+        Name = "Behind Player", 	
+        Default = false, 	
+        Callback = function(BP) 		
+            BehindPlayer = BP	
+        end })      
+
+spawn(function()
+while wait() do
+pcall(function()
+if BehindPlayer then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame(0,0,3)
+				end
+			end)
+	end
+end);
 
 TabPlayer:AddToggle({ 	
         Name = "View Player", 	
