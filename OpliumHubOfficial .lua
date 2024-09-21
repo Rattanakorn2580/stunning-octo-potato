@@ -903,6 +903,13 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({ 	
+        Name = "View Player", 	
+        Default = false, 	
+        Callback = function(Vplr) 		
+            ViewPlayer = Vplr	
+        end })      
+
+TabPlayer:AddToggle({ 	
         Name = "Bring Player", 	
         Default = false, 	
         Callback = function(BP) 		
