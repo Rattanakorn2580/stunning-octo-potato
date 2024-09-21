@@ -1077,14 +1077,14 @@ local remotes = {}
     end);
 
 local TabSV = Window:MakeTab({
-	Name = "Sever",
+	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabSV:AddSection({
-	Name = "Rejoin"
+	Name = "Sever"
 })
 
 TabSV:AddButton({
@@ -1094,13 +1094,8 @@ TabSV:AddButton({
   	end    
 })
 
-local TabOT = Window:MakeTab({ 	
-        Name = "Misc", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-local Section = TabOT:AddSection({ 	
-    Name = "Other" }) 
+local Section = TabSV:AddSection({ 	
+    Name = "Weapon" }) 
 
 TabOT:AddButton({ 	
                 Name = "Seastone Cestus( 500 Melee )", 	
