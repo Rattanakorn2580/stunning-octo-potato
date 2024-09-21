@@ -755,7 +755,7 @@ TabLand:AddButton({
 })
 
 TabLand:AddButton({ 	
-                Name = "Winxmill", 	
+                Name = "Windmill", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character:MoveTo(Vector3.new(28, 223, -90))	
                 end 
@@ -834,7 +834,7 @@ TabLand:AddButton({
 TabLand:AddButton({ 	
                 Name = "Mountain", 	
                 Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4571, 217, 5095))	
+                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2052, 487, -705))	
                 end 
 })
 
