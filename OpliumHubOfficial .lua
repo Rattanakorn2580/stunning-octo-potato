@@ -464,7 +464,7 @@ spawn(function()
 while wait() do 
 if AutoEquiped then 
 pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon)) 
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(SWeapon)) 
 end) 
 end 
 end 
@@ -779,7 +779,7 @@ TabPlr:AddTextbox({
                 end 
 })
 		TabPlr:AddToggle({ 	
-        Name = "Bring Player", 	
+        Name = "Bring Player( Not Works )", 	
         Default = false, 	
         Callback = function(BRP) 		
             Bringplr = BRP
@@ -789,7 +789,7 @@ spawn(function()
     while wait() do
         if Bringplr then
             pcall(function()
-                game.Players(SelectPlayer).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
             end)
         end
     end
