@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("[BETA] OPMIUM HUB        ONE PIECE : LEGENDARY", "DarkTheme")
+local Window = Library.CreateLib("Spy Hub", "DarkTheme")
 
 local ScreenGui = Instance.new("ScreenGui") 
 ScreenGui.Name = "ScreenGui" 
