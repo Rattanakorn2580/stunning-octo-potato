@@ -40,7 +40,6 @@ local List = { DevConfig = {} };
 List.DevConfig["ListOfBox"] = {"Uncommon Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
-List.DevConfig["ListOfPlayer"] = {"T3T_XxBankKungxX"}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -699,13 +698,6 @@ TabPlayer:AddTextbox({
 		SelectPlayer = SPr	
 		end	 
 	})      
-
-TabPlayer:AddButton({ 	
-                Name = "Click to Tp Player", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character.HumanoidRoitPart.CFrame = game.Player[SelectPlayer]Charater.HumanoidRootPart.CFrame*CFrame.new(0,0,2)	
-                end 
-})
 
 local TabDk = Window:MakeTab({ 	
         Name = "DrinkBuy", 	
