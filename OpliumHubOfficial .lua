@@ -725,7 +725,7 @@ TabPlr:AddToggle({
 		end);
 
 local TabDk = Window:MakeTab({ 	
-        Name = "DrinkBuy", 	
+        Name = "NPC", 	
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
