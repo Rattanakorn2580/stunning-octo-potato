@@ -694,6 +694,9 @@ spawn(function()--autofruit
     end
 end);
 
+local Section = TabFarm:AddSection({ 	
+    Name = "Cannon Ball Farm( Coming!!! )" }) 
+
 local TabPlr = Window:MakeTab({ 	
         Name = "Players", 	
         Icon = "rbxassetid://4483345998", 	
