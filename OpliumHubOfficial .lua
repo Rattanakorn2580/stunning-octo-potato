@@ -283,6 +283,15 @@ local TabHaki = Window:MakeTab({
 local Section = TabHaki:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
+TabHaki:AddButton({ 	
+                Name = "Tp to HakiMerchant", 	
+                Callback = function()
+                local emoi = game:GetService("Workspace").Merchants.QuestHakiMerchant.Clickable.Available.Value
+            if emoi == true then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService	
+                end 
+})
+
 TabHaki:AddToggle({ 	
         Name = "Auto Haki( Slow )", 	
         Default = false, 	
@@ -431,7 +440,7 @@ TabFarm:AddTextbox({
 		Default = "Select", 	
 		TextDisappear = true, 	
 		Callback = function(SW) 		
-		SWeapon = SW	
+		SelectWeapon = SW	
 		end	 
 	})
 
@@ -460,14 +469,20 @@ TabFarm:AddToggle({
             AutoEquip = AEQ	
         end })      
 
-spawn(function() 
-while wait() do 
-if AutoEquiped then 
-pcall(function() 
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(SWeapon)) 
-end) 
-end 
-end 
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if AutoEquip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[SelectWeapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
 end);
 
 local Section = TabFarm:AddSection({ 	
@@ -779,7 +794,7 @@ TabPlr:AddTextbox({
                 end 
 })
 		TabPlr:AddToggle({ 	
-        Name = "Bring Player( Not Works )", 	
+        Name = "Bring Player", 	
         Default = false, 	
         Callback = function(BRP) 		
             Bringplr = BRP
