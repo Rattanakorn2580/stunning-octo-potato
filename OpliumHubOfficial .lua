@@ -464,13 +464,7 @@ spawn(function() -- auto equip
     while wait(0) do
         pcall(function()
             if AutoEquip then
-                repeat
-                    wait(0.05)
-                    game:GetService 'Players'.LocalPlayer.Backpack[SelectWeapon].Parent = game:GetService 'Players'.LocalPlayer.Character
-                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
-                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
-                end
+                    game:GetService('Players').LocalPlayer.Backpack[SelectWeapon].Parent
             end
         end)
     end
