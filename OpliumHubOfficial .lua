@@ -353,7 +353,7 @@ local Section = TabFarm:AddSection({
     Name = "function Farm" }) 
 
 TabFarm:AddTextbox({ 	
-		Name = "Type Name Mons", 	
+		Name = "Type Name Mons | Only One! ", 	
 		Default = "Select", 	
 		TextDisappear = true, 	
 		Callback = function(SMS) 		
@@ -379,7 +379,7 @@ end)
 end)
 
 TabFarm:AddToggle({ 	
-        Name = "Bring Mob [ All ]", 	
+        Name = "Bring Mob | All", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
@@ -895,7 +895,7 @@ TabLand:AddButton({
 })
 
 TabLand:AddButton({ 	
-                Name = "SafeZone Sea", 	
+                Name = "SafeZone UnderSea", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character.Humanoid.Sit = true
         wait(0.15)
@@ -1176,7 +1176,7 @@ game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.N,false,ga
 		end);
 
 local Section = TabSk:AddSection({ 	
-    Name = "Max Charge Skill ( For Premium )" 
+    Name = "Max Charge Skill | There is a chance to remove it." 
 }) 
 
 TabSk:AddToggle({ 	
