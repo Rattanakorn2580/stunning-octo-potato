@@ -453,23 +453,6 @@ end)
 end) 
 end)
 
-TabFarm:AddToggle({ 	
-        Name = "Auto Equip", 	
-        Default = false, 	
-        Callback = function(AEQ) 		
-            AutoEquip = AEQ	
-        end })      
-
-spawn(function() -- auto equip
-    while wait(0) do
-        pcall(function()
-            if AutoEquip then
-                    game:GetService('Players').LocalPlayer.Backpack[SelectWeapon].Parent
-            end
-        end)
-    end
-end);
-
 local Section = TabFarm:AddSection({ 	
     Name = "Farm Fruity"
 }) 
