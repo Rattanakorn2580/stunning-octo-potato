@@ -335,6 +335,16 @@ spawn(function()
     end
 end);
 
+local Section = TabHaki:AddSection({ 	
+    Name = "Rayleigh!!!" }) 
+
+TabHaki:AddButton({ 	
+                Name = "Tp to Haki Merchant", 	
+                Callback = function()
+               game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
+                end 
+})
+
 local TabFarm = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
     PremiumOnly = false })
