@@ -283,15 +283,6 @@ local TabHaki = Window:MakeTab({
 local Section = TabHaki:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
-TabHaki:AddButton({ 	
-                Name = "Tp to HakiMerchant", 	
-                Callback = function()
-                local emoi = game:GetService("Workspace").Merchants.QuestHakiMerchant.Clickable.Available.Value
-            if emoi == true then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService	
-                end 
-})
-
 TabHaki:AddToggle({ 	
         Name = "Auto Haki( Slow )", 	
         Default = false, 	
