@@ -4,7 +4,7 @@ local Player = game.Players.LocalPlayer
 
 -- Test Main Window
 local MainWindow = OrionLib:MakeWindow({
-    Name = "Protect Key by OPlium",
+    Name = "Protect by OPlium",
     HidePremium = false,
     SaveConfig = true,
     IntroEnabled = false
