@@ -448,7 +448,7 @@ TabFarm:AddTextbox({
 		Default = "Select", 	
 		TextDisappear = true, 	
 		Callback = function(SW) 		
-		SelectWeapon = SW	
+		Weapon = SW
 		end	 
 	})
 
@@ -468,7 +468,24 @@ game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end 
 end) 
 end) 
+end);
+
+    TabFarm:AddToggle({ 	
+        Name = "Auto Equip", 	
+        Default = false, 	
+        Callback = function(EQ) 		
+            Equip = EQ
+        end })      	
+   
+spawn(function()
+while wait() do
+if Equip then
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
 end)
+end
+end
+end);
 
 local Section = TabFarm:AddSection({ 	
     Name = "Farm Fruity"
