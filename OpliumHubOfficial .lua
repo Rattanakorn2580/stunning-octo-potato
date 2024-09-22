@@ -695,7 +695,14 @@ spawn(function()--autofruit
 end);
 
 local Section = TabFarm:AddSection({ 	
-    Name = "Cannon Ball Farm( Coming!!! )" }) 
+    Name = "Cannon Ball Farm" }) 
+
+TabFarm:AddButton({ 	
+                Name = "Coming Sonn!!!", 	
+                Callback = function()	
+                end 
+})
+
 
 local TabPlr = Window:MakeTab({ 	
         Name = "Players", 	
@@ -867,27 +874,6 @@ spawn(function()
                 Compass:Activate();
                 wait(TimeCompasssss);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
-            end
-        end)
-    end
-end);
-
-TabDk:AddToggle({
-	Name = "Auto Drop Compass",
-	Default = false,
-	Callback = function(ADD)
-		DropCompass = ADD
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not DropCompass then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                Value.Parent = game.Players.LocalPlayer.Character;
-                Value.Parent = game.Workspace;
             end
         end)
     end
