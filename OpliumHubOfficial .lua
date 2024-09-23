@@ -294,7 +294,7 @@ spawn(function()
 while wait() do 
 if AutoHaki2 then 
 pcall(function() 
-
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/AutoHakiFaster/Oplium/Mater.lua"))()
 end) 
 end 
 end 
