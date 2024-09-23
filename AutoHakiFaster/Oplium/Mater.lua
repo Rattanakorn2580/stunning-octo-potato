@@ -1,5 +1,3 @@
-AutoHaki2 = AH2
-
 spawn(function()
     while wait() do
         pcall(function()
