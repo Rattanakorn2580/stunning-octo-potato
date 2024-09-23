@@ -736,7 +736,6 @@ TabPlr:AddToggle({
         end }) 
 
 spawn(function()
-while wait() do 
 if ViewPlr then 
 pcall(function() 
 Sp = viewplr
