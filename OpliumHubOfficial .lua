@@ -729,7 +729,7 @@ TabPlr:AddTextbox({
 })
 		
 TabPlr:AddToggle({ 	
-        Name = "View Player", 	
+        Name = "View Player( Bug Only Use One Time xd )", 	
         Default = false, 	
         Callback = function(VPR) 		
             ViewPlr = VPR
