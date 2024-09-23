@@ -727,30 +727,6 @@ TabPlr:AddTextbox({
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame	
                 end 
 })
-		
-TabPlr:AddToggle({ 	
-        Name = "View Player( Bug )", 	
-        Default = false, 	
-        Callback = function(VPR) 		
-            ViewPlr = VPR
-        end }) 
-
-spawn(function()
-if ViewPlr then 
-pcall(function() 
-Sp = viewplr
-    local plr1 = game.Players.LocalPlayer.Character.Humanoid
-    local plr2 = game.Players:FindFirstChild(SelectPlayer)
-    repeat wait(0)
-        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
-    until Sp == false or plr2.Character.Humanoid.Health == 0
-    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
-        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-end
-end) 
-end 
-end 
-end);
 
 TabPlr:AddToggle({ 	
         Name = "Bring Player", 	
