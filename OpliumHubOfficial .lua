@@ -37,7 +37,7 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ratt
 local Window = OrionLib:MakeWindow({Name = "OPlium Hub | Beta", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local List = { DevConfig = {} }; 
-List.DevConfig["ListOfBox"] = {"Uncommon Box"}; 
+List.DevConfig["ListOfBox"] = {"Rare Box", "Ultra Rare Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 
