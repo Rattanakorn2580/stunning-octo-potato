@@ -283,13 +283,6 @@ local TabHaki = Window:MakeTab({
 local Section = TabHaki:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
-TabHaki:AddToggle({ 	
-        Name = "Auto Haki | Faster!!", 	
-        Default = false, 	
-        Callback = function(AH2) 		
-            AutoHaki2 = AH2
-        end })
-
                 TabHaki:AddToggle({ 	
         Name = "Auto Haki | Slow!!", 	
         Default = false, 	
