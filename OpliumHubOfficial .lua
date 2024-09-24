@@ -34,7 +34,7 @@ spawn(function() -- autofarm velocity
 end);
 
 local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/OrionByBankZy.lua"))()
-local Window = OrionLib:MakeWindow({Name = "OPlium Hub            One Piece : Legendary ", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "OPlium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
