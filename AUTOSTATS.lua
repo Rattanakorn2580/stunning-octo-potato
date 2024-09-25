@@ -214,10 +214,10 @@ spawn(function()--autofruit
     end
 end)
 
-local Section = TabHaki:AddSection({ 	
+local Section = TabAuto:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
-                TabHaki:AddToggle({ 	
+                TabAuto:AddToggle({ 	
         Name = "Auto Haki | Slow!!", 	
         Default = false, 	
         Callback = function(AHK) 		
