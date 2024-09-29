@@ -796,7 +796,7 @@ spawn(function()
     end
 end);
 
-TabPlayer:AddToggle({ 	
+TabPlr:AddToggle({ 	
         Name = "Bring Player ( All )", 	
         Default = false, 	
         Callback = function(AF) 		
