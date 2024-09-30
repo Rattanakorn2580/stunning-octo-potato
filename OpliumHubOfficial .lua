@@ -441,14 +441,13 @@ spawn(function()
                      end
                 end
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Crab")
+                    if string.find(v.Name, "Vokun")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
@@ -462,8 +461,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
@@ -477,8 +475,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
@@ -492,8 +489,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
@@ -507,8 +503,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
@@ -522,8 +517,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,4)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
