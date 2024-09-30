@@ -13,7 +13,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
-            if AutoFarm  or KillPlayer or AutoPackage or AutoFish then
+            if AutoFarmM  or KillPlayer or AutoPackage or AutoFish then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -22,7 +22,7 @@ spawn(function() -- autofarm velocity
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoFarm == false or KillPlayer == false or AutoPackage == false or AutoFish == false  then
+            elseif  AutoFarmM == false or KillPlayer == false or AutoPackage == false or AutoFish == false  then
                 --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
                 wait(1)
