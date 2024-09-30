@@ -448,6 +448,7 @@ spawn(function()
                     or string.find(v.Name, "Freddy")  
                     or string.find(v.Name, "Thug") 
                     or string.find(v.Name, "Gunslinger")
+		    or string.gind(v.Name, "Vokun")
                     and v:FindFirstChild("HumanoidRootPart") then
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
@@ -478,7 +479,7 @@ spawn(function()
         pcall(function()
             if BringMobs then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, " Boar")
+                    if string.find(v.Name, "Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
