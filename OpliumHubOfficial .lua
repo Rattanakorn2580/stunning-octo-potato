@@ -403,31 +403,68 @@ local TabFarm = Window:MakeTab({ 	Name = "Auto Farm",
 local Section = TabFarm:AddSection({ 	
     Name = "function Farm" }) 
 
-TabFarm:AddTextbox({ 	
-		Name = "Type Name Mons | Only One! ", 	
-		Default = "Select", 	
-		TextDisappear = true, 	
-		Callback = function(SMS) 		
-		AutoFarmS = SMS	
-		end	 
-	})
-
 TabFarm:AddToggle({ 	
-        Name = "Auto Farm", 	
+        Name = "Auto Farm | All", 	
         Default = false, 	
         Callback = function(AFM) 		
             AutoFarmM = AFM	
         end })      
 
-spawn(function() 
-game:GetService("RunService").RenderStepped:Connect(function()
-pcall(function() 
-if AutoFarmM then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies[AutoFarmS].HumanoidRootPart.CFrame * CFrame.new(0,0,3) 
-end 
-end) 
-end) 
-end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if AutoFarmM then
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, " Boar")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Crab")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+                       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Angry ") 
+                    or string.find(v.Name, "Bandit") 
+                    or string.find(v.Name, "Thief")
+                    or string.find(v.Name, "Crab") 
+                    or string.find(v.Name, "Freddy")  
+                    or string.find(v.Name, "Thug") 
+                    or string.find(v.Name, "Gunslinger")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);      
 
 TabFarm:AddToggle({ 	
         Name = "Bring Mob | All", 	
@@ -797,7 +834,7 @@ spawn(function()
 end);
 
 TabPlr:AddToggle({ 	
-        Name = "Bring Player ( All )", 	
+        Name = "Bring Player | All", 	
         Default = false, 	
         Callback = function(AF) 		
             _G.BringAllPlayer = AF 	
