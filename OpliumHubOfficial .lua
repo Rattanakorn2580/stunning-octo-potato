@@ -1790,23 +1790,23 @@ spawn(function()
 while wait() do
        pcall(function()
 	if _G.antistun then
-       local khiemquadeptrai = game.Players.LocalPlayer.Character
+       local antistun = game.Players.LocalPlayer.Character
        repeat
-       khiemquadeptrai["DF_Disabled"].Value = false
-       khiemquadeptrai.HeartStolen.Value = true
-       khiemquadeptrai.Returned.Value = false
-       khiemquadeptrai.Hobbied.Value = false
-       khiemquadeptrai.HMS.Value = false
-       khiemquadeptrai.ChillyPunched.Value = false
-       khiemquadeptrai.CandyTouched.Value = false
-       khiemquadeptrai.Negative.Value = false
-       khiemquadeptrai.OpeSevered.Value = false
-       khiemquadeptrai.SnowTouched.Value = false
-       khiemquadeptrai.RumbleStun.Value = false
-       khiemquadeptrai.GravityCrushed.Value = false
+       antistun["DF_Disabled"].Value = false
+       antistun.HeartStolen.Value = true
+       antistun.Returned.Value = false
+       antistun.Hobbied.Value = false
+       antistun.HMS.Value = false
+       antistun.ChillyPunched.Value = false
+       antistun.CandyTouched.Value = false
+       antistun.Negative.Value = false
+       antistun.OpeSevered.Value = false
+       antistun.SnowTouched.Value = false
+       antistun.RumbleStun.Value = false
+       antistun.GravityCrushed.Value = false
    
        wait(0.06)
-       until khiemquadeptrai.Humanoid.Health == 0
+       until antistun.Humanoid.Health == 0
 	
 end
 end)
@@ -1817,10 +1817,10 @@ local Section = TabSV:AddSection({
     Name = "Weapon" }) 
 
 TabSV:AddButton({ 	
-                Name = "Masamune", 	
+                Name = "Seastone Cestus | 500 Melee |", 	
                 Callback = function()
-                local A_1 = "Seastone Cestus | 500 Melee |"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateSword
+                local A_1 = "Seastone Cestus"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)	
                 end 
 })
