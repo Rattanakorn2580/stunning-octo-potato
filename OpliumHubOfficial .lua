@@ -404,7 +404,7 @@ local Section = TabFarm:AddSection({
     Name = "function Farm" }) 
 
 TabFarm:AddToggle({ 	
-        Name = "Auto Farm | All", 	
+        Name = "Auto Farm", 	
         Default = false, 	
         Callback = function(AFM) 		
             AutoFarmM = AFM	
@@ -740,7 +740,7 @@ spawn(function()
 end);      
 
 TabFarm:AddToggle({ 	
-        Name = "Bring Mob | All", 	
+        Name = "Bring Mob | All |", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
@@ -1745,7 +1745,7 @@ local Section = TabSV:AddSection({
 TabSV:AddButton({ 	
                 Name = "Masamune", 	
                 Callback = function()
-                local A_1 = "Masamune"
+                local A_1 = "Seastone Cestus | 500 Melee |"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateSword
     Event:FireServer(A_1)	
                 end 
