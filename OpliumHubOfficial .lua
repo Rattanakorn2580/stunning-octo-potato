@@ -1840,7 +1840,6 @@ while _G.antistun do wait()
    
        wait(0.06)
        until khiemquadeptrai.Humanoid.Health == 0
-				end
 end
 end)
 end 
