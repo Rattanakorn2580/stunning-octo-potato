@@ -1740,7 +1740,7 @@ TabSV:AddToggle({
         end })
 
 spawn(function()
-while _G.antistun do wait()
+while wait() do
        pcall(function()
 	if _G.antistun then
        local khiemquadeptrai = game.Players.LocalPlayer.Character
