@@ -1732,9 +1732,9 @@ local Section = TabSV:AddSection({
     Name = "Weapon" }) 
 
 TabSV:AddButton({ 	
-                Name = "Seastone Cestus( 500 Melee )", 	
+                Name = "Masamune", 	
                 Callback = function()
-                local A_1 = "Seastone Cestus"
+                local A_1 = "Masamune"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)	
                 end 
