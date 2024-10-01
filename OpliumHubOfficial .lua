@@ -1760,6 +1760,7 @@ while wait() do
    
        wait(0.06)
        until khiemquadeptrai.Humanoid.Health == 0
+	
 end
 end)
 end 
