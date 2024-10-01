@@ -37,9 +37,10 @@ local OrionLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/Ratt
 local Window = OrionLib:MakeWindow({Name = "OPlium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
 
 local List = { DevConfig = {} }; 
-List.DevConfig["ListOfBox"] = {"Common Box", "Uncommon Box"}; 
+List.DevConfig["ListOfBox1"] = {"Common Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
-List.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
+List.DevConfig["ListOfBox2"] = {"Umcommon Box"};
+List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -253,27 +254,6 @@ spawn(function()
         end
     end
  end);
-
-TabAuto:AddToggle({ Name = "Auto Unbox", 	
-		Default = false, 	
-		Callback = function(AUB) 		
-			AutoUnboxBoxXX = AUB 	
-		end }) 
-
-spawn(function() 
-while wait() do 
-pcall(function() 
-if not AutoUnboxBoxXX then return end; 
-for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
-if table.find(List.DevConfig["ListOfBox"], Value.Name) then 
-game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
-Value.Parent = game.Players.LocalPlayer.Character; 
-Value:Activate(); 
-end 
-end 
-end) 
-end 
-end);
 
 local TabHaki = Window:MakeTab({ 	
         Name = "Haki Train", 	
@@ -1727,6 +1707,73 @@ TabSV:AddButton({
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
   	end    
 })
+
+local Section = TabSV:AddSection({
+	Name = "Unbox All"
+})
+
+TabSV:AddToggle({ Name = "Unbox | Common |", 	
+		Default = false, 	
+		Callback = function(AUX) 		
+			AutoUnboxBox1 = AUX	
+		end }) 
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not AutoUnboxBoxXX then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find(List.DevConfig["ListOfBox1"], Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end);
+
+TabSV:AddToggle({ Name = "Unbox | Uncommon |", 	
+		Default = false, 	
+		Callback = function(AXU) 		
+			AutoUnboxBox2 = AXU
+		end }) 
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not AutoUnboxBoxXX then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find(List.DevConfig["ListOfBox2"], Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end);
+
+TabSV:AddToggle({ Name = "Unbox | Rare, Ultra |", 	
+		Default = false, 	
+		Callback = function(AXX) 		
+			AutoUnboxBox3 = AXX	
+		end }) 
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not AutoUnboxBoxXX then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find(List.DevConfig["ListOfBox3"], Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end);
 
 local Section = TabSV:AddSection({
 	Name = "Anti"
