@@ -1728,6 +1728,17 @@ TabSV:AddButton({
   	end    
 })
 
+local Section = TabSV:AddSection({
+	Name = "Anti"
+})
+
+TabSV:AddToggle({ 	
+        Name = "AntiStun", 	
+        Default = false, 	
+        Callback = function(AST) 		
+            _G.antistun = AST	
+        end })
+
 local Section = TabSV:AddSection({ 	
     Name = "Weapon" }) 
 
@@ -1735,7 +1746,7 @@ TabSV:AddButton({
                 Name = "Masamune", 	
                 Callback = function()
                 local A_1 = "Masamune"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateSword
     Event:FireServer(A_1)	
                 end 
 })
