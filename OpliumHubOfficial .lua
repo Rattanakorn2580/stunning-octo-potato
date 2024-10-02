@@ -1130,7 +1130,7 @@ TabPlr:AddToggle({
 
 spawn(function()--aim silent 
     pcall(function()
-        while true do wait()
+        while wait() do
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
                 local plr2 = game.Players:FindFirstChild(SelectPlayer)
@@ -1146,7 +1146,7 @@ local index = mta.__index
 cf = CFrame.new(1, 2, 3)
 setreadonly(mta, false)
 mta.__index = newcclosure(function(a, b, c)
-    if tostring(b):lower() == 'hit' and aimsilent then
+    if tostring(b):lower() == 'hit' and _G.AimPlayer then
         return cacacac
     end
     return index(a, b, c)
