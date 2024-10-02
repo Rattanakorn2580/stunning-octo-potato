@@ -1306,17 +1306,10 @@ TabLand:AddButton({
 })
 
 local Section = TabLand:AddSection({ 	
-    Name = "Teleport To Festival Event " }) 
+    Name = "For Events " }) 
 
 TabLand:AddButton({ 	
                 Name = "Tp to Pumpkin | Halloween Event!! |", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Pursuer Boss", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame	
                 end 
