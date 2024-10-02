@@ -41,8 +41,8 @@ List.DevConfig["ListOfBox1"] = {"Common Box"};
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfBox2"] = {"Umcommon Box"};
 List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-List.DevConfig["ListOfIsland1"] = {""}
-List.DevConfig["ListOfIsland2"] = {""}
+List.DevConfig["ListOfIsland1"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar","Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees","Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle", "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand","Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"}
+List.DevConfig["ListOfIsland2"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -1317,6 +1317,13 @@ TabLand:AddDropdown({ 	Name = "Choose Island",
                         getgenv().tpisland = Dr	
                 end })
 
+TabLand:AddDropdown({ 	Name = "Choose NPC", 	
+                Default = "", 	
+                Options = List.DevConfig["ListOfIsland2"], 	
+                Callback = function(Dm) 		
+                        getgenv().tpmerchant = Dm	
+                end })
+
 TabLand:AddButton({ 	
                 Name = "Tp to Island", 	
                 Callback = function()
@@ -1384,7 +1391,29 @@ TabLand:AddButton({
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
       elseif getgenv().tpisland == "Atlar" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
-    end
+      elseif getgenv().tpmerchant == "Better Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
+        elseif getgenv().tpmerchant == "Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
+        elseif getgenv().tpmerchant == "Flail" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
+        elseif getgenv().tpmerchant == "QuestFish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
+        elseif getgenv().tpmerchant == "Krizma" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
+        elseif getgenv().tpmerchant == "Sword" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
+        elseif getgenv().tpmerchant == "Sniper" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
+        elseif getgenv().tpmerchant == "Emote" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
+        elseif getgenv().tpmerchant == "Affinity" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
+        elseif getgenv().tpmerchant == "Fish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
+        elseif getgenv().tpmerchant == "Expertise" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
+end
                 end })
 
 local Section = TabLand:AddSection({ 	
