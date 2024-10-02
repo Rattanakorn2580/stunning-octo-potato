@@ -1547,14 +1547,14 @@ local Section = TabSV:AddSection({
 
 TabSV:AddToggle({ Name = "Unbox | Common |", 	
 		Default = false, 	
-		Callback = function(AUX) 		
-			AutoUnboxBox1 = AUX	
+		Callback = function(ABX) 		
+			AutoUnboxBox1 = ABX	
 		end }) 
 
 spawn(function() 
 while wait() do 
 pcall(function() 
-if not AutoUnboxBoxXX then return end; 
+if not AutoUnboxBox1 then return end; 
 for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
 if table.find(List.DevConfig["ListOfBox1"], Value.Name) then 
 game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
@@ -1568,14 +1568,14 @@ end);
 
 TabSV:AddToggle({ Name = "Unbox | Uncommon |", 	
 		Default = false, 	
-		Callback = function(AXU) 		
-			AutoUnboxBox2 = AXU
+		Callback = function(ABXX) 		
+			AutoUnboxBox2 = ABXX
 		end }) 
 
 spawn(function() 
 while wait() do 
 pcall(function() 
-if not AutoUnboxBoxXX then return end; 
+if not AutoUnboxBox2 then return end; 
 for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
 if table.find(List.DevConfig["ListOfBox2"], Value.Name) then 
 game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
@@ -1589,14 +1589,14 @@ end);
 
 TabSV:AddToggle({ Name = "Unbox | Rare, Ultra |", 	
 		Default = false, 	
-		Callback = function(AXX) 		
-			AutoUnboxBox3 = AXX	
+		Callback = function(ABXXX) 		
+			AutoUnboxBox3 = ABXXX	
 		end }) 
 
 spawn(function() 
 while wait() do 
 pcall(function() 
-if not AutoUnboxBoxXX then return end; 
+if not AutoUnboxBox3 then return end; 
 for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
 if table.find(List.DevConfig["ListOfBox3"], Value.Name) then 
 game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
