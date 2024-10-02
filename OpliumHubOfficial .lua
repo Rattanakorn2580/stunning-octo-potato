@@ -1548,18 +1548,15 @@ local remotes = {}
           return azc(self,...)
     end);
 
-local Section = TabSk:AddSection({
-		Name "Spam Kill"
-	})
-
-TabSk:AddToggle({ Name = "Spam Light Beam", 	
+TabSk:AddToggle({ 
+		Name = "Spam Light Beam", 	
 		Default = false, 	
 		Callback = function(LB) 		
 			_G.lightbeam = LB
 		end }) 
 
 spawn(function() -- Light beam
-    while wait(getgenv().spamtime) do
+    while wait() do
         pcall(function()
             if _G.lightbeam then
                 local pla = game.Players.LocalPlayer;
@@ -1578,9 +1575,7 @@ spawn(function() -- Light beam
                     [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
                     [9] = "Left"
                 }
-                
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-                
                 wait(0.05)
                 local args = {
                     [1] = tonumber(serializeTable(remotes)),
@@ -1590,7 +1585,6 @@ spawn(function() -- Light beam
                     [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
                     [6] = 100
                 }
-                
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
             end
         end)
