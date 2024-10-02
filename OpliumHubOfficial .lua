@@ -41,7 +41,11 @@ List.DevConfig["ListOfBox1"] = {"Common Box"};
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfBox2"] = {"Umcommon Box"};
 List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-List.DevConfig["ListOfIsland1"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar","Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees","Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle", "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand","Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"}
+List.DevConfig["ListOfIsland1"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
+	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
+	                           "Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle",
+	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
+	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"}
 List.DevConfig["ListOfIsland2"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"}
 
 local TabAuto = Window:MakeTab({ 	
@@ -282,15 +286,10 @@ spawn(function()
     end
  end);
 
-local TabHaki = Window:MakeTab({ 	
-        Name = "Haki Train", 	
-        Icon = "rbxassetid://4483345998", 	
-        PremiumOnly = false })
-
-local Section = TabHaki:AddSection({ 	
+local Section = TabAuto:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
-                TabHaki:AddToggle({ 	
+                TabAuto:AddToggle({ 	
         Name = "Auto Haki | Slow!!", 	
         Default = false, 	
         Callback = function(AHK) 		
@@ -392,16 +391,6 @@ spawn(function()
         end)
     end
 end);
-
-local Section = TabHaki:AddSection({ 	
-    Name = "Rayleigh!!!" }) 
-
-TabHaki:AddButton({ 	
-                Name = "Tp to Haki Merchant", 	
-                Callback = function()
-               game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
-                end 
-})
 
 local TabFarm = Window:MakeTab({ 	Name = "Auto Farm", 	
     Icon = "rbxassetid://4483345998", 	
