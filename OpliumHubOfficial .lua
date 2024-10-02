@@ -1043,6 +1043,27 @@ local TabPlr = Window:MakeTab({
 local Section = TabPlr:AddSection({ 	
     Name = "Player" }) 
 
+TabPlr:AddToggle({ 	
+        Name = "Auto Respawn", 	
+        Default = false, 	
+        Callback = function(ARS) 		
+            _G.autorespawn = ARS	
+        end }) 
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end)
+
 TabPlr:AddTextbox({ 	
 		Name = "Type Name Player", 	
 		Default = "Select", 	
@@ -1098,6 +1119,37 @@ spawn(function() -- bring Plr
             end)
         end
     end
+end);
+
+TabPlr:AddToggle({ 	
+        Name = "Aim Player", 	
+        Default = false, 	
+        Callback = function(ABP) 		
+            _G.AimPlayer = ABP
+        end }) 
+
+spawn(function()--aim silent 
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                if _G.AimPlayer then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
 end);
 
 TabPlr:AddToggle({ 	
@@ -1646,6 +1698,30 @@ end)
 end 
 end)
 
+local Section = TabSV:AddSection({
+		Name = "Other"})
+
+TabSV:AddButton({ 	
+                Name = "Emote All | No Save!! |", 	
+                Callback = function()
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark4.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark5.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark6.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark7.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark8.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark9.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark10.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark11.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark12.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark13.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true	
+                end })
+
 local Section = TabSV:AddSection({ 	
     Name = "Weapon" }) 
 
@@ -1655,5 +1731,4 @@ TabSV:AddButton({
                 local A_1 = "Seastone Cestus"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)	
-                end 
-})
+                end })
