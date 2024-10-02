@@ -1122,35 +1122,6 @@ spawn(function() -- bring Plr
 end);
 
 TabPlr:AddToggle({ 	
-        Name = "Aim Player", 	
-        Default = false, 	
-        Callback = function(ABP) 		
-            _G.AimPlayer = ABP
-        end }) 
-
-spawn(function()--aim silent
-        while wait() do
-            pcall(function()
-                local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(SelectPlayer)
-                if _G.AimPlayer then
-                    cacacac = plr2.Character.HumanoidRootPart.CFrame
-                end
-            end)
-        end
-    end)
-
-local index = mta.__index
-cf = CFrame.new(1, 2, 3)
-setreadonly(mta, false)
-mta.__index = newcclosure(function(a, b, c)
-    if tostring(b):lower() == 'hit' and _G.AimPlayer then
-        return cacacac
-    end
-    return index(a, b, c)
-end);
-
-TabPlr:AddToggle({ 	
         Name = "Behind Player", 	
         Default = false, 	
         Callback = function(BPlr) 		
