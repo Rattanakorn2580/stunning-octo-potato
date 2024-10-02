@@ -1128,8 +1128,7 @@ TabPlr:AddToggle({
             _G.AimPlayer = ABP
         end }) 
 
-spawn(function()--aim silent 
-    pcall(function()
+spawn(function()--aim silent
         while wait() do
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
@@ -1140,7 +1139,6 @@ spawn(function()--aim silent
             end)
         end
     end)
-end)
 
 local index = mta.__index
 cf = CFrame.new(1, 2, 3)
