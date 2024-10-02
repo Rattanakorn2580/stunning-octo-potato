@@ -289,11 +289,11 @@ spawn(function()
 local Section = TabAuto:AddSection({ 	
     Name = "Auto Farm Haki" }) 
 
-                TabAuto:AddToggle({ 	
-        Name = "Auto Haki | Slow!!", 	
+TabAuto:AddToggle({ 	
+        Name = "Auto Haki | Slow!! |", 	
         Default = false, 	
-        Callback = function(AHK) 		
-            AutoHaki1 = AHK
+        Callback = function(HK1) 		
+            AutoHaki1 = HK1
         end })      
 
 spawn(function()
@@ -392,9 +392,127 @@ spawn(function()
     end
 end);
 
-local TabFarm = Window:MakeTab({ 	Name = "Auto Farm", 	
-    Icon = "rbxassetid://4483345998", 	
-    PremiumOnly = false })
+TabAuto:AddToggle({ 	
+        Name = "Auto Haki | Fast!! |", 	
+        Default = false, 	
+        Callback = function(HK2) 		
+            AutoHaki2 = HK2
+        end })      
+
+game:GetService('RunService').RenderStepped:connect(function()
+    if AutoHaki2 then
+        for i = 1, 100 do
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+            task.wait(0.1)
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+        end
+    end
+end);
+
+local TabFarm = Window:MakeTab({ 	
+		Name = "Auto Farm", 	
+		Icon = "rbxassetid://4483345998", 	
+		PremiumOnly = false })
 
 local Section = TabFarm:AddSection({ 	
     Name = "function Farm" }) 
