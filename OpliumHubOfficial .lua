@@ -47,6 +47,31 @@ local TabAuto = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
+local Section = TabAuto:AddSection({
+		Name = "Auto Spawn"
+	})
+
+TabAuto:AddToggle({ 	
+        Name = "Auto Spawn", 	
+        Default = false, 	
+        Callback = function(ARS) 		
+            _G.autorespawn = ARS	
+        end }) 
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end);
+
 local Section = TabAuto:AddSection({ 	
     Name = "function Auto [ All ]" }) 
 
