@@ -1043,27 +1043,6 @@ local TabPlr = Window:MakeTab({
 local Section = TabPlr:AddSection({ 	
     Name = "Player" }) 
 
-TabPlr:AddToggle({ 	
-        Name = "Auto Respawn", 	
-        Default = false, 	
-        Callback = function(ARS) 		
-            _G.autorespawn = ARS	
-        end }) 
-
-spawn(function()--autorespawn
-    while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
-    end
-end)
-
 TabPlr:AddTextbox({ 	
 		Name = "Type Name Player", 	
 		Default = "Select", 	
