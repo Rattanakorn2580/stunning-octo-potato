@@ -41,6 +41,8 @@ List.DevConfig["ListOfBox1"] = {"Common Box"};
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
 List.DevConfig["ListOfBox2"] = {"Umcommon Box"};
 List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+List.DevConfig["ListOfIsland1"] = {""}
+List.DevConfig["ListOfIsland2"] = {""}
 
 local TabAuto = Window:MakeTab({ 	
         Name = "Autos", 	
@@ -1306,169 +1308,92 @@ TabLand:AddButton({
 })
 
 local Section = TabLand:AddSection({ 	
+    Name = "Teleport Island" }) 
+
+TabLand:AddDropdown({ 	Name = "Choose Island", 	
+                Default = "", 	
+                Options = List.DevConfig["ListOfIsland1"], 	
+                Callback = function(Dr) 		
+                        getgenv().tpisland = Dr	
+                end })
+
+TabLand:AddButton({ 	
+                Name = "Tp to Island", 	
+                Callback = function()
+                	if getgenv().tpisland == "Grassy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
+      elseif getgenv().tpisland == "Kaizu" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
+      elseif getgenv().tpisland == "Snow Mountains"  then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
+      elseif getgenv().tpisland == "Pursuer Boss" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+      elseif getgenv().tpisland == "Bar" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)
+      elseif getgenv().tpisland == "Cliffs" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4598, 217, 4964)
+      elseif getgenv().tpisland == "Windmill" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7, 224, -91)
+      elseif getgenv().tpisland == "Cave" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-280, 217, -831)
+      elseif getgenv().tpisland == "Krizma" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1109, 341, 1645)
+      elseif getgenv().tpisland == "Sam" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1283, 218, -1348)
+      elseif getgenv().tpisland == "Green" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2727, 253, 1041)
+      elseif getgenv().tpisland == "Trees" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1068, 217, 3351)
+      elseif getgenv().tpisland == "Pyramid" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(118, 216, 4773)
+      elseif getgenv().tpisland == "Merlin Fish" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1668, 217, -300)
+      elseif getgenv().tpisland == "Snowy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1896, 222, 3385)
+      elseif getgenv().tpisland == "Mountain" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2052, 488, -701)
+      elseif getgenv().tpisland == "Marine Ford" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3164, 296, -3780)
+      elseif getgenv().tpisland == "Sand Castle" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1020, 224, -3277)
+      elseif getgenv().tpisland == "Forest" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5781, 216, 114)
+      elseif getgenv().tpisland == "Evil" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5169, 523, -7803)
+      elseif getgenv().tpisland == "Crescent" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3193, 357, 1670)
+      elseif getgenv().tpisland == "Islands" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4319, 245, 5252)
+      elseif getgenv().tpisland == "Town" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 218, 755)
+      elseif getgenv().tpisland == "Rocky" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-37, 229, 2149)
+      elseif getgenv().tpisland == "Palm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(766, 216, -1374)
+      elseif getgenv().tpisland == "Sand" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2747, 216, -942)
+      elseif getgenv().tpisland == "Sand 2" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(162, 216, -2265)
+      elseif getgenv().tpisland == "Small" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1237, 240, -244)
+      elseif getgenv().tpisland == "Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1235, 223, 623)
+      elseif getgenv().tpisland == "Super Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4007, 216, -2190)
+      elseif getgenv().tpisland == "Grass" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
+      elseif getgenv().tpisland == "Atlar" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
+    end
+                end })
+
+local Section = TabLand:AddSection({ 	
     Name = "For Events " }) 
 
 TabLand:AddButton({ 	
                 Name = "Tp to Pumpkin | Halloween Event!! |", 	
                 Callback = function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame	
-                end 
-})
-
-local Section = TabLand:AddSection({ 	
-    Name = "Teleport Island" }) 
-
-TabLand:AddButton({ 	
-                Name = "Pursuer Boss", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4858, 608, -7284))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Bar", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1477, 279, 2126))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Crab", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6, 215, -240))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Cave", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-222, 216, -843))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Windmill", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(28, 223, -90))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Sam", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1281, 217, -1352))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Grassy", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(723, 240, 1205))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Sand Castle", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1018, 223, -3338))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Krizma", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1074, 361, 1695))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Flail", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1097, 216, 3361))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Kaizu", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1575, 219, 9939))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Pyramid", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(118, 309, 4946))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Merlin Fish", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1668, 216, -353))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "FishSell", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(1993, 217, 576))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Vokun's land", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(4571, 217, 5095))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Mountain", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(2052, 487, -705))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Forest", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-6033, 401, -7))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Crescent", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(3198, 356, 1680))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Purple", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-5164, 522, -7802))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Snowy", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(-1895, 224, 3299))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Snowy Mountain", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character:MoveTo(Vector3.new(6741, 397, -1716))	
-                end 
-})
-
-TabLand:AddButton({ 	
-                Name = "Altar", 	
-                Callback = function()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)	
                 end 
 })
 
