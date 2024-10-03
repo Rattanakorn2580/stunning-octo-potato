@@ -1544,14 +1544,14 @@ TabLand:AddButton({
 TabLand:AddToggle({ 	
         Name = "Auto Farm | Zombies Event!! |", 	
         Default = false, 	
-        Callback = function(AFZ) 		
-            Farmbie = AFZ	
+        Callback = function(AFB) 		
+            _G.FarmB = AFB	
         end })      
 
 spawn(function()
     while wait() do
         pcall(function()
-            if Farmbie then
+            if _G.FarmB then
 		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
