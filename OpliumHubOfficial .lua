@@ -1541,6 +1541,36 @@ TabLand:AddButton({
                 end 
 })
 
+TabLand:AddToggle({ 	
+        Name = "Auto Farm | Zombies Event!! |", 	
+        Default = false, 	
+        Callback = function(AFZ) 		
+            Farmbie = AFZ	
+        end })      
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if Farmbie then
+		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombie:GetChildren()) do
+                    if string.find(v.Name, "Zombies")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+            end
+        end)
+    end
+end);
+
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
         Icon = "rbxassetid://4483345998", 	
