@@ -13,7 +13,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
-            if AutoFarmM  or KillPlayer or AutoPackage or AutoFish or _G.FarmB then
+            if AutoFarmM  or KillPlayer or AutoPackage or AutoFish or FarmB then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -22,7 +22,7 @@ spawn(function() -- autofarm velocity
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoFarmM == false or KillPlayer == false or AutoPackage == false or AutoFish == false _G.FarmB == false then
+            elseif  AutoFarmM == false or KillPlayer == false or AutoPackage == false or AutoFish == false FarmB == false then
                 --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
                 wait(1)
@@ -1256,7 +1256,11 @@ local TabDk = Window:MakeTab({
         Icon = "rbxassetid://4483345998", 	
         PremiumOnly = false })
 
-TabDk:AddDropdown({ 	Name = "Choose NPC", 	
+local Section = TabDk:AddSection({
+		Name = "Teleport To NPCs"
+	})
+
+TabDk:AddDropdown({ 	Name = "Choose NPCs", 	
                 Default = "", 	
                 Options = List.DevConfig["ListOfIsland2"], 	
                 Callback = function(Dm) 		
@@ -1545,13 +1549,13 @@ TabLand:AddToggle({
         Name = "Auto Farm | Zombies Event!! |", 	
         Default = false, 	
         Callback = function(AFB) 		
-            _G.FarmB = AFB	
+            FarmB = AFB	
         end })      
 
 spawn(function()
     while wait() do
         pcall(function()
-            if _G.FarmB then
+            if FarmB then
 		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
@@ -1572,6 +1576,13 @@ spawn(function()
     end
 end);
 
+TabFarm:AddToggle({ 	
+        Name = "Auto Click Pumpkin | Not Work |", 	
+        Default = false, 	
+        Callback = function(Fp) 		
+            PumpF = Fp
+        end })      
+						
 local TabSk = Window:MakeTab({ 	
         Name = "Skill", 	
         Icon = "rbxassetid://4483345998", 	
