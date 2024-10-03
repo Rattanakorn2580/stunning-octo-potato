@@ -57,6 +57,7 @@ end)
 
 local toggle = sector.element('Auto Fishing', 'Toggle', false, function(v)
       AutoFish = v
+    end)
   spawn(function() -- fish farm
     while wait(0) do
         pcall(function()
@@ -103,7 +104,6 @@ local toggle = sector.element('Auto Fishing', 'Toggle', false, function(v)
         end)
     end
 end);
-end)
 
 toggle:add_color({Color = Color3.fromRGB(84, 101, 255)}, nil, function(v)
    print(v.Color)    
