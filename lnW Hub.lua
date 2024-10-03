@@ -55,7 +55,7 @@ local button = sector.element('Button', 'Button', nil, function()
 
 end)
 
-local toggle = sector.element('Auto Fishing', 'Toggle', false, function(v)
+local toggle = sector.element('Auto Fishing', 'Auto Fishing', false, function(v)
       AutoFish = v
     end)
  
