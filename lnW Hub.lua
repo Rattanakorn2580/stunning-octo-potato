@@ -8,11 +8,11 @@ local tab = window.new_tab('rbxassetid://4483345998')
 local tab1 = window.new_tab('rbxassetid://4483345998')
 
 -- // Sections \\ --
-local section = tab.new_section('Auto Farm')
+local section = tab.new_section('Autos')
 local section1 = tab.new_section('Auto Farm Devil Fruit')
 
 -- // Sector \\ --
-local sector = section.new_sector('Mobs Farm', 'Left')
+local sector = section.new_sector('Function Auto', 'Left')
 local sector1 = section.new_sector('', 'Right')
 
 -- // Elements \\ -- (Type, Name, State, Callback)
@@ -20,9 +20,56 @@ local button = sector.element('Button', 'Button', nil, function()
 
 end)
 
-local toggle = sector.element('Toggle', 'Toggle', false, function(v)
-   print(v.Toggle) -- :nerd:
+local toggle = sector.element('Auto Fishing', 'Toggle', false, function(v)
+      AutoFish = v
+  spawn(function() -- fish farm
+    while wait(0) do
+        pcall(function()
+            if AutoFish then
+                wait(0.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
+                wait(0.5)
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if string.find(v.Name, "Rod") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                            end
+                        end
+                    end
+                end
+                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if string.find(x.Name, "Rod") then
+                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:FindFirstChild("Bobber") then
+                                        if v.Bobber.Effect.Enabled == true then
+                                            wait(0.6)
+                                            local args = {
+                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                            }
+                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        end
+                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
+                                        wait(0.6)
+                                        local args = {
+                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                        }
+                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end       
+            end
+        end)
+    end
+end);
 end)
+
 toggle:add_color({Color = Color3.fromRGB(84, 101, 255)}, nil, function(v)
    print(v.Color)    
 end)
