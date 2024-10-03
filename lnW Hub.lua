@@ -49,7 +49,7 @@ DarkraiX:Window(
 Tab1 = Library:Tab("Autos")
 
 Tab1:Toggle("Auto Fishing",false,function(va)
-AutoFish = va
+print(value)
     end)
 
 Tab1:Slider("Slider",1,100,25,function(value)
