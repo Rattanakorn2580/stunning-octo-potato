@@ -39,7 +39,7 @@ local Window = OrionLib:MakeWindow({Name = "OPlium Hub", HidePremium = false, Sa
 local List = { DevConfig = {} }; 
 List.DevConfig["ListOfBox1"] = {"Common Box"}; 
 List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
-List.DevConfig["ListOfBox2"] = {"Umcommon Box"};
+List.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 List.DevConfig["ListOfIsland1"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
