@@ -58,53 +58,7 @@ end)
 local toggle = sector.element('Auto Fishing', 'Toggle', false, function(v)
       AutoFish = v
     end)
-  spawn(function() -- fish farm
-    while wait(0) do
-        pcall(function()
-            if AutoFish then
-                wait(0.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
-                wait(0.5)
-                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if string.find(v.Name, "Rod") then
-                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                            if string.find(v.Name, "Rod") then
-                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                            end
-                        end
-                    end
-                end
-                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                    if string.find(v.Name, "Rod") then
-                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                            if string.find(x.Name, "Rod") then
-                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                    if v:FindFirstChild("Bobber") then
-                                        if v.Bobber.Effect.Enabled == true then
-                                            wait(0.6)
-                                            local args = {
-                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                                            }
-                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
-                                        end
-                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
-                                        wait(0.6)
-                                        local args = {
-                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                                        }
-                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
-                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end       
-            end
-        end)
-    end
-end);
-
+ 
 toggle:add_color({Color = Color3.fromRGB(84, 101, 255)}, nil, function(v)
    print(v.Color)    
 end)
