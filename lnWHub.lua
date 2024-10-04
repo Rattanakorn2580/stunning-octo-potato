@@ -1074,7 +1074,7 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
-Tab1:Dropdown("Select Player",{""}, Plr,function(P)
+Tab1:Dropdown("Select Player",{Plr, ""},function(P)
         SelectPlr = P
 end)
 
