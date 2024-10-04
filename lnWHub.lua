@@ -852,8 +852,8 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
     table.insert(Weaponlist,v.Name)
 end
 
-Tab1:Dropdown("Choose Weapon", Weaponlist,{""},function(W)
-            Weapon = W
+Tab1:Dropdown("Choose Weapon", Weaponlist,{""},function(currentOption)
+            Weapon = currentOption
 end)
 
 Tab1:Toggle("Auto Click",false,function(ack)
