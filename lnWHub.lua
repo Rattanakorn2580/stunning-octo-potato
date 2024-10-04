@@ -1261,7 +1261,7 @@ spawn(function()
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                    	v.HumanoidRootPart.Size = Vector3.new(13, 13, 13)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
 			v:FindFirstChild("HumanoidRootPart").Anchored = true
@@ -1299,3 +1299,33 @@ spawn(function()--autofruit
         end)
     end
 end)
+
+Tab1 = Library:Tab("Skill")
+
+Tab1:Seperator("Max Charge Skill")
+
+Tab1:Toggle("Auto Fishing",false,function(maxc)
+maxchargeskill = maxc
+    end)
+
+Tab1 = Library:Tab("Misc")
+
+Tab1:Seperator("Server")
+
+Tab1:Button("Rejoin",function()
+    print("hi")
+end)
+
+Tab1:Seperator("Unbox")
+
+Tab1:Toggle("Unbox | Common |",false,function(ubc)
+unboxC = ubc
+    end)
+
+Tab1:Toggle("Unbox | Uncommon |",false,function(ubu)
+unboxUc = ubu
+    end)
+
+Tab1:Toggle("Unbox | Rare, Ultra|",false,function(ubr)
+UnboxRu = ubr
+    end)
