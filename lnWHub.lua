@@ -269,6 +269,7 @@ spawn(function()
 
 Tab1:Toggle("Auto Chest",false,function(cht)
 chest =  cht
+while wait(.8) do
     for i,v in pairs(game.Workspace:GetDescendants()) do 
 if v.Name == "ChestSpawner" then 
 for i,v in pairs(v:GetDescendants()) do 
