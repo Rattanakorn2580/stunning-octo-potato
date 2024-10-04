@@ -1249,14 +1249,14 @@ Tab1:Button("Click To Tp",function()
 
 Tab1:Seperator("Event Halloween")
 
-Tab1:Toggle("Auto Farm | Zombies Event!! |",false,function(fza)
-FarmB = fza
+Tab1:Toggle("Bring Farm | Zombies |",false,function(fz)
+FarmZom = fz
     end)
 
 spawn(function()
     while wait() do
         pcall(function()
-            if FarmB then
+            if FarmZom then
 		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
