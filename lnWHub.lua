@@ -269,7 +269,12 @@ spawn(function()
 
 Tab1:Toggle("Auto Chest",false,function(cht)
 chest =  cht
+end)
+
+spawn(function()
 while wait(.8) do
+pcall(function()
+if chest then
     for i,v in pairs(game.Workspace:GetDescendants()) do 
 if v.Name == "ChestSpawner" then 
 for i,v in pairs(v:GetDescendants()) do 
@@ -280,7 +285,9 @@ end
 end 
 end 
 end)
-
+end
+end)
+	
 Tab1:Seperator("Auto Train Haki")
 
 Tab1:Toggle("Auto Haki | Slowly |",false,function(hk)
