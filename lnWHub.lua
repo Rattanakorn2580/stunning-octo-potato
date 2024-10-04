@@ -1074,6 +1074,26 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
+Tab1:Textbox("Type Name Player","",true,function(plr)
+SelectPlayer = plr
+end)
+
+Tab1:Button("Click To Tp",function()
+    print("hi")
+end)
+
+Tab1:Toggle("Auto Behind Player",false,function(abp)
+AutoBehind = abp
+    end)
+
+Tab1:Toggle("Bring Player",false,function(bpl)
+BringPlr = bpl
+    end)
+
+Tab1:Toggle("Bring | All Player |",false,function(bpa)
+BringAll = bpa
+    end)
+
 Tab1 = Library:Tab("NPCs")
 
 Tab1:Seperator("Teleport To NPCs")
@@ -1110,9 +1130,9 @@ Tab1:Button("Click To Tp",function()
 end
 end)
 
-Tab1 = Library:Tab("Autos")
+Tab1 = Library:Tab("TP Island")
 
-Tab1:Seperator("Auto Spawn")
+Tab1:Seperator("Teleport To Island")
 
 Tab1:Dropdown("Choose Island",{"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
