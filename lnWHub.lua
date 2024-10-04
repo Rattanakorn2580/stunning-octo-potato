@@ -848,3 +848,15 @@ Tab1:Seperator("Auto Weapon")
 Tab1:Dropdown("Select Weapon",{"yo","sus","pro"},function(value)
             print(value)
 end)
+
+Tab1:Toggle("Auto Click",false,function(ack)
+AutoClicking = ack
+    end)
+
+Tab1:Toggle("Auto Equip",false,function(aed)
+AutoEquiped = aed
+    end)
+
+
+Tab1:Seperator("Auto Fruity")
+
