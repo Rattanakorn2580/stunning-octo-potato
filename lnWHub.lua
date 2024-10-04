@@ -79,6 +79,29 @@ spawn(function() -- fish farm
     end
 end);
 
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if AutoFish then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  AutoFish == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
+
 Tab1:Toggle("Auto Package",false,function(Apage)
 AutoPackage = Apage
     end)
@@ -188,6 +211,29 @@ spawn(function()
         end)
     end
 end);
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if AutoPackage then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  AutoPackage == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
 
 Tab1:Toggle("Auto Claim Mission",false,function(miss)
 AutoMission = miss
@@ -1529,7 +1575,7 @@ end)
 
 Tab1:Seperator("Anti")
 
-Tab1:Toggle("Auto Fishing",false,function(stun)
+Tab1:Toggle("AntiStun",false,function(stun)
 _G.antistun = stun
     end)
 
