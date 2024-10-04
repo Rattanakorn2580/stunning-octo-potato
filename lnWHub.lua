@@ -1199,7 +1199,7 @@ spawn(function()
 end)
 
 
-Tab1:Toggle("Auto Fishing",false,function(asq)
+Tab1:Toggle("Auto Claim Sam | Claim10 |",false,function(asq)
 AutoSamQuest = asq
     end)
 
