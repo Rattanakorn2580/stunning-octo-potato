@@ -852,7 +852,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
     table.insert(Weaponlist,v.Name)
 end
 
-Tab1:Dropdown("Choose Weapon", Weaponlist,{""},function(currentOption)
+Tab1:Dropdown("Choose Weapon", Weaponlist,{Weapon, ""}, function(currentOption)
             Weapon = currentOption
 end)
 
@@ -1086,7 +1086,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
 	table.insert(Plr,v.Name)
 end
 
-Tab1:Dropdown("Choose Player", Plr,{""},function(spr)
+Tab1:Dropdown("Choose Player", Plr,{Plr, ""}, function(spr)
             SelectPlayer = spr
 end)
 
