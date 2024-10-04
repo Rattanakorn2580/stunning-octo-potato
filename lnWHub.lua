@@ -845,8 +845,8 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-Tab1:Dropdown("Select Weapon",{"yo","sus","pro"},function(value)
-            print(value)
+Tab1:Textbox("Type Name Weapon","",true,function(wp)
+ Weapon = wp
 end)
 
 Tab1:Toggle("Auto Click",false,function(ack)
@@ -1074,10 +1074,3 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
-Tab1:Dropdown("Select Player",{""}, Plr,function(P)
-        SelectPlr = P
-Plr = {} 
-for i,v in pairs(game:GetService("Players"):GetChildren()) do 
-table.insert(Plr,v.Name) 
-end
-end)
