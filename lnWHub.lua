@@ -17,8 +17,22 @@ Tab1 = Library:Tab("Autos")
 Tab1:Seperator("Auto Spawn")
 
 Tab1:Toggle("Auto Spawn",false,function(SP)
-AutoFish = SP
+_G.autospawn = SP
     end)
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end)
 
 Tab1:Seperator("Functions Autos")
 
