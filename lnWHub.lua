@@ -1246,3 +1246,37 @@ Tab1:Button("Click To Tp",function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
 		end
 	end)
+
+Tab1:Seperator("Event Halloween")
+
+Tab1:Toggle("Auto Farm | Zombies Event!! |",false,function(fza)
+FarmB = fza
+    end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if FarmB then
+		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
+                    if string.find(v.Name, "Zombie")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+			v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+            end
+        end)
+    end
+end)
+
+Tab1:Button("Tp To Pumpkin",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
+end)
