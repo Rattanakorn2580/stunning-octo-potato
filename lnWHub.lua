@@ -1074,3 +1074,14 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
+Tab1 = Library:Tab("NPCs")
+
+Tab1:Seperator("Teleport To NPCs")
+
+Tab1:Dropdown("Dropdown",{"yo","sus","pro"},function(tpm)
+            getgenv().tpmerchant = tpm
+end)
+
+Tab1:Button("Click to Tp",function()
+    print("hi")
+end)
