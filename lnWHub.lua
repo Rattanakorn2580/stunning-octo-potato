@@ -3,7 +3,7 @@ local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gami
 
 local Library = DarkraiX:Window("lnWZa  X","","",Enum.KeyCode.RightControl);
 
-Tab1 = Library:Tab("Autos")
+Tabauto = Library:Tab("Autos")
 
 Tabauto:Seperator("Auto Spawn")
 
