@@ -1167,6 +1167,52 @@ Tab1:Button("Click To Tp",function()
 end
 end)
 
+Tab1:Seperator("Quest Sam")
+
+Tab1:Button("Dupe",function()
+    workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
+
+end)
+
+Tab1:Toggle("Auto Find",false,function(afc)
+AutoFind = afc
+    end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoFind then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(0.2);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
+    end
+end)
+
+
+Tab1:Toggle("Auto Fishing",false,function(asq)
+AutoSamQuest = asq
+    end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoSamQuest then return end;
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+        end)
+    end
+end)
+
 Tab1 = Library:Tab("TP Island")
 
 Tab1:Seperator("Teleport To Island")
@@ -1392,10 +1438,55 @@ Tab1:Toggle("Unbox | Common |",false,function(ubc)
 unboxC = ubc
     end)
 
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not unboxC then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find("Common Box", Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end)
+
 Tab1:Toggle("Unbox | Uncommon |",false,function(ubu)
 unboxUc = ubu
     end)
 
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not unboxUc then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find("Uncommon Box", Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end)
+
 Tab1:Toggle("Unbox | Rare, Ultra|",false,function(ubr)
 UnboxRu = ubr
     end)
+
+spawn(function() 
+while wait() do 
+pcall(function() 
+if not unboxRu then return end; 
+for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
+if table.find("Rare Box", "Ultra Rare Box", Value.Name) then 
+game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
+Value.Parent = game.Players.LocalPlayer.Character; 
+Value:Activate(); 
+end 
+end 
+end) 
+end 
+end)
