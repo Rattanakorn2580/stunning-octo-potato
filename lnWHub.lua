@@ -774,7 +774,7 @@ spawn(function()
     end
 end)
 
-Tab1:Toggle("Auto Fishing",false,function(bms)
+Tab1:Toggle("Auto Bring | All |",false,function(bms)
 BringMobs = bms
     end)
 
@@ -880,7 +880,7 @@ end);
 
 Tab1:Seperator("Auto Fruity")
 
-Tab1:Toggle("Auto Fishing",false,function(afs)
+Tab1:Toggle("Auto Stats",false,function(afs)
 AutoStats = afs
     end)
 
@@ -1074,12 +1074,11 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
-Plr = {}
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    table.insert(Plr,v.Name) 
-end
-
 Tab1:Dropdown("Select Player",{""}, Plr,function(P)
         SelectPlr = P
 end)
 
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
