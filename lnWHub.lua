@@ -1281,21 +1281,3 @@ Tab1:Button("Tp To Pumpkin",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
 end)
 
-Tab1:Toggle("Auto Click Pumpkin",false,function(apa)
-AutoPump = apa
-    end)
-
-spawn(function()--autofruit
-    while wait() do
-        pcall(function()
-            if AutoPump then
-                wait(.5)
-                for i,v in pairs(game:GetService("Workspace")WorldEvent.Halloween:GetDescendants()) do
-                    if v:IsA("ClickDetector") then
-                        fireclickdetector(v)
-                    end
-                end
-            end
-        end)
-    end
-end)
