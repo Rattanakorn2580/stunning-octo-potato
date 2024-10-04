@@ -845,8 +845,13 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-Tab1:Textbox("Type Name Weapon","Select",true,function(wp)
- Weapon = wp
+Weapon = {}
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+	table.insert(Weapon,v.Name)
+end
+
+Tab1:Dropdown("Dropdown", Weapon,{""},function(W)
+            Weapon = W
 end)
 
 Tab1:Toggle("Auto Click",false,function(ack)
@@ -1074,8 +1079,13 @@ Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
 
-Tab1:Textbox("Type Name Player","",true,function(plr)
-SelectPlayer = plr
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+	table.insert(Plr,v.Name)
+end
+
+Tab1:Dropdown("Choose Player", Plr,{"yo","sus","pro"},function(spr)
+            SelectPlayer = spr
 end)
 
 Tab1:Button("Click To Tp",function()
