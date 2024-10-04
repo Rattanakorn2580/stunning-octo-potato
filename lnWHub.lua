@@ -14,6 +14,12 @@ DarkraiX:Window(
 
 Tab1 = Library:Tab("Autos")
 
+Tab1:Seperator("Auto Spawn")
+
+Tab1:Toggle("Auto Spawn",false,function(SP)
+AutoFish = SP
+    end)
+
 Tab1:Seperator("Functions Autos")
 
 Tab1:Toggle("Auto Fishing",false,function(value)
