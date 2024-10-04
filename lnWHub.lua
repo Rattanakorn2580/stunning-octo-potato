@@ -1069,3 +1069,7 @@ spawn(function()--autofruit
         end)
     end
 end)
+
+Tab1 = Library:Tab("Player")
+
+Tab1:Seperator("Players")
