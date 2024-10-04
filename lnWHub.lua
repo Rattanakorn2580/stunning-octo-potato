@@ -1290,7 +1290,7 @@ spawn(function()--autofruit
         pcall(function()
             if Pumpck then
                 wait(.5)
-                for i,v in pairs(game:GetService("Workspace")WorldEvent.Halloween.Pumpkin:GetDescendants()) do
+                for i,v in pairs(game.Workspace.WorldEvent.Halloween.Pumpkin:GetChildren()) do
                     if v:IsA("ClickDetector") then
                         fireclickdetector(v)
                     end
