@@ -845,7 +845,7 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-Tab1:Textbox("Type Name Weapon","",true,function(wp)
+Tab1:Textbox("Type Name Weapon","Select",true,function(wp)
  Weapon = wp
 end)
 
@@ -865,18 +865,18 @@ end)
 end)
 
 Tab1:Toggle("Auto Equip",false,function(aed)
-Equiped = aed
+Equip = aed
     end)
 
 spawn(function()
 while wait() do
-if Equiped then
+if Equip then
 pcall(function()
 game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
 end)
 end
 end
-end);
+end)
 
 Tab1:Seperator("Auto Fruity")
 
