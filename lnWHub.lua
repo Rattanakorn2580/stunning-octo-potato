@@ -845,12 +845,14 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-Weapon = {}
+local Weaponlist = {}
+local Weapon = nil
+
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-	table.insert(Weapon,v.Name)
+    table.insert(Weaponlist,v.Name)
 end
 
-Tab1:Dropdown("Dropdown", Weapon,{""},function(W)
+Tab1:Dropdown("Dropdown", Weaponlist,{""},function(W)
             Weapon = W
 end)
 
@@ -1084,7 +1086,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
 	table.insert(Plr,v.Name)
 end
 
-Tab1:Dropdown("Choose Player", Plr,{"yo","sus","pro"},function(spr)
+Tab1:Dropdown("Choose Player", Plr,{""},function(spr)
             SelectPlayer = spr
 end)
 
