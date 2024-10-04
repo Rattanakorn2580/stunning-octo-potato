@@ -1281,7 +1281,7 @@ Tab1:Button("Tp To Pumpkin",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
 end)
 
-Tab1:Toggle("Auto Fishing",false,function(apa)
+Tab1:Toggle("Auto Click Pumpkin",false,function(apa)
 AutoPump = apa
     end)
 
