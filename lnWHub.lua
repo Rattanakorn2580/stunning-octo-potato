@@ -1450,12 +1450,6 @@ local remotes = {}
 
 Tab1 = Library:Tab("Misc")
 
-local List = { DevConfig = {} }; 
-List.DevConfig["ListOfBox1"] = {"Common Box"}; 
-List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
-List.DevConfig["ListOfBox2"] = {"Uncommon Box"};
-List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-
 Tab1:Seperator("Server")
 
 Tab1:Button("Rejoin",function()
