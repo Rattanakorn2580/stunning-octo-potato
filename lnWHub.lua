@@ -3,9 +3,9 @@ local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gami
 
 local Library = DarkraiX:Window("lnWZa  X","","",Enum.KeyCode.RightControl);
 
-Tabauto = Library:Tab("Autos")
+Tab1 = Library:Tab("Autos")
 
-Tabauto:Seperator("Auto Spawn")
+Tab1:Seperator("Auto Spawn")
 
 Tabauto:Toggle("Auto Respawn",false,function(SP)
 _G.autorespawn = SP
@@ -25,7 +25,7 @@ spawn(function()--autorespawn
     end
 end)
 
-Tabauto:Seperator("Functions Autos")
+Tab1:Seperator("Functions Autos")
 
 Tab1:Toggle("Auto Fishing",false,function(value)
 AutoFish = value
@@ -79,7 +79,7 @@ spawn(function() -- fish farm
     end
 end);
 
-Tabauto:Toggle("Auto Package",false,function(Apage)
+Tab1:Toggle("Auto Package",false,function(Apage)
 AutoPackage = Apage
     end)
 
@@ -189,7 +189,7 @@ spawn(function()
     end
 end);
 
-Tabauto:Toggle("Auto Claim Mission",false,function(miss)
+Tab1:Toggle("Auto Claim Mission",false,function(miss)
 AutoMission = miss
     end)
 
@@ -203,7 +203,7 @@ end
 end 
 end);
 
-Tabauto:Toggle("Auto Bring DF Fruit",false,function(df)
+Tab1:Toggle("Auto Bring DF Fruit",false,function(df)
 BringDF = df
     end)
 
@@ -221,9 +221,9 @@ spawn(function()
     end
  end)
 
-Tabauto:Seperator("Auto Train Haki")
+Tab1:Seperator("Auto Train Haki")
 
-Tab1:Toggle("Auto Fishing",false,function(hk1)
+Tab1:Toggle("Auto Haki | Slowly |",false,function(hk1)
 AutoHaki1 = hk1
     end)
 
@@ -323,7 +323,7 @@ spawn(function()
     end
 end)
 
-Tab1:Toggle("Auto Fishing",false,function(hk2)
+Tab1:Toggle("Auto Haki | Faster |",false,function(hk2)
 AutoHaki2 = hk2
     end)
 
@@ -437,11 +437,11 @@ game:GetService('RunService').RenderStepped:connect(function()
     end
 end);
 
-Tabfarm = Library:Tab("Auto Farm")
+Tab2 = Library:Tab("Auto Farm")
 
-Tabfarm:Seperator("Auto Farm Mob")
+Tab2:Seperator("Auto Farm Mob")
 
-Tabfarm:Toggle("Auto Farm | All |",false,function(afa)
+Tab2:Toggle("Auto Farm | All |",false,function(afa)
 AutoFarmA = afa
     end)
 
@@ -774,81 +774,12 @@ spawn(function()
     end
 end);      
 
-TabFarm:AddToggle({ 	
+Tab2:AddToggle({ 	
         Name = "Bring Mob | All |", 	
         Default = false, 	
         Callback = function(BMS) 		
             BringMobs = BMS
         end })
-
-spawn(function() -- autofarm cannon
-    while wait(0) do
-        pcall(function()
-            if BringMobs then
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, " Boar")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
-                        if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                            v:Destroy()
-                        end
-                     end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Crab")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                        v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
-                        if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                            v:Destroy()
-                        end
-                     end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Angry ") 
-                    or string.find(v.Name, "Bandit") 
-                    or string.find(v.Name, "Thief")
-                    or string.find(v.Name, "Crab") 
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, "Freddy")  
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, "Thug") 
-                    or string.find(v.Name, "Gunslinger")
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, " ") 
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-15)
-                        if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                            v:Destroy()
-                        end
-                        if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                            v:Destroy()
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-Tabfarm:Toggle("Auto Bring | All |",false,function(aba)
-BringMobs = aba
-    end)
 
 spawn(function() -- autofarm cannon
     while wait(0) do
