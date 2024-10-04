@@ -774,12 +774,9 @@ spawn(function()
     end
 end)
 
-Tab1:AddToggle({ 	
-        Name = "Bring Mob | All |", 	
-        Default = false, 	
-        Callback = function(BMS) 		
-            BringMobs = BMS
-        end })
+Tab1:Toggle("Auto Fishing",false,function(bms)
+BringMobs = bms
+    end)
 
 spawn(function() -- autofarm cannon
     while wait(0) do
@@ -844,4 +841,10 @@ spawn(function() -- autofarm cannon
             end
         end)
     end
+end)
+
+Tab1:Seperator("Auto Weapon")
+
+Tab1:Dropdown("Select Weapon",{"yo","sus","pro"},function(value)
+            print(value)
 end)
