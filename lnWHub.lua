@@ -223,8 +223,8 @@ spawn(function()
 
 Tab1:Seperator("Auto Train Haki")
 
-Tab1:Toggle("Auto Haki | Slowly |",false,function(hk1)
-AutoHaki1 = hk1
+Tab1:Toggle("Auto Haki | Slowly |",false,function(hk)
+AutoHaki1 = hk
     end)
 
 spawn(function()
@@ -323,8 +323,8 @@ spawn(function()
     end
 end)
 
-Tab1:Toggle("Auto Haki | Faster |",false,function(hk2)
-AutoHaki2 = hk2
+Tab1:Toggle("Auto Haki | Faster |",false,function(hkk)
+AutoHaki2 = hkk
     end)
 
 game:GetService('RunService').RenderStepped:connect(function()
@@ -437,11 +437,11 @@ game:GetService('RunService').RenderStepped:connect(function()
     end
 end);
 
-Tab2 = Library:Tab("Auto Farm")
+Tab1 = Library:Tab("Auto Farm")
 
-Tab2:Seperator("Auto Farm Mob")
+Tab1:Seperator("Auto Farm Mob")
 
-Tab2:Toggle("Auto Farm | All |",false,function(afa)
+Tab1:Toggle("Auto Farm | All |",false,function(afa)
 AutoFarmA = afa
     end)
 
@@ -774,7 +774,7 @@ spawn(function()
     end
 end);      
 
-Tab2:AddToggle({ 	
+Tab1:AddToggle({ 	
         Name = "Bring Mob | All |", 	
         Default = false, 	
         Callback = function(BMS) 		
