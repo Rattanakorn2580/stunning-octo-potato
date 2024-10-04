@@ -3,12 +3,6 @@ local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/Gami
 
 local Library = DarkraiX:Window("lnWZa  X","","",Enum.KeyCode.RightControl);
 
-local List = { DevConfig = {} }; 
-List.DevConfig["ListOfBox1"] = {"Common Box"}; 
-List.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"}; 
-List.DevConfig["ListOfBox2"] = {"Uncommon Box"};
-List.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-
 Tab1 = Library:Tab("Autos")
 
 Tab1:Seperator("Auto Spawn")
@@ -277,8 +271,6 @@ Tab1:Toggle("Auto Chest",false,function(cb)
 ChestB = cb
     end)
 
-while wait(.8) do
-if ChestB then
 for i,v in pairs(game.Workspace:GetDescendants()) do
    if v.Name == "ChestSpawner" then
    for i,v in pairs(v:GetDescendants()) do
