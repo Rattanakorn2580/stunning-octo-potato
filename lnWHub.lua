@@ -1304,7 +1304,7 @@ Tab1 = Library:Tab("Skill")
 
 Tab1:Seperator("Max Charge Skill")
 
-Tab1:Toggle("Auto Fishing",false,function(maxc)
+Tab1:Toggle("Max Charge Skill",false,function(maxc)
 skillmax = maxc
     end)
 
@@ -1377,12 +1377,6 @@ local remotes = {}
         end
           return azc(self,...)
     end);
-
-local TabSV = Window:MakeTab({
-	Name = "Misc",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
 
 Tab1 = Library:Tab("Misc")
 
