@@ -1079,20 +1079,57 @@ SelectPlayer = plr
 end)
 
 Tab1:Button("Click To Tp",function()
-    print("hi")
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
 end)
 
-Tab1:Toggle("Auto Behind Player",false,function(abp)
-AutoBehind = abp
+Tab1:Toggle("Behind Player",false,function(abp)
+Behindplr = abp
     end)
+
+spawn(function() 	
+while wait() do
+pcall(function()	
+if Behindplr then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
+		end
+	end)	
+	end 	
+end)
 
 Tab1:Toggle("Bring Player",false,function(bpl)
 BringPlr = bpl
     end)
 
+spawn(function()
+    while wait() do
+        if BringPlr then
+            pcall(function()
+                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+            end)
+        end
+    end
+end)
+
 Tab1:Toggle("Bring | All Player |",false,function(bpa)
 BringAll = bpa
     end)
+
+spawn(function() -- bring Plr
+    while wait() do
+        if BringAll then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
 
 Tab1 = Library:Tab("NPCs")
 
