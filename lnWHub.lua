@@ -772,7 +772,7 @@ spawn(function()
             end
         end)
     end
-end);      
+end)
 
 Tab1:AddToggle({ 	
         Name = "Bring Mob | All |", 	
