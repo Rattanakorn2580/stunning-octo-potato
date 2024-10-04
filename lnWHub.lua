@@ -1244,5 +1244,5 @@ Tab1:Button("Click To Tp",function()
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
       elseif getgenv().tpisland == "Atlar" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
-end
-end)
+		end
+	end)
