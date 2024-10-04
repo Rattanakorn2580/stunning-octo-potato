@@ -7,8 +7,8 @@ Tab1 = Library:Tab("Autos")
 
 Tab1:Seperator("Auto Spawn")
 
-Tab1:Toggle("Auto Spawn",false,function(SP)
-_G.autospawn = SP
+Tab1:Toggle("Auto Respawn",false,function(SP)
+_G.autorespawn = SP
     end)
 
 spawn(function()--autorespawn
