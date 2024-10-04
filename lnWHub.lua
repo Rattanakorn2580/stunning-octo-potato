@@ -202,39 +202,11 @@ end
 end 
 end);
 
-Tab1:Slider("Slider",1,100,25,function(value)
-        print(value)
+Tabfarm = Library:Tab("Auto Farm")
+
+Tabfarm:Seperator("Auto Farm Mob")
+
+Tabfarm:Toggle("Auto Farm | All |",false,function(afa)
+AutoFarmA = afa
     end)
 
---[[
-Tab1:Slider(
-1 = Name (string)
-2 = Minimum (number)
-3 = Maximum (number)
-4 = Currently How Much (number)
-)
-]]
-
-Tab1:Dropdown("Dropdown",{"yo","sus","pro"},function(value)
-            print(value)
-end)
-
---[[
-Tab1:Dropdown(
-1 = Name (string)
-2 = Options (table)
-)
-]]
-
-Tab1:Textbox("Textbox","",true,function(value)
-print(value)
-end)
-
---[[
-Tab1:Textbox(
-1 = Name (string)
-2 = Current Text (string)
-3 = State (bool)
-4 = callback (function)
-)
-]]
