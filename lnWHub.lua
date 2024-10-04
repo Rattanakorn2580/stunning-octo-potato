@@ -1465,7 +1465,7 @@ Tab1 = Library:Tab("Misc")
 Tab1:Seperator("Server")
 
 Tab1:Button("Rejoin",function()
-    print("hi")
+    game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId)
 end)
 
 Tab1:Seperator("Unbox")
@@ -1525,4 +1525,64 @@ end
 end 
 end) 
 end 
+end)
+
+Tab1:Seperator("Anti")
+
+Tab1:Toggle("Auto Fishing",false,function(stun)
+_G.antistun = stun
+    end)
+
+spawn(function()
+while wait() do
+       pcall(function()
+	if _G.antistun then
+       local antistun = game.Players.LocalPlayer.Character
+       repeat
+       antistun["DF_Disabled"].Value = false
+       antistun.HeartStolen.Value = true
+       antistun.Returned.Value = false
+       antistun.Hobbied.Value = false
+       antistun.HMS.Value = false
+       antistun.ChillyPunched.Value = false
+       antistun.CandyTouched.Value = false
+       antistun.Negative.Value = false
+       antistun.OpeSevered.Value = false
+       antistun.SnowTouched.Value = false
+       antistun.RumbleStun.Value = false
+       antistun.GravityCrushed.Value = false
+   
+       wait(0.06)
+       until antistun.Humanoid.Health == 0
+	
+end
+end)
+end 
+end)
+
+Tab1:Seperator("Other")
+
+Tab1:Button("Seastone Cetus | 500 Melee |",function()
+    local A_1 = "Seastone Cestus"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    Event:FireServer(A_1)
+end)
+
+Tab1:Button("Emote All | Not Save!! |",function()
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark4.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark5.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark6.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark7.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark8.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark9.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark10.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark11.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark12.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark13.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
 end)
