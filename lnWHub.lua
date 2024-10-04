@@ -1078,10 +1078,34 @@ Tab1 = Library:Tab("NPCs")
 
 Tab1:Seperator("Teleport To NPCs")
 
-Tab1:Dropdown("Dropdown",{"yo","sus","pro"},function(tpm)
+Tab1:Dropdown("Choose NPCs",{"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"},function(tpm)
             getgenv().tpmerchant = tpm
 end)
 
 Tab1:Button("Click to Tp",function()
-    print("hi")
+    if getgenv().tpmerchant == "Rayleigh" then
+	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
+	elseif getgenv().tpmerchant == "Better Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
+        elseif getgenv().tpmerchant == "Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
+        elseif getgenv().tpmerchant == "Flail" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
+        elseif getgenv().tpmerchant == "QuestFish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
+        elseif getgenv().tpmerchant == "Krizma" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
+        elseif getgenv().tpmerchant == "Sword" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
+        elseif getgenv().tpmerchant == "Sniper" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
+        elseif getgenv().tpmerchant == "Emote" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
+        elseif getgenv().tpmerchant == "Affinity" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
+        elseif getgenv().tpmerchant == "Fish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
+        elseif getgenv().tpmerchant == "Expertise" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
+end
 end)
