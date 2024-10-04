@@ -1073,3 +1073,13 @@ end)
 Tab1 = Library:Tab("Player")
 
 Tab1:Seperator("Players")
+
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+
+Tab1:Dropdown("Select Player",{""}, Plr,function(P)
+        SelectPlr = P
+end)
+
