@@ -853,10 +853,34 @@ Tab1:Toggle("Auto Click",false,function(ack)
 AutoClicking = ack
     end)
 
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function() 
+pcall(function() 
+if AutoClicking then 
+game:GetService'VirtualUser':CaptureController() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end 
+end) 
+end) 
+end)
+
 Tab1:Toggle("Auto Equip",false,function(aed)
-AutoEquiped = aed
+Equiped = aed
     end)
 
+spawn(function()
+while wait() do
+if Equiped then
+pcall(function()
+game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
+end)
+end
+end
+end);
 
 Tab1:Seperator("Auto Fruity")
+
+Tab1:Toggle("Auto Fishing",false,function(afty)
+AutoFruity = afty
+    end)
 
