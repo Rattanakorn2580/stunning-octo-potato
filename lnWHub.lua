@@ -266,7 +266,19 @@ spawn(function()
         end
     end
  end)
-	
+
+Tab1:Button("Chest Bring",function()	
+    for i,v in pairs(game.Workspace:GetDescendants()) do 
+if v.Name == "ChestSpawner" then 
+for i,v in pairs(v:GetDescendants()) do 
+if v.Name == "TreasureChestPart" then 
+v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
+end 
+end 
+end 
+end
+end)
+
 Tab1:Seperator("Auto Train Haki")
 
 Tab1:Toggle("Auto Haki | Slowly |",false,function(hk)
