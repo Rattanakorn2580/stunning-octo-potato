@@ -161,8 +161,8 @@ end);
 Tab:AddToggle({
 	Name = "Unbox | Rare, Ultra",
 	Default = false,
-	Callback = function(AURR)
-		AutoUnboxR = AURR
+	Callback = function(AULR)
+		UnboxRL = AULR
 	end    
 })
 
@@ -170,7 +170,7 @@ Tab:AddToggle({
 spawn(function()
     while wait() do
         pcall(function()
-            if not AutoUnboxR then return end;
+            if not UnboxRL then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                 if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
                     game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
