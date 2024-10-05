@@ -137,8 +137,8 @@ end);
 Tab:AddToggle({
 	Name = "Unbox | Uncom",
 	Default = false,
-	Callback = function(AUU)
-		AutoUnbox = AUU
+	Callback = function(AUN)
+		AutoUnbox = AUN
 	end    
 })
 
@@ -161,8 +161,8 @@ end);
 Tab:AddToggle({
 	Name = "Unbox | Rare, Ultra",
 	Default = false,
-	Callback = function(AUB)
-		AutoUnboxBoxXX = AUB
+	Callback = function(AUR)
+		AutoUnboxBoxXX = AUR
 	end    
 })
 
