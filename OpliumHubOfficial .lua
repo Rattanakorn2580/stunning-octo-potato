@@ -146,7 +146,7 @@ Tab:AddToggle({
 spawn(function()
     while wait() do
         pcall(function()
-            if not AutoUnboxBox then return end;
+            if not AutoUnbox then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                 if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
                     game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
