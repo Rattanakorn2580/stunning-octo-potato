@@ -903,7 +903,7 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-Tab1:Textbox("Type Name Weapon","Type",true,function(currentOtion)
+Tab1:Textbox("Type Name Weapon","Type",true, function(currentOtion)
  Weapon = currentOption
 end)
 
@@ -923,17 +923,23 @@ end)
 end)
 
 Tab1:Toggle("Auto Equip",false,function(aed)
-Equip = aed
+_G.autoequip = aed
     end)
 
-spawn(function()
-while wait() do
-if Equip then
-pcall(function()
-game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Weapon))
-end)
-end
-end
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
 end)
 
 Tab1:Seperator("Auto Fruity")
