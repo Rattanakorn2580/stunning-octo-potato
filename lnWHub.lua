@@ -903,15 +903,8 @@ end)
 
 Tab1:Seperator("Auto Weapon")
 
-local Weaponlist = {}
-local Weapon = nil
-
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist,v.Name)
-end
-
-Tab1:Dropdown("Choose Weapon", Weaponlist,{Weapon, ""}, function(currentOption)
-            Weapon = currentOption
+Tab1:Textbox("Type Name Weapon","Type",true,function(currentOtion)
+ Weapon = currentOption
 end)
 
 Tab1:Toggle("Auto Click",false,function(ack)
