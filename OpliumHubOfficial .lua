@@ -138,7 +138,7 @@ Tab:AddToggle({
 	Name = "Unbox | Uncom",
 	Default = false,
 	Callback = function(AUU)
-		AutoUnboxBoxXX = AUU
+		AutoUnbox = AUU
 	end    
 })
 
