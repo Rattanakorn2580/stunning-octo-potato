@@ -135,6 +135,54 @@ spawn(function()
 end);
 
 Tab:AddToggle({
+	Name = "Unbox | Uncom",
+	Default = false,
+	Callback = function(AUU)
+		AutoUnboxBoxXX = AUU
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoUnboxBox then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+Tab:AddToggle({
+	Name = "Unbox | Rare, Ultra",
+	Default = false,
+	Callback = function(AUB)
+		AutoUnboxBoxXX = AUB
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoUnboxBoxX then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+Tab:AddToggle({
 	Name = "Auto Loot Compass",
 	Default = false,
 	Callback = function(AUB)
