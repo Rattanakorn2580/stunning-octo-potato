@@ -266,78 +266,6 @@ spawn(function()
     end
 end);
 
-
-TabNPC:AddToggle({
-	Name = "Unbox | Common |",
-	Default = false,
-	Callback = function(AUC)
-		UnboxBoxC = AUC
-	end    
-})
-
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not UnboxBoxC then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value:Activate();
-                end
-            end
-        end)
-    end
-end);
-
-TabNPC:AddToggle({
-	Name = "Unbox | Uncom",
-	Default = false,
-	Callback = function(AUN)
-		AutoUnboxU = AUN
-	end    
-})
-
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoUnboxU then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value:Activate();
-                end
-            end
-        end)
-    end
-end);
-
-TabNPC:AddToggle({
-	Name = "Unbox | Rare, Ultra",
-	Default = false,
-	Callback = function(AULR)
-		UnboxRL = AULR
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not UnboxRL then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value:Activate();
-                end
-            end
-        end)
-    end
-end);
-
 TabNPC:AddToggle({
 	Name = "Auto Loot Compass",
 	Default = false,
@@ -377,3 +305,77 @@ TabMisc:AddButton({
   	end    
 })
 
+local Section = TabMisc:AddSection({
+	Name = "UnBox"
+})
+
+TabMisc:AddToggle({
+	Name = "Unbox | Common |",
+	Default = false,
+	Callback = function(AUC)
+		UnboxBoxC = AUC
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxBoxC then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+TabMisc:AddToggle({
+	Name = "Unbox | Uncom",
+	Default = false,
+	Callback = function(AUN)
+		AutoUnboxU = AUN
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoUnboxU then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+TabMisc:AddToggle({
+	Name = "Unbox | Rare, Ultra",
+	Default = false,
+	Callback = function(AULR)
+		UnboxRL = AULR
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
