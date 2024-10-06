@@ -13,12 +13,6 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
 
-local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
-    SafeZoneOuterSpace.Name = "SafeZoneFarmLight"
-    SafeZoneOuterSpace.Size = Vector3.new(50,3,50)
-    SafeZoneOuterSpace.Position = Vecter3.new(math.random(388, 3551, 294))
-    SafeZoneOuterSpace.Anchored = true
-
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
@@ -1744,13 +1738,6 @@ spawn(function() -- Light farm npcs
         end)
     end
 end)
-
-TabSk:AddButton({
-	Name = "Tp To SafeZoneFarmLight",
-	Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneFarmLight"].CFrame * CFrame.new(0, 5, 0)
-  	end    
-})
 
 local TabPlr = Window:MakeTab({
 	Name = "Player",
