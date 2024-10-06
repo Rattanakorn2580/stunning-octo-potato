@@ -2,9 +2,9 @@ local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shl
 local Window = OrionLib:MakeWindow({Name = "Legend Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
 
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
-    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
-    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
-    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
+    SafeZoneUnderSea.Name = "SafeZonePart"
+    SafeZoneUnderSea.Size = Vector3.new(30,3,30)
+    SafeZoneUnderSea.Position = Vector3.new((math.random()))
     SafeZoneUnderSea.Anchored = true
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
