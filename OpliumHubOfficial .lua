@@ -1553,6 +1553,99 @@ spawn(function()--autofruit
     end
 end)
 
+local TabSk = Window:MakeTab({
+	Name = "Skill Spam",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabSk:AddSection({
+	Name = "Rejoin Sever"
+})
+
+local Section = TabSk:AddSection({
+	Name = "Skill Charge Max | This Is What Game Dead |"
+})
+
+TabSk:AddToggle({
+	Name = "Skill Charge Max",
+	Default = false,
+	Callback = function(SKM)
+		skillmax = SKM
+	end    
+})
+
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end);
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end);
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 100
+            return aaxc(self, unpack(args))
+        end
+    end
+    return aaxc(self, ...)
+end);
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end);
+
 local TabPlr = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
@@ -2113,10 +2206,109 @@ TabMisc:AddToggle({
 	end    
 })
 
+spawn(function()
+while wait() do
+       pcall(function()
+	if _G.antistun then
+       local antistun = game.Players.LocalPlayer.Character
+       repeat
+       antistun["DF_Disabled"].Value = false
+       antistun.HeartStolen.Value = true
+       antistun.Returned.Value = false
+       antistun.Hobbied.Value = false
+       antistun.HMS.Value = false
+       antistun.ChillyPunched.Value = false
+       antistun.CandyTouched.Value = false
+       antistun.Negative.Value = false
+       antistun.OpeSevered.Value = false
+       antistun.SnowTouched.Value = false
+       antistun.RumbleStun.Value = false
+       antistun.GravityCrushed.Value = false
+   
+       wait(0.06)
+       until antistun.Humanoid.Health == 0
+	
+end
+end)
+end 
+end);
+
 TabMisc:AddButton({
 	Name = "Anti Lag",
 	Callback = function()
-        
+        if not gethui then
+    warn("Incompatible executor: gethui is unavailable")
+    return
+end
+
+local runService = game:GetService("RunService")
+local lighting = game:GetService("Lighting")
+
+local fpsCounterGui = Instance.new("ScreenGui", gethui())
+local fpsLabel = Instance.new("TextLabel", fpsCounterGui)
+
+fpsCounterGui.Name = "FpsCounterGui"
+fpsCounterGui.IgnoreGuiInset = true
+fpsLabel.Name = "FpsLabel"
+fpsLabel.BackgroundTransparency = 1
+fpsLabel.Position = UDim2.new(1, -100, 0, 0)
+fpsLabel.Size = UDim2.new(0, 100, 0, 30)
+fpsLabel.Text = ""
+fpsLabel.TextSize = 16
+fpsLabel.TextStrokeTransparency = 0.6
+fpsLabel.Draggable = true
+
+local function GetFPS(delay)
+    local startTime = tick()
+    local frames = 0
+    local heartbeatConnection = runService.Heartbeat:Connect(function()
+        frames = frames + 1
+    end)
+    task.wait(delay)
+    heartbeatConnection:Disconnect()
+    local elapsedTime = tick() - startTime
+    local fps = frames / elapsedTime
+    return math.ceil(fps)
+end
+
+task.spawn(function()
+    while true do
+        local fps = GetFPS(0.5)
+        if fps >= 60 then
+            fpsLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        elseif fps <= 59 and fps > 50 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+        elseif fps <= 49 and fps > 30 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 85, 0)
+        elseif fps <= 29 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        end
+        fpsLabel.Text = tostring(fps) .. " FPS"
+    end
+end)
+
+lighting.GlobalShadows = false
+lighting.FogEnd = 9e9
+lighting.EnvironmentDiffuseScale = 0.5
+lighting.EnvironmentSpecularScale = 0.5
+
+for _, descendant in ipairs(game:GetDescendants()) do
+    if descendant:IsA("BasePart") then
+        descendant.CastShadow = false
+        descendant.Material = Enum.Material.SmoothPlastic
+        descendant.Reflectance = 0
+        if descendant:IsA("MeshPart") then
+            descendant.CollisionFidelity = Enum.CollisionFidelity.Box
+        end
+    end
+    if descendant:IsA("Decal") or descendant:IsA("Texture") then
+        if descendant.Transparency > 0.25 then
+            descendant.Transparency = 0.25
+        end
+    end
+    if descendant:IsA("ParticleEmitter") or descendant:IsA("Trail") then
+        descendant.Lifetime = NumberRange.new(0)
+    end
   	end    
 })
 
@@ -2127,13 +2319,30 @@ local Section = TabMisc:AddSection({
 TabMisc:AddButton({
 	Name = "Seastone Cetus | 500 Melee |",
 	Callback = function()
-        
+        local A_1 = "Seastone Cestus"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    Event:FireServer(A_1)
   	end    
 })
 
 TabMisc:AddButton({
 	Name = "Unlock Emote | All |",
 	Callback = function()
-        
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark4.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark5.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark6.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark7.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark8.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark9.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark10.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark11.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark12.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark13.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
