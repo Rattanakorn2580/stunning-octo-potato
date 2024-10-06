@@ -1570,11 +1570,6 @@ local TabSk = Window:MakeTab({
 	PremiumOnly = false
 })
 
-
-local Section = TabSk:AddSection({
-	Name = "Rejoin Sever"
-})
-
 local Section = TabSk:AddSection({
 	Name = "Skill Charge Max | This Is What Game Dead |"
 })
