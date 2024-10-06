@@ -1652,6 +1652,18 @@ local remotes = {}
           return azc(self,...)
     end);
 
+local Section = TabSk:AddSection({
+	Name = "Spam Skill DF"
+})
+
+TabSk:AddToggle({
+	Name = "Auto Spam Magma",
+	Default = false,
+	Callback = function(ASM)
+		_G.autospammagma = ASM
+	end    
+})
+
 local TabPlr = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
@@ -1853,6 +1865,33 @@ TabLand:AddButton({
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
 			end
   	end    
+})
+
+local Section = TabLand:AddSection({
+	Name = "For Event | Halloween!! |"
+})
+
+TabLand:AddToggle({
+	Name = "Auto Bring | Zombies |",
+	Default = false,
+	Callback = function(AFZ)
+		AutoFarmZom = AFZ
+	end    
+})
+
+TabLand:AddButton({
+	Name = "Tp To Pumpkin",
+	Callback = function()
+        
+  	end    
+})
+
+TabLand:AddToggle({
+	Name = "Auto Click Pumpkin",
+	Default = false,
+	Callback = function(ACP)
+		AutoClickP = ACP
+	end    
 })
 
 local TabNPC = Window:MakeTab({
