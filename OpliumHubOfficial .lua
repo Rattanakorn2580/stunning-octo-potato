@@ -49,7 +49,6 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
-Cache.DevCongig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone UnderSea", "SafeZone LightFarm"};
 
 local TabUp = Window:MakeTab({
 	Name = "Update",
@@ -1854,7 +1853,7 @@ local Section = TabLD:AddSection({
 TabLD:AddDropdown({
 	Name = "Choose SafeZone",
 	Default = "",
-	Options = Cache.DevConfig["ListOfSafeZone"],
+	Options = Cache.DevConfig["ListOfMerchant"],
 	Callback = function(CSF)
 		getgenv().tpsafezone = CSF
 	end    
