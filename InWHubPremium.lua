@@ -2,21 +2,21 @@ local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
 
 local Window = Rayfield:CreateWindow({
    Name = "InW Hub Premium",
-   LoadingTitle = "Key System",
+   LoadingTitle = "Add friends on Facebook",
    LoadingSubtitle = "by FB: Bank Kesee",
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
-      FileName = "Big Hub"
+      FileName = "InW Hub"
    },
    Discord = {
       Enabled = false,
-      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      Invite = " ", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
       RememberJoins = true -- Set this to false to make them join the discord every time they load it up
    },
    KeySystem = true, -- Set this to true to use our key system
    KeySettings = {
-      Title = "Enter the key to use it",
+      Title = "InW Hub | Ig: bankzy_lv",
       Subtitle = "Key System",
       Note = " ",
       FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
