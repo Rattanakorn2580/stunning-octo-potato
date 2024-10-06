@@ -38,19 +38,19 @@ TabAuto:AddToggle({
 })
 
 TabAuto:AddToggle({
-	Name = "Auto Drink",
+	Name = "Auto Claim Mission",
 	Default = false,
-	Callback = function(ADK)
-		AutoDrink = ADK
+	Callback = function(AMS)
+		AutoMission = AMS
 	end    
 })
 
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Mission",
+	Name = "Bring DF",
 	Default = false,
-	Callback = function(AMS)
-		AutoMission = AMS
+	Callback = function(BDF)
+		BringDF = BDF
 	end    
 })
 
