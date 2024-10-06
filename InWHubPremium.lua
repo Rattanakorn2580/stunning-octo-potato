@@ -1,39 +1,40 @@
-local library = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/VanisV1.lua"))()
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 
-local Window = library:CreateWindow("Name", "Version", 10044538000)
+local win = Flux:Window("InW Hub", "Premium", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 
-local Tab = Window:CreateTab("Scripts")
+local tab = win:Tab("Auto Farm", "http://www.roblox.com/asset/?id=6023426915")
 
-local Page = Tab:CreateFrame("Page 1")
+tab:Label("This is just a label.")
+tab:Line()
+tab:Toggle("Auto-Farm Coins", "Automatically collects coins for you!", function(t)
+print(t)
+end)
 
-Button = Page:CreateButton("Button", "Description", function()
-CreateNotification("Title", "Description", function(value)
-if value == true then
-print(true)
-else
-print(false)
+tab:Slider("Walkspeed", "Makes your faster.", 0, 100,16,function(t)
+print(t)
+end)
+
+local Weaponlist = {}
+local Weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
 end
-end)
+
+tab:Dropdown("Choose Weapon", Weaponlist,{""}, function(t)
+Weapon = t
 end)
 
-Toggle = Page:CreateToggle("Toggle", "Description", function(arg)
-Toggle:UpdateToggle("New Title", "New Description")
-print(arg)
+tab:Colorpicker("ESP Color", Color3.fromRGB(255,1,1), function(t)
+print(t)
 end)
 
-Bind = Page:CreateBind("KeyBind", "F", function(arg)
-Bind:UpdateBind("New Title")
-print(arg)
+tab:Textbox("Gun Power", "This textbox changes your gun power, so you can kill everyone faster and easier.", true, function(t)
+print(t)
 end)
 
-TextBox = Page:CreateBox("TextBox", 10044538000, function(arg)
-TextBox:UpdateBox("New Title")
-print(arg)
+tab:Bind("Kill Bind", Enum.KeyCode.Q, function()
+print("Killed a random person!")
 end)
 
-Page:CreateSlider("Slider", 16, 500,function(arg)
-   print(arg)
-end)
-
-Label = Page:CreateLabel("Label")
-Label:UpdateLabel("New Title")
+win:Tab("Tab 2", "http://www.roblox.com/asset/?id=6022668888")
