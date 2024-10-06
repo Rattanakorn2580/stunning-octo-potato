@@ -869,7 +869,7 @@ spawn(function()
     end
 end);
 
-TabNPC:AddToggle({
+TabFarm:AddToggle({
 	Name = "Auto Bring | All |",
 	Default = false,
 	Callback = function(AFB)
