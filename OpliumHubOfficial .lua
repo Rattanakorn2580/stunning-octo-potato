@@ -13,6 +13,12 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
 
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneFarmLight"
+    SafeZoneOuterSpace.Size = Vector3.new(50,3,50)
+    SafeZoneOuterSpace.Position = Vecter3.new(math.random(388, 3551, 294))
+    SafeZoneOuterSpace.Anchored = true
+
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
@@ -1738,101 +1744,6 @@ spawn(function() -- Light farm npcs
         end)
     end
 end)
-
-
-local TabPlr = Window:MakeTab({
-	Name = "Player",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-local Section = TabPlr:AddSection({
-	Name = "Player"
-})
-
-local Plr = {}
-
-for i,v in pairs(game:GetService("Players"):GetChildren()) do
-    table.insert(Plr,v.Name)
-end
-
-TabPlr:AddDropdown({
-	Name = "Select Player",
-	Default = "",
-	Options = Plr,
-	Callback = function(SPR)
-		SelectPlayer = SPR
-	end    
-})
-
-TabPlr:AddButton({
-	Name = "Click to Tp",
-	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
-         	end    
-})
-
-TabPlr:AddToggle({
-	Name = "Behind Player",
-	Default = false,
-	Callback = function(BPR)
-		BehindPlr = BPR
-	end    
-})
-
-spawn(function() 	
-while wait() do
-pcall(function()	
-if BehindPlr then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
-		end
-	end)	
-	end 	
-end);
-
-TabPlr:AddToggle({
-	Name = "Auto Bring Player",
-	Default = false,
-	Callback = function(ABP)
-		BringPlr = ABP
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if BringPlr then
-            pcall(function()
-                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-            end)
-        end
-    end
-end);
-
-TabPlr:AddToggle({
-	Name = "Bring Player | All |",
-	Default = false,
-	Callback = function(BPA)
-		BringAll = BPA
-	end    
-})
-
-spawn(function() -- bring Plr
-    while wait() do
-        if BringAll then
-            pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-                        if v.Character.Humanoid.Health == 0 then
-                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end);
 
 local TabLand = Window:MakeTab({
 	Name = "Island",
