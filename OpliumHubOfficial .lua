@@ -51,7 +51,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 
 local TabUp = Window:MakeTab({
-	Name = "Rejoin Sever",
+	Name = "Update",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
