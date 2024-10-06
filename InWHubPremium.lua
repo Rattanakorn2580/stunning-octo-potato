@@ -15,7 +15,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 end
 
 tab:Dropdown("Choose Weapon", Weaponlist,{""}, function(W)
-Weapon = W
+Weaponlist = W
 end)
 
 tab:Toggle("Auto Click", "Auto Clicked", function(Ck)
@@ -43,7 +43,7 @@ spawn(function() -- auto equip
             if _G.autoequip then
                 repeat
                     wait(0.05)
-                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weaponlist].Parent = game:GetService 'Players'.LocalPlayer.Character
                 until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
                 if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
                     game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
