@@ -4,7 +4,7 @@ local Window = OrionLib:MakeWindow({Name = "KAKHUB DUPE", HidePremium = false, S
 
 local Cache = { DevConfig = {} };
 
-Cach.DevConfig["ListOfBox1"] = {"Common Box"};
+Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
 Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
