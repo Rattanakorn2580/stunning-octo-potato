@@ -10,6 +10,17 @@ Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "J
 Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 
+local TabAuto = Window:MakeTab({
+	Name = "Autos",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabAuto:AddSection({
+	Name = "Function Auto | All |"
+})
+
 local TabNPC = Window:MakeTab({
 	Name = "NPC",
 	Icon = "rbxassetid://4483345998",
