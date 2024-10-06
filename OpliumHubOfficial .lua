@@ -1875,14 +1875,56 @@ TabLand:AddToggle({
 	Name = "Auto Bring | Zombies |",
 	Default = false,
 	Callback = function(AFZ)
-		AutoFarmZom = AFZ
+		FarmZom = AFZ
 	end    
 })
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if FarmZom then
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if FarmZom then
+		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
+                    if string.find(v.Name, "Zombie")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(15, 15, 15)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+			v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,5)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+            end
+        end)
+    end
+end);
 
 TabLand:AddButton({
 	Name = "Tp To Pumpkin",
 	Callback = function()
-        
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
   	end    
 })
 
@@ -1893,6 +1935,21 @@ TabLand:AddToggle({
 		AutoClickP = ACP
 	end    
 })
+
+spawn(function()--autofruit
+    while wait() do
+        pcall(function()
+            if AutoClickP then
+                wait(.5)
+                for i,v in pairs(game.Workspace.WorldEvent.Halloween.Pumpkin:GetChildren()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+                    end
+                end
+            end
+        end)
+    end
+end);
 
 local TabNPC = Window:MakeTab({
 	Name = "NPC",
