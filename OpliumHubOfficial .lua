@@ -1693,7 +1693,10 @@ TabSk:AddToggle({
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
-		wait(1)
+	end    
+})
+
+wait(1)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-339,3623,-641));
     local Base = Instance.new("Part", game.Workspace);
     Base.Size = Vector3.new(10, 1, 10);
@@ -1721,8 +1724,6 @@ TabSk:AddToggle({
      
  wait(1)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-339,3623,-641));
-	end    
-})
 
 spawn(function() -- Light farm npcs
     while wait(0) do
