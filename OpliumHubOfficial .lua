@@ -16,6 +16,17 @@ local TabAuto = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local Section = TabAuto:AddSection({
+	Name = "Auto Respawn"
+})
+
+TabAuto:AddToggle({
+	Name = "Auto Spawn",
+	Default = false,
+	Callback = function(AS)
+		_G.autorespawn = AS
+	end    
+})
 
 local Section = TabAuto:AddSection({
 	Name = "Function Auto | All |"
