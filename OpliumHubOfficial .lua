@@ -1579,12 +1579,29 @@ TabPlr:AddDropdown({
 	end    
 })
 
-TabNPC:AddButton({
+TabPlr:AddButton({
 	Name = "Click to Tp",
 	Callback = function()
 		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
          	end    
 })
+
+TabPlr:AddToggle({
+	Name = "Behind Player",
+	Default = false,
+	Callback = function(BPR)
+		BehindPlrs = BPR
+	end    
+})
+
+TabPlr:AddToggle({
+	Name = "Auto Bring Player",
+	Default = false,
+	Callback = function(ABP)
+		AutoBringPlrs = ABP
+	end    
+})
+
 local TabLand = Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
