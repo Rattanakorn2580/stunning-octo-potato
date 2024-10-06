@@ -1906,7 +1906,7 @@ spawn(function()
 end);
 
 local Section = TabNPC:AddSection({
-	Name = "Sam Quest"
+	Name = "Dupe | For OPL: Anarchy |"
 })
 
 TabNPC:AddButton({
@@ -1915,6 +1915,10 @@ TabNPC:AddButton({
         workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
         game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
   	end    
+})
+
+local Section = TabNPC:AddSection({
+	Name = "Sam Quest"
 })
 
 TabNPC:AddToggle({
@@ -2051,7 +2055,7 @@ spawn(function()
 end);
 
 TabMisc:AddToggle({
-	Name = "Unbox | Uncom",
+	Name = "Unbox | Uncommon |",
 	Default = false,
 	Callback = function(AUN)
 		AutoUnboxU = AUN
@@ -2075,7 +2079,7 @@ spawn(function()
 end);
 
 TabMisc:AddToggle({
-	Name = "Unbox | Rare, Ultra",
+	Name = "Unbox | Rare, Ultra |",
 	Default = false,
 	Callback = function(AULR)
 		UnboxRL = AULR
@@ -2096,3 +2100,40 @@ spawn(function()
         end)
     end
 end);
+
+local Section = TabMisc:AddSection({
+	Name = "Anti"
+})
+
+TabMisc:AddToggle({
+	Name = "Anti Stun",
+	Default = false,
+	Callback = function(ATS)
+		_G.autistun = ATS
+	end    
+})
+
+TabMisc:AddButton({
+	Name = "Anti Lag",
+	Callback = function()
+        
+  	end    
+})
+
+local Section = TabMisc:AddSection({
+	Name = "Other"
+})
+
+TabMisc:AddButton({
+	Name = "Seastone Cetus | 500 Melee |",
+	Callback = function()
+        
+  	end    
+})
+
+TabMisc:AddButton({
+	Name = "Unlock Emote | All |",
+	Callback = function()
+        
+  	end    
+})
