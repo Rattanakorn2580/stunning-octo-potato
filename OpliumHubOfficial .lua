@@ -1964,7 +1964,7 @@ local Section = TabNPC:AddSection({
 TabNPC:AddDropdown({
 	Name = "Choose NPC",
 	Default = "",
-	Options = Cache.DevConfig["ListOfDrink"],
+	Options = Cache.DevConfig["ListOfMerchant"],
 	Callback = function(CT)
 		getgenv().tpmerchant = CT
 	end    
