@@ -21,7 +21,7 @@ local Section = TabAuto:AddSection({
 	Name = "Function Auto | All |"
 })
 
-TabNPC:AddToggle({
+TabAuto:AddToggle({
 	Name = "Auto Fishing",
 	Default = false,
 	Callback = function(AFH)
@@ -29,7 +29,7 @@ TabNPC:AddToggle({
 	end    
 })
 
-TabNPC:AddToggle({
+TabAuto:AddToggle({
 	Name = "Auto Package",
 	Default = false,
 	Callback = function(APK)
@@ -37,7 +37,7 @@ TabNPC:AddToggle({
 	end    
 })
 
-TabNPC:AddToggle({
+TabAuto:AddToggle({
 	Name = "Auto Drink",
 	Default = false,
 	Callback = function(ADK)
@@ -46,11 +46,31 @@ TabNPC:AddToggle({
 })
 
 
-TabNPC:AddToggle({
+TabAuto:AddToggle({
 	Name = "Auto Claim Mission",
 	Default = false,
 	Callback = function(AMS)
 		AutoMission = AMS
+	end    
+})
+
+local Section = TabAuto:AddSection({
+	Name = "Auto Haki Training"
+})
+
+TabAuto:AddToggle({
+	Name = "Auto Haki | Slowly |",
+	Default = false,
+	Callback = function(AHK)
+		AutoHaki1 = AHK
+	end    
+})
+
+TabAuto:AddToggle({
+	Name = "Auto Haki | Faster |",
+	Default = false,
+	Callback = function(AHKK)
+		AutoHaki2 = AHKK
 	end    
 })
 
