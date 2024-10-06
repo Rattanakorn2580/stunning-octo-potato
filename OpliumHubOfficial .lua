@@ -2281,6 +2281,80 @@ end);
 TabMisc:AddButton({
 	Name = "Anti Lag",
 	Callback = function()
+	if not gethui then
+    warn("Incompatible executor: gethui is unavailable")
+    return
+end
+
+local runService = game:GetService("RunService")
+local lighting = game:GetService("Lighting")
+
+local fpsCounterGui = Instance.new("ScreenGui", gethui())
+local fpsLabel = Instance.new("TextLabel", fpsCounterGui)
+
+fpsCounterGui.Name = "FpsCounterGui"
+fpsCounterGui.IgnoreGuiInset = true
+fpsLabel.Name = "FpsLabel"
+fpsLabel.BackgroundTransparency = 1
+fpsLabel.Position = UDim2.new(1, -100, 0, 0)
+fpsLabel.Size = UDim2.new(0, 100, 0, 30)
+fpsLabel.Text = ""
+fpsLabel.TextSize = 16
+fpsLabel.TextStrokeTransparency = 0.6
+fpsLabel.Draggable = true
+
+local function GetFPS(delay)
+    local startTime = tick()
+    local frames = 0
+    local heartbeatConnection = runService.Heartbeat:Connect(function()
+        frames = frames + 1
+    end)
+    task.wait(delay)
+    heartbeatConnection:Disconnect()
+    local elapsedTime = tick() - startTime
+    local fps = frames / elapsedTime
+    return math.ceil(fps)
+end
+
+task.spawn(function()
+    while true do
+        local fps = GetFPS(0.5)
+        if fps >= 60 then
+            fpsLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        elseif fps <= 59 and fps > 50 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+        elseif fps <= 49 and fps > 30 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 85, 0)
+        elseif fps <= 29 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        end
+        fpsLabel.Text = tostring(fps) .. " FPS"
+    end
+end)
+
+lighting.GlobalShadows = false
+lighting.FogEnd = 9e9
+lighting.EnvironmentDiffuseScale = 0.5
+lighting.EnvironmentSpecularScale = 0.5
+
+for _, descendant in ipairs(game:GetDescendants()) do
+    if descendant:IsA("BasePart") then
+        descendant.CastShadow = false
+        descendant.Material = Enum.Material.SmoothPlastic
+        descendant.Reflectance = 0
+        if descendant:IsA("MeshPart") then
+            descendant.CollisionFidelity = Enum.CollisionFidelity.Box
+        end
+    end
+    if descendant:IsA("Decal") or descendant:IsA("Texture") then
+        if descendant.Transparency > 0.25 then
+            descendant.Transparency = 0.25
+        end
+    end
+    if descendant:IsA("ParticleEmitter") or descendant:IsA("Trail") then
+        descendant.Lifetime = NumberRange.new(0)
+    end
+end
   	end    
 })
 
