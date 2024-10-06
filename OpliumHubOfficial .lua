@@ -1696,35 +1696,6 @@ TabSk:AddToggle({
 	end    
 })
 
-wait(1)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-339,3623,-641));
-    local Base = Instance.new("Part", game.Workspace);
-    Base.Size = Vector3.new(10, 1, 10);
-    Base.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -3, 0);
-    Base.Anchored = true;
-
-    script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
-    VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
-    local pla = game.Players.LocalPlayer;
-    local Mouse = pla:GetMouse();
-
-    wait(0)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-339,3623,-641));
-    wait(1)
-    local args = {
-        [1] = VTC,
-        [2] = "LightPower2",
-        [3] = "StopCharging",
-        [4] = CFrame.new(Vector3.new(-248.3844757080078, 213.99996948242188, -884.178955078125), Vector3.new(-0.7674762606620789, -0.5995707511901855, -0.22692565619945526)),
-        [5] = workspace.IslandTown.Grass.Grass,
-        [6] = 100
-    }
-    
-    game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-     
- wait(1)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Vector3.new(-339,3623,-641));
-
 spawn(function() -- Light farm npcs
     while wait(0) do
         pcall(function()
