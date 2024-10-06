@@ -1,5 +1,5 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "KAKHUB DUPE", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
+local Window = OrionLib:MakeWindow({Name = "OPlium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
 
 
 local Cache = { DevConfig = {} };
