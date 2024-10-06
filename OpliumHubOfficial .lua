@@ -1759,75 +1759,14 @@ TabPay:AddDropdown({
 	Name = "Select Player",
 	Default = "",
 	Options = Plr,
-	Callback = function(SPR)
-		SelectPlayer = SPR
+	Callback = function(PP)
+		SelectPlayer = PP
 	end    
 })
 
 TabPay:AddButton({
 	Name = "Click to Tp",
 	Callback = function()
-		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
-         	end    
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
+  	end    
 })
-
-TabPay:AddToggle({
-	Name = "Behind Player",
-	Default = false,
-	Callback = function(BPR)
-		BehindPlr = BPR
-	end    
-})
-
-spawn(function() 	
-while wait() do
-pcall(function()	
-if BehindPlr then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
-		end
-	end)	
-	end 	
-end);
-
-TabPay:AddToggle({
-	Name = "Auto Bring Player",
-	Default = false,
-	Callback = function(ABP)
-		BringPlr = ABP
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if BringPlr then
-            pcall(function()
-                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-            end)
-        end
-    end
-end);
-
-TabPay:AddToggle({
-	Name = "Bring Player | All |",
-	Default = false,
-	Callback = function(BPA)
-		BringAll = BPA
-	end    
-})
-
-spawn(function() -- bring Plr
-    while wait() do
-        if BringAll then
-            pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-                        if v.Character.Humanoid.Health == 0 then
-                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end);
