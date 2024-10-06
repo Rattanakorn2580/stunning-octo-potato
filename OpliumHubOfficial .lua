@@ -1745,7 +1745,7 @@ spawn(function() -- Light farm npcs
     end
 end)
 
-TabNPC:AddButton({
+TabSk:AddButton({
 	Name = "Tp To SafeZoneFarmLight",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneFarmLight"].CFrame * CFrame.new(0, 5, 0)
