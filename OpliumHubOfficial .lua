@@ -1831,3 +1831,15 @@ spawn(function() -- bring Plr
         end
     end
 end)
+
+local TabLand = Window:MakeTab({
+	Name = "Island",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabLand:AddSection({
+	Name = "Teleport to Island"
+})
+
