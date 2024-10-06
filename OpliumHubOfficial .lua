@@ -1739,13 +1739,13 @@ spawn(function() -- Light farm npcs
     end
 end)
 
-local TabPay = Window:MakeTab({
+local TabPlayer = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
-local Section = TabPay:AddSection({
+local Section = TabPlayer:AddSection({
 	Name = "Players"
 })
 
@@ -1755,7 +1755,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
     table.insert(Plr,v.Name)
 end
 
-TabPay:AddDropdown({
+TabPlayer:AddDropdown({
 	Name = "Select Player",
 	Default = "",
 	Options = Plr,
@@ -1764,9 +1764,70 @@ TabPay:AddDropdown({
 	end    
 })
 
-TabPay:AddButton({
+TabPlayer:AddButton({
 	Name = "Click to Tp",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
   	end    
 })
+
+TabPlayer:AddToggle({
+	Name = "Auto Drink",
+	Default = false,
+	Callback = function(BPP)
+		BehindPlr = BPP
+	end    
+})
+
+spawn(function() 	
+while wait() do
+pcall(function()	
+if BehindPlr then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
+		end
+	end)	
+	end 	
+end);
+
+TabPlayer:AddToggle({
+	Name = "Behind Player",
+	Default = false,
+	Callback = function(BPR)
+		BringPlr = BPR
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if BringPlr then
+            pcall(function()
+                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+            end)
+        end
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Bring Player | All |",
+	Default = false,
+	Callback = function(ADK)
+		AutoDrink = ADK
+	end    
+})
+
+spawn(function() -- bring Plr
+    while wait() do
+        if BringAll then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
