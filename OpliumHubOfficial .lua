@@ -1772,7 +1772,7 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({
-	Name = "Auto Drink",
+	Name = "Behind Player",
 	Default = false,
 	Callback = function(BPP)
 		BehindPlr = BPP
@@ -1790,7 +1790,7 @@ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[Select
 end);
 
 TabPlayer:AddToggle({
-	Name = "Behind Player",
+	Name = "Bring Player",
 	Default = false,
 	Callback = function(BPR)
 		BringPlr = BPR
@@ -1810,8 +1810,8 @@ end)
 TabPlayer:AddToggle({
 	Name = "Bring Player | All |",
 	Default = false,
-	Callback = function(ADK)
-		AutoDrink = ADK
+	Callback = function(BAL)
+		BringAll = BAL
 	end    
 })
 
