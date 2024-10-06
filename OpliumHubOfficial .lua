@@ -532,6 +532,10 @@ local Section = TabFarm:AddSection({
 	Name = "Auto Farm Mobs"
 })
 
+local Section = TabFarm:AddSection({
+	Name = "Auto Cannon Ball | For One Piece: Legendary |"
+})
+
 local TabPlr = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
@@ -558,6 +562,11 @@ TabPlr:AddDropdown({
 	end    
 })
 
+TabNPC:AddButton({
+	Name = "Click to Tp",
+	Callback = function()
+         	end    
+})
 local TabLand = Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
