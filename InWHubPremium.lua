@@ -1,9 +1,9 @@
 local Rayfield = loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/RayfieldV1.lua"))()
 
 local Window = Rayfield:CreateWindow({
-   Name = "Rayfield Example Window",
-   LoadingTitle = "Rayfield Interface Suite",
-   LoadingSubtitle = "by Sirius",
+   Name = "InW Hub Premium",
+   LoadingTitle = "Key System",
+   LoadingSubtitle = "by FB: Bank Kesee",
    ConfigurationSaving = {
       Enabled = true,
       FolderName = nil, -- Create a custom folder for your hub/game
