@@ -359,6 +359,23 @@ local TabLand = Window:MakeTab({
 })
 
 local Section = TabLand:AddSection({
+	Name = "Safe Zone"
+})
+
+TabLand:AddButton({
+	Name = "Tp to SafeZone Sky",
+	Callback = function()
+        
+  	end    
+})
+
+TabLand:AddButton({
+	Name = "Tp to SafeZone UnderSea",
+	Callback = function()
+        
+  	end    
+})
+local Section = TabLand:AddSection({
 	Name = "Teleport To Island"
 })
 
