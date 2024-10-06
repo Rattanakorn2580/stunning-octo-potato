@@ -2054,10 +2054,6 @@ for _, descendant in ipairs(game:GetDescendants()) do
 		end
 	end)
 
-Tab1:Button("Anti Afk",function()
-    game:service'Players'.LocalPlayer.Idled:connect(function()
-end)
-
 Tab1:Seperator("Other")
 
 Tab1:Button("Seastone Cetus | 500 Melee |",function()
