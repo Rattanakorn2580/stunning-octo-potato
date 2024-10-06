@@ -74,6 +74,17 @@ TabAuto:AddToggle({
 	end    
 })
 
+local TabFarm = Window:MakeTab({
+	Name = "Auto Farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabFarm:AddSection({
+	Name = "Auto Farm Mobs"
+})
+
 local TabNPC = Window:MakeTab({
 	Name = "NPC",
 	Icon = "rbxassetid://4483345998",
