@@ -1622,7 +1622,7 @@ spawn(function()
     end
 end);
 
-TabNPC:AddToggle({
+TabPlr:AddToggle({
 	Name = "Bring Player | All |",
 	Default = false,
 	Callback = function(BPA)
@@ -1935,15 +1935,6 @@ spawn(function()
     end
 end);
 
-TabNPC:AddTextbox({
-	Name = "Time To Compass",
-	Default = "0.5",
-	TextDisappear = true,
-	Callback = function(TTCP)
-		TimeCompasssss = TTCP
-	end	  
-})
-
 TabNPC:AddToggle({
 	Name = "Auto Compass Quest",
 	Default = false,
@@ -1964,7 +1955,7 @@ spawn(function()
                 Compass.Parent = game.Players.LocalPlayer.Character;
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
                 Compass:Activate();
-                wait(TimeCompasssss);
+                wait(0.2);
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
             end
         end)
