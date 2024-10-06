@@ -274,26 +274,6 @@ end
 end);
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Challenge",
-	Default = false,
-	Callback = function(ACL)
-		AutoChallenge = ACL
-	end    
-})
-
-spawn(function()
-while wait() do
-pcall(function()
-if AutoChallenge then
-local A_1 = ""
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
-    Event:FireServer(A_1)
-					end
-				end)
-			end
-		end);
-
-TabAuto:AddToggle({
 	Name = "Bring DF",
 	Default = false,
 	Callback = function(BDF)
