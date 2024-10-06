@@ -11,12 +11,12 @@ local Window = Rayfield:CreateWindow({
    },
    Discord = {
       Enabled = false,
-      Invite = "None", 
+      Invite = "https://discord.gg/bA7hxUZF", 
       RememberJoins = true 
    },
    KeySystem = true, 
    KeySettings = {
-      Title = "InW Hub | Ig: bankzy_lv",
+      Title = "InW Hub | @rattanakorn0242",
       Subtitle = "Key System",
       Note = " ",
       FileName = "Key", 
