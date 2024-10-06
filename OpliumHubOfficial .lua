@@ -74,15 +74,6 @@ TabAuto:AddToggle({
 	end    
 })
 
-TabNPC:AddToggle({
-	Name = "Auto Drink",
-	Default = false,
-	Callback = function(ADK)
-		AutoDrink = ADK
-	end    
-})
-
-
 local TabNPC = Window:MakeTab({
 	Name = "NPC",
 	Icon = "rbxassetid://4483345998",
