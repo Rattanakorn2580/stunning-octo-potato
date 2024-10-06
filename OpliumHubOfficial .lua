@@ -532,7 +532,7 @@ local Section = TabFarm:AddSection({
 	Name = "Auto Farm Mobs"
 })
 
-TabNPC:AddToggle({
+TabFarm:AddToggle({
 	Name = "Auto Farm | All |",
 	Default = false,
 	Callback = function(AFM)
