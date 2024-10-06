@@ -58,7 +58,7 @@ local TabUp = Window:MakeTab({
 
 
 local Section = TabUp:AddSection({
-	Name = "MenuFix All | แก้ไขเมนูทั้งหมด |"
+	Name = "               MenuFix All | แก้ไขเมนูทั้งหมด |"
 })
 
 local TabAuto = Window:MakeTab({
