@@ -1739,13 +1739,12 @@ spawn(function() -- Light farm npcs
     end
 end)
 
-local TabPlr = Window:MakeTab({
+local TabPay = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
-
-local Section = TabPlr:AddSection({
+local Section = TabPay:AddSection({
 	Name = "Players"
 })
