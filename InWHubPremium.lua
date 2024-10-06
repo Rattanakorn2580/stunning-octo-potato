@@ -26,8 +26,11 @@ local Window = Rayfield:CreateWindow({
    }
 })
 
-
-
-
-
 Rayfield:LoadConfiguration()
+
+local Tab = Window:CreateTab("Auto Farm", 4483362458)
+
+local Section = Tab:CreateSection("Function Auto Farm")
+
+Section:Set("Auto Farm Mobs")
+
