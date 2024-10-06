@@ -49,6 +49,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
+Cache.DevCongig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone UnderSea", "SafeZone LightFarm"};
 
 local TabUp = Window:MakeTab({
 	Name = "Update",
@@ -1739,6 +1740,14 @@ spawn(function() -- Light farm npcs
     end
 end)
 
+TabSk:AddToggle({
+	Name = "Auto Spam Quake",
+	Default = false,
+	Callback = function(AFQ)
+		_G.quake1 = AFQ
+	end    
+})
+
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
@@ -1842,20 +1851,26 @@ local Section = TabLD:AddSection({
 	Name = "SafeZone"
 })
 
-TabLD:AddButton({
-	Name = "Tp To SafeZone Sky",
-	Callback = function()
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-  	end    
+TabLD:AddDropdown({
+	Name = "Choose SafeZone",
+	Default = "",
+	Options = Cache.DevConfig["ListOfSafeZone"],
+	Callback = function(CSF)
+		getgenv().tpsafezone = CSF
+	end    
 })
 
 TabLD:AddButton({
 	Name = "Tp To SafeZone UnderSea",
 	Callback = function()
-        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        if getgenv().tpsafezone == "SafeZone UnderSea" then
+       game.Players.LocalPlayer.Character.Humanoid.Sit = true
         wait(0.15)
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
-  	end    
+      elseif getgenv().tpsafezone == "SafeZone Sky" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+			end
+			end    
 })
 
 local Section = TabLD:AddSection({
