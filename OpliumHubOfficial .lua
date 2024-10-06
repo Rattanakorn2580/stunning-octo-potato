@@ -1852,7 +1852,7 @@ TabLD:AddDropdown({
 })
 
 TabLD:AddButton({
-	Name = "Tp To SafeZone UnderSea",
+	Name = "Click To Tp",
 	Callback = function()
         if getgenv().tpsafezone == "SafeZoneSky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
