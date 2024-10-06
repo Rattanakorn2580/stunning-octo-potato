@@ -9,6 +9,8 @@ Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
 Cache.DevConfig["ListOfDrinkFormMixer"] = {"Cider", "Lemonade", "Juice", "Smoothie", "Milk", "Golden Apple"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+Cache.DevConfig["ListOfIsland"] = {""};
+Cache.DevConfig["ListOfMerchant"] = {""};
 
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
