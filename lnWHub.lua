@@ -9,7 +9,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneFarmPart"
-    SafeZoneFarm.Size = Vector3.new(200,3,200)
+    SafeZoneFarm.Size = Vector3.new(30,2,30)
     SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
     SafeZoneFarm.Anchored = true
 
@@ -50,15 +50,23 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 
-local TabUp = Window:MakeTab({
+local TabDATE = Window:MakeTab({
 	Name = "Update",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
-local Section = TabUp:AddSection({
-	Name = "               MenuFix All | แก้ไขเมนูทั้งหมด |"
+local Section = TabDATE:AddSection({
+	Name = "         <•> Add New Menu DF Farm"
+})
+
+local Section = TabDATE:AddSection({
+	Name = "         <•> Add Menu Skill Spam"
+})
+
+local Section = TabDATE:AddSection({
+	Name = "         <•> Add Spam Yoru"
 })
 
 local TabAuto = Window:MakeTab({
@@ -529,6 +537,95 @@ game:GetService('RunService').RenderStepped:connect(function()
 
             workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
         end
+    end
+end);
+
+local Section = TabAuto:AddSection({
+	Name = "Spam Yoru Attack"
+})
+
+TabAuto:AddTextbox({
+	Name = "Hits Yoru",
+	Default = "1",
+	TextDisappear = true,
+	Callback = function(HYR)
+		_G.yoruhit = HYR
+	end	  
+})
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
+TabAuto:AddToggle({
+	Name = "Enable",
+	Default = false,
+	Callback = function(HYF)
+		_G.yorufast = HYF
+	end    
+})
+
+spawn(function() -- yoru
+    while wait(0) do
+        pcall(function()
+            if _G.yorufast then
+                if game.Players.LocalPlayer.Character:FindFirstChild("Yoru") and tonumber(serializeTable(attackremote)) ~= nil and tonumber(serializeTable(attackremote)) ~= "" then
+                    repeat wait(0.3)
+                        for i = 1, _G.yoruhit do
+                            local args = {
+                                [1] = tonumber(serializeTable(attackremote))
+                            }
+                            
+                            game:GetService("Players").LocalPlayer.Character.Yoru.RequestAnimation:FireServer(unpack(args))
+                        end
+                    until _G.yorufast == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0 
+                end
+            end
+        end)
     end
 end);
 
@@ -1565,7 +1662,7 @@ spawn(function()--autofruit
 end)
 
 local TabSk = Window:MakeTab({
-	Name = "Skill Spam",
+	Name = "DF Farm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -1608,23 +1705,6 @@ mta.__namecall = newcclosure(function(self, ...)
     
     return namecall(self, ...)    
 end);
-
-local attackremote = {}    
-
-local a
-a=hookmetamethod(game,"__namecall",function(self,...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-            attackremote[self.Name] = args[1]
-            return a(self,unpack(args))
-        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-            attackremote[self.Name] = ""
-        end
-    end
-      return a(self,...)
-end)
 
 aaxc = hookmetamethod(game, "__namecall", function(self, ...)
     local args = {...}
@@ -1685,11 +1765,11 @@ function serializeTable(val, name, skipnewlines, depth)
 
 
 local Section = TabSk:AddSection({
-	Name = "Spam Skill DF"
+	Name = "Spam Light!!!"
 })
 
 TabSk:AddToggle({
-	Name = "Auto Spam Light",
+	Name = "Auto Spam Light | Farm |",
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
@@ -1738,6 +1818,62 @@ spawn(function() -- Light farm npcs
         end)
     end
 end)
+
+local Section = TabSk:AddSection({
+	Name = "Spam Quake!!!"
+})
+
+TabSk:AddToggle({
+	Name = "Auto Spam Quake | Farm |",
+	Default = false,
+	Callback = function(QF)
+		_G.Quakefarm = QF
+	end    
+})
+
+spawn(function() -- auto farm quake
+    while wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                    if _G.Quakefarm then
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
+                            wait(5)
+                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                                repeat 
+                                wait(0.3)
+                                    local args = {
+                                        [1] = VTC,
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.HumanoidRootPart,
+                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
+                                        [6] = 100,
+                                        [7] = v.HumanoidRootPart.Position
+                                    }
+                            
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
+
+local TabSPM = Window:MakeTab({
+	Name = "Skill Spam",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Skill(🔒)"
+})
 
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
@@ -1808,29 +1944,85 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Bring Player | All |",
+	Name = "Aim Player",
 	Default = false,
-	Callback = function(BAL)
-		BringAll = BAL
+	Callback = function(ASL)
+		aimsilent = ASL
 	end    
 })
 
-spawn(function() -- bring Plr
-    while wait() do
-        if BringAll then
+spawn(function()
+    pcall(function()
+        while true do wait()
             pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-                        if v.Character.Humanoid.Health == 0 then
-                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                        end
-                    end
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
             end)
         end
-    end
+    end)
 end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
+end)
+
+local Section = TabPlayer:AddSection({
+	Name = "Player Kill"
+})
+
+TabPlayer:AddToggle({
+	Name = "Auto Spam Quake | Player All |",
+	Default = false,
+	Callback = function(SQA)
+		_G.spamquakeall = SQA
+	end    
+})
+
+spawn(function() -- 
+    while task.wait(0) do
+        pcall(function()
+            for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                task.wait(0.1)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
 
 local TabLD = Window:MakeTab({
 	Name = "Island",
@@ -1988,7 +2180,7 @@ spawn(function()
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
 			v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,5)
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
