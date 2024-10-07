@@ -1689,7 +1689,7 @@ local Section = TabSk:AddSection({
 })
 
 TabSk:AddToggle({
-	Name = "Auto Spam Light",
+	Name = "Auto Spam Farm Light",
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
@@ -1740,7 +1740,7 @@ spawn(function() -- Light farm npcs
 end)
 
 TabSk:AddToggle({
-	Name = "Auto Spam Quake",
+	Name = "Auto Spam Farm Quake",
 	Default = false,
 	Callback = function(QF)
 		_G.Quakefarm = QF
