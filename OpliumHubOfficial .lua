@@ -1420,6 +1420,21 @@ TabFarm:AddDropdown({
 	end    
 })
 
+TabFarm:AddButton({
+	Name = "Reflesh",
+	Callback = function()
+        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+  	end    
+})
 TabFarm:AddToggle({
 	Name = "Auto Click",
 	Default = false,
@@ -1875,6 +1890,15 @@ local Section = TabSPM:AddSection({
 	Name = "Spam Skill(🔒)"
 })
 
+TabSPM:AddTextbox({ 	
+		Name = "Spam Time Quake", 	
+		Default = "1", 	
+		TextDisappear = true, 	
+		Callback = function(STQ) 		
+		getgenv().spamtime = STQ	
+		end	 
+})
+
 TabSPM:AddToggle({
 	Name = "Auto Spam Quake",
 	Default = false,
@@ -1948,12 +1972,28 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({
-	Name = "Auto Drink",
+	Name = "View",
 	Default = false,
 	Callback = function(VPR)
 		ViewPlr = VPR
 	end    
 })
+
+spawn(function()
+pcall(function()
+if ViewPlr then
+Sp = viewplr
+    local plr1 = game.Players.LocalPlayer.Character.Humanoid
+    local plr2 = game.Players:FindFirstChild(SelectPlayer)
+    repeat wait(0)
+        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+    until Sp == false or plr2.Character.Humanoid.Health == 0
+    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+end  
+end)
+end
+end)
 
 TabPlayer:AddToggle({
 	Name = "Behind Player",
