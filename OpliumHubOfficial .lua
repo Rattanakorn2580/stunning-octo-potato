@@ -9,7 +9,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneFarmPart"
-    SafeZoneFarm.Size = Vector3.new(200,3,200)
+    SafeZoneFarm.Size = Vector3.new(30,2,30)
     SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
     SafeZoneFarm.Anchored = true
 
@@ -1739,7 +1739,7 @@ spawn(function() -- Light farm npcs
     end
 end)
 
-TabSK:AddToggle({
+TabSk:AddToggle({
 	Name = "Auto Spam Quake",
 	Default = false,
 	Callback = function(QF)
