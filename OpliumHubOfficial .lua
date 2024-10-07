@@ -1876,7 +1876,7 @@ local Section = TabSPM:AddSection({
 })
 
 TabSPM:AddTextbox({ 	
-		Name = "Spam Time Quake", 	
+		Name = "Time To Spam", 	
 		Default = "1", 	
 		TextDisappear = true, 	
 		Callback = function(STQ) 		
@@ -1920,6 +1920,66 @@ spawn(function()
             
             game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
         end
+        end)
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Light Spam Skill"
+})
+
+TabSPM:AddTextbox({ 	
+		Name = "Time To Spam", 	
+		Default = "1", 	
+		TextDisappear = true, 	
+		Callback = function(SPT1) 		
+		getgenv().spamtime = SPT1	
+		end	
+	})
+
+TabSPM:AddToggle({
+	Name = "Auto Spam Light",
+	Default = false,
+	Callback = function(LBE)
+		_G.lightbeam = LBE
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.lightbeam then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
+                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
+                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
+
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxl, Yyl, Zzl),
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [9] = "Left"
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                
+                wait(0.05)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+            end
         end)
     end
 end);
