@@ -2097,26 +2097,27 @@ spawn(function() --
 end)
 
 TabPlayer:AddToggle({
-	Name = "Auto Spam Light | Not Work!! |",
+	Name = "Auto Spam Light | Player All |",
 	Default = false,
 	Callback = function(ALAL)
 		_G.lightall = ALAL
 	end    
 })
 
-spawn(function() -- Light farm player
+spawn(function() -- Light farm npcs
     while wait(0) do
         pcall(function()
-		if _G.lightall then
+            if _G.lightall then
                 script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
                 VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
 
                 for i, v in pairs(game.Players:GetChildren()) do
-                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        if v.Name ~= "SetInstances" then
-                            if v.Name ~= game.Players.LocalPlayer.Name then
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
                                 -- v.Humanoid:ChangeState(11)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
@@ -2136,6 +2137,7 @@ spawn(function() -- Light farm player
                                 }
 
                                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
                             end
                         end
                     end
@@ -2143,7 +2145,7 @@ spawn(function() -- Light farm player
             end
         end)
     end
-end)
+end);
 
 local TabLD = Window:MakeTab({
 	Name = "Island",
