@@ -1685,7 +1685,7 @@ function serializeTable(val, name, skipnewlines, depth)
 
 
 local Section = TabSk:AddSection({
-	Name = "Spam Skill DF"
+	Name = "Spam Light!!!"
 })
 
 TabSk:AddToggle({
@@ -1738,6 +1738,10 @@ spawn(function() -- Light farm npcs
         end)
     end
 end)
+
+local Section = TabSk:AddSection({
+	Name = "Spam Quake!!!"
+})
 
 TabSk:AddToggle({
 	Name = "Auto Spam Quake | Farm |",
@@ -1907,7 +1911,7 @@ spawn(function()
         while true do wait()
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(PlayerName1)
+                local plr2 = game.Players:FindFirstChild(SelectPlayer)
                 if aimsilent then
                     cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
