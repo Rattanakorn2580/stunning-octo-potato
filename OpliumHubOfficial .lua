@@ -1420,21 +1420,6 @@ TabFarm:AddDropdown({
 	end    
 })
 
-TabFarm:AddButton({
-	Name = "Reflesh",
-	Callback = function()
-        for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
-  	end    
-})
 TabFarm:AddToggle({
 	Name = "Auto Click",
 	Default = false,
