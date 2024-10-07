@@ -536,6 +536,27 @@ game:GetService('RunService').RenderStepped:connect(function()
     end
 end);
 
+local Section = TabAuto:AddSection({
+	Name = "Spam Yoru Attack"
+})
+
+TabAuto:AddTextbox({
+	Name = "Hits Yoru",
+	Default = "1",
+	TextDisappear = true,
+	Callback = function(HYR)
+		_G.yoruhit = HYR
+	end	  
+})
+
+TabAuto:AddToggle({
+	Name = "Enable",
+	Default = false,
+	Callback = function(HYRR)
+		_G.yoruattack = HYRR
+	end    
+})
+
 local TabFarm = Window:MakeTab({
 	Name = "Auto Farm",
 	Icon = "rbxassetid://4483345998",
