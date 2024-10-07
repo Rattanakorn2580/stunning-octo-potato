@@ -1,15 +1,77 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local Window = OrionLib:MakeWindow({Name = "InW Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
 
-local DarkraiX = loadstring(game:HttpGet("https://raw.githubusercontent.com/GamingScripter/Kavo-Ui/main/Darkrai%20Ui", true))()
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
 
-local Library = DarkraiX:Window("lnW Hub","","",Enum.KeyCode.RightControl);
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if AutoFish or AutoPack or AutoFarmM then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
 
-Tab1 = Library:Tab("Autos")
+local Cache = { DevConfig = {} };
 
-Tab1:Seperator("Auto Spawn")
+Cache.DevConfig["ListOfBox1"] = {"Common Box"};
+Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
+Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZoneSky", "SafeZoneFarmDF"};
+Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
+	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
+	                           "Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle",
+	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
+	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
+Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 
-Tab1:Toggle("Auto Respawn",false,function(SP)
-_G.autorespawn = SP
-    end)
+local TabUp = Window:MakeTab({
+	Name = "Update",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabUp:AddSection({
+	Name = "               MenuFix All | แก้ไขเมนูทั้งหมด |"
+})
+
+local TabAuto = Window:MakeTab({
+	Name = "Autos",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabAuto:AddSection({
+	Name = "Auto Respawn"
+})
+
+TabAuto:AddToggle({
+	Name = "Auto Spawn",
+	Default = false,
+	Callback = function(AS)
+		_G.autorespawn = AS
+	end    
+})
 
 spawn(function()--autorespawn
     while wait() do
@@ -23,14 +85,19 @@ spawn(function()--autorespawn
             end)
         end
     end
-end)
+end);
 
-Tab1:Seperator("Functions Autos")
+local Section = TabAuto:AddSection({
+	Name = "Function Auto | All |"
+})
 
-Tab1:Toggle("Auto Fishing",false,function(value)
-AutoFish = value
-    end)
-
+TabAuto:AddToggle({
+	Name = "Auto Fishing",
+	Default = false,
+	Callback = function(AFH)
+		AutoFish = AFH
+	end    
+})
 
 spawn(function() -- fish farm
     while wait(0) do
@@ -79,37 +146,18 @@ spawn(function() -- fish farm
     end
 end);
 
-spawn(function() -- autofarm velocity
-    while wait(0) do
-        pcall(function()
-            if AutoFish then
-                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                    local Noclip = Instance.new("BodyVelocity")
-                    Noclip.Name = "BodyClip"
-                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
-                    Noclip.Velocity = Vector3.new(0,0,0)
-                end
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoFish == false then
-                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-                wait(1)
-                --end
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-            end
-        end)
-    end
-end)
-
-Tab1:Toggle("Auto Package",false,function(Apage)
-AutoPackage = Apage
-    end)
+TabAuto:AddToggle({
+	Name = "Auto Package",
+	Default = false,
+	Callback = function(APK)
+		AutoPack = APK
+	end    
+})
 
 spawn(function()
     while wait() do
         pcall(function()
-         if AutoPackage then
+         if AutoPack then
             wait(0.6)
                 game.workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
             wait(0.001)
@@ -212,32 +260,13 @@ spawn(function()
     end
 end);
 
-spawn(function() -- autofarm velocity
-    while wait(0) do
-        pcall(function()
-            if AutoPackage then
-                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                    local Noclip = Instance.new("BodyVelocity")
-                    Noclip.Name = "BodyClip"
-                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
-                    Noclip.Velocity = Vector3.new(0,0,0)
-                end
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoPackage == false then
-                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-                wait(1)
-                --end
-                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
-            end
-        end)
-    end
-end)
-
-Tab1:Toggle("Auto Claim Mission",false,function(miss)
-AutoMission = miss
-    end)
+TabAuto:AddToggle({
+	Name = "Auto Claim Mission",
+	Default = false,
+	Callback = function(AMS)
+		AutoMission = AMS
+	end    
+})
 
 spawn(function()
 while wait() do 
@@ -249,9 +278,13 @@ end
 end 
 end);
 
-Tab1:Toggle("Bring DF Fruit",false,function(df)
-BringDF = df
-    end)
+TabAuto:AddToggle({
+	Name = "Bring DF",
+	Default = false,
+	Callback = function(BDF)
+		BringDF = BDF
+	end    
+})
 
 spawn(function()
     while wait() do
@@ -267,23 +300,17 @@ spawn(function()
     end
  end)
 
-Tab1:Button("Chest Bring",function()	
-    for i,v in pairs(game.Workspace:GetDescendants()) do 
-if v.Name == "ChestSpawner" then 
-for i,v in pairs(v:GetDescendants()) do 
-if v.Name == "TreasureChestPart" then 
-v.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame 
-end 
-end 
-end 
-end
-end)
+local Section = TabAuto:AddSection({
+	Name = "Auto Haki Training"
+})
 
-Tab1:Seperator("Auto Train Haki")
-
-Tab1:Toggle("Auto Haki | Slowly |",false,function(hk)
-AutoHaki1 = hk
-    end)
+TabAuto:AddToggle({
+	Name = "Auto Haki | Slowly |",
+	Default = false,
+	Callback = function(AHK)
+		AutoHaki1 = AHK
+	end    
+})
 
 spawn(function()
     while wait() do
@@ -381,9 +408,13 @@ spawn(function()
     end
 end)
 
-Tab1:Toggle("Auto Haki | Faster |",false,function(hkk)
-AutoHaki2 = hkk
-    end)
+TabAuto:AddToggle({
+	Name = "Auto Haki | Faster |",
+	Default = false,
+	Callback = function(AHKK)
+		AutoHaki2 = AHKK
+	end    
+})
 
 game:GetService('RunService').RenderStepped:connect(function()
     if AutoHaki2 then
@@ -495,18 +526,29 @@ game:GetService('RunService').RenderStepped:connect(function()
     end
 end);
 
-Tab1 = Library:Tab("Auto Farm")
+local TabFarm = Window:MakeTab({
+	Name = "Auto Farm",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-Tab1:Seperator("Auto Farm Mob")
 
-Tab1:Toggle("Auto Farm | All |",false,function(afa)
-AutoFarmA = afa
-    end)
+local Section = TabFarm:AddSection({
+	Name = "Auto Farm Mobs"
+})
+
+TabFarm:AddToggle({
+	Name = "Auto Farm | All |",
+	Default = false,
+	Callback = function(AFM)
+		AutoFarmM = AFM
+	end    
+})
 
 spawn(function()
     while wait() do
         pcall(function()
-            if AutoFarmA then
+            if AutoFarmM then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Lv4 Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
@@ -830,16 +872,20 @@ spawn(function()
             end
         end)
     end
-end)
+end);
 
-Tab1:Toggle("Auto Bring | All |",false,function(bms)
-BringMobs = bms
-    end)
+TabFarm:AddToggle({
+	Name = "Auto Bring | All |",
+	Default = false,
+	Callback = function(AFB)
+		AutoFarmB = AFB
+	end    
+})
 
-spawn(function() -- autofarm cannon
+spawn(function()
     while wait(0) do
         pcall(function()
-            if BringMobs then
+            if AutoFarmB then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, " Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
@@ -873,14 +919,14 @@ spawn(function() -- autofarm cannon
                     or string.find(v.Name, "Bandit") 
                     or string.find(v.Name, "Thief")
                     or string.find(v.Name, "Crab") 
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, "Vokun") 
+                    or string.find(v.Name, "Buster") 
                     or string.find(v.Name, "Freddy")  
-                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, "Bruno") 
                     or string.find(v.Name, "Thug") 
                     or string.find(v.Name, "Gunslinger")
-                    or string.find(v.Name, " ") 
-                    or string.find(v.Name, " ") 
+                    or string.find(v.Name, "Gunner") 
+                    or string.find(v.Name, "Cave") 
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
@@ -899,13 +945,19 @@ spawn(function() -- autofarm cannon
             end
         end)
     end
-end)
+end);
 
-Tab1:Seperator("Auto Cannon Ball | For One Piece: Legendary |")
+local Section = TabFarm:AddSection({
+	Name = "Auto Cannon Ball | For One Piece: Legendary |"
+})
 
-Tab1:Toggle("Auto Cannon Ball Player | All |",false,function(aball)
-_G.autocannonplr = aball
-    end)
+TabFarm:AddToggle({
+	Name = "Auto Cannon Ball Player | All |",
+	Default = false,
+	Callback = function(ACN)
+		_G.autocannonplr = ACN
+	end    
+})
 
 spawn(function()
     while task.wait(0) do
@@ -1039,11 +1091,15 @@ spawn(function() -- autofarm teleport cannon
             end
         end)
     end
-end)
+end);
 
-Tab1:Toggle("Auto Farm Cannon Ball | All |",false,function(acan)
-_G.autocannon = acan
-    end)
+TabFarm:AddToggle({
+	Name = "Auto Farm Cannon Ball | All |",
+	Default = false,
+	Callback = function(ACNN)
+		_G.autocannon = ACNN
+	end    
+})
 
 spawn(function()
     while task.wait(0) do
@@ -1239,17 +1295,35 @@ spawn(function() -- autofarm cannon
             end
         end)
     end
-end)
+end);
 
-Tab1:Seperator("Auto Weapon")
+local Section = TabFarm:AddSection({
+	Name = "Other"
+})
 
-Tab1:Textbox("Type Name Weapon","Type",true, function(currentOtion)
- Weapon = currentOption
-end)
+local Weaponlist = {}
+local Weapon = nil
 
-Tab1:Toggle("Auto Click",false,function(ack)
-AutoClicking = ack
-    end)
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+
+TabFarm:AddDropdown({
+	Name = "Select Weapon",
+	Default = "",
+	Options = Weaponlist,
+	Callback = function(WP)
+		Weapon = WP
+	end    
+})
+
+TabFarm:AddToggle({
+	Name = "Auto Click",
+	Default = false,
+	Callback = function(ACK)
+		AutoClicking = ACK
+	end    
+})
 
 spawn(function() 
 game:GetService("RunService").RenderStepped:Connect(function() 
@@ -1260,11 +1334,15 @@ game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end 
 end) 
 end) 
-end)
+end);
 
-Tab1:Toggle("Auto Equip",false,function(aed)
-_G.autoequip = aed
-    end)
+TabFarm:AddToggle({
+	Name = "Auto Equip",
+	Default = false,
+	Callback = function(AEQ)
+		_G.autoequip = AEQ
+	end    
+})
 
 spawn(function() -- auto equip
     while wait(0) do
@@ -1280,18 +1358,24 @@ spawn(function() -- auto equip
             end
         end)
     end
-end)
+end);
 
-Tab1:Seperator("Auto Fruity")
+local Section = TabFarm:AddSection({
+	Name = "Auto Fruity"
+})
 
-Tab1:Toggle("Auto Stats",false,function(afs)
-AutoStats = afs
-    end)
+TabFarm:AddToggle({
+	Name = "Auto Stats",
+	Default = false,
+	Callback = function(AMX)
+		AutoStats = AMX
+	end    
+})
 
 spawn(function() -- auto mixer
     while wait() do
         pcall(function()
-            if AutoSats then
+            if AutoStats then
                 wait(1)
                 for i, v in pairs(game:GetService("Workspace").Island8.Kitchen:GetDescendants()) do
                     if v:IsA("ClickDetector") then
@@ -1474,40 +1558,238 @@ spawn(function()--autofruit
     end
 end)
 
-Tab1 = Library:Tab("Player")
+local TabSk = Window:MakeTab({
+	Name = "Skill Spam",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-Tab1:Seperator("Players")
+local Section = TabSk:AddSection({
+	Name = "Skill Charge Max | This Is What Game Dead |"
+})
 
-Plr = {}
+TabSk:AddToggle({
+	Name = "Skill Charge Max",
+	Default = false,
+	Callback = function(SKM)
+		skillmax = SKM
+	end    
+})
+
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end);
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 100
+            return aaxc(self, unpack(args))
+        end
+    end
+    return aaxc(self, ...)
+end);
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
+
+local Section = TabSk:AddSection({
+	Name = "Spam Skill DF"
+})
+
+TabSk:AddToggle({
+	Name = "Auto Spam Light",
+	Default = false,
+	Callback = function(ASM)
+		_G.lightfarm = ASM
+	end    
+})
+
+spawn(function() -- Light farm npcs
+    while wait(0) do
+        pcall(function()
+            if _G.lightfarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTC,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+local TabPlayer = Window:MakeTab({
+	Name = "Player",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabPlayer:AddSection({
+	Name = "Players"
+})
+
+local Plr = {}
+
 for i,v in pairs(game:GetService("Players"):GetChildren()) do
-	table.insert(Plr,v.Name)
+    table.insert(Plr,v.Name)
 end
 
-Tab1:Dropdown("Choose Player", Plr,{Plr, ""}, function(spr)
-            SelectPlayer = spr
-end)
+TabPlayer:AddDropdown({
+	Name = "Select Player",
+	Default = "",
+	Options = Plr,
+	Callback = function(PP)
+		SelectPlayer = PP
+	end    
+})
 
-Tab1:Button("Click To Tp",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
-end)
+TabPlayer:AddButton({
+	Name = "Click to Tp",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
+  	end    
+})
 
-Tab1:Toggle("Behind Player",false,function(abp)
-Behindplr = abp
-    end)
+TabPlayer:AddToggle({
+	Name = "Behind Player",
+	Default = false,
+	Callback = function(BPP)
+		BehindPlr = BPP
+	end    
+})
 
 spawn(function() 	
 while wait() do
 pcall(function()	
-if Behindplr then
+if BehindPlr then
 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,2)
 		end
 	end)	
 	end 	
-end)
+end);
 
-Tab1:Toggle("Bring Player",false,function(bpl)
-BringPlr = bpl
-    end)
+TabPlayer:AddToggle({
+	Name = "Bring Player",
+	Default = false,
+	Callback = function(BPR)
+		BringPlr = BPR
+	end    
+})
 
 spawn(function()
     while wait() do
@@ -1519,9 +1801,13 @@ spawn(function()
     end
 end)
 
-Tab1:Toggle("Bring | All Player |",false,function(bpa)
-BringAll = bpa
-    end)
+TabPlayer:AddToggle({
+	Name = "Bring Player | All |",
+	Default = false,
+	Callback = function(BAL)
+		BringAll = BAL
+	end    
+})
 
 spawn(function() -- bring Plr
     while wait() do
@@ -1540,128 +1826,53 @@ spawn(function() -- bring Plr
     end
 end)
 
-Tab1 = Library:Tab("NPCs")
+local TabLD = Window:MakeTab({
+	Name = "Island",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-Tab1:Seperator("Teleport To NPCs")
+local Section = TabLD:AddSection({
+	Name = "SafeZone"
+})
 
-Tab1:Dropdown("Choose NPCs",{"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"},function(tpm)
-            getgenv().tpmerchant = tpm
-end)
+TabLD:AddDropdown({
+	Name = "Choose SafeZone",
+	Default = "",
+	Options = Cache.DevConfig["ListOfSafeZone"],
+	Callback = function(CSF)
+		getgenv().tpsafezone = CSF
+	end    
+})
+	
+TabLD:AddButton({
+	Name = "Click To Tp",
+	Callback = function()
+        if getgenv().tpsafezone == "SafeZoneSky" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZoneDF" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneDFPart"].CFrame * CFrame.new(0, 5, 0)
+			end
+			end    
+})
+	
+local Section = TabLD:AddSection({
+	Name = "Teleport to Island"
+})
 
-Tab1:Button("Click To Tp",function()
-    if getgenv().tpmerchant == "Rayleigh" then
-	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
-	elseif getgenv().tpmerchant == "Better Drink" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
-        elseif getgenv().tpmerchant == "Drink" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
-        elseif getgenv().tpmerchant == "Flail" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
-        elseif getgenv().tpmerchant == "QuestFish" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
-        elseif getgenv().tpmerchant == "Krizma" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
-        elseif getgenv().tpmerchant == "Sword" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
-        elseif getgenv().tpmerchant == "Sniper" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
-        elseif getgenv().tpmerchant == "Emote" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
-        elseif getgenv().tpmerchant == "Affinity" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
-        elseif getgenv().tpmerchant == "Fish" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
-        elseif getgenv().tpmerchant == "Expertise" then
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
-end
-end)
+TabLD:AddDropdown({
+	Name = "Choose Island",
+	Default = "",
+	Options = Cache.DevConfig["ListOfIsland"],
+	Callback = function(GIS)
+		getgenv().tpisland = GIS
+	end    
+})
 
-Tab1:Seperator("Dupe | For OPL: Anarchy |")
-
-Tab1:Button("Dupe",function()
-    workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
-        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
-
-end)
-
-Tab1:Seperator("Quest Sam")
-
-Tab1:Toggle("Auto Find",false,function(afc)
-AutoFind = afc
-    end)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoFind then return end;
-            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
-            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-            if Compass or Compass2 then
-                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                Compass.Parent = game.Players.LocalPlayer.Character;
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
-                Compass:Activate();
-                wait(0.2);
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
-            end
-        end)
-    end
-end)
-
-
-Tab1:Toggle("Auto Claim Sam | Claim10 |",false,function(asq)
-AutoSamQuest = asq
-    end)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoSamQuest then return end;
-            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
-            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
-        end)
-    end
-end)
-
-Tab1 = Library:Tab("TP Island")
-
-local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
-    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
-    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
-    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
-    SafeZoneUnderSea.Anchored = true
-
-local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
-    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
-    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
-    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
-    SafeZoneOuterSpace.Anchored = true
-
-Tab1:Seperator("Safe Zone")
-
-Tab1:Button("SafeZone Sky",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-end)
-
-Tab1:Button("SafeZone UnderSea",function()
-    game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        wait(0.15)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
-end)
-
-Tab1:Seperator("Teleport To Island")
-
-Tab1:Dropdown("Choose Island",{"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
-	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
-	                           "Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle",
-	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
-	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"},function(tpl)
-            getgenv().tpisland = tpl
-end)
-
-Tab1:Button("Click To Tp",function()
-    if getgenv().tpisland == "Grassy" then
+TabLD:AddButton({
+	Name = "Click To Tp",
+	Callback = function()
+        if getgenv().tpisland == "Grassy" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
       elseif getgenv().tpisland == "Kaizu" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
@@ -1725,14 +1936,21 @@ Tab1:Button("Click To Tp",function()
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
       elseif getgenv().tpisland == "Atlar" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
-		end
-	end)
+			end
+  	end    
+})
 
-Tab1:Seperator("Event Halloween")
+local Section = TabLD:AddSection({
+	Name = "For Event | Halloween!! |"
+})
 
-Tab1:Toggle("Bring Farm | Zombies |",false,function(fz)
-FarmZom = fz
-    end)
+TabLD:AddToggle({
+	Name = "Auto Bring | Zombies |",
+	Default = false,
+	Callback = function(AFZ)
+		FarmZom = AFZ
+	end    
+})
 
 spawn(function()
     while wait(0) do
@@ -1776,18 +1994,25 @@ spawn(function()
     end
 end)
 
-Tab1:Button("Tp To Pumpkin",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
-end)
+TabLD:AddButton({
+	Name = "Tp To Pumpkin",
+	Callback = function()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
+  	end    
+})
 
-Tab1:Toggle("Auto Click Pumpkin",false,function(pck)
-Pumpck = pck
-    end)
+TabLD:AddToggle({
+	Name = "Auto Click Pumpkin",
+	Default = false,
+	Callback = function(ACP)
+		AutoClickP = ACP
+	end    
+})
 
 spawn(function()--autofruit
     while wait() do
         pcall(function()
-            if Pumpck then
+            if AutoClickP then
                 wait(.5)
                 for i,v in pairs(game.Workspace.WorldEvent.Halloween.Pumpkin:GetChildren()) do
                     if v:IsA("ClickDetector") then
@@ -1799,156 +2024,362 @@ spawn(function()--autofruit
     end
 end)
 
-Tab1 = Library:Tab("Skill")
+local TabNPC = Window:MakeTab({
+	Name = "NPC",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
 
-Tab1:Seperator("Max Charge Skill")
+local Section = TabNPC:AddSection({
+	Name = "Teleport To NPC"
+})
 
-Tab1:Toggle("Max Charge Skill",false,function(maxc)
-skillmax = maxc
-    end)
+TabNPC:AddDropdown({
+	Name = "Choose NPC",
+	Default = "",
+	Options = Cache.DevConfig["ListOfMerchant"],
+	Callback = function(CT)
+		getgenv().tpmerchant = CT
+	end    
+})
 
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
+TabNPC:AddButton({
+	Name = "Click To Tp",
+	Callback = function()
+        if getgenv().tpmerchant == "Rayleigh" then
+	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
+	elseif getgenv().tpmerchant == "Better Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
+        elseif getgenv().tpmerchant == "Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
+        elseif getgenv().tpmerchant == "Flail" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
+        elseif getgenv().tpmerchant == "QuestFish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
+        elseif getgenv().tpmerchant == "Krizma" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
+        elseif getgenv().tpmerchant == "Sword" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
+        elseif getgenv().tpmerchant == "Sniper" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
+        elseif getgenv().tpmerchant == "Emote" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
+        elseif getgenv().tpmerchant == "Affinity" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
+        elseif getgenv().tpmerchant == "Fish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
+        elseif getgenv().tpmerchant == "Expertise" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
+			end
+  	end    
+})
 
+local Section = TabNPC:AddSection({
+	Name = "Drink Buy"
+})
 
-setreadonly(mta, false)
+TabNPC:AddDropdown({
+	Name = "Select Drink",
+	Default = "",
+	Options = Cache.DevConfig["ListOfDrink"],
+	Callback = function(SD)
+		SelectDrink = SD
+	end    
+})
 
-mta.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local arguments = args
-    local a = {}
-    for i = 1, #arguments - 1 do
-        a[i] = arguments[i]
-    end
-    local method = getnamecallmethod() 
+TabNPC:AddTextbox({
+	Name = "Amount Drink",
+	Default = "1",
+	TextDisappear = true,
+	Callback = function(AD)
+		AmountDrink = AD
+	end	  
+})
 
-    if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
-            if args[1] then
-                return nil
+TabNPC:AddButton({
+	Name = "Buy Drink",
+	Callback = function()
+        if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+        end
+  	end    
+})
+
+TabNPC:AddToggle({
+	Name = "Auto Drink",
+	Default = false,
+	Callback = function(ADK)
+		AutoDrink = ADK
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
             end
-        end
+        end)
     end
-    
-    return namecall(self, ...)    
 end);
 
-local attackremote = {}    
+TabNPC:AddToggle({
+	Name = "Auto Drop Drink",
+	Default = false,
+	Callback = function(ADD)
+		AutoDropDrink = ADD
+	end    
+})
 
-local a
-a=hookmetamethod(game,"__namecall",function(self,...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-            attackremote[self.Name] = args[1]
-            return a(self,unpack(args))
-        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-            attackremote[self.Name] = ""
-        end
-    end
-      return a(self,...)
-end);
-
-aaxc = hookmetamethod(game, "__namecall", function(self, ...)
-    local args = {...}
-    local method = getnamecallmethod()
-    if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
-            args[6] = 100
-            return aaxc(self, unpack(args))
-        end
-    end
-    return aaxc(self, ...)
-end);
-
-local remotes = {}
-    local azc
-    azc=hookmetamethod(game,"__namecall",function(self,...)
-        local args = {...}
-        local method = getnamecallmethod()
-        if method == "FireServer" or method == "InvokeServer" then
-            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
-                remotes[self.Name] = args[1]
-                return azc(self,unpack(args))
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDropDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
             end
-        end
-          return azc(self,...)
-    end);
+        end)
+    end
+end);
 
-Tab1 = Library:Tab("Misc")
+TabNPC:AddToggle({
+	Name = "Auto Loot Drink",
+	Default = false,
+	Callback = function(ADD)
+		AutoLootDeink = ADD
+	end    
+})
 
-Tab1:Seperator("Server")
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoLootDeink then return end;
+            for _, Item in pairs(game.Workspace:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Item.Name) and Item:FindFirstChild("Handle") then
+                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
+                end
+            end
+        end)
+    end
+end);
 
-Tab1:Button("Rejoin",function()
-    game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId)
-end)
+local Section = TabNPC:AddSection({
+	Name = "Dupe | For OPL: Anarchy |"
+})
 
-Tab1:Seperator("Unbox")
+TabNPC:AddButton({
+	Name = "No Save Data!!",
+	Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
+  	end    
+})
 
-Tab1:Toggle("Unbox | Common |",false,function(ubc)
-unboxC = ubc
-    end)
+local Section = TabNPC:AddSection({
+	Name = "Sam Quest"
+})
 
-spawn(function() 
-while wait() do 
-pcall(function() 
-if not unboxC then return end; 
-for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
-if table.find(List.DevConfig["ListOfBox1"], Value.Name) then 
-game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
-Value.Parent = game.Players.LocalPlayer.Character; 
-Value:Activate(); 
-end 
-end 
-end) 
-end 
-end)
+TabNPC:AddToggle({
+	Name = "Auto Sam Quest",
+	Default = false,
+	Callback = function(ASQ)
+		AutoSamQuestXX = ASQ
+	end    
+})
 
-Tab1:Toggle("Unbox | Uncommon |",false,function(ubu)
-unboxUc = ubu
-    end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoSamQuestXX then return end;
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+        end)
+    end
+end);
 
-spawn(function() 
-while wait() do 
-pcall(function() 
-if not unboxUc then return end; 
-for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
-if table.find(List.DevConfig["ListOfBox2"], Value.Name) then 
-game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
-Value.Parent = game.Players.LocalPlayer.Character; 
-Value:Activate(); 
-end 
-end 
-end) 
-end 
-end)
+TabNPC:AddToggle({
+	Name = "Auto Compass Quest",
+	Default = false,
+	Callback = function(ASQ)
+		AutoCompassQuestXX = ASQ
+	end    
+})
 
-Tab1:Toggle("Unbox | Rare, Ultra|",false,function(ubr)
-UnboxRu = ubr
-    end)
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoCompassQuestXX then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(0.2);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
+    end
+end);
 
-spawn(function() 
-while wait() do 
-pcall(function() 
-if not unboxRu then return end; 
-for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do 
-if table.find(List.DevConfig["ListOfBox3"], Value.Name) then 
-game.Players.LocalPlayer.Character.Humanoid:UnequipTools(); 
-Value.Parent = game.Players.LocalPlayer.Character; 
-Value:Activate(); 
-end 
-end 
-end) 
-end 
-end)
+TabNPC:AddToggle({
+	Name = "Auto Drop Compass",
+	Default = false,
+	Callback = function(ADD)
+		DropCompass = ADD
+	end    
+})
 
-Tab1:Seperator("Anti")
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not DropCompass then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Value.Parent = game.Players.LocalPlayer.Character;
+                Value.Parent = game.Workspace;
+            end
+        end)
+    end
+end);
 
-Tab1:Toggle("Anti Stun",false,function(stun)
-_G.antistun = stun
-    end)
+TabNPC:AddToggle({
+	Name = "Auto Loot Compass",
+	Default = false,
+	Callback = function(AUB)
+		AutoLootXXX = AUB
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoLootXXX then return end;
+            for _, Item in pairs(game.Workspace:GetChildren()) do
+                if Item.Name == "Compass" and Item:FindFirstChild("Handle") then
+                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
+                end
+            end
+        end)
+    end
+end);
+
+local TabMS = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabMS:AddSection({
+	Name = "Sever"
+})
+
+TabMS:AddButton({
+	Name = "Rejoin",
+	Callback = function()
+        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+  	end    
+})
+
+local Section = TabMS:AddSection({
+	Name = "UnBox"
+})
+
+TabMS:AddToggle({
+	Name = "Unbox | Common |",
+	Default = false,
+	Callback = function(AUC)
+		UnboxBoxC = AUC
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxBoxC then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+TabMS:AddToggle({
+	Name = "Unbox | Uncommon |",
+	Default = false,
+	Callback = function(AUN)
+		AutoUnboxU = AUN
+	end    
+})
+
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoUnboxU then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+TabMS:AddToggle({
+	Name = "Unbox | Rare, Ultra |",
+	Default = false,
+	Callback = function(AULR)
+		UnboxRL = AULR
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+local Section = TabMS:AddSection({
+	Name = "Anti"
+})
+
+TabMS:AddToggle({
+	Name = "Anti Stun",
+	Default = false,
+	Callback = function(ATS)
+		_G.autistun = ATS
+	end    
+})
 
 spawn(function()
 while wait() do
@@ -1975,10 +2406,12 @@ while wait() do
 end
 end)
 end 
-end)
+end);
 
-Tab1:Button("Anti Lag",function()
-if not gethui then
+TabMS:AddButton({
+	Name = "Anti Lag",
+	Callback = function()
+	if not gethui then
     warn("Incompatible executor: gethui is unavailable")
     return
 end
@@ -2051,18 +2484,26 @@ for _, descendant in ipairs(game:GetDescendants()) do
     if descendant:IsA("ParticleEmitter") or descendant:IsA("Trail") then
         descendant.Lifetime = NumberRange.new(0)
     end
-		end
-	end)
+end
+  	end    
+})
 
-Tab1:Seperator("Other")
+local Section = TabMS:AddSection({
+	Name = "Other"
+})
 
-Tab1:Button("Seastone Cetus | 500 Melee |",function()
-    local A_1 = "Seastone Cestus"
+TabMS:AddButton({
+	Name = "Seastone Cetus | 500 Melee |",
+	Callback = function()
+        local A_1 = "Seastone Cestus"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
     Event:FireServer(A_1)
-end)
+  	end    
+})
 
-Tab1:Button("Emote All | Not Save!! |",function()
+TabMS:AddButton({
+	Name = "Unlock Emote | All |",
+	Callback = function()
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
@@ -2079,4 +2520,5 @@ Tab1:Button("Emote All | Not Save!! |",function()
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
-end)
+  	end    
+})
