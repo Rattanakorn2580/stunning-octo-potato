@@ -1875,15 +1875,6 @@ local Section = TabSPM:AddSection({
 	Name = "Spam Skill(🔒)"
 })
 
-TabSPM:AddTextbox({ 	
-		Name = "Time To Spam", 	
-		Default = "1", 	
-		TextDisappear = true, 	
-		Callback = function(STQ) 		
-		getgenv().spamtime = STQ	
-		end	 
-})
-
 TabSPM:AddToggle({
 	Name = "Auto Spam Quake",
 	Default = false,
@@ -1927,15 +1918,6 @@ end);
 local Section = TabSPM:AddSection({
 	Name = "Light Spam Skill"
 })
-
-TabSPM:AddTextbox({ 	
-		Name = "Time To Spam", 	
-		Default = "1", 	
-		TextDisappear = true, 	
-		Callback = function(SPT1) 		
-		getgenv().spamtime = SPT1	
-		end	
-	})
 
 TabSPM:AddToggle({
 	Name = "Auto Spam Light",
@@ -2065,7 +2047,7 @@ spawn(function()
         while true do wait()
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                local plr2 = game.Players:FindFirstChild
                 if aimsilent then
                     cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
