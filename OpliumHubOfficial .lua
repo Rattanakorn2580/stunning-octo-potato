@@ -552,10 +552,33 @@ TabAuto:AddTextbox({
 TabAuto:AddToggle({
 	Name = "Enable",
 	Default = false,
-	Callback = function(HYRR)
-		_G.yoruattack = HYRR
+	Callback = function(HYF)
+		_G.yorufast = HYF
 	end    
 })
+
+spawn(function() -- yoru
+    while wait(0) do
+        pcall(function()
+            if _G.yorufast then
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                wait(1)
+                if game.Players.LocalPlayer.Character:FindFirstChild("Yoru") and tonumber(serializeTable(attackremote)) ~= nil and tonumber(serializeTable(attackremote)) ~= "" then
+                    repeat wait(0.3)
+                        for i = 1, _G.yoruhit do
+                            local args = {
+                                [1] = tonumber(serializeTable(attackremote))
+                            }
+                            
+                            game:GetService("Players").LocalPlayer.Character.Yoru.RequestAnimation:FireServer(unpack(args))
+                        end
+                    until _G.yorufast == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0 
+                end
+            end
+        end)
+    end
+end);
 
 local TabFarm = Window:MakeTab({
 	Name = "Auto Farm",
