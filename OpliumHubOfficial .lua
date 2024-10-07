@@ -2096,6 +2096,57 @@ spawn(function() --
     end
 end);
 
+TabPlayer:AddToggle({
+	Name = "Auto Spam Light | Player All |",
+	Default = false,
+	Callback = function(ALAL)
+		_G.lightall = ALAL
+	end    
+})
+
+spawn(function() -- Light farm player
+    while wait(0) do
+        pcall(function()
+            if _G.lightall then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTC,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+				end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
 local TabLD = Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
