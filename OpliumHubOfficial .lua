@@ -50,25 +50,6 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 
-local TabDATE = Window:MakeTab({
-	Name = "Update",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add New Menu DF Farm"
-})
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add Menu Skill Spam"
-})
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add Spam Yoru"
-})
-
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
 	Icon = "rbxassetid://4483345998",
@@ -2475,7 +2456,7 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "Sam Quest"
+	Name = "Auto Claim Sam Quest"
 })
 
 TabNPC:AddToggle({
@@ -2497,7 +2478,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Compass Quest",
+	Name = "Auto Find",
 	Default = false,
 	Callback = function(ASQ)
 		AutoCompassQuestXX = ASQ
