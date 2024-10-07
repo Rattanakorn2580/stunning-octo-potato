@@ -570,6 +570,37 @@ a=hookmetamethod(game,"__namecall",function(self,...)
       return a(self,...)
 end)
 
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
 TabAuto:AddToggle({
 	Name = "Enable",
 	Default = false,
