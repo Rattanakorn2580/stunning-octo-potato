@@ -58,7 +58,10 @@ local TabUp = Window:MakeTab({
 
 
 local Section = TabUp:AddSection({
-	Name = "               MenuFix All | แก้ไขเมนูทั้งหมด |"
+	Name = "         <•> Add New Menu DF Farm"
+})
+local Section = TabNPC:AddSection({
+	Name = "         <•> Add Menu Skill Spam"
 })
 
 local TabAuto = Window:MakeTab({
@@ -1565,7 +1568,7 @@ spawn(function()--autofruit
 end)
 
 local TabSk = Window:MakeTab({
-	Name = "Fruit Farm",
+	Name = "DF Farm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -1785,50 +1788,15 @@ spawn(function() -- auto farm quake
     end
 end);
 
-TabSk:AddToggle({
-	Name = "Auto Spam Quake | Player All |",
-	Default = false,
-	Callback = function(SQA)
-		_G.spamquakeall = SQA
-	end    
+local TabSPM = Window:MakeTab({
+	Name = "Skill Spam",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
 })
 
-spawn(function() -- 
-    while task.wait(0) do
-        pcall(function()
-            for i, v in pairs(game.Players:GetChildren()) do
-                if _G.spamquakeall then
-                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        if v.Name ~= "SetInstances" then
-                            if v.Name ~= game.Players.LocalPlayer.Name then
-                                task.wait(getgenv().spamtime)
-                                local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                                task.wait(0.1)
-                                local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end);
+local Section = TabSPM:AddSection({
+	Name = "Spam Skill(🔒)"
+})
 
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
@@ -1930,30 +1898,54 @@ mta.__index = newcclosure(function(a, b, c)
     return index(a, b, c)
 end)
 
+local Section = TabPlayer:AddSection({
+	Name = "Player Kill"
+})
+
 TabPlayer:AddToggle({
-	Name = "Bring Player | All |",
+	Name = "Auto Spam Quake | Player All |",
 	Default = false,
-	Callback = function(BAL)
-		BringAll = BAL
+	Callback = function(SQA)
+		_G.spamquakeall = SQA
 	end    
 })
 
-spawn(function() -- bring Plr
-    while wait() do
-        if BringAll then
-            pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
-                        if v.Character.Humanoid.Health == 0 then
-                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+spawn(function() -- 
+    while task.wait(0) do
+        pcall(function()
+            for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                task.wait(0.1)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                            end
                         end
                     end
                 end
-            end)
-        end
+            end
+        end)
     end
-end)
+end);
 
 local TabLD = Window:MakeTab({
 	Name = "Island",
