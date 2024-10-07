@@ -1850,18 +1850,16 @@ TabLD:AddDropdown({
 		getgenv().tpsafezone = CSF
 	end    
 })
-
+	
 TabLD:AddButton({
 	Name = "Click To Tp",
 	Callback = function()
         if getgenv().tpsafezone == "SafeZoneSky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-      elseif getgenv().tpsafezone == "SafeZoneDF" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneDFPart"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
 })
-
+	
 local Section = TabLD:AddSection({
 	Name = "Teleport to Island"
 })
