@@ -4,7 +4,7 @@ local Window = OrionLib:MakeWindow({Name = "Legend Hub", HidePremium = false, Sa
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneDFPart"
     SafeZoneUnderSea.Size = Vector3.new(30,3,30)
-    SafeZoneUnderSea.Position = Vector3.new((math.random(339,3623,-641))
+    SafeZoneUnderSea.Position = Vector3.new(339,3623,-641)
     SafeZoneUnderSea.Anchored = true
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
