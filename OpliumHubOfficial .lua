@@ -1964,7 +1964,7 @@ spawn(function()
             end
         end)
     end
-end);
+end)
 
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
@@ -2047,7 +2047,7 @@ spawn(function()
         while true do wait()
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild
+                local plr2 = game.Players:FindFirstChild(SelectPlayer)
                 if aimsilent then
                     cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
