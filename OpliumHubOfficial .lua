@@ -1856,6 +1856,8 @@ TabLD:AddButton({
 	Callback = function()
         if getgenv().tpsafezone == "SafeZoneSky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZoneDF" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneDFPart"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
 })
