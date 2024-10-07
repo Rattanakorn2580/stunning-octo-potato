@@ -1972,7 +1972,6 @@ TabPlayer:AddToggle({
     if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
         game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
 	end
-end
 
 TabPlayer:AddToggle({
 	Name = "Behind Player",
