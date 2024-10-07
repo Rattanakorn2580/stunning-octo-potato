@@ -1948,6 +1948,14 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({
+	Name = "Auto Drink",
+	Default = false,
+	Callback = function(VPR)
+		ViewPlr = VPR
+	end    
+})
+
+TabPlayer:AddToggle({
 	Name = "Behind Player",
 	Default = false,
 	Callback = function(BPP)
