@@ -2105,16 +2105,15 @@ TabPlayer:AddToggle({
 })
 
 spawn(function() -- Light farm player
-    while wait(0) do
+    while task.wait(0) do
         pcall(function()
-            if _G.lightall then
                 script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
                 VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
 
                 for i, v in pairs(game.Players:GetChildren()) do
-                if _G.spamquakeall then
+                if _G.lightall then
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
