@@ -7,6 +7,12 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
 
+local SafeZoneFarm = Instance.new("Part",game.Workspace)
+    SafeZoneFarm.Name = "SafeZoneFarmPart"
+    SafeZoneFarm.Size = Vector3.new(200,3,200)
+    SafeZoneFarm.Position = Vector3.new((math.random(-339, 3623, -641))
+    SafeZoneFarm.Anchored = true
+
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
