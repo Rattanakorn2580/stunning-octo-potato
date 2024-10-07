@@ -2094,7 +2094,7 @@ spawn(function() --
             end
         end)
     end
-end);
+end)
 
 TabPlayer:AddToggle({
 	Name = "Auto Spam Light | Not Work!! |",
