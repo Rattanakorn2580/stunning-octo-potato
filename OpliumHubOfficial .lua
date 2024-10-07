@@ -2136,7 +2136,6 @@ spawn(function() -- Light farm player
                                 }
 
                                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-				end
                             end
                         end
                     end
