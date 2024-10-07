@@ -1565,7 +1565,7 @@ spawn(function()--autofruit
 end)
 
 local TabSk = Window:MakeTab({
-	Name = "Skill Spam",
+	Name = "Fruit Farm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
