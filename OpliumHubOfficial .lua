@@ -1689,7 +1689,7 @@ local Section = TabSk:AddSection({
 })
 
 TabSk:AddToggle({
-	Name = "Auto Spam Farm Light",
+	Name = "Auto Spam Light | Farm |",
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
@@ -1740,7 +1740,7 @@ spawn(function() -- Light farm npcs
 end)
 
 TabSk:AddToggle({
-	Name = "Auto Spam Farm Quake",
+	Name = "Auto Spam Quake | Farm |",
 	Default = false,
 	Callback = function(QF)
 		_G.Quakefarm = QF
@@ -1772,6 +1772,51 @@ spawn(function() -- auto farm quake
                             
                                     game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
                                 until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
+
+TabSk:AddToggle({
+	Name = "Auto Spam Quake | Player All |",
+	Default = false,
+	Callback = function(SQA)
+		_G.spamquakeall = SQA
+	end    
+})
+
+spawn(function() -- 
+    while task.wait(0) do
+        pcall(function()
+            for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                task.wait(0.1)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
                             end
                         end
                     end
@@ -1847,6 +1892,38 @@ spawn(function()
             end)
         end
     end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Aim Player",
+	Default = false,
+	Callback = function(ASL)
+		aimsilent = ASL
+	end    
+})
+
+spawn(function()
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(PlayerName1)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
 end)
 
 TabPlayer:AddToggle({
