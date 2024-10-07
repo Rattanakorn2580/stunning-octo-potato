@@ -60,7 +60,7 @@ local TabUp = Window:MakeTab({
 local Section = TabUp:AddSection({
 	Name = "         <•> Add New Menu DF Farm"
 })
-local Section = TabNPC:AddSection({
+local Section = TabUp:AddSection({
 	Name = "         <•> Add Menu Skill Spam"
 })
 
