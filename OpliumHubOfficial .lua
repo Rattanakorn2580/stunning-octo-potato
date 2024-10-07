@@ -1,11 +1,17 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Legend Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
+local Window = OrionLib:MakeWindow({Name = "InW Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "By Bank Kesee"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
     SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
+
+local SafeZoneFarm = Instance.new("Part",game.Workspace)
+    SafeZoneFarm.Name = "SafeZoneFarmPart"
+    SafeZoneFarm.Size = Vector3.new(200,3,200)
+    SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
+    SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
     while wait(0) do
@@ -35,7 +41,7 @@ local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
-Cache.DevConfig["ListOfSafeZone"] = {"SafeZoneSky", "SafeZoneFarmDF"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZoneSky", "SafeZoneFarm"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
@@ -1733,6 +1739,48 @@ spawn(function() -- Light farm npcs
     end
 end)
 
+TabSK:AddToggle({
+	Name = "Auto Spam Quake",
+	Default = false,
+	Callback = function(QF)
+		_G.Quakefarm = QF
+	end    
+})
+
+spawn(function() -- auto farm quake
+    while wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                    if _G.Quakefarm then
+                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
+                            wait(5)
+                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                                repeat 
+                                wait(0.3)
+                                    local args = {
+                                        [1] = VTC,
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.HumanoidRootPart,
+                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
+                                        [6] = 100,
+                                        [7] = v.HumanoidRootPart.Position
+                                    }
+                            
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
+
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
 	Icon = "rbxassetid://4483345998",
@@ -1850,8 +1898,8 @@ TabLD:AddButton({
 	Callback = function()
         if getgenv().tpsafezone == "SafeZoneSky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZoneDF" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneDFPart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZoneFarm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneFarmPart"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
 })
@@ -2522,3 +2570,4 @@ TabMS:AddButton({
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
+
