@@ -1959,13 +1959,11 @@ TabPlayer:AddButton({
 TabPlayer:AddToggle({
 	Name = "View",
 	Default = false,
-	Callback = function(VPR)
-		ViewPlr = VPR
+	Callback = function(viewplr)
+		Sp = viewplr
 	end    
 })
 
-if ViewPlr then
-Sp = viewplr
     local plr1 = game.Players.LocalPlayer.Character.Humanoid
     local plr2 = game.Players:FindFirstChild(SelectPlayer)
     repeat wait(0)
