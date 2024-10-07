@@ -2112,6 +2112,7 @@ spawn(function() --
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
+			task.wait(getgenv().spamtime)
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
                 local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
@@ -2128,10 +2129,8 @@ spawn(function() --
                     [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
                     [9] = "Left"
                 }
-                
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-                
-                wait(0.05)
+                task.wait(0.05)
                 local args = {
                     [1] = tonumber(serializeTable(remotes)),
                     [2] = "LightPower2",
@@ -2139,10 +2138,21 @@ spawn(function() --
                     [4] = Mouse.Hit,
                     [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
                     [6] = 100
+		    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
                 }
-                
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-                            end
+                task.wait(0.05)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+		    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+                }
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+			end
                         end
                     end
                 end
