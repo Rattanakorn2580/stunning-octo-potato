@@ -1902,11 +1902,11 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "Auto Claim Sam Quest"
+	Name = "Sam Quest"
 })
 
 TabNPC:AddToggle({
-	Name = "Auto Sam Quest",
+	Name = "Auto Claim Sam | 10Claim |",
 	Default = false,
 	Callback = function(ASQ)
 		AutoSamQuestXX = ASQ
@@ -1999,28 +1999,51 @@ local TabAFF = Window:MakeTab({
 })
 
 local Section = TabAFF:AddSection({
-	Name = "Devil Fruit Reroll | 1 |"
+	Name = "Devil Fruit Reroll"
 })
 
 TabAFF:AddDropdown({
-	Name = "Choose Lock Stats",
+	Name = "Choose DF Reroll",
 	Default = "",
 	Options = Cache.DevConfig["ListOfAffinities"],
 	Callback = function(SAFF)
-		SelectAffinity = SAFF
+		getgenv().dfreroll = SAFF
 	end    
 })
 
-TabAFF:AddToggle({
-	Name = "DF Reroll | Coming Soon . . . |",
-	Default = false,
-	Callback = function(ROL)
-		getgenv().dfreroll = ROL
-	end    
+TabAFF:AddButton({
+	Name = "Reroll",
+	Callback = function()
+        if getgenv().dfreroll == "DFT 1" then
+	    local args = {
+    [1] = "DFT1",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+
+	elseif getgenv().dfreroll == "DFT 2" then
+	local args = {
+    [1] = "DFT2",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+	
+		end
+  	end    
 })
 
 TabAFF:AddToggle({
-	Name = "DF 2 Reroll | Lock Sniper |",
+	Name = "Auto Reroll | Coming Soon . . . |",
 	Default = false,
 	Callback = function(ROL)
 		getgenv().dfreroll = ROL
