@@ -2015,10 +2015,41 @@ TabAFF:AddToggle({
 	Name = "Reroll",
 	Default = false,
 	Callback = function(ROL)
-		AutoReroll = ROL
+		getgenv().dfreroll = ROL
 	end    
 })
 
+spawn(function()
+    while wait(10) do
+        pcall(function()
+        if getgenv().dfreroll then 
+if getgenv().dfreroll == "DFT1" then
+	    local args = {
+    [1] = "DFT1",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+	elseif getgenv().dfreroll == "DFT2" then
+            local args = {
+    [1] = "DFT2",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+end
+        end)
+    end
+end);
+	
 local TabSPM = Window:MakeTab({
 	Name = "Skill Spam",
 	Icon = "rbxassetid://4483345998",
