@@ -2019,9 +2019,7 @@ TabAFF:AddToggle({
 	end    
 })
 
-spawn(function()
     while wait(10) do
-        pcall(function()
 if getgenv().dfreroll == "DFT1" then
 	    local args = {
     [1] = "DFT1",
