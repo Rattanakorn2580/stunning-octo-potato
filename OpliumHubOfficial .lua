@@ -2003,13 +2003,12 @@ local Section = TabAFF:AddSection({
 })
 
 TabAFF:AddToggle({
-	Name = "Reroll",
+	Name = "DF 1 Reroll | No Lock |",
 	Default = false,
 	Callback = function(ROL)
 		getgenv().dfreroll = ROL
 	end    
 })
-
 
 local TabSPM = Window:MakeTab({
 	Name = "Skill Spam",
