@@ -2022,7 +2022,6 @@ TabAFF:AddToggle({
 spawn(function()
     while wait(10) do
         pcall(function()
-        if getgenv().dfreroll then 
 if getgenv().dfreroll == "DFT1" then
 	    local args = {
     [1] = "DFT1",
@@ -2046,11 +2045,10 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 
 workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 		end
-		end
         end)
     end
 end);
-	
+
 local TabSPM = Window:MakeTab({
 	Name = "Skill Spam",
 	Icon = "rbxassetid://4483345998",
