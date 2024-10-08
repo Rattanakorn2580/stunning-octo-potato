@@ -49,7 +49,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
-Cache.DevConfig["ListOfAffinities"] = {"DFT1", "DFT2"};
+Cache.DevConfig["ListOfAffinities"] = {"DFT 1","DFT 2"};
 
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
@@ -2002,8 +2002,25 @@ local Section = TabAFF:AddSection({
 	Name = "Devil Fruit Reroll | 1 |"
 })
 
+TabAFF:AddDropdown({
+	Name = "Choose Lock Stats",
+	Default = "",
+	Options = Cache.DevConfig["ListOfAffinities"],
+	Callback = function(SAFF)
+		SelectAffinity = SAFF
+	end    
+})
+
 TabAFF:AddToggle({
-	Name = "DF 1 Reroll | No Lock |",
+	Name = "DF Reroll | Coming Soon . . . |",
+	Default = false,
+	Callback = function(ROL)
+		getgenv().dfreroll = ROL
+	end    
+})
+
+TabAFF:AddToggle({
+	Name = "DF 2 Reroll | Lock Sniper |",
 	Default = false,
 	Callback = function(ROL)
 		getgenv().dfreroll = ROL
