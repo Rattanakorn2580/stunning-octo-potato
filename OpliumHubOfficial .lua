@@ -1999,16 +1999,7 @@ local TabAFF = Window:MakeTab({
 })
 
 local Section = TabAFF:AddSection({
-	Name = "Affinity Reroll"
-})
-
-TabAFF:AddDropdown({
-	Name = "Choose Devil Fruit Reroll",
-	Default = "",
-	Options = Cache.DevConfig["ListOfAffinities"],
-	Callback = function(SAFF)
-		SelectAffinity = SAFF
-	end    
+	Name = "Devil Fruit Reroll | 1 |"
 })
 
 TabAFF:AddToggle({
@@ -2019,33 +2010,6 @@ TabAFF:AddToggle({
 	end    
 })
 
-    while wait(10) do
-if getgenv().dfreroll == "DFT1" then
-	    local args = {
-    [1] = "DFT1",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-	elseif getgenv().dfreroll == "DFT2" then
-            local args = {
-    [1] = "DFT2",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-		end
-        end)
-    end
-end);
 
 local TabSPM = Window:MakeTab({
 	Name = "Skill Spam",
