@@ -2418,6 +2418,73 @@ TabLD:AddButton({
 })
 
 local Section = TabLD:AddSection({
+	Name = "Teleport Kill Pursuer"
+})
+
+TabLD:AddToggle({
+	Name = "Pursuer Farm",
+	Default = false,
+	Callback = function(AFP)
+		AutoFarmM = AFP
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if AutoFarmM then
+	for _,v in pairs(game.Workspace.Island14:GetChildren()) do
+                    if string.find(v.Name, "Lv5000 Pursuer")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.HumanoidRootPart.Transparency = 0.9
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,6.5)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+            end
+        end)
+    end
+end);
+
+TabLD:AddToggle({
+	Name = "Auto Place Fruity",
+	Default = false,
+	Callback = function(APC)
+		AutoPlace = APC
+	end    
+})
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if AutoPlace then
+                local toolname = "Hobby Fruit"
+                local Plr = game:GetService("Players").LocalPlayer
+                wait(0.75)
+                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
+                    local tool = Plr.Backpack:FindFirstChild(toolname)
+                    Plr.Character.Humanoid:EquipTool(tool)
+                    wait(0.75)
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+		    wait(1.5)
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4904, 607, -7268)
+		    wait(1.5)
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4857, 613, -7288)
+		    wait(1.5)
+		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4807, 605, -7276)
+                end
+            end
+        end)
+    end
+end);
+
+local Section = TabLD:AddSection({
 	Name = "For Event | Halloween!! |"
 })
 
