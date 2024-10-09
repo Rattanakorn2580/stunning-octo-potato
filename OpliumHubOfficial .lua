@@ -2784,26 +2784,6 @@ TabMS:AddButton({
   	end    
 })
 
-local Section = TabMisc:AddSection({
-	Name = "It's Fake! , Are You Still Using It???"
-})
-
-TabMS:AddTextbox({
-Name = "Fake Gems",
-Default = "0.5",
-TextDisappear = true,
-Callback = function(TTCP)
-_G.fakegems = TTCP
-end  
-})
-
-TabMS:AddButton({
-	Name = "Click to Change",
-	Callback = function()
-        game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.Gems.Value = _G.fakegems
-  	end    
-})
-
 TabMS:AddButton({
 	Name = "Unlock Emote | All |",
 	Callback = function()
