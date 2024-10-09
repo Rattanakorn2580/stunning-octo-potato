@@ -2456,14 +2456,14 @@ TabLD:AddToggle({
 	Name = "Auto Place Fruity",
 	Default = false,
 	Callback = function(APC)
-		AutoPlace = APC
+		_G.autoplace = APC
 	end    
 })
 
 spawn(function()
     while task.wait(0) do
         pcall(function()
-            if AutoPlace then
+            if _G.autoplace then
                 local toolname = "Hobby Fruit"
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
@@ -2478,6 +2478,7 @@ spawn(function()
 		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4857, 613, -7288)
 		    wait(1.5)
 		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4807, 605, -7276)
+		    wait(1.5)
                 end
             end
         end)
