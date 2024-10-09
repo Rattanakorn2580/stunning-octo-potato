@@ -2034,7 +2034,29 @@ TabAFF:AddDropdown({
 TabAFF:AddButton({
 	Name = "Reroll",
 	Callback = function()
-        print(name)
+        if getgenv().dfreroll == "Devil Fruit ( Left )" then
+	    local args = {
+    [1] = "DFT1",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+	elseif getgenv().dfreroll == "Devil Fruit ( Right )" then
+            local args = {
+    [1] = "DFT2",
+    [2] = false,
+    [3] = false,
+    [4] = false,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+		end
   	end    
 })
 
@@ -2427,8 +2449,8 @@ TabLD:AddDropdown({
 	Name = "Choose Devil Fruit",
 	Default = "",
 	Options = Cache.DevConfig["ListOfFruity"],
-	Callback = function(ATC)
-		_G.autuplace = ATC
+	Callback = function(APC)
+		getgenv().placefruit = APC
 	end    
 })
 
@@ -2467,14 +2489,14 @@ TabLD:AddToggle({
 	Name = "Auto Place Fruity",
 	Default = false,
 	Callback = function(APC)
-		_G.autoplace = APC
+		getgenv().placefruit = APC
 	end    
 })
 
 spawn(function()
     while task.wait(0) do
         pcall(function()
-            if _G.autoplace == "Spin Fruit" then
+            if getgenv().placefruit == "Spin Fruit" then
                 local toolname = Cache.DevConfig["ListOfFruity"]
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
