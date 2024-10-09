@@ -50,7 +50,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
-Cache.DevConfig["ListOfFruity"] = {"Spin Fruit"};
+Cache.DevConfig["ListOfFruity"] = {"Spin Fruit", "Swim Fruit", "Clone Fruit", "Clear Fruit", "Chop Fruit", "Hot Fruit", "Spring Fruit", "Slip Fruit"};
 
 local TabDATE = Window:MakeTab({
 	Name = "Update",
@@ -2423,6 +2423,15 @@ local Section = TabLD:AddSection({
 	Name = "Teleport Kill Pursuer"
 })
 
+TabLD:AddDropdown({
+	Name = "Choose Devil Fruit",
+	Default = "",
+	Options = Cache.DevConfig["ListOfFruity"],
+	Callback = function(ATP)
+		_G.autuplace = ATP
+	end    
+})
+
 TabLD:AddToggle({
 	Name = "Pursuer Farm",
 	Default = false,
@@ -2474,6 +2483,13 @@ spawn(function()
                     Plr.Character.Humanoid:EquipTool(tool)
                     wait(0.75)
                     game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+		wait(1.25)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4904, 607, -7276)
+		wait(1.25)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4857, 613, -7288)
+		wait(1.25)
+		game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4807, 605, -7276)
+		wait(0.5)
                 end
             end
         end)
