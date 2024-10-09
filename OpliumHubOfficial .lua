@@ -2427,8 +2427,8 @@ TabLD:AddDropdown({
 	Name = "Choose Devil Fruit",
 	Default = "",
 	Options = Cache.DevConfig["ListOfFruity"],
-	Callback = function(APC)
-		_G.autuplace = APC
+	Callback = function(ATC)
+		_G.autuplace = ATC
 	end    
 })
 
@@ -2474,7 +2474,7 @@ TabLD:AddToggle({
 spawn(function()
     while task.wait(0) do
         pcall(function()
-            if _G.autoplace then
+            if _G.autoplace == "Spin Fruit" then
                 local toolname = Cache.DevConfig["ListOfFruity"]
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
