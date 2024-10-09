@@ -2463,7 +2463,7 @@ spawn(function()
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,7)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
