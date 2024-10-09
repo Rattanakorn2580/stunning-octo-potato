@@ -49,6 +49,8 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
+Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
+Cache.DevConfig["ListOfFruity"] = {"Spin Fruit"};
 
 local TabDATE = Window:MakeTab({
 	Name = "Update",
@@ -2464,7 +2466,7 @@ spawn(function()
     while task.wait(0) do
         pcall(function()
             if _G.autoplace then
-                local toolname = "Hobby Fruit"
+                local toolname = Cache.DevConfig["ListOfFruity"]
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
                 if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
@@ -2472,30 +2474,6 @@ spawn(function()
                     Plr.Character.Humanoid:EquipTool(tool)
                     wait(0.75)
                     game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-		    wait(1.5)
-		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4904, 607, -7276)
-		    wait(1.5)
-		    if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    local tool = Plr.Backpack:FindFirstChild(toolname)
-                    Plr.Character.Humanoid:EquipTool(tool)
-                    wait(0.75)
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-		    wait(1.5)
-		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4857, 613, -7288)
-		    if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    local tool = Plr.Backpack:FindFirstChild(toolname)
-                    Plr.Character.Humanoid:EquipTool(tool)
-                    wait(0.75)
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-		    wait(1.5)
-		    if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    local tool = Plr.Backpack:FindFirstChild(toolname)
-                    Plr.Character.Humanoid:EquipTool(tool)
-                    wait(0.75)
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-		    wait(1.5)
-		    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4807, 605, -7276)
-		    wait(1.5)
                 end
             end
         end)
