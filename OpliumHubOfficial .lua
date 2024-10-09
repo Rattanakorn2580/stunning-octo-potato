@@ -2464,7 +2464,7 @@ spawn(function()
     while task.wait(0) do
         pcall(function()
             if _G.autoplace then
-                local toolname = "Hobby Fruit", "Hot Fruit", "Slip Fruit"
+                local toolname = "Hobby Fruit"
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
                 if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
