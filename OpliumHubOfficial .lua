@@ -1811,6 +1811,18 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
+	Name = "Dupe | For OPL: Anarchy |"
+})
+
+TabNPC:AddButton({
+	Name = "No Save Data!!",
+	Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
+  	end    
+})
+
+local Section = TabNPC:AddSection({
 	Name = "Drink Buy"
 })
 
@@ -1908,18 +1920,6 @@ spawn(function()
         end)
     end
 end);
-
-local Section = TabNPC:AddSection({
-	Name = "Dupe | For OPL: Anarchy |"
-})
-
-TabNPC:AddButton({
-	Name = "No Save Data!!",
-	Callback = function()
-        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
-        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
-  	end    
-})
 
 local Section = TabNPC:AddSection({
 	Name = "Sam Quest"
@@ -2427,8 +2427,8 @@ TabLD:AddDropdown({
 	Name = "Choose Devil Fruit",
 	Default = "",
 	Options = Cache.DevConfig["ListOfFruity"],
-	Callback = function(ATP)
-		_G.autuplace = ATP
+	Callback = function(APC)
+		_G.autuplace = APC
 	end    
 })
 
