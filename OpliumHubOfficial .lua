@@ -2040,33 +2040,6 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
   	end    
 })
 
-TabAFF:AddToggle({
-	Name = "Auto Reroll | No Lock!! |",
-	Default = false,
-	Callback = function(ASO)
-		getgenv().dfreroll = ASO
-	end    
-})
-
-spawn(function()
-    while wait(8.5) do
-        if getgenv().dfreroll == "Devil Fruit ( Left )" then
-            pcall(function()
-               local args = {
-    [1] = "DFT1",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-	 end)
-        end
-    end
-end);
-
 local TabSPM = Window:MakeTab({
 	Name = "Skill Spam",
 	Icon = "rbxassetid://4483345998",
