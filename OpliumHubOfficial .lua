@@ -51,25 +51,6 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
 
-local TabDATE = Window:MakeTab({
-	Name = "Update",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add New Menu DF Farm"
-})
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add Menu Skill Spam"
-})
-
-local Section = TabDATE:AddSection({
-	Name = "         <•> Add Spam Yoru"
-})
-
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
 	Icon = "rbxassetid://4483345998",
@@ -2480,7 +2461,7 @@ local Section = TabLD:AddSection({
 })
 
 TabLD:AddToggle({
-	Name = "Auto Bring | Zombies |",
+	Name = "Auto Farm | Zombies |",
 	Default = false,
 	Callback = function(AFZ)
 		FarmZom = AFZ
@@ -2517,7 +2498,7 @@ spawn(function()
                         --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
                         v.HumanoidRootPart.Transparency = 0.9
 			v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
