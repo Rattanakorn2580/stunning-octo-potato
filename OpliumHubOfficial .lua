@@ -2043,8 +2043,8 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 TabAFF:AddToggle({
 	Name = "Auto Reroll | No Lock!! |",
 	Default = false,
-	Callback = function(REROLL)
-		getgenv().dfreroll = REROLL
+	Callback = function(ASO)
+		getgenv().dfreroll = ASO
 	end    
 })
 
