@@ -8,7 +8,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Anchored = true
 
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneFarmPart"
+    SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
     SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
     SafeZoneFarm.Anchored = true
@@ -16,7 +16,7 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
-            if AutoFish or AutoPack or AutoFarmM then
+            if AutoFish or AutoPack or AutoFarmM or FarmZom then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -25,7 +25,7 @@ spawn(function() -- autofarm velocity
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false then
+            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false or FarmZom == false then
                 --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
                 wait(1)
@@ -2331,8 +2331,8 @@ TabLD:AddButton({
 	Callback = function()
         if getgenv().tpsafezone == "SafeZoneSky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZoneFarm" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneFarmPart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZoneLightFarm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
 })
@@ -2493,12 +2493,8 @@ spawn(function()
 		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
-                    	v.HumanoidRootPart.Size = Vector3.new(15, 15, 15)
-                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                        v.HumanoidRootPart.Transparency = 0.9
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                    	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
                      end
