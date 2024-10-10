@@ -2062,18 +2062,7 @@ spawn(function()
 }
 
 workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-	elseif getgenv().dfreroll == "Devil Fruit ( Right )" then
-local args = {
-    [1] = "DFT2",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-            end)
+	 end)
         end
     end
 end);
