@@ -2699,7 +2699,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if FarmZom then
-                for _,v in pairs(game.Workspace.WirldEvent.Halloween.Zombies:GetChildren()) do
+                for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
