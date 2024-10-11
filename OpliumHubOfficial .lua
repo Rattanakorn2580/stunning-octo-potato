@@ -2461,7 +2461,7 @@ local Section = TabLD:AddSection({
 })
 
 TabLD:AddToggle({
-	Name = "Auto Farm | Zombies |",
+	Name = "Auto Bring | Zombies |",
 	Default = false,
 	Callback = function(AFZ)
 		FarmZom = AFZ
@@ -2486,28 +2486,27 @@ spawn(function()
     end
 end)
 
-spawn(function()
-    while wait() do
-        pcall(function()
-            if FarmZom then
-		for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
+for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
-			v.HumanoidRootPart.CanCollide = false
+                        v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                        v.HumanoidRootPart.Transparency = 0.9
-                    	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,4,-5)
                         if v.Humanoid.Health == 0 then
-			v:FindFirstChild("HumanoidRootPart").Anchored = true
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
-                     end
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                    end
                 end
             end
         end)
     end
-end)
+end);
 
 TabLD:AddButton({
 	Name = "Tp To Pumpkin",
