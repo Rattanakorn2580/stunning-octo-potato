@@ -2695,6 +2695,10 @@ spawn(function()
     end
 end)
 
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if FarmZom then
 for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
                     if string.find(v.Name, "Zombie")
                     and v:FindFirstChild("HumanoidRootPart") then
