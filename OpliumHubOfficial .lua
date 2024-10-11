@@ -2142,21 +2142,230 @@ function serializeTable(val, name, skipnewlines, depth)
     return tmp
  end
 
-TabSPM:AddToggle({
-	Name = "Auto Spam Quake",
-	Default = false,
-	Callback = function(ASQ)
-		_G.quakeall = ASQ
-	end    
+local Section = TabSPM:AddSection({
+	Name = "Quake Spam"
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Spam Light",
+	Name = "Auto Spam | Quake Wave |",
+	Default = false,
+	Callback = function(ASQ)
+		_G.quake1 = ASQ
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.quake1 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = Mouse.Hit,
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+        end
+        end)
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Light Spam"
+})
+TabSPM:AddToggle({
+	Name = "Auto Spam | Light Beam |",
 	Default = false,
 	Callback = function(ASL)
 		_G.lightbeam = ASL
 	end    
 })
+
+spawn(function() 
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.lightbeam then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
+                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
+                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
+
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxl, Yyl, Zzl),
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [9] = "Left"
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                
+                wait(0.05)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Flare Spam"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Spam | Fire First |",
+	Default = false,
+	Callback = function(FLA)
+		_G.flare1 = FLA
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        if _G.flare1 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+        
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-550.802795, 244, 26.3580341, -0.63954407, 0.15401715, -0.753168106, -0, 0.979725122, 0.200346366, 0.768754423, 0.128130332, -0.626577377),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [7] = "Left"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+        end
+    end
+end);
+
+TabSPM:AddToggle({
+	Name = "Auto Spam | Flame Pillar |",
+	Default = false,
+	Callback = function(FLAA)
+		_G.flare2 = FLAA
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        if _G.flare2 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower5",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Grass"):WaitForChild("Grass"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-87.2900391, 213.999969, -985.91748, -0.656417644, 0.341256171, -0.757590711, 1.49011612e-08, 0.911768198, 0.410705268, 0.830902815, 0.228523642, -0.607323861),
+                [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Grass"):WaitForChild("Grass"),
+                [7] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+        end
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Dark Spam"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Spam | Dark Star |",
+	Default = false,
+	Callback = function(DKS)
+		_G.darkstar = DKS
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.darkstar then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xx = humanoid.Position.x -- round(humanoid.Position.x, 0)
+                Yy = humanoid.Position.y -- round(humanoid.Position.y, 0)
+                Zz = humanoid.Position.z -- round(humanoid.Position.z, 0)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "DarkPower10",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxd, Yyd, Zzd),
+                    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Wedge"),
+                    [7] = "Right"
+                }
+                game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+
+                wait(0.01)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "DarkPower10",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end);
 
 local TabPlayer = Window:MakeTab({
 	Name = "Player",
