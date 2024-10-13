@@ -297,7 +297,7 @@ spawn(function()
  end)
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Gift",
+	Name = "Auto Claim Gift | Beri 💸 |",
 	Default = false,
 	Callback = function(ACG)
 		_G.autoclaimgift = ACG
@@ -317,18 +317,20 @@ local A_1 = "RewardMark"
 end);
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Challenge",
+	Name = "Auto Claim Gift | Gams 💎 |",
 	Default = false,
-	Callback = function(CCA)
-		_G.claimchallenge= CCA
+	Callback = function(ACG)
+		_G.autoclaimgift = ACG
 	end    
 })
 
 spawn(function()
     while wait(0) do
         pcall(function()
-            if _G.claimchallenge then
-
+            if _G.autoclaimgift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardDaily
+    Event:FireServer(A_1)
             end
         end)
     end
