@@ -297,12 +297,42 @@ spawn(function()
  end)
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Gift | Gems & Money |",
+	Name = "Auto Claim Gift",
 	Default = false,
 	Callback = function(ACG)
-		_G.autoclaimG = ACG
+		_G.autoclaimgift = ACG
 	end    
 })
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaimgift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end);
+
+TabAuto:AddToggle({
+	Name = "Auto Claim Challenge",
+	Default = false,
+	Callback = function(CCA)
+		_G.claimchallenge= CCA
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.claimchallenge then
+
+            end
+        end)
+    end
+end)
 
 local Section = TabAuto:AddSection({
 	Name = "Auto Haki Training"
