@@ -296,6 +296,27 @@ spawn(function()
     end
  end)
 
+TabAuto:AddToggle({
+	Name = "Auto Claim Gift Box | Gems & Money |",
+	Default = false,
+	Callback = function(ACG)
+		_G.autoclaimreward = ACG
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoclaimreward then
+local args = {
+    local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
+    Event:FireServer(A_1)
+					end
+				end)
+		end
+	end);
+
 local Section = TabAuto:AddSection({
 	Name = "Auto Haki Training"
 })
