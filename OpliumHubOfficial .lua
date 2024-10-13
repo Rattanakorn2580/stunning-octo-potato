@@ -336,6 +336,71 @@ local A_1 = "RewardMark"
     end
 end)
 
+TabAuto:AddToggle({
+	Name = "Auto Challenges",
+	Default = false,
+	Callback = function(ACLL)
+		_G.autoclaim = ACLL
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Daily1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Daily2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Daily3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Daily4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Weekly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Monthly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Challenge1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
 local Section = TabAuto:AddSection({
 	Name = "Auto Haki Training"
 })
