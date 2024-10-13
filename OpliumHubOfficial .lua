@@ -304,20 +304,6 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.autoclaimG then
-local args = {
-    local A_1 = "RewardMark"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
-    Event:FireServer(A_1)
-end
-end
-end)
-end
-end);
-
 local Section = TabAuto:AddSection({
 	Name = "Auto Haki Training"
 })
