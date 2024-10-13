@@ -348,18 +348,26 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autoclaim then
-local A_1 = "Daily1"
+local A_1 = "Claim"
+local A_2 = "Daily1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
     Event:FireServer(A_1,A_2)
-local A_1 = "Daily2"
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily2"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
-local A_1 = "Daily3"
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily3"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
-local A_1 = "Daily4"
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily4"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
+wait(.8)
             end
         end)
     end
@@ -369,15 +377,21 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autoclaim then
-local A_1 = "Weekly1"
+local A_1 = "Claim"
+local A_2 = "Weekly1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
-local A_1 = "Weekly2"
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly2"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
-local A_1 = "Weekly3"
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly3"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
+wait(.8)
             end
         end)
     end
@@ -387,12 +401,16 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autoclaim then
-local A_1 = "Monthly1"
+local A_1 = "Claim"
+local A_2 = "Monthly1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
-local A_1 = "Monthly2"
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Monthly2"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
+wait(.8)
             end
         end)
     end
@@ -402,62 +420,75 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autoclaim then
-local A_1 = "Challenge1"
+local A_1 = "Claim"
+local A_2 = "Challenge1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge2"
+local A_1 = "Claim"
+local A_2 = "Challenge2"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge3"
+local A_1 = "Claim"
+local A_2 = "Challenge3"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge4"
+local A_1 = "Claim"
+local A_2 = "Challenge4"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge5"
+local A_1 = "Claim"
+local A_2 = "Challenge5"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge6"
+local A_1 = "Claim"
+local A_2 = "Challenge6"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge7"
+local A_1 = "Claim"
+local A_2 = "Challenge7"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge8"
+local A_1 = "Claim"
+local A_2 = "Challenge8"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge9"
+local A_1 = "Claim"
+local A_2 = "Challenge9"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge10"
+local A_1 = "Claim"
+local A_2 = "Challenge10"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
 local A_1 = "Claim"
 local A_2 = "Challenge11"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
     Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge12"
+local A_1 = "Claim"
+local A_2 = "Challenge12"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge13"
+local A_1 = "Claim"
+local A_2 = "Challenge13"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
-local A_1 = "Challenge14"
+local A_1 = "Claim"
+local A_2 = "Challenge14"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
-    Event:FireServer(A_1)
+    Event:FireServer(A_1,A_2)
 wait(.8)
             end
         end)
