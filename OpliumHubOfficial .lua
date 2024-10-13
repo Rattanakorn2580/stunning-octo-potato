@@ -372,6 +372,12 @@ spawn(function()
 local A_1 = "Weekly1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
     Event:FireServer(A_1)
+local A_1 = "Weekly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
             end
         end)
     end
@@ -384,6 +390,9 @@ spawn(function()
 local A_1 = "Monthly1"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
     Event:FireServer(A_1)
+local A_1 = "Monthly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
             end
         end)
     end
@@ -394,6 +403,45 @@ spawn(function()
         pcall(function()
             if _G.autoclaim then
 local A_1 = "Challenge1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge5"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge6"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge7"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge8"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge9"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge10"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge11"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge12"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge13"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+local A_1 = "Challenge14"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
     Event:FireServer(A_1)
             end
