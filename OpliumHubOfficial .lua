@@ -3157,6 +3157,13 @@ end
   	end    
 })
 
+TabMS:AddButton({
+	Name = "Anti Afk",
+	Callback = function()
+game:GetService("Players").LocalPlayer.Idled:connect(function()
+end)
+end})
+
 local Section = TabMS:AddSection({
 	Name = "Other"
 })
