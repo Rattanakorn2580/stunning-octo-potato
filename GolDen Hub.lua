@@ -1,6 +1,10 @@
 local Library = loadstring(game:HttpGet("https://pastebin.com/raw/vff1bQ9F"))()
 local Window = Library.CreateLib("Golden Hub", "DarkTheme")
 
+local Tab = Window:NewTab("Autos")
+
+local Section = Tab:NewSection("Auto function | All |")
+
 local gui = Instance.new("ScreenGui")
 gui.Name = "patrickGui"
 gui.Parent = game.CoreGui
@@ -30,6 +34,3 @@ local uiStroke = Instance.new("UIStroke")
     uiStroke.Thickness = 2
     uiStroke.Parent = TextButton
     
-local Tab = Window:NewTab("Autos")
-
-local Section = Tab:NewSection("Auto function | All |")
