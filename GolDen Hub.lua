@@ -39,9 +39,26 @@ end)
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto Respawn")
 
+Section:NewToggle("Auto Respawn", "Auto Spawn", function(ARP)
+    _G.autorespawn = ARP
+       spawn(function()
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end)
+end)
+
 local Section = Tab:NewSection("Auto function | All |")
 
-Section:NewToggle("ToggleText", "ToggleInfo", function(AFS)
+Section:NewToggle("Auto Fishing", "Auto Fishing", function(AFS)
     AutoFish = AFS
     spawn(function()
     while wait(0) do
