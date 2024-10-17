@@ -253,18 +253,24 @@ end)
 local Tab = Window:NewTab("Auto Farm")
 
 local Section = Tab:NewSection("Items")
-local Weaponlist = {}
+local Weaponlist1 = {}
 local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist,v.Name)
+    table.insert(Weaponlist1,v.Name)
 end
-Section:NewDropdown("Choose Weapon", "insert Weaponlist", Weaponlist, function(currentOption)
-    Weapon = currentOption
-end)
 
+local Weaponlist2 = {}
+local Weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist2,v.Name)
+end
+local dropdown = Section:NewDropdown("Choose Weapon","Select Weapon", Weaponlist1, function(currentOption)
+Weapon = currentOption
+end)
 Section:NewButton("Reflesh", "Refreshes Dropdown", function()
-  dropdown:Refresh(Weaponlist)
+  dropdown:Refresh(Weaponlist2)
 end)
 
 Section:NewToggle("Auto Click", "Auto Click", function(CKK)
