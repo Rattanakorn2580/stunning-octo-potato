@@ -250,6 +250,11 @@ Section:NewToggle("Auto Package", "Auto Package", function(APK)
 end)
 end)
 
+local Tab = Window:NewTab("Auto Farm")
+
+local Section = Tab:NewSection("Items")
+
+
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Player")
 Plr = {}
