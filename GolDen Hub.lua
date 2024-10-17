@@ -250,6 +250,238 @@ Section:NewToggle("Auto Package", "Auto Package", function(APK)
 end)
 end)
 
+Section:NewToggle("Auto Claim Mission", "Claim Expertive", function(miss)
+    AutoMission = miss
+spawn(function()
+while wait() do 
+if AutoMission then 
+pcall(function() 
+workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
+end) 
+end 
+end 
+end)
+end)
+
+Section:NewToggle("Bring Devil Fruit", "Steal Fruit", function(BF)
+    BringDF = BF
+       spawn(function()
+    while wait() do
+        if BringDF then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end)
+end)
+
+Section:NewToggle("Claim Gift | Beri |", "Auto Claim Gift Money", function(ACB)
+    _G.autoclaimberi = ACB
+       spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaimberi then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+end)
+
+Section:NewToggle("Claim Gift | Gems |", "Auto Claim Gift Gems", function(ACG)
+    _G.autoclaimgem = ACG
+       spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaimgem then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardDaily
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+end)
+
+Section:NewToggle("Claim Challenges", "Auto Claim Challenges", function(clm)
+    _G.autoclaim = clm
+       spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Daily1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Weekly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Monthly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Monthly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Challenge1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge5"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge6"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge7"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge8"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge9"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge10"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge11"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge12"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge13"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge14"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+end)
+
+local Section = Tab:NewSection("Haki Training")
+
+Section:NewToggle("Auto Haki | Slow |", "Auto Farm Haki Slow!!!", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+Section:NewToggle("Auto Haki | Very Fast |", "Auto Farm Haki Very Fast!!!", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
 local Tab = Window:NewTab("Auto Farm")
 
 local Section = Tab:NewSection("Items")
