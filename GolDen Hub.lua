@@ -39,8 +39,4 @@ end)
 local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto Respawn")
 
-Section:NewToggle("Auto Respawn", "Auto Spawn", function(SPW)
-    _G.autorespawn = SPW
-end)
-
 local Section = Tab:NewSection("Auto function | All |")
