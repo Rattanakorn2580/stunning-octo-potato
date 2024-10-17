@@ -1,36 +1,43 @@
-local ScreenGui = Instance.new("ScreenGui")
-local Frame = Instance.new("Frame")
-local TextButton = Instance.new("TextButton")
-local UITextSizeConstraint = Instance.new("UITextSizeConstraint")
+local gui = Instance.new("ScreenGui")
+gui.Name = "patrickGui"
+gui.Parent = game.CoreGui
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+--screengui = gui
 
-Frame.Parent = ScreenGui
-Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
-Frame.BackgroundTransparency = 0.500
-Frame.Position = UDim2.new(0.858712733, 0, -0.0237762257, 0)
-Frame.Size = UDim2.new(0.129513338, 0, 0.227972031, 0)
 
-TextButton.Parent = Frame
-TextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.BackgroundTransparency = 1.000
-TextButton.Size = UDim2.new(1, 0, 1, 0)
-TextButton.Font = Enum.Font.SourceSans
-TextButton.Text = "Turn/Off"
-TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
-TextButton.TextScaled = true
-TextButton.TextSize = 25.000
-TextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-TextButton.TextStrokeTransparency = 0.000
-TextButton.TextWrapped = true
-TextButton.MouseButton1Down:Connect(function()
-	game:GetService("VirtualInputManager"):SendKeyEvent(true, "P" , false , game)
+
+	local TextButton = Instance.new("TextButton")
+-- Text
+TextButton.Text = "Toggle"
+TextButton.TextSize = 24
+-- Color
+TextButton.TextColor3 = Color3.new(1, 1, 1)
+TextButton.BackgroundColor3 = Color3.new(0, 1, 1)
+TextButton.BorderColor3 = Color3.new(1, 1, 1)
+-- thickness
+TextButton.BorderSizePixel = 4
+-- Text Code
+TextButton.Font = Enum.Font.Code
+-- Size
+TextButton.Size = UDim2.new(0.2, 0, 0.1, 0)
+-- Posisition
+TextButton.Position = UDim2.new(0, 0, 0.4, 0)
+-- Function
+TextButton.MouseButton1Click:Connect (function()
+Library:ToggleUI()
 end)
+TextButton.Parent = gui
+TextButton.Draggable = true
 
-UITextSizeConstraint.Parent = TextButton
-UITextSizeConstraint.MaxTextSize = 25
+	local cornerUI = Instance.new("UICorner")
+cornerUI.CornerRadius = UDim.new(0, 5)
+cornerUI.Parent = TextButton
 
+	local uiStroke = Instance.new("UIStroke")
+    uiStroke.Color = Color3.new(0, 0, 0)
+    uiStroke.Thickness = 2
+    uiStroke.Parent = TextButton
+    
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Golden Hub", "Synapse")
 
