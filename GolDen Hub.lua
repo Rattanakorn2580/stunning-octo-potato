@@ -5,10 +5,6 @@ local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto Respawn")
 
 Section:NewToggle("Auto Respawn", "Auto Spawn", function(SPW)
-
-    else
-        print("Toggle Off")
-    end
 end)
 
 local Section = Tab:NewSection("Auto function | All |")
