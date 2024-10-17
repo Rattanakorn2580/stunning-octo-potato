@@ -25,11 +25,11 @@ TextButton.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
 TextButton.TextStrokeTransparency = 0.000
 TextButton.TextWrapped = true
 TextButton.MouseButton1Down:Connect(function()
-	game:GetService("VirtualInputManager"):SendKeyEvent(true, "F6" , false , game)
+	game:GetService("VirtualInputManager"):SendKeyEvent(true, "P" , false , game)
 end)
 
 UITextSizeConstraint.Parent = TextButton
-UITextSizeConstraint.MaxTextSize = 50
+UITextSizeConstraint.MaxTextSize = 25
 
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Golden Hub", "Synapse")
@@ -273,4 +273,8 @@ _G.bringplr = ABP
 while _G.bringplr do wait()
 game.Players[SelectPlr].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
 end
+end)
+
+Section:NewKeybind("Keybind", "KeybindInfo", Enum.KeyCode.P, function()
+	Library:ToggleUI()
 end)
