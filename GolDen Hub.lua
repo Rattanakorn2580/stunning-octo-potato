@@ -9,7 +9,7 @@ ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
 Frame.BackgroundTransparency = 0.500
-Frame.Position = UDim2.new(0.858712733, 0, 0.0237762257, 0)
+Frame.Position = UDim2.new(0.858712733, 0, -0.0237762257, 0)
 Frame.Size = UDim2.new(0.129513338, 0, 0.227972031, 0)
 
 TextButton.Parent = Frame
