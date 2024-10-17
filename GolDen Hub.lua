@@ -227,6 +227,10 @@ local drop = Section:NewDropdown("Choose Player", "", Plr, function(plr)
    SelectPlr = plr
 end)
 
+Section:NewButton("Reflesh", "Refreshes Dropdown", function()
+  dropdown:Refresh(Plr)
+end)
+
 Section:NewButton("Click To TP", "", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlr].Character.HumanoidRootPart.CFrame
 end)
