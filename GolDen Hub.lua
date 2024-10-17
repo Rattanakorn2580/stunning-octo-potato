@@ -40,3 +40,73 @@ local Tab = Window:NewTab("Autos")
 local Section = Tab:NewSection("Auto Respawn")
 
 local Section = Tab:NewSection("Auto function | All |")
+
+Section:NewToggle("ToggleText", "ToggleInfo", function(AFS)
+    AutoFish = AFS
+    spawn(function()
+    while wait(0) do
+        pcall(function()
+            if AutoFish then
+                wait(0.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
+                wait(0.5)
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if string.find(v.Name, "Rod") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                            end
+                        end
+                    end
+                end
+                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if string.find(x.Name, "Rod") then
+                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:FindFirstChild("Bobber") then
+                                        if v.Bobber.Effect.Enabled == true then
+                                            wait(0.6)
+                                            local args = {
+                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                            }
+                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        end
+                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
+                                        wait(0.6)
+                                        local args = {
+                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                        }
+                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end       
+            end
+        end)
+    end
+end)
+end)
+local Tab = Window:NewTab("Player")
+local Section = Tab:NewSection("Player")
+Plr = {}
+for i,v in pairs(game:GetService("Players"):GetChildren()) do
+    table.insert(Plr,v.Name) 
+end
+local drop = Section:NewDropdown("Choose Player", "", Plr, function(plr)
+   SelectPlr = plr
+end)
+
+Section:NewButton("Click To TP", "", function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlr].Character.HumanoidRootPart.CFrame
+end)
+
+Section:NewToggle("Bring Player", "", function(ABP)
+_G.bringplr = ABP
+while _G.bringplr do wait()
+game.Players[SelectPlr].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+end
+end)
