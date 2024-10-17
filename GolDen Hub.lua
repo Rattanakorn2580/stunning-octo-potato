@@ -1032,6 +1032,13 @@ game.Players[SelectPlr].Character.HumanoidRootPart.CFrame = game.Players.LocalPl
 end
 end)
 
+local Tab = Window:NewTab("Spam")
+local Section = Tab:NewSection("Dpam Skill (🔒)")
+
+Section:NewToggle("Max Charge Skill", "Full Charge Skill", function(max)
+    skillmax = max
+end)
+
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Other")
 
