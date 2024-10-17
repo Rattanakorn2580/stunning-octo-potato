@@ -2605,7 +2605,7 @@ TabPlayer:AddToggle({
 		Sp = viewplr
 	end    
 })
-	
+
 TabPlayer:AddToggle({
 	Name = "Bring Player",
 	Default = false,
