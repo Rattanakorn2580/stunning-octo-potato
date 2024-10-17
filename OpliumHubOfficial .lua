@@ -41,7 +41,7 @@ local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
-Cache.DevConfig["ListOfSafeZone"] = {"SafeZoneSky", "SafeZoneLightFarm"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
@@ -2739,9 +2739,9 @@ TabLD:AddDropdown({
 TabLD:AddButton({
 	Name = "Click To Tp",
 	Callback = function()
-        if getgenv().tpsafezone == "SafeZoneSky" then
+        if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZoneLightFarm" then
+	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
