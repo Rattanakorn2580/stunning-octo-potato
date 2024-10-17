@@ -253,7 +253,52 @@ end)
 local Tab = Window:NewTab("Auto Farm")
 
 local Section = Tab:NewSection("Items")
+local Weaponlist = {}
+local Weapon = nil
 
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+Section:NewDropdown("Choose Weapon", "insert Weaponlist", Weaponlist, function(currentOption)
+    Weapon = currentOption
+end)
+
+Section:NewButton("Reflesh", "Refreshes Dropdown", function()
+  dropdown:Refresh(Weaponlist)
+end)
+
+Section:NewToggle("Auto Click", "Auto Click", function(CKK)
+    AutoClicking = CKK
+       spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function() 
+pcall(function() 
+if AutoClicking then 
+game:GetService'VirtualUser':CaptureController() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end 
+end) 
+end) 
+end)
+end)
+
+Section:NewToggle("Auto Equip", "Auto equip item", function(AEQ)
+    _G.autoequip = AEQ
+       spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
+end)
+end)
 
 local Tab = Window:NewTab("Player")
 local Section = Tab:NewSection("Player")
