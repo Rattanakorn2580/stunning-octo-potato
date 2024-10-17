@@ -2599,24 +2599,12 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({
-	Name = "View Player",
+	Name = "View Player | 🚫 Not Work 🚫 |",
 	Default = false,
 	Callback = function(viewplr)
 		Sp = viewplr
 	end    
 })
-
-spawn(function()
-repeat wait(0)
-if Sp then
-pcall(function()
-        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
-    until Sp == false or game.Players:FindFirstChild(SelectPlayer).Character.Humanoid.Health == 0
-    if Sp == false or game.Players:FindFirstChild(SelectPlayer).Character.Humanoid.Health ~= 0 then
-        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-end)
-end
-end)
 	
 TabPlayer:AddToggle({
 	Name = "Bring Player",
