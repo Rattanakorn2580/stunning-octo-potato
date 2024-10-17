@@ -253,24 +253,15 @@ end)
 local Tab = Window:NewTab("Auto Farm")
 
 local Section = Tab:NewSection("Items")
-local Weaponlist1 = {}
+local Weaponlist = {}
 local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
     table.insert(Weaponlist1,v.Name)
 end
 
-local Weaponlist2 = {}
-local Weapon = nil
-
-for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist2,v.Name)
-end
-local dropdown = Section:NewDropdown("Choose Weapon","Select Weapon", Weaponlist1, function(currentOption)
+Section:NewDropdown("Choose Weapon","Select Weapon", Weaponlist, function(currentOption)
 Weapon = currentOption
-end)
-Section:NewButton("Reflesh", "Refreshes Dropdown", function()
-  dropdown:Refresh(Weaponlist2)
 end)
 
 Section:NewToggle("Auto Click", "Auto Click", function(CKK)
@@ -507,14 +498,21 @@ local drop = Section:NewDropdown("Choose Player", "", Plr, function(plr)
    SelectPlr = plr
 end)
 
-Section:NewButton("Reflesh", "Refreshes Dropdown", function()
-  dropdown:Refresh(Plr)
-end)
-
 Section:NewButton("Click To TP", "", function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlr].Character.HumanoidRootPart.CFrame
 end)
 
+Section:NewToggle("View Player", "Look Player", function(viewplr)
+    Sp = viewplr    
+local plr1 = game.Players.LocalPlayer.Character.Humanoid
+local plr2 = game.Players:FindFirstChild(SelectPlr)
+    repeat wait(0)
+        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+    until Sp == false or plr2.Character.Humanoid.Health == 0
+    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+			end
+end)
 Section:NewToggle("Bring Player", "", function(ABP)
 _G.bringplr = ABP
 while _G.bringplr do wait()
