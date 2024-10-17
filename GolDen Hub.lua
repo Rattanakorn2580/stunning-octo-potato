@@ -257,7 +257,7 @@ local Weaponlist = {}
 local Weapon = nil
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
-    table.insert(Weaponlist1,v.Name)
+    table.insert(Weaponlist,v.Name)
 end
 
 Section:NewDropdown("Choose Weapon","Select Weapon", Weaponlist, function(currentOption)
@@ -297,8 +297,8 @@ Section:NewToggle("Auto Equip", "Auto equip item", function(AEQ)
 end)
 end)
 
-local Section = Tab:NewSection("Section Name")
-Section:NewToggle("ToggleText", "ToggleInfo", function(AST)
+local Section = Tab:NewSection("Auto Farm Fruity")
+Section:NewToggle("Auto Stats", "Auto Farm Stats", function(AST)
     AutoStats = AST
        
 spawn(function()
