@@ -1179,6 +1179,46 @@ spawn(function()
 end)
 end)
 
+Section:NewToggle("Quake Kill Player | All |", "Spam Quake Kill Player All", function(spa)
+    _G.spamquakeall = sqa
+       spawn(function() -- 
+    while task.wait(0) do
+        pcall(function()
+            for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                task.wait(0.1)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+end)
+
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Teleport NPC")
 
@@ -1187,16 +1227,40 @@ Section:NewDropdown("Choose NPC", "List NPC", Cache.DevConfig["ListOfMerchant"],
 end)
 
 Section:NewButton("Click to Tp", "Teleport to NPC", function()
-    
+    if getgenv().tpmerchant == "Rayleigh" then
+	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
+	elseif getgenv().tpmerchant == "Better Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
+        elseif getgenv().tpmerchant == "Drink" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
+        elseif getgenv().tpmerchant == "Flail" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
+        elseif getgenv().tpmerchant == "QuestFish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
+        elseif getgenv().tpmerchant == "Krizma" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
+        elseif getgenv().tpmerchant == "Sword" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
+        elseif getgenv().tpmerchant == "Sniper" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
+        elseif getgenv().tpmerchant == "Emote" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
+        elseif getgenv().tpmerchant == "Affinity" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
+        elseif getgenv().tpmerchant == "Fish" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
+        elseif getgenv().tpmerchant == "Expertise" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
+		end
 end)
 
 local Tab = Window:NewTab("Island")
 local Section = Tab:NewSection("Safe Zone")
-Section:NewDropdown("DropdownText", "DropdownInf", Cache.DevConfig["ListOfSafeZone"], function(tps)
+Section:NewDropdown("Choose SafeZone", "List SafeZone", Cache.DevConfig["ListOfSafeZone"], function(tps)
     getgenv().tpsafezone = tps
 end)
 
-Section:NewButton("ButtonText", "ButtonInfo", function()
+Section:NewButton("Click to SafeZone", "Teleport to SafeZone", function()
     if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
 	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
@@ -1205,7 +1269,7 @@ Section:NewButton("ButtonText", "ButtonInfo", function()
 end)
 
 local Section = Tab:NewSection("Teleport Island")
-Section:NewDropdown("DropdownText", "DropdownInf", Cache.DevConfig["ListOfIsland"], function(tpl)
+Section:NewDropdown("Choose Island", "List Island", Cache.DevConfig["ListOfIsland"], function(tpl)
     getgenv().tpisland = tpl
 end)
 
@@ -1288,7 +1352,7 @@ local Section = Tab:NewSection("Other")
 
 local Section = Tab:NewSection("Spam Yuru Hit")
 
-Section:NewTextBox("Yoru Hit", "1", function(ht)
+Section:NewTextBox("Yoru Hit", "", function(ht)
 	_G.yoruhit = ht
 end)
 
