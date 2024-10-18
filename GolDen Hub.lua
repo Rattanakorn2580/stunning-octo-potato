@@ -1,43 +1,27 @@
-local gui = Instance.new("ScreenGui")
-gui.Name = "patrickGui"
-gui.Parent = game.CoreGui
-
---screengui = gui
-
-
-
-	local TextButton = Instance.new("TextButton")
--- Text
-TextButton.Text = "Toggle"
-TextButton.TextSize = 24
--- Color
-TextButton.TextColor3 = Color3.new(1, 1, 1)
-TextButton.BackgroundColor3 = Color3.new(0, 1, 1)
-TextButton.BorderColor3 = Color3.new(1, 1, 1)
--- thickness
-TextButton.BorderSizePixel = 4
--- Text Code
-TextButton.Font = Enum.Font.Code
--- Size
-TextButton.Size = UDim2.new(0.2, 0, 0.1, 0)
--- Posisition
-TextButton.Position = UDim2.new(0, 0, 0.4, 0)
--- Function
-TextButton.MouseButton1Click:Connect (function()
-Library:ToggleUI()
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+ 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Tutorial"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
 end)
-TextButton.Parent = gui
-TextButton.Draggable = true
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
 
-	local cornerUI = Instance.new("UICorner")
-cornerUI.CornerRadius = UDim.new(0, 5)
-cornerUI.Parent = TextButton
-
-	local uiStroke = Instance.new("UIStroke")
-    uiStroke.Color = Color3.new(0, 0, 0)
-    uiStroke.Thickness = 2
-    uiStroke.Parent = TextButton
-    
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
 local Window = Library.CreateLib("Golden Hub", "Synapse")
 
