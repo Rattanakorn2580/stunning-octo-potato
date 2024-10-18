@@ -127,6 +127,23 @@ local remotes = {}
           return azc(self,...)
     end)
 
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
 function serializeTable(val, name, skipnewlines, depth)
     skipnewlines = skipnewlines or false
     depth = depth or 0
@@ -1363,6 +1380,143 @@ end)
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Other")
 
+local Section = Tab:NewSection("Server")
+Section:NewButton("Rejoin Server", "Rejoin Server", function()
+    game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId)
+end)
+
+Section:NewButton("Hop Server", "Hop Server", function()
+    local PlaceID = game.PlaceId
+          local AllIDs = {}
+          local foundAnything = ""
+          local actualHour = os.date("!*t").hour
+          local Deleted = false
+          --[[
+          local File = pcall(function()
+              AllIDs = game:GetService('HttpService'):JSONDecode(readfile("NotSameServers.json"))
+          end)
+          if not File then
+              table.insert(AllIDs, actualHour)
+              writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+          end
+          ]]
+          function TPReturner()
+              local Site;
+              if foundAnything == "" then
+                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+              else
+                  Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+              end
+              local ID = ""
+              if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                  foundAnything = Site.nextPageCursor
+              end
+              local num = 0;
+              for i,v in pairs(Site.data) do
+                  local Possible = true
+                  ID = tostring(v.id)
+                  if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                      for _,Existing in pairs(AllIDs) do
+                          if num ~= 0 then
+                              if ID == tostring(Existing) then
+                                  Possible = false
+                              end
+                          else
+                              if tonumber(actualHour) ~= tonumber(Existing) then
+                                  local delFile = pcall(function()
+                                      -- delfile("NotSameServers.json")
+                                      AllIDs = {}
+                                      table.insert(AllIDs, actualHour)
+                                  end)
+                              end
+                          end
+                          num = num + 1
+                      end
+                      if Possible == true then
+                          table.insert(AllIDs, ID)
+                          wait()
+                          pcall(function()
+                              -- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
+                              wait()
+                              game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                          end)
+                          wait(4)
+                      end
+                  end
+              end
+          end
+
+          function Teleport()
+              while wait() do
+                  pcall(function()
+                      TPReturner()
+                      if foundAnything ~= "" then
+                          TPReturner()
+                      end
+                  end)
+              end
+          end
+
+          Teleport()
+
+end)
+
+local Section = Tab:NewSection("Unbox")
+Section:NewToggle("Unbox | Common |", "Unbox Common", function(uc)
+    UnboxC = uc
+       spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxC then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+end)
+
+Section:NewToggle("Unbox | Uncom |", "Unbox Uncommon", function(uu)
+    UnboxU = uu
+       spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxU then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+end)
+
+Section:NewToggle("Unbox | Rare , Ultra |", "Unbox Rare , Ultra Rare", function(url)
+    UnboxRL = url
+       spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+end)
+
 local Section = Tab:NewSection("Spam Yuru Hit")
 
 Section:NewTextBox("Yoru Hit", "", function(ht)
@@ -1390,4 +1544,108 @@ Section:NewToggle("Enable", "Enabled Fast Yoru", function(you)
         end)
     end
 end)
+end)
+
+local Section = Tab:NewSection("Anti")
+Section:NewButton("Anti Lag", "BootsFPS", function()
+    if not gethui then
+    warn("Incompatible executor: gethui is unavailable")
+    return
+end
+
+local runService = game:GetService("RunService")
+local lighting = game:GetService("Lighting")
+
+local fpsCounterGui = Instance.new("ScreenGui", gethui())
+local fpsLabel = Instance.new("TextLabel", fpsCounterGui)
+
+fpsCounterGui.Name = "FpsCounterGui"
+fpsCounterGui.IgnoreGuiInset = true
+fpsLabel.Name = "FpsLabel"
+fpsLabel.BackgroundTransparency = 1
+fpsLabel.Position = UDim2.new(1, -100, 0, 0)
+fpsLabel.Size = UDim2.new(0, 100, 0, 30)
+fpsLabel.Text = ""
+fpsLabel.TextSize = 16
+fpsLabel.TextStrokeTransparency = 0.6
+fpsLabel.Draggable = true
+
+local function GetFPS(delay)
+    local startTime = tick()
+    local frames = 0
+    local heartbeatConnection = runService.Heartbeat:Connect(function()
+        frames = frames + 1
+    end)
+    task.wait(delay)
+    heartbeatConnection:Disconnect()
+    local elapsedTime = tick() - startTime
+    local fps = frames / elapsedTime
+    return math.ceil(fps)
+end
+
+task.spawn(function()
+    while true do
+        local fps = GetFPS(0.5)
+        if fps >= 60 then
+            fpsLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        elseif fps <= 59 and fps > 50 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+        elseif fps <= 49 and fps > 30 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 85, 0)
+        elseif fps <= 29 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        end
+        fpsLabel.Text = tostring(fps) .. " FPS"
+    end
+end)
+
+lighting.GlobalShadows = false
+lighting.FogEnd = 9e9
+lighting.EnvironmentDiffuseScale = 0.5
+lighting.EnvironmentSpecularScale = 0.5
+
+for _, descendant in ipairs(game:GetDescendants()) do
+    if descendant:IsA("BasePart") then
+        descendant.CastShadow = false
+        descendant.Material = Enum.Material.SmoothPlastic
+        descendant.Reflectance = 0
+        if descendant:IsA("MeshPart") then
+            descendant.CollisionFidelity = Enum.CollisionFidelity.Box
+        end
+    end
+    if descendant:IsA("Decal") or descendant:IsA("Texture") then
+        if descendant.Transparency > 0.25 then
+            descendant.Transparency = 0.25
+        end
+    end
+    if descendant:IsA("ParticleEmitter") or descendant:IsA("Trail") then
+        descendant.Lifetime = NumberRange.new(0)
+    end
+		end
+end)
+
+local Section = Tab:NewSection("Other")
+Section:NewButton("Seastone Cestus( 500 Melee )", "got Seastone Cestus", function()
+    local A_1 = "Seastone Cestus"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
+    Event:FireServer(A_1)
+end)
+
+Section:NewButton("Unlock Emote | All |", "Unlock Emote All", function()
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark4.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark5.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark6.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark7.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark8.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark9.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark10.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark11.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark12.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark13.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
+    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
 end)
