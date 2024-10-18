@@ -1032,3 +1032,32 @@ end)
 
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Other")
+
+local Section = Tab:NewSection("Spam Yuru Hit")
+
+Section:NewTextBox("Yoru Hit", "1", function(ht)
+	_G.yoruhit = ht
+end)
+
+Section:NewToggle("Enable", "Enabled Fast Yoru", function(you)
+    _G.yorufast = you
+       spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.yorufast then
+                if game.Players.LocalPlayer.Character:FindFirstChild("Yoru") and tonumber(serializeTable(attackremote)) ~= nil and tonumber(serializeTable(attackremote)) ~= "" then
+                    repeat wait(0.3)
+                        for i = 1, _G.yoruhit do
+                            local args = {
+                                [1] = tonumber(serializeTable(attackremote))
+                            }
+                            
+                            game:GetService("Players").LocalPlayer.Character.Yoru.RequestAnimation:FireServer(unpack(args))
+                        end
+                    until _G.yorufast == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0 
+                end
+            end
+        end)
+    end
+end)
+end)
