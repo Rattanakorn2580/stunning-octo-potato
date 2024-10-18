@@ -37,6 +37,21 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
     SafeZoneFarm.Anchored = true
 
+local Cache = { DevConfig = {} };
+
+Cache.DevConfig["ListOfBox1"] = {"Common Box"};
+Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
+Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
+Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
+	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
+	                           "Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle",
+	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
+	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
+Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
+Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
+
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
