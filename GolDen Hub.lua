@@ -1178,7 +1178,104 @@ spawn(function()
     end
 end)
 end)
-	
+
+local Tab = Window:NewTab("NPC")
+local Section = Tab:NewSection("Teleport NPC")
+
+Section:NewDropdown("Choose NPC", "List NPC", Cache.DevConfig["ListOfMerchant"], function(tpm)
+    getgenv().tpmerchant = tpm
+end)
+
+Section:NewButton("Click to Tp", "Teleport to NPC", function()
+    
+end)
+
+local Tab = Window:NewTab("Island")
+local Section = Tab:NewSection("Safe Zone")
+Section:NewDropdown("DropdownText", "DropdownInf", Cache.DevConfig["ListOfSafeZone"], function(tps)
+    getgenv().tpsafezone = tps
+end)
+
+Section:NewButton("ButtonText", "ButtonInfo", function()
+    if getgenv().tpsafezone == "SafeZone Sky" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
+		end
+end)
+
+local Section = Tab:NewSection("Teleport Island")
+Section:NewDropdown("DropdownText", "DropdownInf", Cache.DevConfig["ListOfIsland"], function(tpl)
+    getgenv().tpisland = tpl
+end)
+
+Section:NewButton("Click to Tp", "Teleport to Island", function()
+    if getgenv().tpisland == "Grassy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
+      elseif getgenv().tpisland == "Kaizu" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
+      elseif getgenv().tpisland == "Snow Mountains"  then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
+      elseif getgenv().tpisland == "Pursuer Boss" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+      elseif getgenv().tpisland == "Bar" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)
+      elseif getgenv().tpisland == "Cliffs" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4598, 217, 4964)
+      elseif getgenv().tpisland == "Windmill" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7, 224, -91)
+      elseif getgenv().tpisland == "Cave" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-280, 217, -831)
+      elseif getgenv().tpisland == "Krizma" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1109, 341, 1645)
+      elseif getgenv().tpisland == "Sam" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1283, 218, -1348)
+      elseif getgenv().tpisland == "Green" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2727, 253, 1041)
+      elseif getgenv().tpisland == "Trees" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1068, 217, 3351)
+      elseif getgenv().tpisland == "Pyramid" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(118, 216, 4773)
+      elseif getgenv().tpisland == "Merlin Fish" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1668, 217, -300)
+      elseif getgenv().tpisland == "Snowy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1896, 222, 3385)
+      elseif getgenv().tpisland == "Mountain" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2052, 488, -701)
+      elseif getgenv().tpisland == "Marine Ford" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3164, 296, -3780)
+      elseif getgenv().tpisland == "Sand Castle" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1020, 224, -3277)
+      elseif getgenv().tpisland == "Forest" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5781, 216, 114)
+      elseif getgenv().tpisland == "Evil" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5169, 523, -7803)
+      elseif getgenv().tpisland == "Crescent" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3193, 357, 1670)
+      elseif getgenv().tpisland == "Islands" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4319, 245, 5252)
+      elseif getgenv().tpisland == "Town" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 218, 755)
+      elseif getgenv().tpisland == "Rocky" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-37, 229, 2149)
+      elseif getgenv().tpisland == "Palm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(766, 216, -1374)
+      elseif getgenv().tpisland == "Sand" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2747, 216, -942)
+      elseif getgenv().tpisland == "Sand 2" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(162, 216, -2265)
+      elseif getgenv().tpisland == "Small" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1237, 240, -244)
+      elseif getgenv().tpisland == "Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1235, 223, 623)
+      elseif getgenv().tpisland == "Super Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4007, 216, -2190)
+      elseif getgenv().tpisland == "Grass" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
+      elseif getgenv().tpisland == "Atlar" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
+		end
+end)
 local Tab = Window:NewTab("Spam")
 local Section = Tab:NewSection("Dpam Skill (🔒)")
 
