@@ -1032,7 +1032,3 @@ end)
 
 local Tab = Window:NewTab("Misc")
 local Section = Tab:NewSection("Other")
-
-Section:NewKeybind("Keybind", "KeybindInfo", Enum.KeyCode.P, function()
-	Library:ToggleUI()
-end)
