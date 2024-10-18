@@ -1236,7 +1236,6 @@ end)
 
 local Tab = Window:NewTab("NPC")
 local Section = Tab:NewSection("Teleport NPC")
-
 Section:NewDropdown("Choose NPC", "List NPC", Cache.DevConfig["ListOfMerchant"], function(tpm)
     getgenv().tpmerchant = tpm
 end)
