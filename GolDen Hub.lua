@@ -754,6 +754,23 @@ end)
 end)
 
 local Tab = Window:NewTab("Auto Farm")
+local Section = Tab:NewSection("Farm Mob")
+
+Section:NewToggle("Auto Farm | All |", "Auto Farm Mob All", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
+
+Section:NewToggle("Bring Mob | All |", "Bring Mob All", function(state)
+    if state then
+        print("Toggle On")
+    else
+        print("Toggle Off")
+    end
+end)
 
 local Section = Tab:NewSection("Items")
 local Weaponlist = {}
