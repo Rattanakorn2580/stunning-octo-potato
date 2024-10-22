@@ -2599,12 +2599,22 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddToggle({
-	Name = "View Player | 🚫 Not Work 🚫 |",
+	Name = "Behind Player",
 	Default = false,
-	Callback = function(viewplr)
-		Sp = viewplr
+	Callback = function(TP)
+		Tpplr = TP
 	end    
 })
+
+spawn(function()
+    while wait() do
+        if Tpplr then
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,3)
+            end)
+        end
+    end
+end)
 
 TabPlayer:AddToggle({
 	Name = "Bring Player",
