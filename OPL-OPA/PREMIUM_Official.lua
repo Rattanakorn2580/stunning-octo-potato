@@ -9,7 +9,7 @@ local Player = game.Players.LocalPlayer
 }) 
 
 function MakeScriptHub()
-         loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))() --Put The Script That Will Load If The Key Is Correct Here
+         loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/Fastattack/refs/heads/main/InWHub_PreMium.lua?token=GHSAT0AAAAAACWKKMR6HSSCY7QGZD7C6EFMZYZ53QQ"))()
 end
 
 OrionLib:MakeNotification({
