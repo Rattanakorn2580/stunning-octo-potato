@@ -1,40 +1,86 @@
-local OrionLib = loadstring(game:HttpGet(('https://[Log in to view URL]')))()
-local Window = OrionLib:MakeWindow({Name = "key system Ultron", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() 
+local Player = game.Players.LocalPlayer 
+  local Window = OrionLib:MakeWindow({
+		Name = "InW Hub Key System",
+		HidePremium = false,
+		SaveConfig = true,
+		ConfigFolder = "OrionTest",
+        IntroText = "Loading Script..."       
+}) 
 
-loadstring(game:HttpGet("https://[Log in to view URL]"))()
-
-getgenv().KeyInput = "string"
-
-function Destroy()
-    game:GetService("CoreGui").Orion:Destroy()
+function MakeScriptHub()
+         loadstring(game:HttpGet('https://raw.githubusercontent.com/GhostPlayer352/Test4/main/GhostHub'))() --Put The Script That Will Load If The Key Is Correct Here
 end
 
-function CheckKey()
-    if sf_key == KeyInput then
-        Destroy()
-       local OrionLib = loadstring(game:HttpGet(('https://[Log in to view URL]')))()
-       local Window = OrionLib:MakeWindow({Name = "key system Ultron", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest"})
-    end
-end
+OrionLib:MakeNotification({
+	Name = "Logged In!",
+	Content = "You need key "..Player.Name..".",
+	Image = "rbxassetid://4483345998",
+	Time = 5
+})
+
+getgenv().Key = "7090" 
+getgenv().KeyInput = "string" 
 
 local Tab = Window:MakeTab({
-    Name, = "Key",
-    Icon = "rbxassetid://4483345998"
-    PremiumOnly = flase
-    })
+	Name = "Key",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+}) --Making A Tab
 
 Tab:AddTextbox({
-    Name = "Enter Text"
-    Default = "",
-    TextDisappear = true,
-    Callback = function(Value)
-        KeyInput = Value
+	Name = "Key",
+	Default = "Enter Key.",
+	TextDisappear = true,
+	Callback = function(Value)
+		getgenv().KeyInput = Value
+	end	  
+}) 
+
+Tab:AddButton({
+    Name = "Check Key",
+    Callback = function()
+        if getgenv().KeyInput == getgenv().Key then
+            OrionLib:MakeNotification({
+                Name = "Checking Key",
+                Content = "Checking The Key You Entered",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Correct Key!",
+                Content = "The key you entered is Correct.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(1)
+            OrionLib:Destroy()
+            wait(.3)
+            MakeScriptHub()
+        else
+           OrionLib:MakeNotification({
+                Name = "Checking Key",
+                Content = "Checking The Key You Entered",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
+            wait(2)
+            OrionLib:MakeNotification({
+                Name = "Incorrect Key!",
+                Content = "The key you entered is incorrect.",
+                Image = "rbxassetid://4483345998",
+                Time = 5
+            })
         end
+    end
 })
 
-Tab:AddButton({ 	
-    Name = "Enable", 	
-    Callback = function() 		
-        CheckKey()	
-        end 
-})
+Tab:AddButton({
+	Name = "ช่องทางการติดต่อ",
+	Callback = function()
+      		setclipboard("facebook: Bank Kesee")
+  	end    
+}) 
+    
+OrionLib:Init()
