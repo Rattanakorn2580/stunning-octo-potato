@@ -1,57 +1,35 @@
--- Function to create GUI
-local function createHitboxGui()
-    -- Check if GUI already exists and remove it to avoid duplicates
-    if game.Players.LocalPlayer.PlayerGui:FindFirstChild("HitboxGui") then
-        game.Players.LocalPlayer.PlayerGui:FindFirstChild("HitboxGui"):Destroy()
-    end
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("Pre Hub", "DarkTheme")
 
-    -- Create GUI
-    local ScreenGui = Instance.new("ScreenGui")
-    ScreenGui.Name = "HitboxGui"
-    ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+ 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Tutorial"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Library:ToggleUI()
+end)
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
 
-    local Frame = Instance.new("Frame")
-    Frame.Parent = ScreenGui
-    Frame.Size = UDim2.new(0, 200, 0, 100)
-    Frame.Position = UDim2.new(0, 10, 1, -110)
-    Frame.AnchorPoint = Vector2.new(0, 1)
-    Frame.BackgroundColor3 = Color3.fromRGB(50, 50, 50)  -- Dark gray background
-    Frame.BorderSizePixel = 0
-    Frame.BackgroundTransparency = 0.2
-    Frame.Active = true
+local Tab = Window:NewTab("HitBox")
+local Section = Tab:NewSection("HitBox")
 
-    local TextBox = Instance.new("TextBox")
-    TextBox.Parent = Frame
-    TextBox.Size = UDim2.new(1, -10, 0.4, -5)
-    TextBox.Position = UDim2.new(0, 5, 0, 5)
-    TextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- White background
-    TextBox.TextColor3 = Color3.fromRGB(0, 0, 0)  -- Black text
-    TextBox.Text = "Enter hitbox size"
-    TextBox.ClearTextOnFocus = true
-
-    local TeamButton = Instance.new("TextButton")
-    TeamButton.Parent = Frame
-    TeamButton.Size = UDim2.new(1, -10, 0.4, -5)
-    TeamButton.Position = UDim2.new(0, 5, 0.5, 5)
-    TeamButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)  -- Darker gray background
-    TeamButton.TextColor3 = Color3.fromRGB(255, 255, 255)  -- White text
-    TeamButton.Text = "Toggle Team Check"
-
-    local TextLabel = Instance.new("TextLabel")
-    TextLabel.Parent = Frame
-    TextLabel.Size = UDim2.new(1, -10, 0.2, -5)
-    TextLabel.Position = UDim2.new(0, 5, 0.9, 5)
-    TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)  -- White background
-    TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)  -- Black text
-    TextLabel.Text = "Hitbox Size: 1"
-    TextLabel.TextScaled = true
-  
-    -- Handle Input
-    local hitboxSize = 1
-    local teamCheck = false
-
-    TextBox.FocusLost:Connect(function(enterPressed)
-        if enterPressed then
+Section:NewTextBox("HitBox Size:", " ", function(enterPressed)
+	if enterPressed then
             local inputText = TextBox.Text
             local inputNumber = tonumber(inputText)
             if inputNumber then
@@ -100,44 +78,4 @@ local function createHitboxGui()
             end
             TextBox.Text = ""
         end
-    end)
-
-    -- Toggle team check
-    TeamButton.MouseButton1Click:Connect(function()
-        teamCheck = not teamCheck
-        TeamButton.Text = teamCheck and "Team Check: ON" or "Team Check: OFF"
-    end)
-end
-
--- Initialize GUI on script load
-createHitboxGui()
-
--- Recreate GUI when the player's character is added (handles respawns)
-game.Players.LocalPlayer.CharacterAdded:Connect(function()
-    wait(1) -- Optional: Wait for the character to load
-    createHitboxGui()
 end)
-
-  local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ScreenGui"
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ResetOnSpawn = false
- 
-local Toggle = Instance.new("TextButton")
-Toggle.Name = "Toggle"
-Toggle.Parent = ScreenGui
-Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
-Toggle.Size = UDim2.new(0, 90, 0, 38)
-Toggle.Font = Enum.Font.SourceSans
-Toggle.Text = "Tutorial"
-Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
-Toggle.TextSize = 28.000
-Toggle.Draggable = true
-Toggle.MouseButton1Click:connect(function()
-    Library:HitboxGui()
-end)
- 
-local Corner = Instance.new("UICorner")
-Corner.Name = "Corner"
-Corner.Parent = Toggle
