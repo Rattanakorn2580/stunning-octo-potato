@@ -20,6 +20,25 @@ local function createHitboxGui()
     Frame.BackgroundTransparency = 0.2
     Frame.Active = true
 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Tutorial"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function()
+    Frame.Active = not Frame.Active
+end)
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
+    
     local TextBox = Instance.new("TextBox")
     TextBox.Parent = Frame
     TextBox.Size = UDim2.new(1, -10, 0.4, -5)
