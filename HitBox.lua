@@ -30,7 +30,10 @@ local Section = Tab:NewSection("Section Name")
 
 Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
 	enterPressed = txt
-        if enterPressed then
+end)
+
+Section:NewButton("ButtonText", "ButtonInfo", function()
+    if enterPressed then
             local inputText = TextBox.Text
             local inputNumber = tonumber(inputText)
             if inputNumber then
@@ -78,5 +81,5 @@ Section:NewTextBox("TextboxText", "TextboxInfo", function(txt)
                 TextLabel.Text = "Invalid number"
             end
             TextBox.Text = ""
-        end
+		end
 end)
