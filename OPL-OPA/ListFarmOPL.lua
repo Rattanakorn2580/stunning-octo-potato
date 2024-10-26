@@ -35,7 +35,7 @@ spawn(function()
         pcall(function()
             if cab then
                 for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv4 Boar")
+                    if string.find(v.Name, "Crab")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                     	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
@@ -52,4 +52,27 @@ spawn(function()
 			end)
 	end)
 
+Section:NewToggle("Angry Bob", " ", function(agr)
+    Agr = agr
+spawn(function()
+    while wait() do
+        pcall(function()
+            if agr then
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Angry Bob")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+                end
+							end
+						end)
+				end
+			end)
+	end)
                
