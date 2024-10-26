@@ -1,5 +1,5 @@
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("Taget List Mob", "DarkTheme")
+local Window = Library.CreateLib("Taget List Mob", "WhiteTheme")
 
 local ScreenGui = Instance.new("ScreenGui")
 ScreenGui.Name = "ScreenGui"
