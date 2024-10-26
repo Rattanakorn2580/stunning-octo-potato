@@ -10,7 +10,7 @@ local Player = game.Players.LocalPlayer
 
 function MakeScriptHub()
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest" IntroText = "Loading... InW Hub"})
+local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "Loading... InW Hub"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
@@ -2516,7 +2516,7 @@ spawn(function()
         while true do wait()
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                local plr2 = game.Players:FindFirstChild()
                 if aimsilent then
                     cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
