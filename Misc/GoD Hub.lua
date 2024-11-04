@@ -3866,7 +3866,7 @@ spawn(function()--Behind Plr
             pcall(function()
              game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-             game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
+             game.Players(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
             end)
         end
     end
@@ -3875,7 +3875,7 @@ spawn(function() -- bring Plr
     while wait() do
         if _G.BringPlayer then
             pcall(function()
-                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,getgenv().disbring*-1)
+                game.Players(PlayerName1).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,getgenv().disbring*-1)
             end)
         end
     end
@@ -3885,9 +3885,9 @@ spawn(function() -- Hitbox Plr
     while wait() do
         if _G.HitBoxPlayer then
             pcall(function()
-                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Transparency = 0.4
-                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
+                game.Players(PlayerName1).Character.HumanoidRootPart.Transparency = 0.4
+                game.Players(PlayerName1).Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                game.Players(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
             end)
         end
     end
@@ -3936,27 +3936,4 @@ spawn(function() -- bring Plr
             end)
         end
     end
-end)
-spawn(function()--aim silent 
-    pcall(function()
-        while true do wait()
-            pcall(function()
-                local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(PlayerName1)
-                if aimsilent then
-                    cacacac = plr2.Character.HumanoidRootPart.CFrame
-                end
-            end)
-        end
-    end)
-end)
-
-local index = mta.__index
-cf = CFrame.new(1, 2, 3)
-setreadonly(mta, false)
-mta.__index = newcclosure(function(a, b, c)
-    if tostring(b):lower() == 'hit' and aimsilent then
-        return cacacac
-    end
-    return index(a, b, c)
 end)
