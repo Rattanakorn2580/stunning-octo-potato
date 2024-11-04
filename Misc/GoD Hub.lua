@@ -3634,6 +3634,8 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
+local Npc = {}
+local Weaponlist = {}
 local islandlist = {
     "Cave Island",
     "Kaizu Island",
@@ -3669,12 +3671,15 @@ page1:Label(" ┇ Function Auto ( All ) ┇ ")
 
 local page2 = Tap1:newpage()
 
-page2:Label("Teleport Island")
+page2:Label(" ┇ Teleport ┇ ")
 
-local Dropdown = page2:Drop("Choose Island",false, islandlist , function(t) -- Use Selected <table> to auto select multiselection dropdown
+page2:Drop("Choose Island" , false, {
+    "Starter","Kaizu's Island","Snowy Mountains","Pursuer's Island","Bar","Cliffs","Windmill", "Cave","Krizma","Pirate","Green","Trees","Pyramid","Package","Snowy","Mountain", "Marine Ford","Sand Castle", "Forest","Evil",
+ "Crescent","Islands","Town","Rocky","Palm","Sand","Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"
+ }, function(t)
     getgenv().tpisland = t 
-    if getgenv().tpisland == "Grassy" then
-       plr.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
+    if getgenv().tpisland == "Starter" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-15, -28, -542)
       elseif getgenv().tpisland == "Kaizu's Island" then
        plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
       elseif getgenv().tpisland == "Snowy Mountains"  then
@@ -3737,32 +3742,55 @@ local Dropdown = page2:Drop("Choose Island",false, islandlist , function(t) -- U
        plr.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
       elseif getgenv().tpisland == "Atlar" then
         plr.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
-		end
+    end
 end)
 
-pagespawn = page2:Label("Pos Spawn: . . . ")
-
-local postest = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-page2:Button("Set Position", function()
-    --[[function round(num, numDecimalPlaces)
-            local mult = 10^(numDecimalPlaces or 0)
-            return math.floor(num * mult + 0.6) / mult
-        end]]
-
-    local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
-
-    Xx = humanoid.Position.x -- round(humanoid.Position.x, 0)
-    Yy = humanoid.Position.y -- round(humanoid.Position.y, 0)
-    Zz = humanoid.Position.z -- round(humanoid.Position.z, 0)
-
-    pagespawn:Change("Position: " .. tostring(Xx, Yy, Zz))
-    -- getgenv().setpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+page2:Drop("Safe Place" , false, { "Safe Place (Sea)", "Safe Place (Sky)" }, function(tt)
+    getgenv().tpisland2 = tt
+    if getgenv().tpisland2 == "Safe Place (Sea)" then
+        game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
+    elseif getgenv().tpisland2 == "Safe Place (Sky)" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+    end
 end)
 
-page2:Toggle("Loop Teleport", false, function(daxcdd)
-    _G.autospawn = daxcdd
-end)
-
+page2:Drop("Choose NPC", false,{
+    "Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"
+    }, function(t)
+        getgenv().tpmerchant = t
+        if getgenv().tpmerchant == "Rayleigh" then
+            local emoi = game:GetService("Workspace").Merchants.QuestHakiMerchant.Clickable.Available.Value
+            if emoi == true then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
+            else
+                create:Notifile("OP:L", "Rayleigh did not spawn.!", 5)
+            end
+        elseif getgenv().tpmerchant == "Better Drink" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
+        elseif getgenv().tpmerchant == "Drink" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1282, 218, -1368)
+        elseif getgenv().tpmerchant == "Flail" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(1110, 217, 3369)
+        elseif getgenv().tpmerchant == "QuestFish" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1702, 216, -325)
+        elseif getgenv().tpmerchant == "Krizma" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1072, 361, 1669)
+        elseif getgenv().tpmerchant == "Sword" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(1005, 224, -3339)
+        elseif getgenv().tpmerchant == "Sniper" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1843, 222, 3416)
+        elseif getgenv().tpmerchant == "Emote" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 265, 2165)
+        elseif getgenv().tpmerchant == "Affinity" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(113, 278, 4952)
+        elseif getgenv().tpmerchant == "Fish" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(1983, 218, 566)
+        elseif getgenv().tpmerchant == "Expertise" then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(903, 270, 1219)
+        end
+    end)
 local Tap2 = Window:Taps("Farming")
 local page3 = Tap2:newpage()
 local page3_5 = Tap2:newpage()
@@ -3815,11 +3843,11 @@ page3_5:Toggle("Aim Player", false,function(zxcxzcxzc)
     aimsilent = zxcxzcxzc
 end)
 
-page3_5:Toggle("Bring Player", false,function(axzaxzbr)
-    _G.BringPlayer = axzaxzbr
+page3_5:Toggle("Bring Player", false,function(axz)
+    _G.BringPlayer = axz
 end)
-page3_5:Toggle("HitBox Player", false,function(axzaxzbr)
-    _G.HitBoxPlayer = axzaxzbr
+page3_5:Toggle("HitBox Player", false,function(axza)
+    _G.HitBoxPlayer = axza
 end)
 
 page3_5:Label(" ┇ Players ┇ ")
