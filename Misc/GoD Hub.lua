@@ -3764,6 +3764,7 @@ page2:Toggle("Loop Teleport", false, function(daxcdd)
 end)
 
 local Tap2 = Window:Taps("Farming")
+local page3 = Tap2:newpage()
 local page3_5 = Tap2:newpage()
 
 page3_5:Label(" ┇ PvP ┇ ")
