@@ -1,3 +1,4 @@
+
 local ScreenGui = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
 local TextButton = Instance.new("TextButton")
@@ -3652,6 +3653,8 @@ local islandlist = {
 
  } 
 
+local plr = game.Players.LocalPlayer
+
 local Window = create:Win("     GoD Hub    OPL: Anarchy")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
@@ -3666,11 +3669,96 @@ page1:Label(" ┇ Function Auto ( All ) ┇ ")
 
 local page2 = Tap1:newpage()
 
-page2:Label("Island")
+page2:Label("Teleport Island")
 
-local Dropdown = page2:Drop("Choose Island",false, islandlist , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
-    getgenv().island = abcdef
+local Dropdown = page2:Drop("Choose Island",false, islandlist , function(t) -- Use Selected <table> to auto select multiselection dropdown
+    getgenv().tpisland = t 
+    if getgenv().tpisland == "Grassy" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
+      elseif getgenv().tpisland == "Kaizu's Island" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
+      elseif getgenv().tpisland == "Snowy Mountains"  then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
+      elseif getgenv().tpisland == "Pursuer's Island" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+      elseif getgenv().tpisland == "Bar" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)
+      elseif getgenv().tpisland == "Cliffs" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(4598, 217, 4964)
+      elseif getgenv().tpisland == "Windmill" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-7, 224, -91)
+      elseif getgenv().tpisland == "Cave" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-280, 217, -831)
+      elseif getgenv().tpisland == "Krizma" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1109, 341, 1645)
+      elseif getgenv().tpisland == "Pirate" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1283, 218, -1348)
+      elseif getgenv().tpisland == "Green" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-2727, 253, 1041)
+      elseif getgenv().tpisland == "Trees" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(1068, 217, 3351)
+      elseif getgenv().tpisland == "Pyramid" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(118, 216, 4773)
+      elseif getgenv().tpisland == "Package" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1668, 217, -300)
+      elseif getgenv().tpisland == "Snowy" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1896, 222, 3385)
+      elseif getgenv().tpisland == "Mountain" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(2052, 488, -701)
+      elseif getgenv().tpisland == "Marine Ford" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-3164, 296, -3780)
+      elseif getgenv().tpisland == "Sand Castle" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(1020, 224, -3277)
+      elseif getgenv().tpisland == "Forest" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-5781, 216, 114)
+      elseif getgenv().tpisland == "Evil" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-5169, 523, -7803)
+      elseif getgenv().tpisland == "Crescent" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(3193, 357, 1670)
+      elseif getgenv().tpisland == "Islands" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-4319, 245, 5252)
+      elseif getgenv().tpisland == "Town" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 218, 755)
+      elseif getgenv().tpisland == "Rocky" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-37, 229, 2149)
+      elseif getgenv().tpisland == "Palm" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(766, 216, -1374)
+      elseif getgenv().tpisland == "Sand" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-2747, 216, -942)
+      elseif getgenv().tpisland == "Sand 2" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(162, 216, -2265)
+      elseif getgenv().tpisland == "Small" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(1237, 240, -244)
+      elseif getgenv().tpisland == "Tiny" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-1235, 223, 623)
+      elseif getgenv().tpisland == "Super Tiny" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(-4007, 216, -2190)
+      elseif getgenv().tpisland == "Grass" then
+       plr.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
+      elseif getgenv().tpisland == "Atlar" then
+        plr.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
+		end
 end)
 
-page2:Button("Click to Tp", function()
+pagespawn = page2:Label("Pos Spawn: . . . ")
+
+local postest = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+page2:Button("Set Position", function()
+    --[[function round(num, numDecimalPlaces)
+            local mult = 10^(numDecimalPlaces or 0)
+            return math.floor(num * mult + 0.6) / mult
+        end]]
+
+    local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+    Xx = humanoid.Position.x -- round(humanoid.Position.x, 0)
+    Yy = humanoid.Position.y -- round(humanoid.Position.y, 0)
+    Zz = humanoid.Position.z -- round(humanoid.Position.z, 0)
+
+    pagespawn:Change("Position: " .. tostring(Xx, Yy, Zz))
+    -- getgenv().setpos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+end)
+
+page2:Toggle("Loop Teleport", false, function(daxcdd)
+    _G.autospawn = daxcdd
 end)
