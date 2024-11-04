@@ -63,13 +63,13 @@ Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail
 Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
 
 local TabAuto = Window:MakeTab({
-	Name = "Autos",
+	Name = "Status",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabAuto:AddSection({
-	Name = "Function Auto | All |"
+	Name = "Up Stats"
 })
 
 TabAuto:AddToggle({
@@ -120,6 +120,14 @@ TabFarm:AddDropdown({
 	Options = Cache.DevConfig["ListOfMob"],
 	Callback = function(SM)
 		SelectMob = SM
+	end    
+})
+
+TabFarm:AddToggle({
+	Name = "Auto Farm",
+	Default = false,
+	Callback = function(AFK)
+		AutoFarm = AFK
 	end    
 })
 
@@ -481,8 +489,8 @@ spawn(function() --
         end)
     end
 end)
-
-local TabLD = Window:MakeTab({
+	
+local TabLD= Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
