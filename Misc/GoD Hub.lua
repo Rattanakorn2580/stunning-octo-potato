@@ -301,14 +301,14 @@ spawn(function()
             end
         end)
     end
-end);
-
+end)
+	
 local TabSPM = Window:MakeTab({
 	Name = "Auto Skill Fruity",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-	
+
 local Section = TabSPM:AddSection({
 	Name = "Auto Skill ( )"
 })
@@ -454,55 +454,6 @@ mta.__index = newcclosure(function(a, b, c)
     return index(a, b, c)
 end)
 
-local Section = TabPlayer:AddSection({
-	Name = "Player Kill"
-})
-
-TabPlayer:AddToggle({
-	Name = "Auto Spam Quake | Player All |",
-	Default = false,
-	Callback = function(SQA)
-		_G.spamquakeall = SQA
-	end    
-})
-
-spawn(function() -- 
-    while task.wait(0) do
-        pcall(function()
-            for i, v in pairs(game.Players:GetChildren()) do
-                if _G.spamquakeall then
-                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        if v.Name ~= "SetInstances" then
-                            if v.Name ~= game.Players.LocalPlayer.Name then
-                                task.wait(getgenv().spamtime)
-                                local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                                task.wait(0.1)
-                                local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end);
-
 local TabLD = Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
@@ -616,13 +567,12 @@ TabLD:AddButton({
 			end
   	end    
 })
-	
+
 local TabMS = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-
 
 local Section = TabMS:AddSection({
 	Name = "Sever"
