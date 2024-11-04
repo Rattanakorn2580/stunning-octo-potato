@@ -3659,7 +3659,6 @@ Corner.Name = "Corner"
 Corner.Parent = Toggle
 
 local Npc = {}
-local Weaponlist = {}
 local islandlist = {
     "Cave Island",
     "Kaizu Island",
@@ -3692,6 +3691,66 @@ local Tap1 = Window:Taps("Autos")
 local page1 = Tap1:newpage()
 
 page1:Label(" ┇ Function Auto ( All ) ┇ ")
+
+local Weaponlist = {}
+local Weapon = nil
+
+for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+    table.insert(Weaponlist,v.Name)
+end
+	
+local Dropdown = page1:Drop("Select Weapon",false, Waponlist , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
+    Weapon = abcdef
+end)
+
+page1:Button("Refresh", function()
+    Dropdown:Clear()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+end)
+
+page1:Toggle("Auto Click", false,function(clk)
+    _G.autoclick = clk
+end)
+
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function() 
+pcall(function() 
+if _G.autoclick then 
+game:GetService'VirtualUser':CaptureController() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end 
+end) 
+end) 
+end)
+
+page1:Toggle("Auto Equip", false,function(aeq)
+    _G.autoequip = aeq
+end)
+
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
+end)
 
 local page2 = Tap1:newpage()
 
@@ -3819,7 +3878,7 @@ local Tap2 = Window:Taps("Farming")
 local page3 = Tap2:newpage()
 local page3_5 = Tap2:newpage()
 
-page3_5:Label(" ┇ PvP ┇ ")
+page3_5:Label(" ┇ Player ┇ ")
 
 page3_5:Slider("Distance Player", false , true , 0 , 15, 5, 1,false, function(stma)
     getgenv().disbring = stma
@@ -3832,8 +3891,8 @@ local PlayerName = {}
 
 PlayerName1 = ""
 local sucvat = page3_5:Drop("Choose Player" , false, PlayerName, function(t)
-    PlayerName1 = t
-    print(PlayerName1)
+    SelectPlayer = t
+    print(SelectPlayer)
 end)
 
 page3_5:Button("Refresh",function()
@@ -3844,57 +3903,34 @@ page3_5:Button("Refresh",function()
 end)
 
 page3_5:Button("Tp Player",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players(PlayerName1).Character.HumanoidRootPart.CFrame
-end)
+   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
+  	end)
 
 page3_5:Toggle("Behind Player", false,function(axzaxz)
     _G.KillPlayer = axzaxz
+end)
+
+spawn(function()
+    while wait() do
+        if _G.KillPlayer then
+            pcall(function()
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,3)
+            end)
+        end
+    end
 end)
 
 page3_5:Toggle("Bring Player", false,function(axz)
     _G.BringPlayer = axz
 end)
 
-page3_5:Label(" ┇ Players ┇ ")
-
-page3_5:Toggle("Bring All Player", false,function(axzaxzbrc)
-    _G.BringAllPlayer = axzaxzbrc
-end)
-
-spawn(function()--Behind Plr
-    while wait() do
-        if _G.KillPlayer then
-            pcall(function()
-             game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players(PlayerName1).Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
-             game.Players(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
-            end)
-        end
-    end
- end)
-spawn(function() -- bring Plr
+spawn(function()
     while wait() do
         if _G.BringPlayer then
             pcall(function()
-                game.Players(PlayerName1).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,getgenv().disbring*-1)
+                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-2.5)
             end)
         end
     end
 end)
 
-spawn(function() -- bring Plr
-    while wait() do
-        if _G.BringAllPlayer then
-            pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15 or getgenv().disbring)
-                        if v.Character.Humanoid.Health == 0 then
-                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                        end
-                    end
-                end
-            end)
-        end
-    end
-end)
