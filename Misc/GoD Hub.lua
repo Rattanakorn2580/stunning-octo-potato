@@ -252,9 +252,9 @@ TabNPC:AddTextbox({
 TabNPC:AddButton({
 	Name = "Random Fruity",
 	Callback = function()
-        if not AmountFruity or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
-        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
-            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+        if not AmountFruity or not string.match(AmountFruity, "%d+") or tonumber(string.match(AmountFruity, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountFruity, "%d+")) do
+game:GetService("ReplicatedStorage").Remote.RemoteEvent.Shop_Event:FireServer("Shop","Random Fruity","Money")
         end
   	end    
 })
@@ -280,28 +280,7 @@ spawn(function()
             end
         end)
     end
-end);
-
-TabNPC:AddToggle({
-	Name = "Auto Loot Drink",
-	Default = false,
-	Callback = function(ADD)
-		AutoLootDeink = ADD
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoLootDeink then return end;
-            for _, Item in pairs(game.Workspace:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfFruity"], Item.Name) and Item:FindFirstChild("Handle") then
-                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
-                end
-            end
-        end)
-    end
-end);
+end)
 
 local TabSPM = Window:MakeTab({
 	Name = "Auto Skill Fruity",
@@ -501,7 +480,7 @@ spawn(function() --
             end
         end)
     end
-end);
+end)
 
 local TabLD = Window:MakeTab({
 	Name = "Island",
@@ -616,7 +595,7 @@ TabLD:AddButton({
 			end
   	end    
 })
-	
+
 local TabMS = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
