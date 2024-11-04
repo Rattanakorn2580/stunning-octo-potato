@@ -49,7 +49,7 @@ end)
 
 local Cache = { DevConfig = {} };
 
-Cache.DevConfig["ListOfMob"] = {"Cute Thug"};
+Cache.DevConfig["ListOfMob"] = {"Cute Thug", "Evil Thug >:(", "Slime"};
 Cache.DevConfig["ListOfNpc"] = {" "};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
@@ -103,12 +103,12 @@ TabAuto:AddToggle({
 		BringDF = BDF
 	end    
 })
-local Tab999 = Window:MakeTab({
-	Name = "Rejoin Sever",
+
+local TabFarm = Window:MakeTab({
+	Name = "Auto Farming",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-
 
 local Section = TabFarm:AddSection({
 	Name = "Auto Farm Level"
