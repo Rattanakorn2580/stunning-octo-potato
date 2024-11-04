@@ -6,3 +6,7 @@ game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 game:GetService("CoreGui").redui.MainSceen.Visible = true
 
+local Tap1 = Window:Taps("Farming")
+local page1 = Tap1:newpage()
+
+page1:Label(" ┇ Mob Farm ┇ ")
