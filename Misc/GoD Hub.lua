@@ -3634,11 +3634,6 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
-local Player = {}
-for i,v in pairs(GetService("Players"):GetChildren()) do
-insert(Player,v.Name)
-end
-
 local islandlist = {
     "Cave Island",
     "Kaizu Island",
@@ -3660,7 +3655,7 @@ local islandlist = {
 
 local plr = game.Players.LocalPlayer
 
-local Window = create:Win("     GoD Hub    OPL: Anarchy")
+local Window = create:Win("     GoD Hub  |  Glue Piece")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 --create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
@@ -3773,20 +3768,3 @@ local page1 = Tap2:newpage()
 
 page1:Label(" ┇ Player ┇ ")
 
-local Dropdown = page1:Drop("Select Weapon",false, Player , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
-    Player = abcdef
-end)
-
-page1:Button("Refresh", function()
-    Dropdown:Clear()
-    for i,v in pairs(game.Players:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
-end)
