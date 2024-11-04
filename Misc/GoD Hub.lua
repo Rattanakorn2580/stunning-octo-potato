@@ -3668,20 +3668,9 @@ local page2 = Tap1:newpage()
 
 page2:Label("Island")
 
-local Dropdown = page2:Drop("Select Weapon",false, islandlist , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
+local Dropdown = page2:Drop("Choose Island",false, islandlist , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
     getgenv().island = abcdef
 end)
 
-page1:Button("Refresh", function()
-    Dropdown:Clear()
-    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-        if v:IsA("Tool") then
-            Dropdown:Add(v.Name)
-        end
-    end
+page2:Button("Click to Tp", function()
 end)
