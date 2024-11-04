@@ -3634,7 +3634,7 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
-local Window = create:Win("     Rac Hub   ToggleUI: [ F6 ] ")
+local Window = create:Win("     GoD Hub    ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 --create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
