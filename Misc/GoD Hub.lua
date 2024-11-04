@@ -3633,6 +3633,25 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
+local islandlist = {
+    "Cave Island",
+    "Kaizu Island",
+    "Sand Island",
+    "Sam Island",
+    "Club Island",
+    "Gunslingers Island",
+    "Merlin Island",
+    "Snow Island",
+    "Orange House Island",
+    "Desert Castle",
+    "Pyramid Island",
+    "Red House Island",
+    "3 House Island",
+    "Pursuer Island",
+    "Vokun Island",
+
+ } 
+
 local Window = create:Win("     GoD Hub    OPL: Anarchy")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
@@ -3644,3 +3663,25 @@ local Tap1 = Window:Taps("Autos")
 local page1 = Tap1:newpage()
 
 page1:Label(" ┇ Function Auto ( All ) ┇ ")
+
+local page2 = Tap1:newpage()
+
+page2:Label("Island")
+
+local Dropdown = page2:Drop("Select Weapon",false, islandlist , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
+    getgenv().island = abcdef
+end)
+
+page1:Button("Refresh", function()
+    Dropdown:Clear()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+end)
