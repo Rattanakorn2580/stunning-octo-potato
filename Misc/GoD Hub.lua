@@ -3634,6 +3634,11 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
+local Player = {}
+for i,v in pairs(GetService("Players"):GetChildren()) do
+insert(Player,v.Name)
+end
+
 local islandlist = {
     "Cave Island",
     "Kaizu Island",
@@ -3761,4 +3766,27 @@ end)
 
 page2:Toggle("Loop Teleport", false, function(daxcdd)
     _G.autospawn = daxcdd
+end)
+
+local Tap2 = Window:Taps("Player")
+local page1 = Tap2:newpage()
+
+page1:Label(" ┇ Player ┇ ")
+
+local Dropdown = page1:Drop("Select Weapon",false, Player , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
+    Weapon = abcdef
+end)
+
+page1:Button("Refresh", function()
+    Dropdown:Clear()
+    for i,v in pairs(game.Players:GetChildren()) do  
+        if v:IsA("Players") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Players") then
+            Dropdown:Add(v.Name)
+        end
+    end
 end)
