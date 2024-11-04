@@ -3774,18 +3774,18 @@ local page1 = Tap2:newpage()
 page1:Label(" ┇ Player ┇ ")
 
 local Dropdown = page1:Drop("Select Weapon",false, Player , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
-    Weapon = abcdef
+    Player = abcdef
 end)
 
 page1:Button("Refresh", function()
     Dropdown:Clear()
     for i,v in pairs(game.Players:GetChildren()) do  
-        if v:IsA("Players") then
+        if v:IsA("Tool") then
             Dropdown:Add(v.Name)
         end
     end
     for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
-        if v:IsA("Players") then
+        if v:IsA("Tool") then
             Dropdown:Add(v.Name)
         end
     end
