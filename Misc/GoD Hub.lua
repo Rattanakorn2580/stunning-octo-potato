@@ -3830,3 +3830,104 @@ end)
 page3_5:Toggle("HitBox All Player", false,function(axzaxzbrca)
     _G.HitBoxAllPlayer = axzaxzbrca
 end)
+
+spawn(function()--Behind Plr
+    while wait() do
+        if _G.KillPlayer then
+            pcall(function()
+             game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+             game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
+            end)
+        end
+    end
+ end)
+spawn(function() -- bring Plr
+    while wait() do
+        if _G.BringPlayer then
+            pcall(function()
+                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,getgenv().disbring*-1)
+            end)
+        end
+    end
+end)
+
+spawn(function() -- Hitbox Plr
+    while wait() do
+        if _G.HitBoxPlayer then
+            pcall(function()
+                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Transparency = 0.4
+                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
+            end)
+        end
+    end
+end)
+
+spawn(function() -- Hitbox Plr
+    while wait() do
+        if _G.HitBoxAllPlayer then
+            pcall(function()
+                for i, v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.Transparency = 0.4
+                        v.Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                        v.Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
+                    end
+                    if v.Character.Humanoid.Health == 0 then
+                        v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
+                    end
+                end
+            end)
+        else 
+            for i, v in pairs(game.Players:GetChildren()) do
+                if v.Name ~= game.Players.LocalPlayer.Name then
+                    v.Character.HumanoidRootPart.Transparency = 1
+                    v.Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
+                    v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
+                end
+            end
+        end
+    end
+end)
+
+
+spawn(function() -- bring Plr
+    while wait() do
+        if _G.BringAllPlayer then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15 or getgenv().disbring)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+spawn(function()--aim silent 
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(PlayerName1)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
+end)
