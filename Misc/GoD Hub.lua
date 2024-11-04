@@ -3865,7 +3865,7 @@ spawn(function()--Behind Plr
         if _G.KillPlayer then
             pcall(function()
              game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
+             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players(PlayerName1).Character.HumanoidRootPart.CFrame * CFrame.new(0,10,0)
              game.Players(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(60,60,60)
             end)
         end
