@@ -3763,8 +3763,70 @@ page2:Toggle("Loop Teleport", false, function(daxcdd)
     _G.autospawn = daxcdd
 end)
 
-local Tap2 = Window:Taps("Player")
-local page1 = Tap2:newpage()
+local Tap2 = Window:Taps("Farming")
+local page3_5 = Tap2:newpage()
 
-page1:Label(" ┇ Player ┇ ")
+page3_5:Label(" ┇ PvP ┇ ")
 
+page3_5:Slider("Distance Player", false , true , 0 , 15, 5, 1,false, function(stma)
+    getgenv().disbring = stma
+end)
+
+local PlayerName = {}
+ for i,v in pairs(game.Players:GetChildren()) do
+    table.insert(PlayerName,v.Name)
+ end
+
+PlayerName1 = ""
+local sucvat = page3_5:Drop("Choose Player" , false, PlayerName, function(t)
+    PlayerName1 = t
+    print(PlayerName1)
+end)
+
+page3_5:Button("Refresh",function()
+    sucvat:Clear()
+    for i,v in pairs(game.Players:GetChildren()) do
+       sucvat:Add(v.Name)
+    end
+end)
+
+page3_5:Button("Tp Player",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame
+end)
+
+page4_5:Toggle("View Player", false, function(viewplr)
+    Sp = viewplr
+    local plr1 = game.Players.LocalPlayer.Character.Humanoid
+    local plr2 = game.Players:FindFirstChild(PlayerName1)
+    repeat wait(0)
+        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+    until Sp == false or plr2.Character.Humanoid.Health == 0
+    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+    end
+end)
+
+page3_5:Toggle("Behind Player", false,function(axzaxz)
+    _G.KillPlayer = axzaxz
+end)
+
+page3_5:Toggle("Aim Player", false,function(zxcxzcxzc)
+    aimsilent = zxcxzcxzc
+end)
+
+page3_5:Toggle("Bring Player", false,function(axzaxzbr)
+    _G.BringPlayer = axzaxzbr
+end)
+page3_5:Toggle("HitBox Player", false,function(axzaxzbr)
+    _G.HitBoxPlayer = axzaxzbr
+end)
+
+page3_5:Label(" ┇ Players ┇ ")
+
+page3_5:Toggle("Bring All Player", false,function(axzaxzbrc)
+    _G.BringAllPlayer = axzaxzbrc
+end)
+
+page3_5:Toggle("HitBox All Player", false,function(axzaxzbrca)
+    _G.HitBoxAllPlayer = axzaxzbrca
+end)
