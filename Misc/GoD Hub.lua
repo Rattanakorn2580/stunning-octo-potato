@@ -3844,7 +3844,7 @@ page3_5:Button("Refresh",function()
 end)
 
 page3_5:Button("Tp Player",function()
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players(PlayerName1).Character.HumanoidRootPart.CFrame
 end)
 
 page3_5:Toggle("Behind Player", false,function(axzaxz)
