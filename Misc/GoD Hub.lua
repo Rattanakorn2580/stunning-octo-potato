@@ -3795,7 +3795,7 @@ page3_5:Button("Tp Player",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame
 end)
 
-page4_5:Toggle("View Player", false, function(viewplr)
+page3_5:Toggle("View Player", false, function(viewplr)
     Sp = viewplr
     local plr1 = game.Players.LocalPlayer.Character.Humanoid
     local plr2 = game.Players:FindFirstChild(PlayerName1)
