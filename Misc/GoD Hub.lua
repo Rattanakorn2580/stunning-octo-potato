@@ -3634,6 +3634,30 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
+-- ToggleGui --
+local ScreenGui = Instance.new("ScreenGui")
+ScreenGui.Name = "ScreenGui"
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+ 
+local Toggle = Instance.new("TextButton")
+Toggle.Name = "Toggle"
+Toggle.Parent = ScreenGui
+Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
+Toggle.Size = UDim2.new(0, 90, 0, 38)
+Toggle.Font = Enum.Font.SourceSans
+Toggle.Text = "Tutorial"
+Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
+Toggle.TextSize = 28.000
+Toggle.Draggable = true
+Toggle.MouseButton1Click:connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F6,false,game)
+end)
+ 
+local Corner = Instance.new("UICorner")
+Corner.Name = "Corner"
+Corner.Parent = Toggle
+
 local Npc = {}
 local Weaponlist = {}
 local islandlist = {
@@ -3823,41 +3847,18 @@ page3_5:Button("Tp Player",function()
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame
 end)
 
-page3_5:Toggle("View Player", false, function(viewplr)
-    Sp = viewplr
-    local plr1 = game.Players.LocalPlayer.Character.Humanoid
-    local plr2 = game.Players:FindFirstChild(PlayerName1)
-    repeat wait(0)
-        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
-    until Sp == false or plr2.Character.Humanoid.Health == 0
-    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
-        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
-    end
-end)
-
 page3_5:Toggle("Behind Player", false,function(axzaxz)
     _G.KillPlayer = axzaxz
 end)
 
-page3_5:Toggle("Aim Player", false,function(zxcxzcxzc)
-    aimsilent = zxcxzcxzc
-end)
-
 page3_5:Toggle("Bring Player", false,function(axz)
     _G.BringPlayer = axz
-end)
-page3_5:Toggle("HitBox Player", false,function(axza)
-    _G.HitBoxPlayer = axza
 end)
 
 page3_5:Label(" ┇ Players ┇ ")
 
 page3_5:Toggle("Bring All Player", false,function(axzaxzbrc)
     _G.BringAllPlayer = axzaxzbrc
-end)
-
-page3_5:Toggle("HitBox All Player", false,function(axzaxzbrca)
-    _G.HitBoxAllPlayer = axzaxzbrca
 end)
 
 spawn(function()--Behind Plr
@@ -3880,46 +3881,6 @@ spawn(function() -- bring Plr
         end
     end
 end)
-
-spawn(function() -- Hitbox Plr
-    while wait() do
-        if _G.HitBoxPlayer then
-            pcall(function()
-                game.Players(PlayerName1).Character.HumanoidRootPart.Transparency = 0.4
-                game.Players(PlayerName1).Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                game.Players(PlayerName1).Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
-            end)
-        end
-    end
-end)
-
-spawn(function() -- Hitbox Plr
-    while wait() do
-        if _G.HitBoxAllPlayer then
-            pcall(function()
-                for i, v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.Character.HumanoidRootPart.Transparency = 0.4
-                        v.Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                        v.Character.HumanoidRootPart.Size = Vector3.new(24, 24, 24)
-                    end
-                    if v.Character.Humanoid.Health == 0 then
-                        v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-                    end
-                end
-            end)
-        else 
-            for i, v in pairs(game.Players:GetChildren()) do
-                if v.Name ~= game.Players.LocalPlayer.Name then
-                    v.Character.HumanoidRootPart.Transparency = 1
-                    v.Character.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                    v.Character.HumanoidRootPart.Size = Vector3.new(2, 2, 1)
-                end
-            end
-        end
-    end
-end)
-
 
 spawn(function() -- bring Plr
     while wait() do
