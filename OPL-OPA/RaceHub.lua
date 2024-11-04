@@ -3855,7 +3855,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 
 
 --script
-local Window = create:Win("     Rac Hub   ToggleUI: [ F6 ] ")
+local Window = create:Win("   Rac Hub  Map : [ One Piece: Legendary ] ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 --create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
