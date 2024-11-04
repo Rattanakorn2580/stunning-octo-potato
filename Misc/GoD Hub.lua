@@ -49,12 +49,12 @@ end)
 
 local Cache = { DevConfig = {} };
 
-Cache.DevConfig["ListOfMob"] = {"Cute Thug", "Evil Thug >:(", "Slime"};
+Cache.DevConfig["ListOfMob"] = {"Cute Thug", "Evil Thug >:(", "I'm Not Worm! >:("};
 Cache.DevConfig["ListOfNpc"] = {" "};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
+Cache.DevConfig["ListOfIsland"] = {"Sand Castle","Not Worm","King Slime","Starter","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
 	                           "Pyramid","Package","Snowy","Mountain","Marine Ford","Sand Castle",
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
@@ -301,14 +301,14 @@ spawn(function()
             end
         end)
     end
-end)
-	
+end);
+
 local TabSPM = Window:MakeTab({
 	Name = "Auto Skill Fruity",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
-
+	
 local Section = TabSPM:AddSection({
 	Name = "Auto Skill ( )"
 })
@@ -454,6 +454,55 @@ mta.__index = newcclosure(function(a, b, c)
     return index(a, b, c)
 end)
 
+local Section = TabPlayer:AddSection({
+	Name = "Player Kill"
+})
+
+TabPlayer:AddToggle({
+	Name = "Auto Spam Quake | Player All |",
+	Default = false,
+	Callback = function(SQA)
+		_G.spamquakeall = SQA
+	end    
+})
+
+spawn(function() -- 
+    while task.wait(0) do
+        pcall(function()
+            for i, v in pairs(game.Players:GetChildren()) do
+                if _G.spamquakeall then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                task.wait(0.1)
+                                local args = {
+                                    [1] = tonumber(serializeTable(remotes)),
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Character.HumanoidRootPart.CFrame,
+                                    [5] = v.Character.HumanoidRootPart.CFrame,
+                                    [6] = 100,
+                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end);
+
 local TabLD = Window:MakeTab({
 	Name = "Island",
 	Icon = "rbxassetid://4483345998",
@@ -500,14 +549,14 @@ TabLD:AddDropdown({
 TabLD:AddButton({
 	Name = "Click To Tp",
 	Callback = function()
-        if getgenv().tpisland == "Grassy" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
-      elseif getgenv().tpisland == "Kaizu" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
-      elseif getgenv().tpisland == "Snow Mountains"  then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
-      elseif getgenv().tpisland == "Pursuer Boss" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+        if getgenv().tpisland == "Sand Castle" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2335, -8, 1347)
+      elseif getgenv().tpisland == "Not Worm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2319, 29, 438)
+      elseif getgenv().tpisland == "King Slime"  then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1335, -28, -520)
+      elseif getgenv().tpisland == "Starter" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1535, -28, -537)
       elseif getgenv().tpisland == "Bar" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)
       elseif getgenv().tpisland == "Cliffs" then
@@ -567,12 +616,13 @@ TabLD:AddButton({
 			end
   	end    
 })
-
+	
 local TabMS = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
+
 
 local Section = TabMS:AddSection({
 	Name = "Sever"
