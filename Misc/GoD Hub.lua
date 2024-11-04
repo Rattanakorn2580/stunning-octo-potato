@@ -10,7 +10,7 @@ local Player = game.Players.LocalPlayer
 
 function MakeScriptHub()
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "Loading... InW Hub"})
+local Window = OrionLib:MakeWindow({Name = "GoD Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "Loading... GoD Hub"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
