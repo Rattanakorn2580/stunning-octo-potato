@@ -131,6 +131,28 @@ TabFarm:AddToggle({
 	end    
 })
 
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if AutoFarm == "Snake" then
+                for _,v in pairs(game.Workspace.NPCs:GetChildren()) do
+                    if string.find(v.Name, "Snake")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,4,-15)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+		end
+        end)
+    end
+end)
+
 local Section = TabFarm:AddSection({
 	Name = "Other"
 })
