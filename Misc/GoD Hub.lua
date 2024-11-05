@@ -131,7 +131,6 @@ TabFarm:AddToggle({
 	end    
 })
 
-
 spawn(function()
     while wait(0) do
         pcall(function()
