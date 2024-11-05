@@ -135,7 +135,7 @@ TabFarm:AddToggle({
 spawn(function()
     while wait(0) do
         pcall(function()
-            if AutoFarm == "Snake" then
+            if AutoFarm then
                 for _,v in pairs(game.Workspace.NPCs:GetChildren()) do
                     if string.find(v.Name, "Snake")
                     and v:FindFirstChild("HumanoidRootPart") then
