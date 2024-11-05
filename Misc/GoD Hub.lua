@@ -49,9 +49,9 @@ end)
 
 local Cache = { DevConfig = {} };
 
-Cache.DevConfig["ListOfMob"] = {"Cute Thug", "Evil Thug >:(", "I'm Not Worm! >:("};
+Cache.DevConfig["ListOfMob"] = {"Cutie Noob", "Elite Noob", "Thug", "Evil Thug", "Snake", "Slime", "King Slime"};
 Cache.DevConfig["ListOfNpc"] = {" "};
-Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
+Cache.DevConfig["ListOfBoss"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfIsland"] = {"Sand Castle","Not Worm","King Slime","Starter","Bar",
@@ -207,7 +207,7 @@ local Section = TabNPC:AddSection({
 TabNPC:AddDropdown({
 	Name = "Choose NPC",
 	Default = "",
-	Options = Cache.DevConfig["ListOfMerchant"],
+	Options = Cache.DevConfig["ListOfNpc"],
 	Callback = function(CT)
 		getgenv().tpmerchant = CT
 	end    
@@ -216,7 +216,7 @@ TabNPC:AddDropdown({
 TabNPC:AddButton({
 	Name = "Click To Tp",
 	Callback = function()
-        if getgenv().tpmerchant == "Rayleigh" then
+        if getgenv().tpmerchant == "Random Fruity" then
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
 	elseif getgenv().tpmerchant == "Better Drink" then
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1493, 260, 2171)
@@ -407,38 +407,6 @@ spawn(function()
             end)
         end
     end
-end)
-
-TabPlayer:AddToggle({
-	Name = "Aim Player",
-	Default = false,
-	Callback = function(ASL)
-		aimsilent = ASL
-	end    
-})
-
-spawn(function()
-    pcall(function()
-        while true do wait()
-            pcall(function()
-                local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(SelectPlayer)
-                if aimsilent then
-                    cacacac = plr2.Character.HumanoidRootPart.CFrame
-                end
-            end)
-        end
-    end)
-end)
-
-local index = mta.__index
-cf = CFrame.new(1, 2, 3)
-setreadonly(mta, false)
-mta.__index = newcclosure(function(a, b, c)
-    if tostring(b):lower() == 'hit' and aimsilent then
-        return cacacac
-    end
-    return index(a, b, c)
 end)
 
 local TabLD= Window:MakeTab({
