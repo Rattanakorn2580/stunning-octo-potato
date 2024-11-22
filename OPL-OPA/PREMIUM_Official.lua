@@ -61,7 +61,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
-Cache.DevConfig["ListOfListSpam"] = {"Spam Quake", "Spam Flare"};
+Cache.DevConfig["ListOfListSpam"] = {"Spam Quake", "Spam Flare", "Light Spam (Not Work)"};
 
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
@@ -2211,7 +2211,7 @@ local Section = TabPlayer:AddSection({
 })
 
 TabPlayer:AddDropdown({
-	Name = "Choose Df Spam | Kill Player |",
+	Name = "Pls Choose Df | Kill Player |",
 	Default = "",
 	Options = Cache.DevConfig["ListOfListSpam"],
 	Callback = function(gkl)
@@ -2258,6 +2258,40 @@ spawn(function()
 			end
                     end
                 end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if getgenv().kill == "Spam Flare" then
+	local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+        
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-550.802795, 244, 26.3580341, -0.63954407, 0.15401715, -0.753168106, -0, 0.979725122, 0.200346366, 0.768754423, 0.128130332, -0.626577377),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [7] = "Left"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
             end
         end)
     end
