@@ -2254,10 +2254,10 @@ spawn(function() -- autofarm velocity
                                     [6] = 100,
                                     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
                             game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-			
+
+			elseif getgenv().kill == "Spam Flare" then
 spawn(function()
     while wait(getgenv().spamtime) do
-	elseif getgenv().kill == "Spam Flare" then
             local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
         
