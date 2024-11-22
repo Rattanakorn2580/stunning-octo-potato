@@ -1,16 +1,16 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() 
 local Player = game.Players.LocalPlayer 
   local Window = OrionLib:MakeWindow({
-		Name = "InW Hub Key System",
+		Name = "InW Hub ระบบป้องกันคีย์",
 		HidePremium = false,
 		SaveConfig = true,
 		ConfigFolder = "OrionTest",
-        IntroText = "โหลด..."       
+        IntroText = "   โหลด . . ."       
 })
 
 function MakeScriptHub()
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "Loading... InW Hub"})
+local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " โหลด . . . InW Hub"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
@@ -734,11 +734,11 @@ game:GetService('RunService').RenderStepped:connect(function()
 end);
 
 local Section = TabAuto:AddSection({
-	Name = "Spam Yoru Attack"
+	Name = "แสปม การตีโยรุ"
 })
 
 TabAuto:AddTextbox({
-	Name = "Hits Yoru",
+	Name = "การตีของ โยรุ",
 	Default = "1",
 	TextDisappear = true,
 	Callback = function(HYR)
@@ -795,7 +795,7 @@ function serializeTable(val, name, skipnewlines, depth)
  end
 
 TabAuto:AddToggle({
-	Name = "Enable",
+	Name = "ใช้งาน",
 	Default = false,
 	Callback = function(HYF)
 		_G.yorufast = HYF
@@ -1480,17 +1480,17 @@ spawn(function()--autofruit
 end)
 
 local TabNPC = Window:MakeTab({
-	Name = "NPC",
+	Name = "เอ็นพีซี",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabNPC:AddSection({
-	Name = "วาปไปยัง NPC"
+	Name = "วาปไปยัง เอ็นพีซี"
 })
 
 TabNPC:AddDropdown({
-	Name = "เลือก NPC",
+	Name = "เลือก เอ็นพีซี",
 	Default = "",
 	Options = Cache.DevConfig["ListOfMerchant"],
 	Callback = function(CT)
