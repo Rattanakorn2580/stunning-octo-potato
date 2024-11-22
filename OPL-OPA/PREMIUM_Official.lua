@@ -5,7 +5,7 @@ local Player = game.Players.LocalPlayer
 		HidePremium = false,
 		SaveConfig = true,
 		ConfigFolder = "OrionTest",
-        IntroText = "Loading..."       
+        IntroText = "โหลด..."       
 })
 
 function MakeScriptHub()
@@ -60,21 +60,21 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
-Cache.DevConfig["ListOfAffinities"] = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"};
-Cache.DevConfig["ListOfListSpam"] = {"Spam Quake", "Spam Flare", "Light Spam (Not Work)"};
+Cache.DevConfig["ListOfAffinities"] = {"ผลไม้ปีศาจ ( ฝั่งซ้าย )", "ผลไม้ปีศาจ ( ฝั่งขวา )"};
+Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม กุระ", "แสปม ไฟ", "แสปม แสง"};
 
 local TabAuto = Window:MakeTab({
-	Name = "Autos",
+	Name = "ออโต้",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabAuto:AddSection({
-	Name = "Auto Respawn"
+	Name = "เกิดอัตโนมัติ"
 })
 
 TabAuto:AddToggle({
-	Name = "Auto Spawn",
+	Name = "ออโต้ เกิด",
 	Default = false,
 	Callback = function(AS)
 		_G.autorespawn = AS
@@ -96,11 +96,11 @@ spawn(function()--autorespawn
 end)
 
 local Section = TabAuto:AddSection({
-	Name = "Function Auto | All |"
+	Name = "ฝังชั่น ออโต้ | ทั้งหมด |"
 })
 
 TabAuto:AddToggle({
-	Name = "Auto Fishing",
+	Name = "ออโต้ ตกปลา",
 	Default = false,
 	Callback = function(AFH)
 		AutoFish = AFH
@@ -155,7 +155,7 @@ spawn(function() -- fish farm
 end);
 
 TabAuto:AddToggle({
-	Name = "Auto Package",
+	Name = "ออโต้ วาปแพ็คเกต",
 	Default = false,
 	Callback = function(APK)
 		AutoPack = APK
@@ -269,7 +269,7 @@ spawn(function()
 end);
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Mission",
+	Name = "ออโต้ กดรับภารกิจ",
 	Default = false,
 	Callback = function(AMS)
 		AutoMission = AMS
@@ -287,7 +287,7 @@ end
 end);
 
 TabAuto:AddToggle({
-	Name = "Bring DF",
+	Name = "ดึงผลไม้ปีศาจ",
 	Default = false,
 	Callback = function(BDF)
 		BringDF = BDF
@@ -309,7 +309,7 @@ spawn(function()
  end)
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Gift | Beri 💸 |",
+	Name = "ฮอโต้ กดรับของขวัญ | Beri 💸 |",
 	Default = false,
 	Callback = function(ACG)
 		_G.autoclaimgift = ACG
@@ -329,7 +329,7 @@ local A_1 = "RewardMark"
 end);
 
 TabAuto:AddToggle({
-	Name = "Auto Claim Gift | Gams 💎 |",
+	Name = "ออโต้ กดรับของขวัญ | Gams 💎 |",
 	Default = false,
 	Callback = function(ACG)
 		_G.autoclaimgift = ACG
@@ -349,7 +349,7 @@ local A_1 = "RewardMark"
 end)
 
 TabAuto:AddToggle({
-	Name = "Auto Challenges",
+	Name = "ออโต้ กดรับชาร์เลน",
 	Default = false,
 	Callback = function(ACLL)
 		_G.autoclaim = ACLL
@@ -508,11 +508,11 @@ wait(.8)
 end)
 
 local Section = TabAuto:AddSection({
-	Name = "Auto Haki Training"
+	Name = "ออโต้ ฟามฮาคิ"
 })
 
 TabAuto:AddToggle({
-	Name = "Auto Haki | Slowly |",
+	Name = "ออโต้ ฮาคิ | แบบช้า |",
 	Default = false,
 	Callback = function(AHK)
 		AutoHaki1 = AHK
@@ -616,7 +616,7 @@ spawn(function()
 end)
 
 TabAuto:AddToggle({
-	Name = "Auto Haki | Faster |",
+	Name = "ออโต้ ฮาคิ | แบบเร็ว (ใช้แล้วปิง) |",
 	Default = false,
 	Callback = function(AHKK)
 		AutoHaki2 = AHKK
@@ -823,14 +823,14 @@ spawn(function() -- yoru
 end)
 
 	local TabFarm = Window:MakeTab({
-	Name = "Auto Farm",
+	Name = "ออโต้ฟาร์ม",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabFarm:AddSection({
-	Name = "Auto Farm Mobs"
+	Name = "ออโต้ฟาร์ม มอบ"
 })
 
 TabFarm:AddButton({
@@ -841,7 +841,7 @@ TabFarm:AddButton({
 })
 	
 TabFarm:AddToggle({
-	Name = "Auto Bring | All |",
+	Name = "ออโต้ดึง มอบ | ทั้งหมด |",
 	Default = false,
 	Callback = function(AFB)
 		AutoFarmB = AFB
@@ -914,11 +914,11 @@ spawn(function()
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "Auto Cannon Ball | For One Piece: Legendary |"
+	Name = "ออโต้ฟาร์ม แคนน่อน บอล | สำหรับ One Piece: Legendary |"
 })
 	
 TabFarm:AddToggle({
-	Name = "Auto Farm Cannon Ball | All |",
+	Name = "ออโต้ฟาร์ม แคนน่อน บอล | ทั้งหมด |",
 	Default = false,
 	Callback = function(ACNN)
 		_G.autocannon = ACNN
@@ -1122,11 +1122,11 @@ spawn(function() -- autofarm cannon
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "Spam DF Farm"
+	Name = "แสปม สกิล ผลไม้ปีศาจ"
 })
 
 TabFarm:AddToggle({
-	Name = "Auto Spam Light | Farm |",
+	Name = "ออโต้ฟาร์ม แสง | ทั้งหมด |",
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
@@ -1177,7 +1177,7 @@ spawn(function() -- Light farm npcs
 end);
 
 TabFarm:AddToggle({
-	Name = "Auto Spam Quake | Farm |",
+	Name = "ออโต้ฟาร์ม กุระ | ทั้งหมด |",
 	Default = false,
 	Callback = function(QF)
 		_G.Quakefarm = QF
@@ -1219,7 +1219,7 @@ spawn(function() -- auto farm quake
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "Other"
+	Name = "อื่น ๆ"
 })
 
 local Weaponlist = {}
@@ -1230,7 +1230,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 end
 
 TabFarm:AddDropdown({
-	Name = "Select Weapon",
+	Name = "เลือก อาวุธ",
 	Default = "",
 	Options = Weaponlist,
 	Callback = function(WP)
@@ -1239,7 +1239,7 @@ TabFarm:AddDropdown({
 })
 
 TabFarm:AddToggle({
-	Name = "Auto Click",
+	Name = "ออโต้คลิก",
 	Default = false,
 	Callback = function(ACK)
 		AutoClicking = ACK
@@ -1258,7 +1258,7 @@ end)
 end);
 
 TabFarm:AddToggle({
-	Name = "Auto Equip",
+	Name = "ออโต้ถือของ",
 	Default = false,
 	Callback = function(AEQ)
 		_G.autoequip = AEQ
@@ -1282,11 +1282,11 @@ spawn(function() -- auto equip
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "Auto Fruity"
+	Name = "ออโต้ ผลไม้"
 })
 
 TabFarm:AddToggle({
-	Name = "Auto Stats",
+	Name = "ออโต้ฟาร์ม แสตท",
 	Default = false,
 	Callback = function(AMX)
 		AutoStats = AMX
@@ -1486,11 +1486,11 @@ local TabNPC = Window:MakeTab({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "Teleport To NPC"
+	Name = "วาปไปยัง NPC"
 })
 
 TabNPC:AddDropdown({
-	Name = "Choose NPC",
+	Name = "เลือก NPC",
 	Default = "",
 	Options = Cache.DevConfig["ListOfMerchant"],
 	Callback = function(CT)
@@ -1499,7 +1499,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddButton({
-	Name = "Click To Tp",
+	Name = "กดเพื่อวาป",
 	Callback = function()
         if getgenv().tpmerchant == "Rayleigh" then
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
@@ -1530,11 +1530,11 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "Dupe | For OPL: Anarchy |"
+	Name = "ดูป | สำหรับ OPL: Anarchy |"
 })
 
 TabNPC:AddButton({
-	Name = "No Save Data!!",
+	Name = "ไม่เซฟดาต้า!!",
 	Callback = function()
         workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
         game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
@@ -1542,11 +1542,11 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "Drink Buy"
+	Name = "ซื้อน้ำ"
 })
 
 TabNPC:AddDropdown({
-	Name = "Select Drink",
+	Name = "เลือกน้ำ",
 	Default = "",
 	Options = Cache.DevConfig["ListOfDrink"],
 	Callback = function(SD)
@@ -1555,7 +1555,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddTextbox({
-	Name = "Amount Drink",
+	Name = "จำนวน น้ำ",
 	Default = "1",
 	TextDisappear = true,
 	Callback = function(AD)
@@ -1564,7 +1564,7 @@ TabNPC:AddTextbox({
 })
 
 TabNPC:AddButton({
-	Name = "Buy Drink",
+	Name = "ซื้อ น้ำ",
 	Callback = function()
         if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
@@ -1574,7 +1574,7 @@ TabNPC:AddButton({
 })
 
 TabNPC:AddToggle({
-	Name = "Auto Drink",
+	Name = "ออโต้ดื่ม",
 	Default = false,
 	Callback = function(ADK)
 		AutoDrink = ADK
@@ -1597,7 +1597,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Drop Drink",
+	Name = "ออโต้ทิ้งน้ำ",
 	Default = false,
 	Callback = function(ADD)
 		AutoDropDrink = ADD
@@ -1620,7 +1620,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Loot Drink",
+	Name = "ออโต้ดึงน้ำ",
 	Default = false,
 	Callback = function(ADD)
 		AutoLootDeink = ADD
@@ -1641,11 +1641,11 @@ spawn(function()
 end);
 
 local Section = TabNPC:AddSection({
-	Name = "Sam Quest"
+	Name = "ภารกิจแซม"
 })
 
 TabNPC:AddToggle({
-	Name = "Auto Sam Quest",
+	Name = "ออโต้ กดรับเข็มทิศ",
 	Default = false,
 	Callback = function(ASQ)
 		AutoSamQuestXX = ASQ
@@ -1663,7 +1663,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Compass Quest",
+	Name = "ออโต้หาเข็มทิศ",
 	Default = false,
 	Callback = function(ASQ)
 		AutoCompassQuestXX = ASQ
@@ -1690,7 +1690,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Drop Compass",
+	Name = "ออโต้ทิ้งเข็มทิศ",
 	Default = false,
 	Callback = function(ADD)
 		DropCompass = ADD
@@ -1711,7 +1711,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "Auto Loot Compass",
+	Name = "ออโต้ดึงเข็มทิศ",
 	Default = false,
 	Callback = function(AUB)
 		AutoLootXXX = AUB
@@ -1732,17 +1732,17 @@ spawn(function()
 end);
 
 local TabAFF = Window:MakeTab({
-	Name = "Affinity",
+	Name = "พลังแฝง",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabAFF:AddSection({
-	Name = "Devil Fruit Reroll Status"
+	Name = "ผลไม้ปีศาจ รีโรล"
 })
 
 TabAFF:AddDropdown({
-	Name = "Choose Devil Fruit Reroll",
+	Name = "เลือก สุ่มพลังแฝง ผลไม้ปีศาจ",
 	Default = "",
 	Options = Cache.DevConfig["ListOfAffinities"],
 	Callback = function(GGA)
@@ -1751,9 +1751,9 @@ TabAFF:AddDropdown({
 })
 
 TabAFF:AddButton({
-	Name = "Reroll",
+	Name = "สุ่ม",
 	Callback = function()
-        if getgenv().dfreroll == "Devil Fruit ( Left )" then
+        if getgenv().dfreroll == "ผลไม้ปีศาจ ( ฝั่งซ้าย )" then
 	    local args = {
     [1] = "DFT1",
     [2] = false,
@@ -1764,7 +1764,7 @@ TabAFF:AddButton({
 }
 
 workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-	elseif getgenv().dfreroll == "Devil Fruit ( Right )" then
+	elseif getgenv().dfreroll == "ผลไม้ปีศาจ ( ฝั่งขวา )" then
             local args = {
     [1] = "DFT2",
     [2] = false,
@@ -1780,17 +1780,17 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 })
 
 local TabSPM = Window:MakeTab({
-	Name = "Skill Spam",
+	Name = "แสปมสกิล",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabSPM:AddSection({
-	Name = "Spam Skill(🔒)"
+	Name = "แสปมสกิล(🔒)"
 })
 
 TabSPM:AddToggle({
-	Name = "Skill Charge Max",
+	Name = "ชาร์จเต็มสกิล",
 	Default = false,
 	Callback = function(SKM)
 		skillmax = SKM
@@ -1882,11 +1882,11 @@ function serializeTable(val, name, skipnewlines, depth)
  end
 
 local Section = TabSPM:AddSection({
-	Name = "Quake Spam"
+	Name = "แสปม กุระ"
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Spam | Quake Wave |",
+	Name = "ออโต้แสปม | กุระคลื่น |",
 	Default = false,
 	Callback = function(ASQ)
 		_G.quake1 = ASQ
@@ -1926,10 +1926,10 @@ spawn(function()
 end);
 
 local Section = TabSPM:AddSection({
-	Name = "Light Spam"
+	Name = "แสปม แสง"
 })
 TabSPM:AddToggle({
-	Name = "Auto Spam | Light Beam |",
+	Name = "ออโต้แสปม | ลำแสง |",
 	Default = false,
 	Callback = function(ASL)
 		_G.lightbeam = ASL
@@ -1976,11 +1976,11 @@ spawn(function()
 end);
 
 local Section = TabSPM:AddSection({
-	Name = "Flare Spam"
+	Name = "แสปม ไฟ"
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Spam | Fire First |",
+	Name = "ออโต้แสปม | หมัดบอลไฟ |",
 	Default = false,
 	Callback = function(FLA)
 		_G.flare1 = FLA
@@ -2020,7 +2020,7 @@ spawn(function()
 end);
 
 TabSPM:AddToggle({
-	Name = "Auto Spam | Flame Pillar |",
+	Name = "ออโต้แสปม | เสาเพลิง |",
 	Default = false,
 	Callback = function(FLAA)
 		_G.flare2 = FLAA
@@ -2059,11 +2059,11 @@ spawn(function()
 end);
 
 local Section = TabSPM:AddSection({
-	Name = "Dark Spam"
+	Name = "แสปม มืด"
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Spam | Dark Star |",
+	Name = "ออโต้แสปม | ดาวมืด |",
 	Default = false,
 	Callback = function(DKS)
 		_G.darkstar = DKS
@@ -2107,13 +2107,13 @@ spawn(function()
 end);
 
 local TabPlayer = Window:MakeTab({
-	Name = "Player",
+	Name = "ผู้เล่น",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabPlayer:AddSection({
-	Name = "Players"
+	Name = "ผู้เล่น"
 })
 
 local Plr = {}
@@ -2123,7 +2123,7 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
 end
 
 TabPlayer:AddDropdown({
-	Name = "Select Player",
+	Name = "เลือกผู้เล่น",
 	Default = "",
 	Options = Plr,
 	Callback = function(PP)
@@ -2132,14 +2132,14 @@ TabPlayer:AddDropdown({
 })
 
 TabPlayer:AddButton({
-	Name = "Click to Tp",
+	Name = "กดเพื่อวาป",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
   	end    
 })
 
 TabPlayer:AddToggle({
-	Name = "Behind Player",
+	Name = "ไปข้างหลังผู้เล่น",
 	Default = false,
 	Callback = function(TP)
 		Tpplr = TP
@@ -2157,7 +2157,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Bring Player",
+	Name = "ดึงผู้เล่น",
 	Default = false,
 	Callback = function(BPR)
 		BringPlr = BPR
@@ -2175,7 +2175,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Aim Player",
+	Name = "ล็อคเป้าผู้เล่น",
 	Default = false,
 	Callback = function(ASL)
 		aimsilent = ASL
@@ -2207,11 +2207,11 @@ mta.__index = newcclosure(function(a, b, c)
 end)
 
 local Section = TabPlayer:AddSection({
-	Name = "Player Kill"
+	Name = "ผู้เล่น คิล"
 })
 
 TabPlayer:AddDropdown({
-	Name = "Pls Choose Df | Kill Player |",
+	Name = "โปรดเลือด ผลไม้ปีศาจ | ฆ่าผู้เล่น |",
 	Default = "",
 	Options = Cache.DevConfig["ListOfListSpam"],
 	Callback = function(gkl)
@@ -2219,18 +2219,10 @@ TabPlayer:AddDropdown({
 	end    
 })
 
-TabPlayer:AddToggle({
-	Name = "Auto Spam Kill",
-	Default = false,
-	Callback = function(kplr)
-		_G.killplr = kplr
-	end    
-})
-
 spawn(function()
     while wait(0) do
         pcall(function()
-            if getgenv().kill == "Spam Quake" then
+            if getgenv().kill == "แสปม กุระ" then
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
@@ -2266,7 +2258,7 @@ end)
 spawn(function()
     while wait(0) do
         pcall(function()
-            if getgenv().kill == "Spam Flare" then
+            if getgenv().kill == "แสปม ไฟ" then
 	local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
         
@@ -2298,15 +2290,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Auto Spam Quake | Player All |",
-	Default = false,
-	Callback = function(SQA)
-		_G.spamquakeall = SQA
-	end    
-})
-
-TabPlayer:AddToggle({
-	Name = "Auto Cannon Ball Player | All |",
+	Name = "ออโต้แคนน่อน บอล | ผู้เล่นทั้งหมด |",
 	Default = false,
 	Callback = function(ACN)
 		_G.autocannonplr = ACN
@@ -2448,17 +2432,17 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local TabLD = Window:MakeTab({
-	Name = "Island",
+	Name = "เกาะ",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabLD:AddSection({
-	Name = "SafeZone"
+	Name = "พื้นที่ปลอดภัย"
 })
 
 TabLD:AddDropdown({
-	Name = "Choose SafeZone",
+	Name = "เลือก พื้นที่ปลอดภัย",
 	Default = "",
 	Options = Cache.DevConfig["ListOfSafeZone"],
 	Callback = function(CSF)
@@ -2467,7 +2451,7 @@ TabLD:AddDropdown({
 })
 	
 TabLD:AddButton({
-	Name = "Click To Tp",
+	Name = "กดเพื่อวาป",
 	Callback = function()
         if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
@@ -2478,11 +2462,11 @@ TabLD:AddButton({
 })
 	
 local Section = TabLD:AddSection({
-	Name = "Teleport to Island"
+	Name = "วาปไปยังเกาะต่าง ๆ"
 })
 
 TabLD:AddDropdown({
-	Name = "Choose Island",
+	Name = "เลือก เกาะ",
 	Default = "",
 	Options = Cache.DevConfig["ListOfIsland"],
 	Callback = function(GIS)
@@ -2491,7 +2475,7 @@ TabLD:AddDropdown({
 })
 
 TabLD:AddButton({
-	Name = "Click To Tp",
+	Name = "กดเพื่อวาป",
 	Callback = function()
         if getgenv().tpisland == "Grassy" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
@@ -2562,11 +2546,11 @@ TabLD:AddButton({
 })
 
 local Section = TabLD:AddSection({
-	Name = "Teleport Kill Pursuer"
+	Name = "วาปฆ่า บอสดาบ"
 })
 
 TabLD:AddToggle({
-	Name = "Pursuer Farm",
+	Name = "ออโต้ฟาร์ม บอสดาบ",
 	Default = false,
 	Callback = function(AFP)
 		_G.autopursuer = AFP
@@ -2597,11 +2581,11 @@ spawn(function()
 end);
 
 local Section = TabLD:AddSection({
-	Name = "For Event | Halloween!! |"
+	Name = "สำหรับอีเว้น | ฮาโลวีนน!! |"
 })
 
 TabLD:AddToggle({
-	Name = "Auto Bring | Zombies |",
+	Name = "ออโต้ดึง | ซอมบี้ |",
 	Default = false,
 	Callback = function(AFZ)
 		FarmZom = AFZ
@@ -2648,14 +2632,14 @@ spawn(function()
 end);
 
 TabLD:AddButton({
-	Name = "Tp To Pumpkin",
+	Name = "วาปไปยังฟักทอง",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
   	end    
 })
 
 TabLD:AddToggle({
-	Name = "Auto Click Pumpkin",
+	Name = "ออโต้กด ฟักทอง",
 	Default = false,
 	Callback = function(ACP)
 		AutoClickP = ACP
@@ -2678,25 +2662,25 @@ spawn(function()--autofruit
 end);
 	
 local TabMS = Window:MakeTab({
-	Name = "Misc",
+	Name = "อื่นๆอีก",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabMS:AddSection({
-	Name = "Sever"
+	Name = "เซิฟเวอร์"
 })
 
 TabMS:AddButton({
-	Name = "Rejoin Server",
+	Name = "รีจอย เซิฟเวอร์",
 	Callback = function()
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
   	end    
 })
 
 TabMS:AddButton({
-	Name = "Hop Server",
+	Name = "ย้าย เซิฟเวอร์",
 	Callback = function()
         local PlaceID = game.PlaceId
           local AllIDs = {}
@@ -2775,11 +2759,11 @@ TabMS:AddButton({
 })
 
 local Section = TabMS:AddSection({
-	Name = "UnBox"
+	Name = "เปิดกล่องผลไม้ปีศาจ"
 })
 
 TabMS:AddToggle({
-	Name = "Unbox | Common |",
+	Name = "เปิดกล่อง | Common |",
 	Default = false,
 	Callback = function(AUC)
 		UnboxBoxC = AUC
@@ -2803,7 +2787,7 @@ spawn(function()
 end);
 
 TabMS:AddToggle({
-	Name = "Unbox | Uncommon |",
+	Name = "เปิดกล่อง | Uncommon |",
 	Default = false,
 	Callback = function(AUN)
 		AutoUnboxU = AUN
@@ -2827,7 +2811,7 @@ spawn(function()
 end);
 
 TabMS:AddToggle({
-	Name = "Unbox | Rare, Ultra |",
+	Name = "เปิดกล่อง | Rare, Ultra |",
 	Default = false,
 	Callback = function(AULR)
 		UnboxRL = AULR
@@ -2850,11 +2834,11 @@ spawn(function()
 end);
 
 local Section = TabMS:AddSection({
-	Name = "Anti"
+	Name = "คุ้มกัน"
 })
 
 TabMS:AddToggle({
-	Name = "Anti Stun",
+	Name = "คุ้มกัน สตั้น",
 	Default = false,
 	Callback = function(ATS)
 		_G.autistun = ATS
@@ -2889,7 +2873,7 @@ end
 end);
 
 TabMS:AddButton({
-	Name = "Anti Lag",
+	Name = "คุ้มกัน อาการแล็ค",
 	Callback = function()
 	if not gethui then
     warn("Incompatible executor: gethui is unavailable")
@@ -2969,18 +2953,18 @@ end
 })
 
 TabMS:AddButton({
-	Name = "Anti Afk",
+	Name = "คุ้มกัน Afk | ไม่ทำงาน |",
 	Callback = function()
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 end})
 
 local Section = TabMS:AddSection({
-	Name = "Other"
+	Name = "อื่น ๆ"
 })
 
 TabMS:AddButton({
-	Name = "Seastone Cetus | 500 Melee |",
+	Name = "Seastone Cetus | 500 หมัด |",
 	Callback = function()
         local A_1 = "Seastone Cestus"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
@@ -2989,7 +2973,7 @@ TabMS:AddButton({
 })
 
 TabMS:AddButton({
-	Name = "Unlock Emote | All |",
+	Name = "ปลดล็อคท่าเต้น | ทั้งหมด |",
 	Callback = function()
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
@@ -3013,8 +2997,8 @@ TabMS:AddButton({
 end
 
 OrionLib:MakeNotification({
-	Name = "Logged In!",
-	Content = "You need key "..Player.Name..".",
+	Name = "ล็อคอิน!",
+	Content = "คุณต้องการคีย์ "..Player.Name..".",
 	Image = "rbxassetid://4483345998",
 	Time = 5
 })
@@ -3023,14 +3007,14 @@ getgenv().Key = "7090"
 getgenv().KeyInput = "string" 
 
 local Tab = Window:MakeTab({
-	Name = "Key",
+	Name = "คีย์",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 }) --Making A Tab
 
 Tab:AddTextbox({
-	Name = "Key",
-	Default = "Enter Key.",
+	Name = "คีย์",
+	Default = "ใส่คีย์",
 	TextDisappear = true,
 	Callback = function(Value)
 		getgenv().KeyInput = Value
@@ -3038,7 +3022,7 @@ Tab:AddTextbox({
 }) 
 
 Tab:AddButton({
-    Name = "Check Key",
+    Name = "เช็ค คีย์",
     Callback = function()
         if getgenv().KeyInput == getgenv().Key then
             OrionLib:MakeNotification({
@@ -3049,7 +3033,7 @@ Tab:AddButton({
             })
             wait(2)
             OrionLib:MakeNotification({
-                Name = "Correct Key!",
+                Name = "คีย์ถูกต้อง!",
                 Content = "The key you entered is Correct.",
                 Image = "rbxassetid://4483345998",
                 Time = 5
@@ -3060,14 +3044,14 @@ Tab:AddButton({
             MakeScriptHub()
         else
            OrionLib:MakeNotification({
-                Name = "Checking Key",
+                Name = "กำลังตรวจสอบคีย์",
                 Content = "Checking The Key You Entered",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
             wait(2)
             OrionLib:MakeNotification({
-                Name = "Incorrect Key!",
+                Name = "คีย์ผิดพลาด",
                 Content = "The key you entered is incorrect.",
                 Image = "rbxassetid://4483345998",
                 Time = 5
