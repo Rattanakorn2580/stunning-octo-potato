@@ -2209,19 +2209,27 @@ local Section = TabPlayer:AddSection({
 	Name = "Player Kill"
 })
 
-TabPlayer:AddToggle({
-	Name = "Auto Spam Quake | Player All |",
-	Default = false,
-	Callback = function(SQA)
-		_G.spamquakeall = SQA
+TabPlayer:AddDropdown({
+	Name = "Choose Df Spam | Kill Player |",
+	Default = "",
+	Options = Cache.DevConfig["ListOfListSpam"],
+	Callback = function(gkl)
+		getgenv().kill = gkl
 	end    
 })
 
-spawn(function() -- 
-    while task.wait(0) do
+TabPlayer:AddToggle({
+	Name = "Auto Spam Kill",
+	Default = false,
+	Callback = function(kplr)
+		_G.killplr = kplr
+	end    
+})
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
         pcall(function()
-            for i, v in pairs(game.Players:GetChildren()) do
-                if _G.spamquakeall then
+            if getgenv().kill == "Spam Quake" then
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
@@ -2245,14 +2253,21 @@ spawn(function() --
                                     [6] = 100,
                                     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
                                 game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                            end
                         end
                     end
                 end
             end
         end)
     end
-end);
+end)
+
+TabPlayer:AddToggle({
+	Name = "Auto Spam Quake | Player All |",
+	Default = false,
+	Callback = function(SQA)
+		_G.spamquakeall = SQA
+	end    
+})
 
 TabPlayer:AddToggle({
 	Name = "Auto Cannon Ball Player | All |",
