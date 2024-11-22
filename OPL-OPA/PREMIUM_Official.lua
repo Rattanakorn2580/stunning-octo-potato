@@ -2259,6 +2259,17 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if getgenv().kill == "แสปม ไฟ" then
+                for _,v in pairs(game.Players:GetChildren()) do
+                    if string.find(v.Name)
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+                        v:FindFirstChild("HumanoidRootPart").Anchored = true
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,13,0)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        
 	local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
         
@@ -2283,7 +2294,10 @@ spawn(function()
             }
             
             game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
-            
+
+		            end
+        end
+    end
             end
         end)
     end
