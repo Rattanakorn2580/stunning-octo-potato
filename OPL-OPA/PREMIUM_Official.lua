@@ -2253,8 +2253,39 @@ spawn(function() -- autofarm velocity
                                     [5] = v.Character.HumanoidRootPart.CFrame,
                                     [6] = 100,
                                     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                        end
+                            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+			
+spawn(function()
+    while wait(getgenv().spamtime) do
+	elseif getgenv().kill == "Spam Flare" then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+        
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-550.802795, 244, 26.3580341, -0.63954407, 0.15401715, -0.753168106, -0, 0.979725122, 0.200346366, 0.768754423, 0.128130332, -0.626577377),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [7] = "Left"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+			
+			end
+			end
+			end
                     end
                 end
             end
