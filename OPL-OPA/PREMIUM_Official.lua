@@ -2200,7 +2200,7 @@ TabPlayer:AddToggle({
 })
 
 spawn(function()
-while wait(1) do
+while wait(0.2) do
 pcall(function()
 if AutoDeath then
 local A_1 = "NOPLS"
