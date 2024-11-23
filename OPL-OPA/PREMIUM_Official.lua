@@ -3138,7 +3138,30 @@ TabMS:AddButton({
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
-	
+
+TabMS:AddToggle({
+	Name = "Kill Aura",
+	Default = false,
+	Callback = function(KAU)
+		_G.killaura = KAU
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if _G.killaura then
+            pcall(function()
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
+    if v.ClassName == "Model" then
+        v.Humanoid.Health = die
+wait(.1)
+end
+    end
+            end)
+        end
+    end
+end)
+
 end
 
 OrionLib:MakeNotification({
