@@ -5,7 +5,7 @@ local Player = game.Players.LocalPlayer
 		HidePremium = false,
 		SaveConfig = true,
 		ConfigFolder = "OrionTest",
-        IntroText = "   กำลังโหลด . . ."       
+        IntroText = "   กำลังโหลด กรุณาใส่คีย์ก่อนใช้งาน . . ."       
 })
 
 function MakeScriptHub()
@@ -3232,14 +3232,29 @@ end)
 end
 
 OrionLib:MakeNotification({
-	Name = "ล็อคอิน!",
-	Content = "คุณต้องการคีย์ "..Player.Name..".",
+	Name = "ขอบคุณที่ใช้สคริปเรา ! ! !",
+	Content = "กรุณาใส่คีย์ "..Player.Name..". ! ! !",
 	Image = "rbxassetid://4483345998",
 	Time = 5
 })
 
 getgenv().Key = "7090" 
 getgenv().KeyInput = "string" 
+
+local TabUD = Window:MakeTab({
+	Name = "อัพเดต",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabUD:AddSection({
+	Name = " * อัพเดตเป็นภาษาไทยทั้งหมดเพื่อให้เข้าใจง่ายขึ้น"
+})
+
+local Section = TabUD:AddSection({
+	Name = "สามารถแนะนำได้ว่าให้ทำสคริปแบบไหนในแมพนี้เท่านั้น!!! 📲"
+})
 
 local Tab = Window:MakeTab({
 	Name = "คีย์",
@@ -3261,14 +3276,14 @@ Tab:AddButton({
     Callback = function()
         if getgenv().KeyInput == getgenv().Key then
             OrionLib:MakeNotification({
-                Name = "กำลังเช็คคีย์ ! !",
+                Name = "กำลังเช็คคีย์ ! ! !",
                 Content = "กำลังเช็คคีย์ที่คุณใส่ ! !",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
             wait(2)
             OrionLib:MakeNotification({
-                Name = "คีย์ถูกต้อง !",
+                Name = "คีย์ถูกต้อง ! ! !",
                 Content = "คีย์ที่ใส่ถูกต้อง ! ! !",
                 Image = "rbxassetid://4483345998",
                 Time = 5
