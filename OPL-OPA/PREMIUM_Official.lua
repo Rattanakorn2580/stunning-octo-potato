@@ -2206,6 +2206,14 @@ if AutoDeath then
 local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
     Event:FireServer(A_1)
+task.wait(.5)
+local A_1 = "NOPLS"
+    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
+    Event:FireServer(A_1)
+task.wait(.5)
+local A_1 = "NOPLS"
+    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
+    Event:FireServer(A_1)
 end
 end)
 end
