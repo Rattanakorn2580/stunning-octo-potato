@@ -1796,6 +1796,16 @@ spawn(function()
         pcall(function()
             if _G.rec then
 
+local A_1 = "DF1",
+local A_2 = true,
+local A_3 = false,
+local A_4 = true,
+local A_5 = true,
+local A_6 = "Cash"
+
+    local Event = game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum
+    Event:FireServer(A_1, A_2, A_3, A_4, A_5, A_6)
+
             end
         end)
     end
