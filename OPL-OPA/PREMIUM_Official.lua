@@ -2994,6 +2994,34 @@ TabMS:AddButton({
   	end    
 })
 
+TabMS:AddToggle({
+	Name = "Walk On Water",
+	Default = false,
+	Callback = function(WOW)
+		_G.walkonwater = WOW
+	end    
+})
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if _G.walkonwater then
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+    if string.find(v.Name, "Water") then
+    v.CanCollide = true
+                    end
+                        end
+            elseif  _G.walkonwater == false then
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+    if string.find(v.Name, "Water") then
+    v.CanCollide = false
+                    end
+                        end
+            end
+        end)
+    end
+end)
+	
 end
 
 OrionLib:MakeNotification({
