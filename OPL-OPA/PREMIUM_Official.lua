@@ -2959,12 +2959,40 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 end})
 
+TabMS:AddToggle({
+	Name = "เดินบนน้ำได้",
+	Default = false,
+	Callback = function(WOW)
+		_G.walkonwater = WOW
+	end    
+})
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if _G.walkonwater then
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+    if string.find(v.Name, "Water") then
+    v.CanCollide = true
+                    end
+                        end
+            elseif  _G.walkonwater == false then
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+    if string.find(v.Name, "Water") then
+    v.CanCollide = false
+                    end
+                        end
+            end
+        end)
+    end
+end)
+	
 local Section = TabMS:AddSection({
 	Name = "อื่น ๆ"
 })
 
 TabMS:AddButton({
-	Name = "Seastone Cetus | 500 หมัด |",
+	Name = "Seastone Cestus | 500 หมัด |",
 	Callback = function()
         local A_1 = "Seastone Cestus"
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
@@ -2993,34 +3021,6 @@ TabMS:AddButton({
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
-
-TabMS:AddToggle({
-	Name = "Walk On Water",
-	Default = false,
-	Callback = function(WOW)
-		_G.walkonwater = WOW
-	end    
-})
-
-spawn(function() -- autofarm velocity
-    while wait(0) do
-        pcall(function()
-            if _G.walkonwater then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
-    if string.find(v.Name, "Water") then
-    v.CanCollide = true
-                    end
-                        end
-            elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
-    if string.find(v.Name, "Water") then
-    v.CanCollide = false
-                    end
-                        end
-            end
-        end)
-    end
-end)
 	
 end
 
@@ -3054,15 +3054,15 @@ Tab:AddButton({
     Callback = function()
         if getgenv().KeyInput == getgenv().Key then
             OrionLib:MakeNotification({
-                Name = "Checking Key",
-                Content = "Checking The Key You Entered",
+                Name = "กำลังเช็คคีย์ ! !",
+                Content = "กำลังเช็คคีย์ที่คุณใส่ ! !",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
             wait(2)
             OrionLib:MakeNotification({
-                Name = "คีย์ถูกต้อง!",
-                Content = "The key you entered is Correct.",
+                Name = "คีย์ถูกต้อง !",
+                Content = "คีย์ที่ใส่ถูกต้อง ! ! !",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
@@ -3073,14 +3073,14 @@ Tab:AddButton({
         else
            OrionLib:MakeNotification({
                 Name = "กำลังตรวจสอบคีย์",
-                Content = "Checking The Key You Entered",
+                Content = "กำลังตรวจสอบคีย์ที่ใส่ .",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
             wait(2)
             OrionLib:MakeNotification({
-                Name = "คีย์ผิดพลาด",
-                Content = "The key you entered is incorrect.",
+                Name = "คีย์ผิด",
+                Content = "คีย์ที่ใส่ไปมันผิด .",
                 Image = "rbxassetid://4483345998",
                 Time = 5
             })
