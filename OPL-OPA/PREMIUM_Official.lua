@@ -3088,13 +3088,13 @@ spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
             if _G.walkonwater then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetDescendants()) do
     if string.find(v.Name, "Water") then
     v.CanCollide = true
                     end
                         end
             elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetChildren()) do
+                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetDescendants()) do
     if string.find(v.Name, "Water") then
     v.CanCollide = false
                     end
