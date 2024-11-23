@@ -5,12 +5,12 @@ local Player = game.Players.LocalPlayer
 		HidePremium = false,
 		SaveConfig = true,
 		ConfigFolder = "OrionTest",
-        IntroText = "   โหลด . . ."       
+        IntroText = "   กำลังโหลด . . ."       
 })
 
 function MakeScriptHub()
         local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " โหลด . . . InW Hub"})
+local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " กำลังโหลด . . . InW Premium Hub"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
@@ -1795,7 +1795,7 @@ spawn(function()
     while wait(14) do
         pcall(function()
             if _G.rec then
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")
+game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")
             end
         end)
     end
