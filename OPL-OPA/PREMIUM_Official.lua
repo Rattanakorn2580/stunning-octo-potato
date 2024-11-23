@@ -1782,18 +1782,19 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 local Section = TabAFF:AddSection({
 	Name = "สุ่มพลังแฝง ผลฝั่งซ้ายมือ | แบบล็อค 3 ค่า |"
 })
+	
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ป้องกัน",
 	Default = false,
 	Callback = function(RC)
-		_G.recoll1 = RC
+		_G.rec = RC
 	end    
 })
 	
 spawn(function()
     while wait(14) do
         pcall(function()
-            if _G.recoll1 then
+            if _G.rec then
                 [1] = "DFT1",
     [2] = false,
     [3] = true,
@@ -1813,14 +1814,14 @@ TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า หมัด",
 	Default = false,
 	Callback = function(RCL)
-		_G.recoll2= RCL
+		_G.reco = RCL
 	end    
 })
 	
 spawn(function()
     while wait(14) do
         pcall(function()
-            if _G.recoll2 then
+            if _G.reco then
                 [1] = "DFT1",
     [2] = true,
     [3] = false,
@@ -1840,14 +1841,14 @@ TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ปืน",
 	Default = false,
 	Callback = function(RCLL)
-		_G.recoll3 = RCLL
+		_G.recol = RCLL
 	end    
 })
 	
 spawn(function()
     while wait(14) do
         pcall(function()
-            if _G.recoll3 then
+            if _G.recol then
                 [1] = "DFT1",
     [2] = true,
     [3] = true,
@@ -1867,14 +1868,14 @@ TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ดาบ",
 	Default = false,
 	Callback = function(RLLL)
-		_G.recoll4 = RLLL
+		_G.recoll = RLLL
 	end    
 })
 
 	spawn(function()
     while wait(14) do
         pcall(function()
-            if _G.recoll4 then
+            if _G.recoll then
                 [1] = "DFT1",
     [2] = true,
     [3] = true,
