@@ -2191,7 +2191,7 @@ local Section = TabPlayer:AddSection({
 	Name = "ออโต้ตาย | ไว้สำหรับฟาร์มค่าหัวหลายๆไอดี |"
 })
 
-TabNPC:AddToggle({
+TabPlayer:AddToggle({
 	Name = "ออโต้ตาย",
 	Default = false,
 	Callback = function(DTH)
