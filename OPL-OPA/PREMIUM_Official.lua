@@ -1795,15 +1795,6 @@ spawn(function()
     while wait(14) do
         pcall(function()
             if _G.rec then
-                [1] = "DFT1",
-    [2] = false,
-    [3] = true,
-    [4] = true,
-    [5] = true,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 
             end
         end)
