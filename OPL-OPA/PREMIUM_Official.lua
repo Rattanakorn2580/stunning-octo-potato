@@ -1779,6 +1779,118 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
   	end    
 })
 
+local Section = TabAFF:AddSection({
+	Name = "สุ่มพลังแฝง ผลฝั่งซ้ายมือ | แบบล็อค 3 ค่า |"
+})
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ป้องกัน",
+	Default = false,
+	Callback = function(RC)
+		_G.recoll1 = RC
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll1 then
+                [1] = "DFT1",
+    [2] = false,
+    [3] = true,
+    [4] = true,
+    [5] = true,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+
+            end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า หมัด",
+	Default = false,
+	Callback = function(RCL)
+		_G.recoll2= RCL
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll2 then
+                [1] = "DFT1",
+    [2] = true,
+    [3] = false,
+    [4] = true,
+    [5] = true,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+
+            end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ปืน",
+	Default = false,
+	Callback = function(RCLL)
+		_G.recoll3 = RCLL
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll3 then
+                [1] = "DFT1",
+    [2] = true,
+    [3] = true,
+    [4] = false,
+    [5] = true,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+
+            end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ดาบ",
+	Default = false,
+	Callback = function(RLLL)
+		_G.recoll4 = RLLL
+	end    
+})
+
+	spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll4 then
+                [1] = "DFT1",
+    [2] = true,
+    [3] = true,
+    [4] = true,
+    [5] = false,
+    [6] = "Cash"
+}
+
+workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
+
+            end
+        end)
+    end
+end)
+
+
 local TabSPM = Window:MakeTab({
 	Name = "แสปมสกิล",
 	Icon = "rbxassetid://4483345998",
