@@ -308,7 +308,7 @@ spawn(function()
     end
  end)
 
-TabNPC:AddToggle({
+TabAuto:AddToggle({
 	Name = "ออโต้ดึงหีบสมบัติ",
 	Default = false,
 	Callback = function(CHT)
