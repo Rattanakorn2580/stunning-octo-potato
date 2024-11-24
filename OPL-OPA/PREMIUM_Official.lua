@@ -308,6 +308,28 @@ spawn(function()
     end
  end)
 
+TabNPC:AddToggle({
+	Name = "ออโต้ดึงหีบสมบัติ",
+	Default = false,
+	Callback = function(CHT)
+		_G.chest = CHT
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if _G.chest then
+            pcall(function()
+                for _,v in pairs(game.Workspace.Island11:GetChildren()) do
+                    if string.find(v.Name, "ChestSpawner")
+                        v:FindFirstChild().CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,0)
+                     end
+                end
+            end)
+        end
+    end
+end)
+
 TabAuto:AddToggle({
 	Name = "ฮอโต้ กดรับของขวัญ | Beri 💸 |",
 	Default = false,
