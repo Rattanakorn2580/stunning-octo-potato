@@ -62,8 +62,8 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"ผลไม้ปีศาจ ( ฝั่งซ้าย )", "ผลไม้ปีศาจ ( ฝั่งขวา )"};
 Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม กุระ", "แสปม ไฟ", "แสปม แสง"};
-Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizachi", "Tachi", "Katana", "Flail", "Krizma"}
-Cache.DevConfig["ListOfSniper"] = {"Slingahot", "Star", "Crossbow", "Flintlock"}
+Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
+Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 
 
 local TabAuto = Window:MakeTab({
@@ -1839,6 +1839,10 @@ workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Wakizashi",5000)
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Tachi",7500)
 	elseif getgenv().buyweapon == "Katana" then
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Katana",10000)
+	elseif getgenv().buyweapon "Fail" then
+workspace.Merchants.FlailMerch.Clickable.Retum:FireServer("Flail",50000)
+	elseif getgenv().buyweapon == "Krizma" then
+workspace.Merchants.KrizmaMerch.Clickable.Retum:FireServer("Krizma",80000)
 	end
   	end    
 })
@@ -1856,7 +1860,7 @@ TabBy:AddButton({
 	Name = "กดซื้อปืน",
 	Callback = function()
         if getgenv().buysniper == "Slinger" then
-workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Slinger",1000)
+workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Slingshot",1000)
 	elseif getgenv().buysniper == "Star" then
 workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Star",5000)
 	elseif getgenv().buysniper == "Crossbow" then
