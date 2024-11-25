@@ -3317,7 +3317,7 @@ local ESPSettings = {
     NameColor = Color3.fromRGB(255, 255, 255), -- White name
     ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
     ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
-    TextSize = 14, -- ESP Name Text Size
+    TextSize = 10, -- ESP Name Text Size
 }
 
 -- Function to create Chams (highlight players through walls)
@@ -3393,21 +3393,6 @@ OrionLib:MakeNotification({
 
 getgenv().Key = "7090" 
 getgenv().KeyInput = "string" 
-
-local TabUD = Window:MakeTab({
-	Name = "อัพเดต",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-
-local Section = TabUD:AddSection({
-	Name = " * อัพเดตเป็นภาษาไทยทั้งหมดเพื่อให้เข้าใจง่ายขึ้น"
-})
-
-local Section = TabUD:AddSection({
-	Name = "สามารถแนะนำได้ว่าให้ทำสคริปแบบไหนในแมพนี้เท่านั้น!!! 📲"
-})
 
 local Tab = Window:MakeTab({
 	Name = "คีย์",
