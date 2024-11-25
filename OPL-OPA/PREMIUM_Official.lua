@@ -3302,27 +3302,6 @@ end
     end
 end)
 
-TabMS:AddToggle({
-	Name = "กันน้ำ",
-	Default = false,
-	Callback = function(AWT)
-		_G.antiwater = AWT
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if _G.antiwater then
-            pcall(function()
-                for i,v in pairs(game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown:GetChildren()) do
-        v:Destroy
-wait(.3)
-    end
-            end)
-        end
-    end
-end)
-
 end
 
 OrionLib:MakeNotification({
