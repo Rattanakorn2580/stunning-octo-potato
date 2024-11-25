@@ -1848,6 +1848,7 @@ workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Wakizashi",5000)
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Tachi",7500)
 	elseif getgenv().buyweapon == "Katana" then
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Katana",10000)
+	end
   	end    
 })
 
@@ -1871,6 +1872,7 @@ workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Star",5000)
 workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Wakizashi",5000)
 	elseif getgenv().buysniper == "Wakizachi" then
 workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Wakizashi",5000)
+	end
   	end    
 })
 
