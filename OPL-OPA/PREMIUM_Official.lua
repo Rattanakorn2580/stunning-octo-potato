@@ -62,6 +62,9 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"ผลไม้ปีศาจ ( ฝั่งซ้าย )", "ผลไม้ปีศาจ ( ฝั่งขวา )"};
 Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม กุระ", "แสปม ไฟ", "แสปม แสง"};
+Cache.DevConfig["ListofWeapon"] = {"Dagger"}
+Cache.DevConfig["ListOfSniper"] = {"Slinger", "Star", ""}
+
 
 local TabAuto = Window:MakeTab({
 	Name = "ออโต้",
@@ -1853,7 +1856,7 @@ TabBy:AddDropdown({
 TabBy:AddButton({
 	Name = "กดซื้อปืน",
 	Callback = function()
-        
+        if getgenv().buysniper == "" then
   	end    
 })
 
