@@ -3302,7 +3302,7 @@ end
     end
 end)
 
-TabNPC:AddButton({
+TabMS:AddButton({
 	Name = "Buy Drink",
 	Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
