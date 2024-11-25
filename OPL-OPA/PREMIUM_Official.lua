@@ -1815,6 +1815,48 @@ spawn(function()
     end
 end);
 
+local TabBy = Window:MakeTab({
+	Name = "ซื้อของ",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabBy:AddSection({
+	Name = "ซื้อของ เอ็นพีซี"
+})
+
+TabBy:AddDropdown({
+	Name = "เลือกซื้อ ดาบ",
+	Default = "",
+	Options = Cache.DevConfig["ListOfWeapon"],
+	Callback = function(LBN)
+		getgenv().buyweapon = LBN
+	end    
+})
+
+TabBy:AddButton({
+	Name = "กดซื้อดาบ",
+	Callback = function()
+        
+  	end    
+})
+
+TabBy:AddDropdown({
+	Name = "เลือกซื้อ ปืน",
+	Default = "",
+	Options = Cache.DevConfig["ListOfSniper"],
+	Callback = function(SD)
+		getgenv().buysniper = LBS
+	end    
+})
+
+TabBy:AddButton({
+	Name = "กดซื้อปืน",
+	Callback = function()
+        
+  	end    
+})
+
 local TabAFF = Window:MakeTab({
 	Name = "พลังแฝง",
 	Icon = "rbxassetid://4483345998",
