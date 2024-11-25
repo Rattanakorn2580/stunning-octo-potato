@@ -319,15 +319,6 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()
-    while wait() do
-        if _G.chest then
-            pcall(function()
-            end
-        end)
-    end
-end)
-
 TabAuto:AddToggle({
 	Name = "ฮอโต้ กดรับของขวัญ | Beri 💸 |",
 	Default = false,
