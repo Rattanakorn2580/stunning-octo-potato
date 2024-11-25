@@ -63,7 +63,7 @@ Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail
 Cache.DevConfig["ListOfAffinities"] = {"ผลไม้ปีศาจ ( ฝั่งซ้าย )", "ผลไม้ปีศาจ ( ฝั่งขวา )"};
 Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม กุระ", "แสปม ไฟ", "แสปม แสง"};
 Cache.DevConfig["ListofWeapon"] = {"Dagger", "Wakizachi", "Tachi", "Katana", "Flail", "Krizma"}
-Cache.DevConfig["ListOfSniper"] = {"Slinger", "Star", ""}
+Cache.DevConfig["ListOfSniper"] = {"Slingahot", "Star", "Crossbow", "Flintlock"}
 
 
 local TabAuto = Window:MakeTab({
