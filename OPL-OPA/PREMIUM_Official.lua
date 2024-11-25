@@ -3302,6 +3302,108 @@ end
     end
 end)
 
+TabNPC:AddButton({
+	Name = "Buy Drink",
+	Callback = function()
+        -- ESP Script (Chams, Name, Box, Tracers)
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+
+-- Settings
+local ESPSettings = {
+    BoxColor = Color3.fromRGB(255, 0, 0), -- Red box
+    NameColor = Color3.fromRGB(255, 255, 255), -- White name
+    TracerColor = Color3.fromRGB(0, 255, 0), -- Green tracers
+    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
+    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
+    TextSize = 14, -- ESP Name Text Size
+}
+
+-- Function to create Chams (highlight players through walls)
+local function createChams(character)
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            local cham = Instance.new("BoxHandleAdornment")
+            cham.Size = part.Size
+            cham.Adornee = part
+            cham.Color = ESPSettings.ChamColor
+            cham.Transparency = ESPSettings.ChamTransparency
+            cham.ZIndex = 0
+            cham.AlwaysOnTop = true
+            cham.Parent = part
+        end
+    end
+end
+
+-- Function to create ESP (Names, Boxes, Tracers)
+local function createESP(player)
+    local box = Drawing.new("Square")
+    local name = Drawing.new("Text")
+    local tracer = Drawing.new("Line")
+
+    RunService.RenderStepped:Connect(function()
+        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
+            local rootPart = player.Character.HumanoidRootPart
+            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
+            
+            if onScreen then
+                -- Box ESP
+                box.Visible = true
+                box.Color = ESPSettings.BoxColor
+                box.Thickness = 1
+                box.Transparency = 1
+                box.Size = Vector2.new(2000 / pos.Z, 2500 / pos.Z)
+                box.Position = Vector2.new(pos.X - box.Size.X / 2, pos.Y - box.Size.Y / 2)
+
+                -- Name ESP
+                name.Visible = true
+                name.Text = player.Name
+                name.Size = ESPSettings.TextSize
+                name.Color = ESPSettings.NameColor
+                name.Position = Vector2.new(pos.X, pos.Y - 25)
+
+                -- Tracer ESP
+                tracer.Visible = true
+                tracer.From = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y)
+                tracer.To = Vector2.new(pos.X, pos.Y)
+                tracer.Color = ESPSettings.TracerColor
+                tracer.Thickness = 1
+            else
+                box.Visible = false
+                name.Visible = false
+                tracer.Visible = false
+            end
+        else
+            box.Visible = false
+            name.Visible = false
+            tracer.Visible = false
+        end
+    end)
+end
+
+-- Apply ESP to all players
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        createESP(player)
+        player.CharacterAdded:Connect(function(character)
+            createChams(character)
+        end)
+    end
+end
+
+-- Update ESP when a new player joins
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        createChams(character)
+        createESP(player)
+    end)
+end)
+  	end    
+})
+
 end
 
 OrionLib:MakeNotification({
