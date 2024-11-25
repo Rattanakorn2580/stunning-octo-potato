@@ -3303,7 +3303,7 @@ end
 end)
 
 TabMS:AddButton({
-	Name = "Buy Drink",
+	Name = "ESP ผู้เล่น",
 	Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
 
@@ -3314,9 +3314,7 @@ local Camera = workspace.CurrentCamera
 
 -- Settings
 local ESPSettings = {
-    BoxColor = Color3.fromRGB(255, 0, 0), -- Red box
     NameColor = Color3.fromRGB(255, 255, 255), -- White name
-    TracerColor = Color3.fromRGB(0, 255, 0), -- Green tracers
     ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
     ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
     TextSize = 14, -- ESP Name Text Size
@@ -3340,9 +3338,7 @@ end
 
 -- Function to create ESP (Names, Boxes, Tracers)
 local function createESP(player)
-    local box = Drawing.new("Square")
     local name = Drawing.new("Text")
-    local tracer = Drawing.new("Line")
 
     RunService.RenderStepped:Connect(function()
         if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
@@ -3350,14 +3346,6 @@ local function createESP(player)
             local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
             
             if onScreen then
-                -- Box ESP
-                box.Visible = true
-                box.Color = ESPSettings.BoxColor
-                box.Thickness = 1
-                box.Transparency = 1
-                box.Size = Vector2.new(2000 / pos.Z, 2500 / pos.Z)
-                box.Position = Vector2.new(pos.X - box.Size.X / 2, pos.Y - box.Size.Y / 2)
-
                 -- Name ESP
                 name.Visible = true
                 name.Text = player.Name
@@ -3365,21 +3353,11 @@ local function createESP(player)
                 name.Color = ESPSettings.NameColor
                 name.Position = Vector2.new(pos.X, pos.Y - 25)
 
-                -- Tracer ESP
-                tracer.Visible = true
-                tracer.From = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y)
-                tracer.To = Vector2.new(pos.X, pos.Y)
-                tracer.Color = ESPSettings.TracerColor
-                tracer.Thickness = 1
             else
-                box.Visible = false
                 name.Visible = false
-                tracer.Visible = false
             end
         else
-            box.Visible = false
             name.Visible = false
-            tracer.Visible = false
         end
     end)
 end
