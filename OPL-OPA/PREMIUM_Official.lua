@@ -1620,105 +1620,6 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "ซื้อน้ำ"
-})
-
-TabNPC:AddDropdown({
-	Name = "เลือกน้ำ",
-	Default = "",
-	Options = Cache.DevConfig["ListOfDrink"],
-	Callback = function(SD)
-		SelectDrink = SD
-	end    
-})
-
-TabNPC:AddTextbox({
-	Name = "จำนวน น้ำ",
-	Default = "1",
-	TextDisappear = true,
-	Callback = function(AD)
-		AmountDrink = AD
-	end	  
-})
-
-TabNPC:AddButton({
-	Name = "ซื้อ น้ำ",
-	Callback = function()
-        if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
-        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
-            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
-        end
-  	end    
-})
-
-TabNPC:AddToggle({
-	Name = "ออโต้ดื่ม",
-	Default = false,
-	Callback = function(ADK)
-		AutoDrink = ADK
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoDrink then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value:Activate();
-                end
-            end
-        end)
-    end
-end);
-
-TabNPC:AddToggle({
-	Name = "ออโต้ทิ้งน้ำ",
-	Default = false,
-	Callback = function(ADD)
-		AutoDropDrink = ADD
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoDropDrink then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value.Parent = game.Workspace;
-                end
-            end
-        end)
-    end
-end);
-
-TabNPC:AddToggle({
-	Name = "ออโต้ดึงน้ำ",
-	Default = false,
-	Callback = function(ADD)
-		AutoLootDeink = ADD
-	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not AutoLootDeink then return end;
-            for _, Item in pairs(game.Workspace:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfDrink"], Item.Name) and Item:FindFirstChild("Handle") then
-                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
-                end
-            end
-        end)
-    end
-end);
-
-local Section = TabNPC:AddSection({
 	Name = "ภารกิจแซม"
 })
 
@@ -1870,6 +1771,106 @@ workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Flintlock",10000)
 	end
   	end    
 })
+
+local Section = TabBy:AddSection({
+	Name = "ซื้อน้ำ"
+})
+
+TabBy:AddDropdown({
+	Name = "เลือกน้ำ",
+	Default = "",
+	Options = Cache.DevConfig["ListOfDrink"],
+	Callback = function(SD)
+		SelectDrink = SD
+	end    
+})
+
+TabBy:AddTextbox({
+	Name = "จำนวน น้ำ",
+	Default = "1",
+	TextDisappear = true,
+	Callback = function(AD)
+		AmountDrink = AD
+	end	  
+})
+
+TabBy:AddButton({
+	Name = "ซื้อ น้ำ",
+	Callback = function()
+        if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+        end
+  	end    
+})
+
+TabBy:AddToggle({
+	Name = "ออโต้ดื่ม",
+	Default = false,
+	Callback = function(ADK)
+		AutoDrink = ADK
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+TabBy:AddToggle({
+	Name = "ออโต้ทิ้งน้ำ",
+	Default = false,
+	Callback = function(ADD)
+		AutoDropDrink = ADD
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDropDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
+
+TabBy:AddToggle({
+	Name = "ออโต้ดึงน้ำ",
+	Default = false,
+	Callback = function(ADD)
+		AutoLootDeink = ADD
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoLootDeink then return end;
+            for _, Item in pairs(game.Workspace:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Item.Name) and Item:FindFirstChild("Handle") then
+                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
+                end
+            end
+        end)
+    end
+end);
+
 
 local TabAFF = Window:MakeTab({
 	Name = "พลังแฝง",
