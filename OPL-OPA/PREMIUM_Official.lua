@@ -1934,9 +1934,12 @@ TabAFF:AddToggle({
 spawn(function()
     while wait(14) do
         pcall(function()
-            if _G.recoll1 then
+            if not _G.recoll1 then return end;
+if _, v in pairs(game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data.DFTDefense()) do
+	if table.find(game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data.DFTDefense.1.10, v.Value) then
 game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")           
 		end
+	end
         end)
     end
 end)
