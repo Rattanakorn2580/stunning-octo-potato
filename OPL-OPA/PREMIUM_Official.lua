@@ -1655,7 +1655,8 @@ spawn(function()
             if not AutoCompassQuestXX then return end;
             local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
             local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-            if Compass or Compass2 then
+	    local Compass3 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 or Compass3 then
                 local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
                 game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
                 Compass.Parent = game.Players.LocalPlayer.Character;
