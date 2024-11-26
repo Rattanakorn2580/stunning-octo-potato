@@ -1741,9 +1741,9 @@ workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Tachi",7500)
 	elseif getgenv().buyweapon == "Katana" then
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Katana",10000)
 	elseif getgenv().buyweapon "Fail" then
-workspace.Merchants.FlailMerch.Clickable.Retum:FireServer("Flail",50000)
+workspace.Merchants.FlailMerchant.Clickable.Retum:FireServer("Flail",50000)
 	elseif getgenv().buyweapon == "Krizma" then
-workspace.Merchants.KrizmaMerch.Clickable.Retum:FireServer("Krizma",80000)
+workspace.Merchants.KrizmaMerchant.Clickable.Retum:FireServer("Krizma",80000)
 	end
   	end    
 })
