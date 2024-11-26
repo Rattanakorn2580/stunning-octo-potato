@@ -2516,8 +2516,12 @@ end)
 spawn(function()
     while wait(0) do
         pcall(function()
-            if getgenv().kill == "แสปม ไฟ" then        
-	local pla = game.Players.LocalPlayer;
+            if getgenv().kill == "แสปม ไฟ" then
+                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        if v.Name ~= "SetInstances" then
+                            if v.Name ~= game.Players.LocalPlayer.Name then
+                                task.wait(getgenv().spamtime)
+        local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
         
             local args = {
@@ -2541,7 +2545,10 @@ spawn(function()
             }
             
             game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
-
+            
+			end
+                    end
+                end
             end
         end)
     end
