@@ -3287,7 +3287,7 @@ TabMS:AddToggle({
     SafeZoneFarm.Anchored = true
     SafeZoneFarm.CanCollide = true
             elseif  _G.walkonwater == false then
-                SafeZoneFarm:Destroy()
+                workspace.SafeZoneWalkPart:Destroy()
                         end
 	
 local Section = TabMS:AddSection({
