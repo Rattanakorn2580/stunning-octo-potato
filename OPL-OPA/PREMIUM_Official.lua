@@ -25,9 +25,9 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Anchored = true
 
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneSPPart"
-    SafeZoneFarm.Size = Vector3.new(200000,0.5,200000)
-    SafeZoneFarm.Position = Vector3.new(-112, 215.5, -589)
+    SafeZoneFarm.Name = "SafeZoneWalkPart"
+    SafeZoneFarm.Size = Vector3.new(1000000,0.5,1000000)
+    SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
     SafeZoneFarm.Anchored = true
     SafeZoneFarm.CanCollide = false
 
@@ -3301,14 +3301,11 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.walkonwater then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetDescendants()) do
-    if string.find(v.Name, "Water") then
+                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetDescendants()) do
     v.CanCollide = true
-                    end
                         end
             elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").Water.Water0.Model:GetDescendants()) do
-    if string.find(v.Name, "Water") then
+                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetDescendants()) do
     v.CanCollide = false
                     end
                         end
