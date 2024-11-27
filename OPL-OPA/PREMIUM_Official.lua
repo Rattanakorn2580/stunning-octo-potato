@@ -3291,15 +3291,14 @@ TabMS:AddToggle({
 })
 
             if _G.walkonwater then
-                local SafeZoneFarm = Instance.new("Part",game.Workspace)
+    local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneWalkPart"
     SafeZoneFarm.Size = Vector3.new(2048,0.5,2048)
     SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
     SafeZoneFarm.Anchored = true
     SafeZoneFarm.CanCollide = true
             elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
-    v:Destroy()
+                SafeZoneFarm:Destroy()
                         end
     end
 	
