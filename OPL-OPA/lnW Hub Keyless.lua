@@ -3287,9 +3287,11 @@ TabMS:AddToggle({
     SafeZoneFarm.Anchored = true
     SafeZoneFarm.CanCollide = true
             elseif  _G.walkonwater == false then
-                workspace.SafeZoneWalkPart:Destroy()
+                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:WaitForChild()) do
+		v:Destroy()
                         end
-	
+end
+
 local Section = TabMS:AddSection({
 	Name = "อื่น ๆ"
 })
