@@ -24,13 +24,6 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Position = Vector3.new(-339, 3623, -641)
     SafeZoneFarm.Anchored = true
 
-local SafeZoneFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneWalkPart"
-    SafeZoneFarm.Size = Vector3.new(2048,0.5,2048)
-    SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
-    SafeZoneFarm.Anchored = true
-    SafeZoneFarm.CanCollide = true
-
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
@@ -3301,12 +3294,15 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.walkonwater then
-                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
-    v.CanCollide = true
-                        end
+                local SafeZoneFarm = Instance.new("Part",game.Workspace)
+    SafeZoneFarm.Name = "SafeZoneWalkPart"
+    SafeZoneFarm.Size = Vector3.new(2048,0.5,2048)
+    SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
+    SafeZoneFarm.Anchored = true
+    SafeZoneFarm.CanCollide = true
             elseif  _G.walkonwater == false then
                 for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
-    v.CanCollide = false
+    v:Destroy()
                         end
             end
         end)
