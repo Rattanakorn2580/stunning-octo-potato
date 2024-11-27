@@ -3301,11 +3301,11 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.walkonwater then
-                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetDescendants()) do
+                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
     v.CanCollide = true
                         end
             elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetDescendants()) do
+                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
     v.CanCollide = false
                         end
             end
