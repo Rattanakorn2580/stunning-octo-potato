@@ -3225,6 +3225,15 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 end})
 
+TabMS:AddButton({
+	Name = "ค้มกันดาเมจน้ำ",
+	Callback = function()
+        local A_1 = "NOPLS"
+    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
+    Event:Destroy(A_1)
+  	end    
+})
+
 TabMS:AddToggle({
 	Name = "เดินบนน้ำได้",
 	Default = false,
@@ -3233,7 +3242,7 @@ TabMS:AddToggle({
 	end    
 })
 
-spawn(function() -- autofarm velocity
+spawn(function()
     while wait(0) do
         pcall(function()
             if _G.walkonwater then
