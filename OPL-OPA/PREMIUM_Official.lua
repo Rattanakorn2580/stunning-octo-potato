@@ -2703,6 +2703,32 @@ spawn(function() -- autofarm teleport cannon
     end
 end);
 
+local Section = TabPlayer:AddSection({
+	Name = "แสปม วาปและแดช ก่อกวนผู้เล่น"
+})
+
+TabPlayer:AddToggle({
+	Name = "แสปมแดชผู้เล่น",
+	Default = false,
+	Callback = function(ADSH)
+		_G.autodash = ADSH
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+end
+end
+            end
+        end)
+    end
+end);
+
 local TabLD = Window:MakeTab({
 	Name = "เกาะ",
 	Icon = "rbxassetid://4483345998",
