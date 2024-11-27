@@ -3307,7 +3307,6 @@ spawn(function()
             elseif  _G.walkonwater == false then
                 for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetDescendants()) do
     v.CanCollide = false
-                    end
                         end
             end
         end)
