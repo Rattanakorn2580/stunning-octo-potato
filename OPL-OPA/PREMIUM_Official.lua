@@ -29,7 +29,7 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Size = Vector3.new(1000000,0.5,1000000)
     SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
     SafeZoneFarm.Anchored = true
-    SafeZoneFarm.CanCollide = false
+    SafeZoneFarm.CanCollide = _G.walkonwater
 
 spawn(function() -- autofarm velocity
     while wait(0) do
