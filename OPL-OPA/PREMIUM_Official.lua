@@ -3291,7 +3291,6 @@ TabMS:AddToggle({
 })
 
 spawn(function()
-    while wait(0) do
         pcall(function()
             if _G.walkonwater then
                 local SafeZoneFarm = Instance.new("Part",game.Workspace)
@@ -3304,7 +3303,6 @@ spawn(function()
                 for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
     v:Destroy()
                         end
-            end
         end)
     end
 end)
