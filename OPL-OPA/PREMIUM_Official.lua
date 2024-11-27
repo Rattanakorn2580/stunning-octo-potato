@@ -26,7 +26,7 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
 
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneWalkPart"
-    SafeZoneFarm.Size = Vector3.new(50000000,0.5,50000000)
+    SafeZoneFarm.Size = Vector3.new(2048,0.5,2048)
     SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
     SafeZoneFarm.Anchored = true
     SafeZoneFarm.CanCollide = true
