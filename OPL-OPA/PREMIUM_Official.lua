@@ -3290,8 +3290,6 @@ TabMS:AddToggle({
 	end    
 })
 
-spawn(function()
-        pcall(function()
             if _G.walkonwater then
                 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneWalkPart"
@@ -3303,9 +3301,7 @@ spawn(function()
                 for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:GetChildren()) do
     v:Destroy()
                         end
-        end)
     end
-end)
 	
 local Section = TabMS:AddSection({
 	Name = "อื่น ๆ"
