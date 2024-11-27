@@ -2729,6 +2729,28 @@ end
     end
 end);
 
+TabPlayer:AddToggle({
+	Name = "แสปมวาปผู้เล่น",
+	Default = false,
+	Callback = function(ASAV)
+		_G.autoshave = ASAV
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+end
+end
+            end
+        end)
+    end
+end);
+
 local TabLD = Window:MakeTab({
 	Name = "เกาะ",
 	Icon = "rbxassetid://4483345998",
