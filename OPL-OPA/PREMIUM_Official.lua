@@ -3437,8 +3437,7 @@ Players.PlayerAdded:Connect(function(player)
         createESP(player)
     end)
 end)
-  	end    
-})
+  	end })
 
 end
 
