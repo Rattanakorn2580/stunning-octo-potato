@@ -3427,8 +3427,6 @@ Players.PlayerAdded:Connect(function(player)
 end)
   	end })
 
-end
-
 OrionLib:MakeNotification({
 	Name = "ขอบคุณที่ใช้สคริปเรา ! ! !",
 	Content = "กรุณาใส่คีย์ "..Player.Name..". ! ! !",
