@@ -852,7 +852,9 @@ TabFarm:AddToggle({
 	end    
 })
 
+spawn(function()
     game:GetService('RunService').RenderStepped:connect(function()
+pcall(function()
             if _G.autofarm then
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Boar")
@@ -928,6 +930,8 @@ TabFarm:AddToggle({
 		end
 		end
 		end)
+end)
+end)
 
 TabFarm:AddToggle({
 	Name = "ออโต้ดึงมอน",
