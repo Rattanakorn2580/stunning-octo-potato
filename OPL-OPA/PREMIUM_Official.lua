@@ -853,179 +853,21 @@ TabFarm:AddToggle({
 })
 
 spawn(function()
-    while wait(0) do
+    game:GetService('RunService').RenderStepped:connect(function()
         pcall(function()
             if _G.autofarm then
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Boar")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Crab")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Thief")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Bandit")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
                         v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
                         end
                      end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Cave Demon")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Thug")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Gunslinger")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv4 Freddy")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv28 Freyd")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv28 Friedrich")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv29 Frued")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv34 Freddi")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv28 Fredde")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv500 Bucky")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv360 Bruno")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv440 Buster")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-			v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
-		for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Lv8000 Gunner Captain")
-                    and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
-                        if v.Humanoid.Health == 0 then
-                        end
-                     end
-                end
+		end
             end
         end)
     end
