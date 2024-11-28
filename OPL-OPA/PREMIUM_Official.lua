@@ -868,10 +868,10 @@ spawn(function()
                         end
                      end
 		end
+		end
         end)
     end
 end);
-
 
 TabFarm:AddToggle({
 	Name = "ออโต้ดึงมอน",
