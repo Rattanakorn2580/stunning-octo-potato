@@ -867,7 +867,7 @@ TabFarm:AddToggle({
                      end
 		end
 		end
-    end
+		end)
 
 TabFarm:AddToggle({
 	Name = "ออโต้ดึงมอน",
