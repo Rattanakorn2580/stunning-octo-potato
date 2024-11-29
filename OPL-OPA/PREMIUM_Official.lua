@@ -3291,14 +3291,6 @@ TabMS:AddButton({
   	end    
 })
 
-TabMS:AddToggle({
-	Name = "เดินบนน้ำได้",
-	Default = false,
-	Callback = function(WOW)
-		_G.walkonwater = WOW
-	end    
-})
-
 local Section = TabMS:AddSection({
 	Name = "อื่น ๆ"
 })
@@ -3333,29 +3325,6 @@ TabMS:AddButton({
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
-
-TabMS:AddToggle({
-	Name = "Kill Aura",
-	Default = false,
-	Callback = function(KAU)
-		_G.killaura = KAU
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if _G.killaura then
-            pcall(function()
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-    if v.ClassName == "Model" then
-        v.Humanoid.Health = die
-wait(.1)
-end
-    end
-            end)
-        end
-    end
-end)
 
 TabMS:AddButton({
 	Name = "ESP ผู้เล่น",
