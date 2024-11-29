@@ -47,6 +47,20 @@ spawn(function() -- autofarm velocity
     end
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
+end
+end
+            end
+        end)
+    end
+end);
+
 local Cache = { DevConfig = {} };
 
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
@@ -2707,7 +2721,7 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local Section = TabPlayer:AddSection({
-	Name = "แสปม วาปและแดช ก่อกวนผู้เล่น"
+	Name = "แสปมก่อกวน วาปและแดช โปรดเลือกผู้เล่นก่อน ! ! !"
 })
 
 TabPlayer:AddToggle({
@@ -2724,7 +2738,7 @@ spawn(function()
             if _G.autodash then
 	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
@@ -2746,7 +2760,7 @@ spawn(function()
             if _G.autoshave then
 	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Shave") then
-v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
