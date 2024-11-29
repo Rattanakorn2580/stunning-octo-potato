@@ -636,7 +636,7 @@ TabAuto:AddToggle({
 
 game:GetService('RunService').RenderStepped:connect(function()
     if AutoHaki2 then
-        for i = 1, 250 do
+        for i = 1, 5 do
             local args = {
                 [1] = "On",
                 [2] = 1
