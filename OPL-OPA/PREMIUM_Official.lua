@@ -2721,11 +2721,11 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local Section = TabPlayer:AddSection({
-	Name = "แสปมก่อกวน วาปและแดช โปรดเลือกผู้เล่นก่อน ! ! !"
+	Name = "บัคแดชตายย !!!"
 })
 
 TabPlayer:AddToggle({
-	Name = "แสปมแดชผู้เล่น",
+	Name = "แปสมแดช",
 	Default = false,
 	Callback = function(ADSH)
 		_G.autodash = ADSH
@@ -2747,7 +2747,7 @@ end
 end);
 
 TabPlayer:AddToggle({
-	Name = "แสปมวาปผู้เล่น",
+	Name = "กดอันนี้ก่อนใช้งาน บัคแดชทีเดียวตาย!!!",
 	Default = false,
 	Callback = function(ASAV)
 		_G.autoshave = ASAV
