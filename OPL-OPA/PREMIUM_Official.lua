@@ -636,7 +636,7 @@ TabAuto:AddToggle({
 
 game:GetService('RunService').RenderStepped:connect(function()
     if AutoHaki2 then
-        for i = 1, 100 do
+        for i = 1, 25 do
             local args = {
                 [1] = "On",
                 [2] = 1
@@ -3283,7 +3283,7 @@ end)
 end})
 
 TabMS:AddButton({
-	Name = "ค้มกันดาเมจน้ำ",
+	Name = "คุ้มกันดาเมจน้ำ | ไม่สมบูรณ์ |",
 	Callback = function()
         local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
