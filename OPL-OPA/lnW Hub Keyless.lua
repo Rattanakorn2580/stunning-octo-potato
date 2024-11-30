@@ -1,3 +1,5 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() 
+local Player = game.Players.LocalPlayer 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " กำลังโหลด . . . InW Premium Hub"})
 
@@ -35,6 +37,20 @@ spawn(function() -- autofarm velocity
         end)
     end
 end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
+end
+end
+            end
+        end)
+    end
+end);
 
 local Cache = { DevConfig = {} };
 
@@ -625,7 +641,7 @@ TabAuto:AddToggle({
 
 game:GetService('RunService').RenderStepped:connect(function()
     if AutoHaki2 then
-        for i = 1, 100 do
+        for i = 1, 5 do
             local args = {
                 [1] = "On",
                 [2] = 1
@@ -842,70 +858,79 @@ TabFarm:AddToggle({
 })
 
 spawn(function()
-    while wait(0) do
-        pcall(function()
+    game:GetService('RunService').RenderStepped:connect(function()
+pcall(function()
             if _G.autofarm then
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, " Boar")
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
                      end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Crab")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        --v.HumanoidRootPart.Color = Color3.fromRGB(255, 255, 255)
-                        v.HumanoidRootPart.Transparency = 0.9
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
                      end
-                end
-                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if string.find(v.Name, "Angry ") 
-                    or string.find(v.Name, "Bandit") 
-                    or string.find(v.Name, "Thief")
-                    or string.find(v.Name, "Crab") 
-                    or string.find(v.Name, "Vokun") 
-                    or string.find(v.Name, "Buster") 
-                    or string.find(v.Name, "Freddy")  
-                    or string.find(v.Name, "Bruno") 
-                    or string.find(v.Name, "Thug") 
-                    or string.find(v.Name, "Gunslinger")
-                    or string.find(v.Name, "Gunner") 
-                    or string.find(v.Name, "Cave") 
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Bandit")
                     and v:FindFirstChild("HumanoidRootPart") then
                         v.HumanoidRootPart.CanCollide = false
-                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        v:FindFirstChild("HumanoidRootPart").Anchored = true
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,0)
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Thug")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
                         if v.Humanoid.Health == 0 then
                             v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
-                    end
-                end
-            end
-        end)
-    end
-end);
-
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Thief")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Gunslinger")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,4)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+		end
+		end
+		end)
+end)
+end)
 
 TabFarm:AddToggle({
 	Name = "ออโต้ดึงมอน",
@@ -2687,11 +2712,11 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local Section = TabPlayer:AddSection({
-	Name = "แสปม วาปและแดช ก่อกวนผู้เล่น"
+	Name = "บัคแดชตายย !!!"
 })
 
 TabPlayer:AddToggle({
-	Name = "แสปมแดชผู้เล่น",
+	Name = "แปสมแดช",
 	Default = false,
 	Callback = function(ADSH)
 		_G.autodash = ADSH
@@ -2704,7 +2729,7 @@ spawn(function()
             if _G.autodash then
 	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
@@ -2713,7 +2738,7 @@ end
 end);
 
 TabPlayer:AddToggle({
-	Name = "แสปมวาปผู้เล่น",
+	Name = "กดอันนี้ก่อนใช้งาน บัคแดชทีเดียวตาย!!!",
 	Default = false,
 	Callback = function(ASAV)
 		_G.autoshave = ASAV
@@ -2726,7 +2751,7 @@ spawn(function()
             if _G.autoshave then
 	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Shave") then
-v:FireServer(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
@@ -3263,34 +3288,13 @@ end)
 end})
 
 TabMS:AddButton({
-	Name = "ค้มกันดาเมจน้ำ",
+	Name = "คุ้มกันดาเมจน้ำ | ไม่สมบูรณ์ |",
 	Callback = function()
         local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
     Event:Destroy(A_1)
   	end    
 })
-
-TabMS:AddToggle({
-	Name = "เดินบนน้ำได้",
-	Default = false,
-	Callback = function(WOW)
-		_G.walkonwater = WOW
-	end    
-})
-
-            if _G.walkonwater then
-    local SafeZoneFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneWalkPart"
-    SafeZoneFarm.Size = Vector3.new(2048,0.5,2048)
-    SafeZoneFarm.Position = Vector3.new(-112, 210.7, -589)
-    SafeZoneFarm.Anchored = true
-    SafeZoneFarm.CanCollide = true
-            elseif  _G.walkonwater == false then
-                for i,v in pairs(game:GetService("Workspace").SafeZoneWalkPart:WaitForChild()) do
-		v:Destroy()
-                        end
-end
 
 local Section = TabMS:AddSection({
 	Name = "อื่น ๆ"
@@ -3326,29 +3330,6 @@ TabMS:AddButton({
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
   	end    
 })
-
-TabMS:AddToggle({
-	Name = "Kill Aura",
-	Default = false,
-	Callback = function(KAU)
-		_G.killaura = KAU
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if _G.killaura then
-            pcall(function()
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
-    if v.ClassName == "Model" then
-        v.Humanoid.Health = die
-wait(.1)
-end
-    end
-            end)
-        end
-    end
-end)
 
 TabMS:AddButton({
 	Name = "ESP ผู้เล่น",
@@ -3428,13 +3409,5 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
   	end })
-
-OrionLib:MakeNotification({
-	Name = "ขอบคุณที่ใช้สคริปเรา ! ! !",
-	Content = "กรุณาใส่คีย์ "..Player.Name..". ! ! !",
-	Image = "rbxassetid://4483345998",
-	Time = 5
-})
     
 OrionLib:Init()
-
