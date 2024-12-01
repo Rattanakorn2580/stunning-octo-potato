@@ -2900,6 +2900,104 @@ spawn(function()
     end
 end);
 
+TabLD:AddToggle({
+	Name = "ออโต้วางผล ข้างล่างแท่นบอสดาบ",
+	Default = false,
+	Callback = function(APEE)
+		_G.autoplace = APEE
+	end    
+})
+
+    spawn(function()
+        while wait() do
+        pcall(function()
+            if _G.autoplace then    
+	for i,v in pairs(game:GetService("Workspace").Island14.Pedestals:GetChildren()) do
+if string.find(v.Name,"Pedestal1") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal2") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal3") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal4") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal5") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal6") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal7") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal8") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal9") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal10") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal11") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal12") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+if string.find(v.Name,"Pedestal13") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1)
+end
+end
+            end
+        end
+    end
+end
+end
+            end
+        end
+    end
+end
+end
+end
+end
+            end
+        end)
+    end
+end);
+
+TabLD:AddToggle({
+	Name = "ออโต้วางผล บนแท่นบอสดาบ",
+	Default = false,
+	Callback = function(APLL)
+		_G.autoplace2 = APLL
+	end    
+})
+
+    spawn(function()
+        while wait() do
+        pcall(function()
+            if _G.autoplace2 then    
+	for i,v in pairs(game:GetService("Workspace").Island14:GetChildren()) do
+if string.find(v.Name,"FruitReceptical") then
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1.25)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1.25)
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+wait(1.25)
+end
+        end
+            end
+        end)
+    end
+end)
+
 local Section = TabLD:AddSection({
 	Name = "สำหรับอีเว้น | ฮาโลวีนน!! |"
 })
