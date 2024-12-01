@@ -2719,9 +2719,9 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.autodash then
-	for i,v in pairs(game:GetService("Workspace")[Plr]:GetChildren()) do
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[Plr].Character.HumanoidRootPart.Position),workspace.Water)
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
