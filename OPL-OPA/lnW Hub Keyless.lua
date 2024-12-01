@@ -2045,8 +2045,8 @@ mta.__namecall = newcclosure(function(self, ...)
     local method = getnamecallmethod() 
 
     if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
-            if args[1] then
+        if self.Name == 'Drown' and _G.nodmgwater then
+            if local A_1 then
                 return nil
             end
         end
@@ -2351,22 +2351,14 @@ TabPlayer:AddToggle({
 	Name = "ออโต้ตาย",
 	Default = false,
 	Callback = function(DTH)
-		AutoDeath = DTH
+		_G.nodmgwater = DTH
 	end    
 })
 
 spawn(function()
 while wait() do
 pcall(function()
-if AutoDeath then
-local A_1 = "NOPLS"
-    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:FireServer(A_1)
-task.wait(.5)
-local A_1 = "NOPLS"
-    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:FireServer(A_1)
-task.wait(.5)
+if _G.nodmgwater then
 local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
     Event:FireServer(A_1)
@@ -2727,9 +2719,9 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.autodash then
-	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+	for i,v in pairs(game:GetService("Workspace")[Plr]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+v:FireServer(CFrame.new(game.Players[Plr].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
