@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() 
 local Player = game.Players.LocalPlayer 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Premium Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " กำลังโหลด . . . InW Premium Hub"})
+local Window = OrionLib:MakeWindow({Name = "InW Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = " กำลังโหลด . . . InW Premium Hub"})
 
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
@@ -2045,7 +2045,7 @@ mta.__namecall = newcclosure(function(self, ...)
     local method = getnamecallmethod() 
 
     if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nodmgwater then
+        if self.Name == 'NOPLS' and _G.nodmgwater then
             if A_1 then
                 return nil
             end
