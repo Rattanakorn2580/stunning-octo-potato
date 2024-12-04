@@ -1304,6 +1304,7 @@ spawn(function()
             
             game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
 
+	wait(.3)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(58, 222, -261)
             wait(1.5)
 
