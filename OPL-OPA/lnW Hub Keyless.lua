@@ -1343,8 +1343,8 @@ spawn(function() -- Quake farm npcs
     while wait(0) do
         pcall(function()
             if _G.Quakefarm then
-                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
-                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                VTR = script.RemoteEvent.RemoteFunction:InvokeServer();
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
 
@@ -1362,17 +1362,8 @@ spawn(function() -- Quake farm npcs
 
                                 wait(0.05)
 
-        local args = {
-                [1] = tonumber(serializeTable(remotes)),
-                [2] = "QuakePower4",
-                [3] = "StartCharging",
-                [5] = "Right"
-            }
-            
-            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-   
             local args = {
-                [1] = tonumber(serializeTable(remotes)),
+                [1] = VTR,
                 [2] = "QuakePower4",
                 [3] = "StopCharging",
                 [4] = Mouse.Target,
