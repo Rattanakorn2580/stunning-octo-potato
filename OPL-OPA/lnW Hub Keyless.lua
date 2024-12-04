@@ -1276,36 +1276,44 @@ TabFarm:AddToggle({
 	end    
 })
 
-spawn(function() -- auto farm quake
-    while wait(0) do
+spawn(function()
+    while wait(getgenv().spamtime) do
         pcall(function()
-            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
-                    if _G.Quakefarm then
-                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
-                            wait(5)
-                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
-                                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
-                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
-                                repeat 
-                                wait(0.3)
-                                    local args = {
-                                        [1] = VTC,
-                                        [2] = "QuakePower4",
-                                        [3] = "StopCharging",
-                                        [4] = v.HumanoidRootPart,
-                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
-                                        [6] = 100,
-                                        [7] = v.HumanoidRootPart.Position
-                                    }
-                            
-                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
-                            end
-                        end
-                    end
-                end
-            end
+        if _G.quake1 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+	wait(1)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(58, 222, -261)
+            wait(1.5)
+
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-67, 215, -306)
+            wait(1.5)
+
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(43, 223, -23)
+            wait(1.5)
+        end
         end)
     end
 end);
