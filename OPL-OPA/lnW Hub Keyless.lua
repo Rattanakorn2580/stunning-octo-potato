@@ -1279,7 +1279,7 @@ TabFarm:AddToggle({
 spawn(function()
     while wait(getgenv().spamtime) do
         pcall(function()
-        if _G.quake1 then 
+        if _G.Quakefarm then 
             local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
 
@@ -1304,7 +1304,6 @@ spawn(function()
             
             game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
 
-	wait(1)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(58, 222, -261)
             wait(1.5)
 
