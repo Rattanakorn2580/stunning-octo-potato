@@ -1359,7 +1359,7 @@ spawn(function()
                 [1] = tonumber(serializeTable(remotes)),
                 [2] = "QuakePower4",
                 [3] = "StopCharging",
-                [4] = Mouse.Target,
+                [4] = ,
                 [5] = Mouse.Hit,
                 [6] = 100,
                 [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
