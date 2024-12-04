@@ -41,7 +41,7 @@ end)
 spawn(function()
     while wait(0) do
         pcall(function()
-            if _G.Quakefarm or _G.Flarefarm then
+            if _G.Quakefm or _G.Flarefarm then
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(71, 217, -917)
             wait(.5)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(80, 300, -924)
@@ -1362,16 +1362,26 @@ spawn(function() -- Quake farm npcs
 
                                 wait(0.05)
 
-                                local args = {
-                                    [1] = VTC,
-                                    [2] = "QuakePower4",
-                                    [3] = "StopCharging",
-                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
-                                    [5] = Mouse.Target,
-                                    [6] = 100
-                                }
-
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+        local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
 
                             end
                         end
