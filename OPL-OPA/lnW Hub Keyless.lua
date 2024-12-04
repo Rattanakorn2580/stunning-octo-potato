@@ -1339,37 +1339,49 @@ TabFarm:AddToggle({
 	end    
 })
 
-spawn(function()
-    while wait(getgenv().spamtime) do
+spawn(function() -- Quake farm npcs
+    while wait(0) do
         pcall(function()
-        if _G.Quakefarm then 
-            local pla = game.Players.LocalPlayer;
-            local Mouse = pla:GetMouse();
+            if _G.Quakefarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
 
-            local args = {
-                [1] = tonumber(serializeTable(remotes)),
-                [2] = "QuakePower4",
-                [3] = "StartCharging",
-                [5] = "Right"
-            }
-            
-            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-   
-            local args = {
-                [1] = tonumber(serializeTable(remotes)),
-                [2] = "QuakePower4",
-                [3] = "StopCharging",
-                [4] = ,
-                [5] = Mouse.Hit,
-                [6] = 100,
-                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
-            }
-            
-            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-        end
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTC,
+                                    [2] = "QuakePower4",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end
         end)
     end
 end);
+
 
 local Section = TabFarm:AddSection({
 	Name = "อื่น ๆ"
