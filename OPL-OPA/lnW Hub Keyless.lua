@@ -2202,7 +2202,7 @@ TabSPM:AddToggle({
 })
 
 spawn(function()
-    while wait(getgenv().spamtime) do
+    while wait(5) do
         pcall(function()
         if _G.rumble1 then 
             local pla = game.Players.LocalPlayer;
@@ -2229,7 +2229,7 @@ game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireS
     [1] = tonumber(serializeTable(remotes)),
     [2] = "RumblePower8",
     [3] = "StopCharging",
-    [4] = Mouse.Hit,
+    [4] = Mouse.Target,
     [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
     [6] = 200,
     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
