@@ -2207,13 +2207,19 @@ spawn(function()
         if _G.rumble1 then 
             local pla = game.Players.LocalPlayer;
             local Mouse = pla:GetMouse();
+            local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
+                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
+                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
+
 
             local args = {
     [1] = tonumber(serializeTable(remotes)),
     [2] = "RumblePower8",
     [3] = "StartCharging",
-    [4] = CFrame.new(780.8173828125, 257, 1189.436279296875, 0.18897876143455505, -0.526269793510437, 0.8290519714355469, 7.4505797087454084e-09, 0.8442646265029907, 0.5359265804290771, -0.9819811582565308, -0.10127873718738556, 0.1595481038093567),
-    [5] = workspace:WaitForChild("IslandGrassy"):WaitForChild("Base"):WaitForChild("DirtGrass"):WaitForChild("Grass"):WaitForChild("Grass"),
+    [4] = CFrame.new(Xxl, Yyl, Zzl),
+    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
     [6] = "Right"
 }
 
@@ -2223,8 +2229,8 @@ game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireS
     [1] = tonumber(serializeTable(remotes)),
     [2] = "RumblePower8",
     [3] = "StopCharging",
-    [4] = Mouse.Target,
-    [5] = Mouse.Hit,
+    [4] = Mouse.Hit,
+    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
     [6] = 200,
     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
 }
