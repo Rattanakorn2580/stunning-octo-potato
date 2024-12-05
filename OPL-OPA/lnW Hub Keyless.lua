@@ -129,7 +129,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfAffinities"] = {"ผลไม้ปีศาจ ( ฝั่งซ้าย )", "ผลไม้ปีศาจ ( ฝั่งขวา )"};
-Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม กุระ", "แสปม ไฟ", "แสปม แสง"};
+Cache.DevConfig["ListOfListSpam"] = {"ปิดแสปม", "แสปม สายฟ้า", "แสปม ไฟ", "แสปม แสง"};
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 
@@ -2609,30 +2609,30 @@ TabPlayer:AddDropdown({
 spawn(function()
     while wait(0) do
         pcall(function()
-            if getgenv().kill == "แสปม กุระ" then
+            if getgenv().kill == "แสปม สายฟ้า" then
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
                                 task.wait(getgenv().spamtime)
                                 local args = {
                                     [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
+                                    [2] = "RumblePower8",
                                     [3] = "StopCharging",
                                     [4] = v.Character.HumanoidRootPart.CFrame,
                                     [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
+                                    [6] = 200,
                                     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
                                 task.wait(0.1)
                                 local args = {
                                     [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "QuakePower4",
+                                    [2] = "RumblePower8",
                                     [3] = "StopCharging",
                                     [4] = v.Character.HumanoidRootPart.CFrame,
                                     [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 100,
+                                    [6] = 200,
                                     [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                            game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
 
 			end
                     end
