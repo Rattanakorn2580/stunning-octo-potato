@@ -2136,7 +2136,7 @@ aaxc = hookmetamethod(game, "__namecall", function(self, ...)
         if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
             args[6] = 100
 	if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
-            args[6] = 400
+            args[6] = 200
             return aaxc(self, unpack(args))
         end
     end
@@ -2188,6 +2188,51 @@ function serializeTable(val, name, skipnewlines, depth)
  
     return tmp
  end
+
+local Section = TabSPM:AddSection({
+	Name = "แสปม สายฟ้า"
+})
+
+TabSPM:AddToggle({
+	Name = "ออโต้แสปม | สายฟ้าผ่า |",
+	Default = false,
+	Callback = function(RUM)
+		_G.rumble1 = RUM
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.rumble1 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "RumblePower8",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+   
+            local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "RumblePower8",
+    [3] = "StopCharging",
+    [4] = Mouse.Target,
+    [5] = Mouse.Hit,
+    [6] = 200,
+    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+
+        end
+        end)
+    end
+end);
 
 local Section = TabSPM:AddSection({
 	Name = "แสปม กุระ"
