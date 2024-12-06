@@ -1421,7 +1421,7 @@ spawn(function() -- Rumble farm npcs
     [4] = Mouse.Target,
     [5] = v.Head.CFrame * CFrame.new(0, 0, 0),
     [6] = 200,
-    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
+    [7] = Vector3.new(v.HumanoidRootPart.Position)
 }
 
 game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
