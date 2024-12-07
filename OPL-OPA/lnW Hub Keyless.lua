@@ -2660,8 +2660,8 @@ local Section = TabPlayer:AddSection({
 TabPlayer:AddToggle({
 	Name = "ออโต้แสง | ผู้เล่นทั้งหมด |",
 	Default = false,
-	Callback = function(ALP)
-		_G.autolightplr = ALP
+	Callback = function(LGP)
+		_G.autolightplr = LGP
 	end    
 })
 
@@ -2678,7 +2678,7 @@ spawn(function()
                     [2] = "LightPower2",
                     [3] = "StopCharging",
                     [4] = v.HumanoidRootPart.CFrame,
-                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [5] = v.HumanoidRootPart.CFrame,
                     [6] = 100
                 }
                 
@@ -2689,7 +2689,7 @@ spawn(function()
                     [2] = "LightPower2",
                     [3] = "StopCharging",
                     [4] = v.HumanoidRootPart.CFrame,
-                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [5] = v.HumanoidRootPart.CFrame,
                     [6] = 100
                 }
                 
