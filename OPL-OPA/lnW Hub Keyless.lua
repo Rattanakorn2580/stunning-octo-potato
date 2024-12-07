@@ -2674,11 +2674,12 @@ spawn(function() -- Light farm npcs
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
 
-                for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                for i, v in pairs(game:GetService("Workspace"):GetChildren()) do
                     if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                         if v.Humanoid.Health > 0 and
                             (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
                             if v.Name ~= "SetInstances" then
+			    if v.Name ~= Players.LocalPlayer.Name then
                                 -- v.Humanoid:ChangeState(11)
                                 v.HumanoidRootPart.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
@@ -2698,7 +2699,7 @@ spawn(function() -- Light farm npcs
                                 }
 
                                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-
+				end
                             end
                         end
                     end
