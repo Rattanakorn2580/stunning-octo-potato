@@ -2674,7 +2674,7 @@ spawn(function() -- Light farm npcs
                 local pla = game.Players.LocalPlayer;
                 local Mouse = pla:GetMouse();
 
-                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                for i, v in pairs(game:GetService("Players"):GetChildren()) do
                     if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                         if v.Humanoid.Health > 0 and
                             (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
