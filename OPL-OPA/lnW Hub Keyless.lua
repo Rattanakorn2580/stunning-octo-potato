@@ -2657,84 +2657,44 @@ local Section = TabPlayer:AddSection({
 	Name = "ผู้เล่น คิล"
 })
 
-TabPlayer:AddDropdown({
-	Name = "โปรดเลือด ผลไม้ปีศาจ | ฆ่าผู้เล่น |",
-	Default = "",
-	Options = Cache.DevConfig["ListOfListSpam"],
-	Callback = function(gkl)
-		getgenv().kill = gkl
+TabPlayer:AddToggle({
+	Name = "ออโต้แสง | ผู้เล่นทั้งหมด |",
+	Default = false,
+	Callback = function(ALP)
+		_G.autolightplr = ALP
 	end    
 })
 
 spawn(function()
     while wait(0) do
         pcall(function()
-            if getgenv().kill == "แสปม สายฟ้า" then
+            if _G.autolightplr then
                     if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         if v.Name ~= "SetInstances" then
                             if v.Name ~= game.Players.LocalPlayer.Name then
                                 task.wait(getgenv().spamtime)
                                 local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "RumblePower8",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 200,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                                game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = v.HumanoidRootPart.CFrame,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
                                 task.wait(0.1)
-                                local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "RumblePower8",
-                                    [3] = "StopCharging",
-                                    [4] = v.Character.HumanoidRootPart.CFrame,
-                                    [5] = v.Character.HumanoidRootPart.CFrame,
-                                    [6] = 200,
-                                    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)}
-                            game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
+                               local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = v.HumanoidRootPart.CFrame,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
 
-			end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while wait(0) do
-        pcall(function()
-            if getgenv().kill == "แสปม ไฟ" then
-                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        if v.Name ~= "SetInstances" then
-                            if v.Name ~= game.Players.LocalPlayer.Name then
-                                task.wait(getgenv().spamtime)
-        local pla = game.Players.LocalPlayer;
-            local Mouse = pla:GetMouse();
-        
-            local args = {
-                [1] = tonumber(serializeTable(remotes)),
-                [2] = "FlarePower2",
-                [3] = "StopCharging",
-                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
-                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
-                [6] = 100
-            }
-            
-            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
-            
-            local args = {
-                [1] = tonumber(serializeTable(remotes)),
-                [2] = "FlarePower2",
-                [3] = "StartCharging",
-                [4] = CFrame.new(-550.802795, 244, 26.3580341, -0.63954407, 0.15401715, -0.753168106, -0, 0.979725122, 0.200346366, 0.768754423, 0.128130332, -0.626577377),
-                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
-                [7] = "Left"
-            }
-            
-            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
-            
 			end
                     end
                 end
