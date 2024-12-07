@@ -2665,43 +2665,48 @@ TabPlayer:AddToggle({
 	end    
 })
 
-spawn(function()
+spawn(function() -- Light farm npcs
     while wait(0) do
         pcall(function()
             if _G.autolightplr then
-                    if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        if v.Name ~= "SetInstances" then
-                            if v.Name ~= game.Players.LocalPlayer.Name then
-                                task.wait(getgenv().spamtime)
-                                local args = {
-                    [1] = tonumber(serializeTable(remotes)),
-                    [2] = "LightPower2",
-                    [3] = "StopCharging",
-                    [4] = v.HumanoidRootPart.CFrame,
-                    [5] = v.HumanoidRootPart.CFrame,
-                    [6] = 100
-                }
-                
-                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-                                task.wait(0.1)
-                               local args = {
-                    [1] = tonumber(serializeTable(remotes)),
-                    [2] = "LightPower2",
-                    [3] = "StopCharging",
-                    [4] = v.HumanoidRootPart.CFrame,
-                    [5] = v.HumanoidRootPart.CFrame,
-                    [6] = 100
-                }
-                
-                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                PLL = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
 
-			end
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = PLL,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
                     end
                 end
             end
         end)
     end
-end)
+end);
 
 TabPlayer:AddToggle({
 	Name = "ออโต้แคนน่อน บอล | ผู้เล่นทั้งหมด |",
