@@ -2062,7 +2062,7 @@ workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
 })
 
 local Section = TabAFF:AddSection({
-	Name = "สุ่มพลังแฝง ผลฝั่งซ้ายมือ | แบบล็อค 3 ค่า |"
+	Name = "สุ่มพลังแฝง ผลฝั่งซ้ายมือ | ล็อคสุ่มแค่ค่าเดียว |"
 })
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ป้องกัน",
@@ -2131,6 +2131,81 @@ TabAFF:AddToggle({
         pcall(function()
             if _G.recoll4 then
 game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",true,true,true,false,"Cash")
+            end
+        end)
+    end
+end)
+
+local Section = TabAFF:AddSection({
+	Name = "สุ่มพลังแฝง ผลฝั่งขวามือ | ล็อคสุ่มแค่ค่าเดียว |"
+})
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ป้องกัน",
+	Default = false,
+	Callback = function(CL)
+		_G.recoll5 = CL
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll5 then
+game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",false,true,true,true,"Cash")           
+		end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า หมัด",
+	Default = false,
+	Callback = function(CLL)
+		_G.recoll6= CLL
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll6 then
+    game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,false,true,true,"Cash")
+            end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ปืน",
+	Default = false,
+	Callback = function(CLLL)
+		_G.recoll7 = CLLL
+	end    
+})
+	
+spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll7 then
+game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,true,false,true,"Cash")
+            end
+        end)
+    end
+end)
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มค่า ดาบ",
+	Default = false,
+	Callback = function(OLLL)
+		_G.recoll8 = OLLL
+	end    
+})
+
+	spawn(function()
+    while wait(14) do
+        pcall(function()
+            if _G.recoll8 then
+game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,true,true,false,"Cash")
             end
         end)
     end
