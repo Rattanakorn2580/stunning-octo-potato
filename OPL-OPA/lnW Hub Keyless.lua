@@ -3661,11 +3661,7 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.mobs then
-               for i,v in pairs(game.Workspace.Enemies["Lv2 Angry Bob"]:GetChildren()) do
-                    if string.find(v.Name, "Torso") then
-                            v.TouchInterest:Destroy()
-                        end
-                     end
+		game:GetService("Workspace").Enemies["Lv2 Angry Bob"].Torso.TouchInterest:Destroy()
             end
         end)
     end
