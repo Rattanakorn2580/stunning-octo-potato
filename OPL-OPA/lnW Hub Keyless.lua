@@ -2537,7 +2537,7 @@ local TabPlayer = Window:MakeTab({
 })
 
 local Section = TabPlayer:AddSection({
-	Name = "ออโต้ตาย | ไว้สำหรับฟาร์มค่าหัวหลายๆไอดี |"
+	Name = "ของคาแล็คเตอร์"
 })
 
 TabPlayer:AddToggle({
@@ -2569,7 +2569,30 @@ spawn(function()
         end
     end
 end)
-	
+
+TabPlayer:AddToggle({
+	Name = "อมตะมอบตีไม่เข้า",
+	Default = false,
+	Callback = function(GOD)
+		_G.mobs = GOD
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.mobs then
+		 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+if string.find(v.Name, "Angry Bob") then
+v.Torso.TouchInterest:Destroy()
+end
+end
+            end
+        end)
+    end
+end);
+
+
 local Section = TabPlayer:AddSection({
 	Name = "ผู้เล่น"
 })
@@ -3648,27 +3671,5 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
   	end })
-
-TabMS:AddToggle({
-	Name = "อมตะมอบตีไม่เข้า",
-	Default = false,
-	Callback = function(GOD)
-		_G.mobs = GOD
-	end    
-})
-
-spawn(function()
-    while wait(0) do
-        pcall(function()
-            if _G.mobs then
-		 for i,v in pairs(game:GetService("Workspace").Enemies["Lv40 Cave Demon"]:GetChildren()) do
-if string.find(v.Name, "Torso") then
-v.TouchInterest:Destroy()
-end
-end
-            end
-        end)
-    end
-end);
 
 OrionLib:Init()
