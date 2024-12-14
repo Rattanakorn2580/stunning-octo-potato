@@ -3661,7 +3661,24 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.mobs then
-                
+               for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Boar")
+                            v.Torso:Destroy("TouchInterest")
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Crab")
+                            v.Torso:Destroy("TouchInterest")
+                        end
+                     end
+                end
+                for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Angry Bob")
+                            v.Torso:Destroy("TouchInterest")
+                        end
+                    end
+                end 
             end
         end)
     end
