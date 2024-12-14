@@ -2583,8 +2583,19 @@ spawn(function()
         pcall(function()
             if _G.mobs then
 		 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-if string.find(v.Name, "Angry Bob") then
+if string.find(v.Name, "Angry Bob") 
+or string.find(v.Name, "Bandit") 
+or string.find(v.Name, "Thief")
+or string.find(v.Name, "Crab") 
+or string.find(v.Name, "Freddy")  
+or string.find(v.Name, "Cave") 
+or string.find(v.Name, "Thug") 	then
 v.Torso.TouchInterest:Destroy()
+end
+end
+ for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+if string.find(v.Name, "Vokun") then
+v.Killer.TouchInterest:Destroy()
 end
 end
             end
