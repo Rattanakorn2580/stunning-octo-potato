@@ -3666,7 +3666,6 @@ spawn(function()
                             v.TouchInterest:Destroy()
                         end
                      end
-                end 
             end
         end)
     end
