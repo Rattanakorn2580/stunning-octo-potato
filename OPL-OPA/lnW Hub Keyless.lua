@@ -3536,7 +3536,7 @@ TabMS:AddButton({
 })
 
 local Section = TabMS:AddSection({
-	Name = "อื่น ๆ"
+	Name = "หมวดผู้เล่น"
 })
 
 TabMS:AddButton({
@@ -3648,5 +3648,23 @@ Players.PlayerAdded:Connect(function(player)
     end)
 end)
   	end })
-    
+
+TabMS:AddToggle({
+	Name = "อมตะมอบตีไม่เข้า",
+	Default = false,
+	Callback = function(GOD)
+		_G.mobs = GOD
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.mobs then
+                
+            end
+        end)
+    end
+end);
+
 OrionLib:Init()
