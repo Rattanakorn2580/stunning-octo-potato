@@ -3560,14 +3560,26 @@ game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 end})
 
-TabMS:AddButton({
-	Name = "คุ้มกันดาเมจน้ำ | ไม่สมบูรณ์ |",
-	Callback = function()
-        local A_1 = "NOPLS"
-    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:Destroy(A_1)
-  	end    
+TabMS:AddToggle({
+	Name = "คุ้มกันน้ำ",
+	Default = false,
+	Callback = function(NWT)
+		_G.nodmgwater = NWT
+	end    
 })
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.nodmgwater then
+                local A_1 = "NOPLS"
+    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
+    Event:Clone(A_1) and v:Destroy(A_1)
+            end
+        end)
+    end
+end);
+
 
 local Section = TabMS:AddSection({
 	Name = "หมวดผู้เล่น"
