@@ -2710,50 +2710,48 @@ TabPlayer:AddToggle({
 	end    
 })
 
-spawn(function()
+spawn(function() -- Light farm npcs
     while wait(0) do
         pcall(function()
-            for i,v in pairs(game.Workspace.Players:GetChildren()) do
-                if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
-                    if _G.autolightplr then
-                            wait(5)
-                            if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
-                                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
-                                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
-                               
-                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
-                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
-                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
+            if _G.autolightplr then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTL = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
 
-                local args = {
-                    [1] = VTC,
-                    [2] = "LightPower2",
-                    [3] = "StartCharging",
-                    [4] = CFrame.new(Xxl, Yyl, Zzl),
-                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
-                    [9] = "Left"
-                }
-                
-                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-                
-                wait(0.05)
-                local args = {
-                    [1] = VTC,
-                    [2] = "LightPower2",
-                    [3] = "StopCharging",
-                    [4] = Mouse.Hit,
-                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
-                    [6] = 100
-                }
-                
-                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args)
-                              
+                for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTL,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
                     end
                 end
             end
         end)
     end
-end)
+end);
+
 
 TabPlayer:AddToggle({
 	Name = "ออโต้แคนน่อน บอล | ผู้เล่นทั้งหมด |",
