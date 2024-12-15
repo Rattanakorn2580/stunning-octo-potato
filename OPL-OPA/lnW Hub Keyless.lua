@@ -3574,7 +3574,7 @@ spawn(function()
             if _G.nodmgwater then
                 local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:Clone(A_1) and v:Destroy(A_1)
+    Event:Destroy(A_1)
             end
         end)
     end
