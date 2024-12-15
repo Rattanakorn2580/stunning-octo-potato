@@ -2721,8 +2721,7 @@ spawn(function()
                             if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
                                 script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
                                 VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
-                                repeat 
-                                wait(0.3)
+                               
                 Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
                 Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
                 Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
@@ -2749,8 +2748,7 @@ spawn(function()
                 }
                 
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args)
-                                until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
-                            end
+                              
                         end
                     end
                 end
