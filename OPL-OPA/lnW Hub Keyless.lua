@@ -3568,19 +3568,6 @@ TabMS:AddToggle({
 	end    
 })
 
-spawn(function()
-    while wait(0) do
-        pcall(function()
-            if _G.nodmgwater then
-                local A_1 = "NOPLS"
-    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:Destroy(A_1)
-            end
-        end)
-    end
-end);
-
-
 local Section = TabMS:AddSection({
 	Name = "หมวดผู้เล่น"
 })
