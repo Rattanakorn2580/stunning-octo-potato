@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(2237, 3623, -600)
+    SafeZoneFarm.Position = Vector3.new(2237, 3623, -550)
     SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
@@ -2724,16 +2724,16 @@ spawn(function()
                                 repeat 
                                 wait(0.3)
                                     local args = {
-                                        [1] = VTC,
-                                        [2] = "LightPower2",
-                                        [3] = "StopCharging",
-                                        [4] = v.HumanoidRootPart,
-                                        [5] = CFrame.new(v.HumanoidRootPart.Position),
-                                        [6] = 100,
-                                        [7] = v.HumanoidRootPart.Position
-                                    }
-                            
-                                    game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                                    [1] = VTC,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
                                 until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
                             end
                         end
