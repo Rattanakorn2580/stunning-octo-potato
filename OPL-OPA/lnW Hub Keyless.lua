@@ -2723,17 +2723,32 @@ spawn(function()
                                 VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
                                 repeat 
                                 wait(0.3)
-                                    local args = {
-                                    [1] = VTC,
-                                    [2] = "LightPower2",
-                                    [3] = "StopCharging",
-                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
-                                    [5] = Mouse.Target,
-                                    [6] = 100
-                                }
+                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
+                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
+                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
 
-                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxl, Yyl, Zzl),
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [9] = "Left"
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                
+                wait(0.05)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args)
                                 until game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true or game.Players.LocalPlayer.Character.Humanoid.Health == 0
                             end
                         end
