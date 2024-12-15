@@ -2716,7 +2716,6 @@ spawn(function()
             for i,v in pairs(game.Workspace.Players:GetChildren()) do
                 if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                     if _G.autolightplr then
-                        if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == false then
                             wait(5)
                             if v.Humanoid.Health > 0 and  (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
                                 script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
@@ -2727,7 +2726,7 @@ spawn(function()
                 Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
 
                 local args = {
-                    [1] = tonumber(serializeTable(remotes)),
+                    [1] = VTC,
                     [2] = "LightPower2",
                     [3] = "StartCharging",
                     [4] = CFrame.new(Xxl, Yyl, Zzl),
@@ -2739,7 +2738,7 @@ spawn(function()
                 
                 wait(0.05)
                 local args = {
-                    [1] = tonumber(serializeTable(remotes)),
+                    [1] = VTC,
                     [2] = "LightPower2",
                     [3] = "StopCharging",
                     [4] = Mouse.Hit,
@@ -2749,7 +2748,6 @@ spawn(function()
                 
                 game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args)
                               
-                        end
                     end
                 end
             end
