@@ -2011,15 +2011,8 @@ TabAFF:AddToggle({
 spawn(function()
         pcall(function()
             if _G.recoll1 then
-	for i,v in pairs(game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Data:GetChildren()) do
-	if string.find(v.Name,"DFT1Defense") then
-repeat
-wait()
 game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")
-						until v.Value = 2.0 then	
-				end
-					end
-				end
+		end
         end)
     end
 end)
