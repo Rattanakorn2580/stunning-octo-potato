@@ -2012,7 +2012,7 @@ spawn(function()
         pcall(function()
             if _G.recoll1 then
 game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")
-		end
+	end
         end)
     end
 end)
