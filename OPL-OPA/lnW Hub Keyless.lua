@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(2237, 3623, -650)
+    SafeZoneFarm.Position = Vector3.new(2237, 3623, -730)
     SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
