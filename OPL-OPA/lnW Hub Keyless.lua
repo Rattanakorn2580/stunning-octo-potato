@@ -2007,15 +2007,6 @@ TabAFF:AddToggle({
 		_G.recoll1 = RC
 	end    
 })
-	
-spawn(function()
-        pcall(function()
-            if _G.recoll1 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",false,true,true,true,"Cash")
-	end
-        end)
-    end
-end)
 
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า หมัด",
