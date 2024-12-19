@@ -1020,7 +1020,7 @@ spawn(function()
     while task.wait(0) do
         pcall(function()
             if _G.autocannon then
-                local toolname = "Cannon Ball"
+                local toolname = "Slingshot"
                 local Plr = game:GetService("Players").LocalPlayer
                 wait(0.75)
                 if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
@@ -1041,15 +1041,15 @@ spawn(function()
                 local args = {
                     [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
                 }
-                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Slingshot").RemoteEvent:FireServer(unpack(args))
                 wait(0)
                 local args = {
                     [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
                 }
                 game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
                 wait(0)
-                if game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall") then
-                    game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall").CanCollide = false
+                if game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("Part") then
+                    game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("Part").CanCollide = false
                 end
             end
         end)
@@ -1062,7 +1062,7 @@ spawn(function()
             if _G.autocannon then
                 repeat task.wait(0)
                     for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
-                        if v.Name == "CannonBall" then
+                        if v.Name == "Part" then
                             v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
                             v.CanCollide = false
                             if not v:FindFirstChild("BodyClip") then
@@ -1083,7 +1083,7 @@ end)
 spawn(function()
     while task.wait(0) do
         pcall(function()
-            if _G.autocannon and game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball")  then
+            if _G.autocannon and game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot")  then
                 task.wait(1)
                 for i=1,2 do
                     game:GetService("Players").LocalPlayer.Character.Weapons:FireServer()
@@ -1099,9 +1099,9 @@ spawn(function()
         pcall(function()
             if _G.autocannon then
                 task.wait(0.1)
-                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot") then
                     for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                        if v.Name == "Cannon Ball" then
+                        if v.Name == "Slingshot" then
                             v:Destroy()
                         end
                     end
@@ -1116,9 +1116,9 @@ spawn(function()
         pcall(function()
             if _G.autocannon then
                 task.wait(0.1)
-                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot") then
                     for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                        if v.Name ~= "Cannon" and v.Name ~= "Cannon Ball" then
+                        if v.Name ~= "Sling" and v.Name ~= "Slingshot" then
                             v:Destroy()
                         end
                     end
