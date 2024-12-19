@@ -1683,6 +1683,73 @@ TabNPC:AddButton({
   	end    
 })
 
+TabNPC:AddButton({
+	Name = "กดคุยกับเอ็นพีซี",
+	Callback = function()
+	    if getgenv().tpmerchant == "Better Drink" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.BetterDrinkMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Drink" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.DrinkMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Flail" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.FlailMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "QuestFish" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.MerlinMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Krizma" then
+           for i, v in pairs(game:GetService("Workspace").Merchants.KrizmaMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Sword" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.SwordMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Sniper" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.SniperMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Emote" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.EmoteMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Affinity" then
+            for i, v in pairs(game:GetService("Workspace").Merchants.AffinityMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+        elseif getgenv().tpmerchant == "Expertise" then
+           for i, v in pairs(game:GetService("Workspace").Merchants.ExpertiseMerchant.Clickable:GetDescendants()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+	end    
+	end
+			end
+  	end    
+})
+
 local Section = TabNPC:AddSection({
 	Name = "ดูป | สำหรับ OPL: Anarchy |"
 })
@@ -2620,6 +2687,85 @@ TabPlayer:AddButton({
   	end    
 })
 
+TabPlayer:AddButton({
+	Name = "ESP ผู้เล่นทุกคน",
+	Callback = function()
+        -- ESP Script (Chams, Name, Box, Tracers)
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+
+-- Settings
+local ESPSettings = {
+    NameColor = Color3.fromRGB(255, 255, 255), -- White name
+    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
+    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
+    TextSize = 10, -- ESP Name Text Size
+}
+
+-- Function to create Chams (highlight players through walls)
+local function createChams(character)
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            local cham = Instance.new("BoxHandleAdornment")
+            cham.Size = part.Size
+            cham.Adornee = part
+            cham.Color = ESPSettings.ChamColor
+            cham.Transparency = ESPSettings.ChamTransparency
+            cham.ZIndex = 0
+            cham.AlwaysOnTop = true
+            cham.Parent = part
+        end
+    end
+end
+
+-- Function to create ESP (Names, Boxes, Tracers)
+local function createESP(player)
+    local name = Drawing.new("Text")
+
+    RunService.RenderStepped:Connect(function()
+        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
+            local rootPart = player.Character.HumanoidRootPart
+            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
+            
+            if onScreen then
+                -- Name ESP
+                name.Visible = true
+                name.Text = player.Name
+                name.Size = ESPSettings.TextSize
+                name.Color = ESPSettings.NameColor
+                name.Position = Vector2.new(pos.X, pos.Y - 25)
+
+            else
+                name.Visible = false
+            end
+        else
+            name.Visible = false
+        end
+    end)
+end
+
+-- Apply ESP to all players
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        createESP(player)
+        player.CharacterAdded:Connect(function(character)
+            createChams(character)
+        end)
+    end
+end
+
+-- Update ESP when a new player joins
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        createChams(character)
+        createESP(player)
+    end)
+end)
+  	end })
+
 TabPlayer:AddToggle({
 	Name = "ไปข้างหลังผู้เล่น",
 	Default = false,
@@ -2691,56 +2837,6 @@ end)
 local Section = TabPlayer:AddSection({
 	Name = "ผู้เล่น คิล"
 })
-
-TabPlayer:AddToggle({
-	Name = "ออโต้แสง | ผู้เล่นทั้งหมด |",
-	Default = false,
-	Callback = function(LGP)
-		_G.autolightplr = LGP
-	end    
-})
-
-spawn(function() -- Light farm npcs
-    while wait(0) do
-        pcall(function()
-            if _G.autolightplr then
-                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
-                VTL = script.RemoteEvent.RemoteFunction:InvokeServer();
-                local pla = game.Players.LocalPlayer;
-                local Mouse = pla:GetMouse();
-
-                for i, v in pairs(game:GetService("Players"):GetChildren()) do
-                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
-                        if v.Humanoid.Health > 0 and
-                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
-                                -- v.Humanoid:ChangeState(11)
-                                v.HumanoidRootPart.CanCollide = false
-                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                if v.Humanoid.Health == 0 then
-                                    v:Destroy()
-                                end
-
-                                wait(0.05)
-
-                                local args = {
-                                    [1] = VTL,
-                                    [2] = "LightPower2",
-                                    [3] = "StopCharging",
-                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
-                                    [5] = Mouse.Target,
-                                    [6] = 100
-                                }
-
-                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
-
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end);
-
 
 TabPlayer:AddToggle({
 	Name = "ออโต้แคนน่อน บอล | ผู้เล่นทั้งหมด |",
@@ -2885,7 +2981,7 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local Section = TabPlayer:AddSection({
-	Name = "บัคแดชตายย !!!"
+	Name = "บัคแดชตายย !!! | ใช้ได้ เฉพาะ คนที่ยืนนิ่งๆเท่านั้น!!! |"
 })
 
 TabPlayer:AddToggle({
@@ -3080,104 +3176,6 @@ spawn(function()
         end)
     end
 end);
-
-TabLD:AddToggle({
-	Name = "ออโต้วางผล ข้างล่างแท่นบอสดาบ",
-	Default = false,
-	Callback = function(APEE)
-		_G.autoplace = APEE
-	end    
-})
-
-    spawn(function()
-        while wait() do
-        pcall(function()
-            if _G.autoplace then    
-	for i,v in pairs(game:GetService("Workspace").Island14.Pedestals:GetChildren()) do
-if string.find(v.Name,"Pedestal1") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal2") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal3") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal4") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal5") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal6") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal7") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal8") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal9") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal10") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal11") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal12") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-if string.find(v.Name,"Pedestal13") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1)
-end
-end
-            end
-        end
-    end
-end
-end
-            end
-        end
-    end
-end
-end
-end
-end
-            end
-        end)
-    end
-end);
-
-TabLD:AddToggle({
-	Name = "ออโต้วางผล บนแท่นบอสดาบ",
-	Default = false,
-	Callback = function(APLL)
-		_G.autoplace2 = APLL
-	end    
-})
-
-    spawn(function()
-        while wait() do
-        pcall(function()
-            if _G.autoplace2 then    
-	for i,v in pairs(game:GetService("Workspace").Island14:GetChildren()) do
-if string.find(v.Name,"FruitReceptical") then
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1.25)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1.25)
-game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-wait(1.25)
-end
-        end
-            end
-        end)
-    end
-end)
 
 local Section = TabLD:AddSection({
 	Name = "สำหรับอีเว้น | ฮาโลวีนน!! |"
@@ -3433,7 +3431,7 @@ spawn(function()
 end);
 
 local Section = TabMS:AddSection({
-	Name = "คุ้มกัน"
+	Name = "ฟังชั่นอื่นๆ"
 })
 
 TabMS:AddToggle({
@@ -3472,7 +3470,7 @@ end
 end);
 
 TabMS:AddButton({
-	Name = "คุ้มกัน อาการแล็ค",
+	Name = "ลดอาการแล็ค",
 	Callback = function()
 	if not gethui then
     warn("Incompatible executor: gethui is unavailable")
@@ -3557,127 +3555,5 @@ TabMS:AddButton({
 game:GetService("Players").LocalPlayer.Idled:connect(function()
 end)
 end})
-
-TabMS:AddToggle({
-	Name = "คุ้มกันน้ำ",
-	Default = false,
-	Callback = function(NWT)
-		_G.nodmgwater = NWT
-	end    
-})
-
-local Section = TabMS:AddSection({
-	Name = "หมวดผู้เล่น"
-})
-
-TabMS:AddButton({
-	Name = "Seastone Cestus | 500 หมัด |",
-	Callback = function()
-        local A_1 = "Seastone Cestus"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
-    Event:FireServer(A_1)
-  	end    
-})
-
-TabMS:AddButton({
-	Name = "ปลดล็อคท่าเต้น | ทั้งหมด |",
-	Callback = function()
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark2.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark3.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark4.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark5.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark6.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark7.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark8.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark9.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark10.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark11.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark12.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark13.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark14.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark15.Value = true
-    game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark16.Value = true
-  	end    
-})
-
-TabMS:AddButton({
-	Name = "ESP ผู้เล่น",
-	Callback = function()
-        -- ESP Script (Chams, Name, Box, Tracers)
-
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Camera = workspace.CurrentCamera
-
--- Settings
-local ESPSettings = {
-    NameColor = Color3.fromRGB(255, 255, 255), -- White name
-    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
-    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
-    TextSize = 10, -- ESP Name Text Size
-}
-
--- Function to create Chams (highlight players through walls)
-local function createChams(character)
-    for _, part in pairs(character:GetChildren()) do
-        if part:IsA("BasePart") then
-            local cham = Instance.new("BoxHandleAdornment")
-            cham.Size = part.Size
-            cham.Adornee = part
-            cham.Color = ESPSettings.ChamColor
-            cham.Transparency = ESPSettings.ChamTransparency
-            cham.ZIndex = 0
-            cham.AlwaysOnTop = true
-            cham.Parent = part
-        end
-    end
-end
-
--- Function to create ESP (Names, Boxes, Tracers)
-local function createESP(player)
-    local name = Drawing.new("Text")
-
-    RunService.RenderStepped:Connect(function()
-        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
-            local rootPart = player.Character.HumanoidRootPart
-            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
-            
-            if onScreen then
-                -- Name ESP
-                name.Visible = true
-                name.Text = player.Name
-                name.Size = ESPSettings.TextSize
-                name.Color = ESPSettings.NameColor
-                name.Position = Vector2.new(pos.X, pos.Y - 25)
-
-            else
-                name.Visible = false
-            end
-        else
-            name.Visible = false
-        end
-    end)
-end
-
--- Apply ESP to all players
-for _, player in pairs(Players:GetPlayers()) do
-    if player ~= LocalPlayer then
-        createESP(player)
-        player.CharacterAdded:Connect(function(character)
-            createChams(character)
-        end)
-    end
-end
-
--- Update ESP when a new player joins
-Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function(character)
-        createChams(character)
-        createESP(player)
-    end)
-end)
-  	end })
 
 OrionLib:Init()
