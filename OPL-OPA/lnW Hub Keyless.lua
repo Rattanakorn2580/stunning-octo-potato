@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(2500, 3623, -615)
+    SafeZoneFarm.Position = Vector3.new(2650, 3623, -615)
     SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
@@ -1854,17 +1854,11 @@ spawn(function()
     end
 end);
 
-local TabBy = Window:MakeTab({
-	Name = "ซื้อของ",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-local Section = TabBy:AddSection({
+local Section = TabNPC:AddSection({
 	Name = "ซื้อของ เอ็นพีซี"
 })
 
-TabBy:AddDropdown({
+TabNPC:AddDropdown({
 	Name = "เลือกซื้อ ดาบ",
 	Default = "",
 	Options = Cache.DevConfig["ListOfWeapon"],
@@ -1873,7 +1867,7 @@ TabBy:AddDropdown({
 	end    
 })
 
-TabBy:AddButton({
+TabNPC:AddButton({
 	Name = "กดซื้อดาบ",
 	Callback = function()
         if getgenv().buyweapon == "Dagger" then
@@ -1892,7 +1886,7 @@ workspace.Merchants.KrizmaMerchant.Clickable.Retum:FireServer("Krizma",80000)
   	end    
 })
 
-TabBy:AddDropdown({
+TabNPC:AddDropdown({
 	Name = "เลือกซื้อ ปืน",
 	Default = "",
 	Options = Cache.DevConfig["ListOfSniper"],
@@ -1901,7 +1895,7 @@ TabBy:AddDropdown({
 	end    
 })
 
-TabBy:AddButton({
+TabNPC:AddButton({
 	Name = "กดซื้อปืน",
 	Callback = function()
         if getgenv().buysniper == "Slinger" then
@@ -1916,11 +1910,11 @@ workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Flintlock",10000)
   	end    
 })
 
-local Section = TabBy:AddSection({
+local Section = TabNPC:AddSection({
 	Name = "ซื้อน้ำ"
 })
 
-TabBy:AddDropdown({
+TabNPC:AddDropdown({
 	Name = "เลือกน้ำ",
 	Default = "",
 	Options = Cache.DevConfig["ListOfDrink"],
@@ -1929,7 +1923,7 @@ TabBy:AddDropdown({
 	end    
 })
 
-TabBy:AddTextbox({
+TabNPC:AddTextbox({
 	Name = "จำนวน น้ำ",
 	Default = "1",
 	TextDisappear = true,
@@ -1938,7 +1932,7 @@ TabBy:AddTextbox({
 	end	  
 })
 
-TabBy:AddButton({
+TabNPC:AddButton({
 	Name = "ซื้อ น้ำ",
 	Callback = function()
         if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
@@ -1948,7 +1942,7 @@ TabBy:AddButton({
   	end    
 })
 
-TabBy:AddToggle({
+TabNPC:AddToggle({
 	Name = "ออโต้ดื่ม",
 	Default = false,
 	Callback = function(ADK)
@@ -1971,7 +1965,7 @@ spawn(function()
     end
 end);
 
-TabBy:AddToggle({
+TabNPC:AddToggle({
 	Name = "ออโต้ทิ้งน้ำ",
 	Default = false,
 	Callback = function(ADD)
@@ -1994,7 +1988,7 @@ spawn(function()
     end
 end);
 
-TabBy:AddToggle({
+TabNPC:AddToggle({
 	Name = "ออโต้ดึงน้ำ",
 	Default = false,
 	Callback = function(ADD)
@@ -2688,7 +2682,7 @@ TabPlayer:AddButton({
 })
 
 TabPlayer:AddButton({
-	Name = "ESP ผู้เล่นทุกคน",
+	Name = "เห็นชื่อผู้เล่นทุกคน",
 	Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
 
