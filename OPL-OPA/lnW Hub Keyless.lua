@@ -1711,7 +1711,7 @@ TabNPC:AddButton({
 	end    
 	end
         elseif getgenv().tpmerchant == "Krizma" then
-           for i, v in pairs(game:GetService("Workspace").Merchants.KrizmaMerchant.Clickable:GetDescendants()) do
+           for i, v in pairs(game:GetService("Workspace").Merchants.KrizmaMerch.Clickable:GetDescendants()) do
                     if v:IsA("ClickDetector") then
                         fireclickdetector(v)
 	end    
@@ -1881,7 +1881,7 @@ workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Katana",10000)
 	elseif getgenv().buyweapon "Fail" then
 workspace.Merchants.FlailMerchant.Clickable.Retum:FireServer("Flail",50000)
 	elseif getgenv().buyweapon == "Krizma" then
-workspace.Merchants.KrizmaMerchant.Clickable.Retum:FireServer("Krizma",80000)
+workspace.Merchants.KrizmaMerch.Clickable.Retum:FireServer("Krizma",80000)
 	end
   	end    
 })
@@ -1899,13 +1899,37 @@ TabNPC:AddButton({
 	Name = "กดซื้อปืน",
 	Callback = function()
         if getgenv().buysniper == "Slinger" then
-workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Slingshot",1000)
+local args = {
+    [1] = "Slingshot",
+    [2] = 1000
+}
+
+workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
+
 	elseif getgenv().buysniper == "Star" then
-workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Star",5000)
+local args = {
+    [1] = "Stars",
+    [2] = 5000
+}
+
+workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
+
 	elseif getgenv().buysniper == "Crossbow" then
-workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Crossbow",7500)
+local args = {
+    [1] = "Crossbow",
+    [2] = 7500
+}
+
+workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
+
 	elseif getgenv().buysniper == "Flintlock" then
-workspace.Merchants.SniperMerchant.Clickable.Retum:FireServer("Flintlock",10000)
+local args = {
+    [1] = "Flintlock",
+    [2] = 10000
+}
+
+workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
+
 	end
   	end    
 })
