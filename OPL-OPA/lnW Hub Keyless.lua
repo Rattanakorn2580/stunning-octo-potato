@@ -2052,16 +2052,45 @@ TabAFF:AddToggle({
 		_G.recoll2= RCL
 	end    
 })
+
+if _G.recoll2 then
 	
 spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll2 then
-    game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",true,false,true,true,"Cash")
-            end
-        end)
-    end
-end)
+                while _G.recoll2 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT1 Variables
+                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
+                    local AffSword1 = userDataName.Data.DFT1Sword.Value
+
+                    -- Check for DFT1
+                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args1 = {
+                        [1] = "DFT1",
+                        [2] = true, -- defense
+                        [3] = false, -- melee
+                        [4] = true, -- sniper
+                        [5] = true, -- sword
+                        [6] = "Cash"
+                    }
+
+                    if AffMelee1 == 2 then
+                        args1[3] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
+            end)
+        end
+    end)
 
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ปืน",
