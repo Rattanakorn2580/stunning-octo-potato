@@ -2049,14 +2049,12 @@ TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า หมัด",
 	Default = false,
 	Callback = function(RCL)
-		_G.recoll2= RCL
-	end    
-})
+		isRunning2 = RCL
 
-if _G.recoll2 then
-	
+if isRunning2 then
+
 spawn(function()
-                while _G.recoll2 do
+                while isRunning2 do
                     wait(8) -- Intervalo do loop
                     local player = game.Players.LocalPlayer
                     local playerId = player.UserId
@@ -2068,13 +2066,19 @@ spawn(function()
                     local AffDefense1 = userDataName.Data.DFT1Defense.Value
                     local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-                    -- Check for DFT1
-                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
+                    -- DFT2 Variables
+                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
+
+                    -- Check for DFT2
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
                         script.Parent:Destroy()
                     end
 
-                    local args1 = {
-                        [1] = "DFT1",
+                    local args2 = {
+                        [1] = "DFT2",
                         [2] = true, -- defense
                         [3] = false, -- melee
                         [4] = true, -- sniper
@@ -2082,14 +2086,28 @@ spawn(function()
                         [6] = "Cash"
                     }
 
-                    if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
+                    if AffDefense2 == 2 then
+                        args2[2] = 0 / 0
                     end
 
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                    if AffMelee2 == 2 then
+                        args2[3] = 0 / 0
+                    end
+
+                    if AffSniper2 == 2 then
+                        args2[4] = 0 / 0
+                    end
+
+                    if AffSword2 == 2 then
+                        args2[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
                 end
             end)
         end
+	end    
+})
 
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ปืน",
