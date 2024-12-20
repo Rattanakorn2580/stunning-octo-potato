@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(2850, 3623, -615)
+    SafeZoneFarm.Position = Vector3.new(3000, 3623, -615)
     SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
@@ -65,8 +65,6 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 	                           "Forest","Evil","Crescent","Islands","Town","Rocky","Palm","Sand",
 	                           "Sand 2","Small","Tiny","Super Tiny","Grass","Atlar"};
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
-Cache.DevConfig["ListOfAffinities"] = {"เธเธฅเนเธกเนเธเธตเธจเธฒเธ ( เธเธฑเนเธเธเนเธฒเธข )", "เธเธฅเนเธกเนเธเธตเธจเธฒเธ ( เธเธฑเนเธเธเธงเธฒ )"};
-Cache.DevConfig["ListOfListSpam"] = {"เธเธดเธ”เนเธชเธเธก", "เนเธชเธเธก เธชเธฒเธขเธเนเธฒ", "เนเธชเธเธก เนเธ", "เนเธชเธเธก เนเธชเธ"};
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 
@@ -1905,7 +1903,6 @@ local args = {
 }
 
 workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
-
 	elseif getgenv().buysniper == "Star" then
 local args = {
     [1] = "Stars",
@@ -1913,7 +1910,6 @@ local args = {
 }
 
 workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
-
 	elseif getgenv().buysniper == "Crossbow" then
 local args = {
     [1] = "Crossbow",
@@ -1921,7 +1917,6 @@ local args = {
 }
 
 workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
-
 	elseif getgenv().buysniper == "Flintlock" then
 local args = {
     [1] = "Flintlock",
@@ -1929,7 +1924,6 @@ local args = {
 }
 
 workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
-
 	end
   	end    
 })
@@ -2038,48 +2032,6 @@ local TabAFF = Window:MakeTab({
 	Name = "พลังแฝง",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
-})
-
-local Section = TabAFF:AddSection({
-	Name = "ผลไม้ปีศาจ รีโรล"
-})
-
-TabAFF:AddDropdown({
-	Name = "เลือก สุ่มพลังแฝง ผลไม้ปีศาจ",
-	Default = "",
-	Options = Cache.DevConfig["ListOfAffinities"],
-	Callback = function(GGA)
-		getgenv().dfreroll = GGA
-	end    
-})
-
-TabAFF:AddButton({
-	Name = "สุ่ม",
-	Callback = function()
-        if getgenv().dfreroll == "ผลไม้ปีศาจ ( ฝั่งซ้าย )" then
-	    local args = {
-    [1] = "DFT1",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-	elseif getgenv().dfreroll == "ผลไม้ปีศาจ ( ฝั่งขวา )" then
-            local args = {
-    [1] = "DFT2",
-    [2] = false,
-    [3] = false,
-    [4] = false,
-    [5] = false,
-    [6] = "Cash"
-}
-
-workspace.Merchants.AffinityMerchant.Clickable.Retum:FireServer(unpack(args))
-		end
-  	end    
 })
 
 local Section = TabAFF:AddSection({
