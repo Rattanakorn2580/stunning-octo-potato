@@ -2090,7 +2090,6 @@ spawn(function()
                 end
             end)
         end
-    end)
 
 TabAFF:AddToggle({
 	Name = "ออโต้สุ่มค่า ปืน",
