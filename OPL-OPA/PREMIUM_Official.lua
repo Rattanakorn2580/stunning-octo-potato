@@ -4,8 +4,8 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 
 local Window = Fluent:CreateWindow({
-    Title = "Ascended Hub -- Premium OPL | Last Update 11/24/24 | " .. Fluent.Version,
-    SubTitle = "      by Plug 愛",
+    Title = "lnW Hub -- Premium OPL | Last Update 11/24/24 | " .. Fluent.Version,
+    SubTitle = "      by Bank",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
     Acrylic = true,
