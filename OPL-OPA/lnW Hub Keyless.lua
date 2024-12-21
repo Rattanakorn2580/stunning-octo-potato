@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Name = "SafeZoneLightPart"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(3350, 3623, -615)
+    SafeZoneFarm.Position = Vector3.new(3750, 3623, -615)
     SafeZoneFarm.Anchored = true
 
 spawn(function() -- autofarm velocity
@@ -2035,26 +2035,19 @@ local TabAFF = Window:MakeTab({
 })
 
 local Section = TabAFF:AddSection({
-	Name = "สุ่มพลังแฝง ผลฝั่งซ้ายมือ | ล็อคสุ่มแค่ค่าเดียว |"
-})
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ป้องกัน",
-	Default = false,
-	Callback = function(RC)
-		_G.recoll1 = RC
-	end    
+	Name = "สุ่มพลังแฝง | สุ่มจนกว่าจะได้ 10 ขีดค่าใดค่านึง |"
 })
 
 TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า หมัด",
+	Name = "ออโต้สุ่มผลฝั่งซ้าย",
 	Default = false,
-	Callback = function(RCL)
-		isRunning2 = RCL
+	Callback = function(ISR)
+		isRunning1 = ISR
 
-if isRunning2 then
+if isRunning1 then
 
 spawn(function()
-                while isRunning2 do
+                while isRunning1 do
                     wait(8) -- Intervalo do loop
                     local player = game.Players.LocalPlayer
                     local playerId = player.UserId
@@ -2066,11 +2059,62 @@ spawn(function()
                     local AffDefense1 = userDataName.Data.DFT1Defense.Value
                     local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-                    -- DFT2 Variables
-                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
-                    local AffSword2 = userDataName.Data.DFT2Sword.Value
+                    -- Check for DFT2
+                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args1 = {
+                        [1] = "DFT1",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+                    if AffDefense1 == 2 then
+                        args2[2] = 0 / 0
+                    end
+
+                    if AffMelee1 == 2 then
+                        args2[3] = 0 / 0
+                    end
+
+                    if AffSniper1 == 2 then
+                        args2[4] = 0 / 0
+                    end
+
+                    if AffSword1 == 2 then
+                        args2[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
+            end)
+        end
+	end    
+})
+
+TabAFF:AddToggle({
+	Name = "ออโต้สุ่มผลฝั่งขวา",
+	Default = false,
+	Callback = function(ISRN)
+		isRunning2 = ISRN
+if isRunning2 then
+
+spawn(function()
+                while isRunning2 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT1 Variables
+                    local AffMelee2 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT1Defense.Value
+                    local AffSword2 = userDataName.Data.DFT1Sword.Value
 
                     -- Check for DFT2
                     if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
@@ -2079,10 +2123,10 @@ spawn(function()
 
                     local args2 = {
                         [1] = "DFT2",
-                        [2] = true, -- defense
+                        [2] = false, -- defense
                         [3] = false, -- melee
-                        [4] = true, -- sniper
-                        [5] = true, -- sword
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
                         [6] = "Cash"
                     }
 
@@ -2108,117 +2152,6 @@ spawn(function()
         end
 	end    
 })
-
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ปืน",
-	Default = false,
-	Callback = function(RCLL)
-		_G.recoll3 = RCLL
-	end    
-})
-	
-spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll3 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",true,true,false,true,"Cash")
-            end
-        end)
-    end
-end)
-
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ดาบ",
-	Default = false,
-	Callback = function(RLLL)
-		_G.recoll4 = RLLL
-	end    
-})
-
-	spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll4 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT1",true,true,true,false,"Cash")
-            end
-        end)
-    end
-end)
-
-local Section = TabAFF:AddSection({
-	Name = "สุ่มพลังแฝง ผลฝั่งขวามือ | ล็อคสุ่มแค่ค่าเดียว |"
-})
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ป้องกัน",
-	Default = false,
-	Callback = function(CL)
-		_G.recoll5 = CL
-	end    
-})
-	
-spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll5 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",false,true,true,true,"Cash")           
-		end
-        end)
-    end
-end)
-
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า หมัด",
-	Default = false,
-	Callback = function(CLL)
-		_G.recoll6= CLL
-	end    
-})
-	
-spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll6 then
-    game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,false,true,true,"Cash")
-            end
-        end)
-    end
-end)
-
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ปืน",
-	Default = false,
-	Callback = function(CLLL)
-		_G.recoll7 = CLLL
-	end    
-})
-	
-spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll7 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,true,false,true,"Cash")
-            end
-        end)
-    end
-end)
-
-TabAFF:AddToggle({
-	Name = "ออโต้สุ่มค่า ดาบ",
-	Default = false,
-	Callback = function(OLLL)
-		_G.recoll8 = OLLL
-	end    
-})
-
-	spawn(function()
-    while wait(14) do
-        pcall(function()
-            if _G.recoll8 then
-game:GetService("Workspace").Merchants.AffinityMerchant.Clickable.Retum:FireServer("DFT2",true,true,true,false,"Cash")
-            end
-        end)
-    end
-end)
 
 local TabSPM = Window:MakeTab({
 	Name = "แสปมสกิล",
@@ -2324,59 +2257,6 @@ function serializeTable(val, name, skipnewlines, depth)
  
     return tmp
  end
-
-local Section = TabSPM:AddSection({
-	Name = "แสปม สายฟ้า"
-})
-
-TabSPM:AddToggle({
-	Name = "ออโต้แสปม | สายฟ้าผ่า |",
-	Default = false,
-	Callback = function(RUM)
-		_G.rumble1 = RUM
-	end    
-})
-
-spawn(function()
-    while wait(5) do
-        pcall(function()
-        if _G.rumble1 then 
-            local pla = game.Players.LocalPlayer;
-            local Mouse = pla:GetMouse();
-            local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
-
-                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
-                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
-                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
-
-
-            local args = {
-    [1] = tonumber(serializeTable(remotes)),
-    [2] = "RumblePower8",
-    [3] = "StartCharging",
-    [4] = CFrame.new(Xxl, Yyl, Zzl),
-    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
-    [6] = "Right"
-}
-
-game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
-
-            local args = {
-    [1] = tonumber(serializeTable(remotes)),
-    [2] = "RumblePower8",
-    [3] = "StopCharging",
-    [4] = Mouse.Target,
-    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
-    [6] = 200,
-    [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position)
-}
-
-game:GetService("Players").LocalPlayer.Character.Powers.Rumble.RemoteEvent:FireServer(unpack(args))
-
-        end
-        end)
-    end
-end);
 
 local Section = TabSPM:AddSection({
 	Name = "แสปม กุระ"
