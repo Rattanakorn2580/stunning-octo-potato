@@ -2675,7 +2675,7 @@ if not Value then
 
 spawn(function()
     while task.wait(0.5) do
-        if SpectatePlayer and SelectPlayer then
+        if Value and SelectPlayer then
             local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
