@@ -2663,19 +2663,25 @@ end)
   	end })
 
 TabPlayer:AddToggle({
-	Name = "ไปข้างหลังผู้เล่น",
+	Name = "ส่องผู้เล่น",
 	Default = false,
-	Callback = function(TP)
-		Tpplr = TP
+	Callback = function(SPEC)
+		Value = SPEC
+if not Value then
+            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+			end
 	end    
 })
 
 spawn(function()
-    while wait() do
-        if Tpplr then
-            pcall(function()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,3)
-            end)
+    while task.wait(0.5) do
+        if SpectatePlayer and SelectPlayer then
+            local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
+            if targetPlayer then
+                spectate(targetPlayer)
+            else
+                print("Player not found or unavailable:", SelectPlayer)
+            end
         end
     end
 end)
@@ -3445,11 +3451,20 @@ end
   	end    
 })
 
-TabMS:AddButton({
-	Name = "คุ้มกัน Afk | ไม่ทำงาน |",
-	Callback = function()
-game:GetService("Players").LocalPlayer.Idled:connect(function()
-end)
-end})
+TabMS:AddToggle({
+	Name = "คุ้มกัน AFK",
+	Default = false,
+	Callback = function(AFK)
+		state = AFK
+	end    
+})
+
+if state then
+            local vu = game:GetService("VirtualUser")
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            end)
 
 OrionLib:Init()
