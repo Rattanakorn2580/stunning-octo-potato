@@ -3454,8 +3454,8 @@ end
 TabMS:AddToggle({
 	Name = "คุ้มกัน AFK",
 	Default = false,
-	Callback = function(AFK)
-		state = AFK
+	Callback = function(state)
+		_G.antiafk = state
 	end    
 })
 
