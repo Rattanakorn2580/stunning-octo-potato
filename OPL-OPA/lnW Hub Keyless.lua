@@ -2665,8 +2665,8 @@ end)
 TabPlayer:AddToggle({
 	Name = "ส่องผู้เล่น",
 	Default = false,
-	Callback = function(SPEC)
-		Value = SPEC
+	Callback = function(Value)
+		_G.viewplr = Value
 if not Value then
             workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
@@ -2675,7 +2675,7 @@ if not Value then
 
 spawn(function()
     while task.wait(0.5) do
-        if Value and SelectPlayer then
+        if _G.viewplr and SelectPlayer then
             local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
