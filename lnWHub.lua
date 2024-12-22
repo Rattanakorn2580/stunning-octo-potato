@@ -66,11 +66,12 @@ spawn(function()
 end);
 
 spawn(function()
-    while wait(2.5) do
+    while wait(2) do
         pcall(function()
             if _G.autofinddf then
+local A_1 = ""
     local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].Stats
-    Event:FireServer()
+    Event:FireServer(A_1)
             end
         end)
     end
