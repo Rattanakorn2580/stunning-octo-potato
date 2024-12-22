@@ -16,7 +16,7 @@ local Section = TabAuto:AddSection({
 	Name = "Check Compass token"
 })
 
-TabNPC:AddButton({
+TabAuto:AddButton({
 	Name = "Check Token Compasses",
 	Callback = function()
         for i, v in pairs(game:GetService("Workspace").Merchants.QuestMerchant.Clickable:GetDescendants()) do
