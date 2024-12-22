@@ -66,7 +66,7 @@ spawn(function()
 end);
 
 spawn(function()
-    while wait(2) do
+    while wait(4) do
         pcall(function()
             if _G.autofinddf then
 local A_1 = ""
