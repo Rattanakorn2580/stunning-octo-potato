@@ -24,19 +24,18 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()--autorespawn
+spawn(function()
     while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
+        pcall(function()
+            if not _G.autobring then return end;
+            for _, Item in pairs(game.Workspace:GetChildren()) do
+                if Item.Name == "Compass" and Item:FindFirstChild("Handle") then
+                    Item.Handle.CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position);
                 end
-            end)
-        end
+            end
+        end)
     end
-end)
+end);
 
 TabAuto:AddToggle({
 	Name = "Auto Finding",
@@ -46,39 +45,35 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()--autorespawn
+spawn(function()
     while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
+        pcall(function()
+            if not _G.autofinddf then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+	    local Compass3 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 or Compass3 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(0.2);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
     end
-end)
+end);
 
-TabAuto:AddToggle({
-	Name = "Auto Reset Stats",
-	Default = false,
-	Callback = function(ASET)
-		_G.autoreset = ASET
-	end    
-})
-
-spawn(function()--autorespawn
-    while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autofinddf then
+local A_1 = "Claim"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1)
+            end
+        end)
     end
 end)
 
@@ -91,17 +86,16 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()--autorespawn
-    while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+            end
+        end)
     end
 end)
 
@@ -113,19 +107,20 @@ TabAuto:AddToggle({
 	end    
 })
 
-spawn(function()--autorespawn
+spawn(function()
     while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
+        pcall(function()
+            if not _G.autodrop then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
                 end
-            end)
-        end
+            end
+        end)
     end
-end)
+end);
 
 local TabAuto = Window:MakeTab({
 	Name = "ติดต่อเจ้าของ ! ! !",
