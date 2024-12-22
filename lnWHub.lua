@@ -13,6 +13,10 @@ local TabAuto = Window:MakeTab({
 })
 
 local Section = TabAuto:AddSection({
+	Name = "Check Compass token"
+})
+
+local Section = TabAuto:AddSection({
 	Name = "Auto Finding And Reset Stats"
 })
 
