@@ -1,7 +1,7 @@
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))() 
 local Player = game.Players.LocalPlayer 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "InW Hub | For Dupe More Compasses |", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "กรุณาติดต่อเจ้าของ . . . InW Hub"})
+local Window = OrionLib:MakeWindow({Name = "InW Hub | For Dupe |", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "กรุณาติดต่อเจ้าของ . . . InW Hub"})
 
 local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
@@ -37,7 +37,6 @@ spawn(function()--autorespawn
         end
     end
 end)
-
 
 TabAuto:AddToggle({
 	Name = "Auto Finding",
@@ -105,15 +104,6 @@ spawn(function()--autorespawn
         end
     end
 end)
-
-TabAuto:AddDropdown({
-	Name = "Choose Box",
-	Default = "",
-	Options = Cache.DevConfig["ListOfBox3"],
-	Callback = function(CT)
-		getgenv().drop1 = CT
-	end    
-})
 
 TabAuto:AddToggle({
 	Name = "Auto Drop Rare Box",
