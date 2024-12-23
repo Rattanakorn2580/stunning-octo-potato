@@ -595,7 +595,7 @@ local ToggleBeri1
 local isRunning1 = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities Fruit 1 | Beri |",
+    Title = "Auto 2.0 Affinities | Left |",
     Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
     Default = false,
     Callback = function(Value)
