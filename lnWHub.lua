@@ -3,8 +3,15 @@ local Player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "InW Hub | For Dupe |", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "กรุณาติดต่อเจ้าของ . . . InW Hub"})
 
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
 local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky"};
 
 local TabAuto = Window:MakeTab({
 	Name = "Auto Dupe Compass",
@@ -138,17 +145,47 @@ spawn(function()
     end
 end);
 
-local TabAuto = Window:MakeTab({
+local TabLD = Window:MakeTab({
+	Name = "เกาะ",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabLD:AddSection({
+	Name = "พื้นที่ปลอดภัย"
+})
+
+TabLD:AddDropdown({
+	Name = "เลือก พื้นที่ปลอดภัย",
+	Default = "",
+	Options = Cache.DevConfig["ListOfSafeZone"],
+	Callback = function(CSF)
+		getgenv().tpsafezone = CSF
+	end    
+})
+	
+TabLD:AddButton({
+	Name = "กดเพื่อวาป",
+	Callback = function()
+        if getgenv().tpsafezone == "SafeZone Sky" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
+			end
+			end    
+})
+
+local TabMC = Window:MakeTab({
 	Name = "ติดต่อเจ้าของ ! ! !",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
-local Section = TabAuto:AddSection({
+local Section = TabMC:AddSection({
 	Name = "สคริปถูกเปลี่ยน"
 })
 
-TabAuto:AddButton({
+TabMC:AddButton({
 	Name = "กรุณาติดต่อเจ้าของ",
 	Default = false,
 	Callback = function()
