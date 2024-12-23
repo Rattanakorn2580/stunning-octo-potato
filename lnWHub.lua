@@ -20,6 +20,32 @@ local TabAuto = Window:MakeTab({
 })
 
 local Section = TabAuto:AddSection({
+	Name = "เกิดอัตโนมัติ"
+})
+
+TabAuto:AddToggle({
+	Name = "ออโต้ เกิด",
+	Default = false,
+	Callback = function(AS)
+		_G.autorespawn = AS
+	end    
+})
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.autorespawn then
+            pcall(function()
+                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
+                        v.Function()
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+local Section = TabAuto:AddSection({
 	Name = "Check Compass token"
 })
 
