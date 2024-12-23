@@ -67,6 +67,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
+Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
 
 local TabAuto = Window:MakeTab({
 	Name = "ออโต้",
@@ -1819,9 +1820,11 @@ spawn(function()
         pcall(function()
             if not DropCompass then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                Value.Parent = game.Players.LocalPlayer.Character;
-                Value.Parent = game.Workspace;
+                if table.find(Cache.DevConfig["ListOfDropCompass"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
             end
         end)
     end
