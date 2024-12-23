@@ -4,8 +4,8 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 
 local Window = Fluent:CreateWindow({
-    Title = "Adcendant Hub -- Premium OPL | Last Update 11/24/24 | " .. Fluent.Version,
-    SubTitle = "      by Bank",
+    Title = "lnW Hub -- Premium OPA | Last Update 12/23/24 | " .. Fluent.Version,
+    SubTitle = "      For OPL: Anarchy",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
     Acrylic = true,
@@ -591,19 +591,19 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 
 
-local ToggleBeri
-local isRunning2 = false
+local ToggleBeri1
+local isRunning1 = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities | Beri |",
+    Title = "Auto 2.0 Affinities Fruit 1 | Beri |",
     Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
     Default = false,
     Callback = function(Value)
-        isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
-        if isRunning2 then
+        isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning1 then
             -- Inicia o loop se o toggle estiver ativado
             spawn(function()
-                while isRunning2 do
+                while isRunning1 do
                     wait(8) -- Intervalo do loop
                     local player = game.Players.LocalPlayer
                     local playerId = player.UserId
@@ -615,33 +615,13 @@ Tabs.MainTab:AddToggle("Toggle", {
                     local AffDefense1 = userDataName.Data.DFT1Defense.Value
                     local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-                    -- DFT2 Variables
-                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
-                    local AffSword2 = userDataName.Data.DFT2Sword.Value
-
                     -- Check for DFT1
                     if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
                         script.Parent:Destroy()
                     end
 
-                    -- Check for DFT2
-                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
-                        script.Parent:Destroy()
-                    end
-
                     local args1 = {
                         [1] = "DFT1",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Cash"
-                    }
-
-                    local args2 = {
-                        [1] = "DFT2",
                         [2] = false, -- defense
                         [3] = false, -- melee
                         [4] = false, -- sniper
@@ -665,7 +645,52 @@ Tabs.MainTab:AddToggle("Toggle", {
                         args1[5] = 0 / 0
                     end
 
-                    if AffDefense2 == 2 then
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
+            end)
+        end
+    end,
+})
+
+local ToggleBeri2
+local isRunning2 = false
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto 2.0 Affinities Beri | Right |",
+    Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
+    Default = false,
+    Callback = function(Value)
+        isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning2 then
+            -- Inicia o loop se o toggle estiver ativado
+            spawn(function()
+                while isRunning2 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT2 Variables
+                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
+
+                    -- Check for DFT2
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args2 = {
+                        [1] = "DFT2",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+		    if AffDefense2 == 2 then
                         args2[2] = 0 / 0
                     end
 
@@ -681,13 +706,13 @@ Tabs.MainTab:AddToggle("Toggle", {
                         args2[5] = 0 / 0
                     end
 
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
                 end
             end)
         end
     end,
 })
+
 
 local Section = Tabs.MainTab:AddSection("Sam Quest's Utilities")
 
