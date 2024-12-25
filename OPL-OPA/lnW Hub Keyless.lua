@@ -990,124 +990,12 @@ local Section = TabFarm:AddSection({
 })
 	
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม แคนน่อน บอล | ทั้งหมด |",
+	Name = "ออโต้ฟาร์ม แคนน่อน บอล | ปรับปรุงอยู่ |",
 	Default = false,
 	Callback = function(ACNN)
 		_G.autocannon = ACNN
 	end    
 })
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            if _G.autocannon then
-                local toolname = "Slingshot"
-                local Plr = game:GetService("Players").LocalPlayer
-                wait(0.75)
-                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    local tool = Plr.Backpack:FindFirstChild(toolname)
-                    Plr.Character.Humanoid:EquipTool(tool)
-                    wait(0.75)
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            if _G.autocannon then
-                local args = {
-                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
-                }
-                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Slingshot").RemoteEvent:FireServer(unpack(args))
-                wait(0)
-                local args = {
-                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
-                }
-                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
-                wait(0)
-                if game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("Part") then
-                    game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("Part").CanCollide = false
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            if _G.autocannon then
-                repeat task.wait(0)
-                    for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
-                        if v.Name == "Part" then
-                            v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
-                            v.CanCollide = false
-                            if not v:FindFirstChild("BodyClip") then
-                                local Noclip = Instance.new("BodyVelocity")
-                                Noclip.Name = "BodyClip"
-                                Noclip.Parent = v
-                                Noclip.MaxForce = Vector3.new(100000,100000,100000)
-                                Noclip.Velocity = Vector3.new(0,20,0)
-                            end
-                        end
-                    end
-                until _G.autocannon == false or _G.autocannonplr == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            if _G.autocannon and game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot")  then
-                task.wait(1)
-                for i=1,2 do
-                    game:GetService("Players").LocalPlayer.Character.Weapons:FireServer()
-                end
-            end
-        end)
-    end
-end)
-
-
-spawn(function()
-    while task.wait(15) do
-        pcall(function()
-            if _G.autocannon then
-                task.wait(0.1)
-                if game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot") then
-                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                        if v.Name == "Slingshot" then
-                            v:Destroy()
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            if _G.autocannon then
-                task.wait(0.1)
-                if game.Players.LocalPlayer.Backpack:FindFirstChild("Slingshot") then
-                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                        if v.Name ~= "Sling" and v.Name ~= "Slingshot" then
-                            v:Destroy()
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
 
 spawn(function()
     while wait(0) do
