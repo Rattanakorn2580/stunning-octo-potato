@@ -3294,6 +3294,13 @@ spawn(function()
     end
 end);
 
+TabMS:AddButton({
+	Name = "ลบผลอันคอม",
+	Callback = function()
+        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+  	end    
+})
+
 TabMS:AddToggle({
 	Name = "เปิดกล่อง | Rare, Ultra |",
 	Default = false,
@@ -3316,6 +3323,20 @@ spawn(function()
         end)
     end
 end);
+
+TabMS:AddButton({
+	Name = "ลบผลแรร์",
+	Callback = function()
+        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+  	end    
+})
+
+TabMS:AddButton({
+	Name = "ลบผลอัลตร้าแรร์",
+	Callback = function()
+        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+  	end    
+})
 
 local Section = TabMS:AddSection({
 	Name = "ฟังชั่นอื่นๆ"
