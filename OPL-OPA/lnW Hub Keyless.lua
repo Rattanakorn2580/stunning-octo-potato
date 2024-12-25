@@ -68,6 +68,7 @@ Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
+Cache.DevConfig["ListOfUncomDelete"] = {"Bomb Fruit", "Gum Fruit", "Hobby Fruit", "String Fruit", "Smelt Fruit", "Diamond Fruit", "Barrier Fruit", ""}
 
 local TabAuto = Window:MakeTab({
 	Name = "ออโต้",
