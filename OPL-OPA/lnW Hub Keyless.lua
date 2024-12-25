@@ -3297,7 +3297,9 @@ end);
 TabMS:AddButton({
 	Name = "ลบผลอันคอม",
 	Callback = function()
-        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+       local A_1 = Cache.DevConfig["ListOfUncomDelete"]
+    local Event = game:GetService("Players").LocalPlayer.Backpack
+    Event:Destroy(A_1) 
   	end    
 })
 
@@ -3327,14 +3329,18 @@ end);
 TabMS:AddButton({
 	Name = "ลบผลแรร์",
 	Callback = function()
-        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+      local A_1 = Cache.DevConfig["ListOfRareDelete"]
+    local Event = game:GetService("Players").LocalPlayer.Backpack
+    Event:Destroy(A_1) 
   	end    
 })
 
 TabMS:AddButton({
 	Name = "ลบผลอัลตร้าแรร์",
 	Callback = function()
-        game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
+        local A_1 = Cache.DevConfig["ListOfUltraDelete"]
+    local Event = game:GetService("Players").LocalPlayer.Backpack
+    Event:Destroy(A_1) 
   	end    
 })
 
