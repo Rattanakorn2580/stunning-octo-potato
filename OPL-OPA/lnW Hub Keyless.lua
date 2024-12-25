@@ -68,7 +68,7 @@ Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
-Cache.DevConfig["ListOfUncomDelete"] = {"Bomb Fruit", "Gum Fruit", "Hobby Fruit", "String Fruit", "Smelt Fruit", "Diamond Fruit", "Barrier Fruit", ""}
+Cache.DevConfig["ListOfUncomDelete"] = {"Bomb Fruit", "Gum Fruit", "Hobby Fruit", "String Fruit", "Smelt Fruit", "Diamond Fruit", "Barrier Fruit", "Order Fruit"}
 Cache.DevConfig["ListOfRareDelete"] = {"Gas Fruit", "Magma Fruit", "Flare Fruit", "Smoke Fruit", "Snow Fruit", "Plasma Fruit", "Ope Fruit", "Hollow Fruit", "Gravity Fruit", "Rumble Fruit", "Sand Fruit", "Candy Fruit", "Chilly Fruit", "Light Fruit"}
 Cache.DevConfig["ListOfUltaDelete"] = {"Phoenix Fruit", "Vampire Fruit", "Quake Fruit", "Dark Fruit"}
 
