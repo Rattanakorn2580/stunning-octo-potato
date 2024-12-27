@@ -176,7 +176,7 @@ spawn(function()
     end
 end);
 
-TabLD:AddButton({
+TabAuto:AddButton({
 	Name = "Delete Com / Uncom",
 	Callback = function()
     local Event = game:GetService("Players").LocalPlayer.Backpack
