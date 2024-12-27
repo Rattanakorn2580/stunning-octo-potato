@@ -176,12 +176,11 @@ spawn(function()
 end);
 
 TabLD:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Delete Com / Uncom",
 	Callback = function()
-        if getgenv().tpsafezone == "SafeZone Sky" then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
+    local Event = game:GetService("Players").LocalPlayer.Backpack
+        if string.find(Cahe.DevConfig["ListOfDeleteBox"], v.Name) then
+        Event:Destroy()
 			end
 			end    
 })
