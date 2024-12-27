@@ -148,6 +148,10 @@ local A_2 = "Weekly3"
     end
 end)
 
+local Section = TabAuto:AddSection({
+	Name = "Auto Drop and Delete Box"
+})
+
 TabAuto:AddToggle({
 	Name = "Auto Drop Rare Box",
 	Default = false,
@@ -171,18 +175,29 @@ spawn(function()
     end
 end);
 
+TabLD:AddButton({
+	Name = "กดเพื่อวาป",
+	Callback = function()
+        if getgenv().tpsafezone == "SafeZone Sky" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
+			end
+			end    
+})
+
 local TabLD = Window:MakeTab({
-	Name = "เกาะ",
+	Name = "Island",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabLD:AddSection({
-	Name = "พื้นที่ปลอดภัย"
+	Name = "SafeZone"
 })
 
 TabLD:AddDropdown({
-	Name = "เลือก พื้นที่ปลอดภัย",
+	Name = "Choose SafeZone",
 	Default = "",
 	Options = Cache.DevConfig["ListOfSafeZone"],
 	Callback = function(CSF)
@@ -191,7 +206,7 @@ TabLD:AddDropdown({
 })
 	
 TabLD:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Click to Tp",
 	Callback = function()
         if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
