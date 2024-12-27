@@ -12,6 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky"};
+Cache.DevConfig["ListOfDeleteBox"] = {"Common Box", "Uncommon Box"};
 
 local TabAuto = Window:MakeTab({
 	Name = "Auto Dupe Compass",
