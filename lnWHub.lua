@@ -179,19 +179,17 @@ end);
 TabAuto:AddToggle({
 	Name = "Auto Delete Box",
 	Default = false,
-	Callback = function(ADD)
-		_G.autodelete = ADD
+	Callback = function(ADE)
+		_G.autodelete1 = ADE
 	end    
 })
 
 spawn(function()
     while wait(0) do
         pcall(function()
-            if _G.autodelete then
-local Event = game:GetService("Players").LocalPlayer.Backpack
-        if string.find(Cahe.DevConfig["ListOfDeleteBox"], v.Name) then
+            if _G.autodelete1 then
+local Event = game:GetService("Players").LocalPlayer.Backpack["Common Box"]
         Event:Destroy()
-	end
 	end
         end)
     end
