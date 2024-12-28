@@ -12,7 +12,7 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
 local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky"};
-Cache.DevConfig["ListOfDeleteBox"] = {"Common Box", "Uncommon Box"};
+Cache.DevConfig["ListOfDeleteBox"] = {"Common Box"};
 
 local TabAuto = Window:MakeTab({
 	Name = "Auto Dupe Compass",
@@ -188,9 +188,11 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autodelete then
-local Event = game:GetService("Players").LocalPlayer.Backpack[Cache.DevConfig["ListOfDeleteBox"]]
+local Event = game:GetService("Players").LocalPlayer.Backpack
+        if string.find(Cahe.DevConfig["ListOfDeleteBox"], v.Name) then
         Event:Destroy()
-            end
+	end
+	end
         end)
     end
 end)
