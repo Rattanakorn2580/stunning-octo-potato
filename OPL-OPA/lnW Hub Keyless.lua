@@ -3161,6 +3161,56 @@ spawn(function()
     end
 end);
 
+local Section = TabMS:AddSection({
+	Name = "ออโต้ ลบกล่อง | ลดอาการแลค |"
+})
+
+TabMS:AddToggle({
+	Name = "ออโต้ลบ คอมม่อน",
+	Default = false,
+	Callback = function(ADP)
+		_G.autodrop = ADP
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not _G.autodrop then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
+
+TabMS:AddToggle({
+	Name = "ออโต้ลบ อันคอม",
+	Default = false,
+	Callback = function(ADP)
+		_G.autodrop = ADP
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not _G.autodrop then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
+
 TabMS:AddButton({
 	Name = "ลบผลแรร์",
 	Callback = function()
