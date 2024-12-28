@@ -3168,20 +3168,18 @@ local Section = TabMS:AddSection({
 TabMS:AddToggle({
 	Name = "ออโต้ลบ คอมม่อน",
 	Default = false,
-	Callback = function(ADP)
-		_G.autodrop = ADP
+	Callback = function(ADC)
+		_G.autodcom = ADC
 	end    
 })
 
 spawn(function()
     while wait() do
         pcall(function()
-            if not _G.autodrop then return end;
+            if not _G.autodcom then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value.Parent = game.Workspace;
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    Value:Destroy()
                 end
             end
         end)
@@ -3191,20 +3189,18 @@ end);
 TabMS:AddToggle({
 	Name = "ออโต้ลบ อันคอม",
 	Default = false,
-	Callback = function(ADP)
-		_G.autodrop = ADP
+	Callback = function(ADU)
+		_G.autodun = ADU
 	end    
 })
 
 spawn(function()
     while wait() do
         pcall(function()
-            if not _G.autodrop then return end;
+            if not _G.autodun then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value.Parent = game.Workspace;
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    Value:Destroy
                 end
             end
         end)
@@ -3349,7 +3345,7 @@ end
 })
 
 TabMS:AddToggle({
-	Name = "คุ้มกัน AFK",
+	Name = "คุ้มกัน AFK | ใช้ไม่ได้ |",
 	Default = false,
 	Callback = function(state)
 		_G.antiafk = state
