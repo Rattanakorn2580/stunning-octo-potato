@@ -188,8 +188,7 @@ spawn(function()
     while wait(0) do
         pcall(function()
             if _G.autodelete then
-local Event = game:GetService("Players").LocalPlayer.Backpack
-        if string.find(Cahe.DevConfig["ListOfDeleteBox"], v.Name) then
+local Event = game:GetService("Players").LocalPlayer.Backpack[Cache.DevConfig["ListOfDeleteBox"]]
         Event:Destroy()
             end
         end)
