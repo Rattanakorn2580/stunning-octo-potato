@@ -10,10 +10,10 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Anchored = true
 
 local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneLightPart2"
-    SafeZoneFarm.Size = Vector3.new(30,2,30)
-    SafeZoneFarm.Position = Vector3.new(3750, 3623, -615)
-    SafeZoneFarm.Anchored = true
+    SafeZoneLightFarm.Name = "SafeZoneLightPart2"
+    SafeZoneLightFarm.Size = Vector3.new(30,2,30)
+    SafeZoneLightFarm.Position = Vector3.new(3750, 3623, -615)
+    SafeZoneLightFarm.Anchored = true
 
 local b1 = Instance.new("Part",game.Workspace)
         b1.Name = "SafeZoneLightPart1"
