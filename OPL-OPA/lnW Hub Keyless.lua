@@ -15,6 +15,12 @@ local SafeZoneFarm = Instance.new("Part",game.Workspace)
     SafeZoneFarm.Position = Vector3.new(3750, 3623, -615)
     SafeZoneFarm.Anchored = true
 
+local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
+    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
+    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
+    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
+    SafeZoneUnderSea.Anchored = true
+
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
@@ -57,7 +63,7 @@ local Cache = { DevConfig = {} };
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
-Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone LightFarm"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone UnderSea", "SafeZone LightFarm1", "SafeZone LightFarm2"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
 	                           "Cliffs","Windmill", "Cave","Krizma","Sam","Green","Trees",
@@ -990,12 +996,143 @@ local Section = TabFarm:AddSection({
 })
 	
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม แคนน่อน บอล | ปรับปรุงอยู่ |",
+	Name = "ออโต้ฟาร์ม แคนน่อน บอล",
 	Default = false,
 	Callback = function(ACNN)
 		_G.autocannon = ACNN
 	end    
 })
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr then
+                local toolname = "Cannon Ball"
+                local Plr = game:GetService("Players").LocalPlayer
+                wait(0.75)
+                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
+                    local tool = Plr.Backpack:FindFirstChild(toolname)
+                    Plr.Character.Humanoid:EquipTool(tool)
+                    wait(0.75)
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannonslow then
+                local toolname = "Cannon Ball"
+                local Plr = game:GetService("Players").LocalPlayer
+                wait(0.5)
+                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
+                    local tool = Plr.Backpack:FindFirstChild(toolname)
+                    Plr.Character.Humanoid:EquipTool(tool)
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr or _G.autocannonslow then
+                local args = {
+                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+                }
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
+                wait(0)
+                local args = {
+                    [1] = CFrame.new(Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+                }
+                game:GetService("Players").LocalPlayer.Character:FindFirstChild("Cannon Ball").RemoteEvent:FireServer(unpack(args))
+                wait(0)
+                if game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall") then
+                    game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:FindFirstChild("CannonBall").CanCollide = false
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr or _G.autocannonslow then
+                repeat task.wait(0)
+                    for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
+                        if v.Name == "CannonBall" then
+                            v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
+                            v.CanCollide = false
+                            if not v:FindFirstChild("BodyClip") then
+                                local Noclip = Instance.new("BodyVelocity")
+                                Noclip.Name = "BodyClip"
+                                Noclip.Parent = v
+                                Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                                Noclip.Velocity = Vector3.new(0,20,0)
+                            end
+                        end
+                    end
+                until _G.autocannon == false or _G.autocannonplr == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon and game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") 
+            or _G.autocannonplr and game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                task.wait(1)
+                for i=1,2 do
+                    game:GetService("Players").LocalPlayer.Character.Weapons:FireServer()
+                end
+            end
+        end)
+    end
+end)
+
+
+spawn(function()
+    while task.wait(15) do
+        pcall(function()
+            if _G.autocannon or _G.autocannonplr then
+                task.wait(0.1)
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                        if v.Name == "Cannon Ball" then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while task.wait(0) do
+        pcall(function()
+            if _G.autocannon  or _G.autocannonplr or _G.autocannonslow then
+                task.wait(0.1)
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Cannon Ball") then
+                    for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                        if v.Name ~= "Cannon" and v.Name ~= "Cannon Ball" then
+                            v:Destroy()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
 
 spawn(function()
     while wait(0) do
@@ -2774,8 +2911,14 @@ TabLD:AddButton({
 	Callback = function()
         if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZone LightFarm" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZone UnderSea" then
+       game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm1" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm2" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
 			end
 			end    
 })
