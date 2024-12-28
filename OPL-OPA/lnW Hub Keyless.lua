@@ -9,11 +9,18 @@ local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
     SafeZoneOuterSpace.Anchored = true
 
-local SafeZoneFarm = Instance.new("Part",game.Workspace)
-    SafeZoneFarm.Name = "SafeZoneLightPart"
+local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
+    SafeZoneFarm.Name = "SafeZoneLightPart2"
     SafeZoneFarm.Size = Vector3.new(30,2,30)
     SafeZoneFarm.Position = Vector3.new(3750, 3623, -615)
     SafeZoneFarm.Anchored = true
+
+local b1 = Instance.new("Part",game.Workspace)
+        b1.Name = "SafeZoneLightPart1"
+        b1.Position = Vector3.new(-169, 630, -54)
+        b1.Size = Vector3.new(5, 0.1, 5)
+        b1.Anchored = true
+
 
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
