@@ -176,15 +176,26 @@ spawn(function()
     end
 end);
 
-TabAuto:AddButton({
-	Name = "Delete Com / Uncom",
-	Callback = function()
-    local Event = game:GetService("Players").LocalPlayer.Backpack
+TabAuto:AddToggle({
+	Name = "Auto Delete Box",
+	Default = false,
+	Callback = function(ADD)
+		_G.autodelete = ADD
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autodelete then
+local Event = game:GetService("Players").LocalPlayer.Backpack
         if string.find(Cahe.DevConfig["ListOfDeleteBox"], v.Name) then
         Event:Destroy()
-			end
-			end    
-})
+            end
+        end)
+    end
+end)
+
 
 local TabLD = Window:MakeTab({
 	Name = "Island",
