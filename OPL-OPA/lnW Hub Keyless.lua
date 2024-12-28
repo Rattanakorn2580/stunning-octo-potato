@@ -3279,15 +3279,6 @@ spawn(function()
     end
 end);
 
-TabMS:AddButton({
-	Name = "ลบผลอันคอม",
-	Callback = function()
-       local A_1 = Cache.DevConfig["ListOfUncomDelete"]
-    local Event = game:GetService("Players").LocalPlayer.Backpack
-    Event:Destroy(A_1) 
-  	end    
-})
-
 TabMS:AddToggle({
 	Name = "เปิดกล่อง | Rare, Ultra |",
 	Default = false,
@@ -3323,56 +3314,12 @@ TabMS:AddToggle({
 	end    
 })
 
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not _G.autodcom then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
-                    Value:Destroy()
-                end
-            end
-        end)
-    end
-end);
-
 TabMS:AddToggle({
 	Name = "ออโต้ลบ อันคอม",
 	Default = false,
 	Callback = function(ADU)
 		_G.autodun = ADU
 	end    
-})
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if not _G.autodun then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
-                    Value:Destroy
-                end
-            end
-        end)
-    end
-end);
-
-TabMS:AddButton({
-	Name = "ลบผลแรร์",
-	Callback = function()
-      local A_1 = Cache.DevConfig["ListOfRareDelete"]
-    local Event = game:GetService("Players").LocalPlayer.Backpack
-    Event:Destroy(A_1) 
-  	end    
-})
-
-TabMS:AddButton({
-	Name = "ลบผลอัลตร้าแรร์",
-	Callback = function()
-        local A_1 = Cache.DevConfig["ListOfUltraDelete"]
-    local Event = game:GetService("Players").LocalPlayer.Backpack
-    Event:Destroy(A_1) 
-  	end    
 })
 
 local Section = TabMS:AddSection({
