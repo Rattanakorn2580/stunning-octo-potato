@@ -2466,7 +2466,7 @@ TabPlayer:AddToggle({
 })
 
 spawn(function()
-while wait(1) do
+while wait(.5) do
 pcall(function()
 if AutoDeath then
 local A_1 = "NOPLS"
@@ -2478,7 +2478,7 @@ end
 end)
 
 spawn(function()
-    while wait() do
+    game:GetService('RunService').RenderStepped:connect(function()
         if AutoDeath then
             pcall(function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-3.5)
