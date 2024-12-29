@@ -2456,7 +2456,7 @@ spawn(function()
     while wait(5) do
 pcall(function()
             if _G.deathmob then
-	for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+	for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     if v.ClassName == "Model" then
 			v.Humanoid.Health == die
                      end
