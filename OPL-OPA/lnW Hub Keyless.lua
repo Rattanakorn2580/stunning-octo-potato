@@ -2441,11 +2441,11 @@ local TabPlayer = Window:MakeTab({
 })
 
 local Section = TabPlayer:AddSection({
-	Name = "ของคาแล็คเตอร์"
+	Name = "ของมอบ"
 })
 
 TabPlayer:AddToggle({
-	Name = "ออโต้ตาย",
+	Name = "ออโต้มอบตาย",
 	Default = false,
 	Callback = function(DTH)
 		AutoDeath = DTH
@@ -2453,25 +2453,48 @@ TabPlayer:AddToggle({
 })
 
 spawn(function()
-while wait(.5) do
+    while wait(5) do
 pcall(function()
-if AutoDeath then
-local A_1 = "NOPLS"
-    local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
-    Event:FireServer(A_1)
-end
+            if _G.autofarm then
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Boar")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.Humanoid.Health == 0
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Crab")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                     v.Humanoid.Health == 0
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Bandit")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                      v.Humanoid.Health == 0
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Thug")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.Humanoid.Health == 0
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Thief")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.Humanoid.Health == 0
+                     end
+		end
+	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if string.find(v.Name, "Gunslinger")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.Humanoid.Health == 0
+                     end
+		end
+		end
+		end)
 end)
-end
-end)
-
-spawn(function()
-    while wait() do
-        if AutoDeath then
-            pcall(function()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-3.5)
-            end)
-        end
-    end
 end)
 
 TabPlayer:AddToggle({
