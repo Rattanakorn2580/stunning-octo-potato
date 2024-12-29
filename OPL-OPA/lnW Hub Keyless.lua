@@ -2448,48 +2448,60 @@ TabPlayer:AddToggle({
 	Name = "ออโต้มอบตาย",
 	Default = false,
 	Callback = function(DTH)
-		AutoDeath = DTH
+		_G.deathmob = DTH
 	end    
 })
 
 spawn(function()
     while wait(5) do
 pcall(function()
-            if _G.autofarm then
+            if _G.deathmob then
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Boar")
                     and v:FindFirstChild("HumanoidRootPart") then
-                        v.Humanoid.Health == 0
+                    if v.ClassName == "Model" then
+			v.Humanoid.Health == 0
                      end
+		end
 		end
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Crab")
                     and v:FindFirstChild("HumanoidRootPart") then
+		    if v.ClassName == "Model" then
                      v.Humanoid.Health == 0
+			end
                      end
 		end
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Bandit")
                     and v:FindFirstChild("HumanoidRootPart") then
+		    if v.ClassName == "Model" then
                       v.Humanoid.Health == 0
+			end
                      end
 		end
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Thug")
                     and v:FindFirstChild("HumanoidRootPart") then
+		    if v.ClassName == "Model" then
                         v.Humanoid.Health == 0
+			end
                      end
 		end
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Thief")
                     and v:FindFirstChild("HumanoidRootPart") then
+		    if v.ClassName == "Model" then
                         v.Humanoid.Health == 0
+			end
                      end
 		end
 	for _,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if string.find(v.Name, "Gunslinger")
                     and v:FindFirstChild("HumanoidRootPart") then
+		    if v.ClassName == "Model" then
                         v.Humanoid.Health == 0
+			end
                      end
 		end
 		end
