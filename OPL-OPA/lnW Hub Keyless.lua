@@ -2458,7 +2458,7 @@ pcall(function()
             if _G.deathmob then
 	for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if v.ClassName == "Model" then
-			v.Humanoid.Health == 0
+			v.Humanoid.Health == die
                      end
 		end
 		end
