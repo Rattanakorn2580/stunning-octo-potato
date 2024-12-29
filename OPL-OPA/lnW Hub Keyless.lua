@@ -3,28 +3,6 @@ local Player = game.Players.LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "InW Hub", HidePremium = false, SaveConfig = true, ConfigFolder = "OrionTest", IntroText = "กำลังโหลด . . . InW Hub"})
 
-local Players = game:GetService("Players")
-local BlacklistedPlayers = {
-    "T3T_XxBankKungxX",
-}
-Players.PlayerAdded:Connect(function(v)
-            spawn(function()
-    while wait() do
-        pcall(function()
-            for i, v in pairs(Players:GetPlayers()) do
-        if table.find(BlacklistedPlayers, v.Name) then
-	for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer()
-end
-            end
-        end)
-    end
-end)
-        end
-    end
-end)
-
 local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
     SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
     SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
