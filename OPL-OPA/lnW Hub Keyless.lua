@@ -2478,7 +2478,7 @@ end
 end)
 
 spawn(function()
-    game:GetService('RunService').RenderStepped:connect(function()
+    while wait() do
         if AutoDeath then
             pcall(function()
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-3.5)
