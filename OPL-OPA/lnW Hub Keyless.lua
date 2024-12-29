@@ -2618,7 +2618,7 @@ TabPlayer:AddToggle({
 	Default = false,
 	Callback = function(Value)
 		_G.viewplr = Value
-if not Value then
+if not _G.viewplr then
             workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 	end    
