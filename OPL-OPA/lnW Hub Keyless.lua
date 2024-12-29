@@ -2834,11 +2834,11 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 local Section = TabPlayer:AddSection({
-	Name = "บัคแดชตายย !!! | ใช้ได้ เฉพาะ คนที่ยืนนิ่งๆเท่านั้น!!! |"
+	Name = "บัคแดชตายย เฉพาะ ตอนยืนนิ่ง | สำหรับ OPL: Anarchy |"
 })
 
 TabPlayer:AddToggle({
-	Name = "แปสมแดช",
+	Name = "แปสมแดช | เลือกผู้เล่นก่อน |",
 	Default = false,
 	Callback = function(ADSH)
 		_G.autodash = ADSH
@@ -2860,7 +2860,7 @@ end
 end);
 
 TabPlayer:AddToggle({
-	Name = "กดอันนี้ก่อนใช้งาน บัคแดชทีเดียวตาย!!!",
+	Name = "กดอันนี้ก่อนใช้ บัคแดช",
 	Default = false,
 	Callback = function(ASAV)
 		_G.autoshave = ASAV
