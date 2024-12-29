@@ -2461,14 +2461,14 @@ TabPlayer:AddToggle({
 	Name = "ออโต้ตาย",
 	Default = false,
 	Callback = function(DTH)
-		_G.nodmgwater = DTH
+		AutoDeath = DTH
 	end    
 })
 
 spawn(function()
 while wait() do
 pcall(function()
-if _G.nodmgwater then
+if AutoDeath then
 local A_1 = "NOPLS"
     local Event = game:GetService("Workspace")[""..game.Players.LocalPlayer.Name].Drown
     Event:FireServer(A_1)
