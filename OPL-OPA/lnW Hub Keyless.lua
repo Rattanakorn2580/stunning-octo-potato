@@ -2459,6 +2459,8 @@ spawn(function()
                 for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
                     if v.ClassName == "Model" then
 			v.Humanoid.Health = die
+		end
+		end
             end)
         end
     end
