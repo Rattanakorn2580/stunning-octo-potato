@@ -2210,6 +2210,36 @@ function serializeTable(val, name, skipnewlines, depth)
  end
 
 local Section = TabSPM:AddSection({
+	Name = "แสปม ของเล่น"
+})
+
+TabSPM:AddToggle({
+	Name = "ออโต้แสปม | ของเล่น |",
+	Default = false,
+	Callback = function(AHB)
+		_G.hobby = AHB
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.hobby then 
+            local args = {
+    [1] = tonumber(serializeTable(remotes)),
+    [2] = "HobbyPower2",
+    [3] = "Contract",
+    [4] = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.Position),
+    [5] = workspace:WaitForChild("IslandPirate"):WaitForChild("Station"):WaitForChild("Seats"):WaitForChild("TableSet"):WaitForChild("Table"):WaitForChild("Wall")
+}
+
+game:GetService("Players").LocalPlayer.Character.Powers.Hobby.RemoteEvent:FireServer(unpack(args))
+        end
+        end)
+    end
+end);
+
+local Section = TabSPM:AddSection({
 	Name = "แสปม กุระ"
 })
 
