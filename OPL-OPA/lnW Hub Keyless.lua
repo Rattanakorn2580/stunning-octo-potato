@@ -3451,11 +3451,33 @@ end
 })
 
 TabMS:AddToggle({
-	Name = " ",
+	Name = "แสปมแดช | กวน เฉพาะ คนปญอ. |",
 	Default = false,
 	Callback = function(BKP)
 		_G.blacklist = BKP
 	end    
 })
+
+local ListPlayer = "T3T_XxBankKungxX"
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.blacklist then
+	for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
+if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+	end
+            end
+        end)
+    end
+end);
+
 
 OrionLib:Init()
