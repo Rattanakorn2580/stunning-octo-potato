@@ -56,9 +56,6 @@ local BlacklistedPlayers = {
     "T3T_XxBankKungxX"
 }
 Players.PlayerAdded:Connect(function(v)
-spawn(function()
-while wait() do
-pcall(function()
 for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
             print("The depressed guy has entered the server now.")
@@ -82,9 +79,7 @@ v:Destroy()
 end
 end
 end
-end)
-end
-end)
+
 
 end)
 
