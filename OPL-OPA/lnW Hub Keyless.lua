@@ -3449,6 +3449,10 @@ end
   	end    
 })
 
+local Section = TabMS:AddSection({
+	Name = "ไม่ชอบคนไหนเดะเพิ่มลิสกวนให้นะจ้ะ | สำหรับ OPL: Anarchy |"
+})
+
 TabMS:AddToggle({
 	Name = "แสปมแดช | กวน เฉพาะ คนปญอ. |",
 	Default = false,
@@ -3457,7 +3461,7 @@ TabMS:AddToggle({
 	end    
 })
 
-local ListPlayer = "dandanmo_okjik"
+local ListPlayer = "Bankzy_idFind"
 
 spawn(function()
     while wait() do
@@ -3483,5 +3487,16 @@ end
     end
 end);
 
+local Section = TabMS:AddSection({
+	Name = "ชื่อที่จะโดน เฉพาะ แสปมแดช"
+})
+
+local Section = TabMS:AddSection({
+	Name = "•> 🚫 Name: vQZNhF or 100y 🚫"
+})
+
+local Section = TabMS:AddSection({
+	Name = "อาจจะมีเพิ่ม 😗🚫"
+})
 
 OrionLib:Init()
