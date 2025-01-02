@@ -3451,25 +3451,11 @@ end
 })
 
 TabMS:AddToggle({
-	Name = "แสปมแดชก่อกวน | เฉพาะ แบล็คลิส คนไม่ดี |",
+	Name = " ",
 	Default = false,
 	Callback = function(BKP)
 		_G.blacklist = BKP
 	end    
 })
-
-spawn(function()
-while wait() do
-pcall(function()
-if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
-	end
-        end
-	end)
-	end
-	end
-end)
 
 OrionLib:Init()
