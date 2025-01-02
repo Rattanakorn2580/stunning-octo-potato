@@ -61,25 +61,6 @@ for i, v in pairs(Players:GetPlayers()) do
             print("The depressed guy has entered the server now.")
         end
 	end
-for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[BlacklistedPlayers].Character.HumanoidRootPart.Position),workspace.Water)
-end
-end
-end
-for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
-if string.find(v.Name, "Shave") then
-v:FireServer(CFrame.new(game.Players[BlacklistedPlayers].Character.HumanoidRootPart.Position),workspace.Water)
-end
-end
-end
-for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-end
-end
-
 end)
 
 spawn(function()
