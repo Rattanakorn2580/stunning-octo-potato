@@ -2464,17 +2464,17 @@ spawn(function()
 end);
 
 local TabPlayer = Window:MakeTab({
-	Name = "ผู้เล่น",
+	Name = "ผู้เล่น & มอน",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabPlayer:AddSection({
-	Name = "ของมอบ"
+	Name = "เฉพาะ มอน"
 })
 
 TabPlayer:AddToggle({
-	Name = "ออโต้มอบตาย",
+	Name = "ออโต้มอบตาย | ใช้ได้บางครั้ง |",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathmob = DTH
@@ -2496,7 +2496,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "อมตะมอบตีไม่เข้า",
+	Name = "อมตะมอนตีไม่เข้า | ใช้ได้ไม่สมบูรณ์ |",
 	Default = false,
 	Callback = function(GOD)
 		_G.mobs = GOD
@@ -3492,7 +3492,7 @@ local Section = TabMS:AddSection({
 })
 
 local Section = TabMS:AddSection({
-	Name = "•> 🚫 Name: vQZNhF or 100y 🚫"
+	Name = "•> 🚫 Name: vQZNhF or 100y 🚫 <•"
 })
 
 local Section = TabMS:AddSection({
