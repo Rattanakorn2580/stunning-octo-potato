@@ -66,7 +66,6 @@ end);
 
 local Cache = { DevConfig = {} };
 
-Cache.DevConfig["ListOfBlacklist"] = {"T3T_XxBankKungxX"};
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
@@ -3458,19 +3457,24 @@ TabMS:AddToggle({
 	end    
 })
 
-local ListPlayer = "T3T_XxBankKungxX"
+local ListPlayer = "dandanmo_okjik"
 
 spawn(function()
     while wait() do
         pcall(function()
             if _G.blacklist then
-	for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
 end
 end
 for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
 if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
+if string.find(v.Name, "Dash") then
 v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 	end
