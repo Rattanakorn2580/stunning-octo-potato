@@ -67,8 +67,9 @@ v:FireServer(CFrame.new(game.Players[Blacklist].Character.HumanoidRootPart.Posit
 end
 end
         end
+	end)
 	end
-		end
+	end
 end)
 
 spawn(function()
