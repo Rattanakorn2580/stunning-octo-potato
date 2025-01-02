@@ -50,18 +50,13 @@ spawn(function() -- autofarm velocity
     end
 end)
 
-local Players = game:GetService("Players")
-local Blacklist = {
-    "T3T_XxBankKungxX"
-}
-
 _G.blacklistplr = true
 spawn(function()
 while _G.blacklistplr do wait()
 pcall(function()
-for i,v in pairs(game:GetService("Workspace")[Blacklist]:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace")[Cache.DevConfig["ListOfBlacklist"]]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[Blacklist].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players[Cache.DevConfig["ListOfBlacklist"]].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
         end
 	end
 	end)
@@ -84,9 +79,10 @@ end);
 
 local Cache = { DevConfig = {} };
 
+Cache.DevConfig["ListOfBlacklist"] = {"T3T_XxBankKungxX"};
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
-Cache.DevConfig["ListOfDrink"] = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"};
+Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
 Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone UnderSea", "SafeZone LightFarm1", "SafeZone LightFarm2"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Boss","Bar",
