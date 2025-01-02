@@ -3465,6 +3465,7 @@ if _G.blacklist then
 for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
 if string.find(v.Name, "Dash") then
 v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+	end
         end
 	end)
 	end
