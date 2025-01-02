@@ -21,7 +21,6 @@ local b1 = Instance.new("Part",game.Workspace)
         b1.Size = Vector3.new(5, 0.1, 5)
         b1.Anchored = true
 
-
 local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
     SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
     SafeZoneUnderSea.Size = Vector3.new(200,3,200)
@@ -48,6 +47,19 @@ spawn(function() -- autofarm velocity
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
             end
         end)
+    end
+end)
+
+local Players = game:GetService("Players")
+local BlacklistedPlayers = {
+    "vQZNhF",
+    "T3T_XxBankKungxX"
+}
+Players.PlayerAdded:Connect(function(v)
+    for i, v in pairs(Players:GetPlayers()) do
+        if table.find(BlacklistedPlayers, v.Name) then
+            Players.LocalPlayer:Kick("Staff OPL Has Join Server , Dont Worry. You Got Protect By Race Hub")
+        end
     end
 end)
 
