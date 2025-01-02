@@ -58,7 +58,11 @@ local BlacklistedPlayers = {
 Players.PlayerAdded:Connect(function(v)
 for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
-game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Rude trash people join to the server","All")
+for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
         end
 	end
 end)
