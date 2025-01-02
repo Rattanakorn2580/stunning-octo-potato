@@ -50,13 +50,13 @@ spawn(function() -- autofarm velocity
     end
 end)
 
-_G.blacklistplr = true
 spawn(function()
-while _G.blacklistplr do wait()
+while wait() do
 pcall(function()
-for i,v in pairs(game:GetService("Workspace")[Cache.DevConfig["ListOfBlacklist"]]:GetChildren()) do
+if _G.blacklist then
+for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[Cache.DevConfig["ListOfBlacklist"]].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
+v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
         end
 	end
 	end)
@@ -3464,10 +3464,10 @@ end
 })
 
 TabMS:AddToggle({
-	Name = "คุ้มกัน AFK | ใช้ไม่ได้ |",
+	Name = "แสปมแดชก่อกวน | เฉพาะ แบล็คลิส คนไม่ดี |",
 	Default = false,
-	Callback = function(state)
-		_G.antiafk = state
+	Callback = function(BLKP)
+		_G.blacklist = BLKP
 	end    
 })
 
