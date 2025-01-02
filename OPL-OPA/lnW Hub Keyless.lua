@@ -59,16 +59,12 @@ _G.blacklistplr = true
 spawn(function()
 while _G.blacklistplr do wait()
 pcall(function()
-for i, v in pairs(Players:GetPlayers()) do
-        if table.find(Blacklist, v.Name) then
 for i,v in pairs(game:GetService("Workspace")[Blacklist]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[Blacklist].Character.HumanoidRootPart.Position),workspace.Water)
-end
-end
+v:FireServer(CFrame.new(game.Players[Blacklist].Character.HumanoidRootPart.Position),workspace.IslandWindmill.Path)
         end
-	end)
 	end
+	end)
 	end
 end)
 
