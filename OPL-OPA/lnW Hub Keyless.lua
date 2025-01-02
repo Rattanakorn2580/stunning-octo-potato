@@ -51,20 +51,24 @@ spawn(function() -- autofarm velocity
 end)
 
 local Players = game:GetService("Players")
-local BlacklistedPlayers = {
-    "vQZNhF",
+local Blacklist = {
     "T3T_XxBankKungxX"
 }
-Players.PlayerAdded:Connect(function(v)
+
+_G.blacklistplr = true
+spawn(function()
+while _G.blacklistplr do wait()
+pcall(function()
 for i, v in pairs(Players:GetPlayers()) do
-        if table.find(BlacklistedPlayers, v.Name) then
-for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
+        if table.find(Blacklist, v.Name) then
+for i,v in pairs(game:GetService("Workspace")[Blacklist]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.Water)
+v:FireServer(CFrame.new(game.Players[Blacklist].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
         end
 	end
+		end
 end)
 
 spawn(function()
