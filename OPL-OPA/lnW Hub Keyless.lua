@@ -97,7 +97,7 @@ local Section = TabAuto:AddSection({
 
 TabAuto:AddToggle({
 	Name = "ออโต้ เกิด",
-	Default = false,
+	Default = true,
 	Callback = function(AS)
 		_G.autorespawn = AS
 	end    
