@@ -58,7 +58,7 @@ local BlacklistedPlayers = {
 Players.PlayerAdded:Connect(function(v)
     for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
-            Players.LocalPlayer:Kick("Staff OPL Has Join Server , Dont Worry. You Got Protect By Race Hub")
+            print("The depressed guy has entered the server now.")
         end
     end
 end)
