@@ -56,51 +56,34 @@ local BlacklistedPlayers = {
     "T3T_XxBankKungxX"
 }
 Players.PlayerAdded:Connect(function(v)
-    for i, v in pairs(Players:GetPlayers()) do
+spawn(function()
+while wait() do
+pcall(function()
+for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
             print("The depressed guy has entered the server now.")
         end
-    end
-    spawn(function()
-    while wait() do
-        pcall(function()
-            if table.find(BlacklistedPlayers, v.Name) then
-	for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
+	end
+for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
 if string.find(v.Name, "Dash") then
 v:FireServer(CFrame.new(game.Players[BlacklistedPlayers].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
-            end
-        end)
-    end
-end)
-
-   spawn(function()
-    while wait() do
-        pcall(function()
-            if table.find(BlacklistedPlayers, v.Name) then
-	for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
+end
+for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
 if string.find(v.Name, "Shave") then
 v:FireServer(CFrame.new(game.Players[BlacklistedPlayers].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
-            end
-        end)
-    end
-end)
-
-    spawn(function()
-    while wait() do
-        pcall(function()
-            if table.find(BlacklistedPlayers, v.Name) then
-	for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
+end
+for i,v in pairs(game:GetService("Workspace")[BlacklistedPlayers]:GetChildren()) do
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
 end
 end
-            end
-        end)
-    end
+end
+end)
+end
 end)
 
 end)
