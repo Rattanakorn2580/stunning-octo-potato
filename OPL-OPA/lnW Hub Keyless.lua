@@ -58,7 +58,7 @@ local BlacklistedPlayers = {
 Players.PlayerAdded:Connect(function(v)
 for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
-            print("The depressed guy has entered the server now.")
+game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Rude trash people join to the server","All")
         end
 	end
 end)
