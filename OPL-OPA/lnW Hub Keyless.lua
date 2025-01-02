@@ -2542,7 +2542,7 @@ end
 
 TabPlayer:AddDropdown({
 	Name = "เลือกผู้เล่น",
-	Default = "",
+	Default = "vQZNhF",
 	Options = Plr,
 	Callback = function(PP)
 		SelectPlayer = PP
