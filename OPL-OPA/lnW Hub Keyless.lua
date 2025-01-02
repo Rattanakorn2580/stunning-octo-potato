@@ -50,6 +50,31 @@ spawn(function() -- autofarm velocity
     end
 end)
 
+    while wait() do
+	for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+
+    while wait() do
+	for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
+if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players["T3T_XxBankKungxX"].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+
+    while wait() do
+	for i,v in pairs(game:GetService("Workspace")["T3T_XxBankKungxX"]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
+end
+end
+            end
+
+
 local Players = game:GetService("Players")
 local BlacklistedPlayers = {
     "vQZNhF",
