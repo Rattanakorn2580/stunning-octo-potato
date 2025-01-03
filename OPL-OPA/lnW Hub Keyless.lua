@@ -3455,13 +3455,13 @@ local Section = TabMS:AddSection({
 
 TabMS:AddToggle({
 	Name = "แสปมแดช | กวน เฉพาะ คนปญอ. |",
-	Default = false,
+	Default = true,
 	Callback = function(BKP)
 		_G.blacklist = BKP
 	end    
 })
 
-local ListPlayer = "Bankzy_idFind"
+local ListPlayer = "vQZNhF"
 
 spawn(function()
     while wait() do
