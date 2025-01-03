@@ -2282,6 +2282,57 @@ spawn(function()
     end
 end);
 
+TabSPM:AddToggle({
+	Name = "ออโต้แสปม | กุระซึนามิ |",
+	Default = false,
+	Callback = function(ASQK)
+		_G.quake2 = ASQK
+	end    
+})
+
+spawn(function() -- quake stomp
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.quake2 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            function round(num, numDecimalPlaces)
+                local mult = 10 ^ (numDecimalPlaces or 0)
+                return math.floor(num * mult + 0.6) / mult
+            end
+
+            local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+            Xx = humanoid.Position.x-- round(humanoid.Position.x, 0)
+            Yy = humanoid.Position.y--round(humanoid.Position.y, 0)
+            Zz = humanoid.Position.z--round(humanoid.Position.z, 0)
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = Mouse.Hit,
+                [6] = 100,
+                [7] = Vector3.new(Xx, Yy, Zz)
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+        end
+        end)
+    end
+end)
+
 local Section = TabSPM:AddSection({
 	Name = "แสปม แสง"
 })
