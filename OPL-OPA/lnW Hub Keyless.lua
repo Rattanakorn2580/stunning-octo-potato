@@ -3467,7 +3467,7 @@ spawn(function()
     while wait() do
         pcall(function()
             if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
 end
