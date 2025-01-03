@@ -3468,21 +3468,6 @@ spawn(function()
         pcall(function()
             if _G.blacklist then
 for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-	end
-	end
-            end
-        end)
-    end
-end);
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
 v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
