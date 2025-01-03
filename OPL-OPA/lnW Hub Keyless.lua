@@ -3477,6 +3477,38 @@ end
     end
 end);
 
+local ListPlayer2 = "milk7_O2"
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.blacklist then
+for i,v in pairs(game:GetService("Workspace")[ListPlayer2]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[ListPlayer2].Character.HumanoidRootPart.Position),workspace.Water)
+end
+	end
+            end
+        end)
+    end
+end);
+
+local ListPlayer3 = "roun1101"
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.blacklist then
+for i,v in pairs(game:GetService("Workspace")[ListPlayer3]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[ListPlayer3].Character.HumanoidRootPart.Position),workspace.Water)
+end
+	end
+            end
+        end)
+    end
+end);
+
 local Section = TabMS:AddSection({
 	Name = "ชื่อที่จะโดน เฉพาะ แสปมแดช"
 })
@@ -3486,7 +3518,11 @@ local Section = TabMS:AddSection({
 })
 
 local Section = TabMS:AddSection({
-	Name = "อาจจะมีเพิ่ม 😗🚫"
+	Name = "•> 🚫 Name: milk7_O2 🚫 <•"
+})
+
+local Section = TabMS:AddSection({
+	Name = "•> 🚫 Name: roun1101 🚫 <•"
 })
 
 OrionLib:Init()
