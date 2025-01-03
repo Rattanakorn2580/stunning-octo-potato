@@ -3471,11 +3471,6 @@ for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
 end
-end
-for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
-if string.find(v.Name, "Shave") then
-v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
-end
 	end
 	end
             end
