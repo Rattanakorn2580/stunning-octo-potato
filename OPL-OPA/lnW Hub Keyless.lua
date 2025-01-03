@@ -58,7 +58,7 @@ spawn(function()
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
 end
-end
+	end
             end
         end)
     end
