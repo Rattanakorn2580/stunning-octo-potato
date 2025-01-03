@@ -3369,17 +3369,40 @@ TabMS:AddToggle({
 	Name = "ออโต้ลบ คอมม่อน",
 	Default = false,
 	Callback = function(ADC)
-		_G.autodcom = ADC
+		_G.autodelete1 = ADC
 	end    
 })
+
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autodelete1 then
+local Event = game:GetService("Players").LocalPlayer.Backpack["Common Box"]
+        Event:Destroy()
+	end
+        end)
+    end
+end)
 
 TabMS:AddToggle({
 	Name = "ออโต้ลบ อันคอม",
 	Default = false,
 	Callback = function(ADU)
-		_G.autodun = ADU
+		_G.autodelete2 = ADU
 	end    
 })
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autodelete2 then
+local Event = game:GetService("Players").LocalPlayer.Backpack["Uncommon Box"]
+        Event:Destroy()
+	end
+        end)
+    end
+end)
 
 local Section = TabMS:AddSection({
 	Name = "ฟังชั่นอื่นๆ"
