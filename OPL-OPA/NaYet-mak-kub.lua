@@ -319,7 +319,7 @@ spawn(function()
  end)
 
 TabAuto:AddToggle({
-	Name = "Auto Chest (not work now)",
+	Name = "Auto Chest",
 	Default = false,
 	Callback = function(CHT)
 		getgenv().autochest = CHT
