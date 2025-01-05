@@ -322,24 +322,22 @@ TabAuto:AddToggle({
 	Name = "Auto Chest",
 	Default = false,
 	Callback = function(CHT)
-		getgenv().autochest = CHT
+		_G.autochest = CHT
 	end    
 })
 
 spawn(function()
-                while getgenv().autochest do
-                    task.wait()
-                    pcall(function()
-                        for _, v in pairs(game.Workspace:GetDescendants()) do
+    while wait(0) do
+        pcall(function()
+            if _G.autochest then
+for _, v in pairs(game.Workspace:GetDescendants()) do
                             if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
                                 v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
                             end
-                        end
-                        task.wait(15)
-                    end)
-                end
-            end)
-end
+						end            end
+        end)
+    end
+end);
 
 TabAuto:AddToggle({
 	Name = "Auto Claim Gift | Beri 💸 |",
@@ -3405,14 +3403,14 @@ end
   	end    
 })
 
-local TabMS = Window:MakeTab({
+local TabUP = Window:MakeTab({
 	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
-local Section = TabMS:AddSection({
+local Section = TabUP:AddSection({
 	Name = "<•> Fix Menu To Make It Better. | At 5 / 1 / 2025. |"
 })
 
