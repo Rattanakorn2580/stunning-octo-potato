@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 
 local Window = Fluent:CreateWindow({
-    Title = "lnW Hub -- Premium OPA | Last Update 12/23/24 | " .. Fluent.Version,
+    Title = "Ascended Hub OPA | Last Update 12/23/24 | " .. Fluent.Version,
     SubTitle = "      For OPL: Anarchy",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
