@@ -3405,4 +3405,15 @@ end
   	end    
 })
 
+local TabMS = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+
+local Section = TabMS:AddSection({
+	Name = "<•> Fix Menu To Make It Better. | At 5 / 1 / 2025. |"
+})
+
 OrionLib:Init()
