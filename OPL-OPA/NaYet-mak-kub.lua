@@ -3417,9 +3417,12 @@ local TabUP = Window:MakeTab({
 	PremiumOnly = false
 })
 
+local Section = TabUP:AddSection({
+	Name = "<•> Fix Auto Chest Can use Now | At 5 / 1 / 2025. |"
+})
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Menu To Make It Better. | At 5 / 1 / 2025. |"
+	Name = "<•> Add Toggle Chilly Player Kill Coming Soon... | At 5 / 1 / 2025. |"
 })
 
 OrionLib:Init()
