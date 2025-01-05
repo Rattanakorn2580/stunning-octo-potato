@@ -2561,7 +2561,7 @@ TabPlayer:AddToggle({
 	Default = false,
 	Callback = function(VPL)
 		_G.viewplr = VPL
-if not VPL then
+if not _G.viewplr then
             workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
 	end    
@@ -2784,6 +2784,14 @@ spawn(function() -- autofarm teleport cannon
         end)
     end
 end);
+
+TabPlayer:AddToggle({
+	Name = "Chilly Player Kill >Not Work< ( Aim Player First )",
+	Default = false,
+	Callback = function(CHKL)
+		_G.chillykill = CHKL
+	end    
+})
 
 local Section = TabPlayer:AddSection({
 	Name = "Bug Dash Death ( Only when standing still ) | For OPL: Anarchy |"
@@ -3404,7 +3412,7 @@ end
 })
 
 local TabUP = Window:MakeTab({
-	Name = "Misc",
+	Name = "UPDATE",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
