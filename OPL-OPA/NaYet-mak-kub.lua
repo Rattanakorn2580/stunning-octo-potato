@@ -322,9 +322,24 @@ TabAuto:AddToggle({
 	Name = "Auto Chest (not work now)",
 	Default = false,
 	Callback = function(CHT)
-		_G.chest = CHT
+		getgenv().autochest = CHT
 	end    
 })
+
+spawn(function()
+                while getgenv().autochest do
+                    task.wait()
+                    pcall(function()
+                        for _, v in pairs(game.Workspace:GetDescendants()) do
+                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
+                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
+                            end
+                        end
+                        task.wait(15)
+                    end)
+                end
+            end)
+end
 
 TabAuto:AddToggle({
 	Name = "Auto Claim Gift | Beri 💸 |",
@@ -2543,17 +2558,6 @@ Players.PlayerAdded:Connect(function(player)
 end)
   	end })
 
-
-local function spectate(targetPlayer)
-    if targetPlayer and targetPlayer.Character then
-        local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
-        if humanoid then
-            workspace.CurrentCamera.CameraSubject = humanoid
-            print("Now spectating:", targetPlayer.Name)
-        end
-    end
-end
-
 TabPlayer:AddToggle({
 	Name = "View ( Not Work )",
 	Default = false,
@@ -2565,9 +2569,19 @@ if not VPL then
 	end    
 })
 
+local function spectate(targetPlayer)
+    if targetPlayer and targetPlayer.Character then
+        local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            workspace.CurrentCamera.CameraSubject = humanoid
+            print("Now spectating:", targetPlayer.Name)
+        end
+    end
+end
+
 spawn(function()
     while task.wait(0.5) do
-        if SpectatePlayer and SelectPlayer then
+        if _G.viewplr and SelectPlayer then
             local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
