@@ -2557,7 +2557,7 @@ end)
   	end })
 
 TabPlayer:AddToggle({
-	Name = "View ( Not Work )",
+	Name = "View Player",
 	Default = false,
 	Callback = function(VPL)
 		_G.viewplr = VPL
@@ -2966,7 +2966,7 @@ local Section = TabLD:AddSection({
 })
 
 TabLD:AddToggle({
-	Name = "Auto kill Boss Pursuer ( when u have Yoru**",
+	Name = "Auto Kill Boss Pursuer ( Have Yoru to Spam )",
 	Default = false,
 	Callback = function(AFP)
 		_G.autopursuer = AFP
@@ -3418,7 +3418,7 @@ local TabUP = Window:MakeTab({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Auto Chest Can use Now | At 5 / 1 / 2025. |"
+	Name = "<•> Fix Auto Chest And View Player Can use Now | At 5 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
