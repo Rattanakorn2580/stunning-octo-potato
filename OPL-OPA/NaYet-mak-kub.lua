@@ -2543,29 +2543,40 @@ Players.PlayerAdded:Connect(function(player)
 end)
   	end })
 
+
+local function spectate(targetPlayer)
+    if targetPlayer and targetPlayer.Character then
+        local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            workspace.CurrentCamera.CameraSubject = humanoid
+            print("Now spectating:", targetPlayer.Name)
+        end
+    end
+end
+
 TabPlayer:AddToggle({
 	Name = "View ( Not Work )",
 	Default = false,
 	Callback = function(VPL)
 		_G.viewplr = VPL
+if not VPL then
+            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+			end
 	end    
 })
 
-if not _G.viewplr then
-            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-			end
-
 spawn(function()
     while task.wait(0.5) do
-        if _G.viewplr and SelectPlayer then
+        if SpectatePlayer and SelectPlayer then
             local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
+            else
+                print("Player not found or unavailable:", SelectPlayer)
             end
         end
     end
 end)
-
 TabPlayer:AddToggle({
 	Name = "Auto Bring Player",
 	Default = false,
