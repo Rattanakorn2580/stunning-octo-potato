@@ -622,7 +622,7 @@ local Section = TabFarm:AddSection({
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้วาปฟาร์ม",
+	Name = "Auto Farm",
 	Default = false,
 	Callback = function(AFR)
 		_G.autofarm = AFR
@@ -703,22 +703,6 @@ pcall(function()
 		end)
 end)
 end)
-
-spawn(function() -- auto equip
-    while wait(0) do
-        pcall(function()
-            if _G.autofarm then
-                repeat
-                    wait(0.05)
-                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
-                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
-                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
-                end
-            end
-        end)
-    end
-end);
 
 TabFarm:AddToggle({
 	Name = "Auto Bring Mob",
@@ -826,6 +810,30 @@ game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
 end 
 end) 
 end) 
+end);
+
+TabFarm:AddToggle({
+	Name = "Auto Equip",
+	Default = false,
+	Callback = function(AEI)
+		_G.autoequip = AEI
+	end    
+})
+
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
 end);
 
 local Section = TabFarm:AddSection({
@@ -1468,7 +1476,7 @@ spawn(function()
 end)
 
 TabFarm:AddToggle({
-	Name = "Auto Haki ( Very Ping )",
+	Name = "Auto Haki ( Fast Very Ping )",
 	Default = false,
 	Callback = function(AHKK)
 		AutoHaki2 = AHKK
@@ -2365,7 +2373,7 @@ spawn(function()
 end);
 
 local TabPlayer = Window:MakeTab({
-	Name = "ผPlayer & Mob",
+	Name = "Player & Mob",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -2375,7 +2383,7 @@ local Section = TabPlayer:AddSection({
 })
 
 TabPlayer:AddToggle({
-	Name = "Auto Death Mob ( sometimes )",
+	Name = "Auto Death Mob ( Work Sometimes )",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathmob = DTH
@@ -2397,7 +2405,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Immortal Mob ( Not complete )",
+	Name = "Immortal Mob ( Only Mob Not complete )",
 	Default = false,
 	Callback = function(GOD)
 		_G.mobs = GOD
@@ -2442,7 +2450,7 @@ end
 
 TabPlayer:AddDropdown({
 	Name = "Choose Player",
-	Default = "vQZNhF",
+	Default = "",
 	Options = Plr,
 	Callback = function(PP)
 		SelectPlayer = PP
@@ -2538,13 +2546,14 @@ end)
 TabPlayer:AddToggle({
 	Name = "View ( Not Work )",
 	Default = false,
-	Callback = function(Value)
-		_G.viewplr = Value
+	Callback = function(VPL)
+		_G.viewplr = VPL
+	end    
+})
+
 if not _G.viewplr then
             workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
 			end
-	end    
-})
 
 spawn(function()
     while task.wait(0.5) do
@@ -2552,8 +2561,6 @@ spawn(function()
             local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
-            else
-                print("Player not found or unavailable:", SelectPlayer)
             end
         end
     end
