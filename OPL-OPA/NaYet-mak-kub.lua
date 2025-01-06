@@ -2794,12 +2794,12 @@ TabPlayer:AddToggle({
 })
 
 spawn(function() 
-    while wait() do
+    game:GetService("RunService").RenderStepped:Connect(function()
         if _G.chillykill then
             pcall(function()
                 for i,v in pairs(game.Players:GetChildren()) do
                     if v.Name ~= game.Players.LocalPlayer.Name then
- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,-13,0)
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,8,0)
                         if v.Character.Humanoid.Health == 0 then
                         	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                         end
@@ -2807,7 +2807,7 @@ spawn(function()
                 end
             end)
         end
-    end
+    end)
 end)
 
 local Section = TabPlayer:AddSection({
