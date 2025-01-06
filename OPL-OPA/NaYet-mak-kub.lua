@@ -2929,10 +2929,6 @@ TabPlayer:AddToggle({
 	end    
 })
 
-if _G.chillykill then
-game.Players.LocalPlayer.Character.Humanoid.Sit = true
-end
-
 spawn(function() 
     game:GetService("RunService").RenderStepped:Connect(function()
         if _G.chillykill then
@@ -2992,10 +2988,6 @@ TabPlayer:AddToggle({
 		_G.bombkill = BMB
 	end    
 })
-
-if _G.bombkill then
-game.Players.LocalPlayer.Character.Humanoid.Sit = true
-end
 
 spawn(function() 
     game:GetService("RunService").RenderStepped:Connect(function()
