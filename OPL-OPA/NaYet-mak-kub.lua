@@ -2797,9 +2797,8 @@ spawn(function()
     game:GetService('RunService').RenderStepped:connect(function()
 pcall(function()
             if _G.chillykill then
-	for _,v in pairs(game.Workspace.Players:GetChildren()) do
-                    if table.find(v.Name, Plr)
-                    and v:FindFirstChild("HumanoidRootPart") then
+	for i, v in pairs(game:GetService("Players"):GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,-14)
                         if v.Humanoid.Health == 0 then
                             v:Destroy()
