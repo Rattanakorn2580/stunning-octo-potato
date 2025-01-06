@@ -2022,33 +2022,6 @@ TabSPM:AddToggle({
 	end    
 })
 
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
-
-
-setreadonly(mta, false)
-
-mta.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local arguments = args
-    local a = {}
-    for i = 1, #arguments - 1 do
-        a[i] = arguments[i]
-    end
-    local method = getnamecallmethod() 
-
-    if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'NOPLS' and _G.nodmgwater then
-            if A_1 then
-                return nil
-            end
-        end
-    end
-    
-    return namecall(self, ...)    
-end);
-
 aaxc = hookmetamethod(game, "__namecall", function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
@@ -2965,7 +2938,7 @@ spawn(function()
         if _G.chillykill then
             pcall(function()
                 for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("HumanoidRootPart") then
+                    if v.Name ~= game.Players.LocalPlayer.Name then
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,15,0)
                         if v.Character.Humanoid.Health == 0 then
                         	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
@@ -3029,7 +3002,7 @@ spawn(function()
         if _G.bombkill then
             pcall(function()
                 for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name and v:FimdFirstChild("HumanoidRootPart") then
+                    if v.Name ~= game.Players.LocalPlayer.Name then
  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,15,0)
                         if v.Character.Humanoid.Health == 0 then
                         	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
