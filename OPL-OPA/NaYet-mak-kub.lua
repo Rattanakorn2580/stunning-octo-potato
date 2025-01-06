@@ -2796,7 +2796,7 @@ TabPlayer:AddToggle({
 spawn(function()
     game:GetService('RunService').RenderStepped:connect(function()
 pcall(function()
-            if _G.autofarm then
+            if _G.chillykill then
 	for _,v in pairs(game.Workspace.Players:GetChildren()) do
                     if table.find(v.Name, Plr)
                     and v:FindFirstChild("HumanoidRootPart") then
