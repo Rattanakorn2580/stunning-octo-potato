@@ -2593,7 +2593,7 @@ spawn(function()
         if _G.deathkai then
             pcall(function()
                 for i,v in pairs(game.Workspace.IslandKai:GetChildren()) do
-                    if v.ClassName == "Model" then
+                    if string.find(v.Name, "Kaizu") then
 			v.Humanoid.Health = die
 		end
 		end
