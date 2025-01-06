@@ -2110,7 +2110,7 @@ function serializeTable(val, name, skipnewlines, depth)
  end
 
 local Section = TabSPM:AddSection({
-	Name = "Spam Dark"
+	Name = "Spam Bomb"
 })
 
 TabSPM:AddToggle({
@@ -3693,11 +3693,11 @@ local TabUP = Window:MakeTab({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Auto Chest And View Player Can use Now | At 5 / 1 / 2025. |"
+	Name = "<•> Add Spam Bomb , Plasma and Chilly Now | At 6 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Toggle Chilly Player Kill Coming Soon... | At 5 / 1 / 2025. |"
+	Name = "<•> Add Player Spam Chilly Kill And Bomb Kill | At 6 / 1 / 2025. |"
 })
 
 OrionLib:Init()
