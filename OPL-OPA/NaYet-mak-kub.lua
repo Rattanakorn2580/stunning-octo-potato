@@ -2798,12 +2798,10 @@ spawn(function()
 pcall(function()
             if _G.autofarm then
 	for _,v in pairs(game.Workspace.Players:GetChildren()) do
-                    if string.find(v.Name, Plr)
+                    if table.find(v.Name, Plr)
                     and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,-14)
                         if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                             v:Destroy()
                         end
                      end
