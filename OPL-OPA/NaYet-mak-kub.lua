@@ -2956,6 +2956,10 @@ TabPlayer:AddToggle({
 	end    
 })
 
+if _G.chillykill then
+game.Players.LocalPlayer.Character.Humanoid.Sit = true
+end
+wait(1)
 spawn(function() 
     game:GetService("RunService").RenderStepped:Connect(function()
         if _G.chillykill then
@@ -2972,7 +2976,7 @@ spawn(function()
         end
     end)
 end)
-
+wait(1)
 spawn(function()
     while wait() do
         pcall(function()
@@ -3016,6 +3020,10 @@ TabPlayer:AddToggle({
 	end    
 })
 
+if _G.bombkill then
+game.Players.LocalPlayer.Character.Humanoid.Sit = true
+end
+wait(1)
 spawn(function() 
     game:GetService("RunService").RenderStepped:Connect(function()
         if _G.bombkill then
@@ -3032,7 +3040,7 @@ spawn(function()
         end
     end)
 end)
-
+wait(1)
 spawn(function()
     while wait() do
         pcall(function()
