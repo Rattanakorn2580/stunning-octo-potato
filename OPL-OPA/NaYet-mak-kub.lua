@@ -2793,22 +2793,6 @@ TabPlayer:AddToggle({
 	end    
 })
 
-spawn(function()
-    game:GetService('RunService').RenderStepped:connect(function()
-pcall(function()
-            if _G.chillykill then
-	for i, v in pairs(game:GetService("Players"):GetChildren()) do
-                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame*CFrame.new(0,0,-14)
-                        if v.Humanoid.Health == 0 then
-                            v:Destroy()
-                        end
-                     end
-							end
-							end
-		end)
-end)
-end)
 local Section = TabPlayer:AddSection({
 	Name = "Bug Dash Death ( Only when standing still ) | For OPL: Anarchy |"
 })
