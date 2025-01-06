@@ -2592,7 +2592,7 @@ spawn(function()
     while wait() do
         if _G.deathkai then
             pcall(function()
-                for i,v in pairs(game.Workspace.KaiIsland.Kaizu:GetChildren()) do
+                for i,v in pairs(game.Workspace.IslandKai:GetChildren()) do
                     if v.ClassName == "Model" then
 			v.Humanoid.Health = die
 		end
