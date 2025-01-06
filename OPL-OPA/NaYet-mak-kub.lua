@@ -2581,6 +2581,28 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
+	Name = "Auto Kaizu Death ( Work Sometimes )",
+	Default = false,
+	Callback = function(DTH)
+		_G.deathkai = DTH
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if _G.deathkai then
+            pcall(function()
+                for i,v in pairs(game.Workspace.KaiIsland.Kaizu:GetChildren()) do
+                    if v.ClassName == "Model" then
+			v.Humanoid.Health = die
+		end
+		end
+            end)
+        end
+    end
+end)
+
+TabPlayer:AddToggle({
 	Name = "God Mob ( Only Mob Not complete )",
 	Default = false,
 	Callback = function(GOD)
