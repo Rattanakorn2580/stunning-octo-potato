@@ -2110,6 +2110,61 @@ function serializeTable(val, name, skipnewlines, depth)
  end
 
 local Section = TabSPM:AddSection({
+	Name = "Spam Dark"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Bomb Punch ( Not Work )",
+	Default = false,
+	Callback = function(MBB)
+		_G.bomb1 = MBB
+	end    
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Bomb Wave",
+	Default = false,
+	Callback = function(BBM)
+		_G.bomb2 = BBM
+	end    
+})
+
+spawn(function()--bomb wave
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.bomb2 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = Mouse.Target,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
 	Name = "Spam Quake"
 })
 
@@ -2154,7 +2209,7 @@ spawn(function()
 end);
 
 TabSPM:AddToggle({
-	Name = "Auto Quake Strom",
+	Name = "Auto Quake Stomp",
 	Default = false,
 	Callback = function(ASQK)
 		_G.quake2 = ASQK
@@ -2208,7 +2263,7 @@ local Section = TabSPM:AddSection({
 	Name = "Spam Light"
 })
 TabSPM:AddToggle({
-	Name = "Auto Light",
+	Name = "Auto Light Blast",
 	Default = false,
 	Callback = function(ASL)
 		_G.lightbeam = ASL
@@ -2253,6 +2308,66 @@ spawn(function()
         end)
     end
 end);
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Plasma"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Plasma",
+	Default = false,
+	Callback = function(PMS)
+		_G.plasma1 = PMS
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.plasma1 then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "StartCharging",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+                    wait(0)
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end)
 
 local Section = TabSPM:AddSection({
 	Name = "Spam Flare"
@@ -2338,6 +2453,53 @@ spawn(function()
 end);
 
 local Section = TabSPM:AddSection({
+	Name = "Spam Chilly"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Chilly Wave",
+	Default = false,
+	Callback = function(CIL)
+		_G.chilly = CIL
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.chilly then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
 	Name = "Spam Dark"
 })
 
@@ -2384,6 +2546,7 @@ spawn(function()
         end)
     end
 end);
+
 
 local TabPlayer = Window:MakeTab({
 	Name = "Player & Mob",
@@ -2786,7 +2949,7 @@ spawn(function() -- autofarm teleport cannon
 end);
 
 TabPlayer:AddToggle({
-	Name = "Chilly Player Kill >Not Work< ( Aim Player First )",
+	Name = "Chilly Spam Kill",
 	Default = false,
 	Callback = function(CHKL)
 		_G.chillykill = CHKL
@@ -2799,7 +2962,7 @@ spawn(function()
             pcall(function()
                 for i,v in pairs(game.Players:GetChildren()) do
                     if v.Name ~= game.Players.LocalPlayer.Name then
- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,8,0)
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,18,0)
                         if v.Character.Humanoid.Health == 0 then
                         	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
                         end
@@ -2808,6 +2971,101 @@ spawn(function()
             end)
         end
     end)
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.chillykill then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Bomb Spam Kill",
+	Default = false,
+	Callback = function(BMB)
+		_G.bombkill = BMB
+	end    
+})
+
+spawn(function() 
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if _G.bombkill then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,18,0)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.bombkill then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = Mouse.Target,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
 end)
 
 local Section = TabPlayer:AddSection({
