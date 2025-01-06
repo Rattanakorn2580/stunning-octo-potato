@@ -2121,6 +2121,21 @@ TabSPM:AddToggle({
 	end    
 })
 
+spawn(function()--bomb punch
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.bomb1 then
+            local l__LocalPlayer__1 = game.Players.LocalPlayer;
+            local l__mouse__38 = l__LocalPlayer__1:GetMouse();
+            
+            script.RemoteEvent:FireServer(tonumber(serializeTable(remotes)), "BombPower1", "StartCharging", "Left");
+            script.RemoteEvent:FireServer(tonumber(serializeTable(remotes)), "BombPower1", "StopCharging", l__mouse__38.Hit, l__mouse__38, 100);
+          
+        end
+        end)
+    end
+end)
+
 TabSPM:AddToggle({
 	Name = "Auto Bomb Wave",
 	Default = false,
@@ -2581,7 +2596,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Auto Kaizu Death ( Work Sometimes )",
+	Name = "Auto Death Seastone ( Work Sometimes )",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathkai = DTH
@@ -2603,7 +2618,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "God Mob ( Only Mob Not complete )",
+	Name = "Godly Mob ( Only Mob Not complete )",
 	Default = false,
 	Callback = function(GOD)
 		_G.mobs = GOD
@@ -2661,85 +2676,6 @@ TabPlayer:AddButton({
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
   	end    
 })
-
-TabPlayer:AddButton({
-	Name = "ESP Player",
-	Callback = function()
-        -- ESP Script (Chams, Name, Box, Tracers)
-
-local RunService = game:GetService("RunService")
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-local Camera = workspace.CurrentCamera
-
--- Settings
-local ESPSettings = {
-    NameColor = Color3.fromRGB(255, 255, 255), -- White name
-    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
-    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
-    TextSize = 10, -- ESP Name Text Size
-}
-
--- Function to create Chams (highlight players through walls)
-local function createChams(character)
-    for _, part in pairs(character:GetChildren()) do
-        if part:IsA("BasePart") then
-            local cham = Instance.new("BoxHandleAdornment")
-            cham.Size = part.Size
-            cham.Adornee = part
-            cham.Color = ESPSettings.ChamColor
-            cham.Transparency = ESPSettings.ChamTransparency
-            cham.ZIndex = 0
-            cham.AlwaysOnTop = true
-            cham.Parent = part
-        end
-    end
-end
-
--- Function to create ESP (Names, Boxes, Tracers)
-local function createESP(player)
-    local name = Drawing.new("Text")
-
-    RunService.RenderStepped:Connect(function()
-        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
-            local rootPart = player.Character.HumanoidRootPart
-            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
-            
-            if onScreen then
-                -- Name ESP
-                name.Visible = true
-                name.Text = player.Name
-                name.Size = ESPSettings.TextSize
-                name.Color = ESPSettings.NameColor
-                name.Position = Vector2.new(pos.X, pos.Y - 25)
-
-            else
-                name.Visible = false
-            end
-        else
-            name.Visible = false
-        end
-    end)
-end
-
--- Apply ESP to all players
-for _, player in pairs(Players:GetPlayers()) do
-    if player ~= LocalPlayer then
-        createESP(player)
-        player.CharacterAdded:Connect(function(character)
-            createChams(character)
-        end)
-    end
-end
-
--- Update ESP when a new player joins
-Players.PlayerAdded:Connect(function(player)
-    player.CharacterAdded:Connect(function(character)
-        createChams(character)
-        createESP(player)
-    end)
-end)
-  	end })
 
 TabPlayer:AddToggle({
 	Name = "View Player",
@@ -2823,6 +2759,85 @@ mta.__index = newcclosure(function(a, b, c)
     end
     return index(a, b, c)
 end)
+
+TabPlayer:AddButton({
+	Name = "ESP Player",
+	Callback = function()
+        -- ESP Script (Chams, Name, Box, Tracers)
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+
+-- Settings
+local ESPSettings = {
+    NameColor = Color3.fromRGB(255, 255, 255), -- White name
+    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
+    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
+    TextSize = 10, -- ESP Name Text Size
+}
+
+-- Function to create Chams (highlight players through walls)
+local function createChams(character)
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            local cham = Instance.new("BoxHandleAdornment")
+            cham.Size = part.Size
+            cham.Adornee = part
+            cham.Color = ESPSettings.ChamColor
+            cham.Transparency = ESPSettings.ChamTransparency
+            cham.ZIndex = 0
+            cham.AlwaysOnTop = true
+            cham.Parent = part
+        end
+    end
+end
+
+-- Function to create ESP (Names, Boxes, Tracers)
+local function createESP(player)
+    local name = Drawing.new("Text")
+
+    RunService.RenderStepped:Connect(function()
+        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
+            local rootPart = player.Character.HumanoidRootPart
+            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
+            
+            if onScreen then
+                -- Name ESP
+                name.Visible = true
+                name.Text = player.Name
+                name.Size = ESPSettings.TextSize
+                name.Color = ESPSettings.NameColor
+                name.Position = Vector2.new(pos.X, pos.Y - 25)
+
+            else
+                name.Visible = false
+            end
+        else
+            name.Visible = false
+        end
+    end)
+end
+
+-- Apply ESP to all players
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        createESP(player)
+        player.CharacterAdded:Connect(function(character)
+            createChams(character)
+        end)
+    end
+end
+
+-- Update ESP when a new player joins
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        createChams(character)
+        createESP(player)
+    end)
+end)
+  	end })
 
 local Section = TabPlayer:AddSection({
 	Name = "Player Kill"
@@ -3715,7 +3730,7 @@ local TabUP = Window:MakeTab({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Spam Bomb , Plasma and Chilly Now | At 6 / 1 / 2025. |"
+	Name = "<•> Add Auto Death Seastone | At 6 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
