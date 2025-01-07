@@ -85,10 +85,7 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
-Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
-Cache.DevConfig["ListOfUncomDelete"] = {"Bomb Fruit", "Gum Fruit", "Hobby Fruit", "String Fruit", "Smelt Fruit", "Diamond Fruit", "Barrier Fruit", "Order Fruit"}
-Cache.DevConfig["ListOfRareDelete"] = {"Gas Fruit", "Magma Fruit", "Flare Fruit", "Smoke Fruit", "Snow Fruit", "Plasma Fruit", "Ope Fruit", "Hollow Fruit", "Gravity Fruit", "Rumble Fruit", "Sand Fruit", "Candy Fruit", "Chilly Fruit", "Light Fruit"}
-Cache.DevConfig["ListOfUltaDelete"] = {"Phoenix Fruit", "Vampire Fruit", "Quake Fruit", "Dark Fruit"}
+Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
 
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
@@ -2574,7 +2571,7 @@ local Section = TabPlayer:AddSection({
 })
 
 TabPlayer:AddToggle({
-	Name = "Auto Death Mob ( Work Sometimes )",
+	Name = "Kill Aura Mob",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathmob = DTH
@@ -2596,7 +2593,7 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "Auto Death Seastone ( Work Sometimes )",
+	Name = "Kill Aura Kaizu",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathkai = DTH
