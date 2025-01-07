@@ -87,6 +87,20 @@ Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Fl
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
 Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
 
+local TabUP = Window:MakeTab({
+	Name = "UPDATE",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Section = TabUP:AddSection({
+	Name = "<•> Add Kill Aura Kaizu | At 6 / 1 / 2025. |"
+})
+
+local Section = TabUP:AddSection({
+	Name = "<•> Add Player Spam Chilly Kill And Bomb Kill | At 6 / 1 / 2025. |"
+})
+
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
 	Icon = "rbxassetid://4483345998",
@@ -3718,20 +3732,6 @@ for _, descendant in ipairs(game:GetDescendants()) do
     end
 end
   	end    
-})
-
-local TabUP = Window:MakeTab({
-	Name = "UPDATE",
-	Icon = "rbxassetid://4483345998",
-	PremiumOnly = false
-})
-
-local Section = TabUP:AddSection({
-	Name = "<•> Add Auto Death Seastone | At 6 / 1 / 2025. |"
-})
-
-local Section = TabUP:AddSection({
-	Name = "<•> Add Player Spam Chilly Kill And Bomb Kill | At 6 / 1 / 2025. |"
 })
 
 OrionLib:Init()
