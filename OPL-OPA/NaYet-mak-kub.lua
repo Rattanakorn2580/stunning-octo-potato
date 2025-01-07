@@ -3627,12 +3627,12 @@ TabMS:AddToggle({
 	end    
 })
 
+local antistun = game.Players.LocalPlayer.Character
+
 spawn(function()
 while wait() do
        pcall(function()
 	if _G.antistun then
-       local antistun = game.Players.LocalPlayer.Character
-       repeat
        antistun["DF_Disabled"].Value = false
        antistun.HeartStolen.Value = true
        antistun.Returned.Value = false
@@ -3645,10 +3645,56 @@ while wait() do
        antistun.SnowTouched.Value = false
        antistun.RumbleStun.Value = false
        antistun.GravityCrushed.Value = false
-   
-       wait(0.06)
-       until antistun.Humanoid.Health == 0
-	
+end
+end)
+end 
+end);
+
+TabMS:AddToggle({
+	Name = "Anti Water ( Not Work )",
+	Default = false,
+	Callback = function(NOD)
+		_G.nowaterdamage = NOD
+	end    
+})
+
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+spawn(function()
+while wait() do
+       pcall(function()
+	if _G.nowaterdamage then
+	local args = {
+    [1] = "NOPLS"
+}
+
+game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
+					
 end
 end)
 end 
