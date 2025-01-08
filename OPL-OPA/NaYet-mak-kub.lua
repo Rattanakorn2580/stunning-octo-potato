@@ -3669,15 +3669,15 @@ TabMS:AddToggle({
 })
 
 spawn(function()
-while wait() do
-       pcall(function()
-	if _G.antistun then
-       for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId].MagmaPool:GetChildren()) do
+    while wait() do
+        if _G.antistun then
+for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId].MagmaPool:GetChildren()) do
 	v.TouchInterest:Destroy()
-end
+            end)
+        end
+    end
 end)
-end 
-end)
+
 
 TabMS:AddToggle({
 	Name = "Anti Water",
