@@ -98,7 +98,7 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Bomb Punch ( Can use now ) | At 7 / 1 / 2025. |"
+	Name = "<•> Fix Max Charge Can Be Use With Gravity Skill N Now | At 8 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
@@ -106,7 +106,11 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Anti Afk ( Testing ) | At 8 / 1 / 2025. | "
+	Name = "<•> Fix Anti Afk ( Is work now ) | At 8 / 1 / 2025. | "
+})
+
+local Section = TabUP:AddSection({
+	Name = "<•> Coming Soon. . ."
 })
 
 local TabAuto = Window:MakeTab({
@@ -2162,7 +2166,7 @@ local Section = TabSPM:AddSection({
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Bomb Punch",
+	Name = "Auto Bomb Punch ( On Fix )",
 	Default = false,
 	Callback = function(MBB)
 		_G.bomb1 = MBB
