@@ -106,7 +106,7 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> "
+	Name = "<•> Add Anti Afk ( Testing ) | At 8 / 1 / 2025. | "
 })
 
 local TabAuto = Window:MakeTab({
