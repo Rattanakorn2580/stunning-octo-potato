@@ -94,11 +94,19 @@ local TabUP = Window:MakeTab({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Kill Aura Kaizu | At 6 / 1 / 2025. |"
+	Name = "<•> Add Anti Water ( You can swim ) | At 8 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Player Spam Chilly Kill And Bomb Kill | At 6 / 1 / 2025. |"
+	Name = "<•> Fix Bomb Punch ( Can use now ) | At 7 / 1 / 2025. |"
+})
+
+local Section = TabUP:AddSection({
+	Name = "<•> Add Auto Haki Buso | 8 / 1 / 2025. |"
+})
+
+local Section = TabUP:AddSection({
+	Name = "<•> "
 })
 
 local TabAuto = Window:MakeTab({
@@ -288,6 +296,32 @@ spawn(function()
         end)
     end
 end);
+
+TabLD:AddToggle({
+	Name = "Auto Haki Buso",
+	Default = false,
+	Callback = function(AKI)
+		_G.autobuso = AKI
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autobuso then
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
+end)
 
 TabAuto:AddToggle({
 	Name = "Auto Claim Expertise",
@@ -3616,7 +3650,7 @@ local Event = game:GetService("Players").LocalPlayer.Backpack["Uncommon Box"]
 end)
 
 local Section = TabMS:AddSection({
-	Name = "Other Function"
+	Name = "Anti"
 })
 
 TabMS:AddToggle({
@@ -3626,6 +3660,33 @@ TabMS:AddToggle({
 		_G.autistun = ATS
 	end    
 })
+
+TabMS:AddToggle({
+	Name = "Anti Water",
+	Default = false,
+	Callback = function(NODM)
+		_G.nowaterdamage = NODM
+	end    
+})
+
+spawn(function()--autorespawn
+    while wait() do
+        if _G.nowaterdamage then
+            pcall(function()
+                local args = {
+    [1] = "NOPLS"
+}
+
+game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
+if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+            end)
+        end
+    end
+end)
 
 TabMS:AddButton({
 	Name = "Anti Lag",
