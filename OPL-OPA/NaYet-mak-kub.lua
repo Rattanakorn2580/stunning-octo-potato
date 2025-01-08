@@ -3668,6 +3668,29 @@ TabMS:AddToggle({
 	end    
 })
 
+while _G.antistun do wait()
+       pcall(function()
+       local khiemquadeptrai = game.Players.LocalPlayer.Character
+       repeat
+       khiemquadeptrai.DF_Disabled.Value = false
+       khiemquadeptrai.HeartStolen.Value = true
+       khiemquadeptrai.Returned.Value = false
+       khiemquadeptrai.Hobbied.Value = false
+       khiemquadeptrai.HMS.Value = false
+       khiemquadeptrai.ChillyPunched.Value = false
+       khiemquadeptrai.CandyTouched.Value = false
+       khiemquadeptrai.Negative.Value = false
+       khiemquadeptrai.OpeSevered.Value = false
+       khiemquadeptrai.SnowTouched.Value = false
+       khiemquadeptrai.RumbleStun.Value = false
+       khiemquadeptrai.GravityCrushed.Value = false
+   
+       wait(0.06)
+       until khiemquadeptrai.Humanoid.Health == 0
+end)
+end 
+end)
+
 TabMS:AddToggle({
 	Name = "Anti Water",
 	Default = false,
@@ -3676,7 +3699,7 @@ TabMS:AddToggle({
 	end    
 })
 
-spawn(function()--autorespawn
+spawn(function()
     while wait() do
         if _G.nowaterdamage then
             pcall(function()
