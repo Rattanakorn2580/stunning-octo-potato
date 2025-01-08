@@ -297,7 +297,7 @@ spawn(function()
     end
 end);
 
-TabLD:AddToggle({
+TabAuto:AddToggle({
 	Name = "Auto Haki Buso",
 	Default = false,
 	Callback = function(AKI)
