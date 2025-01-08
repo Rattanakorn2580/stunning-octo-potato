@@ -3776,7 +3776,7 @@ end
 })
 
 TabMS:AddToggle({
-	Name = "Anti Afk ( Testing )",
+	Name = "Anti Afk",
 	Default = false,
 	Callback = function(AFK)
 		_G.antiafk = AFK
