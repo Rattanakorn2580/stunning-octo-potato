@@ -2102,6 +2102,8 @@ aaxc = hookmetamethod(game, "__namecall", function(self, ...)
             args[6] = 100
 	if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
             args[6] = 200
+	if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 400
             return aaxc(self, unpack(args))
         end
     end
