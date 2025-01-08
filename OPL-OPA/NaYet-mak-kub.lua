@@ -3661,12 +3661,23 @@ local Section = TabMS:AddSection({
 })
 
 TabMS:AddToggle({
-	Name = "Anti Stun ( Not Work )",
+	Name = "Anti Dark Pool",
 	Default = false,
 	Callback = function(ATS)
 		_G.autistun = ATS
 	end    
 })
+
+spawn(function()
+while wait() do
+       pcall(function()
+	if _G.antistun then
+       for i, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId].MagmaPool:GetChildren()) do
+	v.TouchInterest:Destroy()
+end
+end)
+end 
+end)
 
 TabMS:AddToggle({
 	Name = "Anti Water",
