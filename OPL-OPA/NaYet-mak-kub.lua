@@ -2161,7 +2161,7 @@ local Section = TabSPM:AddSection({
 })
 
 TabSPM:AddToggle({
-	Name = "Auto Bomb Punch ( Not Work )",
+	Name = "Auto Bomb Punch",
 	Default = false,
 	Callback = function(MBB)
 		_G.bomb1 = MBB
