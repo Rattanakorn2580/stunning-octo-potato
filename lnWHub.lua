@@ -13,6 +13,12 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
+for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
+if v.Name == "Menu" then
+  v.Frame.C.Frame.Nametag.Text = " ".."Protect Name by: InW Hub"
+end
+end
+
 -- Cache para configurações
 local Cache = {
     DevConfig = {
@@ -462,14 +468,12 @@ Tabs.MainTab:AddButton({
         local char = CharacterName.HumanoidRootPart
         char.CFrame = CFrame.new(-169, 640, -54)
 
-        local b1 = Instance.new("Part")
-        b1.Shape = "Block"
-        b1.Material = "Neon"
-        b1.BrickColor = BrickColor.new("Hot Pink")
-        b1.Anchored = true
-        b1.Parent = game.Workspace
-        b1.CFrame = CFrame.new(-169, 630, -54)
+        local b1 = Instance.new("Part",game.Workspace)
+        b1.Name = "SafeZoneLightPart1"
+        b1.Position = Vector3.new(-169, 630, -54)
         b1.Size = Vector3.new(5, 0.1, 5)
+        b1.Anchored = true
+
     end
 })
 
@@ -478,16 +482,14 @@ Tabs.MainTab:AddButton({
     Description = "",
     Callback = function()
         local char = game.Players.LocalPlayer.Character.HumanoidRootPart
-        char.CFrame = CFrame.new(-169, 12050, -54)
+        char.CFrame = CFrame.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
 
-        local b1 = Instance.new("Part")
-        b1.Shape = "Block"
-        b1.Material = "Neon"
-        b1.BrickColor = BrickColor.new("White")
-        b1.Anchored = true
-        b1.Parent = game.Workspace
-        b1.CFrame = CFrame.new(-169, 12000, -54)
-        b1.Size = Vector3.new(25, 0.1, 25)
+        local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
     end
 })
 
