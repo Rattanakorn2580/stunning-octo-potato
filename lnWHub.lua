@@ -483,7 +483,7 @@ Tabs.MainTab:AddDropdown("SafeZoneDropdown", {
     Multi = false,
     Default = 1,
     Callback = function(Value)
-        getgenv().safezone = Value
+        getgenv().tpsafezone = Value
     end
 })
 
