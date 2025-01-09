@@ -19,7 +19,18 @@ if v.Name == "Menu" then
 end
 end
 
--- Cache para configurações
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
+local b1 = Instance.new("Part",game.Workspace)
+        b1.Name = "SafeZoneLightPart1"
+        b1.Position = Vector3.new(-169, 630, -54)
+        b1.Size = Vector3.new(5, 0.1, 5)
+        b1.Anchored = true
+
 local Cache = {
     DevConfig = {
         ListOfBox1 = {"Common Box"},
