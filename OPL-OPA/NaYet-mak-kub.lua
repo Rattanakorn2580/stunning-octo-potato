@@ -3701,7 +3701,7 @@ local Section = TabMS:AddSection({
 })
 
 TabMS:AddToggle({
-	Name = "Anti Dark Pool",
+	Name = "None",
 	Default = false,
 	Callback = function(ATS)
 		_G.autistun = ATS
