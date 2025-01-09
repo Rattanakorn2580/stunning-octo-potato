@@ -94,7 +94,7 @@ local TabUP = Window:MakeTab({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Anti Water ( You can swim ) | At 8 / 1 / 2025. |"
+	Name = "<•> Add Quake Kill Players | At 9 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
@@ -3036,6 +3036,46 @@ spawn(function() -- autofarm teleport cannon
         end)
     end
 end);
+
+TabPlayer:AddToggle({
+	Name = "Quake Spam Kill",
+	Default = false,
+	Callback = function(QKL)
+		_G.quakekill = QKL
+	end    
+})
+
+
+spawn(function() -- auto farm quake
+    while task.wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                    if _G.quakekill  then
+                        if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
+                                if v.Name ~= game.Players.LocalPlayer.Name then
+                                    wait(0.1)
+                                    local args = {
+                                        [1] = tonumber(serializeTable(remotes)),
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.Character.HumanoidRootPart.CFrame,
+                                        [5] = v.Character.HumanoidRootPart.CFrame,
+                                        [6] = 100,
+                                        [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+                                    }
+                                    
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
 
 TabPlayer:AddToggle({
 	Name = "Chilly Spam Kill",
