@@ -2152,6 +2152,16 @@ Tabs.MiscTab:AddToggle("Toggle", {
     end
 })
 
+local Section = Tabs.PlayerTab:AddSection("Player Dupe")
+
+Tabs.PlayerTab:AddButton({
+    Title = "No Save Data!!!",
+    Description = "When used, the player will not save any data while using it.",
+    Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34) game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+    end
+})
+
 local Section = Tabs.PlayerTab:AddSection("Player Utilities")
 
 local function updatePlayerList()
