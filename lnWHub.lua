@@ -472,10 +472,12 @@ Tabs.MainTab:AddButton({
 })
 
 local safezonePositions = {
-    ["OutSpace SafeZone"] = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame,
-    ["UnderSea SafeZone"] = CFrame.new(1493, 260, 2171),
-    ["SafeZone LightFarm 1.0"] = CFrame.new(-1282, 218, -1368),
-    ["SafeZone LightFarm 2.0"] = CFrame.new(1110, 217, 3369),
+    ["OutSpace SafeZone"] = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0),
+    ["UnderSea SafeZone"] = game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0),
+    ["SafeZone LightFarm 1.0"] = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0),
+    ["SafeZone LightFarm 2.0"] = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0),
 }
 
 local getgenv().tpsafezone = nil
