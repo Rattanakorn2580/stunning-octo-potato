@@ -458,9 +458,7 @@ Tabs.MainTab:AddButton({
     end,
 })
 
-local getgenv().tpsafezone = nil
-
-local MultiDropdown = Tabs.MainTab:AddDropdown("MultiDropdown", {
+local MultiDropdown = Tabs.MainTab:AddDropdown("SafeZoneDropdown", {
     Title = "Choose Safe Zone",
     Description = "Select a safe zone to TP to.",
     Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"}, 
