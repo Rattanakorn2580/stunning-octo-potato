@@ -458,14 +458,14 @@ Tabs.MainTab:AddButton({
     end,
 })
 
-local MultiDropdown = Tabs.MainTab:AddDropdown("SafeZoneDropdown", {
-    Title = "Choose Safe Zone",
-    Description = "Select a safe zone to TP to.",
-    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"}, 
-    Multi = true,
-    Default = {},
+Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
+    Title = "Select SafeZone",
+    Description = "Teleport SafeZone",
+    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
+    Multi = false,
+    Default = 1,
     Callback = function(Value)
-        getgenv().tpsafezone = Value
+        getgenv().safezone = Value
     end
 })
 
