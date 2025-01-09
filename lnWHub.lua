@@ -87,7 +87,7 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.MainTab:AddSection("Main Utilities")
+local Section = Tabs.MainTab:AddSection("Main Autos")
 
 
 Tabs.MainTab:AddToggle("Toggle", {
@@ -1797,260 +1797,6 @@ Tabs.FarmFruitTab:AddToggle("Toggle", {
     end,
 })
 
-
-
-local bringActive = false 
-
-function BringMobToPlayer(mob)
-    if mob:FindFirstChild("HumanoidRootPart") then
-        local playerRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        mob.HumanoidRootPart.CanCollide = false
-        mob.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-        mob.HumanoidRootPart.Anchored = true
-        mob.HumanoidRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
-    end
-end
-
-spawn(function()
-    while task.wait(0.5) do
-        if bringActive then
-            pcall(function()
-                for _, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if (string.find(v.Name, " Boar") or string.find(v.Name, "Crab") or 
-                        string.find(v.Name, "Angry") or string.find(v.Name, "Bandit") or 
-                        string.find(v.Name, "Thief") or string.find(v.Name, "Vokun") or 
-                        string.find(v.Name, "Buster") or string.find(v.Name, "Freddy") or 
-                        string.find(v.Name, "Bruno") or string.find(v.Name, "Thug") or 
-                        string.find(v.Name, "Gunslinger") or string.find(v.Name, "Gunner") or 
-                        string.find(v.Name, "Cave")) and v:FindFirstChild("HumanoidRootPart") then
-                        BringMobToPlayer(v)
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-Tabs.FarmFruitTab:AddToggle("Toggle", { 
-    Title = "Bring Mobs For Farm With Fruits",
-    Description = "Automatically brings all mobs to your position!",
-    Default = false,
-    Callback = function(state)
-        bringActive = state
-    end
-})
-
-local bringPlayersActive = false 
-
-function BringPlayerToPosition(targetPlayer)
-    if targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local playerRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
-        local targetRootPart = targetPlayer.Character.HumanoidRootPart
-
-        targetRootPart.CanCollide = false
-        targetRootPart.Size = Vector3.new(10, 10, 10)
-        targetRootPart.Anchored = true
-        targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
-    end
-end
-
-
-spawn(function()
-    while task.wait(0.5) do
-        if bringPlayersActive then
-            pcall(function()
-                for _, player in pairs(game.Players:GetPlayers()) do
-                    if player ~= game.Players.LocalPlayer then
-                        BringPlayerToPosition(player)
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-
-Tabs.FarmFruitTab:AddToggle("Toggle", { 
-    Title = "Bring Players For Farm With Fruits",
-    Description = "Automatically brings all players to your position!",
-    Default = false,
-    Callback = function(state)
-        bringPlayersActive = state
-    end
-})
-
-
-
-local selectedPlayers = {}
-local Tpplr = false
-
-
-local PlayerList = {}
-for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-    table.insert(PlayerList, player.Name)
-end
-
-
-local function updatePlayerList()
-    local newPlayerList = {}
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        table.insert(newPlayerList, player.Name)
-    end
-    PlayerList = newPlayerList
-    MultiDropdown:Refresh(PlayerList)
-end
-
-
-game.Players.PlayerAdded:Connect(function(player)
-    table.insert(PlayerList, player.Name)
-    updatePlayerList()
-end)
-
-game.Players.PlayerRemoving:Connect(function(player)
-    for i, v in pairs(PlayerList) do
-        if v == player.Name then
-            table.remove(PlayerList, i)
-            break
-        end
-    end
-    updatePlayerList()
-end)
-
-
-local MultiDropdown = Tabs.FarmFruitTab:AddDropdown("MultiDropdown", {
-    Title = "Select Players to Farm",
-    Description = "You can select more than one player to kill with Farm Fruit!",
-    Values = PlayerList, 
-    Multi = true,
-    Default = {},
-    Callback = function(selectedValues)
-        selectedPlayers = {}
-        for value, state in pairs(selectedValues) do
-            if state then
-                table.insert(selectedPlayers, value)
-            end
-        end
-        print("Multidropdown changed:", table.concat(selectedPlayers, ", "))
-    end
-})
-
-local function BringPlayerToPosition(targetPlayerName)
-    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
-    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local playerRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        if playerRootPart then
-            local targetRootPart = targetPlayer.Character.HumanoidRootPart
-
-            targetRootPart.CanCollide = false
-            targetRootPart.Anchored = true
-            targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
-        end
-    end
-end
-
-Tabs.FarmFruitTab:AddToggle("Toggle", {
-    Title = "Bring Players Selected",
-    Description = "Automatically brings selected players to your position!",
-    Default = false,
-    Callback = function(state)
-        Tpplr = state 
-        if not Tpplr then
-            for _, playerName in ipairs(selectedPlayers) do
-                local targetPlayer = game.Players:FindFirstChild(playerName)
-                if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    targetPlayer.Character.HumanoidRootPart.Anchored = false
-                end
-            end
-        end
-    end
-})
-
-spawn(function()
-    while task.wait(0.5) do
-        if Tpplr and game.Players.LocalPlayer.Character then
-            pcall(function()
-                for _, playerName in ipairs(selectedPlayers) do
-                    BringPlayerToPosition(playerName)
-                end
-            end)
-        end
-    end
-end)
-
-
-local VirtualInputManager = game:GetService("VirtualInputManager")
-
--- Tabela de teclas na ordem especificada
-local keyToggles = {
-    Z = false,
-    X = false,
-    C = false,
-}
-
--- Criação das seções, toggles e parágrafos
-local function setupKeyToggles()
-    -- Associação de teclas às seções
-    local sectionMapping = {
-        Z = {
-            section = Tabs.FarmFruitTab:AddSection("Magma Killer"),
-            paragraph = {
-                Title = "Great Eruption",
-                Content = "Add the above skill to the respective key [Z]\nNote: Click on settings and change if necessary."
-            }
-        },
-        X = {
-            section = Tabs.FarmFruitTab:AddSection("Flare Killer"),
-            paragraph = {
-                Title = "Fire Fist",
-                Content = "Add the above skill to the respective key [X]\nNote: Click on settings and change if necessary."
-            }
-        },
-        C = {
-            section = Tabs.FarmFruitTab:AddSection("Candy Killer"),
-            paragraph = {
-                Title = "Jawbreaker",
-                Content = "Add the above skill to the respective key [C]\nNote: Click on settings and change if necessary."
-            }
-        }
-    }
-
-    -- Criação de toggles e parágrafos dinamicamente
-    for key, data in pairs(sectionMapping) do
-        local section = data.section
-
-        -- Adiciona o parágrafo à seção
-        section:AddParagraph(data.paragraph)
-
-        -- Adiciona o toggle à seção
-        section:AddToggle(key .. "Toggle", {
-            Title = "Spam Key " .. key,
-            Description = "Toggle to spam the " .. key .. " key.",
-            Default = false,
-            Callback = function(state)
-                keyToggles[key] = state
-            end
-        })
-    end
-end
-
--- Configuração dos toggles
-setupKeyToggles()
-
--- Loop para envio de eventos de tecla
-spawn(function()
-    while wait(0) do
-        for key, state in pairs(keyToggles) do
-            if state then
-                pcall(function()
-                    VirtualInputManager:SendKeyEvent(true, key, false, game)
-                    task.wait(0)
-                    VirtualInputManager:SendKeyEvent(false, key, false, game)
-                end)
-            end
-        end
-    end
-end)
-
 local Section = Tabs.MiscTab:AddSection("Local Player Utilities")
 
 local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
@@ -2639,6 +2385,143 @@ Tabs.PlayerTab:AddButton({
 
     end,
 })
+
+local bringPlayersActive = false 
+
+function BringPlayerToPosition(targetPlayer)
+    if targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local playerRootPart = game.Players.LocalPlayer.Character.HumanoidRootPart
+        local targetRootPart = targetPlayer.Character.HumanoidRootPart
+
+        targetRootPart.CanCollide = false
+        targetRootPart.Size = Vector3.new(10, 10, 10)
+        targetRootPart.Anchored = true
+        targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
+    end
+end
+
+
+spawn(function()
+    while task.wait(0.5) do
+        if bringPlayersActive then
+            pcall(function()
+                for _, player in pairs(game.Players:GetPlayers()) do
+                    if player ~= game.Players.LocalPlayer then
+                        BringPlayerToPosition(player)
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+
+Tabs.PlayerTab:AddToggle("Toggle", { 
+    Title = "Bring Players For Farm With Fruits",
+    Description = "Automatically brings all players to your position!",
+    Default = false,
+    Callback = function(state)
+        bringPlayersActive = state
+    end
+})
+
+
+
+local selectedPlayers = {}
+local Tpplr = false
+
+
+local PlayerList = {}
+for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+    table.insert(PlayerList, player.Name)
+end
+
+
+local function updatePlayerList()
+    local newPlayerList = {}
+    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
+        table.insert(newPlayerList, player.Name)
+    end
+    PlayerList = newPlayerList
+    MultiDropdown:Refresh(PlayerList)
+end
+
+
+game.Players.PlayerAdded:Connect(function(player)
+    table.insert(PlayerList, player.Name)
+    updatePlayerList()
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    for i, v in pairs(PlayerList) do
+        if v == player.Name then
+            table.remove(PlayerList, i)
+            break
+        end
+    end
+    updatePlayerList()
+end)
+
+
+local MultiDropdown = Tabs.PlayerTab:AddDropdown("MultiDropdown", {
+    Title = "Select Players to Farm",
+    Description = "You can select more than one player to kill with Farm Fruit!",
+    Values = PlayerList, 
+    Multi = true,
+    Default = {},
+    Callback = function(selectedValues)
+        selectedPlayers = {}
+        for value, state in pairs(selectedValues) do
+            if state then
+                table.insert(selectedPlayers, value)
+            end
+        end
+        print("Multidropdown changed:", table.concat(selectedPlayers, ", "))
+    end
+})
+
+local function BringPlayerToPosition(targetPlayerName)
+    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
+    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+        local playerRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        if playerRootPart then
+            local targetRootPart = targetPlayer.Character.HumanoidRootPart
+
+            targetRootPart.CanCollide = false
+            targetRootPart.Anchored = true
+            targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
+        end
+    end
+end
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "Choose Bring Players",
+    Description = "Automatically brings choose players to your position!",
+    Default = false,
+    Callback = function(state)
+        Tpplr = state 
+        if not Tpplr then
+            for _, playerName in ipairs(selectedPlayers) do
+                local targetPlayer = game.Players:FindFirstChild(playerName)
+                if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                    targetPlayer.Character.HumanoidRootPart.Anchored = false
+                end
+            end
+        end
+    end
+})
+
+spawn(function()
+    while task.wait(0.5) do
+        if Tpplr and game.Players.LocalPlayer.Character then
+            pcall(function()
+                for _, playerName in ipairs(selectedPlayers) do
+                    BringPlayerToPosition(playerName)
+                end
+            end)
+        end
+    end
+end)
 
 local VirtualInputManager = game:GetService("VirtualInputManager")
 
