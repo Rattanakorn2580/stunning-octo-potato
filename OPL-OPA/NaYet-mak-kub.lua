@@ -98,15 +98,15 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Max Charge Can Be Use With Gravity Skill N Now | At 8 / 1 / 2025. |"
+	Name = "<•> Add Light Kill Players ( On Fix ) | At 9 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Auto Haki Buso | 8 / 1 / 2025. |"
+	Name = "<•> NONE | 9 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Anti Afk ( Is work now ) | At 8 / 1 / 2025. | "
+	Name = "<•> Fix Anti Afk ( On Fix ) | At 9 / 1 / 2025. | "
 })
 
 local Section = TabUP:AddSection({
