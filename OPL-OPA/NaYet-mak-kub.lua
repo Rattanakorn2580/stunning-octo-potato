@@ -98,7 +98,7 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Add Light Kill Players ( On Fix ) | At 9 / 1 / 2025. |"
+	Name = "<•> NONE | At 9 / 1 / 2025. |"
 })
 
 local Section = TabUP:AddSection({
@@ -106,7 +106,7 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> Fix Anti Afk ( On Fix ) | At 9 / 1 / 2025. | "
+	Name = "<•> NONE | At 9 / 1 / 2025. | "
 })
 
 local Section = TabUP:AddSection({
@@ -3091,13 +3091,16 @@ spawn(function() -- auto farm quake
         pcall(function()
             for i,v in pairs(game.Players:GetChildren()) do
                     if _G.lightkill  then
+		local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+							
                         if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
                         for i,v in pairs(game.Players:GetChildren()) do
                             if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
                                 if v.Name ~= game.Players.LocalPlayer.Name then
                                     wait(0.1)
                                     local args = {
-                                    [1] = VTC,
+                                    [1] = tonumber(serializeTable(remotes)),
                                     [2] = "LightPower2",
                                     [3] = "StopCharging",
                                     [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
