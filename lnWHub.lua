@@ -31,6 +31,12 @@ local b1 = Instance.new("Part",game.Workspace)
         b1.Size = Vector3.new(5, 0.1, 5)
         b1.Anchored = true
 
+local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
+    SafeZoneLightFarm.Name = "SafeZoneLightPart2"
+    SafeZoneLightFarm.Size = Vector3.new(30,2,30)
+    SafeZoneLightFarm.Position = Vector3.new(3750, 3623, -615)
+    SafeZoneLightFarm.Anchored = true
+
 local Cache = {
     DevConfig = {
         ListOfBox1 = {"Common Box"},
@@ -485,7 +491,17 @@ Tabs.MainTab:AddButton({
     Title = "Teleport to SafeZone",
     Description = "Teleport to safezone.",
     Callback = function()
-        
+       if getgenv().tpsafezone == "SafeZone Sky" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "SafeZone UnderSea" then
+       game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm1" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm2" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
+			end 
     end
 })
 
@@ -780,31 +796,23 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 spawn(function()
     while wait() do
-        if AutoCompass then
-            pcall(function()
-                local player = game.Players.LocalPlayer
-                local backpack = player.Backpack
-                local character = player.Character or player.CharacterAdded:Wait()
-                for _, item in pairs(backpack:GetChildren()) do
-                    if item.Name == "Compass" then
-                        item.Parent = character
-                        wait(0.1)
-                        if character:FindFirstChild("Compass") then
-                            local compass = character.Compass
-                            if compass:FindFirstChild("Poser") and compass.Poser.Value then
-                                character.HumanoidRootPart.CFrame = CFrame.new(compass.Poser.Value)
-                                wait(0.2) 
-                                compass:Activate()
-                                item.Parent = backpack
-                                wait(0.5)
-                            end
-                        end
-                    end
-                end
-            end)
-        end
+        pcall(function()
+            if not AutoCompass then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+	    local Compass3 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 or Compass3 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(0.2);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
     end
-end)
+end);
 
 local Section = Tabs.StorageTab:AddSection("Devil Fruit Utilities")
 
@@ -2888,41 +2896,6 @@ Tabs.ShopTab:AddButton({
 
 local Section = Tabs.TeleportTab:AddSection("Island TP")
 
-local islandPositions = {
-    ["Cave"] = CFrame.new(-280, 217, -831),
-    ["Crab"] = CFrame.new(-7, 224, -91),
-    ["Sam"] = CFrame.new(-1283, 218, -1348),
-    ["Yellow House"] = CFrame.new(737, 241, 1209),
-    ["Bar"] = CFrame.new(1522, 260, 2188),
-    ["Krizma"] = CFrame.new(-1109, 341, 1645),
-    ["Pyramid"] = CFrame.new(118, 216, 4773),
-    ["Kaizu"] = CFrame.new(-1526.023, 365, 10510.021),
-    ["Snow Mountains"] = CFrame.new(6501, 408, -1261),
-    ["Pursuer Boss"] = CFrame.new(4847, 570, -7143),
-    ["Vokun"] = CFrame.new(4598, 217, 4964),
-    ["Green"] = CFrame.new(-2727, 253, 1041),
-    ["Trees"] = CFrame.new(1068, 217, 3351),
-    ["Merlin Fish"] = CFrame.new(-1668, 217, -300),
-    ["Snowy"] = CFrame.new(-1896, 222, 3385),
-    ["Mountain"] = CFrame.new(2052, 488, -701),
-    ["Marine Ford"] = CFrame.new(-3164, 296, -3780),
-    ["Sand Castle"] = CFrame.new(1020, 224, -3277),
-    ["Forest"] = CFrame.new(-5781, 216, 114),
-    ["Evil"] = CFrame.new(-5169, 523, -7803),
-    ["Crescent"] = CFrame.new(3193, 357, 1670),
-    ["Islands"] = CFrame.new(-4319, 245, 5252),
-    ["Town"] = CFrame.new(1818, 218, 755),
-    ["Rocky"] = CFrame.new(-37, 229, 2149),
-    ["Palm"] = CFrame.new(766, 216, -1374),
-    ["Sand"] = CFrame.new(-2747, 216, -942),
-    ["Sand 2"] = CFrame.new(162, 216, -2265),
-    ["Small"] = CFrame.new(1237, 240, -244),
-    ["Tiny"] = CFrame.new(-1235, 223, 623),
-    ["Super Tiny"] = CFrame.new(-4007, 216, -2190),
-    ["Grass"] = CFrame.new(2096, 217, -1884),
-    ["Atlar"] = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0),
-}
-
 local npcPositions = {
     ["Rayleigh"] = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame,
     ["Better Drink"] = CFrame.new(1493, 260, 2171),
@@ -2938,7 +2911,6 @@ local npcPositions = {
     ["Expertise"] = CFrame.new(903, 270, 1219),
 }
 
-local selectedIsland = nil
 local selectedNpc = nil
 
 Tabs.TeleportTab:AddDropdown("IslandDropdown", {
@@ -2948,7 +2920,7 @@ Tabs.TeleportTab:AddDropdown("IslandDropdown", {
     Multi = false,
     Default = 1,
     Callback = function(Value)
-        selectedIsland = Value
+        getgenv().tpisland = Value
     end
 })
 
@@ -2956,14 +2928,71 @@ Tabs.TeleportTab:AddButton({
     Title = "Teleport to Island",
     Description = "Teleporta para a ilha selecionada",
     Callback = function()
-        if selectedIsland then
-            local islandPosition = islandPositions[selectedIsland]
-            if islandPosition then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = islandPosition
-            else
-            end
-        else
-        end
+        if getgenv().tpisland == "Grassy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
+      elseif getgenv().tpisland == "Kaizu" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
+      elseif getgenv().tpisland == "Snow Mountains"  then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
+      elseif getgenv().tpisland == "Pursuer Boss" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4847, 570, -7143)
+      elseif getgenv().tpisland == "Bar" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1522, 260, 2188)
+      elseif getgenv().tpisland == "Cliffs" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(4598, 217, 4964)
+      elseif getgenv().tpisland == "Windmill" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-7, 224, -91)
+      elseif getgenv().tpisland == "Cave" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-280, 217, -831)
+      elseif getgenv().tpisland == "Krizma" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1109, 341, 1645)
+      elseif getgenv().tpisland == "Sam" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1283, 218, -1348)
+      elseif getgenv().tpisland == "Green" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2727, 253, 1041)
+      elseif getgenv().tpisland == "Trees" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1068, 217, 3351)
+      elseif getgenv().tpisland == "Pyramid" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(118, 216, 4773)
+      elseif getgenv().tpisland == "Merlin Fish" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1668, 217, -300)
+      elseif getgenv().tpisland == "Snowy" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1896, 222, 3385)
+      elseif getgenv().tpisland == "Mountain" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2052, 488, -701)
+      elseif getgenv().tpisland == "Marine Ford" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-3164, 296, -3780)
+      elseif getgenv().tpisland == "Sand Castle" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1020, 224, -3277)
+      elseif getgenv().tpisland == "Forest" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5781, 216, 114)
+      elseif getgenv().tpisland == "Evil" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-5169, 523, -7803)
+      elseif getgenv().tpisland == "Crescent" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(3193, 357, 1670)
+      elseif getgenv().tpisland == "Islands" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4319, 245, 5252)
+      elseif getgenv().tpisland == "Town" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1818, 218, 755)
+      elseif getgenv().tpisland == "Rocky" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-37, 229, 2149)
+      elseif getgenv().tpisland == "Palm" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(766, 216, -1374)
+      elseif getgenv().tpisland == "Sand" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2747, 216, -942)
+      elseif getgenv().tpisland == "Sand 2" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(162, 216, -2265)
+      elseif getgenv().tpisland == "Small" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1237, 240, -244)
+      elseif getgenv().tpisland == "Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1235, 223, 623)
+      elseif getgenv().tpisland == "Super Tiny" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-4007, 216, -2190)
+      elseif getgenv().tpisland == "Grass" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(2096, 217, -1884)
+      elseif getgenv().tpisland == "Atlar" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0)
+			end
     end
 })
 
