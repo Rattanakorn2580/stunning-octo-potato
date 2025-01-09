@@ -3204,8 +3204,8 @@ InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({})
 
-InterfaceManager:SetFolder("AscendedScriptHub")
-SaveManager:SetFolder("AscendedScriptHub/OPL")
+InterfaceManager:SetFolder("lnWScriptHub")
+SaveManager:SetFolder("lnWScriptHub/OPL")
 
 InterfaceManager:BuildInterfaceSection(Tabs.Settings)
 SaveManager:BuildConfigSection(Tabs.Settings)
@@ -3214,7 +3214,7 @@ SaveManager:BuildConfigSection(Tabs.Settings)
 Window:SelectTab(1)
 
 Fluent:Notify({
-    Title = "Ascended Hub",
+    Title = "lnW Hub",
     Content = "The script has been loaded.",
     Duration = 8
 })
