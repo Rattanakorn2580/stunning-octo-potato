@@ -3086,7 +3086,7 @@ TabPlayer:AddToggle({
 })
 
 
-spawn(function() -- auto farm quake
+spawn(function()
     while task.wait(0) do
         pcall(function()
             for i,v in pairs(game.Players:GetChildren()) do
@@ -3858,7 +3858,7 @@ end
 })
 
 TabMS:AddToggle({
-	Name = "Anti Afk",
+	Name = "Anti Afk ( On Fix )",
 	Default = false,
 	Callback = function(AFK)
 		_G.antiafk = AFK
