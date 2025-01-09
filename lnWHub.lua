@@ -491,15 +491,15 @@ Tabs.MainTab:AddButton({
     Title = "Teleport to SafeZone",
     Description = "Teleport to safezone.",
     Callback = function()
-       if getgenv().tpsafezone == "SafeZone Sky" then
+       if getgenv().tpsafezone == "OutSpace SafeZone" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "SafeZone UnderSea" then
+	 elseif getgenv().tpsafezone == "UnderSea SafeZone" then
        game.Players.LocalPlayer.Character.Humanoid.Sit = true
         wait(0.15)
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpsafezone == "SafeZone LightFarm1" then
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 1.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpsafezone == "SafeZone LightFarm2" then
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 2.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
 			end 
     end
@@ -2915,7 +2915,7 @@ local selectedNpc = nil
 
 Tabs.TeleportTab:AddDropdown("IslandDropdown", {
     Title = "Select Island",
-    Description = "Escolha uma ilha para teleportar",
+    Description = "Teleport island.",
     Values = {"Cave", "Windmill", "Sam", "Grassy", "Bar", "Krizma", "Kaizu", "Snow Mountains", "Pursuer Boss", "Cliffs", "Green", "Trees", "Pyramid", "Merlin Fish", "Snowy", "Mountain", "Marine Ford", "Sand Castle", "Forest", "Evil", "Crescent", "Islands", "Town", "Rocky", "Palm", "Sand", "Sand 2", "Small", "Tiny", "Super Tiny", "Grass", "Atlar"},
     Multi = false,
     Default = 1,
@@ -2931,7 +2931,7 @@ Tabs.TeleportTab:AddButton({
         if getgenv().tpisland == "Grassy" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
       elseif getgenv().tpisland == "Kaizu" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1526.0230712891, 364.99990844727, 10510.020507812)
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1575.5, 217.910004, 9939.5)
       elseif getgenv().tpisland == "Snow Mountains"  then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(6501, 408, -1261)
       elseif getgenv().tpisland == "Pursuer Boss" then
