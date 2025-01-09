@@ -2793,7 +2793,7 @@ spawn(function()
         while true do wait()
             pcall(function()
                 local plr1 = game.Players.LocalPlayer.Character
-                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                local plr2 = game:GetService("Players")
                 if aimsilent then
                     cacacac = plr2.Character.HumanoidRootPart.CFrame
                 end
@@ -3067,48 +3067,6 @@ spawn(function() -- auto farm quake
                                     }
                                     
                                     game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-TabPlayer:AddToggle({
-	Name = "Light Spam Kill",
-	Default = false,
-	Callback = function(LGKL)
-		_G.lightkill = LGKL
-	end    
-})
-
-
-spawn(function()
-    while task.wait(0) do
-        pcall(function()
-            for i,v in pairs(game.Players:GetChildren()) do
-                    if _G.lightkill  then
-		local pla = game.Players.LocalPlayer;
-                local Mouse = pla:GetMouse();
-							
-                        if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
-                        for i,v in pairs(game.Players:GetChildren()) do
-                            if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
-                                if v.Name ~= game.Players.LocalPlayer.Name then
-                                    wait(0.1)
-                                    local args = {
-                                    [1] = tonumber(serializeTable(remotes)),
-                                    [2] = "LightPower2",
-                                    [3] = "StopCharging",
-                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
-                                    [5] = Mouse.Target,
-                                    [6] = 100
-                                }
-
-                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
                                 end
                             end
                         end
