@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 
 local Window = Fluent:CreateWindow({
-    Title = "lnW Hub | For OPL: Anarchy | " .. Fluent.Version,
+    Title = "lnW Hub Premium| For OPL: Anarchy | " .. Fluent.Version,
     SubTitle = "      By Bankzy",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
@@ -50,7 +50,7 @@ local Tabs = {
 
 
 Fluent:Notify({
-    Title = "lnW Hub",
+    Title = "lnW Hub Premium",
     Content = "Loading...",
     Duration = 5
 })
@@ -92,6 +92,18 @@ L2.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
     sound:Play()
 end)
+
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
+local b1 = Instance.new("Part",game.Workspace)
+        b1.Name = "SafeZoneLightPart1"
+        b1.Position = Vector3.new(-169, 630, -54)
+        b1.Size = Vector3.new(5, 0.1, 5)
+        b1.Anchored = true
 
 local Section = Tabs.MainTab:AddSection("Main Autos")
 
@@ -459,37 +471,38 @@ Tabs.MainTab:AddButton({
     end,
 })
 
-Tabs.MainTab:AddButton({
-    Title = "Auto Basic Safe Place",
-    Description = "",
-    Callback = function()
-        local CharacterName = game.Players.LocalPlayer.Character
-        local position = CharacterName.HumanoidRootPart.CFrame * CFrame.new(0, 0, -15)
-        local char = CharacterName.HumanoidRootPart
-        char.CFrame = CFrame.new(-169, 640, -54)
+local safezonePositions = {
+    ["OutSpace SafeZone"] = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame,
+    ["UnderSea SafeZone"] = CFrame.new(1493, 260, 2171),
+    ["SafeZone LightFarm 1.0"] = CFrame.new(-1282, 218, -1368),
+    ["SafeZone LightFarm 2.0"] = CFrame.new(1110, 217, 3369),
+}
 
-        local b1 = Instance.new("Part",game.Workspace)
-        b1.Name = "SafeZoneLightPart1"
-        b1.Position = Vector3.new(-169, 630, -54)
-        b1.Size = Vector3.new(5, 0.1, 5)
-        b1.Anchored = true
+local getgenv().tpsafezone = nil
 
+local MultiDropdown = Tabs.MainTab:AddDropdown("MultiDropdown", {
+    Title = "Choose Safe Zone",
+    Description = "Select a safe zone to TP to.",
+    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"}, 
+    Multi = true,
+    Default = {},
+    Callback = function(Value)
+        getgenv().tpsafezone = Value
     end
 })
 
 Tabs.MainTab:AddButton({
-    Title = "Auto Improved Safe Place",
-    Description = "",
+    Title = "Teleport to SafeZone",
+    Description = "Teleport to safezone.",
     Callback = function()
-        local char = game.Players.LocalPlayer.Character.HumanoidRootPart
-        char.CFrame = CFrame.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
-
-        local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
-    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
-    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
-    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
-    SafeZoneOuterSpace.Anchored = true
-
+        if getgenv().safezone then
+            local safezonePosition = safezonePositions[getgenv().safezone]
+            if safezonePosition then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = safezonePosition
+            else
+            end
+        else
+        end
     end
 })
 
