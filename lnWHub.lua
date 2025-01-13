@@ -4,7 +4,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 
 local Window = Fluent:CreateWindow({
-    Title = "lnW Hub Premium| For OPL: Anarchy | " .. Fluent.Version,
+    Title = "lnW Hub Premium | For OPL: Anarchy | " .. Fluent.Version,
     SubTitle = "      By Bankzy",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
@@ -385,7 +385,7 @@ wait(.8)
     end
 end)
 
-local Section = Tabs.MainTab:AddSection("Game/Server Utilities")
+local Section = Tabs.MainTab:AddSection("Server")
 
 Tabs.MainTab:AddButton({
     Title = "Rejoin",
@@ -476,134 +476,7 @@ Tabs.MainTab:AddButton({
     end,
 })
 
-Tabs.MainTab:AddDropdown("SafeZoneDropdown", {
-    Title = "Select SafeZone",
-    Description = "Teleport SafeZone",
-    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
-    Multi = false,
-    Default = 1,
-    Callback = function(Value)
-        getgenv().tpsafezone = Value
-    end
-})
-
-Tabs.MainTab:AddButton({
-    Title = "Teleport to SafeZone",
-    Description = "Teleport to safezone.",
-    Callback = function()
-       if getgenv().tpsafezone == "OutSpace SafeZone" then
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-	 elseif getgenv().tpsafezone == "UnderSea SafeZone" then
-       game.Players.LocalPlayer.Character.Humanoid.Sit = true
-        wait(0.15)
-        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpsafezone == "SafeZone LightFarm 1.0" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpsafezone == "SafeZone LightFarm 2.0" then
-       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
-			end 
-    end
-})
-
 local Section = Tabs.MainTab:AddSection("Auto Reroll Affinities")
-
-local Toggle
-local isRunning = false
-
-Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities | Gems |",
-    Description = "This will roll your gem affinity until it is all 2.0!\nNote: This may consume all of your gems.",
-    Default = false,
-    Callback = function(Value)
-        isRunning1 = Value
-        if isRunning1 then
-            spawn(function()
-                while isRunning1 do
-                    wait(8)
-                    local player = game.Players.LocalPlayer
-                    local playerId = player.UserId
-                    local userDataName = game.Workspace.UserData["User_" .. playerId]
-
-
-                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
-                    local AffSword1 = userDataName.Data.DFT1Sword.Value
-
-
-                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
-                    local AffSword2 = userDataName.Data.DFT2Sword.Value
-
-
-                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    local args1 = {
-                        [1] = "DFT1",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Gems"
-                    }
-
-                    local args2 = {
-                        [1] = "DFT2",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Gems"
-                    }
-
-                    if AffDefense1 == 2 then
-                        args1[2] = 0 / 0
-                    end
-
-                    if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
-                    end
-
-                    if AffSniper1 == 2 then
-                        args1[4] = 0 / 0
-                    end
-
-                    if AffSword1 == 2 then
-                        args1[5] = 0 / 0
-                    end
-
-                    if AffDefense2 == 2 then
-                        args2[2] = 0 / 0
-                    end
-
-                    if AffMelee2 == 2 then
-                        args2[3] = 0 / 0
-                    end
-
-                    if AffSniper2 == 2 then
-                        args2[4] = 0 / 0
-                    end
-
-                    if AffSword2 == 2 then
-                        args2[5] = 0 / 0
-                    end
-
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
-                end
-            end)
-        end
-    end,
-})
-
-
 
 local ToggleBeri1
 local isRunning1 = false
@@ -786,7 +659,7 @@ end)
 local AutoCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto Use Compasses",
+    Title = "Auto Find Compasses",
     Description = "It will collect all the compasses you have in your inventory!",
     Default = false,
     Callback = function(Value)
@@ -1803,7 +1676,7 @@ Tabs.FarmFruitTab:AddToggle("Toggle", {
     end,
 })
 
-local Section = Tabs.MiscTab:AddSection("Local Player Utilities")
+local Section = Tabs.MiscTab:AddSection("Local Player")
 
 local PlayerGui = game.Players.LocalPlayer:WaitForChild("PlayerGui")
 local BlackScreen
@@ -1836,51 +1709,6 @@ Tabs.MiscTab:AddToggle("ToggleBlackScreen", {
     end
 })
 
-local Input = Tabs.MiscTab:AddInput("Input", {
-    Title = "Walk Speed",
-    Description = "Change speed to the value you entered! ",
-    Default = "",
-    Placeholder = "Enter Walk Speed: ",
-    Numeric = true, 
-    Finished = false, 
-    Callback = function(txt)
-        local player = game.Players.LocalPlayer
-        if player and player.Character and player.Character:FindFirstChild("CharacterTrait") then
-            player.Character.CharacterTrait.WS.Value = tonumber(txt) or 1
-        end
-    end
-})
-
-local Input = Tabs.MiscTab:AddInput("Input", {
-    Title = "Jump Power",
-    Description = "Change jump power to the value you entered! ",
-    Default = "",
-    Placeholder = "Enter Jump Power: ",
-    Numeric = true, 
-    Finished = false, 
-    Callback = function(txt)
-        local player = game.Players.LocalPlayer
-        if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-            player.Character.Humanoid.JumpPower = tonumber(txt) or player.Character.Humanoid.JumpPower
-        end
-    end
-})
-
-local Input = Tabs.MiscTab:AddInput("Input", {
-    Title = "Hip Height",
-    Description = "Change the height you walk!",
-    Default = "",
-    Placeholder = "Enter Hip Height: ",
-    Numeric = true,
-    Finished = false,
-    Callback = function(txt)
-        local player = game.Players.LocalPlayer
-        if player and player.Character and player.Character:FindFirstChild("Humanoid") then
-            player.Character.Humanoid.HipHeight = tonumber(txt) or player.Character.Humanoid.HipHeight
-        end
-    end
-})
-
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Auto Buso Haki ON",
     Description = "This will activate and deactivate your buso haki in a loop!",
@@ -1909,211 +1737,7 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.MiscTab:AddSection("Useful Options")
-
-Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Anchor Your Self",
-    Description = "Anchored like an anchor!",
-    Default = false,
-    Callback = function(value)
-        local Player = game.Players.LocalPlayer.Character
-        if Player and Player:FindFirstChild("HumanoidRootPart") then
-            Player.HumanoidRootPart.Anchored = value
-        end
-    end
-})
-
-local userInputService = game:GetService("UserInputService")
-local tweenService = game:GetService("TweenService")
-local camera = workspace.CurrentCamera
-
--- Define valores iniciais
-local flightEnabled = false
-local flightSpeed = 3
-
--- Cria instâncias para BodyVelocity e BodyGyro
-local bodyVelocity = Instance.new("BodyVelocity")
-bodyVelocity.MaxForce = Vector3.new(1e5, 1e5, 1e5)
-bodyVelocity.Velocity = Vector3.zero
-
-local bodyGyro = Instance.new("BodyGyro")
-bodyGyro.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
-bodyGyro.CFrame = CFrame.new()
-
--- Obtenha jogador e personagem
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local primaryPart = character.PrimaryPart
-
--- Toggle para ativar/desativar a função de voo
-Tabs.MiscTab:AddToggle("FlightToggle", {
-    Title = "Enable Flight",
-    Description = "[ BETA ]",
-    Default = false,
-    Callback = function(value)
-        flightEnabled = value
-        if not flightEnabled then
-            -- Desativa efeitos de voo
-            bodyVelocity.Parent = nil
-            bodyGyro.Parent = nil
-        end
-    end,
-})
-
--- Slider para ajustar a velocidade de voo
-Tabs.MiscTab:AddSlider("FlightSpeed", {
-    Title = "Flight Speed",
-    Description = "Adjust the flight speed!",
-    Default = flightSpeed,
-    Min = 1,
-    Max = 25,
-    Rounding = 1,
-    Callback = function(value)
-        flightSpeed = value
-    end,
-})
-
--- Loop principal para atualizar a lógica do voo
-local function flightLoop()
-    while true do
-        wait()
-        if flightEnabled and primaryPart then
-            local camCFrame = camera.CFrame
-            local velocity = Vector3.zero
-
-            -- Detecta as teclas pressionadas
-            if userInputService:IsKeyDown(Enum.KeyCode.W) then
-                velocity += camCFrame.LookVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.S) then
-                velocity -= camCFrame.LookVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.D) then
-                velocity += camCFrame.RightVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.A) then
-                velocity -= camCFrame.RightVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.Space) then
-                velocity += Vector3.yAxis
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
-                velocity -= Vector3.yAxis
-            end
-
-            -- Aplica a velocidade ao personagem
-            bodyVelocity.Velocity = velocity * flightSpeed * 45
-            bodyVelocity.Parent = primaryPart
-            bodyGyro.Parent = primaryPart
-        else
-            -- Desativa o voo
-            bodyVelocity.Parent = nil
-            bodyGyro.Parent = nil
-        end
-    end
-end
-
-spawn(flightLoop)
-
-
-local camera = workspace.CurrentCamera
-
-local defaultFOV = 70 
-camera.FieldOfView = defaultFOV
-
-
-Tabs.MiscTab:AddSlider("FOVSlider", {
-    Title = "Field of View",
-    Description = "Adjust the camera's field of view!",
-    Default = defaultFOV,
-    Min = 50, 
-    Max = 120,
-    Rounding = 1,
-    Callback = function(value)
-        camera.FieldOfView = value
-    end,
-})
-
-
-Tabs.MiscTab:AddButton({
-    Title = "Low Graphic Mode",
-    Description = "It will make your game run smoother and have more FPS!\nNote: There is no way to disable it, only rejoin.",
-    Callback = function(Value)
-        if Value then
-            -- Apply low graphic settings
-            local terrain = workspace:FindFirstChildOfClass('Terrain')
-            if terrain then
-                terrain.WaterWaveSize = 0
-                terrain.WaterWaveSpeed = 0
-                terrain.WaterReflectance = 0
-                terrain.WaterTransparency = 0
-            end
-            
-            game:GetService("Lighting").GlobalShadows = not Value
-            game:GetService("Lighting").FogEnd = Value and 9e9 or 150
-            
-            settings().Rendering.QualityLevel = Value and 1 or 2
-
-            -- Material and property changes
-            for i, v in pairs(game:GetDescendants()) do
-                if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-                    v.Material = "Plastic"
-                    v.Reflectance = 0
-                elseif v:IsA("Decal") then
-                    v.Transparency = 1
-                elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-                    v.Lifetime = NumberRange.new(0)
-                elseif v:IsA("Explosion") then
-                    v.BlastPressure = 1
-                    v.BlastRadius = 1
-                end
-            end
-
-            -- Disable lighting effects
-            for i, v in pairs(game:GetService("Lighting"):GetDescendants()) do
-                if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
-                    v.Enabled = not Value
-                end
-            end
-
-            -- Clean performance-affecting objects
-            workspace.DescendantAdded:Connect(function(child)
-                if child:IsA('ForceField') then
-                    child:Destroy()
-                elseif child:IsA('Sparkles') then
-                    child:Destroy()
-                elseif child:IsA('Smoke') or child:IsA('Fire') then
-                    child:Destroy()
-                end
-            end)
-        end
-    end,
-})
-
-local jesusModeEnabled = false
-Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Soft Fall / Float",
-    Description = "Light as a feather!",
-    Default = false,
-        Callback = function(jesusModeEnabled)
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        local rootPart = character:WaitForChild("HumanoidRootPart")
-
-        if jesusModeEnabled then
-            jesusModeConnection = game:GetService("RunService").Heartbeat:Connect(function()
-                if rootPart.Velocity.Y < 0 then
-                    rootPart.Velocity = Vector3.new(rootPart.Velocity.X, 0, rootPart.Velocity.Z)
-                end
-            end)
-        else
-            if jesusModeConnection then
-                jesusModeConnection:Disconnect()
-                jesusModeConnection = nil
-            end
-        end
-    end
-})
+local Section = Tabs.MiscTab:AddSection("Unbox")
 
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 
@@ -2546,7 +2170,6 @@ local VirtualInputManager = game:GetService("VirtualInputManager")
 local keyToggles = {
     Z = false,
     X = false,
-    C = false,
 }
 
 -- Criação das seções, toggles e parágrafos
@@ -2566,15 +2189,7 @@ local function setupKeyToggles()
                 Title = "Fire Fist",
                 Content = "Add the above skill to the respective key [X]\nNote: Click on settings and change if necessary."
             }
-        },
-        C = {
-            section = Tabs.PlayerTab:AddSection("Candy Killer"),
-            paragraph = {
-                Title = "Jawbreaker",
-                Content = "Add the above skill to the respective key [C]\nNote: Click on settings and change if necessary."
-            }
         }
-    }
 
     -- Criação de toggles e parágrafos dinamicamente
     for key, data in pairs(sectionMapping) do
@@ -3021,6 +2636,37 @@ Tabs.TeleportTab:AddButton({
             end
         else
         end
+    end
+})
+
+local Section = Tabs.TeleportTab:AddSection("SafeZone TP")
+	
+Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
+    Title = "Select SafeZone",
+    Description = "Teleport SafeZone",
+    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        getgenv().tpsafezone = Value
+    end
+})
+
+Tabs.TeleportTab:AddButton({
+    Title = "Teleport to SafeZone",
+    Description = "Teleport to safezone.",
+    Callback = function()
+       if getgenv().tpsafezone == "OutSpace SafeZone" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "UnderSea SafeZone" then
+       game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 1.0" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 2.0" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
+			end 
     end
 })
 
