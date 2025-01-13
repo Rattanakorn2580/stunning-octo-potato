@@ -1737,8 +1737,6 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.MiscTab:AddSection("Unbox")
-
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
@@ -2160,70 +2158,6 @@ spawn(function()
                     BringPlayerToPosition(playerName)
                 end
             end)
-        end
-    end
-end)
-
-local VirtualInputManager = game:GetService("VirtualInputManager")
-
--- Tabela de teclas na ordem especificada
-local keyToggles = {
-    Z = false,
-    X = false,
-}
-
--- Criação das seções, toggles e parágrafos
-local function setupKeyToggles()
-    -- Associação de teclas às seções
-    local sectionMapping = {
-        Z = {
-            section = Tabs.PlayerTab:AddSection("Magma Killer"),
-            paragraph = {
-                Title = "Great Eruption",
-                Content = "Add the above skill to the respective key [Z]\nNote: Click on settings and change if necessary."
-            }
-        },
-        X = {
-            section = Tabs.PlayerTab:AddSection("Flare Killer"),
-            paragraph = {
-                Title = "Fire Fist",
-                Content = "Add the above skill to the respective key [X]\nNote: Click on settings and change if necessary."
-            }
-        }
-
-    -- Criação de toggles e parágrafos dinamicamente
-    for key, data in pairs(sectionMapping) do
-        local section = data.section
-
-        -- Adiciona o parágrafo à seção
-        section:AddParagraph(data.paragraph)
-
-        -- Adiciona o toggle à seção
-        section:AddToggle(key .. "Toggle", {
-            Title = "Spam Key " .. key,
-            Description = "Toggle to spam the " .. key .. " key.",
-            Default = false,
-            Callback = function(state)
-                keyToggles[key] = state
-            end
-        })
-    end
-end
-
--- Configuração dos toggles
-setupKeyToggles()
-
--- Loop para envio de eventos de tecla
-spawn(function()
-    while wait(0) do
-        for key, state in pairs(keyToggles) do
-            if state then
-                pcall(function()
-                    VirtualInputManager:SendKeyEvent(true, key, false, game)
-                    task.wait(0)
-                    VirtualInputManager:SendKeyEvent(false, key, false, game)
-                end)
-            end
         end
     end
 end)
