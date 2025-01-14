@@ -152,7 +152,7 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Reroll Affinity And Fix Shop Drinks")
+local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Reroll Affinity 2.0 And Shop Drinks (On Fix)")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add Max Charge Skill")
 
