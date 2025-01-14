@@ -215,7 +215,7 @@ L2.BorderSizePixel = 0
 L2.Position = UDim2.new(0.1208, 0, 0.0953, 0)
 L2.Size = UDim2.new(0, 50, 0, 50)
 L2.Font = Enum.Font.LuckiestGuy
-L2.Text = "lnW Hub"
+L2.Text = "lnW\nHub"
 L2.TextColor3 = Color3.fromRGB(255, 255, 255)
 L2.TextSize = 9.000
 L2.Draggable = true
@@ -486,7 +486,7 @@ local Section = Tabs.MainTab:AddSection("Sam Quest")
 
 Tabs.MainTab:AddButton({
     Title = "Talk Sam",
-    Description = " ",
+    Description = "",
     Callback = function()
         fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
     end
@@ -710,7 +710,7 @@ local isRunning1 = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto 2.0 Affinities | Left |",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
@@ -771,7 +771,7 @@ local isRunning2 = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto 2.0 Affinities Beri | Right |",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
@@ -831,7 +831,7 @@ local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
 
 Tabs.ShopTab:AddDropdown("DrinkDropdown", {
     Title = "Choose Drink To Buy",
-    Description = " ",
+    Description = "",
     Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
     Multi = false,
     Default = 1,
@@ -842,7 +842,7 @@ Tabs.ShopTab:AddDropdown("DrinkDropdown", {
 
 local Input = Tabs.ShopTab:AddInput("Input", {
     Title = "Amount",
-    Description = " ",
+    Description = "",
     Default = "",
     Placeholder = "Enter Amount: ",
     Numeric = true, 
@@ -854,7 +854,7 @@ local Input = Tabs.ShopTab:AddInput("Input", {
 
 Tabs.ShopTab:AddButton({
     Title = "Buy Drink",
-    Description = " ",
+    Description = "",
     Callback = function()
 if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
@@ -865,7 +865,7 @@ if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.ma
 
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto Drinks",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.autodrinks = value 
@@ -886,34 +886,11 @@ end);
     end
 })
 
-Tabs.ShopTab:AddToggle("Toggle", {
-    Title = "Auto Equip Drinks",
-    Description = " ",
-    Default = false, 
-    Callback = function(value)
-        _G.autodropdrink = value 
-	spawn(function()
-    while wait() do
-        pcall(function()
-            if not _G.autodropdrink then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value.Parent = game.Workspace;
-                end
-            end
-        end)
-    end
-end)
-    end
-})
-
 local AutoDropDrink = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto Drop Drinks",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         AutoDropDrink = Value
@@ -989,7 +966,7 @@ local selectedNpc = nil
 
 Tabs.TeleportTab:AddDropdown("IslandDropdown", {
     Title = "Select Island",
-    Description = " ",
+    Description = "",
     Values = {"Cave", "Windmill", "Sam", "Grassy", "Bar", "Krizma", "Kaizu", "Snow Mountains", "Pursuer Boss", "Cliffs", "Green", "Trees", "Pyramid", "Merlin Fish", "Snowy", "Mountain", "Marine Ford", "Sand Castle", "Forest", "Evil", "Crescent", "Islands", "Town", "Rocky", "Palm", "Sand", "Sand 2", "Small", "Tiny", "Super Tiny", "Grass", "Atlar"},
     Multi = false,
     Default = 1,
@@ -1017,7 +994,7 @@ local Section = Tabs.TeleportTab:AddSection("Npc TP")
 
 Tabs.TeleportTab:AddDropdown("NpcDropdown", {
     Title = "Select NPC",
-    Description = " ",
+    Description = "",
     Values = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity", "Fish", "Expertise"},
     Multi = false,
     Default = 1,
@@ -1045,7 +1022,7 @@ local Section = Tabs.TeleportTab:AddSection("SafeZone TP")
 
 Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
     Title = "Select SafeZone",
-    Description = " ",
+    Description = "",
     Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
     Multi = false,
     Default = 1,
@@ -1167,7 +1144,7 @@ local Section = Tabs.MiscTab:AddSection("Anti")
 
 Tabs.MiscTab:AddButton({
     Title = "Anti Lag",
-    Description = " ",
+    Description = "",
     Callback = function()
 if not gethui then
     warn("Incompatible executor: gethui is unavailable")
@@ -1248,7 +1225,7 @@ for _, descendant in ipairs(game:GetDescendants()) do
 
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Anti-AFK",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(state)
         if state then
@@ -1276,39 +1253,12 @@ Tabs.MiscTab:AddToggle("Toggle", {
     end,
 })
 
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
-
-
-setreadonly(mta, false)
-
-mta.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local arguments = args
-    local a = {}
-    for i = 1, #arguments - 1 do
-        a[i] = arguments[i]
-    end
-    local method = getnamecallmethod() 
-
-    if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
-            if args[1] then
-                return nil
-            end
-        end
-    end
-    
-    return namecall(self, ...)    
-end)
-
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Anti Water",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
-        _G.nowaterdamage = value 
+        _G.nodamagewater = value 
 spawn(function()
     while wait() do
         if _G.nowaterdamage then
@@ -1335,7 +1285,7 @@ local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
 {
     Title = "Yoru Speed",
-    Description = " ",
+    Description = "",
     Default = 50,
     Min = 0,
     Max = 500000,
@@ -1347,7 +1297,7 @@ local Slider = Tabs.MiscTab:AddSlider("Slider",
 
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Yoru Spam",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         _G.Yoru = Value
@@ -1376,7 +1326,7 @@ local Section = Tabs.MiscTab:AddSection("Fake Weapons")
 
 Tabs.MiscTab:AddButton({
     Title = "Seastone Cestus (500 melee requiriment)",
-    Description = " ",
+    Description = "",
     Callback = function()
         local Players = game:GetService("Players")
         local cache = {}
@@ -1400,39 +1350,6 @@ Tabs.MiscTab:AddButton({
         local playerName = game.Players.LocalPlayer.Name
         local userId = getUserId(playerName)
         local weaponName = "Seastone Cestus"
-        local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
-
-        event:FireServer(weaponName)
-    end,
-})
-
--- Aqua Staff Button
-Tabs.MiscTab:AddButton({
-    Title = "Aqua Staff (500 melee requiriment)",
-    Description = " ",
-    Callback = function()
-        local Players = game:GetService("Players")
-        local cache = {}
-
-        local function getUserId(name)
-            if cache[name] then return cache[name] end
-            local player = Players:FindFirstChild(name)
-            if player then
-                cache[name] = player.UserId
-                return player.UserId
-            end
-
-            local id
-            pcall(function()
-                id = Players:GetUserIdFromNameAsync(name)
-            end)
-            cache[name] = id
-            return id
-        end
-
-        local playerName = game.Players.LocalPlayer.Name
-        local userId = getUserId(playerName)
-        local weaponName = "Aqua Staff"
         local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
 
         event:FireServer(weaponName)
