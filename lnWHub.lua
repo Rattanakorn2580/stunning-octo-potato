@@ -154,9 +154,9 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Reroll Affinity 2.0 And Shop Drinks (On Fix)")
+local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Auto")
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Max Charge Skill")
+local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Misc Tab")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add Teleport Island")
 
@@ -166,35 +166,249 @@ local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Sam Quest")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
 
+local Section = Tabs.MainTab:AddSection("Function Auto")
+
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Anti-AFK",
-    Description = " ",
+    Title = "Auto Spawn",
+    Description = "Automatically respawns your character!",
     Default = false,
-    Callback = function(state)
-        if state then
-            local vu = game:GetService("VirtualUser")
-            game:GetService("Players").LocalPlayer.Idled:Connect(function()
-                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-                wait(1)
-                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+    Callback = function(enabled)
+        _G.AutoSpawnEnabled = enabled
+        while _G.AutoSpawnEnabled do
+            task.wait(3)
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local loadFrame = player.PlayerGui:FindFirstChild("Load") and player.PlayerGui.Load.Frame
+                if loadFrame and loadFrame.Visible then
+                    for _, connection in pairs(getconnections(loadFrame.Load.MouseButton1Click)) do
+                        connection.Function()
+                    end
+                end
             end)
-
-            Fluent:Notify({
-                Title = "Anti-AFK",
-                Content = "by Bankzy",
-                Duration = 5
-            })
-
-        else
-            Fluent:Notify({
-                Title = "Anti-AFK",
-                Content = "It can help you stay on the server for a long time.",
-                Duration = 5
-            })
-
         end
-    end,
+    end
 })
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Claim Mission",
+    Description = "Automatically claims expert mission for you!",
+    Default = false,
+    Callback = function(AMS)
+        AutoMission = AMS
+    end    
+})
+
+spawn(function()
+    while wait() do 
+        if AutoMission then 
+            pcall(function() 
+                workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
+            end) 
+        end 
+    end 
+end)
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Beri Gift",
+    Description = "Automatically claims beri gifts for you!",
+    Default = false,
+    Callback = function(ACG)
+		_G.berigift = ACG
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.berigift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end);
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Gems Gift",
+    Description = "Automatically claims beri gifts for you!",
+    Default = false,
+    Callback = function(ACG)
+		_G.gemsgift = ACG
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.gemsgift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardDaily
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Challenges",
+    Description = "Automatically claim challenges for you!",
+    Default = false,
+    Callback = function(ACLL)
+		_G.autoclaim = ACLL
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Daily1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Daily4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Weekly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Monthly1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Monthly2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Challenge1"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge2"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge4"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge5"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge6"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge7"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge8"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge9"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge10"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge11"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge12"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge13"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+local A_1 = "Claim"
+local A_2 = "Challenge14"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
 
 local Section = Tabs.MainTab:AddSection("Sam Quest")
 
@@ -668,3 +882,125 @@ Tabs.TeleportTab:AddButton({
     end
 })
 
+local Section = Tabs.MiscTab:AddSection("Function Server")
+
+Tabs.MiscTab:AddButton({
+    Title = "Rejoin",
+    Description = "",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+
+        local Success, ErrorMessage = pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+
+        if ErrorMessage and not Success then
+            warn(ErrorMessage)
+        end
+    end
+})
+
+Tabs.MiscTab:AddButton({
+    Title = "Hop Server",
+    Description = "",
+    Callback = function()
+        local PlaceID = game.PlaceId
+        local AllIDs = {}
+        local foundAnything = ""
+        local actualHour = os.date("!*t").hour
+        local Deleted = false
+
+        function TPReturner()
+            local Site;
+            if foundAnything == "" then
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
+            else
+                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
+            end
+
+            local ID = ""
+            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
+                foundAnything = Site.nextPageCursor
+            end
+            local num = 0
+            for i, v in pairs(Site.data) do
+                local Possible = true
+                ID = tostring(v.id)
+                if tonumber(v.maxPlayers) > tonumber(v.playing) then
+                    for _, Existing in pairs(AllIDs) do
+                        if num ~= 0 then
+                            if ID == tostring(Existing) then
+                                Possible = false
+                            end
+                        else
+                            if tonumber(actualHour) ~= tonumber(Existing) then
+                                local delFile = pcall(function()
+                                    -- delfile("NotSameServers.json")
+                                    AllIDs = {}
+                                    table.insert(AllIDs, actualHour)
+                                end)
+                            end
+                        end
+                        num = num + 1
+                    end
+                    if Possible == true then
+                        table.insert(AllIDs, ID)
+                        wait()
+                        pcall(function()
+                            wait()
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
+                        end)
+                        wait(0.1)
+                    end
+                end
+            end
+        end
+
+        function Teleport() 
+            while wait() do
+                pcall(function()
+                    TPReturner()
+                    if foundAnything ~= "" then
+                        TPReturner()
+                    end
+                end)
+            end
+        end
+
+        Teleport()
+    end,
+})
+
+local Section = Tabs.MiscTab:AddSection("Anti")
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Anti-AFK",
+    Description = " ",
+    Default = false,
+    Callback = function(state)
+        if state then
+            local vu = game:GetService("VirtualUser")
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            end)
+
+            Fluent:Notify({
+                Title = "Anti-AFK",
+                Content = "by Bankzy",
+                Duration = 5
+            })
+
+        else
+            Fluent:Notify({
+                Title = "Anti-AFK",
+                Content = "It can help you stay on the server for a long time.",
+                Duration = 5
+            })
+
+        end
+    end,
+})
