@@ -226,23 +226,13 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Auto")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Misc Tab")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Add Anti Water And Abti Lag")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Add Fix Max Charge And Buy Drink")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Sam Quest")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
+local Section = Tabs.UpdateTab:AddSection("<•> Full Version is Coming Soon . . .")
 
 local Section = Tabs.MainTab:AddSection("Function Auto")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Spawn",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(enabled)
         _G.AutoSpawnEnabled = enabled
