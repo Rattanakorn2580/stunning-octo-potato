@@ -152,11 +152,15 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Reroll Affinity And Shop Drinks")
+local Section = Tabs.UpdateTab:AddSection("<•> Add Reroll Affinity And Fix Shop Drinks")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add Max Charge Skill")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add Teleport Island")
+
+local Section = Tabs.UpdateTab:AddSection("<•> Add Dupe")
+
+local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Sam Quest")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
 
@@ -190,6 +194,87 @@ Tabs.MainTab:AddToggle("Toggle", {
     end,
 })
 
+local Section = Tabs.MainTab:AddSection("Sam Quest")
+
+Tabs.MainTab:AddButton({
+    Title = "Talk Sam",
+    Description = " ",
+    Callback = function()
+        fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
+    end
+})
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Claim Compasses",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        AutoClaimCompass = Value
+    end
+})
+
+spawn(function()
+    while wait() do
+        if AutoClaimCompass then
+            local args = {
+                [1] = "Claim10"
+            }
+            
+            workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer(unpack(args))
+        end
+    end
+end)
+
+local AutoCompass = false
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Find Compasses (Slow)",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        AutoCompass = Value
+    end
+})
+
+spawn(function()
+    while wait() do
+        if AutoCompass then
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local backpack = player.Backpack
+                local character = player.Character or player.CharacterAdded:Wait()
+                for _, item in pairs(backpack:GetChildren()) do
+                    if item.Name == "Compass" then
+                        item.Parent = character
+                        wait(0.1)
+                        if character:FindFirstChild("Compass") then
+                            local compass = character.Compass
+                            if compass:FindFirstChild("Poser") and compass.Poser.Value then
+                                character.HumanoidRootPart.CFrame = CFrame.new(compass.Poser.Value)
+                                wait(0.2) 
+                                compass:Activate()
+                                item.Parent = backpack
+                                wait(0.5)
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+local Section = Tabs.PlayerTab:AddSection("Dupe")
+
+Tabs.TeleportTab:AddButton({
+    Title = "Teleport to SafeZone",
+    Description = " ",
+    Callback = function()
+workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+    end
+})
+
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "100% Max Charge Skill",
     Description = " ",
@@ -219,7 +304,7 @@ local isRunning1 = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto 2.0 Affinities | Left |",
-    Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
+    Description = " ",
     Default = false,
     Callback = function(Value)
         isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
@@ -336,25 +421,6 @@ Tabs.ShopTab:AddToggle("Toggle", {
     end,
 })
 
-Tabs.ShopTab:AddButton({
-    Title = "Instant Drink",
-    Description = " ",
-    Callback = function()
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v:IsA("Tool") and (string.find(v.Name, "Juice") 
-                or string.find(v.Name, "Milk") 
-                or string.find(v.Name, "Cider") 
-                or string.find(v.Name, "Lemonade") 
-                or string.find(v.Name, "Smoothie") 
-                or string.find(v.Name, "Golden")) then
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                game:GetService('VirtualUser'):CaptureController()
-                game:GetService('VirtualUser'):Button1Down(Vector2.new(1280, 672))
-            end
-        end
-    end,
-})
-
 local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
 
 local selectedDrinks = {} 
@@ -392,52 +458,30 @@ Tabs.ShopTab:AddToggle("AutoBuyToggle", {
     end
 })
 
-local QuantitySlider = Tabs.ShopTab:AddSlider("QuantitySlider", {
-    Title = "Set Drink Quantity",
+local AutoDropDrink = false
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Drop Drinks",
     Description = " ",
-    Default = 1, 
-    Min = 1,
-    Max = 500, 
-    Rounding = 0, 
-    Callback = function(value)
-        drinkQuantity = value 
-    end
-})
-
-spawn(function()
-    while wait(0.5) do
+    Default = false,
+    Callback = function(Value)
+        AutoDropDrink = Value
+        spawn(function()
+    while wait() do
         pcall(function()
-            if autoBuyEnabled and next(selectedDrinks) then
-                for drink, isSelected in pairs(selectedDrinks) do
-                    if isSelected then
-                        local purchasedCount = 0 
-
-                        for _ = 1, drinkQuantity do
-                            if purchasedCount < drinkQuantity then
-                                local args = {
-                                    [1] = drink
-                                }
-                                workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(unpack(args))
-                                purchasedCount = purchasedCount + 1
-                            else
-                                break
-                            end
-                        end
-
-                        if purchasedCount >= drinkQuantity then
-                            Fluent:Notify({
-                                Title = "Purchase Complete",
-                                Content = "Bought " .. purchasedCount .. " of " .. drink,
-                                Duration = 5
-                            })
-                        end
-                    end
+            if not AutoDropDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
                 end
-                autoBuyEnabled = false
             end
         end)
     end
 end)
+    end,
+})
 
 local islandPositions = {
     ["Cave"] = CFrame.new(-280, 217, -831),
