@@ -552,6 +552,496 @@ spawn(function()
     end
 end)
 
+local Section = Tabs.FarmTab:AddSection("Weapon Farm")
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Farm Mobs [Weapon]",
+    Description = "Kill mobs with your weapon equipped!",
+    Default = false,
+    Callback = function(state)
+        _G.behindFarm = state
+    end
+})
+
+local MobList = { "Boar", "Crab", "Angry", "Thief", "Gunslinger", "Freddy" }
+
+local function IsMobAllowed(mobName)
+    for _, allowedMob in ipairs(MobList) do
+        if string.find(mobName, allowedMob) then
+            return true
+        end
+    end
+    return false
+end
+
+function ActivateHaki(state)
+    pcall(function()
+        if state then
+            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+        else
+            -- Se necessário, adicione lógica para desativar o Haki
+            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+        end
+    end)
+end
+
+spawn(function()
+    while task.wait(0.1) do
+        pcall(function()
+            if _G.behindFarm then
+                for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") 
+                       and mob.Humanoid.Health > 0 and IsMobAllowed(mob.Name) then
+                        while mob.Humanoid.Health > 0 and _G.behindFarm do
+                            local mobRoot = mob.HumanoidRootPart
+                            local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+                            playerRoot.CFrame = mobRoot.CFrame * CFrame.new(0, 0, 4)
+                            local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                            if tool then
+                                tool:Activate()
+                            else
+                                game.Players.LocalPlayer.Character.Humanoid:MoveTo(mobRoot.Position)
+                            end
+                            task.wait(0.1)
+                        end
+                        break
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+local WeaponList = {}
+
+local function UpdateWeaponList()
+    local updatedList = {}
+    local player = game.Players.LocalPlayer
+    for _, tool in ipairs(player.Backpack:GetChildren()) do
+        if tool:IsA("Tool") then
+            table.insert(updatedList, tool.Name)
+        end
+    end
+    if player.Character then
+        for _, tool in ipairs(player.Character:GetChildren()) do
+            if tool:IsA("Tool") then
+                table.insert(updatedList, tool.Name)
+            end
+        end
+    end
+    if #updatedList ~= #WeaponList then
+        WeaponList = updatedList
+        return true 
+    else
+        for i, weapon in ipairs(updatedList) do
+            if weapon ~= WeaponList[i] then
+                WeaponList = updatedList
+                return true 
+            end
+        end
+    end
+    return false
+end
+
+local SelectedWeapon = nil
+local WeaponDropdown = Tabs.FarmTab:AddDropdown("WeaponDropdown", {
+    Title = "Select Weapon",
+    Description = "Choose a weapon to equip automatically!",
+    Values = WeaponList,
+    Multi = false,
+    Default = nil,
+    Callback = function(value)
+        SelectedWeapon = value
+    end
+})
+
+spawn(function()
+    while task.wait(1) do 
+        if UpdateWeaponList() then
+            WeaponDropdown:SetValues(WeaponList) 
+        end
+    end
+end)
+
+local function EquipWeapon(weaponName)
+    local player = game.Players.LocalPlayer
+    local backpack = player.Backpack
+    local character = player.Character
+    if character and character:FindFirstChild(weaponName) then
+        return
+    end
+    local tool = backpack:FindFirstChild(weaponName)
+    if tool then
+        tool.Parent = character
+    end
+end
+
+local AutoEquipToggle = Tabs.FarmTab:AddToggle("AutoEquipToggle", {
+    Title = "Auto Equip Weapon",
+    Description = "Automatically equip the selected weapon!",
+    Default = false,
+    Callback = function(state)
+        _G.AutoEquip = state
+    end
+})
+
+spawn(function()
+    while task.wait(0.1) do
+        if _G.AutoEquip and SelectedWeapon then
+            EquipWeapon(SelectedWeapon)
+        end
+    end
+end)
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Click",
+    Description = "Just an auto clicker!\nNote: You don't need to activate it to auto farm weapon.",
+    Default = false,
+    Callback = function(ACK)
+        AutoClicking = ACK
+    end    
+})
+
+spawn(function() 
+    game:GetService("RunService").RenderStepped:Connect(function() 
+        pcall(function() 
+            if AutoClicking then 
+                game:GetService'VirtualUser':CaptureController() 
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+            end 
+        end) 
+    end) 
+end)
+
+local Section = Tabs.FarmTab:AddSection("Other Farms")
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Collect Chests",
+    Description = "Collect all the chests for yourself!",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autochest = Value
+        if getgenv().autochest then
+            spawn(function()
+                while getgenv().autochest do
+                    task.wait()
+                    pcall(function()
+                        for _, v in pairs(game.Workspace:GetDescendants()) do
+                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
+                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
+                            end
+                        end
+                        task.wait(15)
+                    end)
+                end
+            end)
+        end
+    end,
+})
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Get Package",
+    Description = "Collect a package for you!",
+    Default = false,
+    Callback = function(bool11)
+        getgenv().tre = bool11
+        while getgenv().tre do
+            wait()
+            pcall(function()
+                workspace:WaitForChild("Merchants")
+                    :WaitForChild("QuestFishMerchant")
+                    :WaitForChild("Clickable")
+                    :WaitForChild("Retum")
+                    :FireServer()
+                wait(2)
+            end)
+        end
+    end,
+})
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Package",
+    Description = "Delivery the packages for you!",
+    Default = false,
+    Callback = function(bool00)
+        getgenv().tret = bool00
+        while getgenv().tret do
+            wait()
+            pcall(function()
+                if game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Package") then
+                    game.Players.LocalPlayer.Backpack:FindFirstChild("Package").Parent = game.Players.LocalPlayer.Character
+                    game.Players.LocalPlayer.Character.Humanoid.Sit = true
+                elseif game.Players.LocalPlayer.Character:FindFirstChild("Package") and getgenv().tret == true then
+                    for _, v in pairs(game.Workspace.Merchants:GetChildren()) do
+                        if (string.find(v.Name, "Aff") or string.find(v.Name, "Heavy") or string.find(v.Name, "Drink") 
+                            or string.find(v.Name, "Boat") or string.find(v.Name, "Emote") or string.find(v.Name, "Exp") 
+                            or string.find(v.Name, "Fish") or string.find(v.Name, "Flail") or string.find(v.Name, "Krizma") 
+                            or string.find(v.Name, "QuestFish") or string.find(v.Name, "QuestMe") or string.find(v.Name, "Friend") 
+                            or string.find(v.Name, "Sniper") or string.find(v.Name, "Sword")) 
+                            and v:FindFirstChild("HumanoidRootPart") then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame + Vector3.new(1, 0, 0)
+                            wait(0.3)
+                        end
+                    end
+                    game.Players.LocalPlayer.Character.Package:Activate()
+                elseif not game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Compass") then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((math.random(-100000, 100000)), 10000, (math.random(-100000, 100000)))
+                end
+            end)
+        end
+    end,
+})
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Stats Farm",
+    Description = "Farm stats for you!\nNote: Cause lag.",
+    Default = false,
+    Callback = function(Value)
+        getgenv().autostatsfarm = Value
+        if getgenv().autostatsfarm then
+            spawn(function()
+                local user = tostring(game.Players.LocalPlayer.Name)
+                local plrid = tostring(game.Players.LocalPlayer.UserId)
+                local plr = tostring(game.Players.LocalPlayer)
+
+                while getgenv().autostatsfarm do
+                    task.wait()
+                    pcall(function()
+                        repeat task.wait() until game.Players[plr].PlayerGui.Challenges.Frame.Frame.ChallengesFrame.ScrollingFrame["Challenge_13"].Claim.AutoButtonColor == true
+                        workspace.UserData["User_" .. plrid].ChallengesRemote:FireServer("Claim", "Challenge13")
+                        workspace.UserData["User_" .. plrid].ChallengesRemote:FireServer("Claim", "Challenge14")
+                    end)
+                end
+            end)
+            spawn(function()
+                local function collectBarrels()
+                    for _, v in pairs(game.Workspace.Barrels:GetDescendants()) do
+                        if v:IsA("ClickDetector") then
+                            fireclickdetector(v)
+                        end
+                    end
+                    for _, v in pairs(game.Workspace.Island8.Kitchen:GetDescendants()) do
+                        if v:IsA("ClickDetector") then
+                            fireclickdetector(v)
+                        end
+                    end
+                end
+                local user = tostring(game.Players.LocalPlayer.Name)
+                while getgenv().autostatsfarm do
+                    pcall(function()
+                        for _, v in pairs(game.Workspace.Barrels.Barrels:GetDescendants()) do
+                            if v.Name == "Barrel" then
+                                game.Workspace[user].HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 5, 0)
+                                collectBarrels()
+                                task.wait(0.1)
+                            end
+                        end
+                        for _, v in pairs(game.Workspace.Barrels:GetDescendants()) do
+                            if v.Name == "Crate" then
+                                game.Workspace[user].HumanoidRootPart.CFrame = v.CFrame + Vector3.new(0, 5, 0)
+                                collectBarrels()
+                                task.wait(0.1)
+                            end
+                        end
+                        game.Workspace[user].HumanoidRootPart.CFrame = game.Workspace["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+                        collectBarrels()
+                        workspace.Merchants.FishMerchant.Clickable.Retum:FireServer()
+                        task.wait(15)
+                    end)
+                end
+            end)
+            spawn(function()
+                while getgenv().autostatsfarm do
+                    task.wait(4)
+                    pcall(function()
+                        for _, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if v:IsA("Tool") and (v.Name:find("Juice") or v.Name:find("Milk") or v.Name:find("Cider") or v.Name:find("Lemonade") or v.Name:find("Smoothie") or v.Name:find("Golden")) then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                                v:Activate()
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+    end,
+})
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Fish Farm",
+    Description = "This will catch, cook and sell the fish in a safe place.",
+    Default = false,
+    Callback = function(AFH)
+		AutoFish = AFH
+	end    
+})
+
+spawn(function() 
+    while wait(0) do
+        pcall(function()
+            if AutoFish then
+                wait(0.5)
+                local CharacterName = game.Players.LocalPlayer.Character
+                local position = CharacterName.HumanoidRootPart.CFrame * CFrame.new(0, 0, -15)
+                local char = CharacterName.HumanoidRootPart
+                char.CFrame = CFrame.new(-20000, 218, 20000)
+        
+                local b1 = Instance.new("Part")
+                b1.Shape = "Block"
+                b1.Material = "Neon"
+                b1.BrickColor = BrickColor.new("Hot Pink")
+                b1.Anchored = true
+                b1.Parent = game.Workspace
+                b1.CFrame = CFrame.new(-20000, 213, 20000)
+                b1.Size = Vector3.new(0.5, 0.1, 0.5)
+                wait(0.5)
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if string.find(v.Name, "Rod") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                            end
+                        end
+                    end
+                end
+                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if string.find(x.Name, "Rod") then
+                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:FindFirstChild("Bobber") then
+                                        if v.Bobber.Effect.Enabled == true then
+                                            wait(0.6)
+                                            local args = {
+                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                            }
+                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        end
+                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
+                                        wait(0.6)
+                                        local args = {
+                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                        }
+                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end       
+            end
+        end)
+    end
+end);
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Get Haki",
+    Description = "When you reach level 1000, he will automatically acquire haki for you!",
+    Default = false,
+    Callback = function(bool122)
+        getgenv().haki = bool122
+        while getgenv().haki do
+            wait()
+            pcall(function()
+                workspace:WaitForChild("Merchants")
+                    :WaitForChild("QuestHakiMerchant")
+                    :WaitForChild("Clickable")
+                    :WaitForChild("Retum")
+                    :FireServer()
+                wait(2)
+            end)
+        end
+    end,
+})
+
+
+local Section = Tabs.FarmTab:AddSection("Haki Auto Farm")
+
+local hakitarget = 25
+local Slider = Tabs.FarmTab:AddSlider("Slider", 
+{
+    Title = "Haki % Use",
+    Description = "Select the amount of haki that will be consumed to farm!\nNote: The quantity may not be exact.",
+    Default = 25,
+    Min = 1,
+    Max = 100,
+    Rounding = 1,
+    Callback = function(gmm)
+        hakitarget = gmm
+    end,
+})
+
+
+local hakispeed = 1
+local Slider = Tabs.FarmTab:AddSlider("Slider", 
+{
+    Title = "Haki % Speed",
+    Description = "Select the farm speed!\nNote: High speeds are not recommended.",
+    Default = 1,
+    Min = 1,
+    Max = 5,
+    Rounding = 1,
+    Callback = function(gttmm)
+        hakispeed = gttmm
+    end,
+})
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Farm Haki",
+    Description = "This will farm your haki according to the sliders setting!",
+    Default = false,
+    Callback = function(vccl)
+        getgenv().concuvm = vccl
+        local plrid = tostring(game.Players.LocalPlayer.UserId)
+        local plr = tostring(game.Players.LocalPlayer)
+        _G.concu = true
+        while _G.concu do
+            wait()
+            local slv = game.Workspace.UserData["User_" .. plrid].Data.HakiLevel.Value
+            local sss = slv / 100 * hakitarget
+            if game.Workspace.UserData["User_" .. plrid].HakiBar.Value > sss and getgenv().concuvm == true then
+                local Players = game:GetService("Players")
+                local cache = {}
+                local function lol(name)
+                    if cache[name] then return cache[name] end
+                    local player = Players:FindFirstChild(name)
+                    if player then
+                        cache[name] = player.UserId
+                        return player.UserId
+                    end
+
+                    local id
+                    pcall(function()
+                        id = Players:lol(name)
+                    end)
+                    cache[name] = id
+                    return id
+                end
+
+                local ehh = game.Players.LocalPlayer.Name
+                local Final = lol(ehh)
+                for i = 1, hakispeed do
+                    local args = { [1] = "Off", [2] = 1 }
+                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
+                    
+                    local args = { [1] = "On", [2] = 1 }
+                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
+                end
+            elseif game.Workspace.UserData["User_" .. plrid].HakiBar.Value <= sss and getgenv().concuvm == true then
+                local args = { [1] = "Off", [2] = 1 }
+                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
+                repeat task.wait() until game.Workspace.UserData["User_" .. plrid].HakiBar.Value >= slv
+                _G.concu = true
+            elseif getgenv().concuvm == false then
+                _G.concu = false
+                local args = { [1] = "Off", [2] = 1 }
+                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
+            end
+        end
+    end,
+})
+
 local Section = Tabs.PlayerTab:AddSection("Local Player")
 
 Tabs.PlayerTab:AddButton({
