@@ -1272,16 +1272,96 @@ Tabs.FarmFruitTab:AddToggle("Toggle", {
     Description = " ",
     Default = false, 
     Callback = function(value)
-        _G.autodropdrink = value 
-	spawn(function()
-    while wait() do
+        _G.lightfarm = value 
+	spawn(function() -- Light farm npcs
+    while wait(0) do
         pcall(function()
-            if not _G.autodropdrink then return end;
-            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
-                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                    Value.Parent = game.Players.LocalPlayer.Character;
-                    Value.Parent = game.Workspace;
+            if _G.lightfarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTC,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+    end
+})
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Quake Farm",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        _G.Quakefarm = value 
+spawn(function() -- Quake farm npcs
+    while wait(0) do
+        pcall(function()
+            if _G.Quakefarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                VTQ = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+            local args = {
+                [1] = VTQ,
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
                 end
             end
         end)
