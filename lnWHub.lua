@@ -152,6 +152,10 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
+local Section = Tabs.UpdateTab:AddSection("<•> Add Reroll Affinity And Shop Drinks")
+
+local Section = Tabs.UpdateTab:AddSection("<•> Add Max Charge Skill")
+
 local Section = Tabs.UpdateTab:AddSection("<•> Add Teleport Island")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
@@ -185,6 +189,255 @@ Tabs.MainTab:AddToggle("Toggle", {
         end
     end,
 })
+
+Tabs.FarmFruitTab:AddToggle("Toggle", {
+    Title = "100% Max Charge Skill",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        _G.auto100rate = Value
+        if _G.auto100rate then
+            aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+                local args = { ... }
+                local method = getnamecallmethod()
+                if method == "FireServer" or method == "InvokeServer" then
+                    if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+                        args[6] = 100 -- Define o valor como 100
+                        return aaxc(self, unpack(args))
+                    end
+                end
+                return aaxc(self, ...)
+            end)
+        end
+    end,
+})
+
+local Section = Tabs.ShopTab:AddSection("Auto Affinity Reroll 2.0 All")
+
+local ToggleBeri1
+local isRunning1 = false
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto 2.0 Affinities | Left |",
+    Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
+    Default = false,
+    Callback = function(Value)
+        isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning1 then
+            -- Inicia o loop se o toggle estiver ativado
+            spawn(function()
+                while isRunning1 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT1 Variables
+                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
+                    local AffSword1 = userDataName.Data.DFT1Sword.Value
+
+                    -- Check for DFT1
+                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args1 = {
+                        [1] = "DFT1",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+                    if AffDefense1 == 2 then
+                        args1[2] = 0 / 0
+                    end
+
+                    if AffMelee1 == 2 then
+                        args1[3] = 0 / 0
+                    end
+
+                    if AffSniper1 == 2 then
+                        args1[4] = 0 / 0
+                    end
+
+                    if AffSword1 == 2 then
+                        args1[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
+            end)
+        end
+    end,
+})
+
+local ToggleBeri2
+local isRunning2 = false
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto 2.0 Affinities Beri | Right |",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning2 then
+            -- Inicia o loop se o toggle estiver ativado
+            spawn(function()
+                while isRunning2 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT2 Variables
+                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
+
+                    -- Check for DFT2
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args2 = {
+                        [1] = "DFT2",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+		    if AffDefense2 == 2 then
+                        args2[2] = 0 / 0
+                    end
+
+                    if AffMelee2 == 2 then
+                        args2[3] = 0 / 0
+                    end
+
+                    if AffSniper2 == 2 then
+                        args2[4] = 0 / 0
+                    end
+
+                    if AffSword2 == 2 then
+                        args2[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
+                end
+            end)
+        end
+    end,
+})
+
+Tabs.ShopTab:AddButton({
+    Title = "Instant Drink",
+    Description = " ",
+    Callback = function()
+        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+            if v:IsA("Tool") and (string.find(v.Name, "Juice") 
+                or string.find(v.Name, "Milk") 
+                or string.find(v.Name, "Cider") 
+                or string.find(v.Name, "Lemonade") 
+                or string.find(v.Name, "Smoothie") 
+                or string.find(v.Name, "Golden")) then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                game:GetService('VirtualUser'):CaptureController()
+                game:GetService('VirtualUser'):Button1Down(Vector2.new(1280, 672))
+            end
+        end
+    end,
+})
+
+local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
+
+local selectedDrinks = {} 
+local autoBuyEnabled = false 
+local drinkQuantity = 1 
+
+
+local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
+    Title = "Select Drinks to Auto Buy",
+    Description = " ",
+    Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
+    Multi = true,
+    Default = {},
+    Callback = function(value)
+        selectedDrinks = value 
+        local selectedList = {}
+        for drink, isSelected in pairs(value) do
+            if isSelected then
+                table.insert(selectedList, drink)
+            end
+        end
+    end
+})
+
+
+Tabs.ShopTab:AddToggle("AutoBuyToggle", {
+    Title = "Enable Auto Buy",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        autoBuyEnabled = value 
+        if value then
+        else
+        end
+    end
+})
+
+local QuantitySlider = Tabs.ShopTab:AddSlider("QuantitySlider", {
+    Title = "Set Drink Quantity",
+    Description = " ",
+    Default = 1, 
+    Min = 1,
+    Max = 500, 
+    Rounding = 0, 
+    Callback = function(value)
+        drinkQuantity = value 
+    end
+})
+
+spawn(function()
+    while wait(0.5) do
+        pcall(function()
+            if autoBuyEnabled and next(selectedDrinks) then
+                for drink, isSelected in pairs(selectedDrinks) do
+                    if isSelected then
+                        local purchasedCount = 0 
+
+                        for _ = 1, drinkQuantity do
+                            if purchasedCount < drinkQuantity then
+                                local args = {
+                                    [1] = drink
+                                }
+                                workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(unpack(args))
+                                purchasedCount = purchasedCount + 1
+                            else
+                                break
+                            end
+                        end
+
+                        if purchasedCount >= drinkQuantity then
+                            Fluent:Notify({
+                                Title = "Purchase Complete",
+                                Content = "Bought " .. purchasedCount .. " of " .. drink,
+                                Duration = 5
+                            })
+                        end
+                    end
+                end
+                autoBuyEnabled = false
+            end
+        end)
+    end
+end)
 
 local islandPositions = {
     ["Cave"] = CFrame.new(-280, 217, -831),
