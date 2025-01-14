@@ -91,7 +91,7 @@ local Cache = {
 
 
 local Tabs = {
-    MainTab = Window:AddTab({ Title = "Main", Icon = "scroll" }),
+    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
     FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
     PlayerTab = Window:AddTab({ Title = "Players", Icon = "users" }),
@@ -144,8 +144,6 @@ L2.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
     sound:Play()
 end)
-
-local Section = Tabs.MainTab:AddSection("Main Autos")
 
 
 Tabs.MainTab:AddToggle("Toggle", {
@@ -284,6 +282,8 @@ Tabs.TeleportTab:AddButton({
         end
     end
 })
+
+local Section = Tabs.TeleportTab:AddSection("SafeZone TP")
 
 Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
     Title = "Select SafeZone",
