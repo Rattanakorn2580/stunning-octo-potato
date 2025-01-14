@@ -1318,8 +1318,8 @@ end)
     end
 })
 
-Tabs.ShopTab:AddToggle("Toggle", {
-    Title = "Auto Quake Farm",
+Tabs.FarmFruitTab:AddToggle("Toggle", {
+    Title = "Auto Quake Farm (Very Lag)",
     Description = " ",
     Default = false, 
     Callback = function(value)
@@ -1952,7 +1952,7 @@ Tabs.MiscTab:AddToggle("Toggle", {
     Description = "",
     Default = false, 
     Callback = function(value)
-        _G.nodamagewater = value 
+        _G.nowaterdamage = value 
 spawn(function()
     while wait() do
         if _G.nowaterdamage then
