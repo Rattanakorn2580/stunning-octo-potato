@@ -170,7 +170,7 @@ local Section = Tabs.MainTab:AddSection("Function Auto")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Spawn",
-    Description = "Automatically respawns your character!",
+    Description = " ",
     Default = false,
     Callback = function(enabled)
         _G.AutoSpawnEnabled = enabled
@@ -191,7 +191,7 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Claim Mission",
-    Description = "Automatically claims expert mission for you!",
+    Description = "",
     Default = false,
     Callback = function(AMS)
         AutoMission = AMS
@@ -210,7 +210,7 @@ end)
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Beri Gift",
-    Description = "Automatically claims beri gifts for you!",
+    Description = "",
     Default = false,
     Callback = function(ACG)
 		_G.berigift = ACG
@@ -231,7 +231,7 @@ end);
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Gems Gift",
-    Description = "Automatically claims beri gifts for you!",
+    Description = "",
     Default = false,
     Callback = function(ACG)
 		_G.gemsgift = ACG
@@ -252,7 +252,7 @@ end)
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Challenges",
-    Description = "Automatically claim challenges for you!",
+    Description = " ",
     Default = false,
     Callback = function(ACLL)
 		_G.autoclaim = ACLL
@@ -491,6 +491,118 @@ workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extr
     end
 })
 
+local Section = Tabs.PlayerTab:AddSection("Player Utilities")
+
+local function updatePlayerList()
+    local players = {}
+    for _, player in pairs(game.Players:GetPlayers()) do
+        if player.Name ~= game.Players.LocalPlayer.Name then
+            table.insert(players, player.Name)
+        end
+    end
+    return players
+end
+
+local PlayerList = updatePlayerList()
+local selectedPlayer = PlayerList[1] or ""
+
+local Dropdown = Tabs.PlayerTab:AddDropdown("Dropdown", {
+    Title = "Select Player",
+    Description = " ",
+    Values = PlayerList,
+    Multi = false,
+    Default = selectedPlayer,
+    Callback = function(Value)
+        selectedPlayer = Value
+        print("Dropdown changed. Selected player:", selectedPlayer)
+    end
+})
+
+game.Players.PlayerAdded:Connect(function(player)
+    table.insert(PlayerList, player.Name)
+    Dropdown:Refresh(PlayerList, PlayerList[1] or "")
+end)
+
+game.Players.PlayerRemoving:Connect(function(player)
+    for i, name in ipairs(PlayerList) do
+        if name == player.Name then
+            table.remove(PlayerList, i)
+            break
+        end
+    end
+    Dropdown:Refresh(PlayerList, PlayerList[1] or "")
+end)
+
+local Tpplr = false
+local SpectatePlayer = false
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "TP Player",
+    Description = " ",
+    Default = false,
+    Callback = function(TP)
+        Tpplr = TP
+        if Tpplr then
+            spawn(function()
+                while Tpplr do
+                    local localPlayer = game.Players.LocalPlayer
+                    local targetPlayer = game.Players:FindFirstChild(selectedPlayer)
+
+                    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                        local targetHRP = targetPlayer.Character.HumanoidRootPart
+
+                        local targetPosition = targetHRP.Position
+                        local behindPosition = targetPosition - targetHRP.CFrame.LookVector * 5
+                        local targetOrientation = targetHRP.CFrame - targetHRP.Position
+
+                        localPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(behindPosition) * targetOrientation.Rotation
+                    else
+                        print("Target player not found or invalid.")
+                        break
+                    end
+
+                    wait(0.1)
+                end
+            end)
+        end
+    end,
+})
+
+local function spectate(targetPlayer)
+    if targetPlayer and targetPlayer.Character then
+        local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            workspace.CurrentCamera.CameraSubject = humanoid
+            print("Now spectating:", targetPlayer.Name)
+        end
+    end
+end
+
+Tabs.PlayerTab:AddToggle("SpectatePlayerToggle", {
+    Title = "Spectate Player",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        SpectatePlayer = Value
+        if not Value then
+            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+        end
+    end
+})
+
+spawn(function()
+    while task.wait(0.5) do
+        if SpectatePlayer and selectedPlayer then
+            local targetPlayer = game.Players:FindFirstChild(selectedPlayer)
+            if targetPlayer then
+                spectate(targetPlayer)
+            else
+                print("Player not found or unavailable:", selectedPlayer)
+            end
+        end
+    end
+end)
+
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "100% Max Charge Skill",
     Description = " ",
@@ -663,7 +775,7 @@ local Input = Tabs.ShopTab:AddInput("Input", {
 })
 
 Tabs.ShopTab:AddButton({
-    Title = "Buy Drink",
+    Title = "Buy Drink (On Fix)",
     Description = " ",
     Callback = function()
 if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
@@ -1002,5 +1114,114 @@ Tabs.MiscTab:AddToggle("Toggle", {
             })
 
         end
+    end,
+})
+
+local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
+
+local Slider = Tabs.MiscTab:AddSlider("Slider", 
+{
+    Title = "Yoru Speed",
+    Description = " ",
+    Default = 50,
+    Min = 0,
+    Max = 500000,
+    Rounding = 1,
+    Callback = function(Value)
+        Speeds = Value
+    end,
+})
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Yoru Spam",
+    Description = " ",
+    Default = false,
+    Callback = function(Value)
+        _G.Yoru = Value
+        if _G.Yoru then
+            while _G.Yoru do
+                wait()
+                local Players = game:GetService("Players")
+                local Plr = Players.LocalPlayer
+                local Character = Plr.Character
+                local Yoru = Character:FindFirstChild("Yoru")
+
+                wait()
+                pcall(function()
+                    for i = 1, Speeds do
+                        Yoru["RequestAnimation"]:FireServer()
+                    end
+                end)
+                wait()
+            end
+        end
+    end
+})
+
+local Section = Tabs.MiscTab:AddSection("Fake Weapons")
+
+
+Tabs.MiscTab:AddButton({
+    Title = "Seastone Cestus (500 melee requiriment)",
+    Description = " ",
+    Callback = function()
+        local Players = game:GetService("Players")
+        local cache = {}
+
+        local function getUserId(name)
+            if cache[name] then return cache[name] end
+            local player = Players:FindFirstChild(name)
+            if player then
+                cache[name] = player.UserId
+                return player.UserId
+            end
+
+            local id
+            pcall(function()
+                id = Players:GetUserIdFromNameAsync(name)
+            end)
+            cache[name] = id
+            return id
+        end
+
+        local playerName = game.Players.LocalPlayer.Name
+        local userId = getUserId(playerName)
+        local weaponName = "Seastone Cestus"
+        local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
+
+        event:FireServer(weaponName)
+    end,
+})
+
+-- Aqua Staff Button
+Tabs.MiscTab:AddButton({
+    Title = "Aqua Staff (500 melee requiriment)",
+    Description = " ",
+    Callback = function()
+        local Players = game:GetService("Players")
+        local cache = {}
+
+        local function getUserId(name)
+            if cache[name] then return cache[name] end
+            local player = Players:FindFirstChild(name)
+            if player then
+                cache[name] = player.UserId
+                return player.UserId
+            end
+
+            local id
+            pcall(function()
+                id = Players:GetUserIdFromNameAsync(name)
+            end)
+            cache[name] = id
+            return id
+        end
+
+        local playerName = game.Players.LocalPlayer.Name
+        local userId = getUserId(playerName)
+        local weaponName = "Aqua Staff"
+        local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
+
+        event:FireServer(weaponName)
     end,
 })
