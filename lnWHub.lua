@@ -324,7 +324,7 @@ end)
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Challenges",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(ACLL)
 		_G.autoclaim = ACLL
@@ -494,7 +494,7 @@ Tabs.MainTab:AddButton({
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Claim Compasses",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         AutoClaimCompass = Value
@@ -517,7 +517,7 @@ local AutoCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Find Compasses (Slow)",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         AutoCompass = Value
@@ -552,11 +552,11 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.PlayerTab:AddSection("Dupe")
+local Section = Tabs.PlayerTab:AddSection("Local Player")
 
 Tabs.PlayerTab:AddButton({
     Title = "No Save Data! ! !",
-    Description = " ",
+    Description = "",
     Callback = function()
 workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
         game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
@@ -580,7 +580,7 @@ local selectedPlayer = PlayerList[1] or ""
 
 local Dropdown = Tabs.PlayerTab:AddDropdown("Dropdown", {
     Title = "Select Player",
-    Description = " ",
+    Description = "",
     Values = PlayerList,
     Multi = false,
     Default = selectedPlayer,
@@ -610,7 +610,7 @@ local SpectatePlayer = false
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "TP Player",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(TP)
         Tpplr = TP
@@ -652,7 +652,7 @@ end
 
 Tabs.PlayerTab:AddToggle("SpectatePlayerToggle", {
     Title = "Spectate Player",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
         SpectatePlayer = Value
@@ -677,16 +677,16 @@ end)
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "100% Max Charge Skill",
-    Description = " ",
+    Description = "",
     Default = false,
     Callback = function(Value)
-        _G.auto100rate = Value
-        if _G.auto100rate then
+        skillmax = Value
+        if skillmax then
             aaxc = hookmetamethod(game, "__namecall", function(self, ...)
                 local args = { ... }
                 local method = getnamecallmethod()
                 if method == "FireServer" or method == "InvokeServer" then
-                    if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+                    if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
             args[6] = 100
                     if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
             args[6] = 200
