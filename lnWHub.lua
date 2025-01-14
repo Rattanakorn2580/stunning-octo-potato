@@ -431,7 +431,7 @@ local drinkQuantity = 1
 
 
 local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
-    Title = "Select Drinks to Auto Buy",
+    Title = "Select Drinks to Buy",
     Description = " ",
     Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
     Multi = true,
@@ -465,7 +465,7 @@ Tabs.ShopTab:AddButton({
     Callback = function()
 if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
-            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(selecteddrinks)
 			end
     end
 })
