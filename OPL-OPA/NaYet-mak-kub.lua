@@ -94,9 +94,9 @@ local TabUP = Window:MakeTab({
 })
 
 TabUP:AddButton({
-	Name = "Click to Tp",
+	Name = "Can Check New Menu Script",
 	Callback = function()
-		loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/INWHUB.lua"))()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/lnWHub.lua"))()
 		end
 	})
 
