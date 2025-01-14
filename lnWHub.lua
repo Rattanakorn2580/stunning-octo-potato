@@ -425,25 +425,14 @@ Tabs.ShopTab:AddToggle("Toggle", {
 
 local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
 
-local selectedDrinks = {} 
-local autoBuyEnabled = false 
-local drinkQuantity = 1 
-
-
-local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
+Tabs.ShopTab:AddDropdown("DrinkDropdown", {
     Title = "Select Drinks to Buy",
     Description = " ",
-    Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
-    Multi = true,
+    Values = Cache.DevConfig["ListOfDrink"],
+    Multi = false,
     Default = {},
     Callback = function(value)
-        selectedDrinks = value 
-        local selectedList = {}
-        for drink, isSelected in pairs(value) do
-            if isSelected then
-                table.insert(selectedList, drink)
-            end
-        end
+        SelectDrink = value 
     end
 })
 
