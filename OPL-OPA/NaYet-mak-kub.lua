@@ -93,9 +93,12 @@ local TabUP = Window:MakeTab({
 	PremiumOnly = false
 })
 
-local Section = TabUP:AddSection({
-	Name = "<•> Add Quake Kill Players | At 9 / 1 / 2025. |"
-})
+TabUP:AddButton({
+	Name = "Click to Tp",
+	Callback = function()
+		loadstring(game:HttpGet("https://raw.githubusercontent.com/Rattanakorn2580/stunning-octo-potato/refs/heads/main/INWHUB.lua"))()
+		end
+	})
 
 local Section = TabUP:AddSection({
 	Name = "<•> Remake Ui Menu is Coming Soon. . ."
