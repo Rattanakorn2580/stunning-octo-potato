@@ -779,7 +779,7 @@ Tabs.ShopTab:AddButton({
     Description = " ",
     Callback = function()
 if not AmountDrink or not string.match(AmountDrink, txt) or tonumber(string.match(AmountDrink, txt)) < 0 then return end;
-        for _ = 1, tonumber(string.match(AmountDrink, txt)) do
+        for _ = 1, tonumber(string.match(AmountDrink, txt)) AmountDrink do
             game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(selectedDrinks)
 			end
     end
