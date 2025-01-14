@@ -80,6 +80,78 @@ end
     end
 end);
 
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
 local Cache = { DevConfig = {} };
 
 Cache.DevConfig["ListOfBox1"] = {"Common Box"};
@@ -158,9 +230,9 @@ local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Auto")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add All Function Misc Tab")
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Teleport Island")
+local Section = Tabs.UpdateTab:AddSection("<•> Add Anti Water And Abti Lag")
 
-local Section = Tabs.UpdateTab:AddSection("<•> Add Dupe")
+local Section = Tabs.UpdateTab:AddSection("<•> Add Fix Max Charge And Buy Drink")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Add Auto Sam Quest")
 
@@ -615,10 +687,16 @@ Tabs.FarmFruitTab:AddToggle("Toggle", {
                 local method = getnamecallmethod()
                 if method == "FireServer" or method == "InvokeServer" then
                     if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
-                        args[6] = 100 -- Define o valor como 100
-                        return aaxc(self, unpack(args))
-                    end
-                end
+            args[6] = 100
+                    if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 200
+	           if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 400
+            return aaxc(self, unpack(args))
+	end
+end
+	end
+		end
                 return aaxc(self, ...)
             end)
         end
@@ -775,7 +853,7 @@ local Input = Tabs.ShopTab:AddInput("Input", {
 })
 
 Tabs.ShopTab:AddButton({
-    Title = "Buy Drink (On Fix)",
+    Title = "Buy Drink",
     Description = " ",
     Callback = function()
 if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
@@ -1087,6 +1165,87 @@ Tabs.MiscTab:AddButton({
 
 local Section = Tabs.MiscTab:AddSection("Anti")
 
+Tabs.MiscTab:AddButton({
+    Title = "Anti Lag",
+    Description = " ",
+    Callback = function()
+if not gethui then
+    warn("Incompatible executor: gethui is unavailable")
+    return
+end
+
+local runService = game:GetService("RunService")
+local lighting = game:GetService("Lighting")
+
+local fpsCounterGui = Instance.new("ScreenGui", gethui())
+local fpsLabel = Instance.new("TextLabel", fpsCounterGui)
+
+fpsCounterGui.Name = "FpsCounterGui"
+fpsCounterGui.IgnoreGuiInset = true
+fpsLabel.Name = "FpsLabel"
+fpsLabel.BackgroundTransparency = 1
+fpsLabel.Position = UDim2.new(1, -100, 0, 0)
+fpsLabel.Size = UDim2.new(0, 100, 0, 30)
+fpsLabel.Text = ""
+fpsLabel.TextSize = 16
+fpsLabel.TextStrokeTransparency = 0.6
+fpsLabel.Draggable = true
+
+local function GetFPS(delay)
+    local startTime = tick()
+    local frames = 0
+    local heartbeatConnection = runService.Heartbeat:Connect(function()
+        frames = frames + 1
+    end)
+    task.wait(delay)
+    heartbeatConnection:Disconnect()
+    local elapsedTime = tick() - startTime
+    local fps = frames / elapsedTime
+    return math.ceil(fps)
+end
+
+task.spawn(function()
+    while true do
+        local fps = GetFPS(0.5)
+        if fps >= 60 then
+            fpsLabel.TextColor3 = Color3.fromRGB(0, 255, 0)
+        elseif fps <= 59 and fps > 50 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 170, 0)
+        elseif fps <= 49 and fps > 30 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 85, 0)
+        elseif fps <= 29 then
+            fpsLabel.TextColor3 = Color3.fromRGB(255, 0, 0)
+        end
+        fpsLabel.Text = tostring(fps) .. " FPS"
+    end
+end)
+
+lighting.GlobalShadows = false
+lighting.FogEnd = 9e9
+lighting.EnvironmentDiffuseScale = 0.5
+lighting.EnvironmentSpecularScale = 0.5
+
+for _, descendant in ipairs(game:GetDescendants()) do
+    if descendant:IsA("BasePart") then
+        descendant.CastShadow = false
+        descendant.Material = Enum.Material.SmoothPlastic
+        descendant.Reflectance = 0
+        if descendant:IsA("MeshPart") then
+            descendant.CollisionFidelity = Enum.CollisionFidelity.Box
+        end
+    end
+    if descendant:IsA("Decal") or descendant:IsA("Texture") then
+        if descendant.Transparency > 0.25 then
+            descendant.Transparency = 0.25
+        end
+    end
+    if descendant:IsA("ParticleEmitter") or descendant:IsA("Trail") then
+        descendant.Lifetime = NumberRange.new(0)
+    end
+			end
+    end
+})
+
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Anti-AFK",
     Description = " ",
@@ -1115,6 +1274,33 @@ Tabs.MiscTab:AddToggle("Toggle", {
 
         end
     end,
+})
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Anti Water",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        _G.nodamagewater = value 
+spawn(function()
+    while wait() do
+        if _G.nowaterdamage then
+            pcall(function()
+                local args = {
+    [1] = "NOPLS"
+}
+
+game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
+if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+            end)
+        end
+    end
+end)
+    end
 })
 
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
