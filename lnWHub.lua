@@ -266,8 +266,8 @@ end)
 
 local Section = Tabs.PlayerTab:AddSection("Dupe")
 
-Tabs.TeleportTab:AddButton({
-    Title = "Teleport to SafeZone",
+Tabs.PlayerTab:AddButton({
+    Title = "No Save Data! ! !",
     Description = " ",
     Callback = function()
 workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
@@ -446,15 +446,12 @@ local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
 })
 
 
-Tabs.ShopTab:AddToggle("AutoBuyToggle", {
-    Title = "Enable Auto Buy",
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Equip Drinks",
     Description = " ",
     Default = false, 
     Callback = function(value)
-        autoBuyEnabled = value 
-        if value then
-        else
-        end
+        _G.autodropdrink = value 
     end
 })
 
