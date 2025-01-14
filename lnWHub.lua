@@ -426,13 +426,13 @@ Tabs.ShopTab:AddToggle("Toggle", {
 local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
 
 Tabs.ShopTab:AddDropdown("DrinkDropdown", {
-    Title = "Select Drinks to Buy",
+    Title = "Choose Drink To Buy",
     Description = " ",
-    Values = Cache.DevConfig["ListOfDrink"],
+    Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
     Multi = false,
-    Default = {},
-    Callback = function(value)
-        SelectDrink = value 
+    Default = 1,
+    Callback = function(Value)
+	SelectDrink = Value
     end
 })
 
@@ -641,7 +641,7 @@ local Section = Tabs.TeleportTab:AddSection("SafeZone TP")
 
 Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
     Title = "Select SafeZone",
-    Description = "Teleport SafeZone",
+    Description = " ",
     Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
     Multi = false,
     Default = 1,
