@@ -5,7 +5,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 
 local Window = Fluent:CreateWindow({
     Title = "lnW Hub | Only OPL: Anarchy | " .. Fluent.Version,
-    SubTitle = "      By Bankzy",
+    SubTitle = "      Made By Bankzy",
     TabWidth = 100,
     Size = UDim2.fromOffset(600, 350),
     Acrylic = true,
@@ -37,6 +37,43 @@ local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
     SafeZoneLightFarm.Position = Vector3.new(3750, 3623, -615)
     SafeZoneLightFarm.Anchored = true
 
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if AutoFish or AutoPack or AutoFarmM or _G.chillykill or _G.bombkill then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false or _G.chillykill == false or _G.bombkill == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
+end
+	end
+            end
+        end)
+    end
+end);
+
 local Cache = {
     DevConfig = {
         ListOfBox1 = {"Common Box"},
@@ -52,14 +89,15 @@ local Cache = {
 
 
 
+
 local Tabs = {
     MainTab = Window:AddTab({ Title = "Main", Icon = "scroll" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
     FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
-    MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
     PlayerTab = Window:AddTab({ Title = "Players", Icon = "users" }),
     ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
+    MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
 }
 
 
@@ -246,3 +284,33 @@ Tabs.TeleportTab:AddButton({
         end
     end
 })
+
+Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
+    Title = "Select SafeZone",
+    Description = "Teleport SafeZone",
+    Values = {"OutSpace SafeZone", "UnderSea SafeZone", "SafeZone LightFarm 1.0", "SafeZone LightFarm 2.0"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        getgenv().tpsafezone = Value
+    end
+})
+
+Tabs.TeleportTab:AddButton({
+    Title = "Teleport to SafeZone",
+    Description = " ",
+    Callback = function()
+       if getgenv().tpsafezone == "OutSpace SafeZone" then
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
+	 elseif getgenv().tpsafezone == "UnderSea SafeZone" then
+       game.Players.LocalPlayer.Character.Humanoid.Sit = true
+        wait(0.15)
+        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 1.0" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
+	elseif getgenv().tpsafezone == "SafeZone LightFarm 2.0" then
+       game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
+			end 
+    end
+})
+
