@@ -215,7 +215,7 @@ L2.BorderSizePixel = 0
 L2.Position = UDim2.new(0.1208, 0, 0.0953, 0)
 L2.Size = UDim2.new(0, 50, 0, 50)
 L2.Font = Enum.Font.LuckiestGuy
-L2.Text = "lnW\nHub"
+L2.Text = "lnW Hub"
 L2.TextColor3 = Color3.fromRGB(255, 255, 255)
 L2.TextSize = 9.000
 L2.Draggable = true
@@ -1308,7 +1308,7 @@ Tabs.MiscTab:AddToggle("Toggle", {
     Description = " ",
     Default = false, 
     Callback = function(value)
-        _G.nodamagewater = value 
+        _G.nowaterdamage = value 
 spawn(function()
     while wait() do
         if _G.nowaterdamage then
