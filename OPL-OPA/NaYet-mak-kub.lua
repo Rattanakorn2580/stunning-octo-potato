@@ -98,19 +98,7 @@ local Section = TabUP:AddSection({
 })
 
 local Section = TabUP:AddSection({
-	Name = "<•> NONE | At 9 / 1 / 2025. |"
-})
-
-local Section = TabUP:AddSection({
-	Name = "<•> NONE | 9 / 1 / 2025. |"
-})
-
-local Section = TabUP:AddSection({
-	Name = "<•> NONE | At 9 / 1 / 2025. | "
-})
-
-local Section = TabUP:AddSection({
-	Name = "<•> Coming Soon. . ."
+	Name = "<•> Remake Ui Menu is Coming Soon. . ."
 })
 
 local TabAuto = Window:MakeTab({
