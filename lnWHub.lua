@@ -37,6 +37,12 @@ local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
     SafeZoneLightFarm.Position = Vector3.new(3750, 3623, -615)
     SafeZoneLightFarm.Anchored = true
 
+local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
+    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
+    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
+    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
+    SafeZoneUnderSea.Anchored = true
+
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
@@ -146,11 +152,11 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.TeleportTab:AddSection(" ")
+local Section = Tabs.UpdateTab:AddSection(" ")
 
-local Section = Tabs.TeleportTab:AddSection("<•> Adding New All Function On Fix")
+local Section = Tabs.UpdateTab:AddSection("<•> Adding New All Function On Fix")
 
-local Section = Tabs.TeleportTab:AddSection("<•> Coming Soon . . .")
+local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Anti-AFK",
