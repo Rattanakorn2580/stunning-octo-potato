@@ -152,9 +152,7 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.UpdateTab:AddSection(" ")
-
-local Section = Tabs.UpdateTab:AddSection("<•> Adding New All Function On Fix")
+local Section = Tabs.UpdateTab:AddSection("<•> Add Teleport Island")
 
 local Section = Tabs.UpdateTab:AddSection("<•> Coming Soon . . .")
 
