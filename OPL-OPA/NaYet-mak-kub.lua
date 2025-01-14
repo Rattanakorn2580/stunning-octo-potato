@@ -104,6 +104,10 @@ local Section = TabUP:AddSection({
 	Name = "<•> Remake Ui Menu is Coming Soon. . ."
 })
 
+local Section = TabUP:AddSection({
+	Name = "<•> If the remake menu script is complete, this script will disappear immediately"
+})
+
 local TabAuto = Window:MakeTab({
 	Name = "Autos",
 	Icon = "rbxassetid://4483345998",
