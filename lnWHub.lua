@@ -91,6 +91,7 @@ local Cache = {
 
 
 local Tabs = {
+    UpdateTab = Window:AddTab({ Title = "Update", Icon = "file-code" }),
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
     FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
@@ -145,6 +146,11 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
+local Section = Tabs.TeleportTab:AddSection(" ")
+
+local Section = Tabs.TeleportTab:AddSection("<•> Adding New All Function On Fix")
+
+local Section = Tabs.TeleportTab:AddSection("<•> Coming Soon . . .")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Anti-AFK",
