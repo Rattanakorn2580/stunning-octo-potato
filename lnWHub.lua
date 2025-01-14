@@ -447,6 +447,18 @@ local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
     end
 })
 
+local Input = Tabs.ShopTab:AddInput("Input", {
+    Title = "Amount",
+    Description = " ",
+    Default = "",
+    Placeholder = "Enter Amount: ",
+    Numeric = true, 
+    Finished = false, 
+    Callback = function(txt)
+        AmountDrink = txt
+    end
+})
+
 Tabs.ShopTab:AddButton({
     Title = "Buy Drink",
     Description = " ",
