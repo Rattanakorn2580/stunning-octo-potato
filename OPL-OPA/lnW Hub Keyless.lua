@@ -5,7 +5,7 @@ local Window = OrionLib:MakeWindow({Name = "InW Hub", HidePremium = false, SaveC
 
 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
 if v.Name == "Menu" then
-  v.Frame.C.Frame.Nametag.Text = " ".."Protect by: InW Hub"
+  v.Frame.C.Frame.Nametag.Text = " ".."Protect Name by: InW Hub"
 end
 end
 
@@ -36,7 +36,7 @@ local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
 spawn(function() -- autofarm velocity
     while wait(0) do
         pcall(function()
-            if AutoFish or AutoPack or AutoFarmM or AutoDeath then
+            if AutoFish or AutoPack or AutoFarmM or _G.chillykill or _G.bombkill then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                     local Noclip = Instance.new("BodyVelocity")
                     Noclip.Name = "BodyClip"
@@ -45,7 +45,7 @@ spawn(function() -- autofarm velocity
                     Noclip.Velocity = Vector3.new(0,0,0)
                 end
                 game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
-            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false or AutoDeath == false then
+            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false or _G.chillykill == false or _G.bombkill == false then
                 --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
                 game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
                 wait(1)
@@ -85,23 +85,20 @@ Cache.DevConfig["ListOfIsland"] = {"Grassy","Kaizu","Snow Mountains","Pursuer Bo
 Cache.DevConfig["ListOfMerchant"] = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity","Fish", "Expertise"};
 Cache.DevConfig["ListOfWeapon"] = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"}
 Cache.DevConfig["ListOfSniper"] = {"Slingshot", "Star", "Crossbow", "Flintlock"}
-Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
-Cache.DevConfig["ListOfUncomDelete"] = {"Bomb Fruit", "Gum Fruit", "Hobby Fruit", "String Fruit", "Smelt Fruit", "Diamond Fruit", "Barrier Fruit", "Order Fruit"}
-Cache.DevConfig["ListOfRareDelete"] = {"Gas Fruit", "Magma Fruit", "Flare Fruit", "Smoke Fruit", "Snow Fruit", "Plasma Fruit", "Ope Fruit", "Hollow Fruit", "Gravity Fruit", "Rumble Fruit", "Sand Fruit", "Candy Fruit", "Chilly Fruit", "Light Fruit"}
-Cache.DevConfig["ListOfUltaDelete"] = {"Phoenix Fruit", "Vampire Fruit", "Quake Fruit", "Dark Fruit"}
+Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
 
 local TabAuto = Window:MakeTab({
-	Name = "ออโต้",
+	Name = "Autos",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabAuto:AddSection({
-	Name = "เกิดอัตโนมัติ"
+	Name = "Auto Spawn"
 })
 
 TabAuto:AddToggle({
-	Name = "ออโต้ เกิด",
+	Name = "Auto Spawn",
 	Default = true,
 	Callback = function(AS)
 		_G.autorespawn = AS
@@ -123,11 +120,11 @@ spawn(function()--autorespawn
 end)
 
 local Section = TabAuto:AddSection({
-	Name = "ฝังชั่น ออโต้ | ทั้งหมด |"
+	Name = "Function Auto | All |"
 })
 
 TabAuto:AddToggle({
-	Name = "ออโต้ ตกปลา",
+	Name = "Auto Fishing",
 	Default = false,
 	Callback = function(AFH)
 		AutoFish = AFH
@@ -182,7 +179,7 @@ spawn(function() -- fish farm
 end);
 
 TabAuto:AddToggle({
-	Name = "ออโต้ วาปแพ็คเกต",
+	Name = "Auto Package",
 	Default = false,
 	Callback = function(APK)
 		AutoPack = APK
@@ -279,7 +276,33 @@ spawn(function()
 end);
 
 TabAuto:AddToggle({
-	Name = "ออโต้ กดรับภารกิจ",
+	Name = "Auto Haki Buso",
+	Default = false,
+	Callback = function(AKI)
+		_G.autobuso = AKI
+	end    
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autobuso then
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
+end)
+
+TabAuto:AddToggle({
+	Name = "Auto Claim Expertise",
 	Default = false,
 	Callback = function(AMS)
 		AutoMission = AMS
@@ -297,7 +320,7 @@ end
 end);
 
 TabAuto:AddToggle({
-	Name = "ดึงผลไม้ปีศาจ",
+	Name = "Auto Bring DF",
 	Default = false,
 	Callback = function(BDF)
 		BringDF = BDF
@@ -319,15 +342,28 @@ spawn(function()
  end)
 
 TabAuto:AddToggle({
-	Name = "ออโต้ดึงหีบสมบัติ",
+	Name = "Auto Chest",
 	Default = false,
 	Callback = function(CHT)
-		_G.chest = CHT
+		_G.autochest = CHT
 	end    
 })
 
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autochest then
+for _, v in pairs(game.Workspace:GetDescendants()) do
+                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
+                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
+                            end
+						end            end
+        end)
+    end
+end);
+
 TabAuto:AddToggle({
-	Name = "ฮอโต้ กดรับของขวัญ | Beri 💸 |",
+	Name = "Auto Claim Gift | Beri 💸 |",
 	Default = false,
 	Callback = function(ACG)
 		_G.autoclaimgift = ACG
@@ -347,7 +383,7 @@ local A_1 = "RewardMark"
 end);
 
 TabAuto:AddToggle({
-	Name = "ออโต้ กดรับของขวัญ | Gams 💎 |",
+	Name = "Auto Claim Gift | Gams 💎 |",
 	Default = false,
 	Callback = function(ACG)
 		_G.autoclaimgift = ACG
@@ -367,7 +403,7 @@ local A_1 = "RewardMark"
 end)
 
 TabAuto:AddToggle({
-	Name = "ออโต้ กดรับชาร์เลน",
+	Name = "Auto Claim Challenge",
 	Default = false,
 	Callback = function(ACLL)
 		_G.autoclaim = ACLL
@@ -522,30 +558,107 @@ local A_2 = "Challenge14"
 end)
 
 local Section = TabAuto:AddSection({
-	Name = "แสปม การตีโยรุ ( 🔒เฉพาะ ผู้ซื้อ เท่านั้น!!!🔒 )"
+	Name = "Spam Yoru Attack"
 })
 
+TabAuto:AddTextbox({
+	Name = "Hit Yoru",
+	Default = "1",
+	TextDisappear = true,
+	Callback = function(HYR)
+		_G.yoruhit = HYR
+	end	  
+})
+
+local attackremote = {}    
+
+local a
+a=hookmetamethod(game,"__namecall",function(self,...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+            attackremote[self.Name] = args[1]
+            return a(self,unpack(args))
+        elseif self.Name == "RequestAnimation" and game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+            attackremote[self.Name] = ""
+        end
+    end
+      return a(self,...)
+end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
 TabAuto:AddToggle({
-	Name = "ใช้ไม่ได้",
+	Name = "Enable",
 	Default = false,
 	Callback = function(HYF)
 		_G.yorufast = HYF
 	end    
 })
 
+spawn(function() -- yoru
+    while wait(0) do
+        pcall(function()
+            if _G.yorufast then
+                if game.Players.LocalPlayer.Character:FindFirstChild("Yoru") and tonumber(serializeTable(attackremote)) ~= nil and tonumber(serializeTable(attackremote)) ~= "" then
+                    repeat wait(0.3)
+                        for i = 1, _G.yoruhit do
+                            local args = {
+                                [1] = tonumber(serializeTable(attackremote))
+                            }
+                            
+                            game:GetService("Players").LocalPlayer.Character.Yoru.RequestAnimation:FireServer(unpack(args))
+                        end
+                    until _G.yorufast == false or game.Players.LocalPlayer.Character.Humanoid.Health == 0 
+                end
+            end
+        end)
+    end
+end)
+
 local TabFarm = Window:MakeTab({
-	Name = "ออโต้ฟาร์ม",
+	Name = "Auto Farm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabFarm:AddSection({
-	Name = "ออโต้ฟาร์ม มอบ"
+	Name = "Auto Farm Mob"
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้วาปฟาร์ม",
+	Name = "Auto Farm",
 	Default = false,
 	Callback = function(AFR)
 		_G.autofarm = AFR
@@ -627,24 +740,8 @@ pcall(function()
 end)
 end)
 
-spawn(function() -- auto equip
-    while wait(0) do
-        pcall(function()
-            if _G.autofarm then
-                repeat
-                    wait(0.05)
-                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
-                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
-                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
-                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
-                end
-            end
-        end)
-    end
-end);
-
 TabFarm:AddToggle({
-	Name = "ออโต้ดึงมอน",
+	Name = "Auto Bring Mob",
 	Default = false,
 	Callback = function(AFB)
 		AutoFarmB = AFB
@@ -724,7 +821,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 end
 
 TabFarm:AddDropdown({
-	Name = "เลือก อาวุธ",
+	Name = "Choose Weapon",
 	Default = "",
 	Options = Weaponlist,
 	Callback = function(WP)
@@ -733,7 +830,7 @@ TabFarm:AddDropdown({
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้คลิก",
+	Name = "Auto Click",
 	Default = false,
 	Callback = function(ACK)
 		AutoClicking = ACK
@@ -751,12 +848,36 @@ end)
 end) 
 end);
 
+TabFarm:AddToggle({
+	Name = "Auto Equip",
+	Default = false,
+	Callback = function(AEI)
+		_G.autoequip = AEI
+	end    
+})
+
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
+end);
+
 local Section = TabFarm:AddSection({
-	Name = "ออโต้ฟาร์ม แคนน่อน บอล | สำหรับ One Piece: Legendary |"
+	Name = "Auto Cannon Ball | For One Piece: Legendary |"
 })
 	
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม แคนน่อน บอล",
+	Name = "Auto Farm Cannon",
 	Default = false,
 	Callback = function(ACNN)
 		_G.autocannon = ACNN
@@ -979,11 +1100,11 @@ spawn(function() -- autofarm cannon
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "แสปม สกิล ผลไม้ปีศาจ"
+	Name = "Farm Fruit"
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม แสง | ทั้งหมด |",
+	Name = "Spam Farm Light",
 	Default = false,
 	Callback = function(ASM)
 		_G.lightfarm = ASM
@@ -1034,7 +1155,7 @@ spawn(function() -- Light farm npcs
 end);
 
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม กุระ | ทั้งหมด |",
+	Name = "Spam Farm Quake ( Very Lag )",
 	Default = false,
 	Callback = function(QF)
 		_G.Quakefarm = QF
@@ -1086,11 +1207,11 @@ spawn(function() -- Quake farm npcs
 end);
 
 local Section = TabFarm:AddSection({
-	Name = "ออโต้ ผลไม้"
+	Name = "Auto Fruity"
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้ฟาร์ม แสตท",
+	Name = "Auto Farm Stats",
 	Default = false,
 	Callback = function(AMX)
 		AutoStats = AMX
@@ -1283,11 +1404,11 @@ spawn(function()--autofruit
 end)
 
 local Section = TabFarm:AddSection({
-	Name = "ออโต้ ฟามฮาคิ"
+	Name = "Auto Haki"
 })
 
 TabFarm:AddToggle({
-	Name = "ออโต้ ฮาคิ | แบบช้า |",
+	Name = "Auto Farm Haki ( Slow )",
 	Default = false,
 	Callback = function(AHK)
 		AutoHaki1 = AHK
@@ -1391,7 +1512,7 @@ spawn(function()
 end)
 
 TabFarm:AddToggle({
-	Name = "ออโต้ ฮาคิ | แบบเร็ว (ใช้แล้วปิง) |",
+	Name = "Auto Haki ( Fast Very Ping )",
 	Default = false,
 	Callback = function(AHKK)
 		AutoHaki2 = AHKK
@@ -1509,17 +1630,17 @@ game:GetService('RunService').RenderStepped:connect(function()
 end);
 
 local TabNPC = Window:MakeTab({
-	Name = "เอ็นพีซี",
+	Name = "Npc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabNPC:AddSection({
-	Name = "วาปไปยัง เอ็นพีซี"
+	Name = "Teleport Npc"
 })
 
 TabNPC:AddDropdown({
-	Name = "เลือก เอ็นพีซี",
+	Name = "Choose Npc",
 	Default = "",
 	Options = Cache.DevConfig["ListOfMerchant"],
 	Callback = function(CT)
@@ -1528,7 +1649,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Click to Tp",
 	Callback = function()
         if getgenv().tpmerchant == "Rayleigh" then
 	    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame
@@ -1559,7 +1680,7 @@ TabNPC:AddButton({
 })
 
 TabNPC:AddButton({
-	Name = "กดคุยกับเอ็นพีซี",
+	Name = "Talk to Npc",
 	Callback = function()
 	    if getgenv().tpmerchant == "Better Drink" then
             for i, v in pairs(game:GetService("Workspace").Merchants.BetterDrinkMerchant.Clickable:GetDescendants()) do
@@ -1626,11 +1747,11 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "ดูป | สำหรับ OPL: Anarchy |"
+	Name = "Dupe | For OPL: Anarchy |"
 })
 
 TabNPC:AddButton({
-	Name = "ไม่เซฟดาต้า!!",
+	Name = "No Save Data!!!",
 	Callback = function()
         workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
         game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer() 
@@ -1638,11 +1759,11 @@ TabNPC:AddButton({
 })
 
 local Section = TabNPC:AddSection({
-	Name = "ภารกิจแซม"
+	Name = "Quest Sam"
 })
 
 TabNPC:AddToggle({
-	Name = "ออโต้ กดรับเข็มทิศ",
+	Name = "Auto Claim Compass",
 	Default = false,
 	Callback = function(ASQ)
 		AutoSamQuestXX = ASQ
@@ -1660,7 +1781,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "ออโต้หาเข็มทิศ",
+	Name = "Auto Find ( Fast )",
 	Default = false,
 	Callback = function(ASQ)
 		AutoCompassQuestXX = ASQ
@@ -1688,7 +1809,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "ออโต้ทิ้งเข็มทิศ",
+	Name = "Auto Drop Compass",
 	Default = false,
 	Callback = function(ADD)
 		DropCompass = ADD
@@ -1711,7 +1832,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "ออโต้ดึงเข็มทิศ",
+	Name = "Auto Bring Compass",
 	Default = false,
 	Callback = function(AUB)
 		AutoLootXXX = AUB
@@ -1732,11 +1853,11 @@ spawn(function()
 end);
 
 local Section = TabNPC:AddSection({
-	Name = "ซื้อของ เอ็นพีซี"
+	Name = "Mpc Buyer"
 })
 
 TabNPC:AddDropdown({
-	Name = "เลือกซื้อ ดาบ",
+	Name = "Choose buy Sword",
 	Default = "",
 	Options = Cache.DevConfig["ListOfWeapon"],
 	Callback = function(LBN)
@@ -1745,7 +1866,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddButton({
-	Name = "กดซื้อดาบ",
+	Name = "Click to Buy",
 	Callback = function()
         if getgenv().buyweapon == "Dagger" then
 workspace.Merchants.SwordMerchant.Clickable.Retum:FireServer("Dagger",1000)
@@ -1764,7 +1885,7 @@ workspace.Merchants.KrizmaMerch.Clickable.Retum:FireServer("Krizma",80000)
 })
 
 TabNPC:AddDropdown({
-	Name = "เลือกซื้อ ปืน",
+	Name = "Choose Buy Sniper",
 	Default = "",
 	Options = Cache.DevConfig["ListOfSniper"],
 	Callback = function(SD)
@@ -1773,7 +1894,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddButton({
-	Name = "กดซื้อปืน",
+	Name = "Click to Buy",
 	Callback = function()
         if getgenv().buysniper == "Slinger" then
 local args = {
@@ -1808,11 +1929,11 @@ workspace:WaitForChild("Merchants"):WaitForChild("SniperMerchant"):WaitForChild(
 })
 
 local Section = TabNPC:AddSection({
-	Name = "ซื้อน้ำ"
+	Name = "Buyer Drink"
 })
 
 TabNPC:AddDropdown({
-	Name = "เลือกน้ำ",
+	Name = "Choose Drink",
 	Default = "",
 	Options = Cache.DevConfig["ListOfDrink"],
 	Callback = function(SD)
@@ -1821,7 +1942,7 @@ TabNPC:AddDropdown({
 })
 
 TabNPC:AddTextbox({
-	Name = "จำนวน น้ำ",
+	Name = "Amount",
 	Default = "1",
 	TextDisappear = true,
 	Callback = function(AD)
@@ -1830,7 +1951,7 @@ TabNPC:AddTextbox({
 })
 
 TabNPC:AddButton({
-	Name = "ซื้อ น้ำ",
+	Name = "Buy Drink",
 	Callback = function()
         if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
@@ -1840,7 +1961,7 @@ TabNPC:AddButton({
 })
 
 TabNPC:AddToggle({
-	Name = "ออโต้ดื่ม",
+	Name = "Auto Drink",
 	Default = false,
 	Callback = function(ADK)
 		AutoDrink = ADK
@@ -1863,7 +1984,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "ออโต้ทิ้งน้ำ",
+	Name = "Auto Drop Drink",
 	Default = false,
 	Callback = function(ADD)
 		AutoDropDrink = ADD
@@ -1886,7 +2007,7 @@ spawn(function()
 end);
 
 TabNPC:AddToggle({
-	Name = "ออโต้ดึงน้ำ",
+	Name = "Auto Bring Drink",
 	Default = false,
 	Callback = function(ADD)
 		AutoLootDeink = ADD
@@ -1907,35 +2028,579 @@ spawn(function()
 end);
 
 local TabSPM = Window:MakeTab({
-	Name = "แสปมสกิล",
+	Name = "Spam Skill",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabSPM:AddSection({
-	Name = "แสปมสกิล ( 🔒ผู้ซื้อเท่านั้น!!!🔒 )"
+	Name = "Spam Skill"
 })
 
 TabSPM:AddToggle({
-	Name = "ใช้ไม่ได้",
+	Name = "Max Charge 100%",
 	Default = false,
 	Callback = function(SKM)
 		skillmax = SKM
 	end    
 })
 
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+aaxc = hookmetamethod(game, "__namecall", function(self, ...)
+    local args = {...}
+    local method = getnamecallmethod()
+    if method == "FireServer" or method == "InvokeServer" then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 100
+	if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 200
+	if self.Name == "RemoteEvent" and args[3] == "StopCharging" and skillmax then
+            args[6] = 400
+            return aaxc(self, unpack(args))
+	end
+        end
+    end
+end
+    return aaxc(self, ...)
+end);
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Bomb"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Bomb Punch ( On Fix )",
+	Default = false,
+	Callback = function(MBB)
+		_G.bomb1 = MBB
+	end    
+})
+
+spawn(function()--bomb punch
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.bomb1 then
+            local l__LocalPlayer__1 = game.Players.LocalPlayer;
+            local l__mouse__38 = l__LocalPlayer__1:GetMouse();
+            
+            script.RemoteEvent:FireServer(tonumber(serializeTable(remotes)), "BombPower1", "StartCharging", "Left");
+            script.RemoteEvent:FireServer(tonumber(serializeTable(remotes)), "BombPower1", "StopCharging", l__mouse__38.Hit, l__mouse__38, 100);
+          
+        end
+        end)
+    end
+end)
+
+TabSPM:AddToggle({
+	Name = "Auto Bomb Wave",
+	Default = false,
+	Callback = function(BBM)
+		_G.bomb2 = BBM
+	end    
+})
+
+spawn(function()--bomb wave
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.bomb2 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = Mouse.Target,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Quake"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Quake Wave",
+	Default = false,
+	Callback = function(ASQ)
+		_G.quake1 = ASQ
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.quake1 then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+   
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = Mouse.Hit,
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+        end
+        end)
+    end
+end);
+
+TabSPM:AddToggle({
+	Name = "Auto Quake Stomp",
+	Default = false,
+	Callback = function(ASQK)
+		_G.quake2 = ASQK
+	end    
+})
+
+spawn(function() -- quake stomp
+    while wait(getgenv().spamtime) do
+        pcall(function()
+        if _G.quake2 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            function round(num, numDecimalPlaces)
+                local mult = 10 ^ (numDecimalPlaces or 0)
+                return math.floor(num * mult + 0.6) / mult
+            end
+
+            local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+            Xx = humanoid.Position.x-- round(humanoid.Position.x, 0)
+            Yy = humanoid.Position.y--round(humanoid.Position.y, 0)
+            Zz = humanoid.Position.z--round(humanoid.Position.z, 0)
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = Mouse.Hit,
+                [6] = 100,
+                [7] = Vector3.new(Xx, Yy, Zz)
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "QuakePower3",
+                [3] = "StartCharging",
+                [5] = "Right"
+            }
+
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+        end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Light"
+})
+TabSPM:AddToggle({
+	Name = "Auto Light Blast",
+	Default = false,
+	Callback = function(ASL)
+		_G.lightbeam = ASL
+	end    
+})
+
+spawn(function() 
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.lightbeam then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                local humanoidl = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xxl = humanoidl.Position.x -- round(humanoid.Position.x, 0)
+                Yyl = humanoidl.Position.y -- round(humanoid.Position.y, 0)
+                Zzl = humanoidl.Position.z -- round(humanoid.Position.z, 0)
+
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxl, Yyl, Zzl),
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [9] = "Left"
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+                
+                wait(0.05)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "LightPower2",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                
+                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Plasma"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Plasma",
+	Default = false,
+	Callback = function(PMS)
+		_G.plasma1 = PMS
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.plasma1 then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "StartCharging",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+                    wait(0)
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+
+                    local args = {
+                        [1] = tonumber(serializeTable(remotes)),
+                        [2] = "PlasmaPower4",
+                        [3] = "Attack",
+                        [4] = Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z),
+                        [5] = Mouse.Hit,
+                        [6] = 100
+                    }
+                    game:GetService("Players").LocalPlayer.Character.Powers.Plasma.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Flare"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Flare Puch Fire",
+	Default = false,
+	Callback = function(FLA)
+		_G.flare1 = FLA
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        if _G.flare1 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+        
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower2",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-550.802795, 244, 26.3580341, -0.63954407, 0.15401715, -0.753168106, -0, 0.979725122, 0.200346366, 0.768754423, 0.128130332, -0.626577377),
+                [5] = workspace:WaitForChild("IslandWindmill"):WaitForChild("OutterDune"):WaitForChild("Beach"),
+                [7] = "Left"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+        end
+    end
+end);
+
+TabSPM:AddToggle({
+	Name = "Auto Flare Pillar of Fire",
+	Default = false,
+	Callback = function(FLAA)
+		_G.flare2 = FLAA
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        if _G.flare2 then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower5",
+                [3] = "StopCharging",
+                [4] = CFrame.new(Vector3.new(Mouse.Hit.X, Mouse.Hit.Y, Mouse.Hit.Z)),
+                [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Grass"):WaitForChild("Grass"),
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "FlarePower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(-87.2900391, 213.999969, -985.91748, -0.656417644, 0.341256171, -0.757590711, 1.49011612e-08, 0.911768198, 0.410705268, 0.830902815, 0.228523642, -0.607323861),
+                [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Grass"):WaitForChild("Grass"),
+                [7] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Flare.RemoteEvent:FireServer(unpack(args))
+            
+        end
+    end
+end);
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Chilly"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Chilly Wave",
+	Default = false,
+	Callback = function(CIL)
+		_G.chilly = CIL
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.chilly then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+local Section = TabSPM:AddSection({
+	Name = "Spam Dark"
+})
+
+TabSPM:AddToggle({
+	Name = "Auto Dark Star",
+	Default = false,
+	Callback = function(DKS)
+		_G.darkstar = DKS
+	end    
+})
+
+spawn(function()
+    while wait(getgenv().spamtime) do
+        pcall(function()
+            if _G.darkstar then
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+                local humanoid = game.Players.LocalPlayer.Character.HumanoidRootPart
+
+                Xx = humanoid.Position.x -- round(humanoid.Position.x, 0)
+                Yy = humanoid.Position.y -- round(humanoid.Position.y, 0)
+                Zz = humanoid.Position.z -- round(humanoid.Position.z, 0)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "DarkPower10",
+                    [3] = "StartCharging",
+                    [4] = CFrame.new(Xxd, Yyd, Zzd),
+                    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("GrassUplift"):WaitForChild("Wedge"),
+                    [7] = "Right"
+                }
+                game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+
+                wait(0.01)
+                local args = {
+                    [1] = tonumber(serializeTable(remotes)),
+                    [2] = "DarkPower10",
+                    [3] = "StopCharging",
+                    [4] = Mouse.Hit,
+                    [5] = workspace:WaitForChild("IslandTown"):WaitForChild("Beach"):WaitForChild("Beach"),
+                    [6] = 100
+                }
+                game:GetService("Players").LocalPlayer.Character.Powers.Dark.RemoteEvent:FireServer(unpack(args))
+            end
+        end)
+    end
+end);
+
+
 local TabPlayer = Window:MakeTab({
-	Name = "ผู้เล่น & มอน",
+	Name = "Player & Mob",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabPlayer:AddSection({
-	Name = "เฉพาะ มอน"
+	Name = "Mob"
 })
 
 TabPlayer:AddToggle({
-	Name = "ออโต้มอบตาย | ใช้ได้บางครั้ง |",
+	Name = "Kill Aura Mob",
 	Default = false,
 	Callback = function(DTH)
 		_G.deathmob = DTH
@@ -1957,7 +2622,29 @@ spawn(function()
 end)
 
 TabPlayer:AddToggle({
-	Name = "อมตะมอนตีไม่เข้า | ใช้ได้ไม่สมบูรณ์ |",
+	Name = "Kill Aura Kaizu",
+	Default = false,
+	Callback = function(DTH)
+		_G.deathkai = DTH
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if _G.deathkai then
+            pcall(function()
+                for i,v in pairs(game.Workspace.IslandKai:GetChildren()) do
+                    if string.find(v.Name, "Kaizu") then
+			v.Humanoid.Health = die
+		end
+		end
+            end)
+        end
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Godly Mob ( Only Mob Not complete )",
 	Default = false,
 	Callback = function(GOD)
 		_G.mobs = GOD
@@ -1991,7 +2678,7 @@ end);
 
 
 local Section = TabPlayer:AddSection({
-	Name = "ผู้เล่น"
+	Name = "Players"
 })
 
 local Plr = {}
@@ -2001,8 +2688,8 @@ for i,v in pairs(game:GetService("Players"):GetChildren()) do
 end
 
 TabPlayer:AddDropdown({
-	Name = "เลือกผู้เล่น",
-	Default = "vQZNhF",
+	Name = "Choose Player",
+	Default = "",
 	Options = Plr,
 	Callback = function(PP)
 		SelectPlayer = PP
@@ -2010,14 +2697,97 @@ TabPlayer:AddDropdown({
 })
 
 TabPlayer:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Click to tp",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame
   	end    
 })
 
+TabPlayer:AddToggle({
+	Name = "View Player",
+	Default = false,
+	Callback = function(VPL)
+		_G.viewplr = VPL
+if not _G.viewplr then
+            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
+			end
+	end    
+})
+
+local function spectate(targetPlayer)
+    if targetPlayer and targetPlayer.Character then
+        local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
+        if humanoid then
+            workspace.CurrentCamera.CameraSubject = humanoid
+            print("Now spectating:", targetPlayer.Name)
+        end
+    end
+end
+
+spawn(function()
+    while task.wait(0.5) do
+        if _G.viewplr and SelectPlayer then
+            local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
+            if targetPlayer then
+                spectate(targetPlayer)
+            else
+                print("Player not found or unavailable:", SelectPlayer)
+            end
+        end
+    end
+end)
+TabPlayer:AddToggle({
+	Name = "Auto Bring Player",
+	Default = false,
+	Callback = function(BPR)
+		BringPlr = BPR
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if BringPlr then
+            pcall(function()
+                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-2.5)
+            end)
+        end
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Aim Player",
+	Default = false,
+	Callback = function(ASL)
+		aimsilent = ASL
+	end    
+})
+
+spawn(function()
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(SelectPlayer)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
+end)
+
 TabPlayer:AddButton({
-	Name = "เห็นชื่อผู้เล่นทุกคน",
+	Name = "ESP Player",
 	Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
 
@@ -2095,62 +2865,12 @@ Players.PlayerAdded:Connect(function(player)
 end)
   	end })
 
-TabPlayer:AddToggle({
-	Name = "ส่องผู้เล่น | ไม่ทำงาน |",
-	Default = false,
-	Callback = function(Value)
-		_G.viewplr = Value
-if not _G.viewplr then
-            workspace.CurrentCamera.CameraSubject = game.Players.LocalPlayer.Character:FindFirstChild("Humanoid")
-			end
-	end    
-})
-
-spawn(function()
-    while task.wait(0.5) do
-        if _G.viewplr and SelectPlayer then
-            local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
-            if targetPlayer then
-                spectate(targetPlayer)
-            else
-                print("Player not found or unavailable:", SelectPlayer)
-            end
-        end
-    end
-end)
-
-TabPlayer:AddToggle({
-	Name = "ดึงผู้เล่น",
-	Default = false,
-	Callback = function(BPR)
-		BringPlr = BPR
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if BringPlr then
-            pcall(function()
-                game.Players[SelectPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-2.5)
-            end)
-        end
-    end
-end)
-
-TabPlayer:AddToggle({
-	Name = "ล็อคเป้าผู้เล่น ใช้ไม่ได้ ( 🔒ผู้ซื้อเท่านั้น!!!🔒 )",
-	Default = false,
-	Callback = function(ASL)
-		aimsilent = ASL
-	end    
-})
-
 local Section = TabPlayer:AddSection({
-	Name = "ผู้เล่น คิล"
+	Name = "Player Kill"
 })
 
 TabPlayer:AddToggle({
-	Name = "ออโต้แคนน่อน บอล ผู้เล่น",
+	Name = "Auto Cannon Player Kill ( For One Piece: Legendary )",
 	Default = false,
 	Callback = function(ACN)
 		_G.autocannonplr = ACN
@@ -2291,30 +3011,226 @@ spawn(function() -- autofarm teleport cannon
     end
 end);
 
+TabPlayer:AddToggle({
+	Name = "Quake Spam Kill",
+	Default = false,
+	Callback = function(QKL)
+		_G.quakekill = QKL
+	end    
+})
+
+
+spawn(function() -- auto farm quake
+    while task.wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                    if _G.quakekill  then
+                        if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
+                                if v.Name ~= game.Players.LocalPlayer.Name then
+                                    wait(0.1)
+                                    local args = {
+                                        [1] = tonumber(serializeTable(remotes)),
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.Character.HumanoidRootPart.CFrame,
+                                        [5] = v.Character.HumanoidRootPart.CFrame,
+                                        [6] = 100,
+                                        [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+                                    }
+                                    
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Chilly Spam Kill",
+	Default = false,
+	Callback = function(CHKL)
+		_G.chillykill = CHKL
+	end    
+})
+
+spawn(function() 
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if _G.chillykill then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,15,0)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.chillykill then
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "ChillyPower11",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Chilly.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
+TabPlayer:AddToggle({
+	Name = "Bomb Spam Kill",
+	Default = false,
+	Callback = function(BMB)
+		_G.bombkill = BMB
+	end    
+})
+
+spawn(function() 
+    game:GetService("RunService").RenderStepped:Connect(function()
+        if _G.bombkill then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame*CFrame.new(0,15,0)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+        if _G.bombkill then 
+            local pla = game.Players.LocalPlayer;
+            local Mouse = pla:GetMouse();
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StopCharging",
+                [4] = Mouse.Hit,
+                [5] = Mouse.Target,
+                [6] = 100
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+            
+            local args = {
+                [1] = tonumber(serializeTable(remotes)),
+                [2] = "BombPower5",
+                [3] = "StartCharging",
+                [4] = CFrame.new(Vector3.new(-3.3828134536743164, 213, -366.8262939453125), Vector3.new(0.05879887938499451, -0.29103368520736694, -0.9549042582511902)),
+                [5] = workspace.IslandWindmill.Dock.Boards.Board,
+                [6] = "Right"
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Bomb.RemoteEvent:FireServer(unpack(args))
+            
+        end
+        end)
+    end
+end)
+
 local Section = TabPlayer:AddSection({
-	Name = "บัคแดชตายย เฉพาะ ตอนยืนนิ่ง ( 🔒ผู้ซื้อเท่านั้น!!!🔒 )"
+	Name = "Bug Dash Death ( Only when standing still ) | For OPL: Anarchy |"
 })
 
 TabPlayer:AddToggle({
-	Name = "แปสมแดช ( ใช้ไม่ได้ )",
+	Name = "Spam Dash ( Choose Player )",
 	Default = false,
 	Callback = function(ADSH)
 		_G.autodash = ADSH
 	end    
 })
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+        end)
+    end
+end);
+
+TabPlayer:AddToggle({
+	Name = "Press to use first, Spam Dash",
+	Default = false,
+	Callback = function(ASAV)
+		_G.autoshave = ASAV
+	end    
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+        end)
+    end
+end);
+
 local TabLD = Window:MakeTab({
-	Name = "เกาะ",
+	Name = "Island",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 local Section = TabLD:AddSection({
-	Name = "พื้นที่ปลอดภัย"
+	Name = "SafeZone"
 })
 
 TabLD:AddDropdown({
-	Name = "เลือก พื้นที่ปลอดภัย",
+	Name = "Choose SafeZone",
 	Default = "",
 	Options = Cache.DevConfig["ListOfSafeZone"],
 	Callback = function(CSF)
@@ -2323,7 +3239,7 @@ TabLD:AddDropdown({
 })
 	
 TabLD:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Click to Tp",
 	Callback = function()
         if getgenv().tpsafezone == "SafeZone Sky" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
@@ -2340,11 +3256,11 @@ TabLD:AddButton({
 })
 	
 local Section = TabLD:AddSection({
-	Name = "วาปไปยังเกาะต่าง ๆ"
+	Name = "Teleport Island"
 })
 
 TabLD:AddDropdown({
-	Name = "เลือก เกาะ",
+	Name = "Choose Island",
 	Default = "",
 	Options = Cache.DevConfig["ListOfIsland"],
 	Callback = function(GIS)
@@ -2353,7 +3269,7 @@ TabLD:AddDropdown({
 })
 
 TabLD:AddButton({
-	Name = "กดเพื่อวาป",
+	Name = "Click to Tp",
 	Callback = function()
         if getgenv().tpisland == "Grassy" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(737, 241, 1209)
@@ -2424,11 +3340,11 @@ TabLD:AddButton({
 })
 
 local Section = TabLD:AddSection({
-	Name = "วาปฆ่า บอสดาบ"
+	Name = "Warp kill Boss Pursuer"
 })
 
 TabLD:AddToggle({
-	Name = "ออโต้ฟาร์ม บอสดาบ",
+	Name = "Auto Kill Boss Pursuer ( Have Yoru to Spam )",
 	Default = false,
 	Callback = function(AFP)
 		_G.autopursuer = AFP
@@ -2459,44 +3375,106 @@ spawn(function()
 end);
 
 local Section = TabLD:AddSection({
-	Name = "สำหรับอีเว้น | ฮาโลวีนน!! | ( 🔒ผู้ซื้อเท่านั้น!!!🔒 )"
+	Name = "For Event Halloween ( Farm earns a lot of beri )"
 })
 
 TabLD:AddToggle({
-	Name = "ออโต้ดึง ซอมบี้ ( ใช้ไม่ได้ )",
+	Name = "Auto Bring Zombie",
 	Default = false,
 	Callback = function(AFZ)
 		FarmZom = AFZ
 	end    
 })
 
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if FarmZom then
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if FarmZom then
+                for _,v in pairs(game.Workspace.WorldEvent.Halloween.Zombies:GetChildren()) do
+                    if string.find(v.Name, "Zombie")
+                    and v:FindFirstChild("HumanoidRootPart") then
+                        v.HumanoidRootPart.CanCollide = false
+                    	v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
+			v:FindFirstChild("HumanoidRootPart").CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-5)
+                        if v.Humanoid.Health == 0 then
+                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                            v:Destroy()
+                        end
+                     end
+		end
+            end
+        end)
+    end
+end);
+
 TabLD:AddButton({
-	Name = "วาปไปยังฟักทอง ( ใช้ได้ )",
+	Name = "Tp to Pumpkin",
 	Callback = function()
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.WorldEvent.Halloween.Pumpkin.CFrame
   	end    
 })
+
+TabLD:AddToggle({
+	Name = "Auto Click Pumpkin",
+	Default = false,
+	Callback = function(ACP)
+		AutoClickP = ACP
+	end    
+})
+
+spawn(function()--autofruit
+    while wait() do
+        pcall(function()
+            if AutoClickP then
+                wait(.5)
+                for i,v in pairs(game.Workspace.WorldEvent.Halloween.Pumpkin:GetChildren()) do
+                    if v:IsA("ClickDetector") then
+                        fireclickdetector(v)
+                    end
+                end
+            end
+        end)
+    end
+end);
 	
 local TabMS = Window:MakeTab({
-	Name = "อื่นๆอีก",
+	Name = "Misc",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
 
 
 local Section = TabMS:AddSection({
-	Name = "เซิฟเวอร์"
+	Name = "Server"
 })
 
 TabMS:AddButton({
-	Name = "รีจอย เซิฟเวอร์",
+	Name = "Rejoin",
 	Callback = function()
         game:GetService('TeleportService'):TeleportToPlaceInstance(game.PlaceId, game.JobId) 
   	end    
 })
 
 TabMS:AddButton({
-	Name = "ย้าย เซิฟเวอร์",
+	Name = "Hop Server",
 	Callback = function()
         local PlaceID = game.PlaceId
           local AllIDs = {}
@@ -2575,11 +3553,11 @@ TabMS:AddButton({
 })
 
 local Section = TabMS:AddSection({
-	Name = "เปิดกล่องผลไม้ปีศาจ"
+	Name = "Auto Unbox"
 })
 
 TabMS:AddToggle({
-	Name = "เปิดกล่อง | Common |",
+	Name = "Unbox ( Common )",
 	Default = false,
 	Callback = function(AUC)
 		UnboxBoxC = AUC
@@ -2603,7 +3581,7 @@ spawn(function()
 end);
 
 TabMS:AddToggle({
-	Name = "เปิดกล่อง | Uncommon |",
+	Name = "Unbox ( Uncom )",
 	Default = false,
 	Callback = function(AUN)
 		AutoUnboxU = AUN
@@ -2627,7 +3605,7 @@ spawn(function()
 end);
 
 TabMS:AddToggle({
-	Name = "เปิดกล่อง | Rare, Ultra |",
+	Name = "Unbox ( Rare & Ultra Rare )",
 	Default = false,
 	Callback = function(AULR)
 		UnboxRL = AULR
@@ -2650,66 +3628,103 @@ spawn(function()
 end);
 
 local Section = TabMS:AddSection({
-	Name = "ออโต้ ลบกล่อง | ลดอาการแลค |"
+	Name = "Auto Delete Boxs ( Reduce lag )"
 })
 
 TabMS:AddToggle({
-	Name = "ออโต้ลบ คอมม่อน ( ไม่ทำงาน )",
+	Name = "Delete Common",
 	Default = false,
 	Callback = function(ADC)
-		_G.autodcom = ADC
+		_G.autodelete1 = ADC
 	end    
 })
 
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autodelete1 then
+local Event = game:GetService("Players").LocalPlayer.Backpack["Common Box"]
+        Event:Destroy()
+	end
+        end)
+    end
+end)
+
 TabMS:AddToggle({
-	Name = "ออโต้ลบ อันคอม ( ไม่ทำงาน )",
+	Name = "Delete Uncom",
 	Default = false,
 	Callback = function(ADU)
-		_G.autodun = ADU
+		_G.autodelete2 = ADU
 	end    
 })
 
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autodelete2 then
+local Event = game:GetService("Players").LocalPlayer.Backpack["Uncommon Box"]
+        Event:Destroy()
+	end
+        end)
+    end
+end)
+
 local Section = TabMS:AddSection({
-	Name = "ฟังชั่นอื่นๆ"
+	Name = "Anti"
 })
 
 TabMS:AddToggle({
-	Name = "คุ้มกัน สตั้น ( ไม่ทำงาน )",
+	Name = "Anti Stun ( On Fix )",
 	Default = false,
 	Callback = function(ATS)
 		_G.autistun = ATS
 	end    
 })
 
-spawn(function()
-while wait() do
-       pcall(function()
-	if _G.antistun then
-       local antistun = game.Players.LocalPlayer.Character
-       repeat
-       antistun["DF_Disabled"].Value = false
-       antistun.HeartStolen.Value = true
-       antistun.Returned.Value = false
-       antistun.Hobbied.Value = false
-       antistun.HMS.Value = false
-       antistun.ChillyPunched.Value = false
-       antistun.CandyTouched.Value = false
-       antistun.Negative.Value = false
-       antistun.OpeSevered.Value = false
-       antistun.SnowTouched.Value = false
-       antistun.RumbleStun.Value = false
-       antistun.GravityCrushed.Value = false
-   
-       wait(0.06)
-       until antistun.Humanoid.Health == 0
-	
-end
+spawn(function() 
+    while wait() do
+        if _G.antistun then
+            pcall(function()
+                for i,v in pairs(game.workspace.ResourceHolder:GetChildren()) do
+                    if v.Name ~= game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId] then
+                     v.MagmaPool.TouchInterest:Destroy()
+                    end
+                end
+            end)
+        end
+    end
 end)
-end 
-end);
+
+TabMS:AddToggle({
+	Name = "Anti Water",
+	Default = false,
+	Callback = function(NODM)
+		_G.nowaterdamage = NODM
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if _G.nowaterdamage then
+            pcall(function()
+                local args = {
+    [1] = "NOPLS"
+}
+
+game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
+if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+            end)
+        end
+    end
+end)
 
 TabMS:AddButton({
-	Name = "ลดอาการแล็ค",
+	Name = "Anti Lag",
 	Callback = function()
 	if not gethui then
     warn("Incompatible executor: gethui is unavailable")
@@ -2788,156 +3803,21 @@ end
   	end    
 })
 
-local Section = TabMS:AddSection({
-	Name = "ไม่ชอบคนไหนเดะเพิ่มลิสกวนให้นะจ้ะ | สำหรับ OPL: Anarchy |"
-})
-
 TabMS:AddToggle({
-	Name = "แสปมแดช | กวน เฉพาะ คนปญอ. |",
-	Default = true,
-	Callback = function(BKP)
-		_G.blacklist = BKP
+	Name = "Anti Afk ( On Fix )",
+	Default = false,
+	Callback = function(AFK)
+		_G.antiafk = AFK
 	end    
 })
 
-local ListPlayer = "vQZNhF"
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[ListPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+if _G.antiafk then
+local vu = game:GetService("VirtualUser")
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            end)
 end
-	end
-            end
-        end)
-    end
-end);
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-	for i,v in pairs(game:GetService("Workspace")[ListPlayer]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-	end
-            end
-        end)
-    end
-end);
-
-local ListPlayer2 = "milk7_O2"
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[ListPlayer2]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[ListPlayer2].Character.HumanoidRootPart.Position),workspace.Water)
-end
-	end
-            end
-        end)
-    end
-end);
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-	for i,v in pairs(game:GetService("Workspace")[ListPlayer2]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-	end
-            end
-        end)
-    end
-end);
-
-local ListPlayer3 = "roun1101"
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[ListPlayer3]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[ListPlayer3].Character.HumanoidRootPart.Position),workspace.Water)
-end
-	end
-            end
-        end)
-    end
-end);
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-	for i,v in pairs(game:GetService("Workspace")[ListPlayer3]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-	end
-            end
-        end)
-    end
-end);
-
-local ListPlayer4 = "jeongin2011"
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-for i,v in pairs(game:GetService("Workspace")[ListPlayer4]:GetChildren()) do
-if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[ListPlayer4].Character.HumanoidRootPart.Position),workspace.Water)
-end
-	end
-            end
-        end)
-    end
-end);
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.blacklist then
-	for i,v in pairs(game:GetService("Workspace")[ListPlayer4]:GetChildren()) do
-if string.find(v.Name, "ShaveServer") then
-v:Destroy()
-end
-	end
-            end
-        end)
-    end
-end);
-
-local Section = TabMS:AddSection({
-	Name = "ชื่อที่จะโดน เฉพาะ แสปมแดช"
-})
-
-local Section = TabMS:AddSection({
-	Name = "•> 🚫 Name: vQZNhF or 100y 🚫 <•"
-})
-
-local Section = TabMS:AddSection({
-	Name = "•> 🚫 Name: milk7_O2 🚫 <•"
-})
-
-local Section = TabMS:AddSection({
-	Name = "•> 🚫 Name: roun1101 🚫 <•"
-})
-
-local Section = TabMS:AddSection({
-	Name = "•> 🚫 Name: jeongin2011 🚫 <•"
-})
 
 OrionLib:Init()
