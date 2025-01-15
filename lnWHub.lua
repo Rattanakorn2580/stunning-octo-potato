@@ -69,8 +69,8 @@ end)
 spawn(function()
     while wait() do
         pcall(function()
-            if _G.autoshave then
-	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[selectedPlayer]:GetChildren()) do
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
 end
@@ -80,77 +80,19 @@ end
     end
 end);
 
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
-
-
-setreadonly(mta, false)
-
-mta.__namecall = newcclosure(function(self, ...)
-    local args = {...}
-    local arguments = args
-    local a = {}
-    for i = 1, #arguments - 1 do
-        a[i] = arguments[i]
-    end
-    local method = getnamecallmethod() 
-
-    if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
-            if args[1] then
-                return nil
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[selectedPlayer]:GetChildren()) do
+if string.find(v.Name, "Shave") then
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
             end
-        end
+        end)
     end
-    
-    return namecall(self, ...)    
-end)
-
-local remotes = {}
-    local azc
-    azc=hookmetamethod(game,"__namecall",function(self,...)
-        local args = {...}
-        local method = getnamecallmethod()
-        if method == "FireServer" or method == "InvokeServer" then
-            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
-                remotes[self.Name] = args[1]
-                return azc(self,unpack(args))
-            end
-        end
-          return azc(self,...)
-    end)
-
-function serializeTable(val, name, skipnewlines, depth)
-    skipnewlines = skipnewlines or false
-    depth = depth or 0
- 
-    local tmp = string.rep("", depth)
- 
-    if name then tmp = tmp end
- 
-    if type(val) == "table" then
-        tmp = tmp .. (not skipnewlines and "" or "")
- 
-        for k, v in pairs(val) do
-            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
-        end
- 
-        tmp = tmp .. string.rep("", depth) 
-    elseif type(val) == "number" then
-        tmp = tmp .. tostring(val)
-    elseif type(val) == "string" then
-        tmp = tmp .. string.format("%q", val)
-    elseif type(val) == "boolean" then
-        tmp = tmp .. (val and "true" or "false")
-    elseif type(val) == "function" then
-        tmp = tmp  .. "func: " .. debug.getinfo(val).name
-    else
-        tmp = tmp .. tostring(val)
-    end
- 
-    return tmp
- end
+end);
 
 local Cache = { DevConfig = {} };
 
@@ -1155,6 +1097,191 @@ spawn(function()
     end
 end)
 
+local mta = getrawmetatable(game)
+local namecall = mta.__namecall
+local setreadonly = setreadonly or make_writable
+
+
+setreadonly(mta, false)
+
+mta.__namecall = newcclosure(function(self, ...)
+    local args = {...}
+    local arguments = args
+    local a = {}
+    for i = 1, #arguments - 1 do
+        a[i] = arguments[i]
+    end
+    local method = getnamecallmethod() 
+
+    if method == 'FireServer' or method == "InvokeServer" then
+        if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+    end
+    
+    return namecall(self, ...)    
+end)
+
+local remotes = {}
+    local azc
+    azc=hookmetamethod(game,"__namecall",function(self,...)
+        local args = {...}
+        local method = getnamecallmethod()
+        if method == "FireServer" or method == "InvokeServer" then
+            if self.Name == "RemoteEvent" and args[3] == "StopCharging" then
+                remotes[self.Name] = args[1]
+                return azc(self,unpack(args))
+            end
+        end
+          return azc(self,...)
+    end)
+
+function serializeTable(val, name, skipnewlines, depth)
+    skipnewlines = skipnewlines or false
+    depth = depth or 0
+ 
+    local tmp = string.rep("", depth)
+ 
+    if name then tmp = tmp end
+ 
+    if type(val) == "table" then
+        tmp = tmp .. (not skipnewlines and "" or "")
+ 
+        for k, v in pairs(val) do
+            tmp =  tmp .. serializeTable(v, k, skipnewlines, depth + 1) .. (not skipnewlines and "" or "")
+        end
+ 
+        tmp = tmp .. string.rep("", depth) 
+    elseif type(val) == "number" then
+        tmp = tmp .. tostring(val)
+    elseif type(val) == "string" then
+        tmp = tmp .. string.format("%q", val)
+    elseif type(val) == "boolean" then
+        tmp = tmp .. (val and "true" or "false")
+    elseif type(val) == "function" then
+        tmp = tmp  .. "func: " .. debug.getinfo(val).name
+    else
+        tmp = tmp .. tostring(val)
+    end
+ 
+    return tmp
+ end
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "AimBot Player (Choose Player)",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        aimsilent = value 
+spawn(function()
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(selectedPlayer)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
+end)
+    end
+})
+
+Tabs.PlayerTab:AddButton({
+    Title = "Teleport to SafeZone",
+    Description = " ",
+    Callback = function()
+        -- ESP Script (Chams, Name, Box, Tracers)
+
+local RunService = game:GetService("RunService")
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Camera = workspace.CurrentCamera
+
+-- Settings
+local ESPSettings = {
+    NameColor = Color3.fromRGB(255, 255, 255), -- White name
+    ChamColor = BrickColor.new("Bright yellow"), -- Yellow chams
+    ChamTransparency = 0.7, -- Chams transparency (0 = opaque, 1 = invisible)
+    TextSize = 10, -- ESP Name Text Size
+}
+
+-- Function to create Chams (highlight players through walls)
+local function createChams(character)
+    for _, part in pairs(character:GetChildren()) do
+        if part:IsA("BasePart") then
+            local cham = Instance.new("BoxHandleAdornment")
+            cham.Size = part.Size
+            cham.Adornee = part
+            cham.Color = ESPSettings.ChamColor
+            cham.Transparency = ESPSettings.ChamTransparency
+            cham.ZIndex = 0
+            cham.AlwaysOnTop = true
+            cham.Parent = part
+        end
+    end
+end
+
+-- Function to create ESP (Names, Boxes, Tracers)
+local function createESP(player)
+    local name = Drawing.new("Text")
+
+    RunService.RenderStepped:Connect(function()
+        if player and player.Character and player.Character:FindFirstChild("HumanoidRootPart") and player ~= LocalPlayer then
+            local rootPart = player.Character.HumanoidRootPart
+            local pos, onScreen = Camera:WorldToViewportPoint(rootPart.Position)
+            
+            if onScreen then
+                -- Name ESP
+                name.Visible = true
+                name.Text = player.Name
+                name.Size = ESPSettings.TextSize
+                name.Color = ESPSettings.NameColor
+                name.Position = Vector2.new(pos.X, pos.Y - 25)
+
+            else
+                name.Visible = false
+            end
+        else
+            name.Visible = false
+        end
+    end)
+end
+
+-- Apply ESP to all players
+for _, player in pairs(Players:GetPlayers()) do
+    if player ~= LocalPlayer then
+        createESP(player)
+        player.CharacterAdded:Connect(function(character)
+            createChams(character)
+        end)
+    end
+end
+
+-- Update ESP when a new player joins
+Players.PlayerAdded:Connect(function(player)
+    player.CharacterAdded:Connect(function(character)
+        createChams(character)
+        createESP(player)
+    end)
+end)
+    end
+})
+
 local Section = Tabs.PlayerTab:AddSection("Spam Dash (If Stand Still It Will Delete Character.)")
 
 Tabs.PlayerTab:AddToggle("Toggle", {
@@ -1163,6 +1290,19 @@ Tabs.PlayerTab:AddToggle("Toggle", {
     Default = false, 
     Callback = function(value)
         _G.autodash = value 
+	spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+        end)
+    end
+end)
     end
 })
 
@@ -1378,7 +1518,37 @@ Tabs.FarmFruitTab:AddToggle("Toggle", {
     Description = " ",
     Default = false, 
     Callback = function(value)
-        _G.Quake1 = value 
+        _G.quakekill = value 
+	spawn(function() -- auto farm quake
+    while task.wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                    if _G.quakekill  then
+                        if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
+                                if v.Name ~= game.Players.LocalPlayer.Name then
+                                    wait(0.1)
+                                    local args = {
+                                        [1] = tonumber(serializeTable(remotes)),
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.Character.HumanoidRootPart.CFrame,
+                                        [5] = v.Character.HumanoidRootPart.CFrame,
+                                        [6] = 100,
+                                        [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+                                    }
+                                    
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
     end
 })
 
