@@ -1131,7 +1131,7 @@ local function spectate(targetPlayer)
 end
 
 Tabs.PlayerTab:AddToggle("SpectatePlayerToggle", {
-    Title = "Spectate Player",
+    Title = "View Player",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -1154,6 +1154,17 @@ spawn(function()
         end
     end
 end)
+
+local Section = Tabs.PlayerTab:AddSection("Spam Dash (If Stand Still It Will Delete Character.)")
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "Auto Dash (Choose Player)",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        _G.autodash = value 
+    end
+})
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "100% Max Charge Skill",
@@ -1357,6 +1368,17 @@ spawn(function() -- Quake farm npcs
         end)
     end
 end)
+    end
+})
+
+local Section = Tabs.FarmFruitTab:AddSection("Fruity Farm Kill Players")
+
+Tabs.FarmFruitTab:AddToggle("Toggle", {
+    Title = "Auto Quake Kill",
+    Description = " ",
+    Default = false, 
+    Callback = function(value)
+        _G.Quake1 = value 
     end
 })
 
@@ -1662,7 +1684,7 @@ Tabs.TeleportTab:AddDropdown("NpcDropdown", {
 
 Tabs.TeleportTab:AddButton({
     Title = "Teleport to NPC",
-    Description = " ",
+    Description = "",
     Callback = function()
         if selectedNpc then
             local npcPosition = npcPositions[selectedNpc]
@@ -1690,7 +1712,7 @@ Tabs.TeleportTab:AddDropdown("SafeZoneDropdown", {
 
 Tabs.TeleportTab:AddButton({
     Title = "Teleport to SafeZone",
-    Description = " ",
+    Description = "",
     Callback = function()
        if getgenv().tpsafezone == "OutSpace SafeZone" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
