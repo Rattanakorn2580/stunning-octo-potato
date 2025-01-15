@@ -488,14 +488,14 @@ local Section = Tabs.FarmTab:AddSection("Weapon Farm")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Farm Mobs [Weapon]",
-    Description = "Kill mobs with your weapon equipped!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.behindFarm = state
     end
 })
 
-local MobList = { "Boar", "Crab", "Angry", "Thief", "Gunslinger", "Freddy" }
+local MobList = { "Boar", "Crab", "Angry", "Thief", "Gunslinger", "Freddy", "Thug" }
 
 local function IsMobAllowed(mobName)
     for _, allowedMob in ipairs(MobList) do
@@ -578,7 +578,7 @@ end
 local SelectedWeapon = nil
 local WeaponDropdown = Tabs.FarmTab:AddDropdown("WeaponDropdown", {
     Title = "Select Weapon",
-    Description = "Choose a weapon to equip automatically!",
+    Description = "",
     Values = WeaponList,
     Multi = false,
     Default = nil,
@@ -610,7 +610,7 @@ end
 
 local AutoEquipToggle = Tabs.FarmTab:AddToggle("AutoEquipToggle", {
     Title = "Auto Equip Weapon",
-    Description = "Automatically equip the selected weapon!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.AutoEquip = state
@@ -627,7 +627,7 @@ end)
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Click",
-    Description = "Just an auto clicker!\nNote: You don't need to activate it to auto farm weapon.",
+    Description = "",
     Default = false,
     Callback = function(ACK)
         AutoClicking = ACK
@@ -649,7 +649,7 @@ local Section = Tabs.FarmTab:AddSection("Other Farms")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Collect Chests",
-    Description = "Collect all the chests for yourself!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autochest = Value
@@ -673,7 +673,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Package",
-    Description = "Collect a package for you!",
+    Description = "",
     Default = false,
     Callback = function(bool11)
         getgenv().tre = bool11
@@ -693,7 +693,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Package",
-    Description = "Delivery the packages for you!",
+    Description = "",
     Default = false,
     Callback = function(bool00)
         getgenv().tret = bool00
@@ -726,7 +726,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Stats Farm",
-    Description = "Farm stats for you!\nNote: Cause lag.",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autostatsfarm = Value
@@ -800,8 +800,8 @@ Tabs.FarmTab:AddToggle("Toggle", {
 })
 
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Fish Farm",
-    Description = "This will catch, cook and sell the fish in a safe place.",
+    Title = "Auto Sell & Fish Farm",
+    Description = "",
     Default = false,
     Callback = function(AFH)
 		AutoFish = AFH
@@ -869,7 +869,7 @@ end);
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Haki",
-    Description = "When you reach level 1000, he will automatically acquire haki for you!",
+    Description = "",
     Default = false,
     Callback = function(bool122)
         getgenv().haki = bool122
@@ -909,7 +909,7 @@ local hakispeed = 1
 local Slider = Tabs.FarmTab:AddSlider("Slider", 
 {
     Title = "Haki % Speed",
-    Description = "Select the farm speed!\nNote: High speeds are not recommended.",
+    Description = "",
     Default = 1,
     Min = 1,
     Max = 5,
@@ -921,7 +921,7 @@ local Slider = Tabs.FarmTab:AddSlider("Slider",
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Farm Haki",
-    Description = "This will farm your haki according to the sliders setting!",
+    Description = "",
     Default = false,
     Callback = function(vccl)
         getgenv().concuvm = vccl
@@ -1171,7 +1171,7 @@ function serializeTable(val, name, skipnewlines, depth)
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "AimBot Player (Choose Player)",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         aimsilent = value 
@@ -1202,8 +1202,8 @@ end)
 })
 
 Tabs.PlayerTab:AddButton({
-    Title = "Teleport to SafeZone",
-    Description = " ",
+    Title = "ESP Name Players",
+    Description = "",
     Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
 
@@ -1286,7 +1286,7 @@ local Section = Tabs.PlayerTab:AddSection("Spam Dash (If Stand Still It Will Del
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "Auto Dash (Choose Player)",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.autodash = value 
@@ -1296,7 +1296,7 @@ Tabs.PlayerTab:AddToggle("Toggle", {
             if _G.autodash then
 	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+v:FireServer(CFrame.new(game.Players[selectedPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
