@@ -494,7 +494,7 @@ local Section = Tabs.FarmTab:AddSection("Weapon Farm")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Farm Mobs [Weapon]",
-    Description = "Kill mobs with your weapon equipped!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.behindFarm = state
@@ -1177,7 +1177,7 @@ function serializeTable(val, name, skipnewlines, depth)
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "AimBot Player (Choose Player)",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         aimsilent = value 
@@ -1292,7 +1292,7 @@ local Section = Tabs.PlayerTab:AddSection("Spam Dash (If Stand Still It Will Del
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "Auto Dash (Choose Player)",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.autodash = value 
