@@ -436,7 +436,7 @@ end)
 local AutoCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto Find Compasses (Slow)",
+    Title = "Auto Find Compasses (Fast)",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -468,7 +468,7 @@ local DropCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Drop Compasses",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         DropCompass = value 
@@ -584,7 +584,7 @@ end
 local SelectedWeapon = nil
 local WeaponDropdown = Tabs.FarmTab:AddDropdown("WeaponDropdown", {
     Title = "Select Weapon",
-    Description = "Choose a weapon to equip automatically!",
+    Description = "",
     Values = WeaponList,
     Multi = false,
     Default = nil,
@@ -616,7 +616,7 @@ end
 
 local AutoEquipToggle = Tabs.FarmTab:AddToggle("AutoEquipToggle", {
     Title = "Auto Equip Weapon",
-    Description = "Automatically equip the selected weapon!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.AutoEquip = state
@@ -633,7 +633,7 @@ end)
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Click",
-    Description = "Just an auto clicker!\nNote: You don't need to activate it to auto farm weapon.",
+    Description = "",
     Default = false,
     Callback = function(ACK)
         AutoClicking = ACK
@@ -655,7 +655,7 @@ local Section = Tabs.FarmTab:AddSection("Other Farms")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Collect Chests",
-    Description = "Collect all the chests for yourself!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autochest = Value
@@ -679,7 +679,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Package",
-    Description = "Collect a package for you!",
+    Description = "",
     Default = false,
     Callback = function(bool11)
         getgenv().tre = bool11
@@ -699,7 +699,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Package",
-    Description = "Delivery the packages for you!",
+    Description = "",
     Default = false,
     Callback = function(bool00)
         getgenv().tret = bool00
@@ -732,7 +732,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Stats Farm",
-    Description = "Farm stats for you!\nNote: Cause lag.",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autostatsfarm = Value
@@ -807,7 +807,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Fish Farm",
-    Description = "This will catch, cook and sell the fish in a safe place.",
+    Description = "",
     Default = false,
     Callback = function(AFH)
 		AutoFish = AFH
@@ -875,7 +875,7 @@ end);
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Haki",
-    Description = "When you reach level 1000, he will automatically acquire haki for you!",
+    Description = "",
     Default = false,
     Callback = function(bool122)
         getgenv().haki = bool122
@@ -900,7 +900,7 @@ local hakitarget = 25
 local Slider = Tabs.FarmTab:AddSlider("Slider", 
 {
     Title = "Haki % Use",
-    Description = "Select the amount of haki that will be consumed to farm!\nNote: The quantity may not be exact.",
+    Description = "",
     Default = 25,
     Min = 1,
     Max = 100,
@@ -915,7 +915,7 @@ local hakispeed = 1
 local Slider = Tabs.FarmTab:AddSlider("Slider", 
 {
     Title = "Haki % Speed",
-    Description = "Select the farm speed!\nNote: High speeds are not recommended.",
+    Description = "",
     Default = 1,
     Min = 1,
     Max = 5,
@@ -927,7 +927,7 @@ local Slider = Tabs.FarmTab:AddSlider("Slider",
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Farm Haki",
-    Description = "This will farm your haki according to the sliders setting!",
+    Description = "",
     Default = false,
     Callback = function(vccl)
         getgenv().concuvm = vccl
@@ -1208,8 +1208,8 @@ end)
 })
 
 Tabs.PlayerTab:AddButton({
-    Title = "Teleport to SafeZone",
-    Description = " ",
+    Title = "ESP Name Players",
+    Description = "",
     Callback = function()
         -- ESP Script (Chams, Name, Box, Tracers)
 
@@ -1416,7 +1416,7 @@ local Section = Tabs.FarmFruitTab:AddSection("Fruity Spam Farm")
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "Auto Light Farm",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.lightfarm = value 
@@ -1467,7 +1467,7 @@ end)
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "Auto Quake Farm (Very Lag)",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.Quakefarm = value 
@@ -1521,7 +1521,7 @@ local Section = Tabs.FarmFruitTab:AddSection("Fruity Farm Kill Players")
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "Auto Quake Kill",
-    Description = " ",
+    Description = "",
     Default = false, 
     Callback = function(value)
         _G.quakekill = value 
@@ -1832,7 +1832,7 @@ Tabs.TeleportTab:AddDropdown("IslandDropdown", {
 
 Tabs.TeleportTab:AddButton({
     Title = "Teleport to Island",
-    Description = " ",
+    Description = "",
     Callback = function()
         if selectedIsland then
             local islandPosition = islandPositions[selectedIsland]
