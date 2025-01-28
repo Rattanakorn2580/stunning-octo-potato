@@ -422,7 +422,7 @@ Tabs.MainTab:AddToggle("Toggle", {
 })
 
 spawn(function()
-    while wait() do
+    while wait(.5) do
         if AutoClaimCompass then
             local args = {
                 [1] = "Claim10"
@@ -450,8 +450,7 @@ spawn(function()
             if not AutoCompass then return end;
             local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
             local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-	    local Compass3 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-            if Compass or Compass2 or Compass3 then
+            if Compass or Compass2 then
                 local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
                 game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
                 Compass.Parent = game.Players.LocalPlayer.Character;
