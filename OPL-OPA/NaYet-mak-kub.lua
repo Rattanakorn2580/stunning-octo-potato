@@ -422,7 +422,7 @@ Tabs.MainTab:AddToggle("Toggle", {
 })
 
 spawn(function()
-    while wait(.5) do
+    while wait() do
         if AutoClaimCompass then
             local args = {
                 [1] = "Claim10"
@@ -446,20 +446,29 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 spawn(function()
     while wait() do
-        pcall(function()
-            if not AutoCompass then return end;
-            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
-            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
-            if Compass or Compass2 then
-                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
-                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
-                Compass.Parent = game.Players.LocalPlayer.Character;
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
-                Compass:Activate();
-                wait(0.2);
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
-            end
-        end)
+        if AutoCompass then
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local backpack = player.Backpack
+                local character = player.Character or player.CharacterAdded:Wait()
+                for _, item in pairs(backpack:GetChildren()) do
+                    if item.Name == "Compass" then
+                        item.Parent = character
+                        wait(0.1)
+                        if character:FindFirstChild("Compass") then
+                            local compass = character.Compass
+                            if compass:FindFirstChild("Poser") and compass.Poser.Value then
+                                character.HumanoidRootPart.CFrame = CFrame.new(compass.Poser.Value)
+                                wait(0.2) 
+                                compass:Activate()
+                                item.Parent = backpack
+                                wait(0.5)
+                            end
+                        end
+                    end
+                end
+            end)
+        end
     end
 end)
 
