@@ -2274,21 +2274,6 @@ Tabs.MiscTab:AddToggle("Toggle", {
 	end    
 })
 
-spawn(function() -- antistun
-    while wait() do
-        if _G.antistun then
-            pcall(function()
-                for i,v in pairs(game.Players:GetChildren()) do
-                    if v.Name ~= game.Players.LocalPlayer.Name then
-                        v.ReturnBall1.TouchInterest:Destroy() and 
-			v.ReturnBall2.TouchInterest:Destroy()
-                    end
-                end
-            end)
-        end
-    end
-end)
-
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
