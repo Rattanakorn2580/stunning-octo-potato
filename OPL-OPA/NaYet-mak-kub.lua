@@ -2263,28 +2263,6 @@ end)
     end
 })
 
-Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Anti Hobby",
-    Description = "",
-    Default = false,
-    Callback = function(Value)
-		_G.antistun = Value
-	end    
-})
-
-spawn(function() -- antistun
-    while wait() do
-        if _G.antistun then
-            pcall(function()
-                for i,v in pairs(game.Workspace["Bankzy_idFind"]:GetChildren()) do
-		if string.find(v.Name, "ReturnBall1") or string.find(v.Name, "ReturnBall2") then
-			v.TouchInterest:Destroy()
-                    end
-                end
-            end)
-        end
-    end
-end)
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
