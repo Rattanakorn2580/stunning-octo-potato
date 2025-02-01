@@ -402,6 +402,29 @@ wait(.8)
     end
 end)
 
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Bring DF",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+		BringDF = Value
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if BringDF then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end)
+
 local Section = Tabs.MainTab:AddSection("Sam Quest")
 
 Tabs.MainTab:AddButton({
@@ -1180,6 +1203,27 @@ Tabs.PlayerTab:AddToggle("Toggle", {
         end
     end,
 })
+
+BringPlr = false
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "Auto Bring Player",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+		BringPlr = Value
+	end    
+})
+
+spawn(function()
+    while wait() do
+        if BringPlr then
+            pcall(function()
+                game.Players[selectedPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-1.5)
+            end)
+        end
+    end
+end)
 
 local function spectate(targetPlayer)
     if targetPlayer and targetPlayer.Character then
