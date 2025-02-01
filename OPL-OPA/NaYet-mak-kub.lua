@@ -2263,8 +2263,6 @@ end)
     end
 })
 
-_G.antistun = false
-
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Anti Hobby",
     Description = "",
