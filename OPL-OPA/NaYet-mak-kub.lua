@@ -1204,27 +1204,6 @@ Tabs.PlayerTab:AddToggle("Toggle", {
     end,
 })
 
-BringPlr = false
-
-Tabs.PlayerTab:AddToggle("Toggle", {
-    Title = "Auto Bring Player",
-    Description = "",
-    Default = false,
-    Callback = function(Value)
-		BringPlr = Value
-	end    
-})
-
-spawn(function()
-    while wait() do
-        if BringPlr then
-            pcall(function()
-                game.Players[selectedPlayer].Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-1.5)
-            end)
-        end
-    end
-end)
-
 local function spectate(targetPlayer)
     if targetPlayer and targetPlayer.Character then
         local humanoid = targetPlayer.Character:FindFirstChild("Humanoid")
@@ -1256,6 +1235,34 @@ spawn(function()
             else
                 print("Player not found or unavailable:", selectedPlayer)
             end
+        end
+    end
+end)
+
+BringAllPlr = false
+
+Tabs.PlayerTab:AddToggle("Toggle", {
+    Title = "Auto Bring All Player",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+		BringAllPlr = Value
+	end    
+})
+
+spawn(function() -- bring Plr
+    while wait() do
+        if BringAllPlr then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15 or getgenv().disbring)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
         end
     end
 end)
@@ -2255,6 +2262,32 @@ if self.Name == 'Drown' and _G.nowaterdamage then
 end)
     end
 })
+
+_G.antistun = false
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Anti Hobby",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+		_G.antistun = Value
+	end    
+})
+
+spawn(function() -- antistun
+    while wait() do
+        if _G.antistun then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.ReturnBall1.TouchInterest:Destroy() and 
+			v.ReturnBall2.TouchInterest:Destroy()
+                    end
+                end
+            end)
+        end
+    end
+end)
 
 local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
 
