@@ -69,7 +69,7 @@ end)
 spawn(function()
     while wait() do
         pcall(function()
-            if _G.autodash then
+            if _G.autoshave then
 	for i,v in pairs(game:GetService("Workspace")[selectedPlayer]:GetChildren()) do
 if string.find(v.Name, "ShaveServer") then
 v:Destroy()
@@ -459,7 +459,7 @@ end)
 local AutoCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto Find Compasses (Fast)",
+    Title = "Auto Find Compasses",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -1320,7 +1320,7 @@ end)
 BringAllPlr = false
 
 Tabs.PlayerTab:AddToggle("Toggle", {
-    Title = "Auto Bring All Player",
+    Title = "Bring All Player",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -1583,9 +1583,9 @@ Tabs.PlayerTab:AddToggle("Toggle", {
     while wait() do
         pcall(function()
             if _G.autodash then
-	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+	for i,v in pairs(game:GetService("Workspace")[selectedPlayer]:GetChildren()) do
 if string.find(v.Name, "Dash") then
-v:FireServer(CFrame.new(game.Players[SelectPlayer].Character.HumanoidRootPart.Position),workspace.Water)
+v:FireServer(CFrame.new(game.Players[selectedPlayer].Character.HumanoidRootPart.Position),workspace.Water)
 end
 end
             end
@@ -1743,7 +1743,7 @@ local ToggleBeri1
 local isRunning1 = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities | Left |",
+    Title = "Auto Reroll At 2.0 Affinities | Left |",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -1804,7 +1804,7 @@ local ToggleBeri2
 local isRunning2 = false
 
 Tabs.ShopTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities Beri | Right |",
+    Title = "Auto Reroll At 2.0 Affinities | Right |",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -2341,7 +2341,7 @@ end)
     end
 })
 
-local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
+local Section = Tabs.MiscTab:AddSection("Yoru Spam Attack")
 
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
 {
