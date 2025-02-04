@@ -814,56 +814,100 @@ Tabs.FarmTab:AddToggle("Toggle", {
 })
 
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Get Package",
-    Description = "",
-    Default = false,
-    Callback = function(bool11)
-        getgenv().tre = bool11
-        while getgenv().tre do
-            wait()
-            pcall(function()
-                workspace:WaitForChild("Merchants")
-                    :WaitForChild("QuestFishMerchant")
-                    :WaitForChild("Clickable")
-                    :WaitForChild("Retum")
-                    :FireServer()
-                wait(2)
-            end)
-        end
-    end,
-})
-
-Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Package",
     Description = "",
     Default = false,
     Callback = function(bool00)
-        getgenv().tret = bool00
-        while getgenv().tret do
-            wait()
-            pcall(function()
-                if game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Package") then
-                    game.Players.LocalPlayer.Backpack:FindFirstChild("Package").Parent = game.Players.LocalPlayer.Character
-                    game.Players.LocalPlayer.Character.Humanoid.Sit = true
-                elseif game.Players.LocalPlayer.Character:FindFirstChild("Package") and getgenv().tret == true then
-                    for _, v in pairs(game.Workspace.Merchants:GetChildren()) do
-                        if (string.find(v.Name, "Aff") or string.find(v.Name, "Heavy") or string.find(v.Name, "Drink") 
-                            or string.find(v.Name, "Boat") or string.find(v.Name, "Emote") or string.find(v.Name, "Exp") 
-                            or string.find(v.Name, "Fish") or string.find(v.Name, "Flail") or string.find(v.Name, "Krizma") 
-                            or string.find(v.Name, "QuestFish") or string.find(v.Name, "QuestMe") or string.find(v.Name, "Friend") 
-                            or string.find(v.Name, "Sniper") or string.find(v.Name, "Sword")) 
-                            and v:FindFirstChild("HumanoidRootPart") then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v:FindFirstChild("HumanoidRootPart").CFrame + Vector3.new(1, 0, 0)
-                            wait(0.3)
-                        end
-                    end
-                    game.Players.LocalPlayer.Character.Package:Activate()
-                elseif not game.Players.LocalPlayer.Backpack:FindFirstChild("Package") and not game.Players.LocalPlayer.Character:FindFirstChild("Compass") then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new((math.random(-100000, 100000)), 10000, (math.random(-100000, 100000)))
-                end
-            end)
+        AutoPack = bool00
+        spawn(function()
+    while wait() do
+        pcall(function()
+         if AutoPack then
+            wait(0.6)
+                game.workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+            wait(0.001)
+             local playernameuser = game.Players.LocalPlayer.Name
+            if  game.Players.LocalPlayer.Backpack:FindFirstChild("Package") or game.Players.LocalPlayer.Character:FindFirstChild("Package") or game.workspace.playernameuser:FindFirstChild("Package") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.AffinityMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat1Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat2Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat3Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat4Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.DrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.BetterDrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.ExpertiseMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SniperMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1549, 264, 2136)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SwordMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.KrizmaMerch.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FishMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FlailMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.EmoteMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2610, 254, 1114)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1982, 218, 567)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+            end
         end
-    end,
+        end)
+    end
+end)
+end,
 })
 
 Tabs.FarmTab:AddToggle("Toggle", {
@@ -1032,87 +1076,121 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 local Section = Tabs.FarmTab:AddSection("Haki Auto Farm")
 
-local hakitarget = 25
-local Slider = Tabs.FarmTab:AddSlider("Slider", 
-{
-    Title = "Haki % Use",
-    Description = "",
-    Default = 25,
-    Min = 1,
-    Max = 100,
-    Rounding = 1,
-    Callback = function(gmm)
-        hakitarget = gmm
-    end,
-})
-
-
-local hakispeed = 1
-local Slider = Tabs.FarmTab:AddSlider("Slider", 
-{
-    Title = "Haki % Speed",
-    Description = "",
-    Default = 1,
-    Min = 1,
-    Max = 5,
-    Rounding = 1,
-    Callback = function(gttmm)
-        hakispeed = gttmm
-    end,
-})
-
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Farm Haki",
+    Title = "Auto Haki Fast (Very Ping)",
     Description = "",
     Default = false,
     Callback = function(vccl)
-        getgenv().concuvm = vccl
-        local plrid = tostring(game.Players.LocalPlayer.UserId)
-        local plr = tostring(game.Players.LocalPlayer)
-        _G.concu = true
-        while _G.concu do
-            wait()
-            local slv = game.Workspace.UserData["User_" .. plrid].Data.HakiLevel.Value
-            local sss = slv / 100 * hakitarget
-            if game.Workspace.UserData["User_" .. plrid].HakiBar.Value > sss and getgenv().concuvm == true then
-                local Players = game:GetService("Players")
-                local cache = {}
-                local function lol(name)
-                    if cache[name] then return cache[name] end
-                    local player = Players:FindFirstChild(name)
-                    if player then
-                        cache[name] = player.UserId
-                        return player.UserId
-                    end
+        AutoHaki = vccl
+        game:GetService('RunService').RenderStepped:connect(function()
+    if AutoHaki then
+        for i = 1, 5 do
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+            task.wait(0.1)
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
 
-                    local id
-                    pcall(function()
-                        id = Players:lol(name)
-                    end)
-                    cache[name] = id
-                    return id
-                end
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
 
-                local ehh = game.Players.LocalPlayer.Name
-                local Final = lol(ehh)
-                for i = 1, hakispeed do
-                    local args = { [1] = "Off", [2] = 1 }
-                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
-                    
-                    local args = { [1] = "On", [2] = 1 }
-                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
-                end
-            elseif game.Workspace.UserData["User_" .. plrid].HakiBar.Value <= sss and getgenv().concuvm == true then
-                local args = { [1] = "Off", [2] = 1 }
-                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
-                repeat task.wait() until game.Workspace.UserData["User_" .. plrid].HakiBar.Value >= slv
-                _G.concu = true
-            elseif getgenv().concuvm == false then
-                _G.concu = false
-                local args = { [1] = "Off", [2] = 1 }
-                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
-            end
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "On",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
+            task.wait(0.1)
+            local args = {
+                [1] = "Off",
+                [2] = 1
+            }
+
+            workspace:WaitForChild("UserData"):WaitForChild("User_" .. game.Players.LocalPlayer.UserId):WaitForChild("III"):FireServer(unpack(args))
         end
+    end
+end)
     end,
 })
 
