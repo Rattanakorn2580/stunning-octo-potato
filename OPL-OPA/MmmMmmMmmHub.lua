@@ -105,7 +105,7 @@ workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extr
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Reset Stats",
-    Description = "It should not be used in the main account./nIf your main acc status disappears, I am not responsible for anything.",
+    Description = "It should not be used in the main account. If your main acc status disappears, I am not responsible for anything.",
     Default = false,
     Callback = function(Value)
         _G.autoreset = Value
@@ -116,9 +116,8 @@ spawn(function()
     while wait(5) do
         pcall(function()
             if _G.autoreset then
-local A_1 = " "
     local Event = game:GetService("Workspace").UserData["User_" .. userId].Stats
-    Event:FireServer(A_1)
+    Event:FireServer()
             end
         end)
     end
