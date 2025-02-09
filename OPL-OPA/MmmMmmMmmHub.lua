@@ -108,19 +108,20 @@ Tabs.MainTab:AddToggle("Toggle", {
     Description = "It should not be used in the main account. If your main acc status disappears, I am not responsible for anything.",
     Default = false,
     Callback = function(Value)
-        _G.autoreset = Value
+        reset = Value
     end
 })
 
-spawn(function()
+spawn(function() -- antistun
     while wait(5) do
-        pcall(function()
-            if _G.autoreset then
-workspace:WaitForChild("UserData"):WaitForChild("User_"..userId):WaitForChild("Stats"):FireServer()
+        if reset then
+            pcall(function()
+workspace.UserData["User_"..game.Players.LocalPlayer.UserId].Stats:FireServer()
+                   end)
             end
-        end)
-    end
+        end
 end)
+
 local Section = Tabs.MainTab:AddSection("Sam Quest")
 
 Tabs.MainTab:AddButton({
