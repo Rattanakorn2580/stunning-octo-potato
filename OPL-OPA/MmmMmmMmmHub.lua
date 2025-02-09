@@ -21,11 +21,5 @@ end
 
   local Tabs = {
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
-    FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
-    FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
-    PlayerTab = Window:AddTab({ Title = "Players", Icon = "users" }),
-    ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
-    TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
-    MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
 }
 
