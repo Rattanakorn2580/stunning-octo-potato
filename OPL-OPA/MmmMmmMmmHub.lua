@@ -116,8 +116,7 @@ spawn(function()
     while wait(5) do
         pcall(function()
             if _G.autoreset then
-    local Event = game:GetService("Workspace").UserData["User_" .. userId].Stats
-    Event:FireServer()
+workspace:WaitForChild("UserData"):WaitForChild("User_"..userId):WaitForChild("Stats"):FireServer()
             end
         end)
     end
