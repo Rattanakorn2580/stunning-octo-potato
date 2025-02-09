@@ -66,9 +66,42 @@ L2.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
     sound:Play()
 end)
-local Section = Tabs.MainTab:AddSection(" ")
 
-local Section = Tabs.MainTab:AddSection("Should not be used in the main account.")
+local Section = Tabs.MainTab:AddSection("Weekly Comp")
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Claim Weekly",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        _G.autoclaim = Value
+    end
+})
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autoclaim then
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
+
+local Section = Tabs.MainTab:AddSection("Local Player")
+
+Tabs.MainTab:AddButton({
+    Title = "No Save Data! ! !",
+    Description = "",
+    Callback = function()
+workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+    end
+})
 
 local Section = Tabs.MainTab:AddSection("Sam Quest")
 
