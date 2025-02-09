@@ -19,6 +19,15 @@ if v.Name == "Menu" then
 end
 end
 
+local Cache = { DevConfig = {} };
+
+Cache.DevConfig["ListOfBox1"] = {"Common Box"};
+Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
+Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
+Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
+Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
+
+
   local Tabs = {
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
 }
