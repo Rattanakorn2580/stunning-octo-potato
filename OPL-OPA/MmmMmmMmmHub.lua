@@ -66,3 +66,102 @@ L2.MouseButton1Click:Connect(function()
     game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
     sound:Play()
 end)
+local Section = Tabs.MainTab:AddSection(" ")
+
+local Section = Tabs.MainTab:AddSection("Should not be used in the main account.")
+
+local Section = Tabs.MainTab:AddSection("Sam Quest")
+
+Tabs.MainTab:AddButton({
+    Title = "Talk Sam",
+    Description = "",
+    Callback = function()
+        fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
+    end
+})
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Claim Compasses",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        AutoClaimCompass = Value
+    end
+})
+
+spawn(function()
+    while wait() do
+        if AutoClaimCompass then
+            local args = {
+                [1] = "Claim10"
+            }
+            
+            workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer(unpack(args))
+        end
+    end
+end)
+
+local AutoCompass = false
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Find Compasses",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        AutoCompass = Value
+    end
+})
+
+spawn(function()
+    while wait() do
+        if AutoCompass then
+            pcall(function()
+                local player = game.Players.LocalPlayer
+                local backpack = player.Backpack
+                local character = player.Character or player.CharacterAdded:Wait()
+                for _, item in pairs(backpack:GetChildren()) do
+                    if item.Name == "Compass" then
+                        item.Parent = character
+                        wait(0.1)
+                        if character:FindFirstChild("Compass") then
+                            local compass = character.Compass
+                            if compass:FindFirstChild("Poser") and compass.Poser.Value then
+                                character.HumanoidRootPart.CFrame = CFrame.new(compass.Poser.Value)
+                                wait(0.2) 
+                                compass:Activate()
+                                item.Parent = backpack
+                                wait(0.5)
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
+
+local DropCompass = false
+
+Tabs.MainTab:AddToggle("Toggle", {
+    Title = "Auto Drop Compasses",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        DropCompass = value 
+    end
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not DropCompass then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDropCompass"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
