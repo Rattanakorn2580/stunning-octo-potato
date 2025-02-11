@@ -25,7 +25,7 @@ Cache.DevConfig["ListOfBox1"] = {"Common Box"};
 Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
 Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
 Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
-Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
+Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
 
 
   local Tabs = {
@@ -220,6 +220,233 @@ spawn(function()
             if not DropCompass then return end;
             for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
                 if table.find(Cache.DevConfig["ListOfDropCompass"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
+
+local islandPositions = {
+    ["Cave"] = CFrame.new(-280, 217, -831),
+    ["Crab"] = CFrame.new(-7, 224, -91),
+    ["Sam"] = CFrame.new(-1283, 218, -1348),
+    ["Yellow House"] = CFrame.new(737, 241, 1209),
+    ["Bar"] = CFrame.new(1522, 260, 2188),
+    ["Krizma"] = CFrame.new(-1109, 341, 1645),
+    ["Pyramid"] = CFrame.new(118, 216, 4773),
+    ["Kaizu"] = CFrame.new(-1526.023, 365, 10510.021),
+    ["Snow Mountains"] = CFrame.new(6501, 408, -1261),
+    ["Pursuer Boss"] = CFrame.new(4847, 570, -7143),
+    ["Vokun"] = CFrame.new(4598, 217, 4964),
+    ["Green"] = CFrame.new(-2727, 253, 1041),
+    ["Trees"] = CFrame.new(1068, 217, 3351),
+    ["Merlin Fish"] = CFrame.new(-1668, 217, -300),
+    ["Snowy"] = CFrame.new(-1896, 222, 3385),
+    ["Mountain"] = CFrame.new(2052, 488, -701),
+    ["Marine Ford"] = CFrame.new(-3164, 296, -3780),
+    ["Sand Castle"] = CFrame.new(1020, 224, -3277),
+    ["Forest"] = CFrame.new(-5781, 216, 114),
+    ["Evil"] = CFrame.new(-5169, 523, -7803),
+    ["Crescent"] = CFrame.new(3193, 357, 1670),
+    ["Islands"] = CFrame.new(-4319, 245, 5252),
+    ["Town"] = CFrame.new(1818, 218, 755),
+    ["Rocky"] = CFrame.new(-37, 229, 2149),
+    ["Palm"] = CFrame.new(766, 216, -1374),
+    ["Sand"] = CFrame.new(-2747, 216, -942),
+    ["Sand 2"] = CFrame.new(162, 216, -2265),
+    ["Small"] = CFrame.new(1237, 240, -244),
+    ["Tiny"] = CFrame.new(-1235, 223, 623),
+    ["Super Tiny"] = CFrame.new(-4007, 216, -2190),
+    ["Grass"] = CFrame.new(2096, 217, -1884),
+    ["Atlar"] = game.workspace.Altar.RecepticalEffect.CFrame * CFrame.new(0, 5, 0),
+}
+
+local npcPositions = {
+    ["Rayleigh"] = game.workspace.Merchants.QuestHakiMerchant.HumanoidRootPart.CFrame,
+    ["Better Drink"] = CFrame.new(1493, 260, 2171),
+    ["Drink"] = CFrame.new(-1282, 218, -1368),
+    ["Flail"] = CFrame.new(1110, 217, 3369),
+    ["QuestFish"] = CFrame.new(-1702, 216, -325),
+    ["Krizma"] = CFrame.new(-1072, 361, 1669),
+    ["Sword"] = CFrame.new(1005, 224, -3339),
+    ["Sniper"] = CFrame.new(-1843, 222, 3416),
+    ["Emote"] = CFrame.new(1522, 265, 2165),
+    ["Affinity"] = CFrame.new(113, 278, 4952),
+    ["Fish"] = CFrame.new(1983, 218, 566),
+    ["Expertise"] = CFrame.new(903, 270, 1219),
+}
+
+local selectedIsland = nil
+local selectedNpc = nil
+
+Tabs.TeleportTab:AddDropdown("IslandDropdown", {
+    Title = "Select Island",
+    Description = "",
+    Values = {"Cave", "Windmill", "Sam", "Grassy", "Bar", "Krizma", "Kaizu", "Snow Mountains", "Pursuer Boss", "Cliffs", "Green", "Trees", "Pyramid", "Merlin Fish", "Snowy", "Mountain", "Marine Ford", "Sand Castle", "Forest", "Evil", "Crescent", "Islands", "Town", "Rocky", "Palm", "Sand", "Sand 2", "Small", "Tiny", "Super Tiny", "Grass", "Atlar"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        selectedIsland = Value
+    end
+})
+
+Tabs.TeleportTab:AddButton({
+    Title = "Teleport to Island",
+    Description = "",
+    Callback = function()
+        if selectedIsland then
+            local islandPosition = islandPositions[selectedIsland]
+            if islandPosition then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = islandPosition
+            else
+            end
+        else
+        end
+    end
+})
+
+local Section = Tabs.TeleportTab:AddSection("Npc TP")
+
+Tabs.TeleportTab:AddDropdown("NpcDropdown", {
+    Title = "Select NPC",
+    Description = "",
+    Values = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity", "Fish", "Expertise"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+        selectedNpc = Value
+    end
+})
+
+Tabs.TeleportTab:AddButton({
+    Title = "Teleport to NPC",
+    Description = "",
+    Callback = function()
+        if selectedNpc then
+            local npcPosition = npcPositions[selectedNpc]
+            if npcPosition then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = npcPosition
+            else
+            end
+        else
+        end
+    end
+})
+
+local Section = Tabs.MiscTab:AddSection("Function Server")
+
+Tabs.MiscTab:AddButton({
+    Title = "Rejoin",
+    Description = "",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+
+        local Success, ErrorMessage = pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+
+        if ErrorMessage and not Success then
+            warn(ErrorMessage)
+        end
+    end
+})
+
+local Section = Tabs.MiscTab:AddSection("Unbox")
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Common)",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        UnboxCM = value 
+    end
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxCM then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Uncom)",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        UnboxUn = value 
+    end
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxUn then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Rare,Ultra)",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        UnboxRUL = value 
+    end
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRUL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+
+local Section = Tabs.MiscTab:AddSection("Drop Box")
+
+Tabs.MiscTab:AddToggle("Toggle", {
+    Title = "Auto Drop (Rare,Ultra)",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        DropCompass = value 
+    end
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not DropCompass then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
                     game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
                     Value.Parent = game.Players.LocalPlayer.Character;
                     Value.Parent = game.Workspace;
