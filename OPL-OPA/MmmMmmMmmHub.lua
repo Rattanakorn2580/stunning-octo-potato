@@ -30,6 +30,8 @@ Cache.DevConfig["ListOfDropCompass"] = {"Compass", "Rare Box"}
 
   local Tabs = {
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
+    TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
+    MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
 }
 
 Fluent:Notify({
