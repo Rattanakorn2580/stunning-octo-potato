@@ -4531,6 +4531,10 @@ page3_5:Drop("Select Drink",false, Cache.DevConfig["ListOfDrink"] , function(drn
     Drink = drnk
 end)
 
+page1:TextBox("Yoru Hits",". . .",function(txt)
+    Amount = txt
+end)
+
 page3_5:Button("Buy Drink", function()
 
 end)
