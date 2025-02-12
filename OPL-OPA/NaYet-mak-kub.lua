@@ -5319,7 +5319,8 @@ if self.Name == 'Drown' and _G.nodmgwater then
     end
 end)
 
-page5:Toggle("Anti Protect Auto Reset", true,function()
+page5:Toggle("Anti Protect Auto Reset", true,function(anre)
+	antireset = anre
 		if reset then
 			Players.LocalPlayer:Kick("You Open Reset?? , Dont Worry. You Got Protect By InW Hub")
 end)
