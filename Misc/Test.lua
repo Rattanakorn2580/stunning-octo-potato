@@ -3924,7 +3924,25 @@ local A_1 = "RewardMark"
 end)
 
 page1:Toggle("Auto Buso Haki", false,function(bsoh)
-    AutoMission = bsoh
+    _G.autobuso = bsoh
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autobuso then
+                if not game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+                if game.Players.LocalPlayer.PlayerGui.HealthBar.Frame.Status:FindFirstChild("BusoHaki") then
+                    wait(0.5)
+                    game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
+                end
+
+            end
+        end)
+    end
 end)
 
 local page1_5 = Tap1:newpage()
