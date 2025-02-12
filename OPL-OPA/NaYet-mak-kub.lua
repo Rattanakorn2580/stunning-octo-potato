@@ -5319,6 +5319,11 @@ if self.Name == 'Drown' and _G.nodmgwater then
     end
 end)
 
+page5:Toggle("Anti Protect Auto Reset", true,function()
+		if reset then
+			Players.LocalPlayer:Kick("You Open Reset?? , Dont Worry. You Got Protect By InW Hub")
+end)
+
 page5:Label(" ┇ Unbox ┇ ")
 
 page5:Toggle("Unbox (Common)", false,function(ubcm)
