@@ -4324,6 +4324,7 @@ spawn(function() -- Quake farm npcs
         end)
     end
 end)
+
 page2_5:Toggle("Auto Light Farm", false,function(alght)
     _G.lightfarm = alght
 end)
@@ -4376,7 +4377,43 @@ local page3 = Tap3:newpage()
 
 page3:Label(" ┇ Local Player ┇ ")
 
-page2:Button("No Save Data!!!", function()
+page3:Button("No Save Data!!!", function()
     workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
         game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+end)
+
+page3:Label(" ┇ Players ┇ ")
+
+local Dropdown = page3:Drop("Select Players",false, Plr , function(slctp)
+    selectedPlayer = slctp
+end)
+
+page3:Button("Refresh", function()
+    Dropdown:Clear()
+    for i,v in pairs(game.Players:GetChildren()) do  
+        if v:IsA("Players") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players:GetChildren()) do  
+        if v:IsA("Players") then
+            Dropdown:Add(v.Name)
+        end
+    end
+end)
+
+page3:Button("Tp to Player", function()
+    
+end)
+
+page3:Toggle("Auto Bring Player All", false,function(brplr)
+    _G.autobringplr = brplr
+end)
+
+page3:Toggle("View Player", false,function(viewplr)
+    _G.view = viewplr
+end)
+
+page3:Toggle("Aim Player", false,function(slim)
+    _G.slienaim = slim
 end)
