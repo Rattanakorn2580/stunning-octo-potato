@@ -4183,55 +4183,6 @@ page2:Toggle("Auto Farm [Weapon]", false,function(atfm)
     _G.behindfarm = atfm
 end)
 
-local MobList = { "Boar", "Crab", "Angry", "Thief", "Gunslinger", "Freddy" }
-
-local function IsMobAllowed(mobName)
-    for _, allowedMob in ipairs(MobList) do
-        if string.find(mobName, allowedMob) then
-            return true
-        end
-    end
-    return false
-end
-
-function ActivateHaki(state)
-    pcall(function()
-        if state then
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        else
-            -- Se necessário, adicione lógica para desativar o Haki
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        end
-    end)
-end
-
-spawn(function()
-    while task.wait(0.1) do
-        pcall(function()
-            if _G.behindFarm then
-                for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") 
-                       and mob.Humanoid.Health > 0 and IsMobAllowed(mob.Name) then
-                        while mob.Humanoid.Health > 0 and _G.behindFarm do
-                            local mobRoot = mob.HumanoidRootPart
-                            local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
-                            playerRoot.CFrame = mobRoot.CFrame * CFrame.new(0, 0, 4)
-                            local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
-                            if tool then
-                                tool:Activate()
-                            else
-                                game.Players.LocalPlayer.Character.Humanoid:MoveTo(mobRoot.Position)
-                            end
-                            task.wait(0.1)
-                        end
-                        break
-                    end
-                end
-            end
-        end)
-    end
-end)
-
 local Dropdown = page2:Drop("Select Weapon",false, Wapon , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
     Weapon = abcdef
 end)
@@ -4250,12 +4201,39 @@ page2:Button("Refresh", function()
     end
 end)
 
-page2:Toggle("Auto Package", false,function(aeqp)
-    _G.autoequip = aeqp
+page2:Toggle("Auto Click", false,function(aeqp)
+    _G.autoclick = aeqp
 end)
 
-page2:Toggle("Auto Package", false,function(aatt)
-    _G.autoattck = aatt
+spawn(function() 
+game:GetService("RunService").RenderStepped:Connect(function() 
+pcall(function() 
+if _G.autoclick then 
+game:GetService'VirtualUser':CaptureController() 
+game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672)) 
+end 
+end) 
+end) 
+end)
+
+page2:Toggle("Auto Equip", false,function(aatt)
+    _G.autoequip = aatt
+end)
+
+spawn(function() -- auto equip
+    while wait(0) do
+        pcall(function()
+            if _G.autoequip then
+                repeat
+                    wait(0.05)
+                    game:GetService 'Players'.LocalPlayer.Backpack[Weapon].Parent = game:GetService 'Players'.LocalPlayer.Character
+                until game.Players.LocalPlayer.Character.Humanoid.Health == 0 or _G.autoequip == false
+                if game.Players.LocalPlayer.Character.Humanoid.Health == 0 then
+                    game:GetService 'Players'.LocalPlayer.Character:FindFirstChildOfClass 'Humanoid':UnequipTools()
+                end
+            end
+        end)
+    end
 end)
 
 local page2_5 = Tap2:newpage()
