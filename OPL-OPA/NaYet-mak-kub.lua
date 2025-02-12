@@ -5220,6 +5220,15 @@ page4:Drop("Choose NPC", false,{
 local page4_5 = Tap4:newpage()
 page4_5:Label(" ┇ Bug a Lot Compass Soon ┇ ")
 
+page4_5:Toggle("Auto Reset Stats", false,function(setre)
+    reset = setre
+end)
+
+page4_5:Toggle("Auto Claim Weekly 3", false,function(clm)
+    _G.autoclaim3 = clm
+end)
+
+
 local Tap5 = Window:Taps("Misc")
 local page5 = Tap5:newpage()
 local page5_5 = Tap5:newpage()
@@ -5245,6 +5254,8 @@ page5:Toggle("Enable", false,function(bal)
 
 end)
 
+page5:Label(" ┇ Function Anti ┇ ")
+
 page5:Toggle("Anti AFK", false,function(afk)
     _G.antiafk = afk
 end)
@@ -5258,7 +5269,7 @@ if afk then
             end)
 end
 
-page5:Toggle("Anti Water", false,function(nowater)
+page5:Toggle("Anti No Dmg Water", false,function(nowater)
     _G.nodmgwater = nowater
 end)
 
@@ -5281,6 +5292,64 @@ if self.Name == 'Drown' and _G.nodmgwater then
     end
 end)
 
+page5:Label(" ┇ Unbox ┇ ")
+
+page5:Toggle("Unbox (Common)", false,function(ubcm)
+    UnboxCM = ubcm
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxCM then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
+page5:Toggle("Unbox (Uncom)", false,function(ubun)
+     UnboxUn = ubun
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxUn then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
+page5:Toggle("Unbox (Rare,Ultra)", false,function(ubrul)
+    UnboxRUL = ubrul
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRUL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
 page5_5:Label(" ┇ Fake Weapon ┇ ")
 
 page5_5:Button("Seastone Cestus (500 Melee)",function()
