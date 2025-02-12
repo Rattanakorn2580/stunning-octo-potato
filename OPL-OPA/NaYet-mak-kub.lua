@@ -169,7 +169,7 @@ function create:Win(text)
     local library = {toggledui = false;}
     game:GetService("UserInputService").InputBegan:Connect(function(input)
         pcall(function()
-            if input.KeyCode == Enum.KeyCode.F6 then
+            if input.KeyCode == Enum.KeyCode.LeftControl then
                 if library.toggledui == false then
                     library.toggledui = true
                     tween:Create(MainSceen,TweenInfo.new(0.4,Enum.EasingStyle.Back,Enum.EasingDirection.In),{Size = UDim2.new(0, 0, 0, 0)}):Play()
@@ -3670,7 +3670,7 @@ Toggle.Text = "InW Hub"
 Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
 Toggle.TextSize = 28.000
 Toggle.Draggable = true
-Toggle.MouseButton1Click:connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F6,false,game)
+Toggle.MouseButton1Click:connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.LeftControl,false,game)
 end)
  
 local Corner = Instance.new("UICorner")
