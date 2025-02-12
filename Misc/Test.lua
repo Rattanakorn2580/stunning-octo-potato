@@ -4531,20 +4531,53 @@ page3_5:Drop("Select Drink",false, Cache.DevConfig["ListOfDrink"] , function(drn
     Drink = drnk
 end)
 
-page1:TextBox("Yoru Hits",". . .",function(txt)
-    Amount = txt
+page3_5:TextBox("Drinks",". . .",function(txt)
+    AmountDrink = txt
 end)
 
 page3_5:Button("Buy Drink", function()
-
+if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(Drink)
+		end
 end)
 
 page3_5:Toggle("Auto Drink", false,function(atdk)
     AutoDrinks = atdk
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDrinks then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
 page3_5:Toggle("Drop Drink", false,function(drpdk)
     DropDrinks = drpdk
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not DropDrinks then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
 end)
 
 local Tap4 = Window:Taps("Island")
