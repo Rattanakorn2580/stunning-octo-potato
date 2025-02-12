@@ -3975,5 +3975,51 @@ page1:Toggle("Auto Fishing", false,function(abcde)
 end)
 
 page1:Toggle("Auto Claim Mission", false,function(dmmsv)
-    _G.autoquest = dmmsv
+    AutoMission = dmmsv
+end)
+
+spawn(function()
+    while wait() do 
+        if AutoMission then 
+            pcall(function() 
+                workspace.Merchants.ExpertiseMerchant.Clickable.Retum:FireServer()
+            end) 
+        end 
+    end 
+end)
+
+page1:Toggle("Auto Claim Gift (Beri)", false,function(bbri)
+    _G.berigift = bbri
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.berigift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardHourly
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+page1:Toggle("Auto Claim Gift (Gems)", false,function(gmms)
+    _G.gemsgift = gmms
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.gemsgift then
+local A_1 = "RewardMark"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ClaimRewardDaily
+    Event:FireServer(A_1)
+            end
+        end)
+    end
+end)
+
+page1:Toggle("Auto Buso Haki", false,function(bsoh)
+    AutoMission = bsoh
 end)
