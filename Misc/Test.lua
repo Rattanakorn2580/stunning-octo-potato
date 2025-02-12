@@ -3726,7 +3726,7 @@ aaxc = hookmetamethod(game, "__namecall", function(self, ...)
     local args = {...}
     local method = getnamecallmethod()
     if method == "FireServer" or method == "InvokeServer" then
-        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
+        if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.skillmax then
             args[6] = 100
             return aaxc(self, unpack(args))
         end
@@ -3857,13 +3857,9 @@ local Npc = {}
 local Weaponlist = {}
 local drinklist = {
     "Lemonade+",
-    "Lemonade",
     "Smoothie+",
-    "Smoothie",
     "Juice+",
-    "Juice",
     "Cider+",
-    "Cider",
  }
 
 local islandlist = {
@@ -3961,12 +3957,12 @@ local A_1 = "RewardMark"
     end
 end)
 
-page1:Toggle("Auto Quake Farm (Lag)", false,function(chllge)
+page1:Toggle("Auto Claim Challange", false,function(chllge)
     _G.autoclaim = chllge
 end)
 
 spawn(function()
-    while wait(0) do
+    while wait() do
         pcall(function()
             if _G.autoclaim then
 local A_1 = "Claim"
@@ -3995,7 +3991,7 @@ wait(.8)
 end)
 
 spawn(function()
-    while wait(0) do
+    while wait() do
         pcall(function()
             if _G.autoclaim then
 local A_1 = "Claim"
@@ -4019,7 +4015,7 @@ wait(.8)
 end)
 
 spawn(function()
-    while wait(0) do
+    while wait() do
         pcall(function()
             if _G.autoclaim then
 local A_1 = "Claim"
@@ -4038,7 +4034,7 @@ wait(.8)
 end)
 
 spawn(function()
-    while wait(0) do
+    while wait() do
         pcall(function()
             if _G.autoclaim then
 local A_1 = "Claim"
@@ -4459,6 +4455,8 @@ spawn(function() -- auto equip
     end
 end)
 
+page2:Label(" ┇ Fruity Farm ┇ ")
+
 page2:Toggle("Auto Stats", false,function(drkmr)
     _G.automixer = drkmr
 end)
@@ -4524,6 +4522,7 @@ spawn(function()--autofruit
         end)
     end
 end)
+
 spawn(function()--autofruit
     while wait() do
     pcall(function()
@@ -4656,7 +4655,9 @@ spawn(function()--autofruit
     end
 end)
 
-page2:Toggle("Auto Haki Faster (Very Ping)", false,function(hki)
+page2:Label(" ┇ Haki Farm ┇ ")
+
+page2:Toggle("Auto Haki Fast (Ping)", false,function(hki)
     AutoHaki = hki
 end)
 
@@ -4963,6 +4964,12 @@ mta.__index = newcclosure(function(a, b, c)
     return index(a, b, c)
 end)
 
+page3:Label(" ┇ Max Charge Skill ┇ ")
+
+page2_5:Toggle("100% Charge Skill", false,function(max)
+    _G.skillmax = max
+end)
+
 local page3_5 = Tap3:newpage()
 page3_5:Label(" ┇ Player Kill ┇ ")
 
@@ -5165,9 +5172,9 @@ page4:Drop("Safe Place" , false, { "Safe Place (Sea)", "Safe Place (Sky)", "Safe
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
     elseif getgenv().tpisland2 == "Safe Place (Sky)" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-    elseif getgenv().tpisland2 == "SafeZone LightFarm 1.0" then
+    elseif getgenv().tpisland2 == "Safe Farm Light 1.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpisland2 == "SafeZone LightFarm 2.0" then
+	elseif getgenv().tpisland2 == "Safe Farm Light 2.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
     end
 end)
@@ -5238,7 +5245,7 @@ page5:Toggle("Enable", false,function(bal)
 
 end)
 
-page5:Toggle("Anti AFK (Not Work)", false,function(afk)
+page5:Toggle("Anti AFK", false,function(afk)
     _G.antiafk = afk
 end)
 
