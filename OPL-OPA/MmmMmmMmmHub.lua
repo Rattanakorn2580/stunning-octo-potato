@@ -29,7 +29,7 @@ Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
 
 
   local Tabs = {
-    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" })
+    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
     ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
     MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
