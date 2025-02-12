@@ -4106,6 +4106,8 @@ page1:Toggle("Auto Buso Haki", false,function(bsoh)
     AutoMission = bsoh
 end)
 
+page1_5:Label(" ┇ Quest Sam ┇ ")
+
 page1_5:Toggle("Auto Find Compass", false,function(acpp)
     AutoComp = acpp
 end)
@@ -4162,6 +4164,6 @@ spawn(function()
     end
 end);
 local Tap2 = Window:Taps("Farming")
-local page2 = Tap1:newpage()
+local page2 = Tap2:newpage()
 
 page2:Label(" ┇ Teleport Farm ┇ ")
