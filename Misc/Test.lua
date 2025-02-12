@@ -3854,7 +3854,7 @@ create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L"
 
 game:GetService("CoreGui").redui.MainSceen.Visible = true
 
-local Tap1 = Window:Taps("Autos & Farming")
+local Tap1 = Window:Taps("Autos & Quest Sam")
 local page1 = Tap1:newpage()
 
 page1:Label(" ┇ Function Autos ┇ ")
