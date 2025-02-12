@@ -4966,7 +4966,7 @@ end)
 
 page3:Label(" ┇ Max Charge Skill ┇ ")
 
-page2_5:Toggle("100% Charge Skill", false,function(max)
+page3:Toggle("100% Charge Skill", false,function(max)
     _G.skillmax = max
 end)
 
