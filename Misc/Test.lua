@@ -5242,8 +5242,36 @@ page5:Toggle("Anti AFK (Not Work)", false,function(afk)
     _G.antiafk = afk
 end)
 
+if afk then
+        local vu = game:GetService("VirtualUser")
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            end)
+end
+
 page5:Toggle("Anti Water", false,function(nowater)
     _G.nodmgwater = nowater
+end)
+
+spawn(function()
+    while wait() do
+        if _G.nodmgwater then
+            pcall(function()
+                local args = {
+    [1] = "NOPLS"
+}
+
+game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
+if self.Name == 'Drown' and _G.nowaterdamage then
+            if args[1] then
+                return nil
+            end
+        end
+            end)
+        end
+    end
 end)
 
 page5_5:Label(" ┇ Fake Weapon ┇ ")
