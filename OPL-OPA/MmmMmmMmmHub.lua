@@ -29,7 +29,8 @@ Cache.DevConfig["ListOfDropCompass"] = {"Compass"}
 
 
   local Tabs = {
-    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
+    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" })
+    ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
     MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
 }
@@ -228,6 +229,90 @@ spawn(function()
         end)
     end
 end);
+
+local Section = Tabs.ShopTab:AddSection("Auto Buy Drinks")
+
+Tabs.ShopTab:AddDropdown("DrinkDropdown", {
+    Title = "Choose Drink To Buy",
+    Description = "",
+    Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
+    Multi = false,
+    Default = 1,
+    Callback = function(Value)
+	SelectDrink = Value
+    end
+})
+
+local Input = Tabs.ShopTab:AddInput("Input", {
+    Title = "Amount",
+    Description = "",
+    Default = "",
+    Placeholder = "Enter Amount: ",
+    Numeric = true, 
+    Finished = false, 
+    Callback = function(txt)
+        AmountDrink = txt
+    end
+})
+
+Tabs.ShopTab:AddButton({
+    Title = "Buy Drink",
+    Description = "",
+    Callback = function()
+if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(SelectDrink)
+			end
+    end
+})
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Drinks",
+    Description = "",
+    Default = false, 
+    Callback = function(value)
+        _G.autodrinks = value 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not _G.autodrinks then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end);
+    end
+})
+
+local AutoDropDrink = false
+
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Drop Drinks",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        AutoDropDrink = Value
+        spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDropDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end)
+    end,
+})
 
 local islandPositions = {
     ["Cave"] = CFrame.new(-280, 217, -831),
