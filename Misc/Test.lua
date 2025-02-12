@@ -3854,7 +3854,7 @@ create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L"
 
 game:GetService("CoreGui").redui.MainSceen.Visible = true
 
-local Tap1 = Window:Taps("Autos & Quest Sam")
+local Tap1 = Window:Taps("Autos")
 local page1 = Tap1:newpage()
 
 page1:Label(" ┇ Function Autos ┇ ")
@@ -4069,4 +4069,21 @@ end)
 
 page1:Toggle("Auto Buso Haki", false,function(bsoh)
     AutoMission = bsoh
+end)
+
+local Tap1_5 = Window:Taps("Quest Sam")
+local page1_5 = Tap1:newpage()
+
+page1_5:Label(" ┇ Quest Sam ┇ ")
+
+page1_5:Toggle("Auto Find Compass", false,function(acpp)
+    AutoComp = acpp
+end)
+
+page1_5:Toggle("Auto Claim Compass", false,function(acmp)
+    AutoClaimComp = acmp
+end)
+
+page1_5:Toggle("Auto Drop Compass", false,function(acdp)
+    AutoDropComp = acdp
 end)
