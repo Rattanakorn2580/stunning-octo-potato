@@ -3859,168 +3859,6 @@ local page1 = Tap1:newpage()
 
 page1:Label(" ┇ Function Autos ┇ ")
 
-page1:Toggle("Auto Spawn", false,function(abc)
-    _G.autorespawn = abc
-end)
-
-spawn(function()--autorespawn
-    while wait() do
-        if _G.autorespawn then
-            pcall(function()
-                if game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Visible == true then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Load.Frame.Load.MouseButton1Click)) do
-                        v.Function()
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-page1:Toggle("Auto Package", false,function(abcd)
-    AutoPack = abcd
-end)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-         if AutoPack then
-            wait(0.6)
-                game.workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
-            wait(0.001)
-             local playernameuser = game.Players.LocalPlayer.Name
-            if  game.Players.LocalPlayer.Backpack:FindFirstChild("Package") or game.Players.LocalPlayer.Character:FindFirstChild("Package") or game.workspace.playernameuser:FindFirstChild("Package") then
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.AffinityMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat1Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat2Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat3Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat4Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.DrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.BetterDrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.ExpertiseMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SniperMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1549, 264, 2136)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SwordMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.KrizmaMerch.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FishMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FlailMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.EmoteMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2610, 254, 1114)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
-                    wait(.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1982, 218, 567)
-                game:GetService'VirtualUser':CaptureController()
-                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
-            end
-        end
-        end)
-    end
-end)
-
-page1:Toggle("Auto Fishing", false,function(afsh)
-    AutoFish = afsh
-end)
-
-spawn(function() -- fish farm
-    while wait(0) do
-        pcall(function()
-            if AutoFish then
-                wait(0.5)
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
-                wait(0.5)
-                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                    if string.find(v.Name, "Rod") then
-                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                            if string.find(v.Name, "Rod") then
-                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
-                            end
-                        end
-                    end
-                end
-                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
-                    if string.find(v.Name, "Rod") then
-                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                            if string.find(x.Name, "Rod") then
-                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                    if v:FindFirstChild("Bobber") then
-                                        if v.Bobber.Effect.Enabled == true then
-                                            wait(0.6)
-                                            local args = {
-                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                                            }
-                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
-                                        end
-                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
-                                        wait(0.6)
-                                        local args = {
-                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
-                                        }
-                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
-                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end       
-            end
-        end)
-    end
-end)
-
 page1:Toggle("Auto Claim Mission", false,function(dmmsv)
     AutoMission = dmmsv
 end)
@@ -4035,24 +3873,7 @@ spawn(function()
     end 
 end)
 
-page1:Toggle("Auto Bring Chest", false,function(achst)
-    _G.autochest = achst
-end)
-
-spawn(function()
-    while wait(0) do
-        pcall(function()
-            if _G.autochest then
-for _, v in pairs(game.Workspace:GetDescendants()) do
-                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
-                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
-                            end
-						end            end
-        end)
-    end
-end)
-
-page1:Toggle("Auto Claim Gift (Beri)", false,function(brdf)
+page1:Toggle("Bring Devil Fruit", false,function(brdf)
     BringDF = brdf
 end)
 
@@ -4163,8 +3984,176 @@ spawn(function()
             end
         end)
     end
-end);
+end)
+
+page1_5:Label(" ┇ Function Misc Farm ┇ ")
+
+page1_5:Toggle("Auto Package", false,function(abcd)
+    AutoPack = abcd
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+         if AutoPack then
+            wait(0.6)
+                game.workspace:WaitForChild("Merchants"):WaitForChild("QuestFishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+            wait(0.001)
+             local playernameuser = game.Players.LocalPlayer.Name
+            if  game.Players.LocalPlayer.Backpack:FindFirstChild("Package") or game.Players.LocalPlayer.Character:FindFirstChild("Package") or game.workspace.playernameuser:FindFirstChild("Package") then
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.AffinityMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat1Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat2Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat3Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.Boat4Merchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.DrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.BetterDrinkMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.ExpertiseMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SniperMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1549, 264, 2136)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.SwordMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.KrizmaMerch.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FishMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                game.Players.LocalPlayer.Character.Humanoid:EquipTool(game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Package"))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.FlailMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Merchants.EmoteMerchant.HumanoidRootPart.CFrame*CFrame.new(0,0,3.1)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2610, 254, 1114)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+                    wait(.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1982, 218, 567)
+                game:GetService'VirtualUser':CaptureController()
+                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))      
+            end
+        end
+        end)
+    end
+end)
+
+page1_5:Toggle("Auto Fishing", false,function(afsh)
+    AutoFish = afsh
+end)
+
+spawn(function() -- fish farm
+    while wait(0) do
+        pcall(function()
+            if AutoFish then
+                wait(0.5)
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-20000, 218, 20000)
+                wait(0.5)
+                for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                            if string.find(v.Name, "Rod") then
+                                game.Players.LocalPlayer.Character.Humanoid:EquipTool(v)
+                            end
+                        end
+                    end
+                end
+                for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+                    if string.find(v.Name, "Rod") then
+                        for _, x in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if string.find(x.Name, "Rod") then
+                                for i, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:FindFirstChild("Bobber") then
+                                        if v.Bobber.Effect.Enabled == true then
+                                            wait(0.6)
+                                            local args = {
+                                                [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                            }
+                                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        end
+                                    elseif v.Name == "Cast" and not v:FindFirstChild("Bobber") then
+                                        wait(0.6)
+                                        local args = {
+                                            [1] = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+                                        }
+                                        game:GetService("Players").LocalPlayer.Character:FindFirstChild(x.Name).Click:FireServer(unpack(args))
+                                        workspace:WaitForChild("Merchants"):WaitForChild("FishMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer()
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end       
+            end
+        end)
+    end
+end)
+
+page1_5:Toggle("Auto Bring Chest", false,function(achst)
+    _G.autochest = achst
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autochest then
+for _, v in pairs(game.Workspace:GetDescendants()) do
+                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
+                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
+                            end
+						end            end
+        end)
+    end
+end)
+
 local Tap2 = Window:Taps("Farming")
 local page2 = Tap2:newpage()
 
 page2:Label(" ┇ Teleport Farm ┇ ")
+
+page2:Toggle("Auto Farm", false,function(atfm)
+    _G.autofarm = atfm
+end)
