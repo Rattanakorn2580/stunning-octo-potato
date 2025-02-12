@@ -4180,7 +4180,45 @@ local page2 = Tap2:newpage()
 page2:Label(" ┇ Teleport Farm ┇ ")
 
 page2:Toggle("Auto Farm [Weapon]", false,function(atfm)
-    _G.behindfarm = atfm
+    _G.behindFarm = atfm
+end)
+
+local MobList = { "Boar", "Crab", "Angry", "Thief", "Gunslinger", "Freddy" }
+
+local function IsMobAllowed(mobName)
+    for _, allowedMob in ipairs(MobList) do
+        if string.find(mobName, allowedMob) then
+            return true
+        end
+    end
+    return false
+end
+
+spawn(function()
+    while task.wait(0.1) do
+        pcall(function()
+            if _G.behindFarm then
+                for _, mob in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if mob:FindFirstChild("HumanoidRootPart") and mob:FindFirstChild("Humanoid") 
+                       and mob.Humanoid.Health > 0 and IsMobAllowed(mob.Name) then
+                        while mob.Humanoid.Health > 0 and _G.behindFarm do
+                            local mobRoot = mob.HumanoidRootPart
+                            local playerRoot = game.Players.LocalPlayer.Character.HumanoidRootPart
+                            playerRoot.CFrame = mobRoot.CFrame * CFrame.new(0, 0, 4)
+                            local tool = game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool")
+                            if tool then
+                                tool:Activate()
+                            else
+                                game.Players.LocalPlayer.Character.Humanoid:MoveTo(mobRoot.Position)
+                            end
+                            task.wait(0.1)
+                        end
+                        break
+                    end
+                end
+            end
+        end)
+    end
 end)
 
 local Dropdown = page2:Drop("Select Weapon",false, Wapon , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
@@ -4238,3 +4276,107 @@ end)
 
 local page2_5 = Tap2:newpage()
 page2_5:Label(" ┇ Farm With Fruity ┇ ")
+
+page2_5:Toggle("Auto Quake Farm (Lag)", false,function(aqke)
+    _G.quakefarm = aqke
+end)
+
+spawn(function() -- Quake farm npcs
+    while wait(0) do
+        pcall(function()
+            if _G.Quakefarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Quake;
+                VTQ = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+            local args = {
+                [1] = VTQ,
+                [2] = "QuakePower4",
+                [3] = "StopCharging",
+                [4] = Mouse.Target,
+                [5] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                [6] = 100,
+                [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+            }
+            
+            game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+page2_5:Toggle("Auto Light Farm", false,function(alght)
+    _G.lightfarm = alght
+end)
+
+spawn(function() -- Light farm npcs
+    while wait(0) do
+        pcall(function()
+            if _G.lightfarm then
+                script = game:GetService("Players").LocalPlayer.Character.Powers.Light;
+                VTC = script.RemoteEvent.RemoteFunction:InvokeServer();
+                local pla = game.Players.LocalPlayer;
+                local Mouse = pla:GetMouse();
+
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health ~= 0 then
+                        if v.Humanoid.Health > 0 and
+                            (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude < 10000000000000000000000 then
+                            if v.Name ~= "SetInstances" then
+                                -- v.Humanoid:ChangeState(11)
+                                v.HumanoidRootPart.CanCollide = false
+                                v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                if v.Humanoid.Health == 0 then
+                                    v:Destroy()
+                                end
+
+                                wait(0.05)
+
+                                local args = {
+                                    [1] = VTC,
+                                    [2] = "LightPower2",
+                                    [3] = "StopCharging",
+                                    [4] = v.Head.CFrame * CFrame.new(0, 0, 0),
+                                    [5] = Mouse.Target,
+                                    [6] = 100
+                                }
+
+                                game:GetService("Players").LocalPlayer.Character.Powers.Light.RemoteEvent:FireServer(unpack(args))
+
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+local Tap3 = Window:Taps("Players")
+local page3 = Tap3:newpage()
+
+page3:Label(" ┇ Local Player ┇ ")
+
+page2:Button("No Save Data!!!", function()
+    workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+end)
