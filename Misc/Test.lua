@@ -4407,7 +4407,24 @@ page3:Button("Tp Player",function()
 end)
 
 page3:Toggle("Auto Bring Player All", false,function(brplr)
-    _G.autobringplr = brplr
+    BringAllPlr = brplr
+end)
+
+spawn(function()
+    while wait() do
+        if BringAllPlr then
+            pcall(function()
+                for i,v in pairs(game.Players:GetChildren()) do
+                    if v.Name ~= game.Players.LocalPlayer.Name then
+                        v.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame*CFrame.new(0,0,-15 or getgenv().disbring)
+                        if v.Character.Humanoid.Health == 0 then
+                        	v.Character.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
+                        end
+                    end
+                end
+            end)
+        end
+    end
 end)
 
 page3:Toggle("View Player", false, function(viewplr)
@@ -4423,5 +4440,96 @@ page3:Toggle("View Player", false, function(viewplr)
 end)
 
 page3:Toggle("Aim Player", false,function(slim)
-    _G.slienaim = slim
+    aimsilent = slim
+end)
+
+spawn(function()
+    pcall(function()
+        while true do wait()
+            pcall(function()
+                local plr1 = game.Players.LocalPlayer.Character
+                local plr2 = game.Players:FindFirstChild(PlayerName1)
+                if aimsilent then
+                    cacacac = plr2.Character.HumanoidRootPart.CFrame
+                end
+            end)
+        end
+    end)
+end)
+
+local index = mta.__index
+cf = CFrame.new(1, 2, 3)
+setreadonly(mta, false)
+mta.__index = newcclosure(function(a, b, c)
+    if tostring(b):lower() == 'hit' and aimsilent then
+        return cacacac
+    end
+    return index(a, b, c)
+end)
+
+local page3_5 = Tap3:newpage()
+page3_5:Label(" ┇ Player Kill ┇ ")
+
+page3_5:Toggle("Auto Quake Kill", false,function(qukkl)
+    _G.quakekill = qukkl
+end)
+
+spawn(function() -- auto farm quake
+    while task.wait(0) do
+        pcall(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                    if _G.quakekill  then
+                        if game.Players.LocalPlayer.Character.Humanoid.Health ~= 0 then
+                        for i,v in pairs(game.Players:GetChildren()) do
+                            if v.Name ~= "SetInstances" and v.Character.Humanoid.Health ~= 0 and v.Backpack:FindFirstChildOfClass("Tool") then
+                                if v.Name ~= game.Players.LocalPlayer.Name then
+                                    wait(0.1)
+                                    local args = {
+                                        [1] = tonumber(serializeTable(remotes)),
+                                        [2] = "QuakePower4",
+                                        [3] = "StopCharging",
+                                        [4] = v.Character.HumanoidRootPart.CFrame,
+                                        [5] = v.Character.HumanoidRootPart.CFrame,
+                                        [6] = 100,
+                                        [7] = Vector3.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Position)
+                                    }
+                                    
+                                    game:GetService("Players").LocalPlayer.Character.Powers.Quake.RemoteEvent:FireServer(unpack(args))
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+page3_5:Label(" ┇ Spam Dash ┇ ")
+
+page3_5:Toggle("Auto Dash (Choose Player)", false,function(adsh)
+    _G.autodash = adsh
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autodash then
+	for i,v in pairs(game:GetService("Workspace")[PlayerName1]:GetChildren()) do
+if string.find(v.Name, "Dash") then
+v:FireServer(CFrame.new(game.Players[PlayerName1].Character.HumanoidRootPart.Position),workspace.Water)
+end
+end
+            end
+        end)
+    end
+end)
+
+local Tap4 = Window:Taps("Shop")
+local page4 = Tap4:newpage()
+
+page4:Label(" ┇ Reroll Aff at 2.0 All ┇ ")
+
+page4:Toggle("Auto Reroll Affinities At 2.0 All (Left)", false,function(aroll)
+    _G.lightfarm = aroll
 end)
