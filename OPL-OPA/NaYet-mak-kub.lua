@@ -5224,10 +5224,37 @@ page4_5:Toggle("Auto Reset Stats", false,function(setre)
     reset = setre
 end)
 
+spawn(function()
+    while wait(5) do
+        if reset then
+            pcall(function()
+workspace.UserData["User_"..game.Players.LocalPlayer.UserId].Stats:FireServer()
+                   end)
+            end
+        end
+end)
+
+page4_5:Button("Check u Compass", function()
+    fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
+end)
+
 page4_5:Toggle("Auto Claim Weekly 3", false,function(clm)
     _G.autoclaim3 = clm
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoclaim3 then
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
+wait(.8)
+            end
+        end)
+    end
+end)
 
 local Tap5 = Window:Taps("Misc")
 local page5 = Tap5:newpage()
