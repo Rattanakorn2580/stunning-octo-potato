@@ -3779,8 +3779,75 @@ local remotes = {}
     return tmp
 end
 
+for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
+if v.Name == "Menu" then
+  v.Frame.C.Frame.Nametag.Text = " ".."Protect Name by: InW Hub"
+end
+end
+
+local SafeZoneOuterSpace = Instance.new("Part",game.Workspace)
+    SafeZoneOuterSpace.Name = "SafeZoneOuterSpacePart"
+    SafeZoneOuterSpace.Size = Vector3.new(200,3,200)
+    SafeZoneOuterSpace.Position = Vector3.new((math.random(-1000000, 1000000)), (math.random(10000, 50000)), (math.random(-1000000, 1000000)))
+    SafeZoneOuterSpace.Anchored = true
+
+local SafeZoneLightFarm = Instance.new("Part",game.Workspace)
+    SafeZoneLightFarm.Name = "SafeZoneLightPart2"
+    SafeZoneLightFarm.Size = Vector3.new(30,2,30)
+    SafeZoneLightFarm.Position = Vector3.new(3750, 3623, -615)
+    SafeZoneLightFarm.Anchored = true
+
+local b1 = Instance.new("Part",game.Workspace)
+        b1.Name = "SafeZoneLightPart1"
+        b1.Position = Vector3.new(-169, 630, -54)
+        b1.Size = Vector3.new(5, 0.1, 5)
+        b1.Anchored = true
+
+local SafeZoneUnderSea = Instance.new("Part",game.Workspace)
+    SafeZoneUnderSea.Name = "SafeZoneUnderSeaPart"
+    SafeZoneUnderSea.Size = Vector3.new(200,3,200)
+    SafeZoneUnderSea.Position = Vector3.new((math.random(-5000, 5000)), -491, (math.random(-5000, 5000)))
+    SafeZoneUnderSea.Anchored = true
+
+spawn(function() -- autofarm velocity
+    while wait(0) do
+        pcall(function()
+            if AutoFish or AutoPack or AutoFarmM or _G.chillykill or _G.bombkill then
+                if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                    local Noclip = Instance.new("BodyVelocity")
+                    Noclip.Name = "BodyClip"
+                    Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+                    Noclip.MaxForce = Vector3.new(100000,100000,100000)
+                    Noclip.Velocity = Vector3.new(0,0,0)
+                end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 0
+            elseif  AutoFish == false or AutoPack == false or AutoFarmM == false or _G.chillykill == false or _G.bombkill == false then
+                --if game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+                wait(1)
+                --end
+                game.Players.LocalPlayer.Character.Humanoid.JumpPower = 50
+            end
+        end)
+    end
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if _G.autoshave then
+	for i,v in pairs(game:GetService("Workspace")[SelectPlayer]:GetChildren()) do
+if string.find(v.Name, "ShaveServer") then
+v:Destroy()
+end
+	end
+            end
+        end)
+    end
+end)
+
 --script
-local Window = create:Win("InW Hub  Map : For OPL: Anarchy ")
+local Window = create:Win("InW Hub : For Map OPL: Anarchy ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
 
 create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
@@ -3903,10 +3970,10 @@ spawn(function()
     end
 end)
 
-page1:Toggle("Auto Equip", false,function(abcde)
+page1:Toggle("Auto Fishing", false,function(abcde)
     _G.autoequip = abcde
 end)
 
-page1:Toggle("Auto Claim Quest", false,function(dmmsv)
+page1:Toggle("Auto Claim Mission", false,function(dmmsv)
     _G.autoquest = dmmsv
 end)
