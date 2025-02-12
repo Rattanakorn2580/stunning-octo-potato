@@ -5264,7 +5264,7 @@ spawn(function()
 }
 
 game:GetService("Players").LocalPlayer.Character.Drown:FireServer(unpack(args))
-if self.Name == 'Drown' and _G.nowaterdamage then
+if self.Name == 'Drown' and _G.nodmgwater then
             if args[1] then
                 return nil
             end
