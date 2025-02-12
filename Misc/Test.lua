@@ -4525,61 +4525,26 @@ end
     end
 end)
 
-local Tap4 = Window:Taps("Shop")
-local page4 = Tap4:newpage()
+page3_5:Label(" ┇ Buyer Drinks ┇ ")
 
-page4:Label(" ┇ Reroll Aff at 2.0 All ┇ ")
-
-page4:Toggle("Auto Reroll Affinities At 2.0 All (Left)", false,function(aroll)
-    isRunning1 = aroll
+page3_5:Drop("Select Drink",false, Cache.DevConfig["ListOfDrink"] , function(drnk) -- Use Selected <table> to auto select multiselection dropdown
+    Drink = drnk
 end)
 
-if isRunning1 then
-            -- Inicia o loop se o toggle estiver ativado
-            spawn(function()
-                while isRunning1 do
-                    wait(8) -- Intervalo do loop
-                    local player = game.Players.LocalPlayer
-                    local playerId = player.UserId
-                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+page3_5:Button("Buy Drink", function()
 
-                    -- DFT1 Variables
-                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
-                    local AffSword1 = userDataName.Data.DFT1Sword.Value
+end)
 
-                    -- Check for DFT1
-                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                        script.Parent:Destroy()
-                    end
+page3_5:Toggle("Auto Drink", false,function(atdk)
+    AutoDrinks = atdk
+end)
 
-                    local args1 = {
-                        [1] = "DFT1",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Cash"
-                    }
+page3_5:Toggle("Drop Drink", false,function(drpdk)
+    DropDrinks = drpdk
+end)
 
-                    if AffDefense1 == 2 then
-                        args1[2] = 0 / 0
-                    end
+local Tap4 = Window:Taps("Island")
+local page4 = Tap4:newpage()
 
-                    if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
-                    end
+page4:Label(" ┇ Teleport Island ┇ ")
 
-                    if AffSniper1 == 2 then
-                        args1[4] = 0 / 0
-                    end
-
-                    if AffSword1 == 2 then
-                        args1[5] = 0 / 0
-                    end
-
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
-                end
-            end)
-        end
