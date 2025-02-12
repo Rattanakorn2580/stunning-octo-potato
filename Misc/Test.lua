@@ -4384,34 +4384,42 @@ end)
 
 page3:Label(" ┇ Players ┇ ")
 
-local Dropdown = page3:Drop("Select Players",false, Plr , function(slctp)
-    selectedPlayer = slctp
+local PlayerName = {}
+ for i,v in pairs(game.Players:GetChildren()) do
+    table.insert(PlayerName,v.Name)
+ end
+
+PlayerName1 = ""
+local sucvat = page4_5:Drop("Choose Player" , false, PlayerName, function(t)
+    PlayerName1 = t
+    print(PlayerName1)
 end)
 
-page3:Button("Refresh", function()
-    Dropdown:Clear()
-    for i,v in pairs(game.Players:GetChildren()) do  
-        if v:IsA("Players") then
-            Dropdown:Add(v.Name)
-        end
-    end
-    for i,v in pairs(game.Players:GetChildren()) do  
-        if v:IsA("Players") then
-            Dropdown:Add(v.Name)
-        end
+page3:Button("Refresh",function()
+    sucvat:Clear()
+    for i,v in pairs(game.Players:GetChildren()) do
+       sucvat:Add(v.Name)
     end
 end)
 
-page3:Button("Tp to Player", function()
-    
+page3:Button("Tp Player",function()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players:FindFirstChild(PlayerName1).Character.HumanoidRootPart.CFrame
 end)
 
 page3:Toggle("Auto Bring Player All", false,function(brplr)
     _G.autobringplr = brplr
 end)
 
-page3:Toggle("View Player", false,function(viewplr)
-    _G.view = viewplr
+page3:Toggle("View Player", false, function(viewplr)
+    Sp = viewplr
+    local plr1 = game.Players.LocalPlayer.Character.Humanoid
+    local plr2 = game.Players:FindFirstChild(PlayerName1)
+    repeat wait(0)
+        game.Workspace.Camera.CameraSubject = plr2.Character.Humanoid
+    until Sp == false or plr2.Character.Humanoid.Health == 0
+    if Sp == false or plr2.Character.Humanoid.Health ~= 0 then
+        game.Workspace.Camera.CameraSubject = game.Players.LocalPlayer.Character.Humanoid
+    end
 end)
 
 page3:Toggle("Aim Player", false,function(slim)
