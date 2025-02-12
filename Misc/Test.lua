@@ -1,21 +1,8 @@
 local Players = game:GetService("Players")
 local BlacklistedPlayers = {
-    "Oblivic",
-    "BowTiedPony",
-    "Bige0n",
-    "Farquanetta",
-    "icydragonwingsis",
-    "trashpanda2361",
-    "MarcusVetarus",
-    "ElianJoestar",
-    "Quixotize",
-    "CudlesstheCat",
-    "FoxKingFab",
-    "Tiptop98",
-    "vlonedd",
-    "VortexFragmented",
-    "Natsudragn331"
+    "T3T_XxBankKung",
 }
+
 Players.PlayerAdded:Connect(function(v)
     for i, v in pairs(Players:GetPlayers()) do
         if table.find(BlacklistedPlayers, v.Name) then
