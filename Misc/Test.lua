@@ -4035,6 +4035,41 @@ spawn(function()
     end 
 end)
 
+page1:Toggle("Auto Bring Chest", false,function(achst)
+    _G.autochest = achst
+end)
+
+spawn(function()
+    while wait(0) do
+        pcall(function()
+            if _G.autochest then
+for _, v in pairs(game.Workspace:GetDescendants()) do
+                            if v.Name == "Touch" and v.Parent.Name == "TreasureChestPart" then
+                                v.Parent.CFrame = game.Workspace[game.Players.LocalPlayer.Name].HumanoidRootPart.CFrame
+                            end
+						end            end
+        end)
+    end
+end)
+
+page1:Toggle("Auto Claim Gift (Beri)", false,function(brdf)
+    BringDF = brdf
+end)
+
+spawn(function()
+    while wait() do
+        if BringDF then
+            pcall(function()
+                for i,v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
+                    if v.ClassName == "Tool" then 
+                        fireclickdetector(v.Main.ClickDetector)
+                    end
+                end
+            end)
+        end
+    end
+ end)
+
 page1:Toggle("Auto Claim Gift (Beri)", false,function(bbri)
     _G.berigift = bbri
 end)
@@ -4075,14 +4110,57 @@ page1_5:Toggle("Auto Find Compass", false,function(acpp)
     AutoComp = acpp
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoComp then return end;
+            local Compass = game.Players.LocalPlayer.Backpack:FindFirstChild("Compass");
+            local Compass2 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+	    local Compass3 = game.Players.LocalPlayer.Character:FindFirstChild("Compass");
+            if Compass or Compass2 or Compass3 then
+                local OldPostiton = game.Players.LocalPlayer.Character.HumanoidRootPart.Position;
+                game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                Compass.Parent = game.Players.LocalPlayer.Character;
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(Compass.Poser.Value);
+                Compass:Activate();
+                wait(0.2);
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(OldPostiton);
+            end
+        end)
+    end
+end);
 page1_5:Toggle("Auto Claim Compass", false,function(acmp)
     AutoClaimComp = acmp
+end)
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoClaimComp then return end;
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+            game.Workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer("Claim10");
+        end)
+    end
 end)
 
 page1_5:Toggle("Auto Drop Compass", false,function(acdp)
     AutoDropComp = acdp
 end)
 
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDropComp then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDropCompass"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
 local Tap2 = Window:Taps("Farming")
 local page2 = Tap1:newpage()
 
