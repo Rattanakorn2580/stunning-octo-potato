@@ -3695,7 +3695,7 @@ mta.__namecall = newcclosure(function(self, ...)
     local method = getnamecallmethod() 
 
     if method == 'FireServer' or method == "InvokeServer" then
-        if self.Name == 'Drown' and _G.nowaterdamage then
+        if self.Name == 'Drown' and _G.nodmgwater then
             if args[1] then
                 return nil
             end
