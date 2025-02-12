@@ -4106,6 +4106,7 @@ page1:Toggle("Auto Buso Haki", false,function(bsoh)
     AutoMission = bsoh
 end)
 
+local page1_5 = Tap1:newpage()
 page1_5:Label(" ┇ Quest Sam ┇ ")
 
 page1_5:Toggle("Auto Find Compass", false,function(acpp)
