@@ -4527,7 +4527,7 @@ end)
 
 page3_5:Label(" ┇ Buyer Drinks ┇ ")
 
-page3_5:Drop("Select Drink",false, Cache.DevConfig["ListOfDrink"] , function(drnk) -- Use Selected <table> to auto select multiselection dropdown
+page3_5:Drop("Select Drink",false, Weapon , function(drnk) -- Use Selected <table> to auto select multiselection dropdown
     Drink = drnk
 end)
 
