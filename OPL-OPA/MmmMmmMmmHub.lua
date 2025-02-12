@@ -137,17 +137,6 @@ if isRunning1 then
             end)
 end
 
-local Section = Tabs.MainTab:AddSection("Local Player")
-
-Tabs.MainTab:AddButton({
-    Title = "No Save Data! ! !",
-    Description = "",
-    Callback = function()
-workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
-        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
-    end
-})
-
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Reroll Affinities at 2.0 All (Right)",
     Description = "",
