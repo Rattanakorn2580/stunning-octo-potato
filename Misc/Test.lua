@@ -4249,3 +4249,14 @@ page2:Button("Refresh", function()
         end
     end
 end)
+
+page2:Toggle("Auto Package", false,function(aeqp)
+    _G.autoequip = aeqp
+end)
+
+page2:Toggle("Auto Package", false,function(aatt)
+    _G.autoattck = aatt
+end)
+
+local page2_5 = Tap2:newpage()
+page2_5:Label(" ┇ Farm With Fruity ┇ ")
