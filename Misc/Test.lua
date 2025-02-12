@@ -3679,7 +3679,7 @@ Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
 Toggle.Size = UDim2.new(0, 90, 0, 38)
 Toggle.Font = Enum.Font.SourceSans
-Toggle.Text = "Open/Close"
+Toggle.Text = "InW Hub"
 Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
 Toggle.TextSize = 28.000
 Toggle.Draggable = true
@@ -3689,3 +3689,50 @@ end)
 local Corner = Instance.new("UICorner")
 Corner.Name = "Corner"
 Corner.Parent = Toggle
+
+--script
+local Window = create:Win("   Rac Hub  Map : [ OPL: Anarchy ] ")
+game:GetService("CoreGui").redui.MainSceen.Visible = false
+
+create:Notifile("", "   Welcome " .. game.Players.LocalPlayer.Name .. " To OP:L", 5)
+
+game:GetService("CoreGui").redui.MainSceen.Visible = true
+
+local Tap1 = Window:Taps("Farming")
+local page1 = Tap1:newpage()
+
+page1:Label(" ┇ Mob Farm ┇ ")
+
+local Dropdown = page1:Drop("Select Weapon",false, Wapon , function(abcdef) -- Use Selected <table> to auto select multiselection dropdown
+    Weapon = abcdef
+end)
+
+page1:Button("Refresh", function()
+    Dropdown:Clear()
+    for i,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+    for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do  
+        if v:IsA("Tool") then
+            Dropdown:Add(v.Name)
+        end
+    end
+end)
+
+page1:Toggle("Auto Farm", false,function(abc)
+    _G.autofarm = abc
+end)
+
+page1:Toggle("Auto Attack", false,function(abcd)
+    _G.autoattack = abcd
+end)
+
+page1:Toggle("Auto Equip", false,function(abcde)
+    _G.autoequip = abcde
+end)
+
+page1:Toggle("Auto Claim Quest", false,function(dmmsv)
+    _G.autoquest = dmmsv
+end)
