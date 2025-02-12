@@ -3961,7 +3961,7 @@ local A_1 = "RewardMark"
     end
 end)
 
-page2_5:Toggle("Auto Quake Farm (Lag)", false,function(chllge)
+page1:Toggle("Auto Quake Farm (Lag)", false,function(chllge)
     _G.autoclaim = chllge
 end)
 
@@ -5236,6 +5236,14 @@ page5:Toggle("Enable", false,function(bal)
         game.Players.LocalPlayer.Character.CharacterTrait.WS.Value = 1
     end
 
+end)
+
+page5:Toggle("Anti AFK (Not Work)", false,function(afk)
+    _G.antiafk = afk
+end)
+
+page5:Toggle("Anti Water", false,function(nowater)
+    _G.nodmgwater = nowater
 end)
 
 page5_5:Label(" ┇ Fake Weapon ┇ ")
