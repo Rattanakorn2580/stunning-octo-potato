@@ -4922,6 +4922,8 @@ spawn(function()
     end
 end)
 
+plr = game.Players.LocalPlayer
+
 local Tap4 = Window:Taps("Island")
 local page4 = Tap4:newpage()
 
@@ -5009,9 +5011,9 @@ page4:Drop("Safe Place" , false, { "Safe Place (Sea)", "Safe Place (Sky)", "Safe
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneUnderSeaPart"].CFrame * CFrame.new(0, 5, 0)
     elseif getgenv().tpisland2 == "Safe Place (Sky)" then
         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneOuterSpacePart"].CFrame * CFrame.new(0, 5, 0)
-    elseif getgenv().tpsafezone == "SafeZone LightFarm 1.0" then
+    elseif getgenv().tpisland2 == "SafeZone LightFarm 1.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart1"].CFrame * CFrame.new(0, 5, 0)
-	elseif getgenv().tpsafezone == "SafeZone LightFarm 2.0" then
+	elseif getgenv().tpisland2 == "SafeZone LightFarm 2.0" then
        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace")["SafeZoneLightPart2"].CFrame * CFrame.new(0, 5, 0)
     end
 end)
@@ -5055,13 +5057,13 @@ page4:Drop("Choose NPC", false,{
     end)
 
 local page4_5 = Tap4:newpage()
-page4_5:Label(" ┇ Bug a Lot Compass Soon... ┇ ")
+page4_5:Label(" ┇ Bug a Lot Compass Soon ┇ ")
 
 local Tap5 = Window:Taps("Misc")
 local page5 = Tap5:newpage()
 local page5_5 = Tap5:newpage()
 
-page5:Label(" ┇ LocalPlayer ┇ ")
+page5:Label(" ┇ Local Player ┇ ")
 
 page5:TextBox("Walk Speed",". . .",function(numsber)
     getgenv().speedx = numsber
@@ -5082,7 +5084,7 @@ page5:Toggle("Enable", false,function(bal)
 
 end)
 
-page5_5:Label(" ┇ Other ┇ ")
+page5_5:Label(" ┇ Fake Weapon ┇ ")
 
 page5_5:Button("Seastone Cestus (500 Melee)",function()
     local A_1 = "Seastone Cestus"
@@ -5091,12 +5093,7 @@ page5_5:Button("Seastone Cestus (500 Melee)",function()
    
 end)
 
-page5_5:Button("Aqua Staff",function()
-    local A_1 = "Aqua Staff"
-    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].UpdateMelee
-    Event:FireServer(A_1)
-   
-end)
+page5_5:Label(" ┇ Sever ┇ ")
 
 page5_5:Button("Rejoin Server",function()
     game.Players.LocalPlayer:Kick()
@@ -5179,6 +5176,8 @@ page5_5:Button("Hop Server",function()
           Teleport()
 	
 end)
+
+page5_5:Label(" ┇ Other ┇ ")
 
 page5_5:Button("Unlock Emotes (Not Save)",function()
     game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].Data.CB_Mark1.Value = true
