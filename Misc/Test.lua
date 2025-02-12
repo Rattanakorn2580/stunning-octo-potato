@@ -3853,6 +3853,37 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
     end
 end
 
+local Npc = {}
+local Weaponlist = {}
+local drinklist = {
+    "Lemonade+",
+    "Lemonade",
+    "Smoothie+",
+    "Smoothie",
+    "Juice+",
+    "Juice",
+    "Cider+",
+    "Cider",
+ }
+
+local islandlist = {
+    "Cave Island",
+    "Kaizu Island",
+    "Sand Island",
+    "Sam Island",
+    "Club Island",
+    "Gunslingers Island",
+    "Merlin Island",
+    "Snow Island",
+    "Orange House Island",
+    "Desert Castle",
+    "Pyramid Island",
+    "Red House Island",
+    "3 House Island",
+    "Pursuer Island",
+    "Vokun Island",
+}
+
 --script
 local Window = create:Win("InW Hub : For Map OPL: Anarchy ")
 game:GetService("CoreGui").redui.MainSceen.Visible = false
@@ -4527,7 +4558,7 @@ end)
 
 page3_5:Label(" ┇ Buyer Drinks ┇ ")
 
-page3_5:Drop("Select Drink",false, instDrink , function(drnk) -- Use Selected <table> to auto select multiselection dropdown
+page3_5:Drop("Select Drink",false, drinklist , function(drnk) -- Use Selected <table> to auto select multiselection dropdown
     Drink = drnk
 end)
 
