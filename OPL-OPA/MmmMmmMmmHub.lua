@@ -30,7 +30,7 @@ local Cache = {
 
 
 local Tabs = {
-    MainTab = Window:AddTab({ Title = "Main", Icon = "scroll" }),
+    MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
     StorageTab = Window:AddTab({ Title = "Storage", Icon = "boxes" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
     FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
@@ -38,13 +38,10 @@ local Tabs = {
     PlayerTab = Window:AddTab({ Title = "Players", Icon = "users" }),
     ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
     TeleportTab = Window:AddTab({ Title = "Teleport", Icon = "map-pin" }),
-    WebHookTab = Window:AddTab({ Title = "Webhook", Icon = "rss" }),
-    Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
 }
 
-
 Fluent:Notify({
-    Title = "Ascended Hub",
+    Title = "InW Hub",
     Content = "Loading...",
     Duration = 5
 })
@@ -76,7 +73,7 @@ L2.BorderSizePixel = 0
 L2.Position = UDim2.new(0.1208, 0, 0.0953, 0)
 L2.Size = UDim2.new(0, 50, 0, 50)
 L2.Font = Enum.Font.LuckiestGuy
-L2.Text = "Ascended\nHub"
+L2.Text = "InW\nHub"
 L2.TextColor3 = Color3.fromRGB(255, 255, 255)
 L2.TextSize = 9.000
 L2.Draggable = true
@@ -92,7 +89,7 @@ local Section = Tabs.MainTab:AddSection("Main Utilities")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Anti-AFK",
-    Description = "Activates an Anti Afk for you, you will never be kicked for standing still for too long!",
+    Description = "",
     Default = false,
     Callback = function(state)
         if state then
@@ -122,7 +119,7 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Spawn",
-    Description = "Automatically respawns your character!",
+    Description = "",
     Default = false,
     Callback = function(enabled)
         _G.AutoSpawnEnabled = enabled
@@ -143,7 +140,7 @@ Tabs.MainTab:AddToggle("Toggle", {
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Claim Mission",
-    Description = "Automatically claims expert mission for you!",
+    Description = "",
     Default = false,
     Callback = function(AMS)
         AutoMission = AMS
@@ -162,7 +159,7 @@ end)
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Beri Gift",
-    Description = "Automatically claims beri gifts for you!",
+    Description = "",
     Default = false,
     Callback = function(ACG)
 		_G.berigift = ACG
@@ -183,7 +180,7 @@ end);
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Gems Gift",
-    Description = "Automatically claims beri gifts for you!",
+    Description = "",
     Default = false,
     Callback = function(ACG)
 		_G.gemsgift = ACG
@@ -204,7 +201,7 @@ end)
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Challenges",
-    Description = "Automatically claim challenges for you!",
+    Description = "",
     Default = false,
     Callback = function(ACLL)
 		_G.autoclaim = ACLL
@@ -382,363 +379,19 @@ Tabs.MainTab:AddButton({
     end
 })
 
-Tabs.MainTab:AddButton({
-    Title = "Hop Server",
-    Description = "",
-    Callback = function()
-        local PlaceID = game.PlaceId
-        local AllIDs = {}
-        local foundAnything = ""
-        local actualHour = os.date("!*t").hour
-        local Deleted = false
-
-        function TPReturner()
-            local Site;
-            if foundAnything == "" then
-                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-            else
-                Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' .. PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-            end
-
-            local ID = ""
-            if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-                foundAnything = Site.nextPageCursor
-            end
-            local num = 0
-            for i, v in pairs(Site.data) do
-                local Possible = true
-                ID = tostring(v.id)
-                if tonumber(v.maxPlayers) > tonumber(v.playing) then
-                    for _, Existing in pairs(AllIDs) do
-                        if num ~= 0 then
-                            if ID == tostring(Existing) then
-                                Possible = false
-                            end
-                        else
-                            if tonumber(actualHour) ~= tonumber(Existing) then
-                                local delFile = pcall(function()
-                                    -- delfile("NotSameServers.json")
-                                    AllIDs = {}
-                                    table.insert(AllIDs, actualHour)
-                                end)
-                            end
-                        end
-                        num = num + 1
-                    end
-                    if Possible == true then
-                        table.insert(AllIDs, ID)
-                        wait()
-                        pcall(function()
-                            wait()
-                            game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID, game.Players.LocalPlayer)
-                        end)
-                        wait(0.1)
-                    end
-                end
-            end
-        end
-
-        function Teleport() 
-            while wait() do
-                pcall(function()
-                    TPReturner()
-                    if foundAnything ~= "" then
-                        TPReturner()
-                    end
-                end)
-            end
-        end
-
-        Teleport()
-    end,
-})
-
-Tabs.MainTab:AddButton({
-    Title = "Auto Basic Safe Place",
-    Description = "",
-    Callback = function()
-        local CharacterName = game.Players.LocalPlayer.Character
-        local position = CharacterName.HumanoidRootPart.CFrame * CFrame.new(0, 0, -15)
-        local char = CharacterName.HumanoidRootPart
-        char.CFrame = CFrame.new(-169, 640, -54)
-
-        local b1 = Instance.new("Part")
-        b1.Shape = "Block"
-        b1.Material = "Neon"
-        b1.BrickColor = BrickColor.new("Hot Pink")
-        b1.Anchored = true
-        b1.Parent = game.Workspace
-        b1.CFrame = CFrame.new(-169, 630, -54)
-        b1.Size = Vector3.new(5, 0.1, 5)
-    end
-})
-
-Tabs.MainTab:AddButton({
-    Title = "Auto Improved Safe Place",
-    Description = "",
-    Callback = function()
-        local char = game.Players.LocalPlayer.Character.HumanoidRootPart
-        char.CFrame = CFrame.new(-169, 12050, -54)
-
-        local b1 = Instance.new("Part")
-        b1.Shape = "Block"
-        b1.Material = "Neon"
-        b1.BrickColor = BrickColor.new("White")
-        b1.Anchored = true
-        b1.Parent = game.Workspace
-        b1.CFrame = CFrame.new(-169, 12000, -54)
-        b1.Size = Vector3.new(25, 0.1, 25)
-    end
-})
-
-local Section = Tabs.MainTab:AddSection("Auto Reroll Affinities")
-
-local Toggle
-local isRunning = false
-
-Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities | Gems |",
-    Description = "This will roll your gem affinity until it is all 2.0!\nNote: This may consume all of your gems.",
-    Default = false,
-    Callback = function(Value)
-        isRunning1 = Value
-        if isRunning1 then
-            spawn(function()
-                while isRunning1 do
-                    wait(8)
-                    local player = game.Players.LocalPlayer
-                    local playerId = player.UserId
-                    local userDataName = game.Workspace.UserData["User_" .. playerId]
-
-
-                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
-                    local AffSword1 = userDataName.Data.DFT1Sword.Value
-
-
-                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
-                    local AffSword2 = userDataName.Data.DFT2Sword.Value
-
-
-                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    local args1 = {
-                        [1] = "DFT1",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Gems"
-                    }
-
-                    local args2 = {
-                        [1] = "DFT2",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Gems"
-                    }
-
-                    if AffDefense1 == 2 then
-                        args1[2] = 0 / 0
-                    end
-
-                    if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
-                    end
-
-                    if AffSniper1 == 2 then
-                        args1[4] = 0 / 0
-                    end
-
-                    if AffSword1 == 2 then
-                        args1[5] = 0 / 0
-                    end
-
-                    if AffDefense2 == 2 then
-                        args2[2] = 0 / 0
-                    end
-
-                    if AffMelee2 == 2 then
-                        args2[3] = 0 / 0
-                    end
-
-                    if AffSniper2 == 2 then
-                        args2[4] = 0 / 0
-                    end
-
-                    if AffSword2 == 2 then
-                        args2[5] = 0 / 0
-                    end
-
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
-                end
-            end)
-        end
-    end,
-})
-
-
-
-local ToggleBeri1
-local isRunning1 = false
-
-Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities | Left |",
-    Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
-    Default = false,
-    Callback = function(Value)
-        isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
-        if isRunning1 then
-            -- Inicia o loop se o toggle estiver ativado
-            spawn(function()
-                while isRunning1 do
-                    wait(8) -- Intervalo do loop
-                    local player = game.Players.LocalPlayer
-                    local playerId = player.UserId
-                    local userDataName = game.Workspace.UserData["User_" .. playerId]
-
-                    -- DFT1 Variables
-                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
-                    local AffSword1 = userDataName.Data.DFT1Sword.Value
-
-                    -- Check for DFT1
-                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    local args1 = {
-                        [1] = "DFT1",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Cash"
-                    }
-
-                    if AffDefense1 == 2 then
-                        args1[2] = 0 / 0
-                    end
-
-                    if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
-                    end
-
-                    if AffSniper1 == 2 then
-                        args1[4] = 0 / 0
-                    end
-
-                    if AffSword1 == 2 then
-                        args1[5] = 0 / 0
-                    end
-
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
-                end
-            end)
-        end
-    end,
-})
-
-local ToggleBeri2
-local isRunning2 = false
-
-Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto 2.0 Affinities Beri | Right |",
-    Description = "This will roll your beri affinity until it is all 2.0!\nNote: This may consume all of your beri.",
-    Default = false,
-    Callback = function(Value)
-        isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
-        if isRunning2 then
-            -- Inicia o loop se o toggle estiver ativado
-            spawn(function()
-                while isRunning2 do
-                    wait(8) -- Intervalo do loop
-                    local player = game.Players.LocalPlayer
-                    local playerId = player.UserId
-                    local userDataName = game.Workspace.UserData["User_" .. playerId]
-
-                    -- DFT2 Variables
-                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
-                    local AffSword2 = userDataName.Data.DFT2Sword.Value
-
-                    -- Check for DFT2
-                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
-                        script.Parent:Destroy()
-                    end
-
-                    local args2 = {
-                        [1] = "DFT2",
-                        [2] = false, -- defense
-                        [3] = false, -- melee
-                        [4] = false, -- sniper
-                        [5] = false, -- sword
-                        [6] = "Cash"
-                    }
-
-		    if AffDefense2 == 2 then
-                        args2[2] = 0 / 0
-                    end
-
-                    if AffMelee2 == 2 then
-                        args2[3] = 0 / 0
-                    end
-
-                    if AffSniper2 == 2 then
-                        args2[4] = 0 / 0
-                    end
-
-                    if AffSword2 == 2 then
-                        args2[5] = 0 / 0
-                    end
-
-                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
-                end
-            end)
-        end
-    end,
-})
-
-
 local Section = Tabs.MainTab:AddSection("Sam Quest's Utilities")
 
 Tabs.MainTab:AddButton({
-    Title = "Open Sam",
-    Description = "Opens the sam interface for you!",
+    Title = "Check Sam",
+    Description = "",
     Callback = function()
         fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
     end
 })
 
 Tabs.MainTab:AddButton({
-    Title = "Claim One Compass",
-    Description = "Claims only one compass for you!",
-    Callback = function()
-        local args = {
-            [1] = "Claim1"
-        }
-        
-        workspace.Merchants.QuestMerchant.Clickable.Retum:FireServer(unpack(args))
-    end
-})
-
-Tabs.MainTab:AddButton({
     Title = "Claim All Compasses",
-    Description = "Claims all compasses for you!",
+    Description = "",
     Callback = function()
         local args = {
             [1] = "Claim10"
@@ -750,7 +403,7 @@ Tabs.MainTab:AddButton({
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Claim Compasses",
-    Description = "Claim compasses whenever they are available!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         AutoClaimCompass = Value
@@ -772,8 +425,8 @@ end)
 local AutoCompass = false
 
 Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Auto Use Compasses",
-    Description = "It will collect all the compasses you have in your inventory!",
+    Title = "Auto Find Compasses",
+    Description = "",
     Default = false,
     Callback = function(Value)
         AutoCompass = Value
@@ -808,7 +461,7 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.StorageTab:AddSection("Devil Fruit Utilities")
+local Section = Tabs.StorageTab:AddSection("Devil Fruit")
 
 Tabs.StorageTab:AddToggle("Toggle", {
     Title = "Auto Collect DF",
@@ -950,189 +603,6 @@ spawn(function()
     end
 end)
 
-
-local Section = Tabs.FarmTab:AddSection("Cannon Ball Farm")
-
-Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Cannon Ball All Mobs",
-    Description = "Kill all mobs with the cannon ball!",
-    Default = false,
-    Callback = function(ACN)
-        _G.autocannon = ACN
-    end    
-})
-
-function ActivateHaki(state)
-    pcall(function()
-        if state then
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        else
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        end
-    end)
-end
-
-spawn(function()
-    while wait(0.5) do
-        pcall(function()
-            if _G.autocannon then
-                ActivateHaki(true)
-                for _, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if (string.find(v.Name, " Boar") or string.find(v.Name, "Crab") or 
-                        string.find(v.Name, "Angry") or string.find(v.Name, "Bandit") or 
-                        string.find(v.Name, "Thief") or string.find(v.Name, "Vokun") or 
-                        string.find(v.Name, "Buster") or string.find(v.Name, "Freddy") or 
-                        string.find(v.Name, "Bruno") or string.find(v.Name, "Thug") or 
-                        string.find(v.Name, "Gunslinger") or string.find(v.Name, "Gunner") or 
-                        string.find(v.Name, "Cave")) and v:FindFirstChild("HumanoidRootPart") then
-                        v.HumanoidRootPart.CanCollide = false
-                        v.HumanoidRootPart.Size = Vector3.new(10, 10, 10)
-                        v.HumanoidRootPart.Anchored = true
-                        v.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 4, -15)
-                        if v.Humanoid.Health == 0 then
-                            v.HumanoidRootPart.Size = Vector3.new(0, 0, 0)
-                            v:Destroy()
-                        end
-                    end
-                end
-                ActivateHaki(false)
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autocannon then
-                local Plr = game.Players.LocalPlayer
-                local toolname = "Cannon Ball"
-                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    Plr.Character.Humanoid:EquipTool(Plr.Backpack:FindFirstChild(toolname))
-                end
-                local cannon = Plr.Character:FindFirstChild(toolname)
-                if cannon then
-                    local args = {
-                        [1] = CFrame.new(Vector3.new(Plr.Character.HumanoidRootPart.Position))
-                    }
-                    cannon.RemoteEvent:FireServer(unpack(args))
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autocannon then
-                for _, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
-                    if v.Name == "CannonBall" then
-                        v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
-                        v.CanCollide = false
-                        if not v:FindFirstChild("BodyClip") then
-                            local Noclip = Instance.new("BodyVelocity")
-                            Noclip.Name = "BodyClip"
-                            Noclip.Parent = v
-                            Noclip.MaxForce = Vector3.new(100000,100000,100000)
-                            Noclip.Velocity = Vector3.new(0,20,0)
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Cannon Ball All Players",
-    Description = "Kill all players with the cannon ball!",
-    Default = false,
-    Callback = function(AFP)
-        _G.autofarmplayers = AFP
-    end    
-})
-
-function ActivateHaki(state)
-    pcall(function()
-        if state then
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        else
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        end
-    end)
-end
-
-spawn(function()
-    while wait(0) do
-        pcall(function()
-            if _G.autofarmplayers then
-                -- Iterar por todos os jogadores no jogo
-                for _, player in pairs(game.Players:GetPlayers()) do
-                    -- Verificar se o jogador não é o próprio jogador e se está presente na Workspace
-                    if player ~= game.Players.LocalPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                        -- Configurar para trazer o jogador para uma posição próxima
-                        local humanoidRootPart = player.Character.HumanoidRootPart
-                        humanoidRootPart.CanCollide = false
-                        humanoidRootPart.Anchored = true
-                        humanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 4, -15)
-
-                        -- Checar e lidar com jogadores eliminados (opcional)
-                        if player.Character:FindFirstChild("Humanoid") and player.Character.Humanoid.Health == 0 then
-                            humanoidRootPart.Anchored = false
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autofarmplayers then
-                local Plr = game.Players.LocalPlayer
-                local toolname = "Cannon Ball"
-
-                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    Plr.Character.Humanoid:EquipTool(Plr.Backpack:FindFirstChild(toolname))
-                end
-
-                local cannon = Plr.Character:FindFirstChild(toolname)
-                if cannon then
-                    local args = {
-                        [1] = CFrame.new(Vector3.new(Plr.Character.HumanoidRootPart.Position))
-                    }
-                    cannon.RemoteEvent:FireServer(unpack(args))
-                end
-            end
-        end)
-    end
-end)
-
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autofarmplayers then
-                for _, v in pairs(game.workspace.ResourceHolder["Resources_" .. game.Players.LocalPlayer.UserId]:GetChildren()) do
-                    if v.Name == "CannonBall" then
-                        v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame * CFrame.new(0, 2, -15)
-                        v.CanCollide = false
-                        if not v:FindFirstChild("BodyClip") then
-                            local Noclip = Instance.new("BodyVelocity")
-                            Noclip.Name = "BodyClip"
-                            Noclip.Parent = v
-                            Noclip.MaxForce = Vector3.new(100000,100000,100000)
-                            Noclip.Velocity = Vector3.new(0,20,0)
-                        end
-                    end
-                end
-            end
-        end)
-    end
-end)
-
 local selectedPlayers = {}
 local Tpplr = false
 
@@ -1142,151 +612,11 @@ for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
     table.insert(PlayerList, player.Name)
 end
 
-
-local function updatePlayerList()
-    local newPlayerList = {}
-    for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-        table.insert(newPlayerList, player.Name)
-    end
-    PlayerList = newPlayerList
-    MultiDropdown:Refresh(PlayerList)
-end
-
-
-game.Players.PlayerAdded:Connect(function(player)
-    table.insert(PlayerList, player.Name)
-    updatePlayerList()
-end)
-
-game.Players.PlayerRemoving:Connect(function(player)
-    for i, v in pairs(PlayerList) do
-        if v == player.Name then
-            table.remove(PlayerList, i)
-            break
-        end
-    end
-    updatePlayerList()
-end)
-
-
-local MultiDropdown = Tabs.FarmTab:AddDropdown("MultiDropdown", {
-    Title = "Select Players Cannon Ball Farm",
-    Description = "You can select more than one player to kill with the Cannon Ball!",
-    Values = PlayerList, 
-    Multi = true,
-    Default = {},
-    Callback = function(selectedValues)
-        selectedPlayers = {}
-        for value, state in pairs(selectedValues) do
-            if state then
-                table.insert(selectedPlayers, value)
-            end
-        end
-    end
-})
-
-MultiDropdown.Callback = function(selectedValues)
-    selectedPlayers = {}
-    for value, state in pairs(selectedValues) do
-        if state then
-            table.insert(selectedPlayers, value)
-            SelectPlayer = value 
-            break
-        end
-    end
-end
-
-local function BringPlayerToPosition(targetPlayerName)
-    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
-    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local playerRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        if playerRootPart then
-            local targetRootPart = targetPlayer.Character.HumanoidRootPart
-
-            targetRootPart.CanCollide = false
-            targetRootPart.Anchored = true
-            targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
-        end
-    end
-end
-
-Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Cannon Ball Selected Players",
-    Description = "Kill players selecteds with Cannonn Ball!",
-    Default = false,
-    Callback = function(AFP)
-        _G.autofarmSelectedPlayer = AFP -- Controla o estado do autofarm para o jogador selecionado
-    end
-})
-
--- Função para ativar/desativar Haki
-function ActivateHaki(state)
-    pcall(function()
-        if state then
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        else
-            -- Se necessário, adicione lógica para desativar o Haki
-            game.workspace.UserData["User_" .. game.Players.LocalPlayer.UserId].UpdateHaki:FireServer()
-        end
-    end)
-end
-
--- AutoFarm para o jogador selecionado
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autofarmSelectedPlayer and SelectPlayer ~= "" then
-                local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
-                if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    -- Configurar para trazer o jogador para perto
-                    local humanoidRootPart = targetPlayer.Character.HumanoidRootPart
-                    humanoidRootPart.CanCollide = false
-                    humanoidRootPart.Anchored = true
-                    humanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 4, -15)
-
-                    -- Checar e lidar com jogadores eliminados (opcional)
-                    if targetPlayer.Character:FindFirstChild("Humanoid") and targetPlayer.Character.Humanoid.Health == 0 then
-                        humanoidRootPart.Anchored = false
-                    end
-                end
-            end
-        end)
-    end
-end)
-
--- Equipar e usar Cannon Ball automaticamente no jogador selecionado
-spawn(function()
-    while task.wait(0.5) do
-        pcall(function()
-            if _G.autofarmSelectedPlayer and SelectPlayer ~= "" then
-                local Plr = game.Players.LocalPlayer
-                local targetPlayer = game.Players:FindFirstChild(SelectPlayer)
-                local toolname = "Cannon Ball"
-
-                -- Verificar se o Cannon Ball está no Backpack e equipá-lo
-                if Plr.Backpack:FindFirstChild(toolname) and not Plr.Character:FindFirstChild(toolname) and not Plr.Character:FindFirstChildOfClass("Tool") then
-                    Plr.Character.Humanoid:EquipTool(Plr.Backpack:FindFirstChild(toolname))
-                end
-
-                -- Usar o Cannon Ball no jogador selecionado
-                local cannon = Plr.Character:FindFirstChild(toolname)
-                if cannon and targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    local args = {
-                        [1] = targetPlayer.Character.HumanoidRootPart.CFrame -- Atacar o jogador-alvo
-                    }
-                    cannon.RemoteEvent:FireServer(unpack(args))
-                end
-            end
-        end)
-    end
-end)
-
-
 local Section = Tabs.FarmTab:AddSection("Weapon Farm")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Farm Mobs [Weapon]",
-    Description = "Kill mobs with your weapon equipped!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.behindFarm = state
@@ -1376,7 +706,7 @@ end
 local SelectedWeapon = nil
 local WeaponDropdown = Tabs.FarmTab:AddDropdown("WeaponDropdown", {
     Title = "Select Weapon",
-    Description = "Choose a weapon to equip automatically!",
+    Description = "",
     Values = WeaponList,
     Multi = false,
     Default = nil,
@@ -1408,7 +738,7 @@ end
 
 local AutoEquipToggle = Tabs.FarmTab:AddToggle("AutoEquipToggle", {
     Title = "Auto Equip Weapon",
-    Description = "Automatically equip the selected weapon!",
+    Description = "",
     Default = false,
     Callback = function(state)
         _G.AutoEquip = state
@@ -1425,7 +755,7 @@ end)
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Click",
-    Description = "Just an auto clicker!\nNote: You don't need to activate it to auto farm weapon.",
+    Description = "",
     Default = false,
     Callback = function(ACK)
         AutoClicking = ACK
@@ -1447,7 +777,7 @@ local Section = Tabs.FarmTab:AddSection("Other Farms")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Collect Chests",
-    Description = "Collect all the chests for yourself!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autochest = Value
@@ -1470,28 +800,8 @@ Tabs.FarmTab:AddToggle("Toggle", {
 })
 
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Get Package",
-    Description = "Collect a package for you!",
-    Default = false,
-    Callback = function(bool11)
-        getgenv().tre = bool11
-        while getgenv().tre do
-            wait()
-            pcall(function()
-                workspace:WaitForChild("Merchants")
-                    :WaitForChild("QuestFishMerchant")
-                    :WaitForChild("Clickable")
-                    :WaitForChild("Retum")
-                    :FireServer()
-                wait(2)
-            end)
-        end
-    end,
-})
-
-Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Package",
-    Description = "Delivery the packages for you!",
+    Description = "",
     Default = false,
     Callback = function(bool00)
         getgenv().tret = bool00
@@ -1524,7 +834,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Stats Farm",
-    Description = "Farm stats for you!\nNote: Cause lag.",
+    Description = "",
     Default = false,
     Callback = function(Value)
         getgenv().autostatsfarm = Value
@@ -1599,7 +909,7 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Fish Farm",
-    Description = "This will catch, cook and sell the fish in a safe place.",
+    Description = "",
     Default = false,
     Callback = function(AFH)
 		AutoFish = AFH
@@ -1667,7 +977,7 @@ end);
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Haki",
-    Description = "When you reach level 1000, he will automatically acquire haki for you!",
+    Description = "",
     Default = false,
     Callback = function(bool122)
         getgenv().haki = bool122
@@ -1688,87 +998,12 @@ Tabs.FarmTab:AddToggle("Toggle", {
 
 local Section = Tabs.FarmTab:AddSection("Haki Auto Farm")
 
-local hakitarget = 25
-local Slider = Tabs.FarmTab:AddSlider("Slider", 
-{
-    Title = "Haki % Use",
-    Description = "Select the amount of haki that will be consumed to farm!\nNote: The quantity may not be exact.",
-    Default = 25,
-    Min = 1,
-    Max = 100,
-    Rounding = 1,
-    Callback = function(gmm)
-        hakitarget = gmm
-    end,
-})
-
-
-local hakispeed = 1
-local Slider = Tabs.FarmTab:AddSlider("Slider", 
-{
-    Title = "Haki % Speed",
-    Description = "Select the farm speed!\nNote: High speeds are not recommended.",
-    Default = 1,
-    Min = 1,
-    Max = 5,
-    Rounding = 1,
-    Callback = function(gttmm)
-        hakispeed = gttmm
-    end,
-})
-
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Farm Haki",
     Description = "This will farm your haki according to the sliders setting!",
     Default = false,
     Callback = function(vccl)
         getgenv().concuvm = vccl
-        local plrid = tostring(game.Players.LocalPlayer.UserId)
-        local plr = tostring(game.Players.LocalPlayer)
-        _G.concu = true
-        while _G.concu do
-            wait()
-            local slv = game.Workspace.UserData["User_" .. plrid].Data.HakiLevel.Value
-            local sss = slv / 100 * hakitarget
-            if game.Workspace.UserData["User_" .. plrid].HakiBar.Value > sss and getgenv().concuvm == true then
-                local Players = game:GetService("Players")
-                local cache = {}
-                local function lol(name)
-                    if cache[name] then return cache[name] end
-                    local player = Players:FindFirstChild(name)
-                    if player then
-                        cache[name] = player.UserId
-                        return player.UserId
-                    end
-
-                    local id
-                    pcall(function()
-                        id = Players:lol(name)
-                    end)
-                    cache[name] = id
-                    return id
-                end
-
-                local ehh = game.Players.LocalPlayer.Name
-                local Final = lol(ehh)
-                for i = 1, hakispeed do
-                    local args = { [1] = "Off", [2] = 1 }
-                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
-                    
-                    local args = { [1] = "On", [2] = 1 }
-                    workspace.UserData["User_" .. Final].III:FireServer(unpack(args))
-                end
-            elseif game.Workspace.UserData["User_" .. plrid].HakiBar.Value <= sss and getgenv().concuvm == true then
-                local args = { [1] = "Off", [2] = 1 }
-                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
-                repeat task.wait() until game.Workspace.UserData["User_" .. plrid].HakiBar.Value >= slv
-                _G.concu = true
-            elseif getgenv().concuvm == false then
-                _G.concu = false
-                local args = { [1] = "Off", [2] = 1 }
-                workspace.UserData["User_" .. plrid].III:FireServer(unpack(args))
-            end
-        end
     end,
 })
 
@@ -1777,7 +1012,7 @@ local Section = Tabs.FarmFruitTab:AddSection("Options and Utilities")
 
 Tabs.FarmFruitTab:AddToggle("Toggle", {
     Title = "100% Skill",
-    Description = "This will make some skills come out 100% charged without you having to hold them down to charge!\nIMPORTANT: Activate only once!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         _G.auto100rate = Value
@@ -1833,7 +1068,7 @@ end)
 
 Tabs.FarmFruitTab:AddToggle("Toggle", { 
     Title = "Bring Mobs For Farm With Fruits",
-    Description = "Automatically brings all mobs to your position!",
+    Description = "",
     Default = false,
     Callback = function(state)
         bringActive = state
@@ -1872,7 +1107,7 @@ end)
 
 Tabs.FarmFruitTab:AddToggle("Toggle", { 
     Title = "Bring Players For Farm With Fruits",
-    Description = "Automatically brings all players to your position!",
+    Description = "",
     Default = false,
     Callback = function(state)
         bringPlayersActive = state
@@ -1914,141 +1149,6 @@ game.Players.PlayerRemoving:Connect(function(player)
         end
     end
     updatePlayerList()
-end)
-
-
-local MultiDropdown = Tabs.FarmFruitTab:AddDropdown("MultiDropdown", {
-    Title = "Select Players to Farm",
-    Description = "You can select more than one player to kill with Farm Fruit!",
-    Values = PlayerList, 
-    Multi = true,
-    Default = {},
-    Callback = function(selectedValues)
-        selectedPlayers = {}
-        for value, state in pairs(selectedValues) do
-            if state then
-                table.insert(selectedPlayers, value)
-            end
-        end
-        print("Multidropdown changed:", table.concat(selectedPlayers, ", "))
-    end
-})
-
-local function BringPlayerToPosition(targetPlayerName)
-    local targetPlayer = game.Players:FindFirstChild(targetPlayerName)
-    if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-        local playerRootPart = game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        if playerRootPart then
-            local targetRootPart = targetPlayer.Character.HumanoidRootPart
-
-            targetRootPart.CanCollide = false
-            targetRootPart.Anchored = true
-            targetRootPart.CFrame = playerRootPart.CFrame * CFrame.new(0, 4, -15)
-        end
-    end
-end
-
-Tabs.FarmFruitTab:AddToggle("Toggle", {
-    Title = "Bring Players Selected",
-    Description = "Automatically brings selected players to your position!",
-    Default = false,
-    Callback = function(state)
-        Tpplr = state 
-        if not Tpplr then
-            for _, playerName in ipairs(selectedPlayers) do
-                local targetPlayer = game.Players:FindFirstChild(playerName)
-                if targetPlayer and targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    targetPlayer.Character.HumanoidRootPart.Anchored = false
-                end
-            end
-        end
-    end
-})
-
-spawn(function()
-    while task.wait(0.5) do
-        if Tpplr and game.Players.LocalPlayer.Character then
-            pcall(function()
-                for _, playerName in ipairs(selectedPlayers) do
-                    BringPlayerToPosition(playerName)
-                end
-            end)
-        end
-    end
-end)
-
-
-local VirtualInputManager = game:GetService("VirtualInputManager")
-
--- Tabela de teclas na ordem especificada
-local keyToggles = {
-    Z = false,
-    X = false,
-    C = false,
-}
-
--- Criação das seções, toggles e parágrafos
-local function setupKeyToggles()
-    -- Associação de teclas às seções
-    local sectionMapping = {
-        Z = {
-            section = Tabs.FarmFruitTab:AddSection("Magma Killer"),
-            paragraph = {
-                Title = "Great Eruption",
-                Content = "Add the above skill to the respective key [Z]\nNote: Click on settings and change if necessary."
-            }
-        },
-        X = {
-            section = Tabs.FarmFruitTab:AddSection("Flare Killer"),
-            paragraph = {
-                Title = "Fire Fist",
-                Content = "Add the above skill to the respective key [X]\nNote: Click on settings and change if necessary."
-            }
-        },
-        C = {
-            section = Tabs.FarmFruitTab:AddSection("Candy Killer"),
-            paragraph = {
-                Title = "Jawbreaker",
-                Content = "Add the above skill to the respective key [C]\nNote: Click on settings and change if necessary."
-            }
-        }
-    }
-
-    -- Criação de toggles e parágrafos dinamicamente
-    for key, data in pairs(sectionMapping) do
-        local section = data.section
-
-        -- Adiciona o parágrafo à seção
-        section:AddParagraph(data.paragraph)
-
-        -- Adiciona o toggle à seção
-        section:AddToggle(key .. "Toggle", {
-            Title = "Spam Key " .. key,
-            Description = "Toggle to spam the " .. key .. " key.",
-            Default = false,
-            Callback = function(state)
-                keyToggles[key] = state
-            end
-        })
-    end
-end
-
--- Configuração dos toggles
-setupKeyToggles()
-
--- Loop para envio de eventos de tecla
-spawn(function()
-    while wait(0) do
-        for key, state in pairs(keyToggles) do
-            if state then
-                pcall(function()
-                    VirtualInputManager:SendKeyEvent(true, key, false, game)
-                    task.wait(0)
-                    VirtualInputManager:SendKeyEvent(false, key, false, game)
-                end)
-            end
-        end
-    end
 end)
 
 local Section = Tabs.MiscTab:AddSection("Local Player Utilities")
@@ -2208,167 +1308,12 @@ Tabs.MiscTab:AddToggle("FlightToggle", {
     end,
 })
 
--- Slider para ajustar a velocidade de voo
-Tabs.MiscTab:AddSlider("FlightSpeed", {
-    Title = "Flight Speed",
-    Description = "Adjust the flight speed!",
-    Default = flightSpeed,
-    Min = 1,
-    Max = 25,
-    Rounding = 1,
-    Callback = function(value)
-        flightSpeed = value
-    end,
-})
-
--- Loop principal para atualizar a lógica do voo
-local function flightLoop()
-    while true do
-        wait()
-        if flightEnabled and primaryPart then
-            local camCFrame = camera.CFrame
-            local velocity = Vector3.zero
-
-            -- Detecta as teclas pressionadas
-            if userInputService:IsKeyDown(Enum.KeyCode.W) then
-                velocity += camCFrame.LookVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.S) then
-                velocity -= camCFrame.LookVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.D) then
-                velocity += camCFrame.RightVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.A) then
-                velocity -= camCFrame.RightVector
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.Space) then
-                velocity += Vector3.yAxis
-            end
-            if userInputService:IsKeyDown(Enum.KeyCode.LeftShift) then
-                velocity -= Vector3.yAxis
-            end
-
-            -- Aplica a velocidade ao personagem
-            bodyVelocity.Velocity = velocity * flightSpeed * 45
-            bodyVelocity.Parent = primaryPart
-            bodyGyro.Parent = primaryPart
-        else
-            -- Desativa o voo
-            bodyVelocity.Parent = nil
-            bodyGyro.Parent = nil
-        end
-    end
-end
-
-spawn(flightLoop)
-
-
-local camera = workspace.CurrentCamera
-
-local defaultFOV = 70 
-camera.FieldOfView = defaultFOV
-
-
-Tabs.MiscTab:AddSlider("FOVSlider", {
-    Title = "Field of View",
-    Description = "Adjust the camera's field of view!",
-    Default = defaultFOV,
-    Min = 50, 
-    Max = 120,
-    Rounding = 1,
-    Callback = function(value)
-        camera.FieldOfView = value
-    end,
-})
-
-
-Tabs.MiscTab:AddButton({
-    Title = "Low Graphic Mode",
-    Description = "It will make your game run smoother and have more FPS!\nNote: There is no way to disable it, only rejoin.",
-    Callback = function(Value)
-        if Value then
-            -- Apply low graphic settings
-            local terrain = workspace:FindFirstChildOfClass('Terrain')
-            if terrain then
-                terrain.WaterWaveSize = 0
-                terrain.WaterWaveSpeed = 0
-                terrain.WaterReflectance = 0
-                terrain.WaterTransparency = 0
-            end
-            
-            game:GetService("Lighting").GlobalShadows = not Value
-            game:GetService("Lighting").FogEnd = Value and 9e9 or 150
-            
-            settings().Rendering.QualityLevel = Value and 1 or 2
-
-            -- Material and property changes
-            for i, v in pairs(game:GetDescendants()) do
-                if v:IsA("Part") or v:IsA("UnionOperation") or v:IsA("MeshPart") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
-                    v.Material = "Plastic"
-                    v.Reflectance = 0
-                elseif v:IsA("Decal") then
-                    v.Transparency = 1
-                elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
-                    v.Lifetime = NumberRange.new(0)
-                elseif v:IsA("Explosion") then
-                    v.BlastPressure = 1
-                    v.BlastRadius = 1
-                end
-            end
-
-            -- Disable lighting effects
-            for i, v in pairs(game:GetService("Lighting"):GetDescendants()) do
-                if v:IsA("BlurEffect") or v:IsA("SunRaysEffect") or v:IsA("ColorCorrectionEffect") or v:IsA("BloomEffect") or v:IsA("DepthOfFieldEffect") then
-                    v.Enabled = not Value
-                end
-            end
-
-            -- Clean performance-affecting objects
-            workspace.DescendantAdded:Connect(function(child)
-                if child:IsA('ForceField') then
-                    child:Destroy()
-                elseif child:IsA('Sparkles') then
-                    child:Destroy()
-                elseif child:IsA('Smoke') or child:IsA('Fire') then
-                    child:Destroy()
-                end
-            end)
-        end
-    end,
-})
-
-local jesusModeEnabled = false
-Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Soft Fall / Float",
-    Description = "Light as a feather!",
-    Default = false,
-        Callback = function(jesusModeEnabled)
-        local player = game.Players.LocalPlayer
-        local character = player.Character or player.CharacterAdded:Wait()
-        local rootPart = character:WaitForChild("HumanoidRootPart")
-
-        if jesusModeEnabled then
-            jesusModeConnection = game:GetService("RunService").Heartbeat:Connect(function()
-                if rootPart.Velocity.Y < 0 then
-                    rootPart.Velocity = Vector3.new(rootPart.Velocity.X, 0, rootPart.Velocity.Z)
-                end
-            end)
-        else
-            if jesusModeConnection then
-                jesusModeConnection:Disconnect()
-                jesusModeConnection = nil
-            end
-        end
-    end
-})
-
-local Section = Tabs.MiscTab:AddSection("Yoru Utilities")
+local Section = Tabs.MiscTab:AddSection("Yoru")
 
 local Slider = Tabs.MiscTab:AddSlider("Slider", 
 {
     Title = "Yoru Speed",
-    Description = "Here you can configure the attack speed of yoru farm!",
+    Description = "",
     Default = 50,
     Min = 0,
     Max = 500000,
@@ -2380,7 +1325,7 @@ local Slider = Tabs.MiscTab:AddSlider("Slider",
 
 Tabs.MiscTab:AddToggle("Toggle", {
     Title = "Yoru Spam",
-    Description = "This will activate yoru spam!\nNote: Only works for mobile/emulator, if you run it on PC you are instantly kicked by anti cheat.",
+    Description = "",
     Default = false,
     Callback = function(Value)
         _G.Yoru = Value
@@ -2421,7 +1366,7 @@ local selectedPlayer = PlayerList[1] or ""
 
 local Dropdown = Tabs.PlayerTab:AddDropdown("Dropdown", {
     Title = "Select Player",
-    Description = "Choose a player to TP or Spectate!",
+    Description = "",
     Values = PlayerList,
     Multi = false,
     Default = selectedPlayer,
@@ -2451,7 +1396,7 @@ local SpectatePlayer = false
 
 Tabs.PlayerTab:AddToggle("Toggle", {
     Title = "TP Player",
-    Description = "Teleport behind the selected player.",
+    Description = "",
     Default = false,
     Callback = function(TP)
         Tpplr = TP
@@ -2492,8 +1437,8 @@ local function spectate(targetPlayer)
 end
 
 Tabs.PlayerTab:AddToggle("SpectatePlayerToggle", {
-    Title = "Spectate Player",
-    Description = "Spectate the selected player.",
+    Title = "View Player",
+    Description = "",
     Default = false,
     Callback = function(Value)
         SpectatePlayer = Value
@@ -2509,36 +1454,8 @@ spawn(function()
             local targetPlayer = game.Players:FindFirstChild(selectedPlayer)
             if targetPlayer then
                 spectate(targetPlayer)
-            else
-                print("Player not found or unavailable:", selectedPlayer)
             end
         end
-    end
-end)
-
-local noclipEnabled = false 
-
-
-local function toggleNoclip(state)
-    noclipEnabled = state
-    if noclipEnabled then
-    else
-    end
-end
-
-spawn(function()
-    while true do
-        if noclipEnabled then
-            local character = game.Players.LocalPlayer.Character
-            if character then
-                for _, part in pairs(character:GetDescendants()) do
-                    if part:IsA("BasePart") and part.CanCollide then
-                        part.CanCollide = false
-                    end
-                end
-            end
-        end
-        wait(0.1) 
     end
 end)
 
@@ -2551,101 +1468,11 @@ Tabs.PlayerTab:AddToggle("Toggle", {
     end
 })
 
-Tabs.PlayerTab:AddButton({
-    Title = "All Seeing Eye",
-    Description = "You can see everyone anywhere!",
-    Callback = function()
-        local players = game:GetService("Players")
-        local runService = game:GetService("RunService")
-        local starterGui = game:GetService("StarterGui")  
-        local localPlayer = players.LocalPlayer
-        local distanceThreshold = 20
-
-        local function createESP(player)
-            local highlight = Instance.new("Highlight")
-            highlight.Name = "ESPHighlight"
-            highlight.FillTransparency = 0.5
-            highlight.OutlineTransparency = 0.5
-            highlight.OutlineColor = Color3.fromRGB(255, 0, 0) -- Cor vermelha para o contorno
-            highlight.FillColor = Color3.fromRGB(255, 0, 0) -- Cor vermelha para o preenchimento
-
-            highlight.Adornee = player.Character
-            highlight.Parent = player.Character
-
-            local billboardGui = Instance.new("BillboardGui")
-            billboardGui.Name = "PlayerName"
-            billboardGui.Adornee = player.Character:FindFirstChild("HumanoidRootPart")
-            billboardGui.Size = UDim2.new(0, 200, 0, 50)
-            billboardGui.StudsOffset = Vector3.new(0, 2, 0)
-            billboardGui.AlwaysOnTop = true
-
-            local textLabel = Instance.new("TextLabel", billboardGui)
-            textLabel.Size = UDim2.new(1, 0, 1, 0)
-            textLabel.BackgroundTransparency = 1
-            textLabel.Text = player.Name
-            textLabel.TextColor3 = Color3.fromRGB(255, 0, 0) -- Cor vermelha para o nome
-            textLabel.TextStrokeTransparency = 0.5
-            textLabel.TextScaled = false  -- Desabilita o escalonamento automático
-            textLabel.TextSize = 20  -- Define o tamanho fixo do texto (em pixels)
-
-            billboardGui.Parent = player.Character
-        end
-
-        local function updateESP()
-            for _, player in pairs(players:GetPlayers()) do
-                if player ~= localPlayer and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-                    local highlight = player.Character:FindFirstChild("ESPHighlight")
-                    if not highlight then
-                        createESP(player)
-                        highlight = player.Character:FindFirstChild("ESPHighlight")
-                    end
-
-                    highlight.FillColor = Color3.fromRGB(255, 0, 0) 
-                    highlight.OutlineColor = Color3.fromRGB(255, 0, 0)
-                end
-            end
-        end
-
-        for _, player in pairs(players:GetPlayers()) do
-            if player ~= localPlayer then
-                createESP(player)
-            end
-        end
-
-        players.PlayerAdded:Connect(function(player)
-            if player ~= localPlayer then
-                createESP(player)
-            end
-        end)
-
-        players.PlayerRemoving:Connect(function(player)
-            if player.Character and player.Character:FindFirstChild("ESPHighlight") then
-                player.Character:FindFirstChild("ESPHighlight"):Destroy()
-            end
-            if player.Character and player.Character:FindFirstChild("PlayerName") then
-                player.Character:FindFirstChild("PlayerName"):Destroy()
-            end
-        end)
-
-        runService.RenderStepped:Connect(function()
-            updateESP()
-        end)
-
-        Fluent:Notify({
-            Title = "All Seeing Eye Activated",
-            Content = "Made by Plug ",
-            Duration = 5
-        })
-
-    end,
-})
-
-
 local Section = Tabs.ShopTab:AddSection("Drink Utilities - Bar")
 
 Tabs.ShopTab:AddButton({
     Title = "Instant Drink",
-    Description = "Instantly consumes all drinks in your inventory for you!",
+    Description = "",
     Callback = function()
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
             if v:IsA("Tool") and (string.find(v.Name, "Juice") 
@@ -2671,7 +1498,7 @@ local drinkQuantity = 1
 
 local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
     Title = "Select Drinks to Auto Buy",
-    Description = "Choose multiple drinks from the list",
+    Description = "",
     Values = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"},
     Multi = true,
     Default = {},
@@ -2689,7 +1516,7 @@ local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
 
 Tabs.ShopTab:AddToggle("AutoBuyToggle", {
     Title = "Enable Auto Buy",
-    Description = "Toggle to enable or disable auto-buying the selected drinks.",
+    Description = "",
     Default = false, 
     Callback = function(value)
         autoBuyEnabled = value 
@@ -2701,7 +1528,7 @@ Tabs.ShopTab:AddToggle("AutoBuyToggle", {
 
 local QuantitySlider = Tabs.ShopTab:AddSlider("QuantitySlider", {
     Title = "Set Drink Quantity",
-    Description = "Choose how many drinks to buy for each selected drink",
+    Description = "",
     Default = 1, 
     Min = 1,
     Max = 500, 
@@ -2747,178 +1574,128 @@ spawn(function()
 end)
 
 
-local selectedSword = nil
-local selectedGun = nil
-local swordAutoBuyEnabled = false
-local gunAutoBuyEnabled = false
 
-local Section = Tabs.ShopTab:AddSection("Sword Shop")
+local Section = Tabs.ShopTab:AddSection("Auto Reroll Affinities")
 
-local SwordDropdown = Tabs.ShopTab:AddDropdown("SwordDropdown", {
-    Title = "Select Sword",
-    Description = "",
-    Values = {"Dagger", "Wakizashi", "Tachi", "Katana", "Flail", "Krizma"},
-    Multi = false,
-    Default = nil,
-    Callback = function(value)
-        selectedSword = value
-    end
-})
+local ToggleBeri1
+local isRunning1 = false
 
-Tabs.ShopTab:AddToggle("SwordAutoBuyToggle", {
-    Title = "Buy Selected Sword",
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto 2.0 Affinities | Left |",
     Description = "",
     Default = false,
-    Callback = function(value)
-        swordAutoBuyEnabled = value
-        if value then
-        else
-        end
-    end
-})
+    Callback = function(Value)
+        isRunning1 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning1 then
+            -- Inicia o loop se o toggle estiver ativado
+            spawn(function()
+                while isRunning1 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
 
-local Section = Tabs.ShopTab:AddSection("Guns Shop")
+                    -- DFT1 Variables
+                    local AffMelee1 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper1 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense1 = userDataName.Data.DFT1Defense.Value
+                    local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-local GunDropdown = Tabs.ShopTab:AddDropdown("GunDropdown", {
-    Title = "Select Gun to Buy",
-    Description = "",
-    Values = {"Slingshot", "Stars", "Crossbow", "Flintlock", "Cannon"},
-    Multi = false,
-    Default = nil,
-    Callback = function(value)
-        selectedGun = value
-    end
-})
+                    -- Check for DFT1
+                    if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
+                        script.Parent:Destroy()
+                    end
 
-Tabs.ShopTab:AddToggle("GunAutoBuyToggle", {
-    Title = "Buy Selected Gun",
-    Description = "",
-    Default = false,
-    Callback = function(value)
-        gunAutoBuyEnabled = value
-        if value then
-        else
-        end
-    end
-})
+                    local args1 = {
+                        [1] = "DFT1",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
 
-local function buySword(swordName)
-    local prices = {
-        Dagger = 1000,
-        Wakizashi = 5000,
-        Tachi = 7500,
-        Katana = 10000,
-        Flail = 50000,
-        Krizma = 80000
-    }
-    local price = prices[swordName]
-    if price then
-        local Event = game:GetService("Workspace").Merchants.SwordMerchant.Clickable.Retum
-        Event:FireServer(swordName, price)
-    else
-    end
-end
+                    if AffDefense1 == 2 then
+                        args1[2] = 0 / 0
+                    end
 
-local function buyGun(gunName)
-    local prices = {
-        Slingshot = 1000,
-        Stars = 5000,
-        Crossbow = 7500,
-        Flintlock = 10000,
-        Cannon = 400000
-    }
-    local price = prices[gunName]
-    if price then
-        local Event = game:GetService("Workspace").Merchants.SniperMerchant.Clickable.Retum
-        if gunName == "Cannon" then
-            Event = game:GetService("Workspace").Merchants.HeavyWeaponsMerchant.Clickable.Retum
-        end
-        Event:FireServer(gunName, price)
-    else
-    end
-end
+                    if AffMelee1 == 2 then
+                        args1[3] = 0 / 0
+                    end
 
-spawn(function()
-    while wait(1) do
-        if swordAutoBuyEnabled and selectedSword then
-            buySword(selectedSword)
-        end
-    end
-end)
+                    if AffSniper1 == 2 then
+                        args1[4] = 0 / 0
+                    end
 
-spawn(function()
-    while wait(1) do
-        if gunAutoBuyEnabled and selectedGun then
-            buyGun(selectedGun)
-        end
-    end
-end)
+                    if AffSword1 == 2 then
+                        args1[5] = 0 / 0
+                    end
 
-local Section = Tabs.ShopTab:AddSection("Fake Weapons Shop")
-
-
-Tabs.ShopTab:AddButton({
-    Title = "Seastone Cestus (500 melee requiriment)",
-    Description = "This will give you the Seastone Cestus (Not permanent)",
-    Callback = function()
-        local Players = game:GetService("Players")
-        local cache = {}
-
-        local function getUserId(name)
-            if cache[name] then return cache[name] end
-            local player = Players:FindFirstChild(name)
-            if player then
-                cache[name] = player.UserId
-                return player.UserId
-            end
-
-            local id
-            pcall(function()
-                id = Players:GetUserIdFromNameAsync(name)
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
             end)
-            cache[name] = id
-            return id
         end
-
-        local playerName = game.Players.LocalPlayer.Name
-        local userId = getUserId(playerName)
-        local weaponName = "Seastone Cestus"
-        local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
-
-        event:FireServer(weaponName)
     end,
 })
 
--- Aqua Staff Button
-Tabs.ShopTab:AddButton({
-    Title = "Aqua Staff (500 melee requiriment)",
-    Description = "This will give you the Aqua Staff (Not permanent)",
-    Callback = function()
-        local Players = game:GetService("Players")
-        local cache = {}
+local ToggleBeri2
+local isRunning2 = false
 
-        local function getUserId(name)
-            if cache[name] then return cache[name] end
-            local player = Players:FindFirstChild(name)
-            if player then
-                cache[name] = player.UserId
-                return player.UserId
-            end
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto 2.0 Affinities | Right |",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        isRunning2 = Value -- Atualiza o estado do loop com base no valor do toggle
+        if isRunning2 then
+            -- Inicia o loop se o toggle estiver ativado
+            spawn(function()
+                while isRunning2 do
+                    wait(8) -- Intervalo do loop
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
 
-            local id
-            pcall(function()
-                id = Players:GetUserIdFromNameAsync(name)
+                    -- DFT2 Variables
+                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
+
+                    -- Check for DFT2
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
+                        script.Parent:Destroy()
+                    end
+
+                    local args2 = {
+                        [1] = "DFT2",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+		    if AffDefense2 == 2 then
+                        args2[2] = 0 / 0
+                    end
+
+                    if AffMelee2 == 2 then
+                        args2[3] = 0 / 0
+                    end
+
+                    if AffSniper2 == 2 then
+                        args2[4] = 0 / 0
+                    end
+
+                    if AffSword2 == 2 then
+                        args2[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
+                end
             end)
-            cache[name] = id
-            return id
         end
-
-        local playerName = game.Players.LocalPlayer.Name
-        local userId = getUserId(playerName)
-        local weaponName = "Aqua Staff"
-        local event = game:GetService("Workspace").UserData["User_" .. userId].UpdateMelee
-
-        event:FireServer(weaponName)
     end,
 })
 
@@ -2979,7 +1756,7 @@ local selectedNpc = nil
 
 Tabs.TeleportTab:AddDropdown("IslandDropdown", {
     Title = "Select Island",
-    Description = "Escolha uma ilha para teleportar",
+    Description = "",
     Values = {"Cave", "Windmill", "Sam", "Grassy", "Bar", "Krizma", "Kaizu", "Snow Mountains", "Pursuer Boss", "Cliffs", "Green", "Trees", "Pyramid", "Merlin Fish", "Snowy", "Mountain", "Marine Ford", "Sand Castle", "Forest", "Evil", "Crescent", "Islands", "Town", "Rocky", "Palm", "Sand", "Sand 2", "Small", "Tiny", "Super Tiny", "Grass", "Atlar"},
     Multi = false,
     Default = 1,
@@ -2990,7 +1767,7 @@ Tabs.TeleportTab:AddDropdown("IslandDropdown", {
 
 Tabs.TeleportTab:AddButton({
     Title = "Teleport to Island",
-    Description = "Teleporta para a ilha selecionada",
+    Description = "",
     Callback = function()
         if selectedIsland then
             local islandPosition = islandPositions[selectedIsland]
@@ -3007,7 +1784,7 @@ local Section = Tabs.TeleportTab:AddSection("Npc TP")
 
 Tabs.TeleportTab:AddDropdown("NpcDropdown", {
     Title = "Select NPC",
-    Description = "Escolha um NPC para teleportar",
+    Description = "",
     Values = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity", "Fish", "Expertise"},
     Multi = false,
     Default = 1,
@@ -3018,7 +1795,7 @@ Tabs.TeleportTab:AddDropdown("NpcDropdown", {
 
 Tabs.TeleportTab:AddButton({
     Title = "Teleport to NPC",
-    Description = "Teleporta para o NPC selecionado",
+    Description = "",
     Callback = function()
         if selectedNpc then
             local npcPosition = npcPositions[selectedNpc]
@@ -3031,68 +1808,6 @@ Tabs.TeleportTab:AddButton({
     end
 })
 
-local HttpService = game:GetService("HttpService")
-
-
-local webhookEnabled = false
-local webhookURL = ""
-local sendInterval = 1
-local sendLoopActive = false
-
--- Função para enviar dados para o webhook
-local function sendWebhookData()
-    if not webhookEnabled or webhookURL == "" then
-        warn("Webhook desativada ou URL não definida.")
-        return
-    end
-
-    local player = game.Players.LocalPlayer
-    local userData = game.Workspace.UserData:FindFirstChild("User_" .. player.UserId)
-    if not userData or not userData:FindFirstChild("Data") then
-        warn("Dados do jogador não encontrados.")
-        return
-    end
-
-    local Data = userData.Data
-    local userData = game.Workspace.UserData:FindFirstChild("User_" .. player.UserId)
-    local totalLevel = userData.TotalLevel.Value
-
-    -- Seções do embed
-    local generalPlayer = {
-        { ["name"] = "Name", ["value"] = player.Name, ["inline"] = false },
-        { ["name"] = "\n", ["value"] = "─────────────────────────────", ["inline"] = false },
-        { ["name"] = "Beri", ["value"] = tostring(Data.Cash.Value), ["inline"] = true },
-        { ["name"] = "Bounty", ["value"] = tostring(Data.Bounty.Value), ["inline"] = true },
-        { ["name"] = "Kills", ["value"] = tostring(Data.Kills.Value), ["inline"] = true },
-        { ["name"] = "Gems", ["value"] = tostring(Data.Gems.Value), ["inline"] = true },
-        { ["name"] = "Expertise Level", ["value"] = tostring(Data.ExpertiseLevel.Value), ["inline"] = true },
-        { ["name"] = "Compass Tokens", ["value"] = tostring(Data.CompassTokens.Value), ["inline"] = true },
-    }
-
-    local playerStats = {
-        { ["name"] = "Defense Level", ["value"] = tostring(Data.DefenseLevel.Value), ["inline"] = true },
-        { ["name"] = "Melee Level", ["value"] = tostring(Data.MeleeLevel.Value), ["inline"] = true },
-        { ["name"] = "Sniper Level", ["value"] = tostring(Data.SniperLevel.Value), ["inline"] = true },
-        { ["name"] = "Sword Level", ["value"] = tostring(Data.SwordLevel.Value), ["inline"] = true },
-        { ["name"] = "Haki Level", ["value"] = tostring(Data.HakiLevel.Value), ["inline"] = true },
-        { ["name"] = "Total Level", ["value"] = tostring(totalLevel), ["inline"] = true },
-    }
-
-    local playerDFStats = {
-        { ["name"] = "DF1", ["value"] = Data.DevilFruit.Value, ["inline"] = true },
-        { ["name"] = "DF2", ["value"] = Data.DevilFruit2.Value, ["inline"] = true },
-        { ["name"] = "\n", ["value"] = "─────────────────────────────", ["inline"] = false },
-        { ["name"] = "DFT1 Defense", ["value"] = tostring(Data.DFT1Defense.Value), ["inline"] = true },
-        { ["name"] = "DFT1 Melee", ["value"] = tostring(Data.DFT1Melee.Value), ["inline"] = true },
-        { ["name"] = "DFT1 Sniper", ["value"] = tostring(Data.DFT1Sniper.Value), ["inline"] = true },
-        { ["name"] = "DFT1 Sword", ["value"] = tostring(Data.DFT1Sword.Value), ["inline"] = true },
-        { ["name"] = "\n", ["value"] = "─────────────────────────────", ["inline"] = false },
-        { ["name"] = "DFT2 Defense", ["value"] = tostring(Data.DFT2Defense.Value), ["inline"] = true },
-        { ["name"] = "DFT2 Melee", ["value"] = tostring(Data.DFT2Melee.Value), ["inline"] = true },
-        { ["name"] = "DFT2 Sniper", ["value"] = tostring(Data.DFT2Sniper.Value), ["inline"] = true },
-        { ["name"] = "DFT2 Sword", ["value"] = tostring(Data.DFT2Sword.Value), ["inline"] = true },
-    }
-    
     local storedDevilFruits = {}
     for i = 1, 12 do
         table.insert(storedDevilFruits, {
@@ -3101,132 +1816,3 @@ local function sendWebhookData()
             ["inline"] = true,
         })
     end
-
-    -- Envia os dados para o webhook
-    http.request({
-        Url = webhookURL,
-        Method = 'POST',
-        Headers = {
-            ['Content-Type'] = 'application/json'
-        },
-        Body = HttpService:JSONEncode({
-            ["content"] = "",
-            ["embeds"] = {
-                {
-                    ["title"] = "🌟 General Player",
-                    ["color"] = tonumber(0xFF0000), -- Cor vermelha
-                    ["fields"] = generalPlayer,
-                },
-                {
-                    ["title"] = "🏅 Player Stats",
-                    ["color"] = tonumber(0x000000), -- Cor preta
-                    ["fields"] = playerStats,
-                },
-                {
-                    ["title"] = "🍎 Player Devil Fruit Stats",
-                    ["color"] = tonumber(0xFF0000), -- Cor vermelha
-                    ["fields"] = playerDFStats,
-                },
-                {
-                    ["title"] = "📦 Stored Devil Fruits",
-                    ["color"] = tonumber(0x000000), -- Cor preta
-                    ["fields"] = storedDevilFruits,
-                }
-            }
-        }),
-    })
-
-    print("Dados enviados para o webhook.")
-end
-
--- Loop para envio periódico
-local function startWebhookLoop()
-    if sendLoopActive then
-        return
-    end
-    sendLoopActive = true
-
-    while sendLoopActive do
-        sendWebhookData()
-        wait(sendInterval * 60)
-    end
-end
-
-local Input = Tabs.WebHookTab:AddInput("Input", {
-    Title = "Webhook URL",
-    Description = "Insert your discord webhook link!",
-    Default = "",
-    Placeholder = "Enter URL:",
-    Numeric = false,
-    Finished = false,
-    Callback = function(Text)
-        webhookURL = Text
-        print("Webhook URL definida: " .. webhookURL)
-    end,
-})
-
-Tabs.WebHookTab:AddToggle("Toggle", {
-    Title = "Enable Webhook",
-    Description = "Will send the webhook containing useful information!",
-    Default = false, 
-    Callback = function(Value)
-        webhookEnabled = Value
-        print("Webhook " .. (Value and "ativada" or "desativada"))
-
-        if webhookEnabled then
-            startWebhookLoop()
-        else
-            sendLoopActive = false
-        end
-    end,
-})
-
-local QuantitySlider = Tabs.WebHookTab:AddSlider("Slider", {
-    Title = "Sending Interval",
-    Description = "Configure the sending interval in minutes for webhooks!",
-    Default = 1, 
-    Min = 1,
-    Max = 60, 
-    Rounding = 0, 
-    Callback = function(Value)
-        sendInterval = Value
-        print("Intervalo de envio ajustado para: " .. sendInterval .. " minutos")
-    end,
-})
-
-
-
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-SaveManager:SetLibrary(Fluent)
-InterfaceManager:SetLibrary(Fluent)
-SaveManager:IgnoreThemeSettings()
-SaveManager:SetIgnoreIndexes({})
-
-InterfaceManager:SetFolder("AscendedScriptHub")
-SaveManager:SetFolder("AscendedScriptHub/OPL")
-
-InterfaceManager:BuildInterfaceSection(Tabs.Settings)
-SaveManager:BuildConfigSection(Tabs.Settings)
-
-
-Window:SelectTab(1)
-
-Fluent:Notify({
-    Title = "InWHub",
-    Content = "The script has been loaded.",
-    Duration = 8
-})
-
--- You can use the SaveManager:LoadAutoloadConfig() to load a config
--- which has been marked to be one that auto loads!
-SaveManager:LoadAutoloadConfig()
-Fluent:SetTheme("Normal Theme")
-setfflag("TaskSchedulerTargetFps", "1000")
-setfpscap(120)
-while task.wait(0) do
-    if game:GetService("Workspace").DistributedGameTime % 1 * 60 > 30 then
-        setfpscap(120)
-    end
-end
