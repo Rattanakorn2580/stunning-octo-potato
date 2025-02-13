@@ -3653,35 +3653,43 @@ ScolDown.CanvasSize = UDim2.new(0,0,0,UIListLayoutlist.AbsoluteContentSize.Y + 1
 return top
 end
 
--- ToggleGui --
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "ScreenGui"
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-ScreenGui.ResetOnSpawn = false
- 
-local Toggle = Instance.new("TextButton")
-Toggle.Name = "Toggle"
-Toggle.Parent = ScreenGui
-Toggle.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Toggle.Position = UDim2.new(0, 0, 0.454706937, 0)
-Toggle.Size = UDim2.new(0, 90, 0, 38)
-Toggle.Font = Enum.Font.SourceSans
-Toggle.Text = "InW Hub"
-Toggle.TextColor3 = Color3.fromRGB(248, 248, 248)
-Toggle.TextSize = 28.000
-Toggle.Draggable = true
-Toggle.MouseButton1Click:connect(function() game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F6,false,game)
+local player = game.Players.LocalPlayer
+local L1 = Instance.new("ScreenGui")
+local L2 = Instance.new("TextButton")
+local L3 = Instance.new("UICorner")
+local L4 = Instance.new("ImageLabel")
+local sound = Instance.new("Sound")
+L3.Name = "UICorner"
+L3.Parent = L2
+L4.Name = "ButtonImage"
+L4.Parent = L2
+L4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+L4.BackgroundTransparency = 1.000
+L4.BorderSizePixel = 0
+L4.Position = UDim2.new(0.1, 0, 0.1, 0) 
+L4.Size = UDim2.new(0, 45, 0, 45)
+L4.Image = ""
+L1.Name = "MainGui"
+L1.Parent = player:WaitForChild("PlayerGui")
+L1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+L2.Name = "CustomButton"
+L2.Parent = L1
+L2.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+L2.BackgroundTransparency = 0.2
+L2.BorderSizePixel = 0
+L2.Position = UDim2.new(0.1208, 0, 0.0953, 0)
+L2.Size = UDim2.new(0, 50, 0, 50)
+L2.Font = Enum.Font.LuckiestGuy
+L2.Text = "InW\nHub"
+L2.TextColor3 = Color3.fromRGB(255, 255, 255)
+L2.TextSize = 9.000
+L2.Draggable = true
+sound.Parent = L2
+sound.SoundId = "rbxassetid://965305329"
+L2.MouseButton1Click:Connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true, Enum.KeyCode.LeftControl, false, game)
+    sound:Play()
 end)
- 
-local Corner = Instance.new("UICorner")
-Corner.Name = "Corner"
-Corner.Parent = Toggle
-
---MaxCharge
-local mta = getrawmetatable(game)
-local namecall = mta.__namecall
-local setreadonly = setreadonly or make_writable
-
 
 setreadonly(mta, false)
 
