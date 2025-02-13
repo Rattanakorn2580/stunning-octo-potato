@@ -1,17 +1,3 @@
-local Players = game:GetService("Players")
-local BlacklistedPlayers = {
-    "T3T_XxBankKung",
-}
-
-Players.PlayerAdded:Connect(function(v)
-    for i, v in pairs(Players:GetPlayers()) do
-        if table.find(BlacklistedPlayers, v.Name) then
-            Players.LocalPlayer:Kick("Staff OPL Has Join Server , Dont Worry. You Got Protect By Race Hub")
-        end
-    end
-end)
-
-
 local GC = getconnections
 for i, v in pairs(GC(game.Players.LocalPlayer.Idled)) do
     v:Disable()
