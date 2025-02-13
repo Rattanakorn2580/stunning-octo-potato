@@ -1324,18 +1324,6 @@ Tabs.ShopTab:AddToggle("AutoBuyToggle", {
     end
 })
 
-local QuantitySlider = Tabs.ShopTab:AddSlider("QuantitySlider", {
-    Title = "Set Drink Quantity",
-    Description = "",
-    Default = 1, 
-    Min = 1,
-    Max = 500, 
-    Rounding = 0, 
-    Callback = function(value)
-        drinkQuantity = value 
-    end
-})
-
 spawn(function()
     while wait(0.5) do
         pcall(function()
@@ -1605,12 +1593,3 @@ Tabs.TeleportTab:AddButton({
         end
     end
 })
-
-    local storedDevilFruits = {}
-    for i = 1, 12 do
-        table.insert(storedDevilFruits, {
-            ["name"] = "StoredDF" .. i,
-            ["value"] = Data["StoredDF" .. i].Value,
-            ["inline"] = true,
-        })
-    end
