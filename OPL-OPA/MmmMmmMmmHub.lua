@@ -31,7 +31,7 @@ local Cache = {
 
 local Tabs = {
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
-    StorageTab = Window:AddTab({ Title = "Storage", Icon = "boxes" }),
+    DupeTab = Window:AddTab({ Title = "Compasses", Icon = "boxes" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
     FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
     MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
@@ -382,15 +382,7 @@ Tabs.MainTab:AddButton({
 local Section = Tabs.MainTab:AddSection("Sam Quest's Utilities")
 
 Tabs.MainTab:AddButton({
-    Title = "Check Sam",
-    Description = "",
-    Callback = function()
-        fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
-    end
-})
-
-Tabs.MainTab:AddButton({
-    Title = "Claim All Compasses",
+    Title = "Claim Compasses",
     Description = "",
     Callback = function()
         local args = {
@@ -461,156 +453,46 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.StorageTab:AddSection("Devil Fruit")
+local Section = Tabs.DupeTab:AddSection("Bug Compasses")
 
-Tabs.StorageTab:AddToggle("Toggle", {
-    Title = "Auto Collect DF",
-    Description = "This will collect all the fruits that are dropped or are about to be dropped!",
+Tabs.DupeTab:AddToggle("Toggle", {
+    Title = "Auto Reset Stats",
+    Description = "",
     Default = false,
     Callback = function(Value)
-        BringDF = Value
+        reset = Value
+    end,
+})
+
+Tabs.DupeTab:AddButton({
+    Title = "Check Sam",
+    Description = "",
+    Callback = function()
+        fireclickdetector(game:GetService("Workspace").Merchants.QuestMerchant.Clickable.ClickDetector)
+    end
+})
+
+Tabs.DupeTab:AddToggle("Toggle", {
+    Title = "Auto Claim Weekly 3",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        _G.autoclaim3 = Value
     end,
 })
 
 spawn(function()
     while wait() do
-        if BringDF then
-            pcall(function()
-                for _, v in pairs(game.Workspace.Trees.Tree.Model:GetChildren()) do 
-                    if v:IsA("Tool") then 
-                        fireclickdetector(v.Main.ClickDetector)
-                    end
-                end
-            end)
-        end
-    end
-end)
-
-local Section = Tabs.StorageTab:AddSection("Storage Utitilities")
-
-local rareFruits = {
-    "Vampire Fruit", "Quake Fruit", "Phoenix Fruit", "Dark Fruit",
-    "Ope Fruit", "Venom Fruit", "Candy Fruit", "Hollow Fruit",
-    "Chilly Fruit", "Gas Fruit", "Flare Fruit", "Light Fruit",
-    "Smoke Fruit", "Sand Fruit", "Rumble Fruit", "Magma Fruit",
-    "Snow Fruit", "Gravity Fruit", "Plasma Fruit"
-}
-
-local Cache = {
-    Player = { Inputfruitlist = {}, Inputfruitname = "" },
-    Boolean = { StorageUsingGroup = {}, StorageKeepShiny = false }
-}
-
-local function CheckStorage(Number)
-    local storageFrame = game.Players.LocalPlayer.PlayerGui.Storage.Frame["StoredDF" .. Number]
-    return storageFrame and storageFrame.Button.Text == "Store" and storageFrame.Visible
-end
-
-local function StoreFruit(Index, Fruit)
-    local storagePath = game:GetService("Workspace").UserData["User_" .. game.Players.LocalPlayer.UserId].StoredDFRequest
-    game.Players.LocalPlayer.Character.Humanoid:UnequipTools()
-    Fruit.Parent = game.Players.LocalPlayer.Character
-    storagePath:FireServer("StoredDF" .. Index)
-end
-
-local function HandleFruits()
-    for Index, IsActive in pairs(Cache.Boolean.StorageUsingGroup) do
-        if IsActive and CheckStorage(Index) then
-            for _, Fruit in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                if Fruit:IsA("Tool") then
-                    for _, FruitName in pairs(Cache.Player.Inputfruitlist) do
-                        if string.match(string.lower(Fruit.Name), string.lower(FruitName)) or 
-                           (Cache.Boolean.StorageKeepShiny and Fruit:FindFirstChild("Main") and Fruit.Main:FindFirstChild("AuraAttachment")) then
-                            StoreFruit(Index, Fruit)
-                            break
-                        end
-                    end
-                end
+        pcall(function()
+            if _G.autoclaim3 then
+local A_1 = "Claim"
+local A_2 = "Weekly3"
+    local Event = game:GetService("Workspace").UserData["User_"..game.Players.LocalPlayer.UserId].ChallengesRemote
+    Event:FireServer(A_1,A_2)
             end
-        end
-    end
-end
-
-Tabs.StorageTab:AddInput("Input", {
-    Title = "Devil Fruit Name",
-    Description = "Enter the name of the fruit you want to add to the list!",
-    Default = "",
-    Placeholder = "Enter fruit name...",
-    Numeric = false,
-    Callback = function(Text)
-        Cache.Player.Inputfruitname = string.lower(tostring(Text))
-    end
-})
-
-Tabs.StorageTab:AddButton({
-    Title = "Add Fruit",
-    Description = "Add the typed fruit to the list!",
-    Callback = function()
-        table.insert(Cache.Player.Inputfruitlist, Cache.Player.Inputfruitname)
-    end
-})
-
-Tabs.StorageTab:AddButton({
-    Title = "Delete Last Fruit",
-    Description = "Delete the last fruit added to the list!",
-    Callback = function()
-        table.remove(Cache.Player.Inputfruitlist, #Cache.Player.Inputfruitlist)
-    end
-})
-
-Tabs.StorageTab:AddButton({
-    Title = "Add Good Devil Fruit",
-    Description = "Adds all rare and ultra rare fruits to list!",
-    Callback = function()
-        for _, value in pairs(rareFruits) do
-            table.insert(Cache.Player.Inputfruitlist, value)
-        end
-    end
-})
-
-Tabs.StorageTab:AddButton({
-    Title = "Print Devil Fruit List",
-    Description = "Displays the list of fruits in your console [F9]",
-    Callback = function()
-        print("Devil Fruits in List:")
-        for Index, Value in ipairs(Cache.Player.Inputfruitlist) do
-            print(string.format("Index: %d, Value: %s", Index, Value))
-        end
-    end
-})
-
-Tabs.StorageTab:AddToggle("Keep Aura Fruits", {
-    Title = "Keep All Aura Fruits",
-    Default = false,
-    Callback = function(Value)
-        Cache.Boolean.StorageKeepShiny = Value
-    end
-})
-
-for Index = 1, 12 do
-    Tabs.StorageTab:AddToggle("Storage Toggle " .. Index, {
-        Title = "Storage No." .. Index,
-        Default = false,
-        Callback = function(Value)
-            Cache.Boolean.StorageUsingGroup[Index] = Value
-        end
-    })
-end
-
-spawn(function()
-    while wait(1) do
-        pcall(HandleFruits)
+        end)
     end
 end)
-
-local selectedPlayers = {}
-local Tpplr = false
-
-
-local PlayerList = {}
-for _, player in ipairs(game:GetService("Players"):GetPlayers()) do
-    table.insert(PlayerList, player.Name)
-end
 
 local Section = Tabs.FarmTab:AddSection("Weapon Farm")
 
