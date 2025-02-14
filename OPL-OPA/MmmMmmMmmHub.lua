@@ -464,6 +464,16 @@ Tabs.DupeTab:AddToggle("Toggle", {
     end,
 })
 
+spawn(function()
+    while wait(5) do
+        if reset then
+            pcall(function()
+workspace.UserData["User_"..game.Players.LocalPlayer.UserId].Stats:FireServer()
+                   end)
+            end
+        end
+end)
+
 Tabs.DupeTab:AddButton({
     Title = "Check Sam",
     Description = "",
