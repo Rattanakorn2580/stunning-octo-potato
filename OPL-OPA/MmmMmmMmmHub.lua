@@ -328,26 +328,6 @@ wait(.8)
     end
 end)
 
-local Section = Tabs.MainTab:AddSection("Game/Server Utilities")
-
-Tabs.MainTab:AddButton({
-    Title = "Rejoin",
-    Description = "",
-    Callback = function()
-        local TeleportService = game:GetService("TeleportService")
-        local Players = game:GetService("Players")
-        local LocalPlayer = Players.LocalPlayer
-
-        local Success, ErrorMessage = pcall(function()
-            TeleportService:Teleport(game.PlaceId, LocalPlayer)
-        end)
-
-        if ErrorMessage and not Success then
-            warn(ErrorMessage)
-        end
-    end
-})
-
 local Section = Tabs.MainTab:AddSection("Sam Quest's Utilities")
 
 Tabs.MainTab:AddButton({
@@ -1068,7 +1048,7 @@ local Input = Tabs.MiscTab:AddInput("Input", {
 
 local Input = Tabs.MiscTab:AddInput("Input", {
     Title = "Hip Height",
-    Description = "Change the height you walk!",
+    Description = "",
     Default = "",
     Placeholder = "Enter Hip Height: ",
     Numeric = true,
@@ -1082,8 +1062,8 @@ local Input = Tabs.MiscTab:AddInput("Input", {
 })
 
 Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Auto Buso Haki ON",
-    Description = "This will activate and deactivate your buso haki in a loop!",
+    Title = "Auto Buso Haki",
+    Description = "",
     Default = false,
     Callback = function(Value)
         OnHaki = Value
@@ -1108,6 +1088,26 @@ spawn(function()
         end
     end
 end)
+
+local Section = Tabs.MiscTab:AddSection("Game/Server Utilities")
+
+Tabs.MiscTab:AddButton({
+    Title = "Rejoin",
+    Description = "",
+    Callback = function()
+        local TeleportService = game:GetService("TeleportService")
+        local Players = game:GetService("Players")
+        local LocalPlayer = Players.LocalPlayer
+
+        local Success, ErrorMessage = pcall(function()
+            TeleportService:Teleport(game.PlaceId, LocalPlayer)
+        end)
+
+        if ErrorMessage and not Success then
+            warn(ErrorMessage)
+        end
+    end
+})
 
 local Section = Tabs.MiscTab:AddSection("Anti")
 
