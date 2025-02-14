@@ -1,16 +1,17 @@
-local Players = game:GetService("Players")
-local BlacklistedPlayers = {
-    "T3T_XxBankKung",
+local usernames= {
+    "T3T_XxBankKungxX",
 }
-
-Players.PlayerAdded:Connect(function(v)
-    for i, v in pairs(Players:GetPlayers()) do
-        if string.find(BlacklistedPlayers, v.Name) then
-            Players.LocalPlayer:Kick("Staff OPL Has Join Server , Dont Worry. You Got Protect By Race Hub")
+ 
+game.Players.PlayerAdded:Connect(function(plr)
+    for i, v in pairs(usernames) do
+        if v == plr.Name then
+            print("Whitelisted")
+        else
+            print("Not whitelisted")
+            plr:Kick("Not whitelisted") -- Kick message.
         end
     end
 end)
-
 
 local GC = getconnections
 for i, v in pairs(GC(game.Players.LocalPlayer.Idled)) do
