@@ -84,38 +84,7 @@ L2.MouseButton1Click:Connect(function()
     sound:Play()
 end)
 
-local Section = Tabs.MainTab:AddSection("Main Utilities")
-
-
-Tabs.MainTab:AddToggle("Toggle", {
-    Title = "Anti-AFK",
-    Description = "",
-    Default = false,
-    Callback = function(state)
-        if state then
-            local vu = game:GetService("VirtualUser")
-            game:GetService("Players").LocalPlayer.Idled:Connect(function()
-                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-                wait(1)
-                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
-            end)
-
-            Fluent:Notify({
-                Title = "Anti-AFK Activated",
-                Content = "Made by Bank",
-                Duration = 5
-            })
-
-        else
-            Fluent:Notify({
-                Title = "Anti-AFK Desactivated",
-                Content = "Made by Bank",
-                Duration = 5
-            })
-
-        end
-    end,
-})
+local Section = Tabs.MainTab:AddSection("Main Autos")
 
 Tabs.MainTab:AddToggle("Toggle", {
     Title = "Auto Spawn",
@@ -504,6 +473,80 @@ local A_2 = "Weekly3"
     end
 end)
 
+local Section = Tabs.DupeTab:AddSection("Unbox")
+
+Tabs.DupeTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Common)",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        UnboxCM = Value
+    end,
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxCM then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox1"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
+Tabs.DupeTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Unvom)",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        UnboxUn = Value
+    end,
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxUn then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox2"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
+Tabs.DupeTab:AddToggle("Toggle", {
+    Title = "Auto Unbox (Rare,Ultra)",
+    Description = "",
+    Default = false,
+    Callback = function(Value)
+        UnboxRUL = Value
+    end,
+})
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not UnboxRUL then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfBox3"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value:Activate();
+                end
+            end
+        end)
+    end
+end)
+
 local Section = Tabs.FarmTab:AddSection("Weapon Farm")
 
 Tabs.FarmTab:AddToggle("Toggle", {
@@ -629,7 +672,7 @@ local function EquipWeapon(weaponName)
 end
 
 local AutoEquipToggle = Tabs.FarmTab:AddToggle("AutoEquipToggle", {
-    Title = "Auto Equip Weapon",
+    Title = "Auto Equip",
     Description = "",
     Default = false,
     Callback = function(state)
@@ -668,7 +711,7 @@ end)
 local Section = Tabs.FarmTab:AddSection("Other Farms")
 
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Collect Chests",
+    Title = "Auto Bring Chests",
     Description = "",
     Default = false,
     Callback = function(Value)
@@ -865,7 +908,20 @@ spawn(function()
             end
         end)
     end
-end);
+end)
+
+local Section = Tabs.FarmTab:AddSection("Haki Farm")
+
+Tabs.FarmTab:AddToggle("Toggle", {
+    Title = "Auto Haki Fast (Not Work)",
+    Description = "",
+    Default = false,
+    Callback = function(vccl)
+        AutoHaki = vccl
+    end,
+})
+
+local Section = Tabs.FarmTab:AddSection("Get Haki")
 
 Tabs.FarmTab:AddToggle("Toggle", {
     Title = "Auto Get Haki",
@@ -884,18 +940,6 @@ Tabs.FarmTab:AddToggle("Toggle", {
                 wait(2)
             end)
         end
-    end,
-})
-
-
-local Section = Tabs.FarmTab:AddSection("Haki Auto Farm")
-
-Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Farm Haki",
-    Description = "This will farm your haki according to the sliders setting!",
-    Default = false,
-    Callback = function(vccl)
-        getgenv().concuvm = vccl
     end,
 })
 
@@ -967,7 +1011,7 @@ local BlackScreen
 
 Tabs.MiscTab:AddToggle("ToggleBlackScreen", {
     Title = "Black Screen",
-    Description = "This will turn your screen black, good for afk farming at night!",
+    Description = "",
     Default = false,
     Callback = function(Value)
         if Value then
@@ -1065,97 +1109,48 @@ spawn(function()
     end
 end)
 
-local Section = Tabs.MiscTab:AddSection("Useful Options")
+local Section = Tabs.MiscTab:AddSection("Anti")
 
 Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Anchor Your Self",
-    Description = "Anchored like an anchor!",
+    Title = "Anti AFK",
+    Description = "",
     Default = false,
-    Callback = function(value)
-        local Player = game.Players.LocalPlayer.Character
-        if Player and Player:FindFirstChild("HumanoidRootPart") then
-            Player.HumanoidRootPart.Anchored = value
+    Callback = function(state)
+        if state then
+            local vu = game:GetService("VirtualUser")
+            game:GetService("Players").LocalPlayer.Idled:Connect(function()
+                vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+                wait(1)
+                vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+            end)
+
+            Fluent:Notify({
+                Title = "Anti-AFK Activated",
+                Content = "Made by Bank",
+                Duration = 5
+            })
+
+        else
+            Fluent:Notify({
+                Title = "Anti-AFK Desactivated",
+                Content = "Made by Bank",
+                Duration = 5
+            })
+
         end
-    end
+    end,
 })
 
-local userInputService = game:GetService("UserInputService")
-local tweenService = game:GetService("TweenService")
-local camera = workspace.CurrentCamera
-
--- Define valores iniciais
-local flightEnabled = false
-local flightSpeed = 3
-
--- Cria instâncias para BodyVelocity e BodyGyro
-local bodyVelocity = Instance.new("BodyVelocity")
-bodyVelocity.MaxForce = Vector3.new(1e5, 1e5, 1e5)
-bodyVelocity.Velocity = Vector3.zero
-
-local bodyGyro = Instance.new("BodyGyro")
-bodyGyro.MaxTorque = Vector3.new(1e5, 1e5, 1e5)
-bodyGyro.CFrame = CFrame.new()
-
--- Obtenha jogador e personagem
-local player = game.Players.LocalPlayer
-local character = player.Character or player.CharacterAdded:Wait()
-local primaryPart = character.PrimaryPart
-
--- Toggle para ativar/desativar a função de voo
 Tabs.MiscTab:AddToggle("FlightToggle", {
-    Title = "Enable Flight",
-    Description = "[ BETA ]",
+    Title = "Anti No Dmg Water (Not Work)",
+    Description = "",
     Default = false,
     Callback = function(value)
-        flightEnabled = value
-        if not flightEnabled then
-            -- Desativa efeitos de voo
-            bodyVelocity.Parent = nil
-            bodyGyro.Parent = nil
-        end
+        _G.nowaterdmg = value
     end,
 })
 
-local Section = Tabs.MiscTab:AddSection("Yoru")
-
-local Slider = Tabs.MiscTab:AddSlider("Slider", 
-{
-    Title = "Yoru Speed",
-    Description = "",
-    Default = 50,
-    Min = 0,
-    Max = 500000,
-    Rounding = 1,
-    Callback = function(Value)
-        Speeds = Value
-    end,
-})
-
-Tabs.MiscTab:AddToggle("Toggle", {
-    Title = "Yoru Spam",
-    Description = "",
-    Default = false,
-    Callback = function(Value)
-        _G.Yoru = Value
-        if _G.Yoru then
-            while _G.Yoru do
-                wait()
-                local Players = game:GetService("Players")
-                local Plr = Players.LocalPlayer
-                local Character = Plr.Character
-                local Yoru = Character:FindFirstChild("Yoru")
-
-                wait()
-                pcall(function()
-                    for i = 1, Speeds do
-                        Yoru["RequestAnimation"]:FireServer()
-                    end
-                end)
-                wait()
-            end
-        end
-    end
-})
+local Section = Tabs.MiscTab:AddSection("Yoru Spam Soon...")
 
 local Section = Tabs.PlayerTab:AddSection("Player Utilities")
 
