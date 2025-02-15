@@ -6,7 +6,7 @@ local whitelist = {
 
 for i,v in pairs(game.Players:GetChildren()) do
         if v.Name == whitelist then
-        game.Players.LocalPlayer:Kick("Not For U >:(")
+        game.Players.LocalPlayer:Kick()
         end
     end
 
