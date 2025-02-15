@@ -4,9 +4,9 @@ local whitelist = {
     "ICU_XxWhiteknightxX"
 }
 
-for i,v in pairs(game:GetService(game.Players:GetChildren()) do
+for i,v in pairs(game.Players:GetChildren()) do
         if v.Name == whitelist then
-        player:Kick("คุณไม่ได้อยู่ใน Whitelist")
+        game.Players.LocalPlayer:Kick("Not For U >:(")
         end
     end
 
