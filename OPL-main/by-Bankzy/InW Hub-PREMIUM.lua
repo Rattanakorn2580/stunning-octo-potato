@@ -1,6 +1,6 @@
                 for i,v in pairs(game.Players:GetChildren()) do
-if v.Name == "T3T_XxBankKungxX" then
-game.Players.LocalPlayers:Kick("This For Premium")
+if not v.Name == "T3T_XxBankKungxX" then
+game.Players.LocalPlayer:Kick("This For Premium")
 end
 end
 
