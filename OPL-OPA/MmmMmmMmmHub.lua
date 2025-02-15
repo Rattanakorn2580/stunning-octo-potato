@@ -1152,6 +1152,17 @@ Tabs.MiscTab:AddToggle("FlightToggle", {
 
 local Section = Tabs.MiscTab:AddSection("Yoru Spam Soon...")
 
+local Section = Tabs.PlayerTab:AddSection("Local Player")
+
+Tabs.PlayerTab:AddButton({
+    Title = "No Save Data!!!",
+    Description = "",
+    Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+    end,
+})
+
 local Section = Tabs.PlayerTab:AddSection("Players")
 
 local function updatePlayerList()
