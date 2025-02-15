@@ -1152,7 +1152,7 @@ Tabs.MiscTab:AddToggle("FlightToggle", {
 
 local Section = Tabs.MiscTab:AddSection("Yoru Spam Soon...")
 
-local Section = Tabs.PlayerTab:AddSection("Player Utilities")
+local Section = Tabs.PlayerTab:AddSection("Players")
 
 local function updatePlayerList()
     local players = {}
