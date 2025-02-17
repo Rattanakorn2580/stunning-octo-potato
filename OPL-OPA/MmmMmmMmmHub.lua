@@ -1303,7 +1303,6 @@ local Input = Tabs.ShopTab:AddInput("Input", {
     Finished = false, 
     Callback = function(txt)
         AmountDrink = txt
-        end
     end
 })
 
