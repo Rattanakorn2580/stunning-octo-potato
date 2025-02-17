@@ -1302,9 +1302,7 @@ local Input = Tabs.ShopTab:AddInput("Input", {
     Numeric = true, 
     Finished = false, 
     Callback = function(txt)
-        local player = game.Players.LocalPlayer
-        if player and player.Character and player.Character:FindFirstChild("CharacterTrait") then
-            player.Character.CharacterTrait.WS.Value = tonumber(txt) or 1
+        AmountDrink = txt
         end
     end
 })
@@ -1313,8 +1311,9 @@ Tabs.ShopTab:AddButton({
     Title = "Buy Drink",
     Description = "",
     Callback = function()
-        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
-        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+        if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
+        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
+            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(selectedDrinks)
     end,
 })
 
@@ -1323,9 +1322,24 @@ Tabs.ShopTab:AddToggle("Toggle", {
     Description = "",
     Default = false,
     Callback = function(drpd)
-        DropDrink = drpd
+        AutoDropDrink = drpd
     end
 })
+
+spawn(function()
+    while wait() do
+        pcall(function()
+            if not AutoDropDrink then return end;
+            for _, Value in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                if table.find(Cache.DevConfig["ListOfDrink"], Value.Name) then
+                    game.Players.LocalPlayer.Character.Humanoid:UnequipTools();
+                    Value.Parent = game.Players.LocalPlayer.Character;
+                    Value.Parent = game.Workspace;
+                end
+            end
+        end)
+    end
+end);
 
 local Section = Tabs.ShopTab:AddSection("Auto Reroll Affinities")
 
