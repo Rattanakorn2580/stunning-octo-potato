@@ -33,7 +33,6 @@ local Tabs = {
     MainTab = Window:AddTab({ Title = "Autos", Icon = "scroll" }),
     DupeTab = Window:AddTab({ Title = "Compasses", Icon = "boxes" }),
     FarmTab = Window:AddTab({ Title = "Farm", Icon = "bomb" }),
-    FarmFruitTab = Window:AddTab({ Title = "Skills Fruit", Icon = "skull" }),
     MiscTab = Window:AddTab({ Title = "Misc", Icon = "file-code" }),
     PlayerTab = Window:AddTab({ Title = "Players", Icon = "users" }),
     ShopTab = Window:AddTab({ Title = "Shop", Icon = "shopping-cart" }),
