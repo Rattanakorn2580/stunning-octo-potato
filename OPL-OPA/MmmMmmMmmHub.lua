@@ -1306,6 +1306,7 @@ Tabs.ShopTab:AddToggle("AutoBuyToggle", {
     end
 })
 
+local QuantitySlider = Tabs.ShopTab:AddSlider("QuantitySlider", {
     Title = "Set Drink Quantity",
     Description = "",
     Default = 1, 
