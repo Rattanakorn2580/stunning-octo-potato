@@ -1313,7 +1313,7 @@ Tabs.ShopTab:AddButton({
         if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
         for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
             game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(selectedDrinks)
-    end,
+    end
 })
 
 Tabs.ShopTab:AddToggle("Toggle", {
