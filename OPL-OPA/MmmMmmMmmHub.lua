@@ -1306,6 +1306,52 @@ Tabs.ShopTab:AddToggle("AutoBuyToggle", {
     end
 })
 
+    Title = "Set Drink Quantity",
+    Description = "",
+    Default = 1, 
+    Min = 1,
+    Max = 500, 
+    Rounding = 0, 
+    Callback = function(value)
+        drinkQuantity = value 
+    end
+})
+
+spawn(function()
+    while wait(0.5) do
+        pcall(function()
+            if autoBuyEnabled and next(selectedDrinks) then
+                for drink, isSelected in pairs(selectedDrinks) do
+                    if isSelected then
+                        local purchasedCount = 0 
+
+                        for _ = 1, drinkQuantity do
+                            if purchasedCount < drinkQuantity then
+                                local args = {
+                                    [1] = drink
+                                }
+                                workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(unpack(args))
+                                purchasedCount = purchasedCount + 1
+                            else
+                                break
+                            end
+                        end
+
+                        if purchasedCount >= drinkQuantity then
+                            Fluent:Notify({
+                                Title = "Purchase Complete",
+                                Content = "Bought " .. purchasedCount .. " of " .. drink,
+                                Duration = 5
+                            })
+                        end
+                    end
+                end
+                autoBuyEnabled = false
+            end
+        end)
+    end
+end)
+
 Tabs.ShopTab:AddToggle("Toggle", {
     Title = "Auto Drop Drink",
     Description = "",
