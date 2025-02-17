@@ -1294,25 +1294,15 @@ local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
     end
 })
 
-local Input = Tabs.ShopTab:AddInput("Input", {
-    Title = "Amount",
+Tabs.ShopTab:AddToggle("AutoBuyToggle", {
+    Title = "Enable Auto Buy",
     Description = "",
-    Default = "",
-    Placeholder = "Enter Amount Drink: ",
-    Numeric = true, 
-    Finished = false, 
-    Callback = function(txt)
-        AmountDrink = txt
-    end
-})
-
-Tabs.ShopTab:AddButton({
-    Title = "Buy Drink",
-    Description = "",
-    Callback = function()
-        if not AmountDrink or not string.match(AmountDrink, "%d+") or tonumber(string.match(AmountDrink, "%d+")) < 0 then return end;
-        for _ = 1, tonumber(string.match(AmountDrink, "%d+")) do
-            game.Workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(selectedDrinks)
+    Default = false, 
+    Callback = function(value)
+        autoBuyEnabled = value 
+        if value then
+        else
+        end
     end
 })
 
