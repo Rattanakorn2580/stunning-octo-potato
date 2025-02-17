@@ -13,20 +13,13 @@ local Window = Fluent:CreateWindow({
     MinimizeKey = Enum.KeyCode.LeftControl
 })
 
--- Cache para configurações
-local Cache = {
-    DevConfig = {
-        ListOfBox1 = {"Common Box"},
-        ListOfBox2 = {"Uncommon Box"},
-        ListOfDrink = {"Cider+", "Cider", "Lemonade+", "Lemonade", "Juice+", "Juice", "Smoothie+", "Smoothie"},
-        ListOfSafeZone = {"SafeZone Sky", "SafeZone LightFarm"},
-        ListOfBox3 = {"Rare Box", "Ultra Rare Box"},
-        ListOfIsland = {"Grassy", "Kaizu", "Snow Mountains", "Pursuer Boss", "Bar", "Cliffs", "Windmill", "Cave", "Krizma", "Sam", "Green", "Trees", "Pyramid", "Package", "Snowy", "Mountain", "Marine Ford", "Sand Castle", "Forest", "Evil", "Crescent", "Islands", "Town", "Rocky", "Palm", "Sand", "Sand 2", "Small", "Tiny", "Super Tiny", "Grass", "Atlar"},
-        ListOfMerchant = {"Rayleigh", "Better Drink", "Drink", "Flail", "QuestFish", "Krizma", "Sword", "Sniper", "Emote", "Affinity", "Fish", "Expertise"},
-        ListOfAffinities = {"Devil Fruit ( Left )", "Devil Fruit ( Right )"}
-    }
-}
+local Cache = { DevConfig = {} };
 
+Cache.DevConfig["ListOfBox1"] = {"Common Box"};
+Cache.DevConfig["ListOfBox2"] = {"Uncommon Box"};
+Cache.DevConfig["ListOfDrink"] = {"Cider+", "Lemonade+", "Juice+", "Smoothie+"};
+Cache.DevConfig["ListOfSafeZone"] = {"SafeZone Sky", "SafeZone UnderSea", "SafeZone LightFarm1", "SafeZone LightFarm2"};
+Cache.DevConfig["ListOfBox3"] = {"Rare Box", "Ultra Rare Box"};
 
 
 local Tabs = {
