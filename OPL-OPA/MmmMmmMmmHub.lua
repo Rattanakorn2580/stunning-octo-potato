@@ -892,7 +892,7 @@ end)
 local Section = Tabs.FarmTab:AddSection("Haki Farm")
 
 Tabs.FarmTab:AddToggle("Toggle", {
-    Title = "Auto Haki Fast (Not Work)",
+    Title = "Auto Haki Fast (Ping)",
     Description = "",
     Default = false,
     Callback = function(vccl)
@@ -917,31 +917,6 @@ Tabs.FarmTab:AddToggle("Toggle", {
                     :WaitForChild("Retum")
                     :FireServer()
                 wait(2)
-            end)
-        end
-    end,
-})
-
-local Section = Tabs.FarmFruitTab:AddSection("This shit causes a lot of lag!")
-local Section = Tabs.FarmFruitTab:AddSection("Options and Utilities")
-
-Tabs.FarmFruitTab:AddToggle("Toggle", {
-    Title = "100% Skill",
-    Description = "",
-    Default = false,
-    Callback = function(Value)
-        _G.auto100rate = Value
-        if _G.auto100rate then
-            aaxc = hookmetamethod(game, "__namecall", function(self, ...)
-                local args = { ... }
-                local method = getnamecallmethod()
-                if method == "FireServer" or method == "InvokeServer" then
-                    if self.Name == "RemoteEvent" and args[3] == "StopCharging" and _G.auto100rate then
-                        args[6] = 100 -- Define o valor como 100
-                        return aaxc(self, unpack(args))
-                    end
-                end
-                return aaxc(self, ...)
             end)
         end
     end,
@@ -1326,55 +1301,38 @@ local MultiDrinkDropdown = Tabs.ShopTab:AddDropdown("MultiDrinkDropdown", {
     end
 })
 
-
-Tabs.ShopTab:AddToggle("AutoBuyToggle", {
-    Title = "Enable Auto Buy",
+local Input = Tabs.ShopTab:AddInput("Input", {
+    Title = "Amount",
     Description = "",
-    Default = false, 
-    Callback = function(value)
-        autoBuyEnabled = value 
-        if value then
-        else
+    Default = "",
+    Placeholder = "Enter Amount Drink: ",
+    Numeric = true, 
+    Finished = false, 
+    Callback = function(txt)
+        local player = game.Players.LocalPlayer
+        if player and player.Character and player.Character:FindFirstChild("CharacterTrait") then
+            player.Character.CharacterTrait.WS.Value = tonumber(txt) or 1
         end
     end
 })
 
-spawn(function()
-    while wait(0.5) do
-        pcall(function()
-            if autoBuyEnabled and next(selectedDrinks) then
-                for drink, isSelected in pairs(selectedDrinks) do
-                    if isSelected then
-                        local purchasedCount = 0 
+Tabs.ShopTab:AddButton({
+    Title = "Buy Drink",
+    Description = "",
+    Callback = function()
+        workspace.UserData["User_"..game.Players.LocalPlayer.UserId].UpdateClothing_Extras:FireServer("A", "\255", 34)
+        game:GetService("Players").LocalPlayer.Character.CharacterTrait.ClothingTrigger:FireServer()
+    end,
+})
 
-                        for _ = 1, drinkQuantity do
-                            if purchasedCount < drinkQuantity then
-                                local args = {
-                                    [1] = drink
-                                }
-                                workspace.Merchants.BetterDrinkMerchant.Clickable.Retum:FireServer(unpack(args))
-                                purchasedCount = purchasedCount + 1
-                            else
-                                break
-                            end
-                        end
-
-                        if purchasedCount >= drinkQuantity then
-                            Fluent:Notify({
-                                Title = "Purchase Complete",
-                                Content = "Bought " .. purchasedCount .. " of " .. drink,
-                                Duration = 5
-                            })
-                        end
-                    end
-                end
-                autoBuyEnabled = false
-            end
-        end)
+Tabs.ShopTab:AddToggle("Toggle", {
+    Title = "Auto Drop Drink",
+    Description = "",
+    Default = false,
+    Callback = function(drpd)
+        DropDrink = drpd
     end
-end)
-
-
+})
 
 local Section = Tabs.ShopTab:AddSection("Auto Reroll Affinities")
 
