@@ -5251,7 +5251,7 @@ wait(.8)
     end
 end)
 
-page4_5:Label(" ┇ Affinity Reroll 2.0 (Left/ซ้าย) ┇ ")
+page4_5:Label(" ┇ Affinity Reroll 2.0 (Left) ┇ ")
 
 page4_5:Button("Reroll (เปิด/Open)", function()
 isRunning1 = true
@@ -5361,7 +5361,7 @@ if isRunning1 then
 		end
 end)
 
-page4_5:Label(" ┇ Affinity Reroll 2.0 (Right/ขวา) ┇ ")
+page4_5:Label(" ┇ Affinity Reroll 2.0 (Right) ┇ ")
 
 page4_5:Button("Reroll (เปิด/Open)", function()
 isRunning2 = true
@@ -5375,10 +5375,10 @@ if isRunning2 then
                     local userDataName = game.Workspace.UserData["User_" .. playerId]
 
                     -- DFT1
-                    local AffMelee2 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT1Defense.Value
-                    local AffSword2 = userDataName.Data.DFT1Sword.Value
+                    local AffMelee2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
 
                     -- Check for DFT2
                     if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
@@ -5429,10 +5429,10 @@ if isRunning2 then
                     local userDataName = game.Workspace.UserData["User_" .. playerId]
 
                     -- DFT1
-                    local AffMele2 = userDataName.Data.DFT1Melee.Value
-                    local AffSniper2 = userDataName.Data.DFT1Sniper.Value
-                    local AffDefense2 = userDataName.Data.DFT1Defense.Value
-                    local AffSword2 = userDataName.Data.DFT1Sword.Value
+                    local AffMele2 = userDataName.Data.DFT2Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT2Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT2Defense.Value
+                    local AffSword2 = userDataName.Data.DFT2Sword.Value
 
                     -- Check for DFT2
                     if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
