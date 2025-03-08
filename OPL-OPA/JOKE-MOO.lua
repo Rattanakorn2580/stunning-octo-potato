@@ -5526,7 +5526,7 @@ if isRunning1 then
                     local AffDefense1 = userDataName.Data.DFT1Defense.Value
                     local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-                    -- Check for DFT1
+                    print("Sript is running")
                     if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
                         script.Parent:Destroy()
                     end
