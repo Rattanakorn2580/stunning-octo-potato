@@ -5380,7 +5380,7 @@ if isRunning2 then
                     local AffDefense2 = userDataName.Data.DFT1Defense.Value
                     local AffSword2 = userDataName.Data.DFT1Sword.Value
 
-                    -- Check for DFT1
+                    -- Check for DFT2
                     if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
                         isRunning2 = false
 			break
@@ -5396,19 +5396,19 @@ if isRunning2 then
                     }
 
                     if AffDefense2 == 2 then
-                        args1[2] = 0 / 0
+                        args2[2] = 0 / 0
                     end
 
                     if AffMelee2 == 2 then
-                        args1[3] = 0 / 0
+                        args2[3] = 0 / 0
                     end
 
                     if AffSniper2 == 2 then
-                        args1[4] = 0 / 0
+                        args2[4] = 0 / 0
                     end
 
                     if AffSword2 == 2 then
-                        args1[5] = 0 / 0
+                        args2[5] = 0 / 0
                     end
 
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
@@ -5434,7 +5434,7 @@ if isRunning2 then
                     local AffDefense2 = userDataName.Data.DFT1Defense.Value
                     local AffSword2 = userDataName.Data.DFT1Sword.Value
 
-                    -- Check for DFT1
+                    -- Check for DFT2
                     if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
                         isRunning2 = false
 			break
@@ -5450,19 +5450,19 @@ if isRunning2 then
                     }
 
                     if AffDefense2 == 2 then
-                        args1[2] = 0 / 0
+                        args2[2] = 0 / 0
                     end
 
                     if AffMelee2 == 2 then
-                        args1[3] = 0 / 0
+                        args2[3] = 0 / 0
                     end
 
                     if AffSniper2 == 2 then
-                        args1[4] = 0 / 0
+                        args2[4] = 0 / 0
                     end
 
                     if AffSword2 == 2 then
-                        args1[5] = 0 / 0
+                        args2[5] = 0 / 0
                     end
 
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
