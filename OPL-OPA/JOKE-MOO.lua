@@ -5514,7 +5514,6 @@ page5_5:Toggle("Reroll 2.0 Aff", false, function(roll)
 end)
 
 if isRunning1 then
-    -- เริ่มต้น Loop ถ้าเปิด Toggle
     spawn(function()
         while isRunning1 do
             wait(8) -- Interval ของ loop
@@ -5522,48 +5521,34 @@ if isRunning1 then
             local playerId = player.UserId
             local userDataName = game.Workspace.UserData["User_" .. playerId]
 
-            -- DFT1 Variables
+            -- ดึงค่าของ Affinity
             local AffMelee1 = userDataName.Data.DFT1Melee.Value
             local AffSniper1 = userDataName.Data.DFT1Sniper.Value
             local AffDefense1 = userDataName.Data.DFT1Defense.Value
             local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-            print("Script is running")
+            print("Script is running...")
 
             -- ถ้าทุกค่าเป็น 2 ให้หยุดการทำงาน
             if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                print("Stopping script...")
+                print("All affinities are 2, stopping script...")
                 isRunning1 = false
                 break
             end
 
+            -- ตั้งค่าให้ reroll ค่าไหนที่เป็น 2
             local args1 = {
                 [1] = "DFT1",
-                [2] = false, -- defense
-                [3] = false, -- melee
-                [4] = false, -- sniper
-                [5] = false, -- sword
+                [2] = AffDefense1 == 2,  -- Reroll ถ้าเป็น 2
+                [3] = AffMelee1 == 2,    -- Reroll ถ้าเป็น 2
+                [4] = AffSniper1 == 2,   -- Reroll ถ้าเป็น 2
+                [5] = AffSword1 == 2,    -- Reroll ถ้าเป็น 2
                 [6] = "Cash"
             }
 
-            -- แทนที่ 0/0 ด้วย nil หรือ false
-            if AffDefense1 == 2 then
-                args1[2] = nil
-            end
+            print("Sending reroll request:", args1[2], args1[3], args1[4], args1[5])
 
-            if AffMelee1 == 2 then
-                args1[3] = nil
-            end
-
-            if AffSniper1 == 2 then
-                args1[4] = nil
-            end
-
-            if AffSword1 == 2 then
-                args1[5] = nil
-            end
-
-            workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args))
+            workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
         end
     end)
 end
