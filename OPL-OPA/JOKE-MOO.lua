@@ -5253,12 +5253,13 @@ end)
 
 page4_5:Label(" ┇ Affinity Reroll 2.0 ┇ ")
 
-page4_5:Toggle("Reroll 2.0 Aff", false, function(roll)
+page4_5:Toggle("Reroll 2.0 Aff (Left)", false, function(roll)
     isRunning1 = roll
 end)
 
-if isRunning1 then
+isRunning1 = true
             spawn(function()
+		if isRunning1 then
                 while isRunning1 do
                     wait(8)
                     local player = game.Players.LocalPlayer
@@ -5305,6 +5306,9 @@ if isRunning1 then
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
                 end
             end)
+end
+else
+isRunning1 = false
 end
 
 local Tap5 = Window:Taps("Misc")
