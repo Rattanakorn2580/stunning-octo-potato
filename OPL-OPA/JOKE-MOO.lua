@@ -5526,9 +5526,8 @@ if isRunning1 then
                     local AffDefense1 = userDataName.Data.DFT1Defense.Value
                     local AffSword1 = userDataName.Data.DFT1Sword.Value
 
-                    print("Sript is running")
                     if AffSniper1 == 2 and AffSword1 == 2 and AffMelee1 == 2 and AffDefense1 == 2 then
-                        script.Parent:Destroy()
+                        isRunning1 = false
                     end
 
                     local args1 = {
@@ -5541,19 +5540,19 @@ if isRunning1 then
                     }
 
                     if AffDefense1 == 2 then
-                        args1[2] = 0 / 0
+                        args1[2] = nil
                     end
 
                     if AffMelee1 == 2 then
-                        args1[3] = 0 / 0
+                        args1[3] = nil
                     end
 
                     if AffSniper1 == 2 then
-                        args1[4] = 0 / 0
+                        args1[4] = nil
                     end
 
                     if AffSword1 == 2 then
-                        args1[5] = 0 / 0
+                        args1[5] = nil
                     end
 
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
