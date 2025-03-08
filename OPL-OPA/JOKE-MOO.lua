@@ -5251,7 +5251,7 @@ wait(.8)
     end
 end)
 
-page4_5:Label(" ┇ Affinity Reroll 2.0 Left ┇ ")
+page4_5:Label(" ┇ Affinity Reroll 2.0 (Left/ซ้าย) ┇ ")
 
 page4_5:Button("Reroll (เปิด/Open)", function()
 isRunning1 = true
@@ -5356,6 +5356,116 @@ if isRunning1 then
                     end
 
                     workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args1))
+                end
+            end)
+		end
+end)
+
+page4_5:Label(" ┇ Affinity Reroll 2.0 (Right/ขวา) ┇ ")
+
+page4_5:Button("Reroll (เปิด/Open)", function()
+isRunning2 = true
+
+if isRunning2 then
+            spawn(function()
+                while isRunning2 do
+                    wait(8)
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT1
+                    local AffMelee2 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT1Defense.Value
+                    local AffSword2 = userDataName.Data.DFT1Sword.Value
+
+                    -- Check for DFT1
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
+                        isRunning2 = false
+			break
+                    end
+
+                    local args2 = {
+                        [1] = "DFT2",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+                    if AffDefense2 == 2 then
+                        args1[2] = 0 / 0
+                    end
+
+                    if AffMelee2 == 2 then
+                        args1[3] = 0 / 0
+                    end
+
+                    if AffSniper2 == 2 then
+                        args1[4] = 0 / 0
+                    end
+
+                    if AffSword2 == 2 then
+                        args1[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
+                end
+            end)
+		end
+end)
+
+page4_5:Button("Reroll (ปิด/Off)", function()
+isRunning2 = false
+
+if isRunning2 then
+            spawn(function()
+                while isRunning2 do
+                    wait(8)
+                    local player = game.Players.LocalPlayer
+                    local playerId = player.UserId
+                    local userDataName = game.Workspace.UserData["User_" .. playerId]
+
+                    -- DFT1
+                    local AffMele2 = userDataName.Data.DFT1Melee.Value
+                    local AffSniper2 = userDataName.Data.DFT1Sniper.Value
+                    local AffDefense2 = userDataName.Data.DFT1Defense.Value
+                    local AffSword2 = userDataName.Data.DFT1Sword.Value
+
+                    -- Check for DFT1
+                    if AffSniper2 == 2 and AffSword2 == 2 and AffMelee2 == 2 and AffDefense2 == 2 then
+                        isRunning2 = false
+			break
+                    end
+
+                    local args2 = {
+                        [1] = "DFT2",
+                        [2] = false, -- defense
+                        [3] = false, -- melee
+                        [4] = false, -- sniper
+                        [5] = false, -- sword
+                        [6] = "Cash"
+                    }
+
+                    if AffDefense2 == 2 then
+                        args1[2] = 0 / 0
+                    end
+
+                    if AffMelee2 == 2 then
+                        args1[3] = 0 / 0
+                    end
+
+                    if AffSniper2 == 2 then
+                        args1[4] = 0 / 0
+                    end
+
+                    if AffSword2 == 2 then
+                        args1[5] = 0 / 0
+                    end
+
+                    workspace:WaitForChild("Merchants"):WaitForChild("AffinityMerchant"):WaitForChild("Clickable"):WaitForChild("Retum"):FireServer(unpack(args2))
                 end
             end)
 		end
