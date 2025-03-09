@@ -1,2 +1,2 @@
 Player = game.Players.LocalPlayer
-Player:Kick("You shouldn't use it.")
+Player:Kick("You were kicked by the owner. Lol Xddddddddddddddddddddddddddddddddddddd")
